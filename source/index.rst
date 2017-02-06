@@ -1,22 +1,12 @@
-.. LTD Platform documentation master file, created by
-   sphinx-quickstart on Fri Feb  3 17:13:51 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Linaro Technologies Divison
+===========================
 
-Welcome to LTD Platform's documentation!
-========================================
+This is the documentation for the Linaro Technologies Division.
 
-Contents:
+Contents
+--------
 
 .. toctree::
    :maxdepth: 2
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+   fota-demo/index
