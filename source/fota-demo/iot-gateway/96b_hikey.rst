@@ -87,12 +87,17 @@ Boot the device
 Remove the jumper from J15 pins 3-4, and power cycle the board. The
 GRUB bootloader will boot into the software image within 5 seconds.
 
-Some error messages are expected:
+Some error messages are expected during the first boot:
 
+- Failed to start Raise network interfaces.
 - Failed to start Tinyproxy lightweight HTTP Proxy.
+- Failed to start Bluetooth Init Script for HiKey.
 - Failed to start Wait for Network to be Configured.
 - Failed to start OpenBSD Secure Shell server.
 - Failed to start /etc/rc.local Compatibility.
+
+You may see the "Raise network interfacs" and "Tinyproxy lightweight
+HTTP Proxy" on subsequent boots as well.
 
 **At time of writing (Jan 23, 2017), HDMI must be unplugged when
 booting. The issue is tracked in**
