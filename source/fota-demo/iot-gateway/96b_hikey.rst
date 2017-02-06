@@ -39,17 +39,17 @@ Download the following reference platform components.
 **Note**: This requires a working install of fastboot and Python on
 your host PC.
 
-UEFI release for HiKey (build 144)::
+UEFI release for HiKey (build 147)::
 
-    $ wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/144/release/hikey/l-loader.bin
-    $ wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/144/release/hikey/fip.bin
-    $ wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/144/release/hikey/ptable-linux-8g.img
+    $ wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/147/release/hikey/l-loader.bin
+    $ wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/147/release/hikey/fip.bin
+    $ wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/147/release/hikey/ptable-linux-8g.img
     $ wget https://raw.githubusercontent.com/96boards/burn-boot/master/hisi-idt.py
 
-Debian Stretch IoT Reference Platform Build for HiKey (build 24)::
+Debian Stretch IoT Reference Platform Build for HiKey (build 28)::
 
-    $ wget http://builds.96boards.org/snapshots/reference-platform/debian-iot/24/hikey/hikey-boot-linux-20170131-24.uefi.img.gz
-    $ wget http://builds.96boards.org/snapshots/reference-platform/debian-iot/24/hikey/hikey-rootfs-debian-stretch-iot-20170131-24.emmc.img.gz
+    $ wget http://builds.96boards.org/snapshots/reference-platform/debian-iot/28/hikey/hikey-boot-linux-20170204-28.uefi.img.gz
+    $ wget http://builds.96boards.org/snapshots/reference-platform/debian-iot/28/hikey/hikey-rootfs-debian-stretch-iot-20170204-28.emmc.img.gz
 
 Extract the .gz files::
 
@@ -78,8 +78,8 @@ Flash the software
     $ sudo python hisi-idt.py --img1=l-loader.bin
     $ sudo fastboot flash ptable ptable-linux-8g.img
     $ sudo fastboot flash fastboot fip.bin
-    $ sudo fastboot flash boot hikey-boot-linux-20170131-24.uefi.img
-    $ sudo fastboot flash system hikey-rootfs-debian-stretch-iot-20170131-24.emmc.img
+    $ sudo fastboot flash boot hikey-boot-linux-20170204-28.uefi.img
+    $ sudo fastboot flash system hikey-rootfs-debian-stretch-iot-20170204-28.emmc.img
 
 Boot the device
 ---------------
