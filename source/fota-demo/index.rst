@@ -56,8 +56,8 @@ simple shell application and upload it to the hawkBit server. You'll
 then send it to the connected IoT Device using the hawkBit UI.::
 
     # Build Zephyr shell app
-    $ cd <zephyr>
-    $ make BOARD=96b_nitrogen -C samples/shell/
+    cd <zephyr>
+    make BOARD=96b_nitrogen -C samples/shell/
 
 The resulting binary is stored in
 ``<zephyr>/samples/shell/outdir/96b_nitrogen/zephyr.bin``.
@@ -72,7 +72,7 @@ page.
 Upload the binary to your hawkBit server from the zephyr directory (10
 is an arbitrary version number)::
 
-    $ test_hawkbit.sh samples/shell/outdir/96b_nitrogen/zepyr.bin 10
+    test_hawkbit.sh samples/shell/outdir/96b_nitrogen/zepyr.bin 10
     Created DS 1, SM 1 and uploaded artifact zephyr/samples/shell/outdir/96b_nitrogen/zephyr.bin
 
 You will see updates in the hawkBit UI when the image is uploaded:

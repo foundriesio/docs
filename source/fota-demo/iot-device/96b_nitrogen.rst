@@ -45,23 +45,23 @@ Using the repositories you checked out earlier, build both a
 bootloader (mcuboot) and the Linaro FOTA Zephyr application. ::
 
     # Establish Zephyr environment
-    $ cd <zephyr>
-    $ export ZEPHYR_SDK_INSTALL_DIR=/path/to/your/zephyr-sdk
-    $ export ZEPHYR_GCC_VARIANT=zephyr
-    $ . zephyr-env.sh
+    cd <zephyr>
+    export ZEPHYR_SDK_INSTALL_DIR=/path/to/your/zephyr-sdk
+    export ZEPHYR_GCC_VARIANT=zephyr
+    . zephyr-env.sh
 
     # Bootloader
-    $ cd <mcuboot>
-    $ make BOARD=96b_nitrogen
+    cd <mcuboot>
+    make BOARD=96b_nitrogen
 
     # Linaro FOTA app
-    $ cd <zephyr-fota-hawkbit>
-    $ make CONF_FILE=prj_nrf52.conf BOARD=96b_nitrogen
+    cd <zephyr-fota-hawkbit>
+    make CONF_FILE=prj_nrf52.conf BOARD=96b_nitrogen
 
-    $ cd <zephyr-utils>
-    $ python zep2newt.py --bin <zephyr-fota-hawkbit>/outdir/96b_nitrogen/zephyr.bin \
-                        --key root.pem --sig RSA --vtoff 0x100 --word-size 4 \
-                        --out linaro_fota-nitrogen.signed.bin
+    cd <zephyr-utils>
+    python zep2newt.py --bin <zephyr-fota-hawkbit>/outdir/96b_nitrogen/zephyr.bin \
+                       --key root.pem --sig RSA --vtoff 0x100 --word-size 4 \
+                       --out linaro_fota-nitrogen.signed.bin
 
 Flash Nitrogen with Firmware Binaries
 -------------------------------------
@@ -70,9 +70,9 @@ Flash the bootloader and FOTA application binaries to your Nitrogen
 using pyOCD, after plugging the Nitrogen into your system via USB. ::
 
     # Bootloader
-    $ cd <mcuboot>
-    $ pyocd-flashtool -d debug -t nrf52 -ce -a 0x0 outdir/96b_nitrogen/zephyr.bin
+    cd <mcuboot>
+    pyocd-flashtool -d debug -t nrf52 -ce -a 0x0 outdir/96b_nitrogen/zephyr.bin
 
     # Signed Linaro FOTA app
-    $ cd <zephyr-utils>
-    $ pyocd-flashtool -d debug -t nrf52 -a 0x8000 linaro_fota-nitrogen.signed.bin
+    cd <zephyr-utils>
+    pyocd-flashtool -d debug -t nrf52 -a 0x8000 linaro_fota-nitrogen.signed.bin

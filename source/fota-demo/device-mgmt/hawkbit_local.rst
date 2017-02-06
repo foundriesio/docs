@@ -35,7 +35,7 @@ Follow these instructions to create four Docker containers.
 
 These containers must share a network. Create this network now::
 
-    $ docker network create hawkbit-net
+    docker network create hawkbit-net
 
 HawkBit Option #1: Pull from Docker Hub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,7 +43,7 @@ HawkBit Option #1: Pull from Docker Hub
 If you wish to use a prebuilt hawkBit container with default passwords
 and other settings::
 
-    $ docker pull linarotechnologies/gitci-hawkbit-container
+    docker pull linarotechnologies/gitci-hawkbit-container
 
 HawkBit Option #2: Build Your Own
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,7 +68,7 @@ application.properties, changing:
 
 Now build the container image::
 
-    $ docker build -t hawkbit --force-rm .
+    docker build -t hawkbit --force-rm .
 
 Create Containers for hawkBit Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,20 +81,20 @@ default database name (the value of the MYSQL_DATABASE variable)
 cannot be changed without reconfiguring and rebuilding the hawkbit
 container. ::
 
-    $ docker run -dit \
-                 --network=hawkbit-net \
-                 --name srv-mariadb \
-                 -e MYSQL_ROOT_PASSWORD=root-mysql \
-                 -e MYSQL_USER=hawkbit \
-                 -e MYSQL_PASSWORD=1234 \
-                 -e MYSQL_DATABASE=hawkbit \
-                 mariadb
-    $ docker run -dit --network=hawkbit-net --name srv-mongodb mongo:3.2
-    $ docker run -dit \
-                 --network=hawkbit-net \
-                 --name srv-rabbitmq \
-                 --hostname srv-rabbitmq \
-                 rabbitmq
+    docker run -dit \
+               --network=hawkbit-net \
+               --name srv-mariadb \
+               -e MYSQL_ROOT_PASSWORD=root-mysql \
+               -e MYSQL_USER=hawkbit \
+               -e MYSQL_PASSWORD=1234 \
+               -e MYSQL_DATABASE=hawkbit \
+               mariadb
+    docker run -dit --network=hawkbit-net --name srv-mongodb mongo:3.2
+    docker run -dit \
+               --network=hawkbit-net \
+               --name srv-rabbitmq \
+               --hostname srv-rabbitmq \
+               rabbitmq
 
 Now wait for all of the containers to finish initializing; 20 seconds
 or so should be enough.
@@ -107,12 +107,12 @@ start the hawkBit container::
 
     # If you pulled from Docker Hub, use "linarotechnologies/gitci-hawkbit-container"
     # instead of "hawkbit" as the last argument.
-    $ docker run -dit \
-                 --network=hawkbit-net \
-                 --name hawkbit \
-                 -p 8080:8080 \
-                 -v secrets.properties:/srv/secret/secrets.properties \
-                 hawkbit
+    docker run -dit \
+               --network=hawkbit-net \
+               --name hawkbit \
+               -p 8080:8080 \
+               -v secrets.properties:/srv/secret/secrets.properties \
+               hawkbit
 
 The secrets.properties file available in the repository is just an
 example, but it needs to at least match the values defined for the

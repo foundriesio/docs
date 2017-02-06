@@ -21,7 +21,7 @@ Check / Update BlueZ stack
 
 Check your bluez version with the following command::
 
-    $ sudo dpkg --status bluez | grep '^Version:'
+    sudo dpkg --status bluez | grep '^Version:'
     Version: 5.41-0ubuntu3
 
 It is recommended that IoT gateway run BlueZ v5.41+.  It includes a
@@ -43,7 +43,7 @@ Install radvd (Router Advertisement Daemon)
 
 ::
 
-    $ sudo apt-get install radvd
+    sudo apt-get install radvd
     # (use the text editor of your choice to create the following config file)
     root@linaro-developer:~# cat /etc/radvd.conf
     interface bt0
@@ -68,7 +68,7 @@ Install ndppd
 
 ::
 
-    $ sudo apt-get install ndppd
+    sudo apt-get install ndppd
     # (use the text editor of your choice to create the following config file)
     root@linaro-developer:~# cat /etc/ndppd.conf
     route-ttl 30000
@@ -87,7 +87,7 @@ Install tinyproxy
 
 ::
 
-    $ sudo apt-get install tinyproxy
+    sudo apt-get install tinyproxy
     # (use the text editor of your choice to create the following config file)
     root@linaro-developer:~# cat /etc/tinyproxy.conf
     User nobody
@@ -177,8 +177,8 @@ Start the IoT gateway processes
 
 To start the IoT gateway processes do the following::
 
-    $ sudo service radvd start
-    $ sudo service ndppd start
+    sudo service radvd start
+    sudo service ndppd start
     # start the bluetooth_6lowpand script downloaded above
-    $ sudo bash ./bluetooth_6lowpand.sh
+    sudo bash ./bluetooth_6lowpand.sh
 

@@ -44,20 +44,20 @@ Build Firmware Binaries
 Using the repositories you checked out earlier, build both a bootloader (mcuboot) and the Linaro FOTA Zephyr application.::
 
     # Establish Zephyr environment
-    $ cd <zephyr-project>
-    $ export ZEPHYR_SDK_INSTALL_DIR=/path/to/your/zephyr-sdk
-    $ export ZEPHYR_GCC_VARIANT=zephyr
-    $ . zephyr-env.sh
+    cd <zephyr-project>
+    export ZEPHYR_SDK_INSTALL_DIR=/path/to/your/zephyr-sdk
+    export ZEPHYR_GCC_VARIANT=zephyr
+    . zephyr-env.sh
 
     # Bootloader
-    $ cd <mcuboot>
-    $ make BOARD=96b_carbon
+    cd <mcuboot>
+    make BOARD=96b_carbon
 
     # Linaro FOTA app
-    $ cd <zephyr-fota-hawkbit>
-    $ make CONF_FILE=prj_stm32f4.conf BOARD=96b_carbon
-    $ cd <zephyr-utils>
-    $ python zep2newt.py --bin <zephyr-fota-hawkbit>/outdir/96b_carbon/zephyr.bin --key root.pem --sig RSA --vtoff 0x100 --out linaro_fota-carbon.signed.bin
+    cd <zephyr-fota-hawkbit>
+    make CONF_FILE=prj_stm32f4.conf BOARD=96b_carbon
+    cd <zephyr-utils>
+    python zep2newt.py --bin <zephyr-fota-hawkbit>/outdir/96b_carbon/zephyr.bin --key root.pem --sig RSA --vtoff 0x100 --out linaro_fota-carbon.signed.bin
 
 Flash Carbon with Firmware Binaries
 -----------------------------------
@@ -69,10 +69,10 @@ while power is applied to the board.  You can release BOOT0 after the
 board powers up. For more information, see Carbon's documentation. ::
 
     # Bootloader
-    $ cd <mcuboot>
-    $ sudo dfu-util -d [0483:df11] -a 0 -s 0x08000000:force:mass-erase -D outdir/96b_carbon/zephyr.bin
+    cd <mcuboot>
+    sudo dfu-util -d [0483:df11] -a 0 -s 0x08000000:force:mass-erase -D outdir/96b_carbon/zephyr.bin
 
 
     # Linaro FOTA app
-    $ cd <zephyr-utils>
-    $ sudo dfu-util -d [0483:df11] -a 0 -D linaro_fota-carbon.signed.bin -s 0x08020000
+    cd <zephyr-utils>
+    sudo dfu-util -d [0483:df11] -a 0 -D linaro_fota-carbon.signed.bin -s 0x08020000

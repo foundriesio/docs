@@ -43,24 +43,24 @@ Using the repositories you checked out earlier, build both a
 bootloader (mcuboot) and the Linaro FOTA Zephyr application.::
 
     # Establish Zephyr environment
-    $ cd <zephyr-project>
-    $ export ZEPHYR_SDK_INSTALL_DIR=/path/to/your/zephyr-sdk
-    $ export ZEPHYR_GCC_VARIANT=zephyr
-    $ . zephyr-env.sh
+    cd <zephyr-project>
+    export ZEPHYR_SDK_INSTALL_DIR=/path/to/your/zephyr-sdk
+    export ZEPHYR_GCC_VARIANT=zephyr
+    . zephyr-env.sh
 
 
     # Bootloader
-    $ cd <mcuboot>
-    $ make BOARD=frdm_k64f
+    cd <mcuboot>
+    make BOARD=frdm_k64f
 
 
     # Linaro FOTA app
-    $ cd <zephyr-fota-hawkbit>
-    $ make CONF_FILE=prj_frdm_k64f.conf BOARD=frdm_k64f
-    $ cd <zephyr-utils>
-    $ python zep2newt.py --bin <zephyr-fota-hawkbit>/outdir/frdm_k64f/zephyr.bin \
-                         --key root.pem --sig RSA --vtoff 0x200 --word-size 8 \
-                         --out linaro_fota-frdm_k64f.signed.bin
+    cd <zephyr-fota-hawkbit>
+    make CONF_FILE=prj_frdm_k64f.conf BOARD=frdm_k64f
+    cd <zephyr-utils>
+    python zep2newt.py --bin <zephyr-fota-hawkbit>/outdir/frdm_k64f/zephyr.bin \
+                       --key root.pem --sig RSA --vtoff 0x200 --word-size 8 \
+                       --out linaro_fota-frdm_k64f.signed.bin
 
 Flash K64F with Firmware Binaries
 ---------------------------------
@@ -69,9 +69,9 @@ Flash the bootloader and FOTA application binaries to the K64F using
 pyOCD, after plugging the K64F into your system via USB. ::
 
     # Bootloader
-    $ cd <mcuboot>
-    $ pyocd-flashtool -ce outdir/frdm_k64f/zephyr.bin
+    cd <mcuboot>
+    pyocd-flashtool -ce outdir/frdm_k64f/zephyr.bin
 
     # Signed Linaro FOTA app
-    $ cd <zephyr-utils>
-    $ pyocd-flashtool -se --address 0x20000 linaro_fota-frdm_k64f.signed.bin
+    cd <zephyr-utils>
+    pyocd-flashtool -se --address 0x20000 linaro_fota-frdm_k64f.signed.bin
