@@ -10,3 +10,4 @@ Contents
    :maxdepth: 2
 
    fota-demo/index
+   device-support/index
