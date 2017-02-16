@@ -94,7 +94,24 @@ To finish using the system, you'll upload the signed FOTA application
 to the hawkBit server. You'll can then send it to the connected IoT
 Device using the hawkBit UI.
 
-**TODO: hawkbit.py instructions go here**
+To upload the binaries to hawkBit, fetch this script::
+
+    wget https://raw.githubusercontent.com/linaro-technologies/hawkbit/master/hawkbit.py
+
+It will work unmodified if you used the default passwords, but if you
+chose your own, you may need to modify it using the information in the
+:ref:`device-mgmt-hawkbit_reference` page.
+
+Upload the binary to your hawkBit server from the mcuboot directory if
+you built from source, or from the directory where you unpacked your
+binaries (1.0 is an arbitrary version number)::
+
+    python /path/to/hawkbit.py \
+                      -ds 'http://localhost:8080/rest/v1/distributionsets' \
+                      -sm 'http://localhost:8080/rest/v1/softwaremodules' \
+                      -d 'Nitrogen End-to-end IoT system preview' \
+                      -f linaro_fota-96b_nitrogen.signed-slot1.bin \
+                      -sv "1.0" -p "Linaro" -n "Nitrogen E2E preview" -t os
 
 You will see updates in the hawkBit UI when the image is uploaded:
 
