@@ -16,8 +16,11 @@ Prerequisites, trees, and relevant commits
 ------------------------------------------
 
 - Operating system which supports Docker containers.
+
   - These instructions have been tested on Ubuntu 16.04.
+
 - gitci-hawkbit-container
+
   - URL: https://github.com/linaro-technologies/gitci-hawkbit-container
   - Branch: master
   - This is used to build the container which runs hawkBit
