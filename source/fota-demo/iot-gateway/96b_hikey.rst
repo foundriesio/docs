@@ -43,15 +43,15 @@ Download the following reference platform components.
 
 UEFI release for HiKey (build 150)::
 
-    wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/150/release/hikey/l-loader.bin
-    wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/150/release/hikey/fip.bin
-    wget http://builds.96boards.org/snapshots/reference-platform/components/uefi/150/release/hikey/ptable-linux-8g.img
-    wget https://raw.githubusercontent.com/96boards/burn-boot/master/hisi-idt.py
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/l-loader.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/fip.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/ptable-linux-8g.img
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/hisi-idt.py
 
 Debian Stretch IoT Reference Platform Build for HiKey (build 45)::
 
-    wget http://builds.96boards.org/snapshots/reference-platform/debian-iot/45/hikey/hikey-boot-linux-20170215-45.uefi.img.gz
-    wget http://builds.96boards.org/snapshots/reference-platform/debian-iot/45/hikey/hikey-rootfs-debian-stretch-iot-20170215-45.emmc.img.gz
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/hikey-boot-linux-20170215-45.uefi.img.gz
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/hikey-rootfs-debian-stretch-iot-20170215-45.emmc.img.gz
 
 Extract the .gz files::
 
