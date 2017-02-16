@@ -30,19 +30,19 @@ to your IoT Device.
 
 - **Zephyr**:
      - URL: https://github.com/Linaro/zephyr
-     - Branch: **master-upstream-dev**
+     - Tag: 2017.02
 - **mcuboot**
      - URL: https://github.com/Linaro/mcuboot/
      - Common bootloader (Mynewt/Zephyr) that supports dual-bank and
        signed updates
-     - Branch: **master-upstream-dev**
+     - Tag: 2017.02
 - **zephyr-fota-hawkbit**
      - Linaro firmware over the air update (FOTA) Zephyr application,
        using `hawkBit
        <https://projects.eclipse.org/projects/iot.hawkbit>`_ as
        backend process manager
      - URL: https://github.com/Linaro/zephyr-fota-hawkbit
-     - Branch: master
+     - Tag: 2017.02
 
 Set Up Zephyr Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -17,7 +17,10 @@ Choose Your Method
 Using Released Binaries
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO: add links to builds.lt.o
+Download the binaries::
+
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/mcuboot-96b_nitrogen.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/linaro_fota-96b_nitrogen.signed.bin
 
 Once you have the binaries, install the flashing tool on your system,
 and follow the instructions to flash binaries.

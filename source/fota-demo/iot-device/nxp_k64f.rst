@@ -16,7 +16,10 @@ Choose Your Method
 Using Released Binaries
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO: add links to builds.lt.o
+Download the binaries::
+
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/mcuboot-frdm_k64f.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/linaro_fota-frdm_k64f.signed.bin
 
 Once you have the binaries, install the flashing tool on your system,
 and follow the instructions to flash binaries.
