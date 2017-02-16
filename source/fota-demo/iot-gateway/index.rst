@@ -12,3 +12,5 @@ contains setup and usage guides for the available IoT Gateways.
 
    debian_ubuntu
    96b_hikey
+   6lowpan_whitelist
+
