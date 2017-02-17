@@ -29,7 +29,7 @@ run the new image after verifying the signature is valid.
 Currently, the IoT device will either be the `96Boards Nitrogen
 <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_ or the
 `96Boards Carbon
-<http://http://www.96boards.org/product/carbon/>`_, which connects
+<http://www.96boards.org/product/carbon/>`_, which connects
 to the device management server through a gateway device, currently a
 `96Boards HiKey <http://www.96boards.org/product/hikey/>`_.
 
@@ -87,7 +87,7 @@ To create this system, follow these sub-guides in order:
 
     http://www.96boards.org/documentation/ConsumerEdition/HiKey/README.md/
 
-    - **Recommended Equipment**
+    - **Required Equipment**
         - 96Boards UART board: http://www.96boards.org/product/uarts/
         - 96Boards Lemaker Hikey 2GB: http://www.96boards.org/product/hikey/
         - *(optional)* USB ethernet adapter
