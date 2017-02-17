@@ -29,7 +29,7 @@ run the new image after verifying the signature is valid.
 Currently, the IoT device will either be the `96Boards Nitrogen
 <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_ or the
 `96Boards Carbon
-<https://www.seeedstudio.com/BLE-Carbon-p-2710.html>`_, which connects
+<http://http://www.96boards.org/product/carbon/>`_, which connects
 to the device management server through a gateway device, currently a
 `96Boards HiKey <http://www.96boards.org/product/hikey/>`_.
 
@@ -54,6 +54,9 @@ To create this system, follow these sub-guides in order:
 
     - :ref:`device-mgmt-hawkbit_local`
 
+    - **Required Equipment**
+        - Workstation with Docker installed; we have successfully used Linux and MacOS systems
+
 2. Set up the IoT Device
 
     In :ref:`iot-devices`, you will learn how to load the 96Boards
@@ -61,12 +64,19 @@ To create this system, follow these sub-guides in order:
 
     - If you have a BLE Nitrogen device, you will follow
       :ref:`iot-device-96b_nitrogen`
+        - **Required Equipment**
+            - 96Boards Nitrogen: https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
     - If you have a BLE Carbon device, you will follow
       :ref:`iot-device-96b_carbon`
-    - With the BLE Carbon device, you will also have to flash the
-      Carbon nRF51 MCU (Bluetooth firmware), which may require
-      additional hardware. See
-      :ref:`device-support-stm32f4x-flash-nrf51`.
+        - **Required Equipment**
+            - 96Boards Carbon: http://www.96boards.org/product/carbon/
+        - With the BLE Carbon device, you will also have to flash the
+          Carbon nRF51 MCU (Bluetooth firmware)
+            - **Required Equipment**
+                - SWD Programmer such as the 
+                  `Segger Jlink <https://www.segger.com/jlink_base.html>`_ or a 
+                  `Generic STLink v2/v2.1 programmer <https://www.google.com/search?q=stlink+v2+programmer>`_
+          See :ref:`device-support-stm32f4x-flash-nrf51` for instructions.
 
 3. Set up an IoT Gateway
 
@@ -76,6 +86,12 @@ To create this system, follow these sub-guides in order:
     board, you can learn more about it at:
 
     http://www.96boards.org/documentation/ConsumerEdition/HiKey/README.md/
+
+    - **Recommended Equipment**
+        - 96Boards UART board: http://www.96boards.org/product/uarts/
+        - 96Boards Lemaker Hikey 2GB: http://www.96boards.org/product/hikey/
+        - *(optional)* USB ethernet adapter
+
 
 System Usage
 ------------
