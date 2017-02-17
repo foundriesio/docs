@@ -58,6 +58,10 @@ instructions
    above, and not the mainline tree in the Zephyr Getting Started
    Guide.
 
+Signing Zephyr applications also requires the Python Crypto module to be
+available in your host system. On Debian-based distributions this module
+is provided by the package **python-crypto**.
+
 Device-Specific Guides
 ----------------------
 
