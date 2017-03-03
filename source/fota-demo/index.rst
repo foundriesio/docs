@@ -13,7 +13,7 @@ Overview
 To package and release our efforts, we have built an end-to-end
 demonstration system comprising all of the typical components in an
 IoT system: IoT Devices; an IoT gateway; an IoT device management
-platform; integration (via MQTT) with a commercial IoT platform; 
+platform; integration (via MQTT) with a commercial IoT platform, 
 IBM Bluemix; and a Bluemix Sample Dashboard.
 
 In the System Setup section, you will find guides that
@@ -98,7 +98,7 @@ To create this system, follow these sub-guides in order:
 4. Configure IBM Bluemix
 
     You will need to set up and configure an account with IBM Bluemix.  This is
-    not available, and there are many documents available and you can 
+    not trivial; however, there are many documents available, and you can 
     get started at http://bluemix.com.  You will want to make sure you set up
     and obtain the following items to enable Bluemix for reproducing the demo.
 
@@ -118,7 +118,7 @@ To create this system, follow these sub-guides in order:
     and bringing the device online (requires a working network connection).
 
     To configure Mosquitto, get the API key, API authorization token and 
-    organization from Bluemix and, enter the following::
+    organization from Bluemix, and enter the following::
 
         API_KEY='<From Bluemix, API Key>'
         API_TOKEN='<From Bluemix, API Key Auth Token>'
