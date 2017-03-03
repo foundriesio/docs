@@ -43,15 +43,15 @@ Download the following reference platform components.
 
 UEFI release for HiKey (build 150)::
 
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/l-loader.bin
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/fip.bin
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/ptable-linux-8g.img
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/hisi-idt.py
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/l-loader.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/fip.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/ptable-linux-8g.img
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/hisi-idt.py
 
-Debian Stretch IoT Reference Platform Build for HiKey (build 45)::
+Debian Stretch IoT Reference Platform Build for HiKey (build 50)::
 
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/hikey-boot-linux-20170215-45.uefi.img.gz
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/Hikey-Gateway/hikey-rootfs-debian-stretch-iot-20170215-45.emmc.img.gz
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/hikey-boot-linux-20170301-50.uefi.img.gz
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/hikey-rootfs-debian-stretch-iot-20170301-50.emmc.img.gz
 
 Extract the .gz files::
 
@@ -81,8 +81,8 @@ Flash the software
     sudo python hisi-idt.py --img1=l-loader.bin
     sudo fastboot flash ptable ptable-linux-8g.img
     sudo fastboot flash fastboot fip.bin
-    sudo fastboot flash boot hikey-boot-linux-20170215-45.uefi.img
-    sudo fastboot flash system hikey-rootfs-debian-stretch-iot-20170215-45.emmc.img
+    sudo fastboot flash boot hikey-boot-linux-20170301-50.uefi.img
+    sudo fastboot flash system hikey-rootfs-debian-stretch-iot-20170301-50.emmc.img
 
 Boot the device
 ---------------
@@ -97,12 +97,6 @@ Some error messages are expected during the first boot:
 - Failed to start /etc/rc.local Compatibility.
 
 No error should be reported on following boots.
-
-.. warning::
-
-   At time of writing (Jan 23, 2017), HDMI must be unplugged when
-   booting. The issue is tracked in
-   https://bugs.linaro.org/show_bug.cgi?id=2886.
 
 You will automatically be logged in as root on the HiKey's serial console. You can now proceed to connect to the network for the first time.
 

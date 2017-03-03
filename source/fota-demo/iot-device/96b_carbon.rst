@@ -19,14 +19,14 @@ Using Released Binaries
 
 Download the binaries::
 
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/mcuboot-96b_carbon.bin
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/linaro_fota-96b_carbon.signed.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/mcuboot-96b_carbon.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/linaro_fota-96b_carbon.signed.bin
 
     # Choose the appropriate binary format for flashing the Carbon nRF51,
     # Depending on the requirements of your loader:
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/96b_carbon-nrf51.bin
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/96b_carbon-nrf51.elf
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/96b_carbon-nrf51.hex
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/96b_carbon-nrf51.bin
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/96b_carbon-nrf51.elf
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/96b_carbon-nrf51.hex
 
 Once you have the binaries, install the flashing tools on your system,
 and follow the instructions to flash binaries.

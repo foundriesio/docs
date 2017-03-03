@@ -12,8 +12,11 @@ Overview
 
 To package and release our efforts, we have built an end-to-end
 demonstration system comprising all of the typical components in an
-IoT system: IoT Devices, an IoT gateway and an IoT device management
-platform. In the System Setup section, you will find 3 guides that
+IoT system: IoT Devices, an IoT gateway, an IoT device management
+platform, integration (via MQTT) with a commercial IoT platform, 
+IBM Bluemix, and a Bluemix Sample Dashboard.
+.
+In the System Setup section, you will find guides that
 will walk you through configuring each of the components.
 
 **It is important that you complete each section before moving onto
@@ -92,6 +95,71 @@ To create this system, follow these sub-guides in order:
         - 96Boards Lemaker Hikey 2GB: http://www.96boards.org/product/hikey/
         - *(optional)* USB ethernet adapter
 
+4. Configure IBM Bluemix
+
+    You will need to setup and configure an account with IBM Bluemix.  This is
+    not trivial, however there are many documents available and you can 
+    get started at http://bluemix.com.  You will want to make sure you set up
+    and obtain the following items to enable Bluemix for reproducing the demo..
+
+    - API Key
+    - API Key Auth Token
+    - Organization ID
+
+5. Configure the Gateway to communicate with Bluemix
+
+    In this build of the Gateway, we enable the Mosquitto MQTT broker to store
+    and forward messages to Bluemix.
+
+    IBM Bluemix requires that each gateway device is registered with with an 
+    organization, API key & auth token.  The following instructions perform that 
+    registration and save the generated Bluemix device info in a bluemix.conf 
+    used by Mosquitto.  Perform this after installing the IoT Gateway image 
+    and bringing the device online (requires a working network connection).
+
+    To configure Mosquitto get the API and Organization from Bluemix and,  
+    enter the following::
+
+        API_KEY='<From Bluemix, API Key>'
+        API_TOKEN='<From Bluemix, API Key Auth Token>'
+        ORG_ID='<From Bluemix, Organization ID>'
+        sudo mosquitto-conf -ak $API_KEY -at $API_TOKEN -bo $ORG_ID -gdt hikey
+
+        sudo cat /etc/mosquitto/conf.d/bluemix.conf
+    
+6. Launch the Bluemix Sample Dashboard
+
+    Now that you have your devices and gateway connected to Bluemix, you can
+    launch our Bluemix Sample Dashboard to display the data being sent by the
+    IoT Devices.
+
+    First, get the repository for the demo dashboard::
+
+        git clone https://github.com/linaro-technologies/bud17-demo-dashboard
+        cd bud17-demo-dashboard
+
+    Next, configure the dashboard parameters to connect to Bluemix. 
+    To do this, create config/local-production.json and enter the right data::
+        
+        {
+            "bluemix": {
+                "org": "<Bluemix ORG ID>",
+                "id": "demo-application-name",
+                "auth-key": "<Bluemix Auth Key>",
+                "auth-token": "<Bluemix Auth Token>",
+                "deviceTypes": [
+                    "96b_carbon", "96b_nitrogen", "frdm_k64f"
+                ],
+                "deviceIds": {}
+            }
+        }
+
+    To run the dashboard locally enter the following::
+
+        docker build -t dashboard .
+        docker run -it -p 3030:3030 -e NODE_ENV="production" dashboard  
+    
+    Last step is to start a browser and view the dashboard at http://localhost:3030
 
 System Usage
 ------------
