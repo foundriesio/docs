@@ -12,10 +12,10 @@ Overview
 
 To package and release our efforts, we have built an end-to-end
 demonstration system comprising all of the typical components in an
-IoT system: IoT Devices, an IoT gateway, an IoT device management
-platform, integration (via MQTT) with a commercial IoT platform, 
-IBM Bluemix, and a Bluemix Sample Dashboard.
-.
+IoT system: IoT Devices; an IoT gateway; an IoT device management
+platform; integration (via MQTT) with a commercial IoT platform; 
+IBM Bluemix; and a Bluemix Sample Dashboard.
+
 In the System Setup section, you will find guides that
 will walk you through configuring each of the components.
 
@@ -97,10 +97,10 @@ To create this system, follow these sub-guides in order:
 
 4. Configure IBM Bluemix
 
-    You will need to setup and configure an account with IBM Bluemix.  This is
-    not trivial, however there are many documents available and you can 
+    You will need to set up and configure an account with IBM Bluemix.  This is
+    not available, and there are many documents available and you can 
     get started at http://bluemix.com.  You will want to make sure you set up
-    and obtain the following items to enable Bluemix for reproducing the demo..
+    and obtain the following items to enable Bluemix for reproducing the demo.
 
     - API Key
     - API Key Auth Token
@@ -111,14 +111,14 @@ To create this system, follow these sub-guides in order:
     In this build of the Gateway, we enable the Mosquitto MQTT broker to store
     and forward messages to Bluemix.
 
-    IBM Bluemix requires that each gateway device is registered with with an 
-    organization, API key & auth token.  The following instructions perform that 
-    registration and save the generated Bluemix device info in a bluemix.conf 
+    IBM Bluemix requires that each gateway device is registered with an 
+    organization, API key and auth token.  The following instructions perform that 
+    registration and save the generated Bluemix device information in a bluemix.conf 
     used by Mosquitto.  Perform this after installing the IoT Gateway image 
     and bringing the device online (requires a working network connection).
 
-    To configure Mosquitto get the API and Organization from Bluemix and,  
-    enter the following::
+    To configure Mosquitto, get the API key, API authorization token and 
+    organization from Bluemix and, enter the following::
 
         API_KEY='<From Bluemix, API Key>'
         API_TOKEN='<From Bluemix, API Key Auth Token>'
@@ -154,12 +154,12 @@ To create this system, follow these sub-guides in order:
             }
         }
 
-    To run the dashboard locally enter the following::
+    To run the dashboard locally, enter the following::
 
         docker build -t dashboard .
         docker run -it -p 3030:3030 -e NODE_ENV="production" dashboard  
     
-    Last step is to start a browser and view the dashboard at http://localhost:3030
+    Last step is to start a browser and view the dashboard at http://localhost:3030.
 
 System Usage
 ------------

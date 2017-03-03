@@ -48,10 +48,10 @@ UEFI release for HiKey (build 150)::
     wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/ptable-linux-8g.img
     wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/hisi-idt.py
 
-Debian Stretch IoT Reference Platform Build for HiKey (build 50)::
+Debian Stretch IoT Reference Platform Build for HiKey (build 51)::
 
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/hikey-boot-linux-20170301-50.uefi.img.gz
-    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/hikey-rootfs-debian-stretch-iot-20170301-50.emmc.img.gz
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/hikey-boot-linux-20170302-51.uefi.img.gz
+    wget https://builds.linarotechnologies.org/End-to-end_IoT_system/bud17-demo/Hikey-Gateway/hikey-rootfs-debian-stretch-iot-20170302-51.emmc.img.gz
 
 Extract the .gz files::
 
@@ -81,8 +81,8 @@ Flash the software
     sudo python hisi-idt.py --img1=l-loader.bin
     sudo fastboot flash ptable ptable-linux-8g.img
     sudo fastboot flash fastboot fip.bin
-    sudo fastboot flash boot hikey-boot-linux-20170301-50.uefi.img
-    sudo fastboot flash system hikey-rootfs-debian-stretch-iot-20170301-50.emmc.img
+    sudo fastboot flash boot hikey-boot-linux-20170302-51.uefi.img
+    sudo fastboot flash system hikey-rootfs-debian-stretch-iot-20170302-51.emmc.img
 
 Boot the device
 ---------------
