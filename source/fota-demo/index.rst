@@ -13,7 +13,7 @@ Overview
 To package and release our efforts, we have built an end-to-end
 demonstration system comprising all of the typical components in an
 IoT system: IoT Devices; an IoT gateway; an IoT device management
-platform; integration (via MQTT) with a commercial IoT platform, 
+platform; integration (via MQTT) with a commercial IoT platform,
 IBM Bluemix; and a Bluemix Sample Dashboard.
 
 In the System Setup section, you will find guides that
@@ -76,8 +76,8 @@ To create this system, follow these sub-guides in order:
         - With the BLE Carbon device, you will also have to flash the
           Carbon nRF51 MCU (Bluetooth firmware)
             - **Required Equipment**
-                - SWD Programmer such as the 
-                  `Segger Jlink <https://www.segger.com/jlink_base.html>`_ or a 
+                - SWD Programmer such as the
+                  `Segger Jlink <https://www.segger.com/jlink_base.html>`_ or a
                   `Generic STLink v2/v2.1 programmer <https://www.google.com/search?q=stlink+v2+programmer>`_
           See :ref:`device-support-stm32f4x-flash-nrf51` for instructions.
 
@@ -98,7 +98,7 @@ To create this system, follow these sub-guides in order:
 4. Configure IBM Bluemix
 
     You will need to set up and configure an account with IBM Bluemix.  This is
-    not trivial; however, there are many documents available, and you can 
+    not trivial; however, there are many documents available, and you can
     get started at http://bluemix.com.  You will want to make sure you set up
     and obtain the following items to enable Bluemix for reproducing the demo.
 
@@ -111,13 +111,13 @@ To create this system, follow these sub-guides in order:
     In this build of the Gateway, we enable the Mosquitto MQTT broker to store
     and forward messages to Bluemix.
 
-    IBM Bluemix requires that each gateway device is registered with an 
-    organization, API key and auth token.  The following instructions perform that 
-    registration and save the generated Bluemix device information in a bluemix.conf 
-    used by Mosquitto.  Perform this after installing the IoT Gateway image 
+    IBM Bluemix requires that each gateway device is registered with an
+    organization, API key and auth token.  The following instructions perform that
+    registration and save the generated Bluemix device information in a bluemix.conf
+    used by Mosquitto.  Perform this after installing the IoT Gateway image
     and bringing the device online (requires a working network connection).
 
-    To configure Mosquitto, get the API key, API authorization token and 
+    To configure Mosquitto, get the API key, API authorization token and
     organization from Bluemix, and enter the following::
 
         API_KEY='<From Bluemix, API Key>'
@@ -126,7 +126,7 @@ To create this system, follow these sub-guides in order:
         sudo mosquitto-conf -ak $API_KEY -at $API_TOKEN -bo $ORG_ID -gdt hikey
 
         sudo cat /etc/mosquitto/conf.d/bluemix.conf
-    
+
 6. Launch the Bluemix Sample Dashboard
 
     Now that you have your devices and gateway connected to Bluemix, you can
@@ -138,9 +138,9 @@ To create this system, follow these sub-guides in order:
         git clone https://github.com/linaro-technologies/bud17-demo-dashboard
         cd bud17-demo-dashboard
 
-    Next, configure the dashboard parameters to connect to Bluemix. 
+    Next, configure the dashboard parameters to connect to Bluemix.
     To do this, create config/local-production.json and enter the right data::
-        
+
         {
             "bluemix": {
                 "org": "<Bluemix ORG ID>",
@@ -157,8 +157,8 @@ To create this system, follow these sub-guides in order:
     To run the dashboard locally, enter the following::
 
         docker build -t dashboard .
-        docker run -it -p 3030:3030 -e NODE_ENV="production" dashboard  
-    
+        docker run -it -p 3030:3030 -e NODE_ENV="production" dashboard
+
     Last step is to start a browser and view the dashboard at http://localhost:3030.
 
 System Usage
