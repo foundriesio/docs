@@ -42,6 +42,9 @@ right.
 System Setup
 ------------
 
+.. The "|" lines below are manual fixups to the whitespace generated
+   by the Sphinx HTML backend.
+
 To create this system, follow these sub-guides in order:
 
 1. Set Up hawkBit
@@ -56,6 +59,8 @@ To create this system, follow these sub-guides in order:
       device(s).
 
     - :ref:`device-mgmt-hawkbit_local`
+
+    |
 
     **Required Equipment**
 
@@ -72,6 +77,8 @@ To create this system, follow these sub-guides in order:
       **Required Equipment**
 
       - 96Boards Nitrogen: https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
+
+      |
 
     - If you have a BLE Carbon device, you will follow
       :ref:`iot-device-96b_carbon`
