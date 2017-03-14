@@ -3,6 +3,12 @@
 FOTA Demonstration System
 =========================
 
+.. warning:: **Technology demonstration system only**.
+
+             While the system described below works as documented, it
+             is **unstable**, and its behavior may change incompatibly
+             in the future. It is also **not supported**.
+
 Overview
 --------
 
