@@ -57,8 +57,9 @@ To create this system, follow these sub-guides in order:
 
     - :ref:`device-mgmt-hawkbit_local`
 
-    - **Required Equipment**
-        - Workstation with Docker installed; we have successfully used Linux and MacOS systems
+    **Required Equipment**
+
+    - Workstation with Docker installed; we have successfully used Linux and MacOS systems
 
 2. Set up the IoT Device
 
@@ -66,20 +67,22 @@ To create this system, follow these sub-guides in order:
     (Carbon and Nitrogen) with released software.
 
     - If you have a BLE Nitrogen device, you will follow
-      :ref:`iot-device-96b_nitrogen`
-        - **Required Equipment**
-            - 96Boards Nitrogen: https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
+      :ref:`iot-device-96b_nitrogen`.
+
+      **Required Equipment**
+
+      - 96Boards Nitrogen: https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
+
     - If you have a BLE Carbon device, you will follow
       :ref:`iot-device-96b_carbon`
-        - **Required Equipment**
-            - 96Boards Carbon: http://www.96boards.org/product/carbon/
-        - With the BLE Carbon device, you will also have to flash the
-          Carbon nRF51 MCU (Bluetooth firmware)
-            - **Required Equipment**
-                - SWD Programmer such as the
-                  `Segger Jlink <https://www.segger.com/jlink_base.html>`_ or a
-                  `Generic STLink v2/v2.1 programmer <https://www.google.com/search?q=stlink+v2+programmer>`_
-          See :ref:`device-support-stm32f4x-flash-nrf51` for instructions.
+
+      **Required Equipment**
+
+      - 96Boards Carbon: http://www.96boards.org/product/carbon/
+      - SWD Programmer such as the
+        `Segger Jlink <https://www.segger.com/jlink_base.html>`_ or a
+        `Generic STLink v2/v2.1 programmer <https://www.google.com/search?q=stlink+v2+programmer>`_
+        See :ref:`device-support-stm32f4x-flash-nrf51` for instructions.
 
 3. Set up an IoT Gateway
 
@@ -90,10 +93,11 @@ To create this system, follow these sub-guides in order:
 
     http://www.96boards.org/documentation/ConsumerEdition/HiKey/README.md/
 
-    - **Required Equipment**
-        - 96Boards UART board: http://www.96boards.org/product/uarts/
-        - 96Boards Lemaker Hikey 2GB: http://www.96boards.org/product/hikey/
-        - *(optional)* USB ethernet adapter
+    **Required Equipment**
+
+    - 96Boards UART board: http://www.96boards.org/product/uarts/
+    - 96Boards Lemaker Hikey 2GB: http://www.96boards.org/product/hikey/
+    - *(optional)* USB ethernet adapter
 
 4. Configure IBM Bluemix
 
