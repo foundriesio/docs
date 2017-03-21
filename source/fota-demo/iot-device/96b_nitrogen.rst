@@ -41,7 +41,7 @@ bootloader (mcuboot) and the Linaro FOTA Zephyr application. ::
 
       # Linaro FOTA app
       cd <zephyr-fota-hawkbit>
-      make CONF_FILE=prj_nrf52.conf BOARD=96b_nitrogen
+      make BOARD=96b_nitrogen
 
       # Build bootloader, and sign FOTA app built in previous step.
       cd <mcuboot>

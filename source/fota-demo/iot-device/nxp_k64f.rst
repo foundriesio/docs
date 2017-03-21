@@ -40,7 +40,7 @@ bootloader (mcuboot) and the Linaro FOTA Zephyr application. ::
 
     # Linaro FOTA app
     cd <zephyr-fota-hawkbit>
-    make CONF_FILE=prj_frdm_k64f.conf BOARD=frdm_k64f
+    make BOARD=frdm_k64f
 
     # Build bootloader, and sign FOTA app built in previous step.
     cd <mcuboot>
