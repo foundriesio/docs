@@ -50,7 +50,7 @@ bootloader (mcuboot) and the Linaro FOTA Zephyr application. ::
       ./scripts/zep2newt.py --bin <zephyr-fota-hawkbit>/outdir/96b_nitrogen/zephyr.bin \
                             --key root-rsa-2048.pem --sig RSA  --vtoff 0x100 \
                             --out linaro_fota-96b_nitrogen.signed.bin \
-                            --word-size 4 --pad 0x3a000 --bit
+                            --word-size 4 --pad 0x34000 --bit
 
 Flashing Tool
 -------------
@@ -84,17 +84,17 @@ set up using these instructions.
 
 - **Application, Bank0**
 
-  - Flash: 0x8000 - 0x41FFF
+  - Flash: 0x8000 - 0x3BFFF
   - Any application; the FOTA app is used here.
 
 - **Application, Bank1**
 
-  - Flash: 0x42000 - 0x7BFFF
+  - Flash: 0x3C000 - 0x6FFFF
   - Used for storing an updated FOTA app before copying it to bank 0.
 
 - **Scratch**
 
-  - Flash: 0x7C000 - 0x7CFFF
+  - Flash: 0x70000 - 0x7CFFF
   - Scratch is used when copying an application from Bank1 to Bank0
     during mcuboot OTA.
 
