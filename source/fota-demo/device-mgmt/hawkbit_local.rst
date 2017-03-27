@@ -108,14 +108,14 @@ Run hawkBit Container
 After its dependencies are created and have finished initializing,
 start the hawkBit container::
 
-    # If you pulled from Docker Hub, use "linarotechnologies/gitci-hawkbit-container"
-    # instead of "hawkbit" as the last argument.
+    # If you build your own hawkbit docker image, use "hawkbit" instead of
+    # "linarotechnologies/gitci-hawkbit-container" as the last argument.
     docker run -dit \
                --network=hawkbit-net \
                --name hawkbit \
                -p 8080:8080 \
                -v secrets.properties:/srv/secret/secrets.properties \
-               hawkbit
+               linarotechnologies/gitci-hawkbit-container
 
 The secrets.properties file available in the repository is just an
 example, but it needs to at least match the values defined for the
