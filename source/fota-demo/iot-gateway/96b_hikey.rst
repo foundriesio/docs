@@ -87,7 +87,22 @@ Flash the software
 Boot the device
 ---------------
 
-Remove the jumper from J15 pins 3-4, and power cycle the board. The GRUB bootloader will boot into the software image within 5 seconds.
+Remove the jumper from J15 pins 3-4, and power cycle the board.
+
+.. note::
+
+   When using WiFi to connect to the network, the first boot will take
+   a few minutes, due to a timeout waiting for the (unconfigured)
+   network to come up. After you've configured your WiFi connection
+   using instructions below, later boots will be faster.
+
+.. warning::
+
+   When using a USB Ethernet dongle to connect to the network, you
+   must remove the micro USB cable you used to flash your HiKey
+   (connector J402 on LeMaker boards) before power cycling
+   it. Inserting a cable in the micro USB connector disables the other
+   USB ports on HiKey.
 
 Some error messages are expected during the first boot:
 
