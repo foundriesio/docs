@@ -16,6 +16,15 @@ Choose Your Method
 Using Released Binaries
 ~~~~~~~~~~~~~~~~~~~~~~~
 
+.. warning:: The released binaries assume that the FRDM-K64F can join
+             your Ethernet network at IP address 192.168.0.2, and that
+             the :ref:`IoT gateway <iot-gateways>` will respond on IP
+             address 192.168.0.1.
+
+             If that won't work in your environment, you can follow
+             instructions to build from source below with a different
+             network configuration.
+
 Download the binaries::
 
     wget https://builds.linarotechnologies.org/End-to-end_IoT_system/17.02-preview/mcuboot-frdm_k64f.bin
@@ -29,8 +38,42 @@ Building From Source
 
 If you're going to build from source instead, follow instructions on
 :ref:`IoT Devices <iot-devices-build-source>` to clone the relevant
-repositories and set up your build environment, then build both a
-bootloader (mcuboot) and the Linaro FOTA Zephyr application. ::
+repositories and set up your build environment.
+
+.. note::
+
+   Since the FRDM-K64F board connects via Ethernet, and local network
+   configurations differ, you need to provide some network
+   configuration to the build so that the board connects to your
+   network correctly when you flash it.
+
+To provide network configuration to the build, create a file named
+``boards/frdm_k64f-local.conf`` in the zephyr-fota-hawkbit directory
+of your build environment. This file is ignored by Git. The file
+should set values for ``CONFIG_NET_SAMPLES_MY_IPV4_ADDR``, the
+FRDM-K64F's IP address, and ``CONFIG_NET_SAMPLES_PEER_IPV4_ADDR``, the
+IoT gateway' IP address. Here is an example::
+
+    CONFIG_NET_SAMPLES_MY_IPV4_ADDR="192.168.0.2"
+    CONFIG_NET_SAMPLES_PEER_IPV4_ADDR="192.168.0.1"
+
+.. note::
+
+   The IP addresses "192.168.0.2" and "192.168.0.1" above are just
+   example values. You can change them for your local network.
+
+You can also write ``CONFIG_NET_DHCPV4=y`` instead of setting
+``CONFIG_NET_SAMPLES_MY_IPV4_ADDR`` to dynamically request an IP
+address from a DHCP server on your network router.
+
+If you're not sure what your IoT Gateway's IP address is, you can run
+``ip addr show`` on its console and check the output. Automatic
+discovery of the IoT gateway by FRDM-K64F is not supported; you must
+provide the gateway IP address using
+``CONFIG_NET_SAMPLES_PEER_IPV4_ADDR``.
+
+Now, build both a bootloader (mcuboot) and the Linaro FOTA Zephyr
+application. ::
 
     # Establish Zephyr environment
     cd <zephyr-project>
