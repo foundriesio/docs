@@ -107,26 +107,28 @@ Using **nrfjprog**:
 - Flash: ``nrfjprog --family NRF52 --program foo.hex``
 - Restart: ``nrfjprog -r --family NRF52``
 
-Nitrogen
-~~~~~~~~
+.. _device-support-nrf52-96b_nitrogen:
+
+96Boards Nitrogen
+~~~~~~~~~~~~~~~~~
 
 Since CMSIS-DAP is available via the LPC11U35 chip, the board can be
-flashed via the **USB storage interface** (drag-and-drop), and also
-via `pyOCD <https://github.com/mbedmicro/pyOCD>`_ or `openOCD
-<http://openocd.org/>`_.
+flashed via `pyOCD <https://github.com/mbedmicro/pyOCD>`_. This is the
+recommended method.
 
-Using pyOCD (supported by ARM):
+On Linux, after installing pyOCD, make sure your user is in the
+``dialout`` group, and install the following udev rules as root before
+plugging in your board to be flashed::
+
+    cat <<EOF >/etc/udev/rules.d/50-cmsis-dap.rules
+    ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666",
+    GROUP="dialout" EOF
+
+Basic pyOCD usage:
 
 - Erase: ``pyocd-flashtool -d debug -t nrf52 -ce``
 - Flash: ``pyocd-flashtool -d debug -t nrf52 foo.hex``
 - Restart: ``pyocd-tool -d debug reset``
-
-For a faster flashing process, change the -f argument to a higher
-value, like 90000. We didn't yet investigate how big this value can
-be, so use with care.
-
-For openOCD, be aware that the nRF52 support is not yet merged. Check
-http://openocd.zylin.com/#/c/3511/ for the latest status.
 
 .. _device-support-nrf52-gdb:
 
