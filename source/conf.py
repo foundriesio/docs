@@ -35,6 +35,12 @@ extensions = [
     'sphinx.ext.todo',
 ]
 
+# Links that shouldn't get checked for validity
+linkcheck_ignore = [
+    r'http://localhost:\d+/?',
+    r'https://github.com/linaro-technologies/genesis-sdk-manifest',
+]
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
