@@ -212,6 +212,9 @@ You're now ready to take your next steps.
 
           Example of tutorials and reference docs:
 
+          - Genesis overview (different projects with links to their
+            reference docs, how they tie together, e.g. description of
+            boot process with links to mcuboot documentation).
           - Hardware peripheral tutorials (UART, SPI, etc.)
           - Internet connectivity with an Exodus gateway
           - FOTA with hawkBit
@@ -252,7 +255,8 @@ instructions, which may be useful on other development platforms.
 
    Since this tutorial is meant to help you get started, the binaries
    are signed with keys that aren't secret, and **are not suitable for
-   production use**.
+   production use**. When it's time to ship, see
+   :ref:`genesis-production-workflow` for more information.
 
 .. [#serial]
 
