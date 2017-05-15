@@ -181,6 +181,43 @@ Integrating external dependencies with Zephyr is currently not
 straightforward. One approach is to copy them into your application
 repository, either directly or as submodules.
 
+Use Repo to Manage Git Repositories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+   After first installing Genesis, use of Repo is optional.  Since
+   Repo is essentially a wrapper around Git, it's possible to use
+   ``git`` commands directly in individual repositories as well.
+
+Genesis uses the Repo tool to manage its Git repositories. In
+:ref:`install-genesis`, you used this tool to clone these Git
+repositories into a Genesis installation directory on a development
+computer.
+
+After the installation, you can continue to use Repo to manage local
+branches and fetch upstream changes.  Importantly, you can use:
+
+- ``repo start`` to create local Git branches in multiple repositories.
+- ``repo status`` to get status output about each Genesis repository
+  (this is similar to ``git status``, but operates on all repositories).
+- ``repo diff`` to get a diff of unstaged changes in each Git repository
+  (this is similar to ``git diff``, but operates on all repositories).
+- ``repo sync`` to fetch remote changes from all Genesis repositories,
+  and rebase local Git branches on top of them (alternatively, use
+  ``repo sync -n`` to fetch changes only, without rebasing).
+
+See the `Repo command reference
+<https://source.android.com/source/using-repo>`_ for more details.
+However, note that because **Genesis does not use Gerrit** as a Git
+repository server, repo commands which expect a Gerrit server are not
+applicable to a Genesis installation. For example, instead of using
+``repo upload``, use ``git push``.
+
+You can also run ``repo help <command>`` to get usage for each repo
+command; for example, use ``repo help sync`` to get help on ``repo
+sync``.
+
 .. _genesis-production-workflow:
 
 Production Workflow

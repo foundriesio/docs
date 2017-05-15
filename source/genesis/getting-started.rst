@@ -35,6 +35,8 @@ Here's what you'll need:
 - A development board supported by Genesis. We recommend the `96Boards
   Nitrogen <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_.
 
+.. _install-genesis:
+
 Install Genesis
 ---------------
 
