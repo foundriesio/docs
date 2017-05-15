@@ -17,6 +17,20 @@ resource-constrained devices.
    genesis/workflow
    genesis/branching
 
+Cerberus
+--------
+
+Cerberus is a software platform for deploying and managing
+multi-tenant, containerized applications on Linux-based gateway
+devices.
+
+.. todo:: Add cerberus overview and other docs as needed.
+
+.. toctree::
+   :maxdepth: 2
+
+   cerberus/getting-started
+
 FOTA Demonstration System
 -------------------------
 
