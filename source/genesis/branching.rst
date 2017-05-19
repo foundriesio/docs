@@ -138,6 +138,7 @@ These "sauce tags" are:
 
 - [LTD toup]: patches that want to go upstream, and revisions to them
 - [LTD noup]: patches needed by LTD, but not for upstream
+- [LTD mergeup]: merge commits from upstream into an LTD tree
 - [LTD temphack]: patches needed temporarily until some underlying code
   is fixed or refactored upstream
 - [LTD fromtree]: patches cherry-picked from upstream (when they're
@@ -193,6 +194,10 @@ These are the rules for each tag.
     Use this if the patch isn't upstreamable for whatever reason, but
     it's still needed in the LTD trees. Use good judgement between
     this and [LTD temphack].
+
+[LTD mergeup]
+
+    Use this for merge commits from upstream into an LTD tree.
 
 [LTD temphack]
 
