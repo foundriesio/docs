@@ -52,9 +52,10 @@ Install Genesis
 
 #. Install the Zephyr SDK::
 
-     wget -O /tmp/zephyr-sdk-0.9-setup.run https://nexus.zephyrproject.org/content/repositories/releases/org/zephyrproject/zephyr-sdk/0.9/zephyr-sdk-0.9-setup.run
-     chmod +x /tmp/zephyr-sdk-0.9-setup.run
-     /tmp/zephyr-sdk-0.9-setup.run
+
+     wget -O /tmp/zephyr-sdk-setup.run https://github.com/zephyrproject-rtos/meta-zephyr-sdk/releases/download/0.9.1/zephyr-sdk-0.9.1-setup.run
+     chmod +x /tmp/zephyr-sdk-setup.run
+     /tmp/zephyr-sdk-setup.run
 
    Then set these environment variables:
 
