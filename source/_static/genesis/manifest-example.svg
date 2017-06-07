@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="250mm"
+   height="125.25313mm"
+   viewBox="0 0 250.00001 125.25313"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="manifest-example.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="120.68722"
+     inkscape:cy="173.95636"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="2984"
+     inkscape:window-height="1614"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4769"
+       originx="-9.2689243"
+       originy="-164.28528" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-9.2689238,-7.4615937)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.56800073;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3680"
+       width="106.24355"
+       height="124.68513"
+       x="9.5529242"
+       y="7.745594" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4487"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion4489"><rect
+           id="rect4491"
+           width="318.19806"
+           height="110.10663"
+           x="36.36549"
+           y="29.534632" /></flowRegion><flowPara
+         id="flowPara4493" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.40558195px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.18244188"
+       x="12.861743"
+       y="13.430563"
+       id="text4497"
+       transform="scale(0.97783289,1.0226696)"><tspan
+         sodipodi:role="line"
+         id="tspan4495"
+         x="12.861743"
+         y="13.430563"
+         style="stroke-width:0.18244188">genesis-sdk-manifest (repository)</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.51029158;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3680-9"
+       width="95.847878"
+       height="111.5511"
+       x="13.399202"
+       y="16.291571" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.40558195px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.18244188"
+       x="15.705294"
+       y="21.483053"
+       id="text4497-6"
+       transform="scale(0.97783289,1.0226696)"><tspan
+         sodipodi:role="line"
+         id="tspan4495-3"
+         x="15.705294"
+         y="21.483053"
+         style="stroke-width:0.18244188">manifest.xml (file)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.40558195px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.18244188"
+       x="17.469097"
+       y="28.911272"
+       id="text4534"
+       transform="scale(0.97783289,1.0226696)"><tspan
+         sodipodi:role="line"
+         id="tspan4532"
+         x="17.469097"
+         y="28.911272"
+         style="stroke-width:0.18244188">&lt;manifest&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="33.168251"
+         style="stroke-width:0.18244188"
+         id="tspan4536">  &lt;!-- The manifest contains a list of</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="37.425228"
+         style="stroke-width:0.18244188"
+         id="tspan4538">       remotes, each of which specifies</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="41.682205"
+         style="stroke-width:0.18244188"
+         id="tspan4540">       a base URL for Git repositories. --&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="45.939182"
+         style="stroke-width:0.18244188"
+         id="tspan4542"><tspan
+           style="stroke:#008000"
+           id="tspan4555">  &lt;remote name=&quot;ltd&quot;</tspan></tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="50.196159"
+         style="stroke:#008000;stroke-width:0.18244188"
+         id="tspan4544">          fetch=&quot;https://github.com/</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="54.453136"
+         style="stroke:#008000;stroke-width:0.18244188"
+         id="tspan4546">                 linaro-technologies/&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="58.710114"
+         style="stroke-width:0.18244188"
+         id="tspan4548" /><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="62.967091"
+         style="stroke-width:0.18244188"
+         id="tspan4550">  &lt;!-- It also contains a list of</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="67.224068"
+         style="stroke-width:0.18244188"
+         id="tspan4552">       projects, each of which has a remote</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="71.481049"
+         style="stroke-width:0.18244188"
+         id="tspan4554">       and tracks a revision. The revision</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="75.738022"
+         style="stroke-width:0.18244188"
+         id="tspan4556">       can be a Git branch, commit SHA,</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="79.995003"
+         style="stroke-width:0.18244188"
+         id="tspan4558">       etc. --&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="84.251976"
+         style="fill:#800080;stroke-width:0.18244188"
+         id="tspan4560">  &lt;project name=&quot;zephyr&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="88.508957"
+         style="fill:#800080;stroke-width:0.18244188"
+         id="tspan4562">           remote=&quot;ltd&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="92.76593"
+         style="fill:#800080;stroke-width:0.18244188"
+         id="tspan4564">           revision=&quot;ltd-17.05&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="97.022911"
+         style="fill:#0000ff;stroke-width:0.18244188"
+         id="tspan4566">  &lt;project name=&quot;zephyr-fota-hawkbit&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="101.27989"
+         style="fill:#0000ff;stroke-width:0.18244188"
+         id="tspan4568">           remote=&quot;ltd&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="105.53687"
+         style="fill:#0000ff;stroke-width:0.18244188"
+         id="tspan4570">           revision=&quot;ltd-17.05&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="109.79385"
+         style="stroke-width:0.18244188"
+         id="tspan4572">  &lt;!-- Other projects, etc. … --&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="17.469097"
+         y="114.05082"
+         style="stroke-width:0.18244188"
+         id="tspan4574">&lt;/manifest&gt;</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4576"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion4578"><rect
+           id="rect4580"
+           width="388.90872"
+           height="74.751289"
+           x="75.761444"
+           y="495.21497" /></flowRegion><flowPara
+         id="flowPara4582" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4638"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.9950552px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.18385206,0,0,0.26458333,41.328922,4.0090428)"><flowRegion
+         id="flowRegion4640"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.9950552px;font-family:'source code pro';-inkscape-font-specification:'source code pro, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1"><rect
+           id="rect4642"
+           width="528.30981"
+           height="129.29951"
+           x="405.0712"
+           y="259.8494"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.9950552px;font-family:'source code pro';-inkscape-font-specification:'source code pro, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara4777"
+         style="fill:#000000;fill-opacity:1" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4668"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion4670"><rect
+           id="rect4672"
+           width="608.11182"
+           height="179.80716"
+           x="166.67517"
+           y="589.15912" /></flowRegion><flowPara
+         id="flowPara4674" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4676"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion4678"><rect
+           id="rect4680"
+           width="30.304577"
+           height="62.629459"
+           x="658.61945"
+           y="521.47894" /></flowRegion><flowPara
+         id="flowPara4682" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4684"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion4686"><rect
+           id="rect4688"
+           width="310.11682"
+           height="76.771591"
+           x="474.7717"
+           y="27.514326" /></flowRegion><flowPara
+         id="flowPara4690" /></flowRoot>    <path
+       style="fill:none;stroke:#800080;stroke-width:0.71070188;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 121.30533,75.330044 73.801431,88.366016"
+       id="path4752"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#0000ff;stroke-width:0.5291667;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 125.14415,101.33662 -37.274486,1.38052"
+       id="path4752-4"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888855px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="157.33624"
+       y="31.419569"
+       id="text4806"><tspan
+         sodipodi:role="line"
+         x="157.33624"
+         y="35.741096"
+         style="stroke-width:0.26458332"
+         id="tspan4812" /></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4832"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+         id="flowRegion4834"><rect
+           id="rect4836"
+           width="224.25386"
+           height="115.15739"
+           x="448.50772"
+           y="197.62599" /></flowRegion><flowPara
+         id="flowPara4838" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#800080;stroke-width:0.17933974"
+       x="174.8421"
+       y="74.419495"
+       id="text4848"
+       transform="scale(1.0446973,0.95721507)"><tspan
+         sodipodi:role="line"
+         id="tspan4866"
+         x="174.8421"
+         y="74.419495">This tells repo to clone the &quot;zephyr&quot; repository from:</tspan><tspan
+         sodipodi:role="line"
+         id="tspan4868"
+         x="174.8421"
+         y="78.829216">https://github.com/linaro-technologies/zephyr</tspan><tspan
+         sodipodi:role="line"
+         id="tspan4870"
+         x="174.8421"
+         y="83.238937">and check out branch ltd-17.05</tspan><tspan
+         sodipodi:role="line"
+         id="tspan4872"
+         x="174.8421"
+         y="87.648659" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#0000ff;stroke-width:0.17933974"
+       x="184.44907"
+       y="103.24345"
+       id="text4848-0"
+       transform="scale(1.0446973,0.95721507)"><tspan
+         style="stroke:#0000ff;stroke-width:0.17933974"
+         sodipodi:role="line"
+         id="tspan4866-9"
+         x="184.44907"
+         y="103.24345">Similarly, this clones &quot;zephyr-fota-hawkbit&quot; from:</tspan><tspan
+         style="stroke:#0000ff;stroke-width:0.17933974"
+         sodipodi:role="line"
+         id="tspan4868-5"
+         x="184.44907"
+         y="107.65318">https://github.com/linaro-technologies/zephyr-fota-hawkbit</tspan><tspan
+         style="stroke:#0000ff;stroke-width:0.17933974"
+         sodipodi:role="line"
+         id="tspan4870-2"
+         x="184.44907"
+         y="112.0629">also at branch ltd-17.05</tspan><tspan
+         style="stroke:#0000ff;stroke-width:0.17933974"
+         sodipodi:role="line"
+         id="tspan4872-1"
+         x="184.44907"
+         y="116.47262" /></text>
+    <path
+       style="fill:none;stroke:#008000;stroke-width:0.52916676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 130.33772,47.168807 -37.274494,1.38052"
+       id="path4752-4-7"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:1.25;font-family:'source code pro';-inkscape-font-specification:'source code pro, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#008000;stroke-width:0.17933974"
+       x="179.23198"
+       y="47.634144"
+       id="text4848-1"
+       transform="scale(1.0446973,0.95721507)"><tspan
+         sodipodi:role="line"
+         id="tspan4599"
+         x="179.23198"
+         y="47.634144">This tells repo that the &quot;ltd&quot; remote has base URL:</tspan><tspan
+         sodipodi:role="line"
+         id="tspan4601"
+         x="179.23198"
+         y="52.043865">https://github.com/linaro-technologies/</tspan></text>
+  </g>
+</svg>

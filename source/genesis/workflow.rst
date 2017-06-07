@@ -181,6 +181,8 @@ Integrating external dependencies with Zephyr is currently not
 straightforward. One approach is to copy them into your application
 repository, either directly or as submodules.
 
+.. _genesis-repo:
+
 Use Repo to Manage Git Repositories
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
