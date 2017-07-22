@@ -1,7 +1,8 @@
-# You can set these variables from the command line.
+# You can set this variable from the command line.
+OUTDIR        ?= build
+
 SPHINXOPTS    =
 SPHINXBUILD   = /usr/share/sphinx/scripts/python3/sphinx-build
-OUTDIR        = build
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
