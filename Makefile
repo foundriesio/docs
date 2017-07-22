@@ -1,7 +1,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = /usr/share/sphinx/scripts/python3/sphinx-build
-BUILDDIR      = build
+OUTDIR        = build
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -10,7 +10,7 @@ endif
 
 # ' (this line works around an Emacs makefile-mode bug)
 
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) source
+ALLSPHINXOPTS   = -d $(OUTDIR)/doctrees $(SPHINXOPTS) source
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(SPHINXOPTS) source
 
@@ -24,29 +24,29 @@ help:
 
 .PHONY: clean
 clean:
-	rm -rf $(BUILDDIR)/*
+	rm -rf $(OUTDIR)/*
 
 .PHONY: html
 html:
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(OUTDIR)/html
 	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+	@echo "Build finished. The HTML pages are in $(OUTDIR)/html."
 
 .PHONY: dirhtml
 dirhtml:
-	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
+	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(OUTDIR)/dirhtml
 	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
+	@echo "Build finished. The HTML pages are in $(OUTDIR)/dirhtml."
 
 .PHONY: singlehtml
 singlehtml:
-	$(SPHINXBUILD) -b singlehtml $(ALLSPHINXOPTS) $(BUILDDIR)/singlehtml
+	$(SPHINXBUILD) -b singlehtml $(ALLSPHINXOPTS) $(OUTDIR)/singlehtml
 	@echo
-	@echo "Build finished. The HTML page is in $(BUILDDIR)/singlehtml."
+	@echo "Build finished. The HTML page is in $(OUTDIR)/singlehtml."
 
 .PHONY: linkcheck
 linkcheck:
-	$(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
+	$(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(OUTDIR)/linkcheck
 	@echo
 	@echo "Link check complete; look for any errors in the above output " \
-	      "or in $(BUILDDIR)/linkcheck/output.txt."
+	      "or in $(OUTDIR)/linkcheck/output.txt."
