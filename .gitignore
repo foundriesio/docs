@@ -2,3 +2,4 @@
 *.swp
 .atom-build.yml
 build/
+extensions/__pycache__/

@@ -15,11 +15,13 @@
 
 import sys
 import os
+from os.path import abspath, dirname, join
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+parent_dir = dirname(dirname(abspath(__file__)))
+sys.path.insert(0, join(parent_dir, 'extensions'))
 
 # -- General configuration ------------------------------------------------
 
@@ -33,6 +35,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.ifconfig',
     'sphinx.ext.todo',
+    'osf_sphinx_ext',
 ]
 
 # Links that shouldn't get checked for validity
