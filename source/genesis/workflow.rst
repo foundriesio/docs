@@ -10,22 +10,25 @@ successfully been installed as described in
 
 .. _genesis-development-workflow:
 
-Development Workflow
---------------------
+Using the Genesis Helper Script
+-------------------------------
 
-The development workflow describes how to use Genesis to create,
-develop, and maintain embedded applications.
+After installing the Genesis repositories and build environment, the
+Zephyr and mcuboot build systems and other tools can be used
+directly. However, these interfaces can be hard to use when first
+developing applications. For this reason, Genesis provides a helper
+script, also named ``genesis``, which provides a higher-level
+interface.
 
-The ``genesis`` utility, which is installed into the root of the
-Genesis tree, is an important entry point. It accepts multiple
-commands useful during development; key commands are described
-below. Run ``./genesis -h`` from the Genesis installation directory
-for additional information.
+The ``genesis`` utility is installed into the root of the Genesis tree
+by ``repo sync``. It accepts multiple commands useful during
+development; they are documented below. Run ``./genesis -h`` from the
+Genesis installation directory for additional information.
 
 .. _genesis-build:
 
-Building Applications: ``genesis build``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build an Application: ``genesis build``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
@@ -46,20 +49,25 @@ Building Applications: ``genesis build``
    Re-work after resolution of https://trello.com/c/mSZPuXxG and
    https://projects.linaro.org/browse/LITE-147
 
-The top-level command is ``genesis build``. To get help, run this from
-the Genesis root directory::
+The top-level command is ``genesis build``. By default, it takes a
+path to an application inside the Genesis installation directory, and
+builds a signed application image, as well as an mcuboot binary
+capable of loading that application image. (The default behavior can
+be changed through various options.)
+
+To get help, run this from the Genesis root directory::
 
     ./genesis build -h
 
-Builds are always out of tree; that is, build artifacts are never
-generated in the source code directories. By default, they are stored
-under ``outdir`` in the Genesis top-level directory.
+The ``genesis build`` command always builds out of tree; that is,
+build artifacts are never generated in the source code directories. By
+default, they are stored under ``outdir`` in the Genesis top-level
+directory.
 
 Examples:
 
-- To build an application ``some-application`` (for example,
-  ``zephyr-fota-hawkbit``) available in the Genesis tree, targeting
-  the default board (96b_nitrogen)::
+- To build an application ``some-application`` available in the
+  Genesis tree, targeting the default board (96b_nitrogen)::
 
       ./genesis build some-application
 
@@ -95,6 +103,24 @@ Examples:
               ├── app
               └── mcuboot
 
+- It's fine to build application sources in a subdirectory. For
+  example, running::
+
+    ./genesis build some-nested/application-name
+
+  will generate::
+
+    outdir
+    └── some-nested
+        └── application-name
+            └── 96b_nitrogen
+                ├── app
+                └── mcuboot
+
+  Note that the signed image in ``96b_nitrogen/app`` is named
+  ``application-name-96b_nitrogen-signed.bin``; i.e., just the base
+  name of the application directory is used.
+
 - To build or incrementally compile the application image only, not
   updating the mcuboot image, use ``-o``::
 
@@ -103,10 +129,6 @@ Examples:
 - Similarly, to build or incrementally compile mcuboot only::
 
       ./genesis build -o mcuboot some-application
-
-- Other applications can be built the same way::
-
-      ./genesis build some-other-application
 
 .. _genesis-configure:
 
@@ -120,25 +142,31 @@ any of the Kconfig front-ends supported on your platform.
 
 The top-level command is ``genesis configure``.
 
+**This command can only be run after using** ``genesis build`` **to
+create the build directory, which contains the configuration
+database.**
+
 To get help, run this from the Genesis root directory::
 
     ./genesis configure -h
 
 Example uses:
 
-- To configure the ``zephyr-fota-hawkbit`` application (not mcuboot)
-  build for the default board, ``96b_nitrogen``::
+- To change the application configuration (not the mcuboot
+  configuration) for ``some-application`` for the default board::
 
-      ./genesis configure -o app zephyr-fota-hawkbit
+      ./genesis configure -o app some-application
 
-- To configure the mcuboot (not application) build for another board,
-  ``96b_carbon``::
+- To change the mcuboot (not application) configuration for another
+  board, ``96b_carbon``::
 
-      ./genesis configure -o mcuboot -b 96b_nitrogen zephyr-fota-hawkbit
+      ./genesis configure -o mcuboot -b 96b_carbon some-application
+
+If you don't specify ``-o``, then ``genesis configure`` will let you
+change both the mcuboot and application configurations.
 
 Note that ``genesis configure`` accepts many of the same options as
-:ref:`genesis build <genesis-build>`. You can mix application
-configuration and build using these commands in any order you want.
+:ref:`genesis build <genesis-build>`.
 
 For more information on Kconfig in Zephyr, see `Configuration Options
 Reference Guide
