@@ -235,9 +235,15 @@ Integrate an External Dependency
 
 .. todo:: user-friendly instructions, post-CMake transition.
 
+.. _Application Development Primer:
+   https://www.zephyrproject.org/doc/application/application.html
+
 Integrating external dependencies with Zephyr is currently not
 straightforward. One approach is to copy them into your application
 repository, either directly or as submodules.
+
+Additional information is available in the Zephyr `Application
+Development Primer`_.
 
 .. _genesis-repo:
 
