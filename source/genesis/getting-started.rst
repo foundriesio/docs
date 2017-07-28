@@ -10,13 +10,12 @@ Genesis, a computer to develop on, and an Internet connection.
 
 .. todo::
 
-   Replace DUMMY-APP with the real "Hello World" Genesis application.
-   For now, replace DUMMY-APP with "zephyr-fota-hawkbit"
-   below (https://trello.com/c/Yj5vW4zf).
+   Replace TODO-APP with an appropriate sample app. Using one of the
+   mcuboot sample apps would be a good starting point, once they can
+   be built for all supported Zephyr boards.
 
-   (We don't want to use zephyr-fota-hawkbit because setting up a
-   gateway, Hawkbit server, etc. is enough response effort to scare
-   first-time users off.)
+   (Don't use dm-fota-hawkbit: setting up a gateway, Hawkbit server,
+   etc. is too much to ask from first-time users.)
 
 .. todo::
 
@@ -139,11 +138,11 @@ application.
 If you're using 96Boards Nitrogen, run this from the ``genesis``
 directory you made earlier::
 
-  ./genesis build DUMMY-APP
+  ./genesis build TODO-APP
 
 If you're using another board, run this instead::
 
-  ./genesis build -b your_board DUMMY-APP
+  ./genesis build -b your_board TODO-APP
 
 Where ``your_board`` is Zephyr's name for your board. (Here's a `list
 of Zephyr boards
@@ -163,20 +162,20 @@ Now you'll flash the application to your board.
 If you're using 96Boards Nitrogen, plug it into your computer via USB,
 then run this from the Genesis directory::
 
-  ./genesis flash DUMMY-APP
+  ./genesis flash TODO-APP
 
 If you're using another board, make sure it's connected, and use this
 instead::
 
-  ./genesis flash -b your_board DUMMY-APP
+  ./genesis flash -b your_board TODO-APP
 
 Congratulations; you've just flashed a bootloader and
 cryptographically signed application binaries\ [#signatures]_ you
 built in the previous step onto your board!
 
 From now on, when you power on or reset the board, the bootloader will
-run first. It will check the signature on the application binary
-(DUMMY-APP in this case), and if it's valid, will run the application
+run first. It will check the signature on the application binary.  If
+the signature is valid for the given binary, will run the application
 itself.
 
 Test the Application
