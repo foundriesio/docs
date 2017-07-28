@@ -172,14 +172,44 @@ For more information on Kconfig in Zephyr, see `Configuration Options
 Reference Guide
 <https://www.zephyrproject.org/doc/reference/kconfig/index.html>`_.
 
-Flash an Application to a Device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Flash an Application to a Device: ``genesis flash``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. todo:: Replace with ``genesis flash`` once implemented:
-          https://trello.com/c/SXgRHneO
+After building an application and mcuboot binary with :ref:`genesis
+build <genesis-build>`\ [#makefileexport]_, the ``genesis flash``
+command can be used to flash it to a board, usually via USB.
 
-Please refer to the :ref:`demonstration system <iot-devices>`
-documentation.
+The ``genesis flash`` command uses information about the board
+obtained from Zephyr's build system to choose a flashing utility, and
+run it with the correct arguments to flash mcuboot and the application
+binary to an attached board. Before using this command, make sure you
+can flash your board using the Zephyr ``make flash`` command as
+described in its `Zephyr documentation
+<https://www.zephyrproject.org/doc/boards/boards.html>`_\
+[#zephyrflash]_.
+
+To get help, run this from the Genesis root directory::
+
+  ./genesis flash -h
+
+Basic uses:
+
+- To flash the artifacts for ``some-application`` to the default board::
+
+    ./genesis flash some-application
+
+- To flash to a different board, ``96b_carbon``::
+
+    ./genesis flash -b 96b_carbon some-application
+
+- To flash to a particular board, given the device ID supported by its
+  underlying flashing utility::
+
+    ./genesis flash -d SOME_BOARD_ID some-application
+
+The command also accepts an ``-e`` argument, which can be used to pass
+extra arguments to the flashing utility.
+
 
 Create an Application
 ~~~~~~~~~~~~~~~~~~~~~
@@ -260,3 +290,27 @@ Production Workflow
      (blocker: https://trello.com/c/mSZPuXxG)
    - Disabling JTAG/SWD or making physical access harder and other
      issues discussed in the threat model.
+
+.. rubric:: Footnotes
+
+.. _Makefile.export:
+   https://www.zephyrproject.org/doc/application/application.html#support-for-building-third-party-library-code
+
+.. [#makefileexport]
+
+   It's possible to use ``genesis flash`` on directories not generated
+   by ``genesis build``, but it assumes an output directory hierarchy
+   matching what :ref:`genesis build <genesis-build>` creates,
+   including the presence of a `Makefile.export`_.
+
+.. [#zephyrflash]
+
+   If your board's Zephyr support does not include ``make flash``,
+   ``genesis flash`` will not work either.
+
+   ``genesis flash`` exists because the Zephyr ``make flash`` target
+   currently only allows flashing a single application binary to a
+   board at a fixed address. This is not sufficient for Genesis, which
+   has a more complex flashing process due to the presence of a
+   bootloader and an application, which must be flashed in different
+   locations.
