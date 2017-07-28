@@ -35,16 +35,16 @@ Building Applications: ``genesis build``
    production. See :ref:`genesis-production-workflow` for more
    information.
 
+   It's not currently possible to generate mcuboot images that trust
+   non-dev keys. As such, the ``--signing-key`` and
+   ``--signing-key-type`` arguments to ``genesis build`` are
+   misleading, as the mcuboot image won't trust the key used to sign
+   the application. Don't use these for now.
+
 .. todo::
 
-   It's not currently possible to generate mcuboot images that trust
-   non-dev keys (https://trello.com/c/mSZPuXxG,
-   https://projects.linaro.org/browse/LITE-147).
-
-   As such, the ``--signing-key`` and ``--signing-key-type`` arguments
-   to ``genesis build`` are misleading, as the mcuboot image won't
-   trust the key used to sign the application. Don't use these for
-   now.
+   Re-work after resolution of https://trello.com/c/mSZPuXxG and
+   https://projects.linaro.org/browse/LITE-147
 
 The top-level command is ``genesis build``. To get help, run this from
 the Genesis root directory::
