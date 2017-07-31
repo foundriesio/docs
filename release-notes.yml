@@ -21,12 +21,99 @@ parts:
             summary: MarkDown **styled** description of issue
       - name: Zephyr
         manifest_project: zephyr
-        features:    # optional
-          - heading: Feature 1
-            summary: MarkDown **styled** description
-        bug_fixes:   # optional
-          - heading: Bug 1
-            summary: MarkDown **styled** description of issue
+        features:
+          - heading: ADC for mcux
+            summary: |
+              An ADC driver for mcux devices was merged, and support
+              for it was enabled for several boards.
+          - heading: Boards
+            summary: |
+              Board support was added for the VBLUno52 and VBLUno51,
+              based on nRF5 SoCs, and STM32F3DISCOVERY.
+          - heading: Bluetooth Mesh
+            summary: |
+              An initial implementation of the newly-release Bluetooth
+              Mesh specification was merged, with samples for some
+              nRF52-based boards.
+          - heading: Device tree
+            summary: |
+              The push to improve device tree usage
+              continues. Formerly Kconfig-based configuration for I2C
+              drivers was moved to DT, with uses in mcux and stm32
+              drivers. The Bluetooth UART configuration also now is
+              generated from DT. On STM32 targets, there is now an rcc
+              node, and the DTSIs have been refactored to reflect
+              inheritance among SoCs. The UART device which has the
+              console attached is now available from DT on supported
+              targets. Other DT improvements were merged as well.
+          - heading: Device drivers for STM32
+            summary: |
+              Various device drivers were added for STM32 targets.
+
+              A HAL-based Ethernet peripheral driver, I2C, SPI, and
+              RNG (random number generator).
+          - heading: Device drivers for NXP KW40Z
+            summary: |
+              IEEE 802.15.4 support was added for NXP KW40Z targets.
+          - heading: Flash partitions added
+            summary: |
+              Flash partition support needed by mcuboot was added for
+              more boards (96b_carbon, 96b_nitrogen, disco_l475_iot1,
+              nrf52840_pca10056, and nucleo_f401re).
+          - heading: Flash and Bluetooth driver safety for nRF
+            summary: |
+              Support for safe simultaneous usage of the Flash and
+              Bluetooth drivers on nRF devices was merged.
+          - heading: OpenSDA support for NXP boards
+            summary: |
+              Several NXP boards now select flash and debugging
+              scripts based on the OpenSDA debug adapter provided by
+              the SoC vendor.
+          - heading: Socket poll()
+            summary: |
+              The BSD-like sockets API received support for the poll()
+              I/O multiplexing operation.
+          - heading: Python, and pip, version 3
+            summary: |
+              All dependencies for support scripts are now recommended
+              to be installed using pip3.
+          - heading: pyelftools dependency
+            summary: |
+              Zephyr now depends on the pyelftools package to build
+              images.
+          - heading: Memory management and protection
+            summary: |
+              Various improvements to how Zephyr manages and protects
+              memory have been made.
+
+              The application and kernel memory areas are now placed
+              into different linker sections. This will enable memory
+              protection of the kernel from the application.
+
+              MMU support on QEMU for x86 is enabled by default.
+
+              Generic support was added for marking variable
+              declarations as belonging to kernel memory, along with
+              architecture-specific support for x86.
+
+              Stack guard pages have been added for x86 targets.
+          - heading: TCP backlog
+            summary: |
+              A global TCP backlog for multiple incoming connections
+              on the same port was added, along with the usual number
+              of networking fixes and improvements. A number of
+              Bluetooth fixes were merged as well.
+        bug_fixes:
+          - heading: Self-test suite improvements
+            summary: |
+              Various improvements and fixes were merged to the Zephyr
+              self-test suite, as efforts continue to unify test
+              project configuration files and better apply filtering
+              when selecting tests to run.
+          - heading: Bluetooth fixes
+            summary: |
+              A variety of important Bluetooth fixes were merged, which
+              fix bugs and increase conformance with the Bluetooth standard.
       - name: Zephyr Fota Hawkbit
         manifest_project: zephyr-fota-hawkbit
         features:    # optional
