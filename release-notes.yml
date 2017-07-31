@@ -114,8 +114,8 @@ parts:
             summary: |
               A variety of important Bluetooth fixes were merged, which
               fix bugs and increase conformance with the Bluetooth standard.
-      - name: Zephyr Fota Hawkbit
-        manifest_project: zephyr-fota-hawkbit
+      - name: Zephyr Fota Samples
+        manifest_project: zephyr-fota-samples
         features:    # optional
           - heading: Feature 1
             summary: MarkDown **styled** description
