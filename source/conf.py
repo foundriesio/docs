@@ -114,6 +114,18 @@ pygments_style = 'sphinx'
 todo_include_todos = True
 
 
+#
+##### [HACK] Add a warning that the docs are stale
+#
+# Remove this after they're back in shape.
+#
+rst_prolog = '''
+.. warning::
+
+   This documentation may be out of date. It will be fixed in the next release.
+'''
+
+
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
