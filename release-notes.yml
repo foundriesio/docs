@@ -34,19 +34,19 @@ parts:
               verification. In addition, it has been refactored so
               that fuzz testing the signature checking routines will
               be possible in future patches.
-          - heading: Zephyr: flash partitions from DTS
+          - heading: "Zephyr: flash partitions from DTS"
             summary: |
               On many Zephyr targets, mcuboot now uses flash
               partitions from DTS, rather than hard-coding them for
               each board. This allows Zephyr applications chain-loaded
               by mcuboot to share this configuration.
-          - heading: Zephyr: sample applications
+          - heading: "Zephyr: sample applications"
             summary: |
               A pair of sample applications were added for Zephyr
               targets, along with documentation for building them and
               flashing them onto supported boards for chain-loading
               and swapping by mcuboot itself.
-          - heading: RIOT: image chainloading
+          - heading: "RIOT: image chainloading"
             summary: |
               Application images based on the RIOT RTOS can now be
               chain-loaded by mcuboot.
