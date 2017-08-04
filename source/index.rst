@@ -6,13 +6,14 @@ This is the documentation for the Linaro Technologies Division.
 Genesis
 -------
 
-Genesis is a software development platform for connected,
-resource-constrained devices.
+Genesis is an extensible software and hardware platform that makes it
+easier to develop, secure, and maintain Internet-connected embedded
+devices. Genesis is based on the `Zephyr
+<https://www.zephyrproject.org/>`_ real-time operating system.
 
 .. toctree::
    :maxdepth: 2
 
-   genesis/overview
    genesis/getting-started
    genesis/workflow
    genesis/branching
