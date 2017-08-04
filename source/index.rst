@@ -12,7 +12,7 @@ devices. Genesis is based on the `Zephyr
 <https://www.zephyrproject.org/>`_ real-time operating system.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    genesis/getting-started
    genesis/workflow
@@ -25,10 +25,8 @@ Cerberus is a software platform for deploying and managing
 multi-tenant, containerized applications on Linux-based gateway
 devices.
 
-.. todo:: Add cerberus overview and other docs as needed.
-
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    cerberus/getting-started
 
