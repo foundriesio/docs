@@ -30,16 +30,20 @@ devices.
 
    cerberus/getting-started
 
-FOTA Demonstration System
--------------------------
+Managed Device Demonstration System
+-----------------------------------
+
+You can use Genesis and Cerberus to set up a system which can publish
+sensor data from devices to the cloud and perform firmware over the
+air (FOTA) updates of the device firmware.
 
 .. toctree::
    :maxdepth: 1
 
-   fota-demo/index
-   device-support/index
+   dm-hawkbit-mqtt/howto
+   dm-hawkbit-mqtt/appendix
 
-.. The following bold text (anda the list of todos themselves) only
+.. The following bold text (and the list of todos themselves) only
    appear when todo_include_todos is True in conf.py.
 
 .. ifconfig:: todo_include_todos is True
