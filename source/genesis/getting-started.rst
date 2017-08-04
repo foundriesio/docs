@@ -39,6 +39,9 @@ Here's what you'll need:
 Install Genesis
 ---------------
 
+.. _pip Installation:
+   https://pip.pypa.io/en/stable/installing/
+
 1. Install Genesis's dependencies.
 
    On Ubuntu, run::
@@ -81,11 +84,21 @@ Install Genesis
 
 #. Install software needed to flash binaries to your board.
 
-   For 96Boards Nitrogen, see :ref:`these instructions
-   <device-support-nrf52-96b_nitrogen>`.
+   For 96Boards Nitrogen, install pyOCD to flash images::
+
+     pip install --user pyOCD
+
+   If you don't have pip installed, see the `pip Installation`_
+   documentation.
 
    .. todo:: Delete if pyOCD gets bundled in Genesis
              (https://trello.com/c/wQgewcdI).
+
+   On Linux platforms, you also need to install the following udev
+   rules as root, then unplug and plug back in any boards you may have
+   connected::
+
+     echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
 
 #. Set up Git\ [#gitcredentials]_::
 
