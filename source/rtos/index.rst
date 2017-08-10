@@ -14,4 +14,5 @@ devices. The RTOS MicroPlatform is based on the `Zephyr
    getting-started
    branching
    workflow
+   prod-workflow
    rtos-appendix

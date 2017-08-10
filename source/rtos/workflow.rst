@@ -284,21 +284,6 @@ You can also run ``repo help <command>`` to get usage for each repo
 command; for example, use ``repo help sync`` to get help on ``repo
 sync``.
 
-.. _rtos-production-workflow:
-
-Production Workflow
-===================
-
-Placeholder for production workflow
-
-.. todo:: Write this section.
-
-   - Minimum sane key management policies
-   - Building production-ready mcuboot and application images
-     (blocker: https://trello.com/c/mSZPuXxG)
-   - Disabling JTAG/SWD or making physical access harder and other
-     issues discussed in the threat model.
-
 .. rubric:: Footnotes
 
 .. _Makefile.export:
