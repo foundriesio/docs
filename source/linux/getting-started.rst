@@ -1,12 +1,12 @@
 .. highlight:: sh
 
-.. _cerberus-getting-started:
+.. _linux-getting-started:
 
-Getting Started with Cerberus
-=============================
+Getting Started
+===============
 
-All you need to get started is a gateway device supported by Cerberus,
-a computer, and an Internet connection.
+All you need to get started is a gateway device supported by the Linux
+MicroPlatform, a computer, and an Internet connection.
 
 Get Hardware
 ------------
@@ -16,16 +16,16 @@ Here's what you'll need:
 - A computer to develop on. This can be running Windows, Mac OS X, or
   Linux.
 
-- A gateway device supported by Cerberus. We currently support the
-  `96Boards HiKey <http://www.96boards.org/product/hikey/>`_, and
+- A gateway device supported by the Linux MicroPlatform. We currently support
+  the `96Boards HiKey <http://www.96boards.org/product/hikey/>`_, and
   assume you have a `96Boards UART Serial Adapter
   <http://www.96boards.org/product/debug/>`_ for console access.
 
 Get Installation Dependencies
 -----------------------------
 
-To install Cerberus on your device, you'll need Python 2, pySerial,
-drivers for FTDI serial port devices, and Android's fastboot tool.
+To install the Linux MicroPlatform on your device, you'll need Python 2,
+pySerial, drivers for FTDI serial port devices, and Android's fastboot tool.
 
 Windows
 ~~~~~~~
@@ -82,7 +82,7 @@ On other Linux distributions:
   `Installation page
   <http://docs.ansible.com/ansible/intro_installation.html>`_.
 
-Get Cerberus Images
+Get prebuilt images
 -------------------
 
 Fetch the following files from the latest build for 96Boards HiKey:
@@ -113,7 +113,7 @@ Mode" as follows:
 
    The board should now look like this:
 
-   .. figure:: /_static/cerberus/hikey-no-jumpers.jpg
+   .. figure:: /_static/linux/hikey-no-jumpers.jpg
       :scale: 50%
       :align: center
       :alt: HiKey with no jumpers on J601
@@ -123,7 +123,7 @@ Mode" as follows:
 
    The board should now look like this:
 
-   .. figure:: /_static/cerberus/hikey-recovery-jumpers.jpg
+   .. figure:: /_static/linux/hikey-recovery-jumpers.jpg
       :scale: 50%
       :align: center
       :alt: HiKey with jumpers on J601 set up for Recovery Mode
@@ -132,7 +132,7 @@ Mode" as follows:
 
 #. Power on the HiKey.
 
-See `HiKey's board recovery documentation`_ for more information on
+See `HiKey board recovery documentation`_ for more information on
 Recovery Mode.
 
 If you're using a different 96Boards CE board, check its `96boards.org
@@ -209,7 +209,7 @@ using a HiKey, follow these instructions.
 
 Your board should look like this:
 
-.. figure:: /_static/cerberus/hikey-boot.jpg
+.. figure:: /_static/linux/hikey-boot.jpg
    :align: center
    :alt: HiKey when booting
 
@@ -227,11 +227,15 @@ password. You will be dropped into a normal user shell, and should now
 change the password. The ``linaro`` user may use ``sudo`` to obtain
 root access on the device.
 
-That's it! You've successfully installed Cerberus onto your device,
-and booted into its console.
+That's it! You've successfully installed the Linux MicroPlatform onto your
+device, and booted into its console.
 
 Onwards!
 --------
+
+At this point your device is ready to run Docker containers.  If you would
+like to configure the device as a Basic IoT Gateway, follow the instructions
+at :ref:`big-getting-started`.
 
 You're now ready to take your next steps. This will take the form of
 deploying containerized applications to your device.
@@ -293,8 +297,8 @@ run Ansible from Ubuntu.)
 .. _builds for other boards:
    http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/
 
-.. _HiKey's board recovery documentation:
-   https://github.com/96boards/documentation/blob/master/ConsumerEdition/HiKey/Installation/BoardRecovery.md#set-board-link-options
-
 .. _gateway-containers README.md:
    https://github.com/linaro-technologies/gateway-containers/blob/master/README.md
+
+.. _HiKey board recovery documentation:
+   https://github.com/96boards/documentation/blob/master/ConsumerEdition/HiKey/Installation/BoardRecovery.md#set-board-link-options

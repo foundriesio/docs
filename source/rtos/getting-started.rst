@@ -1,12 +1,13 @@
 .. highlight:: sh
 
-.. _genesis-getting-started:
+.. _rtos-getting-started:
 
-Getting Started With Genesis
-============================
+Getting Started
+===============
 
 All you need to get started is a development board supported by
-Genesis, a computer to develop on, and an Internet connection.
+the LTD RTOS MicroPlatform, a computer to develop on, and an Internet
+connection.
 
 .. todo::
 
@@ -31,18 +32,18 @@ Here's what you'll need:
   on `Ubuntu <https://www.ubuntu.com/download/desktop>`_ 16.04. Mac OS
   X support will be added next, and Windows support is planned.)
 
-- A development board supported by Genesis. We recommend the `96Boards
-  Nitrogen <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_.
+- A development board supported by RTOS MicroPlatform. We recommend the
+  `96Boards Nitrogen <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_.
 
-.. _install-genesis:
+.. _rtos-install:
 
-Install Genesis
----------------
+Installation
+------------
 
 .. _pip Installation:
    https://pip.pypa.io/en/stable/installing/
 
-1. Install Genesis's dependencies.
+1. Install the LTD RTOS MicroPlatform's dependencies.
 
    On Ubuntu, run::
 
@@ -50,7 +51,7 @@ Install Genesis
      sudo apt-get update
      sudo apt-get install genesis-dev
 
-   (See :ref:`genesis-dependencies` for more information.)
+   (See :ref:`rtos-dependencies` for more information.)
 
 #. Install the Zephyr SDK::
 
@@ -91,7 +92,7 @@ Install Genesis
    If you don't have pip installed, see the `pip Installation`_
    documentation.
 
-   .. todo:: Delete if pyOCD gets bundled in Genesis
+   .. todo:: Delete if pyOCD gets bundled in the RTOS MicroPlatform
              (https://trello.com/c/wQgewcdI).
 
    On Linux platforms, you also need to install the following udev
@@ -109,7 +110,7 @@ Install Genesis
 #. Create a `GitHub <https://github.com/>`_ account if you don't have
    one already (it's free).
 
-   - Make sure you can see the `Genesis SDK manifest repository
+   - Make sure you can see the `RTOS MicroPlatform SDK manifest repository
      <https://github.com/linaro-technologies/genesis-sdk-manifest>`_
      when you're logged in.
 
@@ -123,7 +124,7 @@ Install Genesis
    .. todo:: Handle the "public" versus "private" cases. The above is
              needed for the "private" case.
 
-#. Fetch the Genesis repositories::
+#. Fetch the LTD RTOS MicroPlatform repositories::
 
      mkdir genesis && cd genesis
      repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
@@ -135,18 +136,19 @@ Install Genesis
    .. note::
 
       If you're new to repo, the basic idea is that the manifest has
-      an XML file which describes where the Genesis code,
+      an XML file which describes where the RTOS MicroPlatform code,
       documentation, and other Git repositories are.
 
-      Running ``repo init`` with the Genesis manifest sets up the
-      ``genesis`` directory to house the Genesis repositories, and
-      ``repo sync`` clones the repositories onto your computer.
+      Running ``repo init`` with the LTD RTOS MicroPlatform manifest sets up
+      the ``genesis`` directory to house the the LTD RTOS MicroPlatform
+      repositories, and ``repo sync`` clones the repositories onto your
+      computer.
 
 Build an Application
 --------------------
 
-Now that you've installed Genesis, it's time to build a demonstration
-application.
+Now that you've installed RTOS MicroPlatform, it's time to build a
+demonstration application.
 
 If you're using 96Boards Nitrogen, run this from the ``genesis``
 directory you made earlier::
@@ -160,9 +162,9 @@ If you're using another board, run this instead::
 Where ``your_board`` is Zephyr's name for your board. (Here's a `list
 of Zephyr boards
 <https://www.zephyrproject.org/doc/boards/boards.html>`_, but some of
-them may not work with Genesis.)
+them may not work with the RTOS MicroPlatform.)
 
-(If you want to know more, see :ref:`genesis-build`.)
+(If you want to know more, see :ref:`rtos-build`.)
 
 Flash the Application
 ---------------------
@@ -173,7 +175,7 @@ Flash the Application
 Now you'll flash the application to your board.
 
 If you're using 96Boards Nitrogen, plug it into your computer via USB,
-then run this from the Genesis directory::
+then run this from the the LTD RTOS MicroPlatform directory::
 
   ./genesis flash TODO-APP
 
@@ -215,7 +217,7 @@ If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
 115200 baud, and reset the chip.
 
-That's it! You've successfully installed Genesis, compiled an
+That's it! You've successfully installed RTOS MicroPlatform, compiled an
 application, flashed it to a device, and seen it work.
 
 Onwards!
@@ -227,20 +229,28 @@ You're now ready to take your next steps.
 
           Example of tutorials and reference docs:
 
-          - Genesis overview (different projects with links to their
+          - RTOS MicroPlatform overview (different projects with links to their
             reference docs, how they tie together, e.g. description of
             boot process with links to mcuboot documentation).
           - Hardware peripheral tutorials (UART, SPI, etc.)
-          - Internet connectivity with an Exodus gateway
+          - Internet connectivity with an Basic IoT Gateway
           - FOTA with hawkBit
 
-.. _genesis-dependencies:
 
-Appendix: Genesis Dependencies
-------------------------------
+.. _rtos-development:
 
-Here is a list of dependencies needed to install Genesis with these
-instructions, which may be useful on other development platforms.
+Developing with RTOS MicroPlatform
+----------------------------------
+
+.. todo:: akbakb
+
+.. _rtos-dependencies:
+
+Appendix: Dependencies
+----------------------
+
+Here is a list of dependencies needed to install the LTD RTOS MicroPlatform
+with these instructions, which may be useful on other development platforms.
 
 - `Git <https://git-scm.com/>`_
 - `GNU Make <https://www.gnu.org/software/make/>`_
@@ -271,7 +281,7 @@ instructions, which may be useful on other development platforms.
    Since this tutorial is meant to help you get started, the binaries
    are signed with keys that aren't secret, and **are not suitable for
    production use**. When it's time to ship, see
-   :ref:`genesis-production-workflow` for more information.
+   :ref:`rtos-production-workflow` for more information.
 
 .. [#serial]
 

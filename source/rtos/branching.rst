@@ -1,12 +1,12 @@
-.. _genesis-branching:
+.. _rtos-branching:
 
-Genesis Branch Management
-=========================
+Branch Management
+=================
 
 .. todo:: Add a few good diagrams.
 
-This document defines the rules governing the branches in Genesis Git
-repositories, and what you can expect from them.
+This document defines the rules governing the branches in the RTOS
+MicroPlatform Git repositories, and what you can expect from them.
 
 Why Have Branching Rules?
 -------------------------
@@ -14,37 +14,37 @@ Why Have Branching Rules?
 The short answer is that it's the only way to keep things working
 while staying close to our upstream projects' latest versions.
 
-The details are given below in :ref:`branching-rationale`.
+The details are given below in :ref:`rtos-branching-rationale`.
 
-.. _branching-repo:
+.. _rtos-branching-repo:
 
-Genesis and Repo Primer
------------------------
+RTOS MicroPlatform and Repo Primer
+----------------------------------
 
-Below sections describe the branches in the Genesis manifest and
+Below sections describe the branches in the RTOS MicroPlatform manifest and
 source code repositories, and how they are related. Before getting
-there, this section gives some background on how Genesis uses Repo,
-which may make that explanation clearer.
+there, this section gives some background on how the RTOS MicroPlatform uses
+Repo, which may make that explanation clearer.
 
-As described in :ref:`genesis-getting-started`, every Genesis
+As described in :ref:`rtos-getting-started`, every RTOS MicroPlatform
 installation contains multiple `Git <https://git-scm.com/>`_
 repositories, which are managed by a *manifest file* in a `Repo
 <https://gerrit.googlesource.com/git-repo/>`_ *manifest repository*.
 
 The name of the manifest repository is ``genesis-sdk-manifest``. It's
 a Git repository, just like any of the source code repositories. While
-installing Genesis, you passed `repo init`_ a URL for the manifest
-repository.  The manifest repository is special, in that it contains
+installing the RTOS MicroPlatform, you passed `repo init`_ a URL for the
+manifest repository.  The manifest repository is special, in that it contains
 an XML manifest file, named ``manifest.xml``, which describes all of
-the other Git repositories in the Genesis installation. After ``repo
+the other Git repositories in the RTOS MicroPlatform installation. After ``repo
 init``, you ran `repo sync`_, which parsed the manifest file and
-cloned all of the other Genesis repositories as instructed by its
+cloned all of the other RTOS MicroPlatform repositories as instructed by its
 contents.
 
 The manifest file contains:
 
 - a list of *remotes*, each of which specifies a base URL where other
-  Genesis Git repositories are hosted.
+  RTOS MicroPlatform Git repositories are hosted.
 - a list of *projects*, each of which specifies a Git repository to
   clone, along with a remote to pull it from, and a revision to check
   out in the local clone.
@@ -52,8 +52,8 @@ The manifest file contains:
 An example manifest repository, its manifest file, and the manifest
 file's contents are as follows.
 
-.. figure:: /_static/genesis/manifest-example.svg
-   :alt: Example Genesis manifest.
+.. figure:: /_static/rtos/manifest-example.svg
+   :alt: Example RTOS MicroPlatform manifest.
 
 Since the ``genesis-sdk-manifest`` repository is a Git repository, it
 can, and does, contain multiple branches:
@@ -65,14 +65,14 @@ can, and does, contain multiple branches:
 
 For example, the ``17.05`` monthly snapshot branch in the manifest
 repository contains a manifest file which tracks the work done in May
-2017 for the Genesis source code repositories. Similarly, the
+2017 for the RTOS MicroPlatform source code repositories. Similarly, the
 ``17.06`` branch in the manifest repository contains a manifest
 tracking June 2017.
 
-The other (non-manifest) Genesis Git repositories have branches named
-``ltd-YY.MM``. These contain development work for month MM of year YY.
+The other (non-manifest) RTOS MicroPlatform Git repositories have branches
+named ``ltd-YY.MM``. These contain development work for month MM of year YY.
 
-.. _branching-trunk:
+.. _rtos-branching-trunk:
 
 Trunk Development
 -----------------
@@ -82,15 +82,15 @@ Trunk Development
    The important things to know are:
 
    - The ``master`` branch in the :ref:`manifest repository
-     <branching-repo>` tracks the **latest** monthly ``ltd-YY.MM``
-     branches in the other Genesis repositories.
+     <rtos-branching-repo>` tracks the **latest** monthly ``ltd-YY.MM``
+     branches in the other RTOS MicroPlatform repositories.
 
-   - Each month, Genesis repositories with upstreams, like Zephyr and
-     mcuboot, **will** `rebase`_ **onto new upstream baseline
+   - Each month, RTOS MicroPlatform repositories with upstreams, like Zephyr
+     and mcuboot, **will** `rebase`_ **onto new upstream baseline
      commits** when new monthly branches are cut.
 
-   - Currently, updates to Genesis repositories without upstreams are
-     always `fast-forward`_, even when new branches are cut. However,
+   - Currently, updates to RTOS MicroPlatform repositories without upstreams
+     are always `fast-forward`_, even when new branches are cut. However,
      in the future, these may also rebase.
 
 As described above, the ``master`` branch in the
@@ -99,7 +99,7 @@ development.
 
 .. highlight:: sh
 
-Thus, to check out the very latest Genesis, you can run::
+Thus, to check out the very latest RTOS MicroPlatform, you can run::
 
   mkdir genesis && cd genesis
   repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
@@ -145,20 +145,20 @@ look like this::
   </manifest>
 
 Running ``repo sync`` after this happens fetches and synchronizes your
-local trees with the ``ltd-17.06`` branches in each of the Genesis
+local trees with the ``ltd-17.06`` branches in each of the RTOS MicroPlatform
 projects named in the manifest. (See `repo sync`_ for
 details.)
 
 .. warning::
 
    When this happens, **upstream Git history is rewritten** for
-   Genesis repositories which have an upstream, like Zephyr and
+   RTOS MicroPlatform repositories which have an upstream, like Zephyr and
    mcuboot. This happens because the next month's development branch
    is rebased onto a new baseline commit from upstream.
 
-   For more information, see :ref:`branching-sauce`.
+   For more information, see :ref:`rtos-branching-sauce`.
 
-.. _branching-monthly:
+.. _rtos-branching-monthly:
 
 Monthly Snapshot Branches
 -------------------------
@@ -168,8 +168,8 @@ Monthly Snapshot Branches
    The important things to know are:
 
    - Each ``YY.MM`` branch in the :ref:`manifest repository
-     <branching-repo>` tracks the monthly ``ltd-YY.MM`` branches in
-     each of the other Genesis repositories.
+     <rtos-branching-repo>` tracks the monthly ``ltd-YY.MM`` branches in
+     each of the other RTOS MicroPlatform repositories.
 
    - Running ``repo sync`` with this manifest branch results in
      `fast-forward`_ changes only in upstream repositories.
@@ -200,17 +200,17 @@ current month's snapshot branch. All updates to remote repositories
 will be fast-forward changes only. However, **updates will stop after
 the month ends** and trunk development continues on new branches.
 
-You can continue using Genesis at your site for as long as you'd like,
-even when you're using a monthly snapshot manifest branch. However, to
+You can continue using RTOS MicroPlatform at your site for as long as you'd
+like, even when you're using a monthly snapshot manifest branch. However, to
 fetch new updates from Linaro Technologies Division after the month
 ends, you need to update your manifest repository to sync from more
-recent development branches. You can do this using an existing Genesis
-installation directory; **you do not need to create a new Genesis
-directory to update your manifest repository branch**.
+recent development branches. You can do this using an existing RTOS
+MicroPlatform installation directory; **you do not need to create a new RTOS
+MicroPlatform directory to update your manifest repository branch**.
 
 For example, if you have the ``17.05`` manifest branch checked out,
 and you want to update to ``17.07``, you can run this from your
-existing Genesis installation directory::
+existing RTOS MicroPlatform installation directory::
 
   repo init -b 17.07 -u https://github.com/linaro-technologies/genesis-sdk-manifest
   repo sync
@@ -224,7 +224,7 @@ existing Genesis installation directory::
 
    You can use ``repo sync -n`` to fetch changes from the network
    only, without updating your working directories. See
-   :ref:`genesis-repo` for more information.
+   :ref:`rtos-branching-repo` for more information.
 
 Monthly Baseline Rebases
 ------------------------
@@ -244,7 +244,7 @@ at a new **baseline commit** in the upstream repository's mainline
 When a new baseline commit is established, the history for the commits
 that LTD added to the upstream branch is rewritten and cleaned up
 (squashing commits, removing hacks that are no longer needed,
-etc.). See :ref:`branching-sauce`, below, for rules which make it easy
+etc.). See :ref:`rtos-branching-sauce`, below, for rules which make it easy
 to see which commits those are.
 
 What about Upstream Releases?
@@ -254,11 +254,11 @@ We don't currently take baseline commits in any LTD branches from
 upstream release branches. That is, both trunk development and monthly
 snapshots are based on commits in upstream master branches.
 
-However, Genesis may cherry-pick or otherwise merge in changes that
+However, RTOS MicroPlatform may cherry-pick or otherwise merge in changes that
 went to upstream release branches during mainline development, which
 then end up in that month's snapshot branch.
 
-.. _branching-sauce:
+.. _rtos-branching-sauce:
 
 Extra Rules For Repositories with Upstreams
 -------------------------------------------
@@ -361,27 +361,27 @@ More detailed rules for each sauce tag follow below.
     made during review, follow the same autosquash rules as [LTD
     toup].
 
-.. _branching-rationale:
+.. _rtos-branching-rationale:
 
 Appendix: Branch Management Rationale
 -------------------------------------
 
 This section provides a rationale for why these rules exist.
 
-There are two "types" of repository in a Genesis installation:
+There are two "types" of repository in a RTOS MicroPlatform installation:
 
 - Projects which have an external upstream, namely Zephyr and
   mcuboot.
-- Projects which are developed for Genesis, and which have no external
-  upstream, like the one containing the documentation you're reading
+- Projects which are developed for RTOS MicroPlatform, and which have no
+  external upstream, like the one containing the documentation you're reading
   now.
 
 Rather than cloning the upstream versions of the Zephyr and mcuboot
-repositories in a Genesis installation, Linaro Technologies Division
+repositories in a RTOS MicroPlatform installation, Linaro Technologies Division
 maintains its own trees. This is for two reasons.
 
 1. It allows us to keep track of known-good revisions that work well
-   with Genesis.
+   with RTOS MicroPlatform.
 
 2. It gives us a place to carry out our own internal development on
    these repositories.
@@ -394,7 +394,7 @@ and are tested. We also sometimes need to keep some temporary
 solutions or patches in our trees which aren't useful for upstream.
 
 While all of this is going on in repositories with an upstream, the
-Genesis-only repositories are evolving too, both to use those new
+RTOS MicroPlatform-only repositories are evolving too, both to use those new
 features added in Zephyr and mcuboot, and as they're being developed
 in their own right.
 
@@ -403,12 +403,12 @@ things working smoothly over time.
 
 The branching rules manage development in a way that allows:
 
-- Genesis users to see clearly what the differences are between the upstream
-  and Genesis versions of each repository,
-- Genesis developers to stage local and integrate upstream changes,
+- RTOS MicroPlatform users to see clearly what the differences are between the
+  upstream and RTOS MicroPlatform versions of each repository,
+- RTOS MicroPlatform developers to stage local and integrate upstream changes,
 - Continuous Integration to track versions which should work together
   for testing and test report generation,
-- Genesis snapshots and releases to track the state of development
+- RTOS MicroPlatform snapshots and releases to track the state of development
   over time, allowing comparisons between versions.
 
 .. _repo init:

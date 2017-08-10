@@ -95,79 +95,11 @@ Prepare the System
 
 **Required Equipment**: workstation which supports `Docker`_.
 
-Follow these instructions to create four Docker containers. One will
-run hawkBit. The other three will run hawkBit's dependencies:
-
-  - MariaDB
-  - RabbitMQ
-  - mongodb
-
-.. figure:: /_static/dm-hawkbit-mqtt/Hawkbit-setup.png
-   :align: center
-   :width: 5in
-   :alt: hawkBit and dependencies
-
-These containers must share a Docker network. Create this network
-now::
-
-    docker network create hawkbit-net
-
-If you want, you can now pull a hawkBit container **which contains
-default settings, including administrative passwords**, from Docker
-Hub::
-
-    docker pull linarotechnologies/gitci-hawkbit-container
-
-Additional instructions for building your own hawkBit container with
-modified settings are in :ref:`dm-hawkbit-mqtt-appendix-hawkbit`.
-
-Next, you need to set up three other containers that the gitci-hawkbit
-container needs to run.
-
-These instructions use the default passwords; you will need to change
-them if you chose non-default passwords. Note that the default
-database name (the value of the MYSQL_DATABASE variable) cannot be
-changed without reconfiguring and rebuilding the hawkbit container. ::
-
-    docker run -dit \
-               --network=hawkbit-net \
-               --name srv-mariadb \
-               -e MYSQL_ROOT_PASSWORD=root-mysql \
-               -e MYSQL_USER=hawkbit \
-               -e MYSQL_PASSWORD=1234 \
-               -e MYSQL_DATABASE=hawkbit \
-               mariadb
-    docker run -dit --network=hawkbit-net --name srv-mongodb mongo:3.2
-    docker run -dit \
-               --network=hawkbit-net \
-               --name srv-rabbitmq \
-               --hostname srv-rabbitmq \
-               rabbitmq
-
-Now wait for all of the containers to finish initializing; 20 seconds
-or so should be enough.
-
-After its dependencies are created and have finished initializing,
-start the hawkBit container::
+Follow these instructions to run a demonstration grade hawkBit server.
 
     # If you build your own hawkbit docker image, use "hawkbit" instead of
     # "linarotechnologies/gitci-hawkbit-container" as the last argument.
-    docker run -dit \
-               --network=hawkbit-net \
-               --name hawkbit \
-               -p 8080:8080 \
-               -v secrets.properties:/srv/secret/secrets.properties \
-               linarotechnologies/gitci-hawkbit-container
-
-The secrets.properties file available in the repository is just an
-example, but it needs to at least match the values defined for the
-MariaDB container you started before. (If you pulled your hawkBit
-container from Docker Hub, obtain `secrets.properties from the
-gitci-hawkbit-container repository
-<https://raw.githubusercontent.com/linaro-technologies/gitci-hawkbit-container/master/secrets.properties>`_
-top-level).
-
-.. todo:: secrets.properties should be a versioned part of the release
+    docker run -dit --name hawkbit -p 8080:8080 linarotechnologies/hawkbit-update-server
 
 This container can take approximately 40 seconds for the application
 to start for the first time.
@@ -184,6 +116,10 @@ After logging in, your browser window should look like this:
    :align: center
    :alt: hawkBit Administrator Interface
 
+.. note:: You may want to adjust the device poll time in administrative
+  settings while working with this demonstration server where the default
+  time is set to 5 minutes.
+
 Your hawkBit container is now ready for use.
 
 2. Set up CloudMQTT
@@ -195,8 +131,8 @@ First, create a `CloudMQTT`_ account.
 
 .. note:: The free CloudMQTT plan is enough to run this demo.
 
-After logging in to your account, go to your `CloudMQTT Control
-Panel`_, and create a new instance. Then click on the "Details" button
+After logging in to your account, go to your `CloudMQTT Control Panel`_,
+and create a new instance. Then click on the "Details" button
 next to the new instance in your control panel. Record the following
 information about the instance:
 
@@ -205,32 +141,24 @@ information about the instance:
 - CLOUDMQTT_USER: the auto-generated username
 - CLOUDMQTT_PASSWORD: the auto-generated password
 
-3. Install Cerberus
--------------------
+3. Install the Linux MicroPlatform
+----------------------------------
 
 **Required Equipment**: IoT gateway and workstation to flash the board.
 
-Follow :ref:`cerberus-getting-started` to set up a `96Boards HiKey`_
+Follow :ref:`linux-getting-started` to set up a `96Boards HiKey`_
 gateway for container-based application deployment.
 
-If you don't have a HiKey, the Cerberus Getting Started Guide contains
-information for other boards, provided on a best-effort basis.
+If you don't have a HiKey, the Linux MicroPlatform Getting Started Guide
+contains information for other boards, provided on a best-effort basis.
 
-4. Set Up IoT Gateway
----------------------
+4. Set Up the Basic IoT Gateway
+-------------------------------
 
-**Required Equipment**: IoT gateway and workstation to run Ansible.
+Follow :ref:`big-getting-started` to setup a Basic IoT Gateway
 
-You'll now use Ansible to set up your IoT gateway to act as a network
-proxy for your IoT device to publish sensor data to CloudMQTT, and
-fetch updates from hawkBit.
-
-- First, `install Ansible`_, which will let you install and control
-  containers on your IoT gateway via SSH from your workstation.
-
-- If you don't already have one, you now need to create an SSH key on
-  your workstation. If you've never done this before, the `GitHub
-  guide to SSH keys`_ has useful instructions.
+a. configure networking for your IoT gateway device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Now connect your IoT gateway to the network.
 
@@ -259,6 +187,28 @@ fetch updates from hawkBit.
 
   Use the same gateway password from the previous step.
 
+b. Manually run the gateway containers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. todo:: add instructions for manually installing gateway containers
+
+c. Use ansible to manage the gateway containers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Required Equipment**: IoT gateway and workstation to run Ansible.
+
+You'll now use Ansible to set up your IoT gateway to act as a network
+proxy for your IoT device to publish sensor data to CloudMQTT, and
+fetch updates from hawkBit.
+
+- First, `install Ansible`_, which will let you install and control
+  containers on your IoT gateway via SSH from your workstation.
+
+- If you don't already have one, you now need to create an SSH key on
+  your workstation. If you've never done this before, the `GitHub
+  guide to SSH keys`_ has useful instructions.
+
+
 - Clone the ``gateway-ansible`` repository, which contains an Ansible
   playbook to set up the gateway for this system::
 
@@ -267,20 +217,24 @@ fetch updates from hawkBit.
 - From the ``gateway-ansible`` repository, deploy the gateway
   containers using the CloudMQTT information you recorded earlier::
 
-    ansible-playbook -e "mqttuser=CLOUDMQTT_USER mqttpass=CLOUDMQTT_PASSWORD mqtthost=CLOUDMQTT_SERVER mqttport=CLOUDMQTT_PORT gitci=WORKSTATION_IP_ADDRESS tag=latest-arm64" -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml --tags gateway
+    ansible-playbook -e "mqttuser=CLOUDMQTT_USER mqttpass=CLOUDMQTT_PASSWORD \
+                         mqtthost=CLOUDMQTT_SERVER mqttport=CLOUDMQTT_PORT \
+                         gitci=WORKSTATION_IP_ADDRESS tag=latest-arm64" \
+                     -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml
+                     --tags gateway
 
   WORKSTATION_IP_ADDRESS in the above command line is the IP address
   of the system which is running the hawkBit server you set up
   earlier.
 
-5. Install Genesis
-------------------
+5. Install RTOS MicroPlatform
+-----------------------------
 
-**Required Equipment**: workstation to install Genesis development
-environment, and IoT device to test installation.
+**Required Equipment**: workstation to install the RTOS MicroPlatform
+development environment, and IoT device to test installation.
 
-Install a Genesis development environment by following
-:ref:`genesis-getting-started`.
+Install a RTOS MicroPlatform development environment by following
+:ref:`rtos-getting-started`.
 
 6. Set Up IoT Device(s)
 -----------------------
@@ -297,8 +251,7 @@ demonstration application::
 .. include:: pyocd.include
 
 If you don't have a Nitrogen, information for other boards is provided
-on a best-effort basis in the :ref:`Appendix
-<dm-hawkbit-mqtt-appendix-devices>`.
+on a best-effort basis in the :ref:`Appendix <rtos-appendix-devices>`.
 
 Use the System
 ==============
@@ -348,7 +301,7 @@ encoded username:password pair, using the information in
 :ref:`dm-hawkbit-mqtt-appendix-hawkbit` page.
 
 Use this script to upload the signed application binary to your
-hawkBit server from the Genesis output directory if you built from
+hawkBit server from the RTOS MicroPlatform output directory if you built from
 source, or from the directory where you unpacked your binaries::
 
     python /path/to/hawkbit.py \
