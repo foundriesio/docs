@@ -33,7 +33,6 @@ Linux MicroPlatform can benefit from the latest changes.
 
    linux/index
 
-
 Basic IoT Gateway (BIG)
 -----------------------
 

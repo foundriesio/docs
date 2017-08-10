@@ -14,4 +14,3 @@ intentionally designed minimal distribution for embedded systems.
    :maxdepth: 1
 
    getting-started
-   
