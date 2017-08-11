@@ -251,7 +251,7 @@ demonstration application::
 .. include:: pyocd.include
 
 If you don't have a Nitrogen, information for other boards is provided
-on a best-effort basis in the :ref:`Appendix <rtos-appendix-devices>`.
+on a best-effort basis in :ref:`dm-hawkbit-mqtt-devices`.
 
 Use the System
 ==============

@@ -9,6 +9,49 @@
 This document contains additional information related to the
 :ref:`dm-hawkbit-mqtt-demo`.
 
+.. _dm-hawkbit-mqtt-devices:
+
+Additional IoT Devices
+----------------------
+
+96Boards Carbon
+~~~~~~~~~~~~~~~
+
+.. include:: carbon-bt.include
+
+Now run this from the RTOS MicroPlatform installation directory to
+build the main application::
+
+  ./genesis build -b 96b_carbon zephyr-fota-samples/dm-hawkbit-mqtt
+
+.. include:: dfu-util.include
+
+To flash the STM32, first put your Carbon into DFU mode again. Then,
+from the RTOS MicroPlatform installation directory, run::
+
+  ./genesis flash -b 96b_carbon zephyr-fota-samples/dm-hawkbit-mqtt
+
+FRDM-K64F
+~~~~~~~~~
+
+.. |frdm-k64f-net-file| replace::
+   ``zephyr-fota-samples/dm-hawkbit-mqtt/boards/frdm_k64f-local.conf``
+
+.. include:: frdm-k64f-net.include
+
+Now you can build the binaries. From the RTOS MicroPlatform
+installation directory::
+
+    ./genesis build -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
+
+.. include:: pyocd.include
+
+To flash the binaries, plug the K64F into your system via the USB
+connector labeled "SDA USB". Then, from the RTOS MicroPlatform installation
+directory::
+
+    ./genesis flash -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
+
 .. _dm-hawkbit-mqtt-appendix-hawkbit:
 
 Additional hawkBit Information
