@@ -88,6 +88,7 @@ Get prebuilt images
 Fetch the following files from the latest build for 96Boards HiKey:
 
 - `bootloader/hisi-idt.py`_
+- `bootloader/l-loader.bin`_
 - `bootloader/fip.bin`_
 - `bootloader/nvme.img`_
 - the ``boot-XXXX.uefi.img`` and
