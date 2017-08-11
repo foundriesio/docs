@@ -1,12 +1,12 @@
 .. highlight:: sh
 
-.. _rtos-getting-started:
+.. _zephyr-getting-started:
 
 Getting Started
 ===============
 
 All you need to get started is a development board supported by
-the RTOS MicroPlatform, a computer to develop on, and an Internet
+the Zephyr MicroPlatform, a computer to develop on, and an Internet
 connection.
 
 .. todo::
@@ -32,10 +32,10 @@ Here's what you'll need:
   on `Ubuntu <https://www.ubuntu.com/download/desktop>`_ 16.04. Mac OS
   X support will be added next, and Windows support is planned.)
 
-- A development board supported by the RTOS MicroPlatform. We recommend the
+- A development board supported by the Zephyr MicroPlatform. We recommend the
   `96Boards Nitrogen <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_.
 
-.. _rtos-install:
+.. _zephyr-install:
 
 Installation
 ------------
@@ -43,7 +43,7 @@ Installation
 .. _pip Installation:
    https://pip.pypa.io/en/stable/installing/
 
-1. Install the RTOS MicroPlatform's dependencies.
+1. Install the Zephyr MicroPlatform's dependencies.
 
    On Ubuntu, run::
 
@@ -51,7 +51,7 @@ Installation
      sudo apt-get update
      sudo apt-get install genesis-dev
 
-   (See :ref:`rtos-dependencies` for more information.)
+   (See :ref:`zephyr-dependencies` for more information.)
 
 #. Install the Zephyr SDK::
 
@@ -92,7 +92,7 @@ Installation
    If you don't have pip installed, see the `pip Installation`_
    documentation.
 
-   .. todo:: Delete if pyOCD gets bundled in the RTOS MicroPlatform
+   .. todo:: Delete if pyOCD gets bundled in the Zephyr MicroPlatform
              (https://trello.com/c/wQgewcdI).
 
    On Linux platforms, you also need to install the following udev
@@ -110,7 +110,7 @@ Installation
 #. Create a `GitHub <https://github.com/>`_ account if you don't have
    one already (it's free).
 
-   - Make sure you can see the `RTOS MicroPlatform SDK manifest repository
+   - Make sure you can see the `Zephyr MicroPlatform SDK manifest repository
      <https://github.com/linaro-technologies/genesis-sdk-manifest>`_
      when you're logged in.
 
@@ -124,7 +124,7 @@ Installation
    .. todo:: Handle the "public" versus "private" cases. The above is
              needed for the "private" case.
 
-#. Fetch the RTOS MicroPlatform repositories::
+#. Fetch the Zephyr MicroPlatform repositories::
 
      mkdir genesis && cd genesis
      repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
@@ -136,18 +136,18 @@ Installation
    .. note::
 
       If you're new to repo, the basic idea is that the manifest has
-      an XML file which describes where the RTOS MicroPlatform code,
+      an XML file which describes where the Zephyr MicroPlatform code,
       documentation, and other Git repositories are.
 
-      Running ``repo init`` with the RTOS MicroPlatform manifest sets up
-      the ``genesis`` directory to house the RTOS MicroPlatform
+      Running ``repo init`` with the Zephyr MicroPlatform manifest sets up
+      the ``genesis`` directory to house the Zephyr MicroPlatform
       repositories, and ``repo sync`` clones the repositories onto your
       computer.
 
 Build an Application
 --------------------
 
-Now that you've installed the RTOS MicroPlatform, it's time to build a
+Now that you've installed the Zephyr MicroPlatform, it's time to build a
 demonstration application.
 
 If you're using 96Boards Nitrogen, run this from the ``genesis``
@@ -162,9 +162,9 @@ If you're using another board, run this instead::
 Where ``your_board`` is Zephyr's name for your board. (Here's a `list
 of Zephyr boards
 <https://www.zephyrproject.org/doc/boards/boards.html>`_, but some of
-them may not work with the RTOS MicroPlatform.)
+them may not work with the Zephyr MicroPlatform.)
 
-(If you want to know more, see :ref:`rtos-build`.)
+(If you want to know more, see :ref:`zephyr-build`.)
 
 Flash the Application
 ---------------------
@@ -175,7 +175,7 @@ Flash the Application
 Now you'll flash the application to your board.
 
 If you're using 96Boards Nitrogen, plug it into your computer via USB,
-then run this from the the RTOS MicroPlatform directory::
+then run this from the the Zephyr MicroPlatform directory::
 
   ./genesis flash TODO-APP
 
@@ -217,7 +217,7 @@ If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
 115200 baud, and reset the chip.
 
-That's it! You've successfully installed the RTOS MicroPlatform, compiled an
+That's it! You've successfully installed the Zephyr MicroPlatform, compiled an
 application, flashed it to a device, and seen it work.
 
 Onwards!
@@ -229,27 +229,19 @@ You're now ready to take your next steps.
 
           Example of tutorials and reference docs:
 
-          - RTOS MicroPlatform overview (different projects with links to their
-            reference docs, how they tie together, e.g. description of
+          - Zephyr MicroPlatform overview (different projects with links to
+            their reference docs, how they tie together, e.g. description of
             boot process with links to mcuboot documentation).
           - Hardware peripheral tutorials (UART, SPI, etc.)
           - Internet connectivity with an Basic IoT Gateway
           - FOTA with hawkBit
 
-
-.. _rtos-development:
-
-Developing with the RTOS MicroPlatform
---------------------------------------
-
-.. todo:: akbakb
-
-.. _rtos-dependencies:
+.. _zephyr-dependencies:
 
 Appendix: Dependencies
 ----------------------
 
-Here is a list of dependencies needed to install the RTOS MicroPlatform
+Here is a list of dependencies needed to install the Zephyr MicroPlatform
 with these instructions, which may be useful on other development platforms.
 
 - `Git <https://git-scm.com/>`_
@@ -281,7 +273,7 @@ with these instructions, which may be useful on other development platforms.
    Since this tutorial is meant to help you get started, the binaries
    are signed with keys that aren't secret, and **are not suitable for
    production use**. When it's time to ship, see
-   :ref:`rtos-production-workflow` for more information.
+   :ref:`zephyr-production-workflow` for more information.
 
 .. [#serial]
 

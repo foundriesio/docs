@@ -196,14 +196,14 @@ fetch updates from hawkBit.
   of the system which is running the hawkBit server you set up
   earlier.
 
-5. Install RTOS MicroPlatform
------------------------------
+5. Install Zephyr MicroPlatform
+-------------------------------
 
-**Required Equipment**: workstation to install the RTOS MicroPlatform
+**Required Equipment**: workstation to install the Zephyr MicroPlatform
 development environment, and IoT device to test installation.
 
-Install an RTOS MicroPlatform development environment by following
-:ref:`rtos-getting-started`.
+Install an Zephyr MicroPlatform development environment by following
+:ref:`zephyr-getting-started`.
 
 6. Set Up IoT Device(s)
 -----------------------

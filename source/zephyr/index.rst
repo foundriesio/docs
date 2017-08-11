@@ -1,11 +1,11 @@
-.. _rtos-top:
+.. _zephyr-top:
 
-LTD RTOS MicroPlatform
-======================
+LTD Zephyr MicroPlatform
+========================
 
-The RTOS MicroPlatform is an extensible software and hardware platform that
+The Zephyr MicroPlatform is an extensible software and hardware platform that
 makes it easier to develop, secure, and maintain Internet-connected embedded
-devices. The RTOS MicroPlatform is based on the `Zephyr
+devices. The Zephyr MicroPlatform is based on the `Zephyr
 <https://www.zephyrproject.org/>`_ real-time operating system.
 
 .. toctree::

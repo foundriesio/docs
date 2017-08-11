@@ -19,7 +19,7 @@ Additional IoT Devices
 
 .. include:: carbon-bt.include
 
-Now run this from the RTOS MicroPlatform installation directory to
+Now run this from the Zephyr MicroPlatform installation directory to
 build the main application::
 
   ./genesis build -b 96b_carbon zephyr-fota-samples/dm-lwm2m
@@ -27,7 +27,7 @@ build the main application::
 .. include:: dfu-util.include
 
 To flash the STM32, first put your Carbon into DFU mode again. Then,
-from the RTOS MicroPlatform installation directory, run::
+from the Zephyr MicroPlatform installation directory, run::
 
   ./genesis flash -b 96b_carbon zephyr-fota-samples/dm-lwm2m
 
@@ -48,7 +48,7 @@ like this after the other networking configuration:
 
    CONFIG_LWM2M_FIRMWARE_UPDATE_PULL_COAP_PROXY_ADDR="L.M.N.O"
 
-Now you can build the binaries. From the RTOS MicroPlatform
+Now you can build the binaries. From the Zephyr MicroPlatform
 installation directory::
 
     ./genesis build -b frdm_k64f zephyr-fota-samples/dm-lwm2m
@@ -56,7 +56,7 @@ installation directory::
 .. include:: pyocd.include
 
 To flash the binaries, plug the K64F into your system via the USB
-connector labeled "SDA USB". Then, from the RTOS MicroPlatform installation
+connector labeled "SDA USB". Then, from the Zephyr MicroPlatform installation
 directory::
 
     ./genesis flash -b frdm_k64f zephyr-fota-samples/dm-lwm2m

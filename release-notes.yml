@@ -6,7 +6,7 @@ summary: |
  This release includes mcuboot version 0.9.0, and a Zephyr snapshot
  from the 1.9 development cycle with improved mcuboot integration.
 parts:
-  - name: RTOS MicroPlatform
+  - name: Zephyr MicroPlatform
     summary: |
       This release includes mcuboot version 0.9.0, the first released
       version of mcuboot.

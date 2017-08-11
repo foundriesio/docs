@@ -3,19 +3,19 @@ Linaro Technologies Division (LTD)
 
 This is the documentation for the Linaro Technologies Division.
 
-RTOS MicroPlatform
-------------------
+Zephyr MicroPlatform
+--------------------
 
-The :ref:`rtos-top` is an extensible software and hardware platform
+The :ref:`zephyr-top` is an extensible software and hardware platform
 that makes it easier to develop, secure, and maintain
-Internet-connected embedded devices. The RTOS MicroPlatform is based
+Internet-connected embedded devices. The Zephyr MicroPlatform is based
 on the `Zephyr <https://www.zephyrproject.org/>`_ real-time operating
 system.
 
 .. toctree::
    :hidden:
 
-   rtos/index
+   zephyr/index
 
 Linux MicroPlatform
 -------------------
@@ -50,7 +50,7 @@ such as IPv6/IPv4 routing and MQTT message brokering.
 End-to-end Opensource IoT Demonstrations Systems
 ------------------------------------------------
 
-:ref:`iotfoundry-top` shows you how to combine the RTOS MicroPlatform
+:ref:`iotfoundry-top` shows you how to combine the Zephyr MicroPlatform
 and the Linux MicroPlatform along with server/cloud applications to
 create complete systems.
 
@@ -72,7 +72,7 @@ firmware.
 
 .. todo::
 
-   Add "advanced and special topics" RTOS MicroPlatform docs:
+   Add "advanced and special topics" Zephyr MicroPlatform docs:
 
    - Support a new device
    - Build developer docs

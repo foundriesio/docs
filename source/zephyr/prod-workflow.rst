@@ -1,4 +1,4 @@
-.. _rtos-production-workflow:
+.. _zephyr-production-workflow:
 
 Production Workflows
 ====================
