@@ -4,7 +4,7 @@ Development Workflows
 =====================
 
 This page describes the workflows for developing and deploying
-embedded applications with RTOS MicroPlatform. It assumes that RTOS
+embedded applications with the RTOS MicroPlatform. It assumes that the RTOS
 MicroPlatform has successfully been installed as described in
 :ref:`rtos-getting-started`.
 
@@ -16,7 +16,7 @@ Helper Script
 After installing the RTOS MicroPlatform repositories and build environment, the
 Zephyr and mcuboot build systems and other tools can be used
 directly. However, these interfaces can be hard to use when first
-developing applications. For this reason, RTOS MicroPlatform provides a helper
+developing applications. For this reason, the RTOS MicroPlatform provides a helper
 script, also named ``genesis``, which provides a higher-level
 interface.
 
@@ -252,13 +252,13 @@ Use Repo to Manage Git Repositories
 
 .. note::
 
-   After first installing RTOS MicroPlatform, use of Repo is optional.  Since
-   Repo is essentially a wrapper around Git, it's possible to use
+   After first installing the RTOS MicroPlatform, use of Repo is optional.
+   Since Repo is essentially a wrapper around Git, it's possible to use
    ``git`` commands directly in individual repositories as well.
 
-RTOS MicroPlatform uses the Repo tool to manage its Git repositories. In
+The RTOS MicroPlatform uses the Repo tool to manage its Git repositories. In
 :ref:`rtos-install`, you used this tool to clone these Git
-repositories into a RTOS MicroPlatform installation directory on a development
+repositories into an RTOS MicroPlatform installation directory on a development
 computer.
 
 After the installation, you can continue to use Repo to manage local
@@ -275,9 +275,9 @@ branches and fetch upstream changes.  Importantly, you can use:
 
 See the `Repo command reference
 <https://source.android.com/source/using-repo>`_ for more details.
-However, note that because **RTOS MicroPlatform does not use Gerrit** as a Git
-repository server, repo commands which expect a Gerrit server are not
-applicable to a RTOS MicroPlatform installation. For example, instead of using
+However, note that because the **RTOS MicroPlatform does not use Gerrit** as a
+Git repository server, repo commands which expect a Gerrit server are not
+applicable to an RTOS MicroPlatform installation. For example, instead of using
 ``repo upload``, use ``git push``.
 
 You can also run ``repo help <command>`` to get usage for each repo
@@ -303,7 +303,7 @@ sync``.
 
    ``genesis flash`` exists because the Zephyr ``make flash`` target
    currently only allows flashing a single application binary to a
-   board at a fixed address. This is not sufficient for RTOS MicroPlatform,
+   board at a fixed address. This is not sufficient for the RTOS MicroPlatform,
    which has a more complex flashing process due to the presence of a
    bootloader and an application, which must be flashed in different
    locations.

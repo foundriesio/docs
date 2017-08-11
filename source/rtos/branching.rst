@@ -200,7 +200,7 @@ current month's snapshot branch. All updates to remote repositories
 will be fast-forward changes only. However, **updates will stop after
 the month ends** and trunk development continues on new branches.
 
-You can continue using RTOS MicroPlatform at your site for as long as you'd
+You can continue using the RTOS MicroPlatform at your site for as long as you'd
 like, even when you're using a monthly snapshot manifest branch. However, to
 fetch new updates from Linaro Technologies Division after the month
 ends, you need to update your manifest repository to sync from more
@@ -254,9 +254,8 @@ We don't currently take baseline commits in any LTD branches from
 upstream release branches. That is, both trunk development and monthly
 snapshots are based on commits in upstream master branches.
 
-However, RTOS MicroPlatform may cherry-pick or otherwise merge in changes that
-went to upstream release branches during mainline development, which
-then end up in that month's snapshot branch.
+However, changes from upstream release branches may be cherry-picked
+or otherwise merged into monthly snapshot branches.
 
 .. _rtos-branching-sauce:
 
@@ -368,20 +367,20 @@ Appendix: Branch Management Rationale
 
 This section provides a rationale for why these rules exist.
 
-There are two "types" of repository in a RTOS MicroPlatform installation:
+There are two "types" of repository in an RTOS MicroPlatform installation:
 
 - Projects which have an external upstream, namely Zephyr and
   mcuboot.
-- Projects which are developed for RTOS MicroPlatform, and which have no
+- Projects which are developed for the RTOS MicroPlatform, and which have no
   external upstream, like the one containing the documentation you're reading
   now.
 
 Rather than cloning the upstream versions of the Zephyr and mcuboot
-repositories in a RTOS MicroPlatform installation, Linaro Technologies Division
-maintains its own trees. This is for two reasons.
+repositories in an RTOS MicroPlatform installation, Linaro Technologies
+Division maintains its own trees. This is for two reasons.
 
 1. It allows us to keep track of known-good revisions that work well
-   with RTOS MicroPlatform.
+   with the RTOS MicroPlatform.
 
 2. It gives us a place to carry out our own internal development on
    these repositories.
@@ -403,12 +402,13 @@ things working smoothly over time.
 
 The branching rules manage development in a way that allows:
 
-- RTOS MicroPlatform users to see clearly what the differences are between the
+- Users to see clearly what the differences are between the
   upstream and RTOS MicroPlatform versions of each repository,
-- RTOS MicroPlatform developers to stage local and integrate upstream changes,
+- Developers to stage local and integrate upstream changes into
+  RTOS Microplatform branches,
 - Continuous Integration to track versions which should work together
   for testing and test report generation,
-- RTOS MicroPlatform snapshots and releases to track the state of development
+- Snapshots and releases to track the state of development
   over time, allowing comparisons between versions.
 
 .. _repo init:

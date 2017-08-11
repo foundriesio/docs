@@ -202,7 +202,7 @@ fetch updates from hawkBit.
 **Required Equipment**: workstation to install the RTOS MicroPlatform
 development environment, and IoT device to test installation.
 
-Install a RTOS MicroPlatform development environment by following
+Install an RTOS MicroPlatform development environment by following
 :ref:`rtos-getting-started`.
 
 6. Set Up IoT Device(s)

@@ -233,7 +233,7 @@ fetch updates from hawkBit.
 **Required Equipment**: workstation to install the RTOS MicroPlatform
 development environment, and IoT device to test installation.
 
-Install a RTOS MicroPlatform development environment by following
+Install an RTOS MicroPlatform development environment by following
 :ref:`rtos-getting-started`.
 
 6. Set Up IoT Device(s)
@@ -301,7 +301,7 @@ encoded username:password pair, using the information in
 :ref:`dm-hawkbit-mqtt-appendix-hawkbit` page.
 
 Use this script to upload the signed application binary to your
-hawkBit server from the RTOS MicroPlatform output directory if you built from
+hawkBit server from the output directory if you built from
 source, or from the directory where you unpacked your binaries::
 
     python /path/to/hawkbit.py \

@@ -6,7 +6,7 @@ Getting Started
 ===============
 
 All you need to get started is a development board supported by
-the LTD RTOS MicroPlatform, a computer to develop on, and an Internet
+the RTOS MicroPlatform, a computer to develop on, and an Internet
 connection.
 
 .. todo::
@@ -32,7 +32,7 @@ Here's what you'll need:
   on `Ubuntu <https://www.ubuntu.com/download/desktop>`_ 16.04. Mac OS
   X support will be added next, and Windows support is planned.)
 
-- A development board supported by RTOS MicroPlatform. We recommend the
+- A development board supported by the RTOS MicroPlatform. We recommend the
   `96Boards Nitrogen <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_.
 
 .. _rtos-install:
@@ -43,7 +43,7 @@ Installation
 .. _pip Installation:
    https://pip.pypa.io/en/stable/installing/
 
-1. Install the LTD RTOS MicroPlatform's dependencies.
+1. Install the RTOS MicroPlatform's dependencies.
 
    On Ubuntu, run::
 
@@ -124,7 +124,7 @@ Installation
    .. todo:: Handle the "public" versus "private" cases. The above is
              needed for the "private" case.
 
-#. Fetch the LTD RTOS MicroPlatform repositories::
+#. Fetch the RTOS MicroPlatform repositories::
 
      mkdir genesis && cd genesis
      repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
@@ -139,15 +139,15 @@ Installation
       an XML file which describes where the RTOS MicroPlatform code,
       documentation, and other Git repositories are.
 
-      Running ``repo init`` with the LTD RTOS MicroPlatform manifest sets up
-      the ``genesis`` directory to house the the LTD RTOS MicroPlatform
+      Running ``repo init`` with the RTOS MicroPlatform manifest sets up
+      the ``genesis`` directory to house the RTOS MicroPlatform
       repositories, and ``repo sync`` clones the repositories onto your
       computer.
 
 Build an Application
 --------------------
 
-Now that you've installed RTOS MicroPlatform, it's time to build a
+Now that you've installed the RTOS MicroPlatform, it's time to build a
 demonstration application.
 
 If you're using 96Boards Nitrogen, run this from the ``genesis``
@@ -175,7 +175,7 @@ Flash the Application
 Now you'll flash the application to your board.
 
 If you're using 96Boards Nitrogen, plug it into your computer via USB,
-then run this from the the LTD RTOS MicroPlatform directory::
+then run this from the the RTOS MicroPlatform directory::
 
   ./genesis flash TODO-APP
 
@@ -217,7 +217,7 @@ If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
 115200 baud, and reset the chip.
 
-That's it! You've successfully installed RTOS MicroPlatform, compiled an
+That's it! You've successfully installed the RTOS MicroPlatform, compiled an
 application, flashed it to a device, and seen it work.
 
 Onwards!
@@ -239,8 +239,8 @@ You're now ready to take your next steps.
 
 .. _rtos-development:
 
-Developing with RTOS MicroPlatform
-----------------------------------
+Developing with the RTOS MicroPlatform
+--------------------------------------
 
 .. todo:: akbakb
 
@@ -249,7 +249,7 @@ Developing with RTOS MicroPlatform
 Appendix: Dependencies
 ----------------------
 
-Here is a list of dependencies needed to install the LTD RTOS MicroPlatform
+Here is a list of dependencies needed to install the RTOS MicroPlatform
 with these instructions, which may be useful on other development platforms.
 
 - `Git <https://git-scm.com/>`_
