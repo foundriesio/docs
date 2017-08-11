@@ -99,45 +99,5 @@ The following is an example of the output from this command::
 Write down all of the "Linaro IPSP node" Bluetooth addresses, as you
 will need these for the next steps.
 
-
-.. _pySerial:
-   https://pythonhosted.org/pyserial/pyserial.html#installation
-
-.. _FTDI drivers:
-   http://www.ftdichip.com/FTDrivers.htm
-
-.. _Android SDK Platform Tools for Windows:
-   https://dl.google.com/android/repository/platform-tools-latest-windows.zip
-
-.. _Android SDK Platform Tools for Mac:
-   https://dl.google.com/android/repository/platform-tools-latest-darwin.zip
-
-.. _Android SDK Platform Tools for Linux:
-   https://dl.google.com/android/repository/platform-tools-latest-linux.zip
-
-.. _Ansible release for OS X:
-   http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx
-
-.. _bootloader/hisi-idt.py:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/bootloader/hisi-idt.py
-
-.. _bootloader/l-loader.bin:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/bootloader/l-loader.bin
-
-.. _bootloader/fip.bin:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/bootloader/fip.bin
-
-.. _bootloader/nvme.img:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/bootloader/nvme.img
-
-.. _latest HiKey build artifacts:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/
-
-.. _builds for other boards:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/
-
-.. _HiKey board recovery documentation:
-   https://github.com/96boards/documentation/blob/master/ConsumerEdition/HiKey/Installation/BoardRecovery.md#set-board-link-options
-
 .. _gateway-containers README.md:
    https://github.com/linaro-technologies/gateway-containers/blob/master/README.md
