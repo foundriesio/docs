@@ -172,6 +172,8 @@ For more information on Kconfig in Zephyr, see `Configuration Options
 Reference Guide
 <https://www.zephyrproject.org/doc/reference/kconfig/index.html>`_.
 
+.. _rtos-flash:
+
 Flash an Application to a Device: ``genesis flash``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

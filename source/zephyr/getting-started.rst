@@ -11,15 +11,6 @@ connection.
 
 .. todo::
 
-   Replace TODO-APP with an appropriate sample app. Using one of the
-   mcuboot sample apps would be a good starting point, once they can
-   be built for all supported Zephyr boards.
-
-   (Don't use dm-fota-hawkbit: setting up a gateway, Hawkbit server,
-   etc. is too much to ask from first-time users.)
-
-.. todo::
-
    Add link to a top-level "supported boards" page when that's
    ready. We can repurpose the device-support directory for that.
 
@@ -150,14 +141,19 @@ Build an Application
 Now that you've installed the Zephyr MicroPlatform, it's time to build a
 demonstration application.
 
+Since one of the main features of the MicroPlatform is making it easy
+to build application binaries which are cryptographically checked by
+mcuboot, a secure bootloader, you'll first build a simple "Hello
+World" application provided by mcuboot.
+
 If you're using 96Boards Nitrogen, run this from the ``genesis``
 directory you made earlier::
 
-  ./genesis build TODO-APP
+  ./genesis build mcuboot/samples/zephyr/hello-world
 
 If you're using another board, run this instead::
 
-  ./genesis build -b your_board TODO-APP
+  ./genesis build -b your_board mcuboot/samples/zephyr/hello-world
 
 Where ``your_board`` is Zephyr's name for your board. (Here's a `list
 of Zephyr boards
@@ -169,35 +165,26 @@ them may not work with the Zephyr MicroPlatform.)
 Flash the Application
 ---------------------
 
-.. warning:: This functionality isn't supported yet, but will work
-             this way when it's ready.
-
 Now you'll flash the application to your board.
 
 If you're using 96Boards Nitrogen, plug it into your computer via USB,
 then run this from the the Zephyr MicroPlatform directory::
 
-  ./genesis flash TODO-APP
+  ./genesis flash mcuboot/samples/zephyr/hello-world
 
 If you're using another board, make sure it's connected, and use this
 instead::
 
-  ./genesis flash -b your_board TODO-APP
+  ./genesis flash -b your_board mcuboot/samples/zephyr/hello-world
 
 Congratulations; you've just flashed a bootloader and
 cryptographically signed application binaries\ [#signatures]_ you
 built in the previous step onto your board!
 
-From now on, when you power on or reset the board, the bootloader will
-run first. It will check the signature on the application binary.  If
-the signature is valid for the given binary, will run the application
-itself.
+(If you want to know more, see :ref:`rtos-flash`.)
 
 Test the Application
 --------------------
-
-.. Note that this section doesn't apply if you're using
-   zephyr-fota-hawkbit.
 
 You're now ready to test the application itself.
 
@@ -211,7 +198,33 @@ If you're using a 96Boards Nitrogen:
   [#serial]_ at 115200 baud.
 - Reset the chip by pressing the RST button on the board.
 
-You should see the message printed in the serial console.
+You should see some messages printed in the serial console.
+
+When you power on or reset the board:
+
+#. The mcuboot bootloader runs first, and checks the cryptographic
+   signature on the application binary.
+
+#. If the signature is valid for the given binary, will run the
+   application itself.
+
+#. The application you just built will print a "Hello World" message
+   on screen.
+
+The combined output looks like this:
+
+.. code-block:: none
+
+   [MCUBOOT] [INF] main: Starting bootloader
+   [MCUBOOT] [INF] boot_status_source: Image 0: magic=good, copy_done=0xff, image_ok=0xff
+   [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x23, image_ok=0xff
+   [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
+   [MCUBOOT] [INF] boot_swap_type: Swap type: none
+   [MCUBOOT] [INF] main: Bootloader chainload address offset: 0x8000
+   [MCUBOOT] [WRN] zephyr_flash_area_warn_on_open: area 1 has 1 users
+   [MCUBOOT] [INF] main: Jumping to the first image slot
+   ***** BOOTING ZEPHYR OS v1.8.99 - BUILD: Aug 15 2017 19:41:06 *****
+   Hello World from Zephyr on 96b_nitrogen!
 
 If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
