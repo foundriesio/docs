@@ -8,11 +8,11 @@ Getting Started
 All you need to get started is a gateway device supported by the LTD Basic
 IoT Gateway, a computer, and an Internet connection.
 
-Start with a base Linux MicroPlatform
+Start with a base Linux microPlatform
 -------------------------------------
 
 follow the instructions to setup your target hardware with the Linux
-MicroPlatform software following the instructions at
+microPlatform software following the instructions at
 :ref:`linux-getting-started`.
 
 Boot the Board
@@ -47,9 +47,9 @@ Load Gateway Containers
 
 Now to deploy some key containerized applications to your device.
 
-One of the greatest advantages of using the Linux MicroPlatform is that it
+One of the greatest advantages of using the Linux microPlatform is that it
 makes it easier to deploy and manage container-based applications. What's more,
-unlike other container-based embedded device platforms, the Linux MicroPlatform
+unlike other container-based embedded device platforms, the Linux microPlatform
 allows you to deploy **multiple applications to the same gateway, each
 running at the same time in its own container**. This is called
 **multitenancy**.

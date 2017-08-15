@@ -3,12 +3,12 @@ Linaro Technologies Division (LTD)
 
 This is the documentation for the Linaro Technologies Division.
 
-Zephyr MicroPlatform
+Zephyr microPlatform
 --------------------
 
 The :ref:`zephyr-top` is an extensible software and hardware platform
 that makes it easier to develop, secure, and maintain
-Internet-connected embedded devices. The Zephyr MicroPlatform is based
+Internet-connected embedded devices. The Zephyr microPlatform is based
 on the `Zephyr <https://www.zephyrproject.org/>`_ real-time operating
 system.
 
@@ -17,17 +17,17 @@ system.
 
    zephyr/index
 
-Linux MicroPlatform
+Linux microPlatform
 -------------------
 
 The :ref:`linux-top` is a minimal Linux distribution for deploying and
 managing multi-tenant, containerized applications on Linux devices.
-The Linux MicroPlatform is built using OpenEmbedded and adding a
+The Linux microPlatform is built using OpenEmbedded and adding a
 select set of board support package layers for enabling some popular
 development boards.  Though the Linux kernel and software used for any
-on of the MicroPlatform builds may contain out-of-tree patches or
+on of the microPlatform builds may contain out-of-tree patches or
 features, a fundamental goal is to run as close to the tip, or latest
-software, as possible so that users of the Linux MicroPlatform can
+software, as possible so that users of the Linux microPlatform can
 benefit from the latest changes.
 
 .. toctree::
@@ -38,7 +38,7 @@ benefit from the latest changes.
 Basic IoT Gateway (BIG)
 -----------------------
 
-The :ref:`basic-iot-gateway-top` is built from the Linux MicroPlatform
+The :ref:`basic-iot-gateway-top` is built from the Linux microPlatform
 and specific containers are added to enable gateway functionality,
 such as IPv6/IPv4 routing and MQTT message brokering.
 
@@ -50,8 +50,8 @@ such as IPv6/IPv4 routing and MQTT message brokering.
 End-to-end Opensource IoT Demonstrations Systems
 ------------------------------------------------
 
-:ref:`iotfoundry-top` shows you how to combine the Zephyr MicroPlatform
-and the Linux MicroPlatform along with server/cloud applications to
+:ref:`iotfoundry-top` shows you how to combine the Zephyr microPlatform
+and the Linux microPlatform along with server/cloud applications to
 create complete systems.
 
 With these systems, you can publish sensor data from devices to the
@@ -72,7 +72,7 @@ firmware.
 
 .. todo::
 
-   Add "advanced and special topics" Zephyr MicroPlatform docs:
+   Add "advanced and special topics" Zephyr microPlatform docs:
 
    - Support a new device
    - Build developer docs

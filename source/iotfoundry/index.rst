@@ -5,9 +5,9 @@ End-to-end Demonstration Systems
 
 In order to provide fully-connected end-to-end IoT Platforms, we have created
 the IoT Foundry.  The IoT Foundry is comprised of Cloud data and device
-management systems, a Basic IoT Gateway based on the Linux MicroPlatform and
+management systems, a Basic IoT Gateway based on the Linux microPlatform and
 Devices running the appropriate protocols for communicating to the Cloud
-systems running Zephyr MicroPlatform software.  We continuously test, maintain
+systems running Zephyr microPlatform software.  We continuously test, maintain
 and keep syncronization with the upstream projects the entire demo systems.
 
 The two end-to-end demonstration systems we currently support are:

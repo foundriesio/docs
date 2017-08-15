@@ -11,7 +11,7 @@ which depends on your local network:
 - Whether the board should use DHCP, or a static IP address
 
 This information must be written to the file |frdm-k64f-net-file|
-in the Zephyr MicroPlatform installation directory.
+in the Zephyr microPlatform installation directory.
 
 To use DHCP, with gateway IP address A.B.C.D, create the file with the
 following contents.

@@ -20,7 +20,7 @@ is the secondary chip which needs to be flashed first to provide
 Bluetooth to the STM32, which doesn't support it on its own.
 
 Build the application for the secondary chip from the
-Zephyr MicroPlatform installation directory:
+Zephyr microPlatform installation directory:
 
 .. code-block:: console
 

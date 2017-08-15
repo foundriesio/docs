@@ -4,8 +4,8 @@ Development Workflows
 =====================
 
 This page describes the workflows for developing and deploying
-embedded applications with the Zephyr MicroPlatform. It assumes that the
-Zephyr MicroPlatform has successfully been installed as described in
+embedded applications with the Zephyr microPlatform. It assumes that the
+Zephyr microPlatform has successfully been installed as described in
 :ref:`zephyr-getting-started`.
 
 .. _zephyr-development-workflow:
@@ -13,17 +13,17 @@ Zephyr MicroPlatform has successfully been installed as described in
 Helper Script
 -------------
 
-After installing the Zephyr MicroPlatform repositories and build environment,
+After installing the Zephyr microPlatform repositories and build environment,
 the Zephyr and mcuboot build systems and other tools can be used
 directly. However, these interfaces can be hard to use when first developing
-applications. For this reason, the Zephyr MicroPlatform provides a helper
+applications. For this reason, the Zephyr microPlatform provides a helper
 script, also named ``genesis``, which provides a higher-level
 interface.
 
-The ``genesis`` utility is installed into the root of the Zephyr MicroPlatform
+The ``genesis`` utility is installed into the root of the Zephyr microPlatform
 tree by ``repo sync``. It accepts multiple commands useful during
 development; they are documented below. Run ``./genesis -h`` from the
-Zephyr MicroPlatform installation directory for additional information.
+Zephyr microPlatform installation directory for additional information.
 
 .. _zephyr-build:
 
@@ -32,7 +32,7 @@ Build an Application: ``genesis build``
 
 .. warning::
 
-   By default, mcuboot binaries and Zephyr MicroPlatform applications are built
+   By default, mcuboot binaries and Zephyr microPlatform applications are built
    and signed with development keys which are not secret. While this makes
    development and testing more convenient, it is not suitable for
    production. See :ref:`zephyr-production-workflow` for more
@@ -50,24 +50,24 @@ Build an Application: ``genesis build``
    https://projects.linaro.org/browse/LITE-147
 
 The top-level command is ``genesis build``. By default, it takes a
-path to an application inside the Zephyr MicroPlatform installation directory,
+path to an application inside the Zephyr microPlatform installation directory,
 and builds a signed application image, as well as an mcuboot binary
 capable of loading that application image. (The default behavior can
 be changed through various options.)
 
-To get help, run this from the Zephyr MicroPlatform root directory::
+To get help, run this from the Zephyr microPlatform root directory::
 
     ./genesis build -h
 
 The ``genesis build`` command always builds out of tree; that is,
 build artifacts are never generated in the source code directories. By
-default, they are stored under ``outdir`` in the Zephyr MicroPlatform top-level
+default, they are stored under ``outdir`` in the Zephyr microPlatform top-level
 directory.
 
 Examples:
 
 - To build an application ``some-application`` available in the
-  Zephyr MicroPlatform tree, targeting the default board (96b_nitrogen)::
+  Zephyr microPlatform tree, targeting the default board (96b_nitrogen)::
 
       ./genesis build some-application
 
@@ -146,7 +146,7 @@ The top-level command is ``genesis configure``.
 create the build directory, which contains the configuration
 database.**
 
-To get help, run this from the Zephyr MicroPlatform root directory::
+To get help, run this from the Zephyr microPlatform root directory::
 
     ./genesis configure -h
 
@@ -190,7 +190,7 @@ described in its `Zephyr documentation
 <https://www.zephyrproject.org/doc/boards/boards.html>`_\
 [#zephyrflash]_.
 
-To get help, run this from the Zephyr MicroPlatform root directory::
+To get help, run this from the Zephyr microPlatform root directory::
 
   ./genesis flash -h
 
@@ -254,33 +254,33 @@ Use Repo to Manage Git Repositories
 
 .. note::
 
-   After first installing the Zephyr MicroPlatform, use of Repo is optional.
+   After first installing the Zephyr microPlatform, use of Repo is optional.
    Since Repo is essentially a wrapper around Git, it's possible to use
    ``git`` commands directly in individual repositories as well.
 
-The Zephyr MicroPlatform uses the Repo tool to manage its Git repositories. In
+The Zephyr microPlatform uses the Repo tool to manage its Git repositories. In
 :ref:`zephyr-install`, you used this tool to clone these Git
-repositories into an Zephyr MicroPlatform installation directory on a
+repositories into an Zephyr microPlatform installation directory on a
 developmentcomputer.
 
 After the installation, you can continue to use Repo to manage local
 branches and fetch upstream changes.  Importantly, you can use:
 
 - ``repo start`` to create local Git branches in multiple repositories.
-- ``repo status`` to get status output about each Zephyr MicroPlatform
+- ``repo status`` to get status output about each Zephyr microPlatform
   repository (this is similar to ``git status``, but operates on all
   repositories).
 - ``repo diff`` to get a diff of unstaged changes in each Git repository
   (this is similar to ``git diff``, but operates on all repositories).
-- ``repo sync`` to fetch remote changes from all Zephyr MicroPlatform
+- ``repo sync`` to fetch remote changes from all Zephyr microPlatform
   repositories, and rebase local Git branches on top of them (alternatively,
   use ``repo sync -n`` to fetch changes only, without rebasing).
 
 See the `Repo command reference
 <https://source.android.com/source/using-repo>`_ for more details.
-However, note that because the **Zephyr MicroPlatform does not use Gerrit** as
+However, note that because the **Zephyr microPlatform does not use Gerrit** as
 a Git repository server, repo commands which expect a Gerrit server are not
-applicable to an Zephyr MicroPlatform installation. For example, instead of
+applicable to an Zephyr microPlatform installation. For example, instead of
 using ``repo upload``, use ``git push``.
 
 You can also run ``repo help <command>`` to get usage for each repo
@@ -307,6 +307,6 @@ sync``.
    ``genesis flash`` exists because the Zephyr ``make flash`` target
    currently only allows flashing a single application binary to a
    board at a fixed address. This is not sufficient for the
-   Zephyr MicroPlatform, which has a more complex flashing process due to the
+   Zephyr microPlatform, which has a more complex flashing process due to the
    presence of a bootloader and an application, which must be flashed in
    different locations.

@@ -6,7 +6,7 @@ Branch Management
 .. todo:: Add a few good diagrams.
 
 This document defines the rules governing the branches in the
-Zephyr MicroPlatform Git repositories, and what you can expect from them.
+Zephyr microPlatform Git repositories, and what you can expect from them.
 
 Why Have Branching Rules?
 -------------------------
@@ -18,33 +18,33 @@ The details are given below in :ref:`zephyr-branching-rationale`.
 
 .. _zephyr-branching-repo:
 
-Zephyr MicroPlatform and Repo Primer
+Zephyr microPlatform and Repo Primer
 ------------------------------------
 
-Below sections describe the branches in the Zephyr MicroPlatform manifest and
+Below sections describe the branches in the Zephyr microPlatform manifest and
 source code repositories, and how they are related. Before getting
-there, this section gives some background on how the Zephyr MicroPlatform uses
+there, this section gives some background on how the Zephyr microPlatform uses
 Repo, which may make that explanation clearer.
 
-As described in :ref:`zephyr-getting-started`, every Zephyr MicroPlatform
+As described in :ref:`zephyr-getting-started`, every Zephyr microPlatform
 installation contains multiple `Git <https://git-scm.com/>`_
 repositories, which are managed by a *manifest file* in a `Repo
 <https://gerrit.googlesource.com/git-repo/>`_ *manifest repository*.
 
 The name of the manifest repository is ``genesis-sdk-manifest``. It's
 a Git repository, just like any of the source code repositories. While
-installing the Zephyr MicroPlatform, you passed `repo init`_ a URL for the
+installing the Zephyr microPlatform, you passed `repo init`_ a URL for the
 manifest repository.  The manifest repository is special, in that it contains
 an XML manifest file, named ``manifest.xml``, which describes all of
-the other Git repositories in the Zephyr MicroPlatform installation. After ``repo
+the other Git repositories in the Zephyr microPlatform installation. After ``repo
 init``, you ran `repo sync`_, which parsed the manifest file and
-cloned all of the other Zephyr MicroPlatform repositories as instructed by its
+cloned all of the other Zephyr microPlatform repositories as instructed by its
 contents.
 
 The manifest file contains:
 
 - a list of *remotes*, each of which specifies a base URL where other
-  Zephyr MicroPlatform Git repositories are hosted.
+  Zephyr microPlatform Git repositories are hosted.
 - a list of *projects*, each of which specifies a Git repository to
   clone, along with a remote to pull it from, and a revision to check
   out in the local clone.
@@ -53,7 +53,7 @@ An example manifest repository, its manifest file, and the manifest
 file's contents are as follows.
 
 .. figure:: /_static/zephyr/manifest-example.svg
-   :alt: Example Zephyr MicroPlatform manifest.
+   :alt: Example Zephyr microPlatform manifest.
 
 Since the ``genesis-sdk-manifest`` repository is a Git repository, it
 can, and does, contain multiple branches:
@@ -65,11 +65,11 @@ can, and does, contain multiple branches:
 
 For example, the ``17.05`` monthly snapshot branch in the manifest
 repository contains a manifest file which tracks the work done in May
-2017 for the Zephyr MicroPlatform source code repositories. Similarly, the
+2017 for the Zephyr microPlatform source code repositories. Similarly, the
 ``17.06`` branch in the manifest repository contains a manifest
 tracking June 2017.
 
-The other (non-manifest) Zephyr MicroPlatform Git repositories have branches
+The other (non-manifest) Zephyr microPlatform Git repositories have branches
 named ``ltd-YY.MM``. These contain development work for month MM of year YY.
 
 .. _zephyr-branching-trunk:
@@ -83,13 +83,13 @@ Trunk Development
 
    - The ``master`` branch in the :ref:`manifest repository
      <zephyr-branching-repo>` tracks the **latest** monthly ``ltd-YY.MM``
-     branches in the other Zephyr MicroPlatform repositories.
+     branches in the other Zephyr microPlatform repositories.
 
-   - Each month, Zephyr MicroPlatform repositories with upstreams, like Zephyr
+   - Each month, Zephyr microPlatform repositories with upstreams, like Zephyr
      and mcuboot, **will** `rebase`_ **onto new upstream baseline
      commits** when new monthly branches are cut.
 
-   - Currently, updates to Zephyr MicroPlatform repositories without upstreams
+   - Currently, updates to Zephyr microPlatform repositories without upstreams
      are always `fast-forward`_, even when new branches are cut. However,
      in the future, these may also rebase.
 
@@ -99,7 +99,7 @@ development.
 
 .. highlight:: sh
 
-Thus, to check out the very latest Zephyr MicroPlatform, you can run::
+Thus, to check out the very latest Zephyr microPlatform, you can run::
 
   mkdir genesis && cd genesis
   repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
@@ -145,14 +145,14 @@ look like this::
   </manifest>
 
 Running ``repo sync`` after this happens fetches and synchronizes your
-local trees with the ``ltd-17.06`` branches in each of the Zephyr MicroPlatform
+local trees with the ``ltd-17.06`` branches in each of the Zephyr microPlatform
 projects named in the manifest. (See `repo sync`_ for
 details.)
 
 .. warning::
 
    When this happens, **upstream Git history is rewritten** for
-   Zephyr MicroPlatform repositories which have an upstream, like Zephyr and
+   Zephyr microPlatform repositories which have an upstream, like Zephyr and
    mcuboot. This happens because the next month's development branch
    is rebased onto a new baseline commit from upstream.
 
@@ -169,7 +169,7 @@ Monthly Snapshot Branches
 
    - Each ``YY.MM`` branch in the :ref:`manifest repository
      <zephyr-branching-repo>` tracks the monthly ``ltd-YY.MM`` branches in
-     each of the other Zephyr MicroPlatform repositories.
+     each of the other Zephyr microPlatform repositories.
 
    - Running ``repo sync`` with this manifest branch results in
      `fast-forward`_ changes only in upstream repositories.
@@ -200,17 +200,17 @@ current month's snapshot branch. All updates to remote repositories
 will be fast-forward changes only. However, **updates will stop after
 the month ends** and trunk development continues on new branches.
 
-You can continue using the Zephyr MicroPlatform at your site for as long as
+You can continue using the Zephyr microPlatform at your site for as long as
 you'd like, even when you're using a monthly snapshot manifest branch. However,
 to fetch new updates from Linaro Technologies Division after the month
 ends, you need to update your manifest repository to sync from more
 recent development branches. You can do this using an existing Zephyr
-MicroPlatform installation directory; **you do not need to create a new Zephyr
-MicroPlatform directory to update your manifest repository branch**.
+microPlatform installation directory; **you do not need to create a new Zephyr
+microPlatform directory to update your manifest repository branch**.
 
 For example, if you have the ``17.05`` manifest branch checked out,
 and you want to update to ``17.07``, you can run this from your
-existing Zephyr MicroPlatform installation directory::
+existing Zephyr microPlatform installation directory::
 
   repo init -b 17.07 -u https://github.com/linaro-technologies/genesis-sdk-manifest
   repo sync
@@ -367,20 +367,20 @@ Appendix: Branch Management Rationale
 
 This section provides a rationale for why these rules exist.
 
-There are two "types" of repository in an Zephyr MicroPlatform installation:
+There are two "types" of repository in an Zephyr microPlatform installation:
 
 - Projects which have an external upstream, namely Zephyr and
   mcuboot.
-- Projects which are developed for the Zephyr MicroPlatform, and which have no
+- Projects which are developed for the Zephyr microPlatform, and which have no
   external upstream, like the one containing the documentation you're reading
   now.
 
 Rather than cloning the upstream versions of the Zephyr and mcuboot
-repositories in an Zephyr MicroPlatform installation, Linaro Technologies
+repositories in an Zephyr microPlatform installation, Linaro Technologies
 Division maintains its own trees. This is for two reasons.
 
 1. It allows us to keep track of known-good revisions that work well
-   with the Zephyr MicroPlatform.
+   with the Zephyr microPlatform.
 
 2. It gives us a place to carry out our own internal development on
    these repositories.
@@ -393,7 +393,7 @@ and are tested. We also sometimes need to keep some temporary
 solutions or patches in our trees which aren't useful for upstream.
 
 While all of this is going on in repositories with an upstream, the
-Zephyr MicroPlatform-only repositories are evolving too, both to use those new
+Zephyr microPlatform-only repositories are evolving too, both to use those new
 features added in Zephyr and mcuboot, and as they're being developed
 in their own right.
 
@@ -403,9 +403,9 @@ things working smoothly over time.
 The branching rules manage development in a way that allows:
 
 - Users to see clearly what the differences are between the
-  upstream and Zephyr MicroPlatform versions of each repository,
+  upstream and Zephyr microPlatform versions of each repository,
 - Developers to stage local and integrate upstream changes into
-  Zephyr Microplatform branches,
+  Zephyr microPlatform branches,
 - Continuous Integration to track versions which should work together
   for testing and test report generation,
 - Snapshots and releases to track the state of development

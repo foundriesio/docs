@@ -1,11 +1,11 @@
 .. _linux-top:
 
-LTD Linux MicroPlatform
+LTD Linux microPlatform
 =======================
 
-The Linux MicroPlatform is an extensible software and hardware platform that
+The Linux microPlatform is an extensible software and hardware platform that
 makes it easier to develop, secure, and maintain Internet-connected embedded
-devices. The Linux MicroPlatform is based on the `Open Embedded
+devices. The Linux microPlatform is based on the `Open Embedded
 <https://www.openembedded.org/>`_, `Linux Kernel <https://kernel.org/>`_,
 `Docker <https://docker.com>`_, and other open source software creating an
 intentionally designed minimal distribution for embedded systems.

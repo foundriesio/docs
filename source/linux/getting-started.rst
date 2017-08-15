@@ -6,7 +6,7 @@ Getting Started
 ===============
 
 All you need to get started is a gateway device supported by the Linux
-MicroPlatform, a computer, and an Internet connection.
+microPlatform, a computer, and an Internet connection.
 
 Get Hardware
 ------------
@@ -16,7 +16,7 @@ Here's what you'll need:
 - A computer to develop on. This can be running Windows, Mac OS X, or
   Linux.
 
-- A gateway device supported by the Linux MicroPlatform. We currently support
+- A gateway device supported by the Linux microPlatform. We currently support
   the `96Boards HiKey <http://www.96boards.org/product/hikey/>`_, and
   assume you have a `96Boards UART Serial Adapter
   <http://www.96boards.org/product/debug/>`_ for console access.
@@ -24,7 +24,7 @@ Here's what you'll need:
 Get Installation Dependencies
 -----------------------------
 
-To install the Linux MicroPlatform on your device, you'll need Python 2,
+To install the Linux microPlatform on your device, you'll need Python 2,
 pySerial, drivers for FTDI serial port devices, and Android's fastboot tool.
 
 Windows
@@ -228,7 +228,7 @@ password. You will be dropped into a normal user shell, and should now
 change the password. The ``linaro`` user may use ``sudo`` to obtain
 root access on the device.
 
-That's it! You've successfully installed the Linux MicroPlatform onto your
+That's it! You've successfully installed the Linux microPlatform onto your
 device, and booted into its console.
 
 Onwards!

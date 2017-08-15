@@ -6,7 +6,7 @@ Getting Started
 ===============
 
 All you need to get started is a development board supported by
-the Zephyr MicroPlatform, a computer to develop on, and an Internet
+the Zephyr microPlatform, a computer to develop on, and an Internet
 connection.
 
 .. todo::
@@ -23,7 +23,7 @@ Here's what you'll need:
   on `Ubuntu <https://www.ubuntu.com/download/desktop>`_ 16.04. Mac OS
   X support will be added next, and Windows support is planned.)
 
-- A development board supported by the Zephyr MicroPlatform. We recommend the
+- A development board supported by the Zephyr microPlatform. We recommend the
   `96Boards Nitrogen <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_.
 
 .. _zephyr-install:
@@ -34,7 +34,7 @@ Installation
 .. _pip Installation:
    https://pip.pypa.io/en/stable/installing/
 
-1. Install the Zephyr MicroPlatform's dependencies.
+1. Install the Zephyr microPlatform's dependencies.
 
    On Ubuntu, run::
 
@@ -83,7 +83,7 @@ Installation
    If you don't have pip installed, see the `pip Installation`_
    documentation.
 
-   .. todo:: Delete if pyOCD gets bundled in the Zephyr MicroPlatform
+   .. todo:: Delete if pyOCD gets bundled in the Zephyr microPlatform
              (https://trello.com/c/wQgewcdI).
 
    On Linux platforms, you also need to install the following udev
@@ -101,7 +101,7 @@ Installation
 #. Create a `GitHub <https://github.com/>`_ account if you don't have
    one already (it's free).
 
-   - Make sure you can see the `Zephyr MicroPlatform SDK manifest repository
+   - Make sure you can see the `Zephyr microPlatform SDK manifest repository
      <https://github.com/linaro-technologies/genesis-sdk-manifest>`_
      when you're logged in.
 
@@ -115,7 +115,7 @@ Installation
    .. todo:: Handle the "public" versus "private" cases. The above is
              needed for the "private" case.
 
-#. Fetch the Zephyr MicroPlatform repositories::
+#. Fetch the Zephyr microPlatform repositories::
 
      mkdir genesis && cd genesis
      repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
@@ -127,21 +127,21 @@ Installation
    .. note::
 
       If you're new to repo, the basic idea is that the manifest has
-      an XML file which describes where the Zephyr MicroPlatform code,
+      an XML file which describes where the Zephyr microPlatform code,
       documentation, and other Git repositories are.
 
-      Running ``repo init`` with the Zephyr MicroPlatform manifest sets up
-      the ``genesis`` directory to house the Zephyr MicroPlatform
+      Running ``repo init`` with the Zephyr microPlatform manifest sets up
+      the ``genesis`` directory to house the Zephyr microPlatform
       repositories, and ``repo sync`` clones the repositories onto your
       computer.
 
 Build an Application
 --------------------
 
-Now that you've installed the Zephyr MicroPlatform, it's time to build a
+Now that you've installed the Zephyr microPlatform, it's time to build a
 demonstration application.
 
-Since one of the main features of the MicroPlatform is making it easy
+Since one of the main features of the microPlatform is making it easy
 to build application binaries which are cryptographically checked by
 mcuboot, a secure bootloader, you'll first build a simple "Hello
 World" application provided by mcuboot.
@@ -158,7 +158,7 @@ If you're using another board, run this instead::
 Where ``your_board`` is Zephyr's name for your board. (Here's a `list
 of Zephyr boards
 <https://www.zephyrproject.org/doc/boards/boards.html>`_, but some of
-them may not work with the Zephyr MicroPlatform.)
+them may not work with the Zephyr microPlatform.)
 
 (If you want to know more, see :ref:`zephyr-build`.)
 
@@ -168,7 +168,7 @@ Flash the Application
 Now you'll flash the application to your board.
 
 If you're using 96Boards Nitrogen, plug it into your computer via USB,
-then run this from the the Zephyr MicroPlatform directory::
+then run this from the the Zephyr microPlatform directory::
 
   ./genesis flash mcuboot/samples/zephyr/hello-world
 
@@ -230,7 +230,7 @@ If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
 115200 baud, and reset the chip.
 
-That's it! You've successfully installed the Zephyr MicroPlatform, compiled an
+That's it! You've successfully installed the Zephyr microPlatform, compiled an
 application, flashed it to a device, and seen it work.
 
 Onwards!
@@ -242,7 +242,7 @@ You're now ready to take your next steps.
 
           Example of tutorials and reference docs:
 
-          - Zephyr MicroPlatform overview (different projects with links to
+          - Zephyr microPlatform overview (different projects with links to
             their reference docs, how they tie together, e.g. description of
             boot process with links to mcuboot documentation).
           - Hardware peripheral tutorials (UART, SPI, etc.)
@@ -254,7 +254,7 @@ You're now ready to take your next steps.
 Appendix: Dependencies
 ----------------------
 
-Here is a list of dependencies needed to install the Zephyr MicroPlatform
+Here is a list of dependencies needed to install the Zephyr microPlatform
 with these instructions, which may be useful on other development platforms.
 
 - `Git <https://git-scm.com/>`_

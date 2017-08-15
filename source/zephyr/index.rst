@@ -1,11 +1,11 @@
 .. _zephyr-top:
 
-LTD Zephyr MicroPlatform
+LTD Zephyr microPlatform
 ========================
 
-The Zephyr MicroPlatform is an extensible software and hardware platform that
+The Zephyr microPlatform is an extensible software and hardware platform that
 makes it easier to develop, secure, and maintain Internet-connected embedded
-devices. The Zephyr MicroPlatform is based on the `Zephyr
+devices. The Zephyr microPlatform is based on the `Zephyr
 <https://www.zephyrproject.org/>`_ real-time operating system.
 
 .. toctree::

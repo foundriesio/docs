@@ -110,7 +110,7 @@ After logging in, your browser window should look like this:
 
 Your Leshan container is now ready for use.
 
-2. Install the Linux MicroPlatform
+2. Install the Linux microPlatform
 ----------------------------------
 
 **Required Equipment**: IoT gateway and workstation to flash the board.
@@ -118,7 +118,7 @@ Your Leshan container is now ready for use.
 Follow :ref:`linux-getting-started` to set up a `96Boards HiKey`_
 gateway for container-based application deployment.
 
-If you don't have a HiKey, the Linux MicroPlatform Getting Started Guide
+If you don't have a HiKey, the Linux microPlatform Getting Started Guide
 contains information for other boards, provided on a best-effort basis.
 
 3. Set Up IoT Gateway
@@ -196,13 +196,13 @@ fetch updates from hawkBit.
   of the system which is running the hawkBit server you set up
   earlier.
 
-5. Install Zephyr MicroPlatform
+5. Install Zephyr microPlatform
 -------------------------------
 
-**Required Equipment**: workstation to install the Zephyr MicroPlatform
+**Required Equipment**: workstation to install the Zephyr microPlatform
 development environment, and IoT device to test installation.
 
-Install an Zephyr MicroPlatform development environment by following
+Install an Zephyr microPlatform development environment by following
 :ref:`zephyr-getting-started`.
 
 6. Set Up IoT Device(s)
