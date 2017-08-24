@@ -69,6 +69,12 @@ Source for other boards is provided on a best-effort basis.
 Prepare the System
 ==================
 
+.. _building and running hawkBit:
+   https://eclipse.org/hawkbit/documentation/guide/runhawkbit.html
+
+.. _hawkBit security:
+   https://eclipse.org/hawkbit/documentation/security/security.html
+
 .. _Docker:
    https://www.docker.com/
 
@@ -81,7 +87,7 @@ Prepare the System
 .. _Ansible:
    https://www.ansible.com
 
-.. _install Ansible:
+.. _Install Ansible:
    http://docs.ansible.com/ansible/latest/intro_installation.html
 
 .. _GitHub guide to SSH keys:
@@ -90,46 +96,69 @@ Prepare the System
 .. _Android platform tools:
    https://developer.android.com/studio/releases/platform-tools.html
 
+This is broken down into the following steps.
+
+- :ref:`dm-hawkbit-mqtt-hawkbit`
+- :ref:`dm-hawkbit-mqtt-cloudmqtt`
+- :ref:`dm-hawkbit-mqtt-linux`
+- :ref:`dm-hawkbit-mqtt-gateway`
+- :ref:`dm-hawkbit-mqtt-zephyr`
+- :ref:`dm-hawkbit-mqtt-device`
+
+.. _dm-hawkbit-mqtt-hawkbit:
+
 1. Set up hawkBit
 -----------------
 
 **Required Equipment**: workstation which supports `Docker`_.
 
-Follow these instructions to run a demonstration grade hawkBit server.
+Run a demonstration-grade hawkBit server::
 
-    # If you build your own hawkbit docker image, use "hawkbit" instead of
-    # "linarotechnologies/gitci-hawkbit-container" as the last argument.
     docker run -dit --name hawkbit -p 8080:8080 linarotechnologies/hawkbit-update-server
+
+.. warning::
+
+   This hawkBit container contains an official
+   ``hawkbit-update-server`` artifact build from Maven; however, it is
+   for **demonstration purposes only**, and should not be deployed in
+   production as-is.
+
+   Among other potential issues, the server has an insecure default
+   administrative username/password pair. For more information, see
+   the official documentation on `building and running hawkBit`_ and
+   `hawkBit security`_.
 
 This container can take approximately 40 seconds for the application
 to start for the first time.
 
 After running the hawkBit container, visit http://localhost:8080/UI to
-load the administrative interface, and log in with the hawkBit
-username and password (default admin/admin) that you set before in the
-hawkbit.server.ui.demo.user and hawkbit.server.ui.demo.password values
-in application.properties.
+load the administrative interface, and log in with the default
+username and password (admin/admin).
 
-After logging in, your browser window should look like this:
+Your browser window should look like this:
 
 .. figure:: /_static/dm-hawkbit-mqtt/hawkbit-initial.png
    :align: center
    :alt: hawkBit Administrator Interface
 
-.. note:: You may want to adjust the device poll time in administrative
-  settings while working with this demonstration server where the default
-  time is set to 5 minutes.
+.. note::
+
+   For convenience, you may want to adjust the "Polling Time" in the
+   "System Config" area. This will instruct your IoT devices to check
+   for updates more frequently. The default is 5 minutes; the minimum
+   value is 30 seconds.
 
 Your hawkBit container is now ready for use.
+
+.. _dm-hawkbit-mqtt-cloudmqtt:
 
 2. Set up CloudMQTT
 -------------------
 
 **Required Equipment**: workstation computer.
 
-First, create a `CloudMQTT`_ account.
-
-.. note:: The free CloudMQTT plan is enough to run this demo.
+First, create a `CloudMQTT`_ account. The free CloudMQTT plan is
+enough to run this demo.
 
 After logging in to your account, go to your `CloudMQTT Control Panel`_,
 and create a new instance. Then click on the "Details" button
@@ -141,35 +170,41 @@ information about the instance:
 - CLOUDMQTT_USER: the auto-generated username
 - CLOUDMQTT_PASSWORD: the auto-generated password
 
+.. _dm-hawkbit-mqtt-linux:
+
 3. Install the Linux microPlatform
 ----------------------------------
 
 **Required Equipment**: IoT gateway and workstation to flash the board.
 
-Follow :ref:`linux-getting-started` to set up a `96Boards HiKey`_
-gateway for container-based application deployment.
+Follow the Linux microPlatform :ref:`linux-getting-started` to set up
+a `96Boards HiKey`_ gateway for container-based application
+deployment.
 
-If you don't have a HiKey, the Linux microPlatform Getting Started Guide
-contains information for other boards, provided on a best-effort basis.
+If you don't have a HiKey, the Getting Started guide contains
+information for other boards, provided on a best-effort basis.
 
-4. Set Up the Basic IoT Gateway
--------------------------------
+.. _dm-hawkbit-mqtt-gateway:
 
-Follow :ref:`big-getting-started` to setup a Basic IoT Gateway
+4. Set Up the IoT Gateway
+-------------------------
 
-a. configure networking for your IoT gateway device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Required Equipment**: IoT gateway and workstation to run `Ansible`_.
 
-- Now connect your IoT gateway to the network.
+You'll now use Ansible to set up your IoT gateway to act as a network
+proxy for your IoT device to publish sensor data to CloudMQTT, and
+fetch updates from hawkBit.
+
+- Follow the Basic IoT Gateway :ref:`big-getting-started` guide to log
+  into the Basic IoT Gateway console and change the password for the
+  ``linaro`` user. The default password is ``linaro``.
+
+- Connect your IoT gateway to the network.
 
   You can connect a HiKey to a local WiFi network\ [#hikeyethernet]_
   from its serial console as follows::
 
     sudo nmcli device wifi connect <NetworkSSID> password <NetworkPassword>
-
-  The default password to use with ``sudo`` is ``linaro``, but we
-  recommend that you change it while setting up your gateway, before
-  connecting it to the network.
 
   After connecting to the network, record the IP address of your
   gateway, GATEWAY_IP_ADDRESS, which you can obtain when using WiFi
@@ -180,34 +215,19 @@ a. configure networking for your IoT gateway device
   (If you're using Ethernet, ``ip addr show`` will show all IP
   addresses on the system.)
 
-- You can now copy your SSH key to the gateway in order to control it
-  with Ansible. Do this with ``ssh-copy-id``::
+- If you don't already have one, create an SSH key on your
+  workstation. If you've never done this before, the `GitHub guide to
+  SSH keys`_ has useful instructions.
+
+- Copy your SSH key to the gateway in order to control it with
+  Ansible using ``ssh-copy-id``::
 
     ssh-copy-id linaro@GATEWAY_IP_ADDRESS
 
-  Use the same gateway password from the previous step.
+  Use the new password for the ``linaro`` account you set earlier.
 
-b. Manually run the gateway containers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. todo:: add instructions for manually installing gateway containers
-
-c. Use ansible to manage the gateway containers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**Required Equipment**: IoT gateway and workstation to run Ansible.
-
-You'll now use Ansible to set up your IoT gateway to act as a network
-proxy for your IoT device to publish sensor data to CloudMQTT, and
-fetch updates from hawkBit.
-
-- First, `install Ansible`_, which will let you install and control
+- `Install Ansible`_, which will let you install and control
   containers on your IoT gateway via SSH from your workstation.
-
-- If you don't already have one, you now need to create an SSH key on
-  your workstation. If you've never done this before, the `GitHub
-  guide to SSH keys`_ has useful instructions.
-
 
 - Clone the ``gateway-ansible`` repository, which contains an Ansible
   playbook to set up the gateway for this system::
@@ -215,29 +235,34 @@ fetch updates from hawkBit.
     git clone https://github.com/linaro-technologies/gateway-ansible
 
 - From the ``gateway-ansible`` repository, deploy the gateway
-  containers using the CloudMQTT information you recorded earlier::
+  containers using the gateway's IP address and CloudMQTT information
+  you recorded earlier::
 
     ansible-playbook -e "mqttuser=CLOUDMQTT_USER mqttpass=CLOUDMQTT_PASSWORD \
                          mqtthost=CLOUDMQTT_SERVER mqttport=CLOUDMQTT_PORT \
                          gitci=WORKSTATION_IP_ADDRESS tag=latest-arm64" \
-                     -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml
-                     --tags gateway
+                     -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml \
+                     --tags cloud
 
   WORKSTATION_IP_ADDRESS in the above command line is the IP address
   of the system which is running the hawkBit server you set up
-  earlier.
+  earlier. **The comma after GATEWAY_IP_ADDRESS is mandatory**.
 
-5. Install Zephyr microPlatform
--------------------------------
+.. _dm-hawkbit-mqtt-zephyr:
+
+5. Install the Zephyr microPlatform
+-----------------------------------
 
 **Required Equipment**: workstation to install the Zephyr microPlatform
 development environment, and IoT device to test installation.
 
-Install an Zephyr microPlatform development environment by following
-:ref:`zephyr-getting-started`.
+Follow the installation steps in the Zephyr microPlatform
+:ref:`zephyr-getting-started` guide.
 
-6. Set Up IoT Device(s)
------------------------
+.. _dm-hawkbit-mqtt-device:
+
+6. Set Up the IoT Device(s)
+---------------------------
 
 **Required Equipment**: IoT device and workstation to flash the
 device.
@@ -262,9 +287,10 @@ data are being sent to the cloud, and do a FOTA update.
 Cloud Sensor Updates
 --------------------
 
-From your CloudMQTT instance's Details page, click the "Websocket UI"
-button to get a live view of data being sent to the server. You should
-see new data appear every few seconds; it will look like this:
+From your `CloudMQTT Control Panel`_, load your instance's Details
+page and click the "Websocket UI" button to get a live view of data
+being sent to the server. You should see new data appear every few
+seconds; it will look like this:
 
 .. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-websocket-ui.png
    :align: center
@@ -288,27 +314,21 @@ like this:
    96Boards Nitrogen registered with hawkBit.
 
 It's time to upload a firmware binary to the server, and update it
-using this UI. To make uploading the binaries to hawkBit easier,
-download this Python script:
+using this UI. To make uploading the binaries to the demonstration
+hawkBit server easier, download this Python script to your Zephyr
+microPlatform installation directory:
 
 https://raw.githubusercontent.com/linaro-technologies/hawkbit/master/hawkbit.py
 
 .. todo:: hawkbit.py should be a versioned part of the release
 
-It will work unmodified if you used the default passwords, but if you
-chose your own, you may need to modify the source to use a new base64
-encoded username:password pair, using the information in
-:ref:`dm-hawkbit-mqtt-appendix-hawkbit` page.
-
-Use this script to upload the signed application binary to your
-hawkBit server from the output directory if you built from
-source, or from the directory where you unpacked your binaries::
+From the Zephyr microPlatform installation directory::
 
     python /path/to/hawkbit.py \
                       -ds 'http://localhost:8080/rest/v1/distributionsets' \
                       -sm 'http://localhost:8080/rest/v1/softwaremodules' \
-                      -d 'Nitrogen End-to-end IoT system preview' \
-                      -f dm-hawkbit-mqtt-96b_nitrogen-signed.bin \
+                      -d 'Nitrogen End-to-end IoT system' \
+                      -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/96b_nitrogen/app/dm-hawkbit-mqtt-96b_nitrogen-signed.bin \
                       -sv "1.0" -p "Linaro" -n "Nitrogen E2E preview" -t os
 
 Above, 1.0 is an arbitrary version number.
