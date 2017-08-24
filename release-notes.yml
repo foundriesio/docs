@@ -1,43 +1,261 @@
 highlights:
-  - Highlight 1
-  - Highlight 2
-
+  - Zephyr tree from 1.9 release candidate stage, with LWM2M support
+  - New application for IoT Foundry demonstrating LWM2M
+  - Upstream support for 96Boards Carbon
+  - Many other bug fixes and improvements across the trees
 summary: |
- This is markdown text coverted to HTML that can do styling with **bold** and
- *italics*. It will get converted to HTML that the web UI can display.
+ This release includes an mcuboot tree based very closely on the 0.9.0
+ release, and a Zephyr tree that is based between the 1.9-rc1 and
+ 1.9-rc2 tags. It also includes a new IoT Foundry application.
 
+ The Zephyr tree includes many new features and bug fixes. Notable
+ improvements for the Zephyr microPlatform include LWM2M protocol
+ support, mainline support for 96Boards Carbon networking, DTLS
+ support for the net_app library, and various Bluetooth and networking
+ fixes.
+
+ A new IoT Foundry application was added for a demonstration system
+ providing firmware update and device communication via LWM2M.
 parts:
-  - name: Genesis
+  - name: Zephyr microPlatform
     summary: |
-      This is a MarkDown **styling** of what happened to overall to this part.
+      A new end-to-end IoT system based on the LWM2M protocol has been
+      added, along with an updated Zephyr tree, which provides
+      protocol support along with many other feature additions and
+      improvements.
+
+      Networking Support for 96Boards Carbon (which is supported on a
+      best-effort basis by the microPlatform) was merged into the
+      Zephyr mainline.
+
+      This Zephyr release includes several significant API breaks due
+      to refactoring and renaming. These are present in the features
+      list below, alongside legitimate feature additions.
     projects:
       - name: MCUBoot
         manifest_project: mcuboot
-        features:    # optional
-          - heading: Feature 1
+        features:
+          - heading: Improved Zephyr sample applications.
             summary: |
-              MarkDown **styled** description
-        bug_fixes:   # optional
-          - heading: Bug 1
-            summary: |
-              MarkDown **styled** description of issue
+              The Zephyr sample applications have been reduced to a
+              single application, which can be built for multiple
+              boards.
       - name: Zephyr
         manifest_project: zephyr
-        features:    # optional
-          - heading: Feature 1
+        features:
+          - heading: Bluetooth configuration namespace renamed
             summary: |
-              MarkDown **styled** description
-        bug_fixes:   # optional
-          - heading: Bug 1
+              In a breaking API change, upstream has changed the
+              Bluetooth Kconfig namespace from CONFIG_BLUETOOTH_* to
+              CONFIG_BT_*. All applications which use Bluetooth, along
+              with any out of tree patches, will need updates.
+              Bluetooth Controller Kconfig options were also renamed
+              from CONFIG_BT_CONTROLLER_* to CONFIG_BT_CTLR_*. A small
+              set of other Bluetooth fixes and improvements were also
+              merged.
+          - heading: LWM2M protocol support
             summary: |
-              MarkDown **styled** description of issue
+              Zephyr support for the Lightweight Machine to Machine
+              (LWM2M) protocol, provided and maintained by the Linaro
+              Technologies Division, was merged into the Zephyr
+              mainline. This includes IPSO Light Control object
+              support.
+
+              A fully documented sample application named lwm2m_client
+              was merged.
+          - heading: sa_family field added to struct sockaddr
+            summary: |
+              POSIX compatibility patch caused changes across the
+              entire network subsystem by renaming the family field in
+              sockaddr to sa_family.
+          - heading: ARC memory protection
+            summary: |
+              The ARC architecture added MPU and stack guard support.
+          - heading: Crypto library updates
+            summary: |
+              TinyCrypt was updated to version 0.2.7.
+              mbedTLS was updated to version 2.5.1.
+              An mbedTLS shim layer was added which is compliant with
+              Zephyr crypto APIs.
+          - heading: MQTT conversion to net_app API
+            summary: |
+              The MQTT networking library was converted to use the
+              net_app API. This improves its behavior at the cost of
+              API breakage.
+          - heading: MQTT TLS support
+            summary: |
+              TLS support was added to MQTT library.
+          - heading: DTLS support for net_app
+            summary: |
+              DTLS support added to net_app library.
+          - heading: Bluetooth network support for net_app
+            summary: |
+              Generic bluetooth network support
+              (CONFIG_NET_APP_BLUETOOTH_NODE) was added to the net_app
+              library, and enabled for many samples.
+          - heading: Project configuration unification
+            summary: |
+              Many board-specific network sample prj.conf files were
+              unified into single prj.conf files, along with other
+              clean-ups.
+          - heading: Test case conversion to ztest
+            summary: |
+              Many test files were converted to use the ztest API.
+              This makes test case result parsing more uniform.
+          - heading: Test case filtering improvements
+            summary: |
+              Various improvements to test case filtering for
+              continuous integration were merged, including better
+              specification of minimum RAM requirements.
+          - heading: TCP receive window management
+            summary: |
+              Initial support for TCP receive window management was
+              merged.
+          - heading: STM32 pinmux re-work
+            summary: |
+              The STM32 pinmux driver was completely re-worked. The
+              new version will better support Device Tree, though full
+              DT integration is ongoing work.
+          - heading: OpenOCD symbol generation
+            summary: |
+              Zephyr builds now include OpenOCD symbols.
+          - heading: Initial POSIX thread support
+            summary: |
+              Support for POSIX thread IPC, partially implementing the
+              IEEE 1003.1 pthread API, was merged.
+          - heading: Bluetooth HCI SPI slave application
+            summary: |
+              A Bluetooth HCI SPI handler sample application was merged.
+              This sample is compatible with the Zephyr HCI SPI
+              protocol and enables Bluetooth connectivity on 96Boards
+              Carbon via the nrf51 SoC (96b_carbon_nrf51).
+          - heading: Bluetooth support for 96Boards Carbon
+            summary: |
+              Bluetooth support for 96Boards Carbon was finally merged
+              upstream.
+          - heading: Updated TI CC22xx support.
+            summary: |
+              TI CC3200 SoC and LaunchXL board support removed in
+              favor of CC3220SF LaunchXL.
+
+              TI SimpleLink SDK host driver for CC3220SF was merged,
+              and is enabled by default on CC3220SF_LaunchXL. This
+              enables WiFi support via an external coprocessor.
+          - heading: Flash partitions for nrf52_blenano2
+            summary: |
+              Flash partitions added for nrf52_blenano2, making it
+              compatible with FOTA via mcuboot and dual partitions.
+          - heading: I2S driver support
+            summary: |
+              A new driver API and infrastructure for the I2S (Inter-IC
+              Sound) protocol was merged.
+          - heading: ESP32 drivers
+            summary: |
+              Driver support for ESP32-based targets continues to
+              increase, with the merging of random number generator,
+              GPIO, and pinmux drivers.
+          - heading: Additional board support
+            summary: |
+              Board support was added for the STM32F429I-DISC1 and
+              olimex_stm32_p405 boards. Board support for the
+              hexiwear_k64 was extended to support additional existing
+              sample applications.
+          - heading: Additional STM32 SoC support
+            summary: |
+              Support for the STM32F417 and STM32F405 SoCs was merged,
+              along with fixes and improvements to the STM32 pinmux
+              drivers.
+          - heading: New PWM driver for NXP SoCs
+            summary: |
+              Support for a new mcux-based driver was merged for
+              various NXP SoCs and boards.
+          - heading: ARM vector table relocation
+            summary: |
+              Support for relocating the vector table on the ARM
+              architecture was merged.
+          - heading: ARM stack macros
+            summary: |
+              Improved support for architecture-specific stack
+              management macros was merged for ARM targets.
+          - heading: ARC updates
+            summary: |
+              Nested interrupt support was added to the ARC
+              architecture. Various fixes, cleanups, and SoC vendor
+              library updates were also merged for ARC.
+          - heading: net_app gateway and netmask
+            summary: |
+              Users of the net app framework can now set IPv4 Netmask
+              and Gateway via 2 new Kconfig settings:
+              CONFIG_NET_APP_MY_IPV4_NETMASK and
+              CONFIG_NET_APP_MY_IPV4_GW.
+          - heading: Simplified documentation hierarchy
+            summary: |
+              Zephyr documentation saw a series of patches moving
+              content around into more simplified groupings.
+        bug_fixes:
+          - heading: Bluetooth RTC fix
+            summary: |
+              The Bluetooth subsystem saw a bluetooth regression fix
+              (cb90fbe Bluetooth: controller: Fix controller assert at
+              clock rollover) which reverts the clock rollover
+              calculation back to its original form.  This seems to
+              have fixed the crashes observed in the Bluetooth
+              controller on nRFxx.
+          - heading: Bluetooth buffer fixes
+            summary: |
+              The default setting and range of BT_RX_STACK_SIZE was
+              fixed when checking if BT_HCI_RAW was selected.
+          - heading: TI SimpleLink removal
+            summary: |
+              The TI SimpleLink SDK was removed due to restrictive
+              host driver source licensing.
+          - heading: Bluetooth Mesh fixes
+            summary: |
+              Several fixes were merged improving Bluetooth mesh support.
+          - heading: 802.15.4 fixes
+            summary: |
+              Various fixes were merged for the IEEE 802.15.4 radio layer.
+          - heading: RPL fixes
+            summary: |
+              Various fixes were merged for the RPL routing protocol.
+          - heading: TCP fixes
+            summary: |
+              Various fixes were merged for the TCP protocol.
+          - heading: HTTP fixes
+            summary: |
+              Various fixes were merged for the HTTP protocol.
+          - heading: Work queue fixes
+            summary: |
+              Support to remove elements from k_queue added via
+              k_queue_remove. The Work queue implementation migrated from
+              k_fifo to k_queue as it now offers a more flexible API.
+          - heading: STM32 DTS and driver fixes
+            summary: |
+              Bug fixes for DTS and I2C on STM32 targets were merged.
+              Several bug fixes to the STM32 SPI drivers were merged.
+          - heading: ESP32 clock fix
+            summary: |
+              A clock-related fix to the ESP32 architecture was merged.
+          - heading: Memory management and protection fixes
+            summary: |
+              Various MPU related fixes were merged for the ARM
+              architecture, and a bug fix was merged on the X86
+              architecture related to MMU management.
+          - heading: XTensa fixes
+            summary: |
+              A bug fix related to using the newlib C library on the
+              XTensa architecture was merged. The interrupt management
+              on that architecture was converted to use the Zephyr
+              script gen_isr_table for generating interrupt tables.
       - name: Zephyr FOTA Samples
         manifest_project: zephyr-fota-samples
-        features:    # optional
-          - heading: Feature 1
+        features:
+          - heading: dm-hawkbit-mqtt
             summary: |
-              MarkDown **styled** description
-        bug_fixes:   # optional
-          - heading: Bug 1
+              The MQTT And hawkBit device management application is
+              synchronized and tested with the updated Zephyr tree.
+          - heading: LWM2M application
             summary: |
-              MarkDown **styled** description of issue
+              A new application, dm-lwm2m, is provided which
+              demonstrates firmware update and device communication
+              via LWM2M.
