@@ -1,0 +1,43 @@
+highlights:
+  - Highlight 1
+  - Highlight 2
+
+summary: |
+ This is markdown text coverted to HTML that can do styling with **bold** and
+ *italics*. It will get converted to HTML that the web UI can display.
+
+parts:
+  - name: Zephyr microPlatform
+    summary: |
+      This is a MarkDown **styling** of what happened to overall to this part.
+    projects:
+      - name: MCUBoot
+        manifest_project: mcuboot
+        features:    # optional
+          - heading: Feature 1
+            summary: |
+              MarkDown **styled** description
+        bug_fixes:   # optional
+          - heading: Bug 1
+            summary: |
+              MarkDown **styled** description of issue
+      - name: Zephyr
+        manifest_project: zephyr
+        features:    # optional
+          - heading: Feature 1
+            summary: |
+              MarkDown **styled** description
+        bug_fixes:   # optional
+          - heading: Bug 1
+            summary: |
+              MarkDown **styled** description of issue
+      - name: Zephyr FOTA Samples
+        manifest_project: zephyr-fota-samples
+        features:    # optional
+          - heading: Feature 1
+            summary: |
+              MarkDown **styled** description
+        bug_fixes:   # optional
+          - heading: Bug 1
+            summary: |
+              MarkDown **styled** description of issue
