@@ -12,27 +12,121 @@ connection.
 .. todo::
 
    Add link to a top-level "supported boards" page when that's
-   ready. We can repurpose the device-support directory for that.
+   ready.
 
 Get Hardware
 ------------
 
+.. _96Boards Nitrogen:
+   https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
+
+.. _Ubuntu:
+   https://www.ubuntu.com/download/desktop
+
 Here's what you'll need:
 
-- A computer with a 64-bit Linux operating system (we currently test
-  on `Ubuntu <https://www.ubuntu.com/download/desktop>`_ 16.04. Mac OS
-  X support will be added next, and Windows support is planned.)
+- A development computer, running one of:
 
-- A development board supported by the Zephyr microPlatform. We recommend the
-  `96Boards Nitrogen <https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html>`_.
+  - macOS (experimental; we test on Sierra, 10.12)
+  - 64 bit Windows 10 Anniversary Update or later (experimental)
+  - a 64 bit Linux distribution (we test on `Ubuntu`_ 16.04.)
 
-.. _zephyr-install:
+- A development board supported by the Zephyr microPlatform. We
+  support the `96Boards Nitrogen`_, and other boards on a best effort
+  basis.
 
-Installation
-------------
+Set up Build Environment
+------------------------
 
 .. _pip Installation:
    https://pip.pypa.io/en/stable/installing/
+
+Before installing the the Zephyr microPlatform, you need to set up
+your workstation build environment. Instructions for each supported
+platform follow.
+
+macOS (Experimental)
+~~~~~~~~~~~~~~~~~~~~
+
+.. _Install Docker:
+   https://docs.docker.com/engine/installation/
+
+On macOS, you'll fetch a Docker container based on Ubuntu 16.04 which
+is set up for Zephyr microPlatform development. This will let you
+build binaries; however, flashing support is not yet documented.
+
+#. `Install Docker`_ for macOS.
+
+#. Fetch the SDK container image by running the following command::
+
+     docker pull linarotechnologies/genesis-sdk:latest
+
+#. Create a directory to contain the SDK sources and build artifacts
+   in your macOS file system. For example::
+
+     mkdir genesis
+
+   You'll grant the container access to this directory later. This
+   lets you use your favorite source code editors, etc. during
+   development.
+
+#. Run the container, granting it access to your development
+   directory. Continuing the example::
+
+     docker run -it -v genesis:/root/genesis -w /root/genesis linarotechnologies/genesis-sdk:latest
+
+#. We recommend setting up Git inside the container::
+
+     git config --global user.name "Your Full Name"
+     git config --global user.email "your-email-address@example.com"
+
+Your system is now ready to install the Zephyr microPlatform.  Proceed
+to :ref:`zephyr-install`.
+
+Windows 10 (Experimental)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Windows versions supporting the Windows Subsystem for Linux have
+experimental support. These instructions will let you build binaries;
+however, flashing support is not yet documented.
+
+.. _Windows Subsystem for Linux:
+   https://msdn.microsoft.com/en-us/commandline/wsl/install_guide
+
+.. _changing files in Linux directories using Windows tools:
+      https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/
+
+#. Install the `Windows Subsystem for Linux`_, then open a Bash
+   window to enter commands.
+
+#. Change to your Windows user directory with a command like this::
+
+     cd /mnt/c/Users/YOUR-USER-NAME
+
+   You can press the Tab key after typing ``/Users/`` to see a list of
+   user names.
+
+   .. warning::
+
+      Skipping this step means you won't be able to use the
+      microPlatform with Windows tools like Explorer, graphical
+      editors, etc.
+
+      As documented by Microsoft, `changing files in Linux directories
+      using Windows tools`_ can damage your system.
+
+#. We recommend making sure your Linux subsystem is up to date with
+   these commands (which can take a while they first time they're run)::
+
+     apt-get update
+     apt-get upgrade
+
+#. Finish by following the Ubuntu instructions in the next section.
+
+Linux
+~~~~~
+
+We test these instructions on Ubuntu 16.04.
 
 1. Install the Zephyr microPlatform's dependencies.
 
@@ -41,38 +135,9 @@ Installation
      sudo add-apt-repository ppa:linaro-maintainers/ltd
      sudo apt-get update
      sudo apt-get install genesis-dev
+     pip3 install --user pyelftools
 
-   (See :ref:`zephyr-dependencies` for more information.)
-
-#. Install the Zephyr SDK::
-
-
-     wget -O /tmp/zephyr-sdk-setup.run https://github.com/zephyrproject-rtos/meta-zephyr-sdk/releases/download/0.9.1/zephyr-sdk-0.9.1-setup.run
-     chmod +x /tmp/zephyr-sdk-setup.run
-     /tmp/zephyr-sdk-setup.run
-
-   Then set these environment variables:
-
-   - Set ``ZEPHYR_SDK_INSTALL_DIR`` to the directory where you
-     installed the SDK. The default is ``/opt/zephyr-sdk``.
-
-   - Set ``ZEPHYR_GCC_VARIANT`` to ``zephyr``.
-
-   |
-
-   For example, run this, then open a new shell::
-
-     cat >>~/.bashrc <<EOF
-     export ZEPHYR_SDK_INSTALL_DIR=/opt/zephyr-sdk
-     export ZEPHYR_GCC_VARIANT=zephyr
-     EOF
-
-   .. todo:: Delete if a prebuilt SDK (https://trello.com/c/Poo4E8ZS)
-             is available.
-
-   (If you want to know more, see the `Zephyr Getting Started Guide
-   <https://nexus.zephyrproject.org/content/sites/site/org.zephyrproject.zephyr/dev/getting_started/getting_started.html>`_.)
-
+   On other distributions, see :ref:`zephyr-dependencies`.
 
 #. Install software needed to flash binaries to your board.
 
@@ -83,27 +148,45 @@ Installation
    If you don't have pip installed, see the `pip Installation`_
    documentation.
 
-   .. todo:: Delete if pyOCD gets bundled in the Zephyr microPlatform
-             (https://trello.com/c/wQgewcdI).
-
    On Linux platforms, you also need to install the following udev
    rules as root, then unplug and plug back in any boards you may have
    connected::
 
      echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
 
-#. Set up Git\ [#gitcredentials]_::
+#. Create and enter a directory to store the Zephyr microPlatform::
+
+     mkdir genesis && cd genesis
+
+#. We recommend setting up Git::
 
      git config --global user.name "Your Full Name"
      git config --global user.email "your-email-address@example.com"
-     git config --global credential.helper 'cache --timeout=3600'
 
-#. Create a `GitHub <https://github.com/>`_ account if you don't have
-   one already (it's free).
+Your system is now ready to install the Zephyr microPlatform.
 
-   - Make sure you can see the `Zephyr microPlatform SDK manifest repository
-     <https://github.com/linaro-technologies/genesis-sdk-manifest>`_
-     when you're logged in.
+.. _zephyr-install:
+
+Install Zephyr microPlatform
+----------------------------
+
+.. todo:: Generate instructions for other manifest repository sources.
+
+   In these configurations, we need extra docs:
+
+   - Cache Git usernames and passwords you enter in memory for one
+     hour; this allows ``repo sync`` to work unprompted in the next
+     step. If you don't want to do this, see
+     https://git-scm.com/docs/gitcredentials for alternatives. ::
+
+       git config --global credential.helper 'cache --timeout=3600'
+
+   - If you don't already have one, create a `GitHub
+     <https://github.com/>`_ account (it's free).
+
+   - Make sure you can see the Zephyr microPlatform SDK manifest
+     repository when you're logged in to your account (**needs
+     link**).
 
    - If you enabled `two-factor authentication
      <https://github.com/blog/1614-two-factor-authentication>`_ on
@@ -112,28 +195,21 @@ Installation
      Give this token at least "repo" access, and make sure you keep a
      copy.
 
-   .. todo:: Handle the "public" versus "private" cases. The above is
-             needed for the "private" case.
+   - When prompted by ``repo init``, enter your GitHub username and
+     password (or access token, if you use two-factor authentication).
 
-#. Fetch the Zephyr microPlatform repositories::
+To install the latest SDK release::
 
-     mkdir genesis && cd genesis
-     repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
-     repo sync
+  repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
+  repo sync
 
-   When prompted by ``repo init``, enter your GitHub username and
-   password (or access token).
+.. note::
 
-   .. note::
-
-      If you're new to repo, the basic idea is that the manifest has
-      an XML file which describes where the Zephyr microPlatform code,
-      documentation, and other Git repositories are.
-
-      Running ``repo init`` with the Zephyr microPlatform manifest sets up
-      the ``genesis`` directory to house the Zephyr microPlatform
-      repositories, and ``repo sync`` clones the repositories onto your
-      computer.
+   If you're new to repo, the short story is that the
+   ``genesis-sdk-manifest`` repository's contents describe the
+   locations of the other Zephyr microPlatform Git repositories. Repo
+   parses these contents to install the SDK. For more information, see
+   :ref:`zephyr-branching-repo`.
 
 Build an Application
 --------------------
@@ -257,6 +333,8 @@ Appendix: Dependencies
 Here is a list of dependencies needed to install the Zephyr microPlatform
 with these instructions, which may be useful on other development platforms.
 
+- `Device tree compiler (dtc)
+  <https://git.kernel.org/pub/scm/utils/dtc/dtc.git>`_
 - `Git <https://git-scm.com/>`_
 - `GNU Make <https://www.gnu.org/software/make/>`_
 - `GCC and G++ <https://gcc.gnu.org/>`_ with 32-bit application support
@@ -265,21 +343,17 @@ with these instructions, which may be useful on other development platforms.
 
   - `setuptools <https://packaging.python.org/installing/>`_
   - `Sphinx <http://www.sphinx-doc.org/en/stable/>`_
+  - `Sphinx RTD theme <http://docs.readthedocs.io/en/latest/theme.html>`_
   - `PLY <http://www.dabeaz.com/ply/>`_
   - `PyYaml <http://pyyaml.org/wiki/PyYAML>`_
   - `Crypto <https://www.dlitz.net/software/pycrypto/>`_
+  - `ECDSA <https://pypi.python.org/pypi/ecdsa/>`_
+  - `ASN.1 <http://pyasn1.sourceforge.net/>`_
+  - `pyelftools <https://github.com/eliben/pyelftools>`_
 
 - `Google Repo <https://gerrit.googlesource.com/git-repo/>`_
-- `wget <https://www.gnu.org/software/wget/>`_
 
 .. rubric:: Footnotes
-
-.. [#gitcredentials]
-
-   The last line caches Git usernames and passwords you enter in
-   memory for one hour; this allows ``repo sync`` to work unprompted
-   in the next step. If you don't want to do this, see
-   https://git-scm.com/docs/gitcredentials for alternatives.
 
 .. [#signatures]
 
