@@ -47,7 +47,7 @@ such as IPv6/IPv4 routing and MQTT message brokering.
 
    BasicIoTGateway/index
 
-End-to-end Opensource IoT Demonstrations Systems
+End-to-end Open Source IoT Demonstration Systems
 ------------------------------------------------
 
 :ref:`iotfoundry-top` shows you how to combine the Zephyr microPlatform
