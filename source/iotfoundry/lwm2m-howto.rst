@@ -88,7 +88,7 @@ Prepare the System
 
 Follow these instructions to run a Leshan demonstration Docker container:
 
-.. figure:: /_static/dm-leshan/Leshan-setup.png
+.. figure:: /_static/dm-leshan/Leshan-initial.png
    :align: center
    :width: 5in
    :alt: Leshan and dependencies
@@ -100,11 +100,11 @@ Start the container with the following command:
       --name leshan linarotechnologies/leshan:latest
 
 After running the Leshan container, visit http://localhost:8081/ to
-load the administrative interface.
+load the Leshan web interface.
 
-After logging in, your browser window should look like this:
+You can also browse the Security tab:
 
-.. figure:: /_static/dm-leshan/leshan-initial.png
+.. figure:: /_static/dm-leshan/leshan-security.png
    :align: center
    :alt: Leshan Administrator Interface
 
@@ -231,7 +231,39 @@ data are being sent to the cloud, and do a FOTA update.
 Retrieve Data
 -------------
 
-.. todo:: Add images and description on how to read lwm2m  objects using leshan
+The Leshan user web interface is a simple, web application and it does not
+provide a complete end-to-end device management system. Leshan's simplicity
+makes it a perfect demonstration and prototyping system for LWM2M devices.
+
+1. When a device registers with the Leshan server, Leshan will automatically
+render known object types on the web interface.  You can interact with the
+objects by scrolling and clicking the buttons for the objects.
+
+For example, to read the device information, simple scroll down to the
+corresponding device information object and select the 'READ' button.  If
+Leshan is able to communicate with your device you will see all of the
+available device information.
+
+.. figure:: /_static/dm-leshan/leshan-readinfo.png
+   :align: center
+   :alt: Read the device information in Leshan
+
+#. Temperature and Light control objects
+
+To read the current status of the Temperature and Light objects, scroll down
+to the light and temperature objects and select the READ button. You will
+see the state of these objects on the device similar to this figure.
+
+.. figure:: /_static/dm-leshan/leshan-readtemp-light.png
+  :align: center
+  :alt: Write the light settings in Leshan
+
+To change the state of an object, simply use the leshan interface and select
+the 'write' button to bring up the appropriate interface for changing data.
+
+.. figure:: /_static/dm-leshan/leshan-changelight.png
+  :align: center
+  :alt: Write the light settings in Leshan
 
 FOTA Updates
 ------------
