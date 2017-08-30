@@ -23,6 +23,9 @@ Get Hardware
 .. _Ubuntu:
    https://www.ubuntu.com/download/desktop
 
+.. _pyOCD:
+   https://github.com/mbedmicro/pyOCD
+
 Here's what you'll need:
 
 - A development computer, running one of:
@@ -37,9 +40,6 @@ Here's what you'll need:
 
 Set up Build Environment
 ------------------------
-
-.. _pip Installation:
-   https://pip.pypa.io/en/stable/installing/
 
 Before installing the the Zephyr microPlatform, you need to set up
 your workstation build environment. Instructions for each supported
@@ -126,11 +126,12 @@ however, flashing support is not yet documented.
 Linux
 ~~~~~
 
-We test these instructions on Ubuntu 16.04.
+.. _pip:
+   https://pip.pypa.io/en/stable/installing/
 
-1. Install the Zephyr microPlatform's dependencies.
+1. Install dependencies for the Zephyr microPlatform.
 
-   On Ubuntu, run::
+   On Ubuntu 16.04::
 
      sudo add-apt-repository ppa:linaro-maintainers/ltd
      sudo apt-get update
@@ -139,14 +140,12 @@ We test these instructions on Ubuntu 16.04.
 
    On other distributions, see :ref:`zephyr-dependencies`.
 
-#. Install software needed to flash binaries to your board.
+#. Install the tools you need to flash your board.
 
-   For 96Boards Nitrogen, install pyOCD to flash images::
+   For `96Boards Nitrogen`_, you'll need `pyOCD`_, which you can install
+   with `pip`_::
 
      pip install --user pyOCD
-
-   If you don't have pip installed, see the `pip Installation`_
-   documentation.
 
    On Linux platforms, you also need to install the following udev
    rules as root, then unplug and plug back in any boards you may have
@@ -154,11 +153,7 @@ We test these instructions on Ubuntu 16.04.
 
      echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
 
-#. Create and enter a directory to store the Zephyr microPlatform::
-
-     mkdir genesis && cd genesis
-
-#. We recommend setting up Git::
+#. **Optional**: Set up Git::
 
      git config --global user.name "Your Full Name"
      git config --global user.email "your-email-address@example.com"
@@ -198,17 +193,16 @@ Install Zephyr microPlatform
    - When prompted by ``repo init``, enter your GitHub username and
      password (or access token, if you use two-factor authentication).
 
-To install the latest SDK release::
+To install the latest release, make an installation directory and
+install the Zephyr microPlatform there with ``repo``::
 
+  mkdir genesis && cd genesis
   repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
   repo sync
 
 .. note::
 
-   If you're new to repo, the short story is that the
-   ``genesis-sdk-manifest`` repository's contents describe the
-   locations of the other Zephyr microPlatform Git repositories. Repo
-   parses these contents to install the SDK. For more information, see
+   If you're new to repo and want to know more, see
    :ref:`zephyr-branching-repo`.
 
 Build an Application
