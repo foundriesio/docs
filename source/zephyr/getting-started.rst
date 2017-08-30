@@ -45,43 +45,48 @@ Before installing the the Zephyr microPlatform, you need to set up
 your workstation build environment. Instructions for each supported
 platform follow.
 
-macOS (Experimental)
-~~~~~~~~~~~~~~~~~~~~
+macOS
+~~~~~
 
-.. _Install Docker:
-   https://docs.docker.com/engine/installation/
+.. _HomeBrew:
+   https://brew.sh/
 
-On macOS, you'll fetch a Docker container based on Ubuntu 16.04 which
-is set up for Zephyr microPlatform development. This will let you
-build binaries; however, flashing support is not yet documented.
+.. _Python 2 from HomeBrew:
+   http://docs.python-guide.org/en/latest/starting/install/osx/
 
-#. `Install Docker`_ for macOS.
+#. Install `HomeBrew`_.
 
-#. Fetch the SDK container image by running the following command::
+#. Install dependencies for the Zephyr microPlatform::
 
-     docker pull linarotechnologies/genesis-sdk:latest
+     brew install dtc python3 repo gpg
+     pip3 install --user ply pyyaml pycrypto pyasn1 ecdsa pyelftools
 
-#. Create a directory to contain the SDK sources and build artifacts
-   in your macOS file system. For example::
+#. Install the tools you need to flash your board.
 
-     mkdir genesis
+   For `96Boards Nitrogen`_, you'll need `pyOCD`_, which you can install
+   with `Python 2 from HomeBrew`_::
 
-   You'll grant the container access to this directory later. This
-   lets you use your favorite source code editors, etc. during
-   development.
+     brew install python
+     pip2 install --user pyOCD
+     export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
-#. Run the container, granting it access to your development
-   directory. Continuing the example::
+   Otherwise, check your board's documentation.
 
-     docker run -it -v genesis:/root/genesis -w /root/genesis linarotechnologies/genesis-sdk:latest
-
-#. We recommend setting up Git inside the container::
+#. **Optional**: Set up Git::
 
      git config --global user.name "Your Full Name"
      git config --global user.email "your-email-address@example.com"
 
-Your system is now ready to install the Zephyr microPlatform.  Proceed
-to :ref:`zephyr-install`.
+#. **Optional**: If you want to build this documentation, you'll need
+   some additional dependencies::
+
+     pip3 install --user sphinx sphinx_rtd_theme
+
+     # Replace "3.X" with the version number you have installed.
+     export PATH=$PATH:$HOME/Library/Python/3.X/bin
+
+Your build environment is now ready; continue by following the steps
+in :ref:`zephyr-install`.
 
 Windows 10 (Experimental)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -319,10 +324,13 @@ You're now ready to take your next steps.
           - Internet connectivity with an Basic IoT Gateway
           - FOTA with hawkBit
 
+Appendixes
+----------
+
 .. _zephyr-dependencies:
 
-Appendix: Dependencies
-----------------------
+Appendix: Zephyr microPlatform Dependencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is a list of dependencies needed to install the Zephyr microPlatform
 with these instructions, which may be useful on other development platforms.
@@ -347,6 +355,58 @@ with these instructions, which may be useful on other development platforms.
 
 - `Google Repo <https://gerrit.googlesource.com/git-repo/>`_
 
+.. _zephyr-container:
+
+Appendix: Zephyr microPlatform Development Container (Experimental)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _install Docker:
+   https://docs.docker.com/engine/installation/
+
+.. _Docker documentation on data management:
+   https://docs.docker.com/engine/admin/volumes/
+
+You can install a Docker container based on Ubuntu 16.04 which
+provides a Zephyr microPlatform build environment. However,
+instructions for flashing binaries you build with this container are
+not yet provided.
+
+#. `Install Docker`_.
+
+#. Fetch the container::
+
+     docker pull linarotechnologies/genesis-sdk:latest
+
+#. **Optional**: Create a mount in your host environment to access the
+   builds; see the `Docker documentation on data management`_ for more
+   details.
+
+   On **macOS only**, you can just create a directory to contain the
+   SDK sources and build artifacts in your host file system. For
+   example::
+
+     mkdir genesis
+
+#. Run the container as the ``genesis-dev`` user, granting it access
+   to the host data area if you created one.
+
+   For example::
+
+     docker run -it -w /home/genesis-dev -u genesis-dev genesis-sdk
+
+   If you created a directory in your macOS environment, it's easier
+   to run as the root user in the container::
+
+     docker run -it -v genesis:/root/genesis -w /root/genesis genesis-sdk
+
+#. **Optional**: Set up Git inside the container::
+
+     git config --global user.name "Your Full Name"
+     git config --global user.email "your-email-address@example.com"
+
+You can now follow the above instructions to :ref:`install the Zephyr
+microPlatform <zephyr-install>` inside the running container.
+
 .. rubric:: Footnotes
 
 .. [#signatures]
@@ -362,7 +422,8 @@ with these instructions, which may be useful on other development platforms.
 
      picocom -b 115200 /dev/ttyACM0
 
-   On Linux, with `screen <http://savannah.gnu.org/projects/screen>`_::
+   On Linux or macOS, with `screen
+   <http://savannah.gnu.org/projects/screen>`_::
 
      screen /dev/ttyACM0 115200
 
