@@ -65,18 +65,6 @@ cases or further development.
 - Docker container: https://github.com/linaro-technologies/extra-containers/tree/master/hawkbit-update-server
 - Docker Hub: https://hub.docker.com/r/linarotechnologies/hawkbit-update-server
 
-Building Your Own Container
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. todo:: gitci-hawkbit-container should be versioned, not point at tip
-
-If you wish to build your own hawkBit container, e.g. to use your own
-passwords, first clone the gitci-hawkbit-container repository:
-
-https://github.com/linaro-technologies/extra-containers/tree/master/hawkbit-update-server
-
-    docker build -t hawkbit --force-rm .
-
 Hawkbit Restrictions
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -85,13 +73,6 @@ Target can only install a distribution set.
 Hawkbit's default configuration for OS/Firmware forces only one
 Software Module per Distribution Set. The software module can contain
 several artifacts, as long they don't contain the same file name.
-
-We currently produce device-specific images based on the same source
-(e.g. same base version).
-
-**For discussion**: should we create one distribution set per device,
-or should we modify the os distribution set type to allow multiple
-software modules (that could then be hardware specific)?
 
 Rest API
 ~~~~~~~~
