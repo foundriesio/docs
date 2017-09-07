@@ -12,19 +12,21 @@
 .. warning:: **Technology demonstration system only**.
 
              While the system described below works as documented, it
-             is **unstable**, and its behavior may change incompatibly
-             in the future. It is also **not supported**.
+             may be **unstable**, and its behavior may change
+             in the future.
 
 Overview
 ========
 
-This page documents how to set up and use a demonstration system
-containing IoT devices and an IoT gateway, which can publish sensor
-data from devices to the cloud and perform firmware over the air
-(FOTA) updates of the device firmware.
+This page documents how to set up and use an end-to-end IoT demonstration
+system using OMA Lightweight M2M (LWM2M).  The system contains Zephyr-based
+IoT devices, an IoT gateway, and a web application, Leshan, that is used as the
+LWM2M server.  With Leshan you can issue commands, query data
+and perform firmware over the air (FOTA) updates on the IoT device(s).
 
-A block diagram of this system is shown here. One or more IoT devices
-can connect to the network through the same gateway.
+A block diagram of this system is shown here, and though it is not explicitely
+shown, one or more IoT devices can connect to the network through the same
+gateway.
 
 .. figure:: /_static/dm-leshan/lwm2m-system-diagram.svg
    :alt: Device Management with LWM2M System Diagram
@@ -33,15 +35,15 @@ can connect to the network through the same gateway.
 
 Using this demonstration system, you can:
 
-- See live temperature readings from your devices using the Leshan Web
-  applications.
+- See live data readings from your devices using the Leshan Web application.
 
-- Upload a cryptographically signed firmware image to a device
-  management server.
+- Send commands to the device, such as turning on and off the USR LED.
 
 - Use Leshan to transfer the firmware image onto an IoT device and then
-  initiate a firmware update. The device will boot the update after checking
-  its cryptographic signature.
+  initiate a firmware update.
+
+Get the Hardware
+================
 
 .. _96Boards Nitrogen:
    http://www.96boards.org/product/nitrogen/
@@ -51,9 +53,6 @@ Using this demonstration system, you can:
 
 .. _UART Serial Mezzanine:
    https://www.96boards.org/product/uartserial/
-
-Get the Hardware
-================
 
 To set up this system, you will need a Linux or macOS workstation
 computer, one or more IoT devices, and an IoT gateway.
@@ -93,10 +92,10 @@ Follow these instructions to run a Leshan demonstration Docker container:
    :width: 5in
    :alt: Leshan and dependencies
 
-Start the container with the following command:
+Start the Linaro Technologies container with the following command::
 
-    docker run --restart=always -d -t --net=host \
-      --read-only --tmpfs=/tmp -p 8081:80 \
+    docker run --restart=always -d -t -p 5683:5683/udp -p 5684:5684/udp \
+      --read-only --tmpfs=/tmp -p 8081:8080 \
       --name leshan linarotechnologies/leshan:latest
 
 After running the Leshan container, visit http://localhost:8081/ to
@@ -106,25 +105,22 @@ You can also browse the Security tab:
 
 .. figure:: /_static/dm-leshan/leshan-security.png
    :align: center
+   :width: 4in
    :alt: Leshan Administrator Interface
 
 Your Leshan container is now ready for use.
 
-2. Install the Linux microPlatform
-----------------------------------
+2. Setup the IoT gateway
+------------------------
 
-**Required Equipment**: IoT gateway and workstation to flash the board.
+**Required Equipment**: IoT gateway device (i.e. `96Boards HiKey`_  and
+    workstation to flash the board.
 
 Follow :ref:`linux-getting-started` to set up a `96Boards HiKey`_
 gateway for container-based application deployment.
 
 If you don't have a HiKey, the Linux microPlatform Getting Started Guide
 contains information for other boards, provided on a best-effort basis.
-
-3. Set Up IoT Gateway
----------------------
-
-Follow :ref:`big-getting-started` to setup a Basic IoT Gateway.
 
 a. configure networking for your IoT gateway device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,7 +155,7 @@ a. configure networking for your IoT gateway device
 b. Manually run the gateway containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. todo:: add instructions for manually installing gateway containers
+Follow :ref:`big-getting-started` to setup a Basic IoT Gateway.
 
 c. Use ansible to manage the gateway containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -196,20 +192,14 @@ fetch updates from hawkBit.
   of the system which is running the hawkBit server you set up
   earlier.
 
-5. Install Zephyr microPlatform
--------------------------------
+3. Configure IoT Devices
+------------------------
 
 **Required Equipment**: workstation to install the Zephyr microPlatform
 development environment, and IoT device to test installation.
 
 Install an Zephyr microPlatform development environment by following
 :ref:`zephyr-getting-started`.
-
-6. Set Up IoT Device(s)
------------------------
-
-**Required Equipment**: IoT device and workstation to flash the
-device.
 
 If you're using `96Boards Nitrogen`_, build and flash the
 demonstration application::
@@ -228,64 +218,102 @@ Use the System
 Now that your system is fully set up, it's time to check that sensor
 data are being sent to the cloud, and do a FOTA update.
 
+.. note::
+    The Leshan user web interface is a simple, web application and it does not
+    provide a complete end-to-end device management system. Leshan's simplicity
+    makes it a perfect demonstration and prototyping system for LWM2M devices.
+
 Retrieve Data
 -------------
 
-The Leshan user web interface is a simple, web application and it does not
-provide a complete end-to-end device management system. Leshan's simplicity
-makes it a perfect demonstration and prototyping system for LWM2M devices.
-
-1. When a device registers with the Leshan server, Leshan will automatically
+When a device registers with the Leshan server, Leshan will automatically
 render known object types on the web interface.  You can interact with the
 objects by scrolling and clicking the buttons for the objects.
 
-For example, to read the device information, simple scroll down to the
-corresponding device information object and select the 'READ' button.  If
-Leshan is able to communicate with your device you will see all of the
-available device information.
+- Read device information
 
-.. figure:: /_static/dm-leshan/leshan-readinfo.png
-   :align: center
-   :alt: Read the device information in Leshan
+    To read the device information, simple scroll down to the
+    corresponding device information object and select the 'READ' button.  If
+    Leshan is able to communicate with your device you will see all of the
+    available device information.
 
-#. Temperature and Light control objects
+    .. figure:: /_static/dm-leshan/leshan-readinfo.png
+       :align: center
+       :width: 4in
+       :alt: Read the device information in Leshan
 
-To read the current status of the Temperature and Light objects, scroll down
-to the light and temperature objects and select the READ button. You will
-see the state of these objects on the device similar to this figure.
+- Read current state of temperature and light objects
 
-.. figure:: /_static/dm-leshan/leshan-readtemp-light.png
-  :align: center
-  :alt: Write the light settings in Leshan
+    To read the current status of the Temperature and Light objects, scroll down
+    to the light and temperature objects and select the READ button. You will
+    see the state of these objects on the device similar to this figure.
 
-To change the state of an object, simply use the leshan interface and select
-the 'write' button to bring up the appropriate interface for changing data.
+    .. figure:: /_static/dm-leshan/leshan-readtemp-light.png
+      :align: center
+      :width: 4in
+      :alt: Read the light settings in Leshan
 
-.. figure:: /_static/dm-leshan/leshan-changelight.png
-  :align: center
-  :alt: Write the light settings in Leshan
+- Change state of the light object
+
+    To change the state of an object, simply use the leshan interface and select
+    the 'write' button to bring up the appropriate interface for changing data.
+
+    .. figure:: /_static/dm-leshan/leshan-changelight.png
+        :align: center
+        :width: 4in
+        :alt: Write the light settings in Leshan
 
 FOTA Updates
 ------------
 
-Now let's perform a FOTA update. In the hawkBit server UI, you should
-see the 96Boards device show up in the "Targets" pane. It will look
-like this:
+Updating the firmware is provided by the LWM2M firmware update object.
 
-.. todo:: add 96b-target screen capture from leshan
+- Initiate the firmware transfer
 
-.. figure:: /_static/dm-leshan/96b-target.png
-   :align: center
+    To start the firmware update, we will first 'write' the location of the
+    file in the "Package URI" field.  Once you send this message, the file
+    will begin transferring to the target.
 
-   96Boards Nitrogen registered with Leshan.
+    .. note::
 
-It's time to upload a firmware binary to the server, and update it
-using this UI.
+        * the length of the Package URI field must be < 255 characters
 
-.. todo:: add instructions to update device using lwm2m
+        * The URI must be hosted where it is routable from your device.
+            The URI can be either coap:// or http://
 
-Congratulations! You've just done your first FOTA update using this
-system.
+    .. figure:: /_static/dm-leshan/leshan-packageuri.png
+        :width: 4in
+        :align: center
+
+- Monitor the target for a completed transfer
+
+    .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
+        :width: 4in
+        :align: center
+
+- Execute the update and monitor the firmware update state
+
+    .. note::
+
+        * State == 0 ; Idle
+
+        * State == 1 ; Downloading
+
+        * State == 2 ; Downloaded
+
+        * State == 3 ; Updating
+
+    .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
+        :width: 4in
+        :align: center
+
+- After the device downloads the update file (State == 2) you initiate the
+    update by clicking on the 'exec' button.
+
+    When the update execution is complete, the device will restart
+
+- Congratulations! You've just done your first FOTA update using this
+    system.
 
 Known Issues
 ============

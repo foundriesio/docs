@@ -83,13 +83,9 @@ Instructions follow setting up a 6LoWPAN Bluetooth device whitelist.
 Enable the whitelist feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To enable the whitelist, use the following commands from the bt-joiner
-container::
-
-    sudo service bluetooth_6lowpand stop
-    sudo bluetooth_6lowpand --whitelist_on
-    sudo bluetooth_6lowpand --whitelist_clear
-    sudo service bluetooth_6lowpand start
+To enable the whitelist, simply enable the whitelist function by modifying
+the bluetooth_6lowpand.conf.  You'll want to set USE_WL to 1 and add a
+WL=MAC_ADDRESS line for each device you wish to whitelist.
 
 How to Find Devices for the Whitelist
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -112,57 +108,10 @@ The following is an example of the output from this command::
 Write down all of the "Linaro IPSP node" Bluetooth addresses, as you
 will need these for the next steps.
 
-Add a Device to the Whitelist
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Next, add each Bluetooth address to the whitelist with the following
-command from the bt-joiner container::
-
-    # btaddress is formatted: ##:##:##:##:##:##
-    sudo bluetooth_6lowpand --whitelist_add <btaddress>
-
-As you run each command, you may notice that the bluetooth_6lowpand
-service will join the device during its next scan.
-
-.. note::
-
-   **Once you've added all of the devices, you're done!  If you require
-   no further changes, you can skip the rest of this guide.**
-
-Additional Commands
-~~~~~~~~~~~~~~~~~~~
-
-List the devices in the whitelist
-+++++++++++++++++++++++++++++++++
-
-To list the devices currently in the bluetooth_6lowpand whitelist, use
-the following command from the bt-joiner container::
-
-    sudo bluetooth_6lowpand --whitelist_list
-
-Remove a device from the whitelist
-++++++++++++++++++++++++++++++++++
-
-To remove a device from the whitelist, use the following command from
-the bt-joiner container::
-
-    # btaddress is formatted: ##:##:##:##:##:##
-    sudo bluetooth_6lowpand --whitelist_remove <btaddress>
-
-.. note::
-
-   If a device is currently joined to the 6lowpan network, it will be
-   disconnected once this command is run.
-
 Disable the whitelist feature
 +++++++++++++++++++++++++++++
 
-To turn off the whitelist feature, use the following commands from the
-bt-joiner container::
-
-    sudo service bluetooth_6lowpand stop
-    sudo bluetooth_6lowpand --whitelist_off
-    sudo service bluetooth_6lowpand start
+To turn off the whitelist feature, set USE_WL to '0' in bluetooth_6lowpand.conf
 
 .. _gateway-containers README.md:
    https://github.com/linaro-technologies/gateway-containers/blob/master/README.md
