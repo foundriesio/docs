@@ -213,9 +213,10 @@ Now that your system is fully set up, it's time to check that sensor
 data are being sent to the cloud, and do a FOTA update.
 
 .. note::
-    The Leshan user web interface is a simple, web application and it does not
-    provide a complete end-to-end device management system. Leshan's simplicity
-    makes it a perfect demonstration and prototyping system for LWM2M devices.
+
+   The Leshan user web interface is a simple web application, which does not
+   provide a complete end-to-end device management system. Leshan's simplicity
+   makes it a perfect demonstration and prototyping system for LWM2M devices.
 
 Retrieve Data
 -------------
@@ -226,36 +227,36 @@ objects by scrolling and clicking the buttons for the objects.
 
 - Read device information
 
-    To read the device information, simple scroll down to the
-    corresponding device information object and select the 'READ' button.  If
-    Leshan is able to communicate with your device you will see all of the
-    available device information.
+  To read the device information, simple scroll down to the
+  corresponding device information object and select the 'READ' button.  If
+  Leshan is able to communicate with your device you will see all of the
+  available device information.
 
-    .. figure:: /_static/dm-leshan/leshan-readinfo.png
-       :align: center
-       :width: 4in
-       :alt: Read the device information in Leshan
+  .. figure:: /_static/dm-leshan/leshan-readinfo.png
+     :align: center
+     :width: 4in
+     :alt: Read the device information in Leshan
 
 - Read current state of temperature and light objects
 
-    To read the current status of the Temperature and Light objects, scroll down
-    to the light and temperature objects and select the READ button. You will
-    see the state of these objects on the device similar to this figure.
+  To read the current status of the Temperature and Light objects, scroll down
+  to the light and temperature objects and select the READ button. You will
+  see the state of these objects on the device similar to this figure.
 
-    .. figure:: /_static/dm-leshan/leshan-readtemp-light.png
-      :align: center
-      :width: 4in
-      :alt: Read the light settings in Leshan
+  .. figure:: /_static/dm-leshan/leshan-readtemp-light.png
+    :align: center
+    :width: 4in
+    :alt: Read the light settings in Leshan
 
 - Change state of the light object
 
-    To change the state of an object, simply use the leshan interface and select
-    the 'write' button to bring up the appropriate interface for changing data.
+  To change the state of an object, simply use the leshan interface and select
+  the 'write' button to bring up the appropriate interface for changing data.
 
-    .. figure:: /_static/dm-leshan/leshan-changelight.png
-        :align: center
-        :width: 4in
-        :alt: Write the light settings in Leshan
+  .. figure:: /_static/dm-leshan/leshan-changelight.png
+      :align: center
+      :width: 4in
+      :alt: Write the light settings in Leshan
 
 FOTA Updates
 ------------
@@ -264,26 +265,26 @@ Updating the firmware is provided by the LWM2M firmware update object.
 
 - Initiate the firmware transfer
 
-    To start the firmware update, we will first 'write' the location of the
-    file in the "Package URI" field.  Once you send this message, the file
-    will begin transferring to the target.
+  To start the firmware update, we will first 'write' the location of the
+  file in the "Package URI" field.  Once you send this message, the file
+  will begin transferring to the target.
 
-    .. note::
+  .. note::
 
-        * the length of the Package URI field must be < 255 characters
+      * the length of the Package URI field must be < 255 characters
 
-        * The URI must be hosted where it is routable from your device.
-            The URI can be either coap:// or http://
+      * The URI must be hosted where it is routable from your device.
+        The URI can be either coap:// or http://
 
-    .. figure:: /_static/dm-leshan/leshan-packageuri.png
-        :width: 4in
-        :align: center
+  .. figure:: /_static/dm-leshan/leshan-packageuri.png
+      :width: 4in
+      :align: center
 
 - Monitor the target for a completed transfer
 
-    .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
-        :width: 4in
-        :align: center
+  .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
+      :width: 4in
+      :align: center
 
 - Execute the update and monitor the firmware update state
 
@@ -294,17 +295,17 @@ Updating the firmware is provided by the LWM2M firmware update object.
       * State == 2: Downloaded
       * State == 3: Updating
 
-    .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
-        :width: 4in
-        :align: center
+  .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
+      :width: 4in
+      :align: center
 
-- After the device downloads the update file (State == 2) you initiate the
-    update by clicking on the 'exec' button.
+- After the device downloads the update file (State == 2), initiate the
+  update by clicking on the 'exec' button.
 
-    When the update execution is complete, the device will restart
+  When the update execution is complete, the device will restart.
 
 - Congratulations! You've just done your first FOTA update using this
-    system.
+  system.
 
 Known Issues
 ============
