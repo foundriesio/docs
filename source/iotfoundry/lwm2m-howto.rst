@@ -287,15 +287,12 @@ Updating the firmware is provided by the LWM2M firmware update object.
 
 - Execute the update and monitor the firmware update state
 
-    .. note::
+  The state values and their meanings are:
 
-        * State == 0 ; Idle
-
-        * State == 1 ; Downloading
-
-        * State == 2 ; Downloaded
-
-        * State == 3 ; Updating
+      * State == 0: Idle
+      * State == 1: Downloading
+      * State == 2: Downloaded
+      * State == 3: Updating
 
     .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
         :width: 4in
