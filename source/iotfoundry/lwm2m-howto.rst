@@ -109,8 +109,9 @@ Your Leshan container is now ready for use.
 **Required Equipment**: IoT gateway device (i.e. `96Boards HiKey`_  and
     workstation to flash the board.
 
-Follow :ref:`linux-getting-started` to set up a `96Boards HiKey`_
-gateway for container-based application deployment.
+Follow the Linux microPlatform :ref:`linux-getting-started` guide to
+set up a `96Boards HiKey`_ gateway for container-based application
+deployment.
 
 If you don't have a HiKey, the Linux microPlatform Getting Started Guide
 contains information for other boards, provided on a best-effort basis.
