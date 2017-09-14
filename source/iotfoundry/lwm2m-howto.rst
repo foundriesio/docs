@@ -85,13 +85,6 @@ Prepare the System
 
 **Required Equipment**: workstation which supports `Docker`_.
 
-Follow these instructions to run a Leshan demonstration Docker container:
-
-.. figure:: /_static/dm-leshan/Leshan-initial.png
-   :align: center
-   :width: 5in
-   :alt: Leshan and dependencies
-
 Start the Linaro Technologies container with the following command::
 
     docker run --restart=always -d -t -p 5683:5683/udp -p 5684:5684/udp \
