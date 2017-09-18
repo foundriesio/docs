@@ -87,9 +87,6 @@ Prepare the System
 .. _Ansible:
    https://www.ansible.com
 
-.. _Install Ansible:
-   http://docs.ansible.com/ansible/latest/intro_installation.html
-
 .. _GitHub guide to SSH keys:
    https://help.github.com/articles/connecting-to-github-with-ssh/
 
@@ -195,44 +192,7 @@ You'll now use Ansible to set up your IoT gateway to act as a network
 proxy for your IoT device to publish sensor data to CloudMQTT, and
 fetch updates from hawkBit.
 
-- Follow the Basic IoT Gateway :ref:`big-getting-started` guide to log
-  into the Basic IoT Gateway console and change the password for the
-  ``linaro`` user. The default password is ``linaro``.
-
-- Connect your IoT gateway to the network.
-
-  You can connect a HiKey to a local WiFi network\ [#hikeyethernet]_
-  from its serial console as follows::
-
-    sudo nmcli device wifi connect <NetworkSSID> password <NetworkPassword>
-
-  After connecting to the network, record the IP address of your
-  gateway, GATEWAY_IP_ADDRESS, which you can obtain when using WiFi
-  with::
-
-    ip addr show wlan0 | grep -o 'inet [.0-9]*'
-
-  (If you're using Ethernet, ``ip addr show`` will show all IP
-  addresses on the system.)
-
-- If you don't already have one, create an SSH key on your
-  workstation. If you've never done this before, the `GitHub guide to
-  SSH keys`_ has useful instructions.
-
-- Copy your SSH key to the gateway in order to control it with
-  Ansible using ``ssh-copy-id``::
-
-    ssh-copy-id linaro@GATEWAY_IP_ADDRESS
-
-  Use the new password for the ``linaro`` account you set earlier.
-
-- `Install Ansible`_, which will let you install and control
-  containers on your IoT gateway via SSH from your workstation.
-
-- Clone the ``gateway-ansible`` repository, which contains an Ansible
-  playbook to set up the gateway for this system::
-
-    git clone https://github.com/linaro-technologies/gateway-ansible
+.. include:: iot-gateway-setup-common.include
 
 - From the ``gateway-ansible`` repository, deploy the gateway
   containers using the gateway's IP address and CloudMQTT information

@@ -74,9 +74,6 @@ Prepare the System
 .. _Ansible:
    https://www.ansible.com
 
-.. _install Ansible:
-   http://docs.ansible.com/ansible/latest/intro_installation.html
-
 .. _GitHub guide to SSH keys:
    https://help.github.com/articles/connecting-to-github-with-ssh/
 
@@ -103,90 +100,38 @@ You can also browse the Security tab:
 
 Your Leshan container is now ready for use.
 
-2. Setup the IoT gateway
-------------------------
+2. Install the Linux microPlatform
+----------------------------------
 
-**Required Equipment**: IoT gateway device (i.e. `96Boards HiKey`_  and
-    workstation to flash the board.
+**Required Equipment**: IoT gateway and workstation to flash the board.
 
-Follow the Linux microPlatform :ref:`linux-getting-started` guide to
-set up a `96Boards HiKey`_ gateway for container-based application
+Follow the Linux microPlatform :ref:`linux-getting-started` guide to set up
+a `96Boards HiKey`_ gateway for container-based application
 deployment.
 
-If you don't have a HiKey, the Linux microPlatform Getting Started Guide
-contains information for other boards, provided on a best-effort basis.
+If you don't have a HiKey, the Getting Started Guide contains
+information for other boards, provided on a best-effort basis.
 
-a. configure networking for your IoT gateway device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3. Set up the IoT Gateway
+-------------------------
 
-- Now connect your IoT gateway to the network.
-
-  You can connect a HiKey to a local WiFi network\ [#hikeyethernet]_
-  from its serial console as follows::
-
-    sudo nmcli device wifi connect <NetworkSSID> password <NetworkPassword>
-
-  The default password to use with ``sudo`` is ``linaro``, but we
-  recommend that you change it while setting up your gateway, before
-  connecting it to the network.
-
-  After connecting to the network, record the IP address of your
-  gateway, GATEWAY_IP_ADDRESS, which you can obtain when using WiFi
-  with::
-
-    ip addr show wlan0 | grep -o 'inet [.0-9]*'
-
-  (If you're using Ethernet, ``ip addr show`` will show all IP
-  addresses on the system.)
-
-- You can now copy your SSH key to the gateway in order to control it
-  with Ansible. Do this with ``ssh-copy-id``::
-
-    ssh-copy-id linaro@GATEWAY_IP_ADDRESS
-
-  Use the same gateway password from the previous step.
-
-b. Manually run the gateway containers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Follow :ref:`big-getting-started` to setup a Basic IoT Gateway.
-
-c. Use ansible to manage the gateway containers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-**Required Equipment**: IoT gateway and workstation to run Ansible.
+**Required Equipment**: IoT gateway device and workstation to run `Ansible`_.
 
 You'll now use Ansible to set up your IoT gateway to act as a network
 proxy for your IoT device to publish sensor data to CloudMQTT, and
 fetch updates from hawkBit.
 
-- First, `install Ansible`_, which will let you install and control
-  containers on your IoT gateway via SSH from your workstation.
-
-- If you don't already have one, you now need to create an SSH key on
-  your workstation. If you've never done this before, the `GitHub
-  guide to SSH keys`_ has useful instructions.
-
-
-- Clone the ``gateway-ansible`` repository, which contains an Ansible
-  playbook to set up the gateway for this system::
-
-    git clone https://github.com/linaro-technologies/gateway-ansible
+.. include:: iot-gateway-setup-common.include
 
 - From the ``gateway-ansible`` repository, deploy the gateway
-  containers using the CloudMQTT information you recorded earlier::
+  containers to your IoT gateway::
 
-    ansible-playbook -e "mqttuser=CLOUDMQTT_USER mqttpass=CLOUDMQTT_PASSWORD \
-                         mqtthost=CLOUDMQTT_SERVER mqttport=CLOUDMQTT_PORT \
-                         gitci=WORKSTATION_IP_ADDRESS tag=latest" \
-                     -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml
+    ansible-playbook -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml \
                      --tags gateway
 
-  WORKSTATION_IP_ADDRESS in the above command line is the IP address
-  of the system which is running the hawkBit server you set up
-  earlier.
+  **The comma after GATEWAY_IP_ADDRESS is mandatory**.
 
-3. Configure IoT Devices
+4. Configure IoT Devices
 ------------------------
 
 **Required Equipment**: workstation to install the Zephyr microPlatform
