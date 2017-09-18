@@ -178,7 +178,7 @@ fetch updates from hawkBit.
 
     ansible-playbook -e "mqttuser=CLOUDMQTT_USER mqttpass=CLOUDMQTT_PASSWORD \
                          mqtthost=CLOUDMQTT_SERVER mqttport=CLOUDMQTT_PORT \
-                         gitci=WORKSTATION_IP_ADDRESS tag=latest-arm64" \
+                         gitci=WORKSTATION_IP_ADDRESS tag=latest" \
                      -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml
                      --tags gateway
 
