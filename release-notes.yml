@@ -1,12 +1,13 @@
 highlights:
-  - Zephyr tree from 1.9 release candidate stage, with LWM2M support
+  - Zephyr tree from 1.10 development tree, with LWM2M support,
+    support for 96Boards Carbon, and libraries for managing interactions
+    with MCUBoot
   - New application for IoT Foundry demonstrating LWM2M
-  - Upstream support for 96Boards Carbon
   - Many other bug fixes and improvements across the trees
 summary: |
  This release includes an mcuboot tree based very closely on the 0.9.0
- release, and a Zephyr tree that is based between the 1.9-rc1 and
- 1.9-rc2 tags. It also includes a new IoT Foundry application.
+ release, and a Zephyr tree that is based on 1.10. It also includes a
+ new IoT Foundry application.
 
  The Zephyr tree includes many new features and bug fixes. Notable
  improvements for the Zephyr microPlatform include LWM2M protocol
@@ -58,11 +59,30 @@ parts:
               Zephyr support for the Lightweight Machine to Machine
               (LWM2M) protocol, provided and maintained by the Linaro
               Technologies Division, was merged into the Zephyr
-              mainline. This includes IPSO Light Control object
-              support.
+              mainline, and has seen significant cleanup and testing
+              since its initial merge in the 1.9 development
+              cycle. It includes IPSO Light Control object support.
 
               A fully documented sample application named lwm2m_client
               was merged.
+          - heading: k_poll() allows multiple threads to poll
+            summary: |
+              struct k_poll was updated to allow multiple threads to
+              use the same poll object.
+          - heading: x86 support for kernel/userspace separation
+            summary: |
+              Userspace APIs were added to support kernel/user mode
+              (supported for x86).
+          - heading: DFU support for MCUBoot
+            summary: |
+              DFU module was added to support building Zephyr with
+              mcuboot.
+          - heading: DTS for Quark SE C1000
+            summary: |
+              The Quark SE C1000 SoC received DTS support.
+          - heading: USB serial for x86
+            summary: |
+              Serial over USB support was added for X86.
           - heading: sa_family field added to struct sockaddr
             summary: |
               POSIX compatibility patch caused changes across the
@@ -73,10 +93,11 @@ parts:
               The ARC architecture added MPU and stack guard support.
           - heading: Crypto library updates
             summary: |
-              TinyCrypt was updated to version 0.2.7.
-              mbedTLS was updated to version 2.5.1.
-              An mbedTLS shim layer was added which is compliant with
-              Zephyr crypto APIs.
+              TinyCrypt was updated to version 0.2.7, and received
+              some coverty adjustments.  Due to a security advisory
+              released on August 28th 2017, mbedTLS was updated to
+              2.6.0.  An mbedTLS shim layer was added which is
+              compliant with Zephyr crypto APIs.
           - heading: MQTT conversion to net_app API
             summary: |
               The MQTT networking library was converted to use the
@@ -111,11 +132,17 @@ parts:
             summary: |
               Initial support for TCP receive window management was
               merged.
-          - heading: STM32 pinmux re-work
+          - heading: STM32 improvements
             summary: |
               The STM32 pinmux driver was completely re-worked. The
               new version will better support Device Tree, though full
               DT integration is ongoing work.
+
+              Support was added for the TIM3 peripheral.
+
+              Support for the STM32F417 and STM32F405 SoCs was merged,
+              along with fixes and improvements to the STM32 pinmux
+              drivers.
           - heading: OpenOCD symbol generation
             summary: |
               Zephyr builds now include OpenOCD symbols.
@@ -129,10 +156,10 @@ parts:
               This sample is compatible with the Zephyr HCI SPI
               protocol and enables Bluetooth connectivity on 96Boards
               Carbon via the nrf51 SoC (96b_carbon_nrf51).
-          - heading: Bluetooth support for 96Boards Carbon
+          - heading: Bluetooth support for more boards
             summary: |
-              Bluetooth support for 96Boards Carbon was finally merged
-              upstream.
+              Bluetooth support for 96Boards Carbon and
+              disco_l475_iot1 was merged.
           - heading: Updated TI CC22xx support.
             summary: |
               TI CC3200 SoC and LaunchXL board support removed in
@@ -145,6 +172,10 @@ parts:
             summary: |
               Flash partitions added for nrf52_blenano2, making it
               compatible with FOTA via mcuboot and dual partitions.
+          - heading: Flash layout API
+            summary: |
+              New flash driver API to query flash layout (supported on
+              nRF5 and STM32).
           - heading: I2S driver support
             summary: |
               A new driver API and infrastructure for the I2S (Inter-IC
@@ -153,18 +184,14 @@ parts:
             summary: |
               Driver support for ESP32-based targets continues to
               increase, with the merging of random number generator,
-              GPIO, and pinmux drivers.
-          - heading: Additional board support
+              GPIO, serial, watchdog, and pinmux drivers.
+          - heading: Improved board support
             summary: |
-              Board support was added for the STM32F429I-DISC1 and
-              olimex_stm32_p405 boards. Board support for the
-              hexiwear_k64 was extended to support additional existing
-              sample applications.
-          - heading: Additional STM32 SoC support
-            summary: |
-              Support for the STM32F417 and STM32F405 SoCs was merged,
-              along with fixes and improvements to the STM32 pinmux
-              drivers.
+              Board support was added for the STM32F429I-DISC1,
+              olimex_stm32_p405, and STM32F412G-DISCO boards. Board
+              support for the hexiwear_k64 was extended to support
+              additional existing sample applications. Support for
+              12C_2 was added for 96b_carbon.
           - heading: New PWM driver for NXP SoCs
             summary: |
               Support for a new mcux-based driver was merged for
@@ -193,6 +220,31 @@ parts:
               Zephyr documentation saw a series of patches moving
               content around into more simplified groupings.
         bug_fixes:
+          - heading: Networking fixes
+            summary: |
+              The network application (net-app) framework received
+              some bugfixes.  Many of them involve trying to build
+              with various combinations of CONFIG options and
+              IPv4/IPv6. A patch preventing unaligned access was
+              added, as well as re-initialization of connection
+              structures after a disconnect.  A regression bugfix for
+              using POST method with the HTTP client was also merged.
+          - heading: JSON fixes
+            summary: |
+              JSON library received some bug fixes and compiler
+              warning cleanup.
+          - heading: k_timer_start() fix for zero parameter
+            summary: |
+              k_timer_start() was fixed to accept a zero
+              parameter. This expires the timer as soon as possible.
+          - heading: Boot banner fix
+            summary: |
+              The boot banner now prints before any other messages at
+              the application log level.
+          - heading: Bluetooth conformance fixes
+            summary: |
+              Bluetooth controller and mesh changes to related to
+              conformance and qualification testing were merged.
           - heading: Bluetooth RTC fix
             summary: |
               The Bluetooth subsystem saw a bluetooth regression fix
