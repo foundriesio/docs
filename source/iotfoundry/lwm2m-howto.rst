@@ -77,8 +77,18 @@ Prepare the System
 .. _GitHub guide to SSH keys:
    https://help.github.com/articles/connecting-to-github-with-ssh/
 
+This is broken down into the following steps.
+
+- :ref:`dm-lwm2m-leshan`
+- :ref:`dm-lwm2m-linux`
+- :ref:`dm-lwm2m-gateway`
+- :ref:`dm-lwm2m-zephyr`
+- :ref:`dm-lwm2m-device`
+
+.. _dm-lwm2m-leshan:
+
 1. Set up Leshan
------------------
+----------------
 
 **Required Equipment**: workstation which supports `Docker`_.
 
@@ -100,6 +110,8 @@ You can also browse the Security tab:
 
 Your Leshan container is now ready for use.
 
+.. _dm-lwm2m-linux:
+
 2. Install the Linux microPlatform
 ----------------------------------
 
@@ -111,6 +123,8 @@ deployment.
 
 If you don't have a HiKey, the Getting Started Guide contains
 information for other boards, provided on a best-effort basis.
+
+.. _dm-lwm2m-gateway:
 
 3. Set up the IoT Gateway
 -------------------------
@@ -134,14 +148,24 @@ set up earlier.
   of the system which is running the Leshan server you set up
   earlier. **The comma after GATEWAY_IP_ADDRESS is mandatory**.
 
-4. Configure IoT Devices
-------------------------
+.. _dm-lwm2m-zephyr:
+
+4. Install the Zephyr microPlatform
+-----------------------------------
 
 **Required Equipment**: workstation to install the Zephyr microPlatform
 development environment, and IoT device to test installation.
 
-Install an Zephyr microPlatform development environment by following
-:ref:`zephyr-getting-started`.
+Follow the installation steps in the Zephyr microPlatform
+:ref:`zephyr-getting-started` guide.
+
+.. _dm-lwm2m-device:
+
+5. Set up the IoT Device(s)
+---------------------------
+
+**Required Equipment**: IoT device and workstation to flash the
+device.
 
 If you're using `96Boards Nitrogen`_, build and flash the
 demonstration application::
