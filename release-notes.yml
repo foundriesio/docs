@@ -2,12 +2,12 @@ highlights:
   - Zephyr tree from 1.10 development tree, with LWM2M support,
     support for 96Boards Carbon, and libraries for managing interactions
     with MCUBoot
+  - MCUBoot version 1.0.0
   - New application for IoT Foundry demonstrating LWM2M
   - Many other bug fixes and improvements across the trees
 summary: |
- This release includes an mcuboot tree based very closely on the 0.9.0
- release, and a Zephyr tree that is based on 1.10. It also includes a
- new IoT Foundry application.
+ This release includes MCUBoot version 1.0.0, and a Zephyr tree that
+ is based on 1.10. It also includes a new IoT Foundry application.
 
  The Zephyr tree includes many new features and bug fixes. Notable
  improvements for the Zephyr microPlatform include LWM2M protocol
@@ -20,6 +20,9 @@ summary: |
 parts:
   - name: Zephyr microPlatform
     summary: |
+      MCUBoot version 1.0.0 was declared, and is included in this
+      release.
+
       A new end-to-end IoT system based on the LWM2M protocol has been
       added, along with an updated Zephyr tree, which provides
       protocol support along with many other feature additions and
@@ -36,11 +39,77 @@ parts:
       - name: MCUBoot
         manifest_project: mcuboot
         features:
+          - heading: New header format
+            summary: |
+              For the 1.0 release, MCUBoot has received a new image
+              header format.
+
+              The most important change from version 0.9 is a new
+              header format, in which all signature information is
+              moved from the header into the block of key/value TLVs
+              which follow the image, in a new format. This allows
+              supporting multiple signatures, changing the signature
+              without changing the image, and other feature
+              improvements. See docs/release-notes.md for more
+              details.
+
+              Since this is a breaking change, the magic number for
+              the image header is now different, along with other
+              incompatible image format changes. Tooling and build
+              systems which rely on imgtool.py should not need any
+              changes beyond a re-build; other build flows may require
+              additional changes.
+          - heading: Zephyr release test improvements
+            summary: |
+              The mcuboot build system was made more configurable;
+              more of the behavior of the bootloader can be configured
+              by passing arguments to make. Compile-time configurable
+              behavior includes the signature type, whether the image
+              at slot 0 is validated at every boot, and whether the
+              "overwrite only" upgrade method is used instead of the
+              default swapping method.
+
+              The release test suite has been updated to take
+              advantage of this; the test scripts now invoke make with
+              different configurations, rather than applying different
+              patches to the build system to generate builds with
+              different configurations.
+          - heading: Tinycrypt version 0.2.6 imported
+            summary: |
+              MCUboot has imported the Tinycrypt version 0.2.6 source
+              code into the tree, and uses it directly. This is
+              because Zephyr has moved to version 0.2.7, which
+              introduces incompatible API changes which other
+              platforms do not yet support. The Tinycrypt sources use
+              both 3-clause and 2-clause BSD-style licenses.
+          - heading: PKCSv1.5 removal
+            summary: |
+              The obsolete PKCSv1.5 signature format option has been
+              removed.
+          - heading: License cleanups
+            summary: |
+              A LICENSE file was added, which contains the Apache
+              license v2.
+          - heading: Support for additional boards
+            summary: |
+              Zephyr board support was added for Hexiwear K64,
+              nrf52_blenano2, and the nRF51 and nRF52832 development
+              kits from Nordic Semiconductors.
+          - heading: Design document improvements.
+            summary: |
+              The design document has been significantly re-worked,
+              with various fixes and improvements.
           - heading: Improved Zephyr sample applications.
             summary: |
               The Zephyr sample applications have been reduced to a
               single application, which can be built for multiple
               boards.
+        bug_fixes:
+          - heading: Build system fixes to remain in boot partition
+            summary: |
+              The build system has been fixed so that the MCUBoot
+              image is checked to fit within the boot partition at
+              build time.
       - name: Zephyr
         manifest_project: zephyr
         features:
