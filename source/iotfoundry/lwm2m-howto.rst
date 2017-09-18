@@ -118,18 +118,21 @@ information for other boards, provided on a best-effort basis.
 **Required Equipment**: IoT gateway device and workstation to run `Ansible`_.
 
 You'll now use Ansible to set up your IoT gateway to act as a network
-proxy for your IoT device to publish sensor data to CloudMQTT, and
-fetch updates from hawkBit.
+proxy for your IoT device to communicate with the Leshan server you
+set up earlier.
 
 .. include:: iot-gateway-setup-common.include
 
 - From the ``gateway-ansible`` repository, deploy the gateway
   containers to your IoT gateway::
 
-    ansible-playbook -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml \
+    ansible-playbook -e "gitci=WORKSTATION_IP_ADDRESS tag=latest" \
+                     -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml \
                      --tags gateway
 
-  **The comma after GATEWAY_IP_ADDRESS is mandatory**.
+  WORKSTATION_IP_ADDRESS in the above command line is the IP address
+  of the system which is running the Leshan server you set up
+  earlier. **The comma after GATEWAY_IP_ADDRESS is mandatory**.
 
 4. Configure IoT Devices
 ------------------------
