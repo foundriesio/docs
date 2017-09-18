@@ -61,7 +61,7 @@ parts:
               additional changes.
           - heading: Zephyr release test improvements
             summary: |
-              The mcuboot build system was made more configurable;
+              The MCUBoot build system was made more configurable;
               more of the behavior of the bootloader can be configured
               by passing arguments to make. Compile-time configurable
               behavior includes the signature type, whether the image
@@ -76,7 +76,7 @@ parts:
               different configurations.
           - heading: Tinycrypt version 0.2.6 imported
             summary: |
-              MCUboot has imported the Tinycrypt version 0.2.6 source
+              MCUBoot has imported the Tinycrypt version 0.2.6 source
               code into the tree, and uses it directly. This is
               because Zephyr has moved to version 0.2.7, which
               introduces incompatible API changes which other
@@ -145,7 +145,7 @@ parts:
           - heading: DFU support for MCUBoot
             summary: |
               DFU module was added to support building Zephyr with
-              mcuboot.
+              MCUBoot.
           - heading: DTS for Quark SE C1000
             summary: |
               The Quark SE C1000 SoC received DTS support.
@@ -240,7 +240,7 @@ parts:
           - heading: Flash partitions for nrf52_blenano2
             summary: |
               Flash partitions added for nrf52_blenano2, making it
-              compatible with FOTA via mcuboot and dual partitions.
+              compatible with FOTA via MCUBoot and dual partitions.
           - heading: Flash layout API
             summary: |
               New flash driver API to query flash layout (supported on
