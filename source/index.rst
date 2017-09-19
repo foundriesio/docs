@@ -66,10 +66,6 @@ firmware.
 .. The following bold text (and the list of todos themselves) only
    appear when todo_include_todos is True in conf.py.
 
-.. ifconfig:: todo_include_todos is True
-
-   **Documentation-wide TODO List**
-
 .. todo::
 
    Add "advanced and special topics" Zephyr microPlatform docs:
@@ -79,5 +75,9 @@ firmware.
    - Add features to the tooling ("internals" docs, generally)
    - HLL support (uPython, JerryScript)
    - Cloud service integration
+
+.. ifconfig:: todo_include_todos is True
+
+   **Documentation-wide TODO List**
 
 .. todolist::
