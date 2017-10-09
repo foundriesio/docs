@@ -138,9 +138,9 @@ Linux
 
    On Ubuntu 16.04::
 
-     sudo add-apt-repository ppa:linaro-maintainers/ltd
+     sudo add-apt-repository ppa:osf-maintainers/ppa
      sudo apt-get update
-     sudo apt-get install genesis-dev
+     sudo apt-get install zmp-dev
      pip3 install --user pyelftools
 
    On other distributions, see :ref:`zephyr-dependencies`.
