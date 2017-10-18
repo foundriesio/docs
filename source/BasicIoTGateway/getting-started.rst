@@ -37,9 +37,9 @@ the board finishes booting::
 
   hikey login:
 
-Enter ``linaro`` for the username, and ``linaro`` for the
+Enter ``osf`` for the username, and ``osf`` for the
 password. You will be dropped into a normal user shell, and should now
-change the password. The ``linaro`` user may use ``sudo`` to obtain
+change the password. The ``osf`` user may use ``sudo`` to obtain
 root access on the device.
 
 Load Gateway Containers
