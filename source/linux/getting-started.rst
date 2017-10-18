@@ -281,22 +281,22 @@ run Ansible from Ubuntu.)
    http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx
 
 .. _bootloader/hisi-idt.py:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/bootloader/hisi-idt.py
+   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/bootloader/hisi-idt.py
 
 .. _bootloader/l-loader.bin:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/bootloader/l-loader.bin
+   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/bootloader/l-loader.bin
 
 .. _bootloader/fip.bin:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/bootloader/fip.bin
+   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/bootloader/fip.bin
 
 .. _bootloader/nvme.img:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/bootloader/nvme.img
+   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/bootloader/nvme.img
 
 .. _latest HiKey build artifacts:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/hikey/rpb/latest/
+   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/
 
 .. _builds for other boards:
-   http://builds.96boards.org/snapshots/linaro-technologies/openembedded/master-upstream-dev/
+   https://api.foundries.io/releases/lmp/17.10.1/artifacts/
 
 .. _gateway-containers README.md:
    https://github.com/linaro-technologies/gateway-containers/blob/master/README.md
