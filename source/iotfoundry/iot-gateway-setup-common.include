@@ -3,7 +3,7 @@
 
 - Follow the Basic IoT Gateway :ref:`big-getting-started` guide to log
   into the Basic IoT Gateway console and change the password for the
-  ``linaro`` user. The default password is ``linaro``.
+  ``osf`` user. The default password is ``osf``.
 
 - Connect your IoT gateway to the network.
 
@@ -28,7 +28,7 @@
 - Copy your SSH key to the gateway in order to control it with
   Ansible. Do this with ``ssh-copy-id``::
 
-    ssh-copy-id linaro@GATEWAY_IP_ADDRESS
+    ssh-copy-id osf@GATEWAY_IP_ADDRESS
 
   Use the new password for the ``linaro`` account you set earlier.
 
@@ -38,4 +38,4 @@
 - Clone the ``gateway-ansible`` repository, which contains an Ansible
   playbook to set up the gateway for this system::
 
-    git clone https://github.com/linaro-technologies/gateway-ansible
+    git clone https://github.com/OpenSourceFoundries/gateway-ansible
