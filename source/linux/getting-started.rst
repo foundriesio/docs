@@ -257,7 +257,7 @@ containers which interest you.
 
 If you installed Ansible earlier, you can also use Ansible playbooks
 to deploy the containers; these are available in the `gateway-ansible
-<https://github.com/linaro-technologies/gateway-ansible>`_
+<https://github.com/OpenSourceFoundries/gateway-ansible>`_
 repository. (While Ansible isn't supported on Windows, you can run
 `Ubuntu in a Docker container <https://hub.docker.com/_/ubuntu/>`_ and
 run Ansible from Ubuntu.)
