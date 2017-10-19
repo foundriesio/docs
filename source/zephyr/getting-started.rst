@@ -201,8 +201,8 @@ Install Zephyr microPlatform
 To install the latest release, make an installation directory and
 install the Zephyr microPlatform there with ``repo``::
 
-  mkdir genesis && cd genesis
-  repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
+  mkdir zmp && cd zmp
+  repo init -u https://github.com/OpenSourceFoundries/zmp-manifest
   repo sync
 
 .. note::
@@ -221,14 +221,14 @@ to build application binaries which are cryptographically checked by
 mcuboot, a secure bootloader, you'll first build a simple "Hello
 World" application provided by mcuboot.
 
-If you're using 96Boards Nitrogen, run this from the ``genesis``
+If you're using 96Boards Nitrogen, run this from the ``zmp``
 directory you made earlier::
 
-  ./genesis build mcuboot/samples/zephyr/hello-world
+  ./zmp build mcuboot/samples/zephyr/hello-world
 
 If you're using another board, run this instead::
 
-  ./genesis build -b your_board mcuboot/samples/zephyr/hello-world
+  ./zmp build -b your_board mcuboot/samples/zephyr/hello-world
 
 Where ``your_board`` is Zephyr's name for your board. (Here's a `list
 of Zephyr boards
@@ -245,12 +245,12 @@ Now you'll flash the application to your board.
 If you're using 96Boards Nitrogen, plug it into your computer via USB,
 then run this from the the Zephyr microPlatform directory::
 
-  ./genesis flash mcuboot/samples/zephyr/hello-world
+  ./zmp flash mcuboot/samples/zephyr/hello-world
 
 If you're using another board, make sure it's connected, and use this
 instead::
 
-  ./genesis flash -b your_board mcuboot/samples/zephyr/hello-world
+  ./zmp flash -b your_board mcuboot/samples/zephyr/hello-world
 
 Congratulations; you've just flashed a bootloader and
 cryptographically signed application binaries\ [#signatures]_ you
