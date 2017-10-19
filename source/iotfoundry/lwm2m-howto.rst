@@ -140,13 +140,10 @@ set up earlier.
 - From the ``gateway-ansible`` repository, deploy the gateway
   containers to your IoT gateway::
 
-    ansible-playbook -e "gitci=WORKSTATION_IP_ADDRESS tag=latest" \
-                     -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml \
-                     --tags gateway
+    GW_HOSTNAME=XXX ./iot-gateway.sh
 
-  WORKSTATION_IP_ADDRESS in the above command line is the IP address
-  of the system which is running the Leshan server you set up
-  earlier. **The comma after GATEWAY_IP_ADDRESS is mandatory**.
+  If the Leshan server is on a different system than the system you are
+  running this command from, you'll need to set GITCI=<IP>
 
 .. _dm-lwm2m-zephyr:
 
