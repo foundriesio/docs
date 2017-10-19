@@ -230,8 +230,8 @@ device.
 If you're using `96Boards Nitrogen`_, build and flash the
 demonstration application::
 
-  ./genesis build -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
-  ./genesis flash -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
+  ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
+  ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
 
 .. include:: pyocd.include
 
