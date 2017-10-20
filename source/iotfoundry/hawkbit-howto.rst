@@ -201,8 +201,8 @@ fetch updates from hawkBit.
     CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
     GW_HOSTNAME=192.168.0.3 ./iot-gateway.sh
 
-  If the hawkBit server is on a different system than the system you are
-  running this command from, you'll need to set GITCI=<IP>
+  The script assumes its executing from the system where the hawkBit server
+  resides. If this isn't the case, the GITCI=<hawkBit IP> variable must be set.
 
 
 .. _dm-hawkbit-mqtt-zephyr:

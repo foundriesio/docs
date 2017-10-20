@@ -142,8 +142,8 @@ set up earlier.
 
     GW_HOSTNAME=XXX ./iot-gateway.sh
 
-  If the Leshan server is on a different system than the system you are
-  running this command from, you'll need to set GITCI=<IP>
+  The script assumes its executing from the system where the Leshan server
+  resides. If this isn't the case, the GITCI=<Leshan IP> variable must be set.
 
 .. _dm-lwm2m-zephyr:
 
