@@ -198,15 +198,12 @@ fetch updates from hawkBit.
   containers using the gateway's IP address and CloudMQTT information
   you recorded earlier::
 
-    ansible-playbook -e "mqttuser=CLOUDMQTT_USER mqttpass=CLOUDMQTT_PASSWORD \
-                         mqtthost=CLOUDMQTT_SERVER mqttport=CLOUDMQTT_PORT \
-                         gitci=WORKSTATION_IP_ADDRESS tag=latest" \
-                     -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml \
-                     --tags cloud
+    CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
+    GW_HOSTNAME=192.168.0.3 ./iot-gateway.sh
 
-  WORKSTATION_IP_ADDRESS in the above command line is the IP address
-  of the system which is running the hawkBit server you set up
-  earlier. **The comma after GATEWAY_IP_ADDRESS is mandatory**.
+  The script assumes its executing from the system where the hawkBit server
+  resides. If this isn't the case, the GITCI=<hawkBit IP> variable must be set.
+
 
 .. _dm-hawkbit-mqtt-zephyr:
 
@@ -230,8 +227,8 @@ device.
 If you're using `96Boards Nitrogen`_, build and flash the
 demonstration application::
 
-  ./genesis build -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
-  ./genesis flash -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
+  ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
+  ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
 
 .. include:: pyocd.include
 

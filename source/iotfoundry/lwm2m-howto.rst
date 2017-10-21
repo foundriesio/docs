@@ -140,13 +140,10 @@ set up earlier.
 - From the ``gateway-ansible`` repository, deploy the gateway
   containers to your IoT gateway::
 
-    ansible-playbook -e "gitci=WORKSTATION_IP_ADDRESS tag=latest" \
-                     -i GATEWAY_IP_ADDRESS, -u linaro iot-gateway.yml \
-                     --tags gateway
+    GW_HOSTNAME=XXX ./iot-gateway.sh
 
-  WORKSTATION_IP_ADDRESS in the above command line is the IP address
-  of the system which is running the Leshan server you set up
-  earlier. **The comma after GATEWAY_IP_ADDRESS is mandatory**.
+  The script assumes its executing from the system where the Leshan server
+  resides. If this isn't the case, the GITCI=<Leshan IP> variable must be set.
 
 .. _dm-lwm2m-zephyr:
 
@@ -170,8 +167,8 @@ device.
 If you're using `96Boards Nitrogen`_, build and flash the
 demonstration application::
 
-  ./genesis build -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
-  ./genesis flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+  ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+  ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
 
 .. include:: pyocd.include
 
