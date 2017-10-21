@@ -198,7 +198,7 @@ fetch updates from hawkBit.
   containers using the gateway's IP address and CloudMQTT information
   you recorded earlier::
 
-    CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
+    CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
     GW_HOSTNAME=192.168.0.3 ./iot-gateway.sh
 
   The script assumes its executing from the system where the hawkBit server
