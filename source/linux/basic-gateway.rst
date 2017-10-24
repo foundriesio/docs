@@ -15,9 +15,8 @@ microPlatform, a computer, and an Internet connection.
 Start with a base Linux microPlatform
 -------------------------------------
 
-follow the instructions to setup your target hardware with the Linux
-microPlatform software following the instructions at
-:ref:`linux-getting-started`.
+Follow the instructions at :ref:`linux-getting-started` to set up your
+target hardware with the Linux microPlatform.
 
 Boot the Board
 --------------
