@@ -1,12 +1,16 @@
 .. highlight:: sh
 
-.. _big-getting-started:
+.. _basic-gateway:
 
-Getting Started
-===============
+Basic IoT Gateway
+=================
 
-All you need to get started is a gateway device supported by the LTD Basic
-IoT Gateway, a computer, and an Internet connection.
+This page describes how to use containerized reference applications
+provided by Open Source Foundries to enable IoT gateway functionality
+using the Linux microPlatform.
+
+All you need to get started is a gateway device supported by the Linux
+microPlatform, a computer, and an Internet connection.
 
 Start with a base Linux microPlatform
 -------------------------------------

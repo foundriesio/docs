@@ -1,16 +1,28 @@
 .. _linux-top:
 
-LTD Linux microPlatform
-=======================
+Linux microPlatform
+===================
 
-The Linux microPlatform is an extensible software and hardware platform that
-makes it easier to develop, secure, and maintain Internet-connected embedded
-devices. The Linux microPlatform is based on the `Open Embedded
-<https://www.openembedded.org/>`_, `Linux Kernel <https://kernel.org/>`_,
-`Docker <https://docker.com>`_, and other open source software creating an
-intentionally designed minimal distribution for embedded systems.
+The Open Source Foundries Linux microPlatform is an extensible
+software and hardware platform that makes it easier to develop,
+secure, and maintain Internet-connected Linux-based embedded devices.
+
+The Linux microPlatform is based on `Open Embedded
+<https://www.openembedded.org/>`_, and adds a select set of board
+support package layers to enable popular development boards.
+
+Though the `Linux Kernel <https://kernel.org/>`_ and software used for
+any on of the microPlatform builds may contain out-of-tree patches or
+features, a fundamental goal is to run as close to the tip, or latest
+software, as possible so that users of the Linux microPlatform can
+benefit from the latest changes.
+
+The Linux microPlatform also provides reference applications as
+`Docker containers <https://docker.com>`_ to enable gateway
+functionality, such as IPv6/IPv4 routing and MQTT message brokering.
 
 .. toctree::
    :maxdepth: 1
 
    getting-started
+   basic-gateway

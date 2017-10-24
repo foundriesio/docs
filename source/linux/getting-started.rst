@@ -236,7 +236,7 @@ Onwards!
 
 At this point your device is ready to run Docker containers.  If you would
 like to configure the device as a Basic IoT Gateway, follow the instructions
-at :ref:`big-getting-started`.
+at :ref:`basic-gateway`.
 
 You're now ready to take your next steps. This will take the form of
 deploying containerized applications to your device.

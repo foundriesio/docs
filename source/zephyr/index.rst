@@ -1,11 +1,14 @@
 .. _zephyr-top:
 
-LTD Zephyr microPlatform
-========================
+Zephyr microPlatform
+====================
 
-The Zephyr microPlatform is an extensible software and hardware platform that
-makes it easier to develop, secure, and maintain Internet-connected embedded
-devices. The Zephyr microPlatform is based on the `Zephyr
+The Open Source Foundries Zephyr microPlatform is an extensible
+software and hardware platform that makes it easier to develop,
+secure, and maintain Internet-connected microcontroller-based embedded
+devices.
+
+The Zephyr microPlatform is based on the `Zephyr
 <https://www.zephyrproject.org/>`_ real-time operating system.
 
 .. toctree::
@@ -15,3 +18,14 @@ devices. The Zephyr microPlatform is based on the `Zephyr
    branching
    workflow
    prod-workflow
+
+
+.. todo::
+
+   Add "advanced and special topics" Zephyr microPlatform docs:
+
+   - Support a new device
+   - Build developer docs
+   - Add features to the tooling ("internals" docs, generally)
+   - HLL support (uPython, JerryScript)
+   - Cloud service integration
