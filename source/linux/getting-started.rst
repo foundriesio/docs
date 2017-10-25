@@ -85,21 +85,7 @@ On other Linux distributions:
 Get prebuilt images
 -------------------
 
-Fetch the following files from the latest build for 96Boards HiKey:
-
-- `bootloader/hisi-idt.py`_
-- `bootloader/l-loader.bin`_
-- `bootloader/fip.bin`_
-- `bootloader/nvme.img`_
-- the ``boot-XXXX.uefi.img`` and
-  ``rpb-ltd-gateway-image-hikey-YYYY.rootfs.img.gz`` files from the
-  `latest HiKey build artifacts`_ page.
-
-Uncompress the ``rpb-ltd-gateway-image-hikey-YYYY.rootfs.img.gz``
-file, obtaining ``rpb-ltd-gateway-image-hikey-YYYY.rootfs.img``.
-
-(If you can't use a HiKey, you can try the same files from `builds for
-other boards`_, but these may not be functional.)
+.. osf-artifacts:: lmp-prebuilts
 
 Set Your Board Up For Flashing
 ------------------------------
@@ -279,24 +265,6 @@ run Ansible from Ubuntu.)
 
 .. _Ansible release for OS X:
    http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx
-
-.. _bootloader/hisi-idt.py:
-   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/bootloader/hisi-idt.py
-
-.. _bootloader/l-loader.bin:
-   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/bootloader/l-loader.bin
-
-.. _bootloader/fip.bin:
-   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/bootloader/fip.bin
-
-.. _bootloader/nvme.img:
-   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/bootloader/nvme.img
-
-.. _latest HiKey build artifacts:
-   https://api.foundries.io/releases/lmp/17.10.1/artifacts/build-hikey/
-
-.. _builds for other boards:
-   https://api.foundries.io/releases/lmp/17.10.1/artifacts/
 
 .. _gateway-containers README.md:
    https://github.com/linaro-technologies/gateway-containers/blob/master/README.md
