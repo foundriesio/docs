@@ -62,14 +62,6 @@ macOS
      git config --global user.name "Your Full Name"
      git config --global user.email "your-email-address@example.com"
 
-#. **Optional**: If you want to build this documentation, you'll need
-   some additional dependencies::
-
-     pip3 install --user sphinx sphinx_rtd_theme
-
-     # Replace "3.X" with the version number you have installed.
-     export PATH=$PATH:$HOME/Library/Python/3.X/bin
-
 Your build environment is now ready; continue by following the steps
 in :ref:`zephyr-install`.
 
@@ -320,8 +312,6 @@ with these instructions, which may be useful on other development platforms.
 - `Python 3 <https://www.python.org/>`_ with the following packages:
 
   - `setuptools <https://packaging.python.org/installing/>`_
-  - `Sphinx <http://www.sphinx-doc.org/en/stable/>`_
-  - `Sphinx RTD theme <http://docs.readthedocs.io/en/latest/theme.html>`_
   - `PLY <http://www.dabeaz.com/ply/>`_
   - `PyYaml <http://pyyaml.org/wiki/PyYAML>`_
   - `Crypto <https://www.dlitz.net/software/pycrypto/>`_
