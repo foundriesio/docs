@@ -26,3 +26,4 @@ functionality, such as IPv6/IPv4 routing and MQTT message brokering.
 
    getting-started
    iot-gateway
+   bt-joiner
