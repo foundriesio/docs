@@ -17,15 +17,6 @@ connection.
 Get Hardware
 ------------
 
-.. _96Boards Nitrogen:
-   https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
-
-.. _Ubuntu:
-   https://www.ubuntu.com/download/desktop
-
-.. _pyOCD:
-   https://github.com/mbedmicro/pyOCD
-
 Here's what you'll need:
 
 - A development computer, running one of:
@@ -47,12 +38,6 @@ platform follow.
 
 macOS
 ~~~~~
-
-.. _HomeBrew:
-   https://brew.sh/
-
-.. _Python 2 from HomeBrew:
-   http://docs.python-guide.org/en/latest/starting/install/osx/
 
 #. Install `HomeBrew`_.
 
@@ -95,12 +80,6 @@ Windows versions supporting the Windows Subsystem for Linux have
 experimental support. These instructions will let you build binaries;
 however, flashing support is not yet documented.
 
-.. _Windows Subsystem for Linux:
-   https://msdn.microsoft.com/commandline/wsl/about
-
-.. _changing files in Linux directories using Windows tools:
-      https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/
-
 #. Install the `Windows Subsystem for Linux`_, then open a Bash
    window to enter commands.
 
@@ -130,9 +109,6 @@ however, flashing support is not yet documented.
 
 Linux
 ~~~~~
-
-.. _pip:
-   https://pip.pypa.io/en/stable/installing/
 
 1. Install dependencies for the Zephyr microPlatform.
 
@@ -360,12 +336,6 @@ with these instructions, which may be useful on other development platforms.
 Appendix: Zephyr microPlatform Development Container (Experimental)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _install Docker:
-   https://docs.docker.com/engine/installation/
-
-.. _Docker documentation on data management:
-   https://docs.docker.com/engine/admin/volumes/
-
 You can install a Docker container based on Ubuntu 16.04 which
 provides a Zephyr microPlatform build environment. However,
 instructions for flashing binaries you build with this container are
@@ -418,16 +388,41 @@ microPlatform <zephyr-install>` inside the running container.
 
 .. [#serial]
 
-   On Linux, with `picocom <https://github.com/npat-efault/picocom>`_::
+   On Linux, with `picocom`_::
 
      picocom -b 115200 /dev/ttyACM0
 
-   On Linux or macOS, with `screen
-   <http://savannah.gnu.org/projects/screen>`_::
+   On Linux or macOS, with `screen`_::
 
      screen /dev/ttyACM0 115200
 
-   To use `PuTTY <http://www.putty.org/>`_ on another computer running
-   Windows, see `Connecting to a local serial line
-   <https://the.earth.li/~sgtatham/putty/0.69/htmldoc/Chapter3.html#using-serial>`_
-   in the PuTTY documentation.
+   To use `PuTTY`_ on another computer running Windows, see
+   `Connecting to a local serial line`_ in the PuTTY documentation.
+
+.. _96Boards Nitrogen: https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
+
+.. _Ubuntu: https://www.ubuntu.com/download/desktop
+
+.. _pyOCD: https://github.com/mbedmicro/pyOCD
+
+.. _HomeBrew: https://brew.sh/
+
+.. _Python 2 from HomeBrew: http://docs.python-guide.org/en/latest/starting/install/osx/
+
+.. _Windows Subsystem for Linux: https://msdn.microsoft.com/commandline/wsl/about
+
+.. _changing files in Linux directories using Windows tools: https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/
+
+.. _pip: https://pip.pypa.io/en/stable/installing/
+
+.. _install Docker: https://docs.docker.com/engine/installation/
+
+.. _Docker documentation on data management: https://docs.docker.com/engine/admin/volumes/
+
+.. _picocom: https://github.com/npat-efault/picocom
+
+.. _screen: http://savannah.gnu.org/projects/screen
+
+.. _PuTTY: http://www.putty.org/
+
+.. _Connecting to a local serial line: https://the.earth.li/~sgtatham/putty/0.69/htmldoc/Chapter3.html#using-serial
