@@ -2,7 +2,7 @@
    the local network environment on FRDM-K64F
 
 .. _FRDM-K64F:
-   http://www.nxp.com/products/developer-resources/hardware-development-tools/freedom-development-boards/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F
+   https://www.nxp.com/products/microcontrollers-and-processors/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k2x-usb/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F
 
 Building for `FRDM-K64F`_ requires some configuration information
 which depends on your local network:

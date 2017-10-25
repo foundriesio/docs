@@ -96,7 +96,7 @@ experimental support. These instructions will let you build binaries;
 however, flashing support is not yet documented.
 
 .. _Windows Subsystem for Linux:
-   https://msdn.microsoft.com/en-us/commandline/wsl/install_guide
+   https://msdn.microsoft.com/commandline/wsl/about
 
 .. _changing files in Linux directories using Windows tools:
       https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/
@@ -418,7 +418,7 @@ microPlatform <zephyr-install>` inside the running container.
 
 .. [#serial]
 
-   On Linux, with `picocom <http://code.google.com/p/picocom/>`_::
+   On Linux, with `picocom <https://github.com/npat-efault/picocom>`_::
 
      picocom -b 115200 /dev/ttyACM0
 

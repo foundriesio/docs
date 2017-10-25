@@ -46,10 +46,10 @@ Get the Hardware
 ================
 
 .. _96Boards Nitrogen:
-   http://www.96boards.org/product/nitrogen/
+   https://www.96boards.org/product/nitrogen/
 
 .. _96Boards HiKey:
-   http://www.96boards.org/product/hikey/
+   https://www.96boards.org/product/hikey/
 
 .. _UART Serial Mezzanine:
    https://www.96boards.org/product/uartserial/

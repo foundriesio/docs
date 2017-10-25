@@ -5,7 +5,7 @@
    https://github.com/blacksphere/blackmagic/wiki
 
 .. _Segger JLink:
-   https://www.segger.com/jlink_base.html
+   https://www.segger.com/products/debug-probes/j-link/models/j-link-base/
 
 .. _96b_carbon_nrf51 flashing instructions:
    https://www.zephyrproject.org/doc/boards/arm/96b_carbon_nrf51/doc/96b_carbon_nrf51.html

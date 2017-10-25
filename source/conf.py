@@ -64,6 +64,7 @@ extensions = [
 # Links that shouldn't get checked for validity
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
+    'https://github.com/96boards/documentation/blob/master/ConsumerEdition/HiKey/Installation/BoardRecovery.md#set-board-link-options',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
