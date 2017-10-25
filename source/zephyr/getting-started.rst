@@ -9,25 +9,12 @@ All you need to get started is a development board supported by
 the Zephyr microPlatform, a computer to develop on, and an Internet
 connection.
 
-.. todo::
-
-   Add link to a top-level "supported boards" page when that's
-   ready.
-
 Get Hardware
 ------------
 
-Here's what you'll need:
-
-- A development computer, running one of:
-
-  - macOS (experimental; we test on Sierra, 10.12)
-  - 64 bit Windows 10 Anniversary Update or later (experimental)
-  - a 64 bit Linux distribution (we test on `Ubuntu`_ 16.04.)
-
-- A development board supported by the Zephyr microPlatform. We
-  support the `96Boards Nitrogen`_, and other boards on a best effort
-  basis.
+You'll need a development board supported by the Zephyr
+microPlatform. We support the `96Boards Nitrogen`_, and other boards
+on a best effort basis.
 
 Set up Build Environment
 ------------------------
@@ -38,6 +25,8 @@ platform follow.
 
 macOS
 ~~~~~
+
+We test on macOS Sierra (10.12).
 
 #. Install `HomeBrew`_.
 
@@ -57,7 +46,7 @@ macOS
 
    Otherwise, check your board's documentation.
 
-#. **Optional**: Set up Git::
+#. Configure your username and password in Git::
 
      git config --global user.name "Your Full Name"
      git config --global user.email "your-email-address@example.com"
@@ -69,8 +58,11 @@ Windows 10 (Experimental)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Windows versions supporting the Windows Subsystem for Linux have
-experimental support. These instructions will let you build binaries;
-however, flashing support is not yet documented.
+experimental support. For this to work, you will need 64 bit Windows
+10 Anniversary Update or later.
+
+These instructions should let you build binaries; however, flashing
+support is not yet documented.
 
 #. Install the `Windows Subsystem for Linux`_, then open a Bash
    window to enter commands.
@@ -126,7 +118,7 @@ Linux
 
      echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
 
-#. **Optional**: Set up Git::
+#. Configure your username and password in Git::
 
      git config --global user.name "Your Full Name"
      git config --global user.email "your-email-address@example.com"
@@ -135,48 +127,72 @@ Your system is now ready to install the Zephyr microPlatform.
 
 .. _zephyr-install:
 
-Install Zephyr microPlatform
-----------------------------
+Install the Zephyr microPlatform
+--------------------------------
 
-.. todo:: Generate instructions for other manifest repository sources.
+The Zephyr microPlatform can be installed in any directory on your
+workstation. Installation uses the Repo tool to fetch a variety of Git
+repositories at known-good revisions, and keep them in sync as time
+goes on.
 
-   In these configurations, we need extra docs:
+If you're new to Repo and want to know more, see :ref:`zephyr-branching-repo`.
 
-   - Cache Git usernames and passwords you enter in memory for one
-     hour; this allows ``repo sync`` to work unprompted in the next
-     step. If you don't want to do this, see
-     https://git-scm.com/docs/gitcredentials for alternatives. ::
+Subscribers
+~~~~~~~~~~~
 
-       git config --global credential.helper 'cache --timeout=3600'
+The latest continuous release is available to Zephyr microPlatform
+subscribers from `git.foundries.io`_. Install it as follows.
 
-   - If you don't already have one, create a `GitHub
-     <https://github.com/>`_ account (it's free).
+#. Configure Git to cache usernames and passwords you enter in memory for
+   one hour::
 
-   - Make sure you can see the Zephyr microPlatform SDK manifest
-     repository when you're logged in to your account (**needs
-     link**).
+     git config --global credential.helper 'cache --timeout=3600'
 
-   - If you enabled `two-factor authentication
-     <https://github.com/blog/1614-two-factor-authentication>`_ on
-     your GitHub account, you also need a `personal access token
-     <https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/>`_.
-     Give this token at least "repo" access, and make sure you keep a
-     copy.
+   Using a credential helper is necessary for ``repo sync`` to work
+   unprompted later\ [#git-creds]_.
 
-   - When prompted by ``repo init``, enter your GitHub username and
-     password (or access token, if you use two-factor authentication).
+#. Subscribers have access to their own namespace on
+   `git.foundries.io`_, namely
+   ``https://git.foundries.io/subscriber/YOUR_NAMESPACE``.  Ensure you
+   have access to the Zephyr microPlatform manifest repository in that
+   namespace by editing the following URL and loading the page:
 
-To install the latest release, make an installation directory and
-install the Zephyr microPlatform there with ``repo``::
+   .. code-block:: none
 
-  mkdir zmp && cd zmp
-  repo init -u https://github.com/OpenSourceFoundries/zmp-manifest
-  repo sync
+     https://git.foundries.io/subscriber/YOUR_NAMESPACE/microplatforms/zephyr/zmp-manifest
 
-.. note::
+#. If you haven't already, create a `personal access token on
+   git.foundries.io`_.
 
-   If you're new to repo and want to know more, see
-   :ref:`zephyr-branching-repo`.
+#. Make an installation directory for the Zephyr microPlatform, and
+   change into its directory::
+
+     mkdir zmp && cd zmp
+
+#. Install the latest release using ``repo``::
+
+     repo init -u https://git.foundries.io/subscriber/YOUR_NAMESPACE/microplatforms/zephyr/zmp-manifest
+     repo sync
+
+   When prompted by ``repo init``, enter your username (you can find
+   it on your `git.foundries.io account page`_) and the personal
+   access token you created earlier.
+
+Public
+~~~~~~
+
+The latest public release is available from the `Open Source Foundries
+GitHub`_ organization.
+
+#. Make an installation directory for the Zephyr microPlatform, and
+   change into its directory::
+
+     mkdir zmp && cd zmp
+
+#. Install the latest release using ``repo``::
+
+     repo init -u https://github.com/OpenSourceFoundries/zmp-manifest
+     repo sync
 
 Build an Application
 --------------------
@@ -192,14 +208,14 @@ World" application provided by mcuboot.
 If you're using 96Boards Nitrogen, run this from the ``zmp``
 directory you made earlier::
 
-  ./zmp build mcuboot/samples/zephyr/hello-world
+  ./zmp build -b 96b_nitrogen mcuboot/samples/zephyr/hello-world
 
 If you're using another board, run this instead::
 
   ./zmp build -b your_board mcuboot/samples/zephyr/hello-world
 
-Where ``your_board`` is Zephyr's name for your board. (Here's a `list
-of Zephyr boards
+Where ``your_board`` is Zephyr's ``BOARD`` name for your
+board. (Here's a `list of Zephyr boards
 <https://www.zephyrproject.org/doc/boards/boards.html>`_, but some of
 them may not work with the Zephyr microPlatform.)
 
@@ -213,7 +229,7 @@ Now you'll flash the application to your board.
 If you're using 96Boards Nitrogen, plug it into your computer via USB,
 then run this from the the Zephyr microPlatform directory::
 
-  ./zmp flash mcuboot/samples/zephyr/hello-world
+  ./zmp flash -b 96b_nitrogen mcuboot/samples/zephyr/hello-world
 
 If you're using another board, make sure it's connected, and use this
 instead::
@@ -279,18 +295,12 @@ application, flashed it to a device, and seen it work.
 Onwards!
 --------
 
-You're now ready to take your next steps.
+You're now ready to take your next steps with the Zephyr
+microPlatform. Check out :ref:`iotfoundry-top` for example systems you
+can set up which let your device communicate with the cloud, receive
+firmware updates, and more.
 
-.. todo:: Add links to next steps documents when they're ready.
-
-          Example of tutorials and reference docs:
-
-          - Zephyr microPlatform overview (different projects with links to
-            their reference docs, how they tie together, e.g. description of
-            boot process with links to mcuboot documentation).
-          - Hardware peripheral tutorials (UART, SPI, etc.)
-          - Internet connectivity with an Basic IoT Gateway
-          - FOTA with hawkBit
+----
 
 Appendixes
 ----------
@@ -327,15 +337,18 @@ Appendix: Zephyr microPlatform Development Container (Experimental)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can install a Docker container based on Ubuntu 16.04 which
-provides a Zephyr microPlatform build environment. However,
-instructions for flashing binaries you build with this container are
-not yet provided.
+provides a Zephyr microPlatform build environment. This will let you
+compile firmware binaries, which can be useful for reproducible
+builds.
+
+However, flashing binaries from the container is neither documented
+nor supported on all platforms.
 
 #. `Install Docker`_.
 
 #. Fetch the container::
 
-     docker pull linarotechnologies/genesis-sdk:latest
+     docker pull opensourcefoundries/zmp-sdk
 
 #. **Optional**: Create a mount in your host environment to access the
    builds; see the `Docker documentation on data management`_ for more
@@ -345,21 +358,21 @@ not yet provided.
    SDK sources and build artifacts in your host file system. For
    example::
 
-     mkdir genesis
+     mkdir zmp
 
-#. Run the container as the ``genesis-dev`` user, granting it access
+#. Run the container as the ``zmp-dev`` user, granting it access
    to the host data area if you created one.
 
    For example::
 
-     docker run -it -w /home/genesis-dev -u genesis-dev genesis-sdk
+     docker run -it -w /home/zmp-dev -u zmp-dev zmp-sdk
 
    If you created a directory in your macOS environment, it's easier
    to run as the root user in the container::
 
-     docker run -it -v genesis:/root/genesis -w /root/genesis genesis-sdk
+     docker run -it -v zmp:/root/zmp -w /root/zmp zmp-sdk
 
-#. **Optional**: Set up Git inside the container::
+#. Set up Git inside the container::
 
      git config --global user.name "Your Full Name"
      git config --global user.email "your-email-address@example.com"
@@ -369,12 +382,16 @@ microPlatform <zephyr-install>` inside the running container.
 
 .. rubric:: Footnotes
 
+.. [#git-creds]
+
+   If you don't want to do that, see
+   https://git-scm.com/docs/gitcredentials for some alternatives.
+
 .. [#signatures]
 
    Since this tutorial is meant to help you get started, the binaries
    are signed with keys that aren't secret, and **are not suitable for
-   production use**. When it's time to ship, see
-   :ref:`zephyr-production-workflow` for more information.
+   production use**.
 
 .. [#serial]
 
@@ -386,8 +403,8 @@ microPlatform <zephyr-install>` inside the running container.
 
      screen /dev/ttyACM0 115200
 
-   To use `PuTTY`_ on another computer running Windows, see
-   `Connecting to a local serial line`_ in the PuTTY documentation.
+   To use `PuTTY`_ on Windows, see `Connecting to a local serial
+   line`_ in the PuTTY documentation.
 
 .. _96Boards Nitrogen: https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
 
@@ -404,6 +421,14 @@ microPlatform <zephyr-install>` inside the running container.
 .. _changing files in Linux directories using Windows tools: https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/
 
 .. _pip: https://pip.pypa.io/en/stable/installing/
+
+.. _git.foundries.io: https://git.foundries.io
+
+.. _personal access token on git.foundries.io: https://git.foundries.io/profile/personal_access_tokens
+
+.. _git.foundries.io account page: https://git.foundries.io/profile/account
+
+.. _Open Source Foundries GitHub: https://github.com/OpenSourceFoundries
 
 .. _install Docker: https://docs.docker.com/engine/installation/
 
