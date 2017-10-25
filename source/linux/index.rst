@@ -25,4 +25,4 @@ functionality, such as IPv6/IPv4 routing and MQTT message brokering.
    :maxdepth: 1
 
    getting-started
-   basic-gateway
+   iot-gateway

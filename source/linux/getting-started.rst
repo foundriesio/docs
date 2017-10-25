@@ -17,9 +17,9 @@ Here's what you'll need:
   Linux.
 
 - A gateway device supported by the Linux microPlatform. We currently support
-  the `96Boards HiKey <http://www.96boards.org/product/hikey/>`_, and
+  the `96Boards HiKey <https://www.96boards.org/product/hikey/>`_, and
   assume you have a `96Boards UART Serial Adapter
-  <http://www.96boards.org/product/debug/>`_ for console access.
+  <https://www.96boards.org/product/debug/>`_ for console access.
 
 Get Installation Dependencies
 -----------------------------
@@ -48,20 +48,12 @@ Mac OS X
 - Install fastboot with the latest `Android SDK Platform Tools for
   Mac`_.
 
-- Optionally, install the latest `Ansible release for OS X`_. This
-  will make it easier to deploy containers on your device.
-
 Linux
 ~~~~~
 
 On Debian-based Linux distributions, including Ubuntu, run::
 
   sudo apt-get install python-serial fastboot
-
-Optionally, install Ansible, to make it easier to deploy containers on
-your device::
-
-  sudo apt-get install ansible
 
 On other Linux distributions:
 
@@ -78,11 +70,7 @@ On other Linux distributions:
 - Install fastboot using your package manager or the latest `Android
   SDK Platform Tools for Linux`_.
 
-- You may optionally install Ansible using instructions on its
-  `Installation page
-  <http://docs.ansible.com/ansible/intro_installation.html>`_.
-
-Get prebuilt images
+Get Prebuilt images
 -------------------
 
 .. osf-artifacts:: lmp-prebuilts
@@ -123,7 +111,7 @@ See `HiKey board recovery documentation`_ for more information on
 Recovery Mode.
 
 If you're using a different 96Boards CE board, check its `96boards.org
-documentation <http://www.96boards.org/products/ce/>`_ for
+documentation <https://www.96boards.org/products/ce/>`_ for
 instructions on how to reflash the bootloader, install fastboot
 support, and flash images via fastboot.
 
@@ -186,9 +174,11 @@ using a HiKey, follow these instructions.
 1. Remove the jumper connecting pins 3 and 4 from the 2x3 header you
    used when putting the board in Recovery Mode.
 
-#. Install the 96Boards UART Serial Adapter board on the board. Make
-   sure the USB connector faces outward from the board, or you will
-   damage or break both HiKey and the UART Serial Adapter.
+#. Install the 96Boards UART Serial Adapter board on the board.
+
+   .. warning:: Make sure the USB connector faces outward from the
+                board, or you will damage or break both HiKey and the
+                UART Serial Adapter.
 
 #. Connect the UART Serial Adapter to your host PC via USB.
 
@@ -202,51 +192,40 @@ Your board should look like this:
 
 .. highlight:: none
 
-At the serial console, the following login prompt should appear after
-the board finishes booting::
-
-  Reference-Platform-Build-X11 2.0+linaro hikey ttyAMA3
+Wait for the following login prompt to appear at the serial console::
 
   hikey login:
 
-Enter ``osf`` for the username, and ``osf`` for the
-password. You will be dropped into a normal user shell, and should now
-change the password. The ``osf`` user may use ``sudo`` to obtain
-root access on the device.
+Enter ``osf`` for the username, and ``osf`` for the password. You will
+be dropped into a normal user shell, and **should now change the
+password** using ``passwd``.
 
-That's it! You've successfully installed the Linux microPlatform onto your
-device, and booted into its console.
+The ``osf`` user may use ``sudo`` to obtain root access on the device.
+
+You can connect to a WiFi network like so::
+
+  nmcli device wifi connect NETWORK_SSID password NETWORK_PASSWORD
+
+USB Ethernet dongles will also work out of the box.
 
 Onwards!
 --------
 
-At this point your device is ready to run Docker containers.  If you would
-like to configure the device as a Basic IoT Gateway, follow the instructions
-at :ref:`basic-gateway`.
+That's it! You've successfully installed the Linux microPlatform,
+booted into your device's console, and connected it to the network.
 
-You're now ready to take your next steps. This will take the form of
-deploying containerized applications to your device.
+Your device is now ready for use. The Linux microPlatform makes it
+easy for you to deploy applications to your device as either one
+solitary or multiple coordinating Docker containers.
 
-One of the greatest advantages of using Cerberus is that it makes it
-easier to deploy and manage container-based applications. What's more,
-unlike other container-based embedded device platforms, Cerberus
-allows you to deploy **multiple applications to the same gateway, each
-running at the same time in its own container**. This is called
-**multitenancy**.
+Possible next steps:
 
-Check out the Linaro Technologies Division `Gateway Containers
-<https://github.com/linaro-technologies/gateway-containers>`_
-repository for example Docker containers, along with instructions for
-how to get them running on your board. Start with the top-level
-`gateway-containers README.md`_, and move on to the subdirectories for
-containers which interest you.
+- See :ref:`iotfoundry-top` to use your device in IoT reference
+  systems provided by Open Source Foundries.
 
-If you installed Ansible earlier, you can also use Ansible playbooks
-to deploy the containers; these are available in the `gateway-ansible
-<https://github.com/OpenSourceFoundries/gateway-ansible>`_
-repository. (While Ansible isn't supported on Windows, you can run
-`Ubuntu in a Docker container <https://hub.docker.com/_/ubuntu/>`_ and
-run Ansible from Ubuntu.)
+- See :ref:`iot-gateway` to deploy IoT gateway applications on the
+  Linux microPlatform, allowing other devices on local networks
+  (including :ref:`zephyr-top` devices) to communicate with the cloud.
 
 .. _pySerial:
    https://pythonhosted.org/pyserial/pyserial.html#installation
@@ -262,9 +241,6 @@ run Ansible from Ubuntu.)
 
 .. _Android SDK Platform Tools for Linux:
    https://dl.google.com/android/repository/platform-tools-latest-linux.zip
-
-.. _Ansible release for OS X:
-   http://docs.ansible.com/ansible/intro_installation.html#latest-releases-on-mac-osx
 
 .. _gateway-containers README.md:
    https://github.com/linaro-technologies/gateway-containers/blob/master/README.md

@@ -1,7 +1,7 @@
 .. _Install Ansible:
    http://docs.ansible.com/ansible/latest/intro_installation.html
 
-- Follow the :ref:`basic-gateway` guide to log into the Basic IoT
+- Follow the :ref:`iot-gateway` guide to log into the Basic IoT
   Gateway console and change the password for the ``osf`` user. The
   default password is ``osf``.
 
