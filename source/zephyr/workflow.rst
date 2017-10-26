@@ -35,8 +35,7 @@ Build an Application: ``genesis build``
    By default, mcuboot binaries and Zephyr microPlatform applications are built
    and signed with development keys which are not secret. While this makes
    development and testing more convenient, it is not suitable for
-   production. See :ref:`zephyr-production-workflow` for more
-   information.
+   production.
 
    It's not currently possible to generate mcuboot images that trust
    non-dev keys. As such, the ``--signing-key`` and
