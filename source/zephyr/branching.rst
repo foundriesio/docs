@@ -8,11 +8,15 @@ Branch Management
 This document defines the rules governing the branches in the
 Zephyr microPlatform Git repositories, and what you can expect from them.
 
+.. note:: To keep things simple, we'll use the public repositories on GitHub.
+          The rules are the same for subscriber repositories.
+
 Why Have Branching Rules?
 -------------------------
 
-The short answer is that it's the only way to keep things working
-while staying close to our upstream projects' latest versions.
+The short answer is that it keeps things working while patches flow
+up- and downstream, and as we periodically rebase microPlatform
+patches on our upstream projects' latest versions.
 
 The details are given below in :ref:`zephyr-branching-rationale`.
 
@@ -21,325 +25,305 @@ The details are given below in :ref:`zephyr-branching-rationale`.
 Zephyr microPlatform and Repo Primer
 ------------------------------------
 
-Below sections describe the branches in the Zephyr microPlatform manifest and
-source code repositories, and how they are related. Before getting
-there, this section gives some background on how the Zephyr microPlatform uses
-Repo, which may make that explanation clearer.
+This section describes `Repo`_ and how the Zephyr microPlatform uses it.
+If you're unfamiliar with Repo, it may make later explanations
+clearer.
 
-As described in :ref:`zephyr-getting-started`, every Zephyr microPlatform
-installation contains multiple `Git <https://git-scm.com/>`_
-repositories, which are managed by a *manifest file* in a `Repo
-<https://gerrit.googlesource.com/git-repo/>`_ *manifest repository*.
+A Zephyr microPlatform installation contains multiple `Git`_
+repositories, which are managed by a *manifest file* in a Repo
+*manifest repository*.
 
-The name of the manifest repository is ``genesis-sdk-manifest``. It's
-a Git repository, just like any of the source code repositories. While
-installing the Zephyr microPlatform, you passed `repo init`_ a URL for the
-manifest repository.  The manifest repository is special, in that it contains
-an XML manifest file, named ``manifest.xml``, which describes all of
-the other Git repositories in the Zephyr microPlatform installation. After ``repo
-init``, you ran `repo sync`_, which parsed the manifest file and
-cloned all of the other Zephyr microPlatform repositories as instructed by its
-contents.
+The manifest repository's name is ``zmp-manifest``. It's a Git
+repository, just like any of the source code repositories. When
+:ref:`installing the Zephyr microPlatform <zephyr-install>`, `repo
+init`_ is given the URL for the manifest repository (either a
+subscriber or public version).
 
-The manifest file contains:
+The manifest repository contains a manifest file, named
+``default.xml``.  This file describes the other Git repositories in
+the Zephyr microPlatform installation, and their metadata. During
+installation, `repo sync`_ is run after ``repo init``. This clones the
+other repositories according to the contents of the manifest.
 
-- a list of *remotes*, each of which specifies a base URL where other
-  Zephyr microPlatform Git repositories are hosted.
-- a list of *projects*, each of which specifies a Git repository to
-  clone, along with a remote to pull it from, and a revision to check
-  out in the local clone.
+Roughly speaking, the manifest file contains:
 
-An example manifest repository, its manifest file, and the manifest
-file's contents are as follows.
+- *remotes*, which specify where Zephyr microPlatform repositories are
+  hosted.
+- *projects*, which specify the Git repositories that make up the
+  microPlatform, along with the remotes to fetch them from, and Git
+  branches to check out.
+
+Here is an example manifest file:
 
 .. figure:: /_static/zephyr/manifest-example.svg
    :alt: Example Zephyr microPlatform manifest.
 
-Since the ``genesis-sdk-manifest`` repository is a Git repository, it
+Since the ``zmp-manifest`` repository is a Git repository, it
 can, and does, contain multiple branches:
 
-- one branch named ``master``, which tracks *trunk development*, or
-  the latest changes.
-- a series of *monthly snapshot branches* named ``YY.MM``, each of
-  which tracks the state of development in month MM of year YY.
+- One ``master`` branch, which tracks the latest development.
+- Several *monthly working branches* with names that look like
+  ``YY.MM``, each of which tracks the state of development in month
+  ``MM`` of year ``YY``. For example, the ``17.10`` manifest branch
+  tracks development from October 2017.  Similarly, the ``17.11``
+  manifest branch tracks November 2017.
 
-For example, the ``17.05`` monthly snapshot branch in the manifest
-repository contains a manifest file which tracks the work done in May
-2017 for the Zephyr microPlatform source code repositories. Similarly, the
-``17.06`` branch in the manifest repository contains a manifest
-tracking June 2017.
+The other (non-manifest) Zephyr microPlatform Git repositories have
+branches named ``osf-YY.MM``. They also track month ``MM`` of year
+``YY``. The ``osf-`` makes it clear they come from Open Source
+Foundries, and not, for example, you.
 
-The other (non-manifest) Zephyr microPlatform Git repositories have branches
-named ``ltd-YY.MM``. These contain development work for month MM of year YY.
+.. important:: Monthly working branches are **not** releases. The
+               Zephyr microPlatform is continuously developed and
+               released to subscribers, and is released on a fixed
+               timeline to the public. The monthly working branches
+               exist mostly to preserve history despite rebases in
+               some repositories.
+
+The current month's branches can change as development proceeds. Older
+monthly branches are left as-is as a record of the past.
 
 .. _zephyr-branching-trunk:
 
-Trunk Development
------------------
+Continuous Development
+----------------------
 
 .. note::
 
    The important things to know are:
 
    - The ``master`` branch in the :ref:`manifest repository
-     <zephyr-branching-repo>` tracks the **latest** monthly ``ltd-YY.MM``
-     branches in the other Zephyr microPlatform repositories.
+     <zephyr-branching-repo>` always tracks the current month's
+     ``YY.MM`` branch. This means ``master`` always tracks the
+     **latest** monthly ``osf-YY.MM`` branches in the other Zephyr
+     microPlatform repositories.
 
-   - Each month, Zephyr microPlatform repositories with upstreams, like Zephyr
-     and mcuboot, **will** `rebase`_ **onto new upstream baseline
+   - Each month, Zephyr microPlatform repositories with upstreams,
+     like Zephyr and mcuboot, `rebase`_ **onto new upstream baseline
      commits** when new monthly branches are cut.
 
-   - Currently, updates to Zephyr microPlatform repositories without upstreams
-     are always `fast-forward`_, even when new branches are cut. However,
-     in the future, these may also rebase.
-
-As described above, the ``master`` branch in the
-``genesis-sdk-manifest`` repository tracks the very latest
-development.
+   - Currently, Zephyr microPlatform repositories without upstreams
+     always get `fast-forward`_ updates, even when new branches are
+     cut.
 
 .. highlight:: sh
 
-Thus, to check out the very latest Zephyr microPlatform, you can run::
+When you installed the Zephyr microPlatform, you ran something like
+this::
 
-  mkdir genesis && cd genesis
-  repo init -u https://github.com/linaro-technologies/genesis-sdk-manifest
+  mkdir zmp && cd zmp
+  repo init -u https://github.com/OpenSourceFoundries/zmp-manifest
   repo sync
 
-The ``repo init`` line clones a local manifest repository in
-``genesis/.repo/manifests``, and creates and checks out a branch
-called ``default`` that tracks ``master`` in the remote manifest
-repository. The ``repo sync`` line fetches the latest changes in this
-``master`` branch, parses the resulting XML manifest file, and updates
-the local repositories based on its new contents.
+Without a ``-b`` argument, ``repo init`` looks in the ``master``
+branch of the manifest repository given in the ``-u`` argument. This
+checks out the manifest file in the master branch of the manifest
+repository and puts it in a hidden ``.repo`` subdirectory of ``zmp``.
 
-.. highlight:: xml
+The ``repo sync`` line parses the manifest file in the ``.repo``
+directory and clones the repositories it names as projects, then
+checks them out locally in ``zmp``.
 
-Continuing the above example, in May 2017, the manifest file in the
-manifest repository's ``master`` branch might look like this::
-
-  <manifest>
-    <remote name="ltd" fetch="https://github.com/linaro-technologies"/>
-
-    <project name="zephyr" remote="ltd" revision="ltd-17.05"/>
-    <project name="zephyr-fota-hawkbit" remote="ltd" revision="ltd-17.05"/>
-    <!-- Other projects, etc. -->
-  </manifest>
-
-Running ``repo sync`` again during the same month will fetch changes
-from the same upstream ``ltd-17.05`` branches, and attempt to rebase
+Running ``repo sync`` again later on in the same month fetches changes
+from the same upstream ``osf-YY.MM`` branches, and attempts to rebase
 any locally checked out branches on top of them.
 
 At the end of each month, the ``master`` branch in the manifest
 repository is updated so its manifest file synchronizes from the next
-month's branches.
-
-Thus, in the beginning of June 2017, the manifest file is updated to
-look like this::
-
-  <manifest>
-    <remote name="ltd" fetch="https://github.com/linaro-technologies"/>
-
-    <project name="zephyr" remote="ltd" revision="ltd-17.06"/>
-    <project name="zephyr-fota-hawkbit" remote="ltd" revision="ltd-17.06"/>
-    <!-- Other projects, etc. -->
-  </manifest>
+month's ``osf-YY.MM`` branches.
 
 Running ``repo sync`` after this happens fetches and synchronizes your
-local trees with the ``ltd-17.06`` branches in each of the Zephyr microPlatform
-projects named in the manifest. (See `repo sync`_ for
-details.)
+local trees with the new branches in each of the Zephyr microPlatform
+projects.
 
 .. warning::
 
-   When this happens, **upstream Git history is rewritten** for
-   Zephyr microPlatform repositories which have an upstream, like Zephyr and
-   mcuboot. This happens because the next month's development branch
-   is rebased onto a new baseline commit from upstream.
+   When the new monthly branches are cut, **upstream Git history is
+   rewritten** for Zephyr microPlatform repositories which have an
+   upstream, like Zephyr and mcuboot. This happens because the next
+   month's development branch is rebased onto a new baseline commit
+   from upstream.
 
-   For more information, see :ref:`zephyr-branching-sauce`.
+   If you're concerned about the effects of the rebase, use ``repo
+   sync -n`` to fetch OSF changes from the network, but leave local
+   working trees unchanged.
+
+   For more information on tracking the effects of rebases, see
+   :ref:`zephyr-branching-sauce`.
 
 .. _zephyr-branching-monthly:
 
-Monthly Snapshot Branches
--------------------------
+Monthly Working Branches
+------------------------
 
 .. note::
 
    The important things to know are:
 
+   - It's possible, but not recommended, to use ``YY.MM`` manifest
+     branches directly when running ``repo init``.
+
    - Each ``YY.MM`` branch in the :ref:`manifest repository
-     <zephyr-branching-repo>` tracks the monthly ``ltd-YY.MM`` branches in
-     each of the other Zephyr microPlatform repositories.
+     <zephyr-branching-repo>` only tracks the monthly ``osf-YY.MM``
+     branches in the other Zephyr microPlatform repositories.
 
-   - Running ``repo sync`` with this manifest branch results in
-     `fast-forward`_ changes only in upstream repositories.
-
-   - At the end of the month, **upstream development stops** in all
-     of these snapshot branches. You need to update to a newer
-     manifest branch to get more recent changes.
-
-As described above, the manifest repository has multiple ``YY.MM``
-branches, each of which tracks develoment in month MM of year YY,
-e.g. 17.05 for May of 2017.
+   - At the end of the month, **upstream development stops** in all of
+     the ``osf-YY.MM`` branches. You would need to update to a newer
+     manifest branch to get more recent changes. By contrast, the
+     ``master`` manifest branch always tracks the latest development
+     by switching to the next month's ``osf-YY.MM`` branches.
 
 .. highlight:: sh
 
-To check out one of these monthly snapshots, run::
+It's possible to directly use a ``YY.MM`` manifest branch, like so::
 
-  mkdir genesis && cd genesis
-  repo init -b YY.MM -u https://github.com/linaro-technologies/genesis-sdk-manifest
+  mkdir zmp && cd zmp
+  repo init -b YY.MM -u https://github.com/OpenSourceFoundries/zmp-manifest
   repo sync
 
-This clones local repositories tracking ``ltd-YY.MM`` branches.
-Running `repo sync`_ again later fetches the latest ``ltd-YY.MM``
+This clones local repositories tracking ``osf-YY.MM`` branches.
+Running `repo sync`_ again later fetches the latest ``osf-YY.MM``
 branches from remote repositories, and attempts to `rebase`_ any
 locally checked out branches on top of the latest from upstream.
 
-You can sync the latest changes to upstream repositories using the
-current month's snapshot branch. All updates to remote repositories
-will be fast-forward changes only. However, **updates will stop after
-the month ends** and trunk development continues on new branches.
-
-You can continue using the Zephyr microPlatform at your site for as long as
-you'd like, even when you're using a monthly snapshot manifest branch. However,
-to fetch new updates from Linaro Technologies Division after the month
-ends, you need to update your manifest repository to sync from more
-recent development branches. You can do this using an existing Zephyr
-microPlatform installation directory; **you do not need to create a new Zephyr
-microPlatform directory to update your manifest repository branch**.
-
-For example, if you have the ``17.05`` manifest branch checked out,
-and you want to update to ``17.07``, you can run this from your
-existing Zephyr microPlatform installation directory::
-
-  repo init -b 17.07 -u https://github.com/linaro-technologies/genesis-sdk-manifest
-  repo sync
-
-.. warning::
-
-   When changing manifest branches, you may synchronize based on
-   upstream repository changes that are not fast-forward updates to
-   what you have already cloned. This may rewrite Git history in your
-   local repositories. Be careful!
-
-   You can use ``repo sync -n`` to fetch changes from the network
-   only, without updating your working directories. See
-   :ref:`zephyr-branching-repo` for more information.
+However, updates to ``osf-YY.MM`` branches **stop after the month
+ends**, and development moves on to new branches.
 
 Monthly Baseline Rebases
 ------------------------
 
-As noted above, some repositories have their history rewritten when
-new monthly development branches are cut. This currently only happens
-to repositories which have upstreams, namely Zephyr and mcuboot.
+As noted above, repositories with upstreams have their history
+rewritten when new monthly branches are cut.
 
-For example, in May 2017, the ``zephyr`` repository tracked the
-``ltd-17.05`` branch in the Linaro Technologies Division Zephyr Git
-tree. When development moved to the ``ltd-17.06`` branch in early June
-2017, the ``zephyr`` repository was updated so that Linaro
-Technologies Division changes to the mainline Zephyr source code start
-at a new **baseline commit** in the upstream repository's mainline
-(master) branch.
+For example, in October 2017, development in the ``zephyr`` repository
+happened in the ``osf-17.10`` branch. When the ``osf-17.11`` branch
+was created in early November 2017, changes made by Open Source
+Foundries were rebased onto a new **baseline commit** in the upstream
+Zephyr repository.
 
-When a new baseline commit is established, the history for the commits
-that LTD added to the upstream branch is rewritten and cleaned up
-(squashing commits, removing hacks that are no longer needed,
-etc.). See :ref:`zephyr-branching-sauce`, below, for rules which make it easy
-to see which commits those are.
+When this happens, OSF-specific history is rewritten and cleaned up:
+earlier versions of patches that were merged upstream are cleaned up,
+hacks that are no longer needed are removed, etc. Upstream history is
+never changed.
 
-What about Upstream Releases?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Commits made by Open Source Foundries have tags in their Git shortlogs
+so they're easy to spot. See :ref:`zephyr-branching-sauce` below for
+details.
 
-We don't currently take baseline commits in any LTD branches from
-upstream release branches. That is, both trunk development and monthly
-snapshots are based on commits in upstream master branches.
+What about Upstream Release Branches?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-However, changes from upstream release branches may be cherry-picked
-or otherwise merged into monthly snapshot branches.
+We don't choose baseline commits in any OSF branches from upstream
+release branches.
+
+This is because the Zephyr microPlatform is based on continuous
+updates to the latest upstream software.
 
 .. _zephyr-branching-sauce:
 
-Extra Rules For Repositories with Upstreams
--------------------------------------------
+Sauce Tags for OSF Patches
+--------------------------
 
 .. note::
 
    The important thing to know is:
 
-   **When Linaro Technologies Division adds patches to a repository
-   with an upstream, we add an "LTD" tag in the Git shortlog to mark
-   the commit as currently LTD-specific**.
+   When Open Source Foundries adds a patch to a repository with an
+   upstream, we add an "OSF" tag in the Git shortlog to make the
+   commit easy to see.
 
-These tags are called "sauce tags".
+These tags are called "sauce tags". They are:
 
-Here is list of sauce tags, with a brief summary of their purposes:
+- **[OSF mergeup]**: merge commits bringing upstream changes into an OSF tree
+- **[OSF fromlist]**: patches submitted to upstream for review, and
+  revisions to them
+- **[OSF toup]**: patches that want to go upstream, but haven't yet
+- **[OSF noup]**: patches needed by OSF, but not for upstream
+- **[OSF temphack]**: temporarily patches that keep things working for now
+- **[OSF fromtree]**: patches cherry-picked, rather than merged, from upstream
 
-- [LTD toup]: patches that want to go upstream, and revisions to them
-- [LTD noup]: patches needed by LTD, but not for upstream
-- [LTD mergeup]: merge commits from upstream into an LTD tree
-- [LTD temphack]: patches needed temporarily until some underlying code
-  is fixed or refactored upstream
-- [LTD fromtree]: patches cherry-picked from upstream (when they're
-  only available in a newer version that can't be merged)
-- [LTD fromlist]: patches propose for upstream that are under discussion
-  and are still being merged, and revisions to them.
+These are the detailed rules for how sauce tags get used.
 
-More detailed rules for each sauce tag follow below.
+[OSF mergeup]
 
-[LTD toup]
+    Use this in the merge commit when merging an upstream branch into
+    an OSF tree. The rest of the shortlog should name the upstream,
+    the upstream branch being merged in, and the OSF monthly working
+    branch that's getting the merge.
 
-    Use this for patches that are submitted upstream. Also use this
-    for subsequent revisions to the LTD branch which follow upstream
-    review, and make it possible to `autosquash
-    <https://git-scm.com/docs/git-rebase>`_ them together in the next
-    baseline rebase.
+    For example, when merging upstream Zephyr master into
+    ``osf-17.10``, the merge commit shortlog should be::
 
-    For example, let's take this series posted upstream::
+      [OSF mergeup] Merge 'zephyrproject-rtos/master' into osf-17.10
 
-      boards: arm: add sweet_new_board
-      samples: http_client: support sweet_new_board
+[OSF fromlist]
 
-    The shortlogs in the master-upstream-dev branch should be::
+    Use this for commits submitted to upstream for review that should
+    be merged into an OSF branch right away, and can't wait to be
+    merged upstream and then brought in via mergeup.
 
-      [LTD toup] boards: arm: add sweet_new_board
-      [LTD toup] samples: http_client: support sweet_new_board
+    As a result of review, you'll need to make changes to your
+    series. Keep ``osf-YY.MM`` up to date by reverting the first
+    version of your series, then adding the next version on top.
 
-    Then, after rebasing the review series in response to changes
-    requested to the "add sweet_new_board" patch, add another commit
-    to master-upstream-dev that makes the same change, like this::
+    For example, let's say you post version 1 (v1) of these patches
+    upstream::
 
-      [LTD toup] boards: arm: add sweet_new_board
-      [LTD toup] samples: http_client: support sweet_new_board
-          (other commits in between)
-      squash! [LTD toup] boards: arm: add sweet_new_board
+      [OSF fromlist] net: lwm2m: add the finest IPSO objects        # v1
+      [OSF fromlist] net: lwm2m: fit in 1K RAM                      # v1
 
-    When the patches are merged into upstream master and it's time to
-    merge that into master-upstream-dev, first propose a revert, then
-    do the merge, like so::
+    Then, as a result of review, you need to re-work your series. Keep
+    the OSF branch up to date by reverting your patches in reverse
+    order, then adding the new versions on top, like this::
 
-      [LTD toup] boards: arm: add sweet_new_board
-      [LTD toup] samples: http_client: support sweet_new_board
+      Revert "[OSF fromlist] net: lwm2m: fit in 1K RAM"             # revert v1
+      Revert "[OSF fromlist] net: lwm2m: add cool new IPSO object"  # revert v1
+      [OSF fromlist] net: lwm2m: add cool new IPSO object           # add v2
+      [OSF fromlist] net: lwm2m: fit in 1K RAM                      # add v2
+
+    Finally, after your series is merged upstream, revert the final
+    fromlist version before doing the next mergeup, like this::
+
+      Revert "[OSF fromlist] net: lwm2m: fit in 1K RAM"             # revert v2
+      Revert "[OSF fromlist] net: lwm2m: add cool new IPSO object"  # revert v2
+      [OSF mergeup] Merge 'zephyrproject-rtos/master' into osf-17.10
+
+    Keeping these records makes it much easier to do mergeups, and to
+    rebase the OSF patches at the end of the month.
+
+[OSF toup]
+
+    Use this for patches that should be submitted upstream, but aren't
+    quite ready yet.
+
+    Here are some hypothetical examples::
+
+      [OSF toup] boards: arm: add sweet_new_board
+      [OSF toup] samples: http_client: support sweet_new_board
+
+    If toup patches are posted upstream and merged, this needs to be
+    recorded before merging upstream master into ``osf-YY.MM``.  Do
+    this the same way as fromlist patches, by reverting the toup
+    patches in reverse order before doing the next mergeup, like
+    this::
+
+      [OSF toup] boards: arm: add sweet_new_board
+      [OSF toup] samples: http_client: support sweet_new_board
           (...)
-      squash! [LTD toup] boards: arm: add sweet_new_board
+      Revert "[OSF toup] samples: http_client: support sweet_new_board"
+      Revert "[OSF toup] boards: arm: add sweet_new_board"
           (...)
-      Revert "[LTD toup] samples: http_client: support sweet_new_board"
-      Revert "[LTD toup] boards: arm: add sweet_new_board"
-          (...)
-      Merge master into master-upstream-dev
+      [OSF mergeup] Merge 'zephyrproject-rtos/master' into osf-YY.MM
 
-[LTD noup]
+[OSF noup]
 
     Use this if the patch isn't upstreamable for whatever reason, but
-    it's still needed in the LTD trees. Use good judgement between
-    this and [LTD temphack].
+    it's still needed in the OSF trees. Use good judgement between
+    this and [OSF temphack].
 
-[LTD mergeup]
+[OSF temphack]
 
-    Use this for merge commits from upstream into an LTD tree.
-
-[LTD temphack]
-
-    Use this for patches which "get things working again", but are
+    Use this for hot-fix patches which make things work, but are
     unacceptable to upstream, and will be dropped at some point when
     rebasing to a new baseline commit.
 
@@ -347,69 +331,66 @@ More detailed rules for each sauce tag follow below.
     with ``#if 0 ... #endif`` because it broke something, while a
     better fix is being worked out.
 
-[LTD fromtree]
+[OSF fromtree]
 
-    When patches are cherry-picked from a later upstream version. **Do
-    not rewrite upstream's history with this tag** when merging
-    upstream master into LTD master-upstream-dev.
+    Use this for patches which are cherry-picked from a later upstream
+    version. This should be used sparingly; **we strongly prefer to do
+    mergeups instead**.
 
-[LTD fromlist]
+    The only good reason to use this is to bring in something
+    essential when earlier upstream patches break something.
 
-    When you've cherry-picked a commit proposed for inclusion
-    upstream. Note that if you want to include changes to that patch
-    made during review, follow the same autosquash rules as [LTD
-    toup].
+    Revert fromtree patches before the next mergeup.
+
+----
 
 .. _zephyr-branching-rationale:
 
 Appendix: Branch Management Rationale
 -------------------------------------
 
-This section provides a rationale for why these rules exist.
+This is a detailed rationale for why these rules exist.
 
-There are two "types" of repository in an Zephyr microPlatform installation:
+There are two "types" of repository in a Zephyr microPlatform installation:
 
-- Projects which have an external upstream, namely Zephyr and
+- Projects which have an external upstream, like Zephyr and
   mcuboot.
 - Projects which are developed for the Zephyr microPlatform, and which have no
-  external upstream, like the one containing the documentation you're reading
-  now.
+  external upstream, like
 
 Rather than cloning the upstream versions of the Zephyr and mcuboot
-repositories in an Zephyr microPlatform installation, Linaro Technologies
-Division maintains its own trees. This is for two reasons.
+repositories in a Zephyr microPlatform installation, Open Source
+Foundries maintains its own trees. This is for two reasons.
 
-1. It allows us to keep track of known-good revisions that work well
-   with the Zephyr microPlatform.
+1. It lets us track known-good revisions, especially when they include
+   OSF patches.
 
-2. It gives us a place to carry out our own internal development on
-   these repositories.
+2. As active contributors to these projects, it gives us a place to
+   carry out our own development.
 
-Changes flow in both directions between the LTD trees and the upstream
-trees. In one direction, we're constantly upstreaming these changes as
-we add features, fix bugs, etc. In the other, we're keeping track of
-what's going on upstream, and merging in new patches as they arrive
-and are tested. We also sometimes need to keep some temporary
-solutions or patches in our trees which aren't useful for upstream.
+We're constantly upstreaming features, bug fixes, etc. We're also
+constantly tracking upstream and merging updates after they pass
+continuous testing. We also sometimes need to keep some temporary
+solutions or patches in our trees which aren't useful for upstream,
+but are important to our users (i.e. you!).
 
-While all of this is going on in repositories with an upstream, the
-Zephyr microPlatform-only repositories are evolving too, both to use those new
-features added in Zephyr and mcuboot, and as they're being developed
-in their own right.
+While this happens, Zephyr microPlatform-only repositories are also
+changing, both to track changes from upstream, and in their own right.
 
-This gets complicated, and some extra process is necessary to keep
-things working smoothly over time.
+This all gets complicated, and the branching rules help keep things
+working smoothly:
 
-The branching rules manage development in a way that allows:
+- Users can see differences between upstream and Zephyr microPlatform
+  repositories clearly.
+- Developers can stage local and integrate upstream changes into
+  Zephyr microPlatform branches.
+- Continuous Integration can track and test incoming changes.
+- Monthly working branches serve as a permanent record despite
+  histories which rebase.
 
-- Users to see clearly what the differences are between the
-  upstream and Zephyr microPlatform versions of each repository,
-- Developers to stage local and integrate upstream changes into
-  Zephyr microPlatform branches,
-- Continuous Integration to track versions which should work together
-  for testing and test report generation,
-- Snapshots and releases to track the state of development
-  over time, allowing comparisons between versions.
+.. _Git: https://git-scm.com/
+
+.. _Repo: https://gerrit.googlesource.com/git-repo/
 
 .. _repo init:
    https://source.android.com/source/using-repo#init
