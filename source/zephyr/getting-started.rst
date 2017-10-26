@@ -240,7 +240,7 @@ Congratulations; you've just flashed a bootloader and
 cryptographically signed application binaries\ [#signatures]_ you
 built in the previous step onto your board!
 
-(If you want to know more, see :ref:`rtos-flash`.)
+(If you want to know more, see :ref:`zephyr-flash`.)
 
 Test the Application
 --------------------

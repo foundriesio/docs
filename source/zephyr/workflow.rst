@@ -17,18 +17,17 @@ After installing the Zephyr microPlatform repositories and build environment,
 the Zephyr and mcuboot build systems and other tools can be used
 directly. However, these interfaces can be hard to use when first developing
 applications. For this reason, the Zephyr microPlatform provides a helper
-script, also named ``genesis``, which provides a higher-level
-interface.
+script, named ``zmp``, which provides a higher-level interface.
 
-The ``genesis`` utility is installed into the root of the Zephyr microPlatform
+The ``zmp`` utility is installed into the root of the Zephyr microPlatform
 tree by ``repo sync``. It accepts multiple commands useful during
-development; they are documented below. Run ``./genesis -h`` from the
+development; they are documented below. Run ``./zmp -h`` from the
 Zephyr microPlatform installation directory for additional information.
 
 .. _zephyr-build:
 
-Build an Application: ``genesis build``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build an Application: ``zmp build``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
@@ -38,17 +37,18 @@ Build an Application: ``genesis build``
    production.
 
    It's not currently possible to generate mcuboot images that trust
-   non-dev keys. As such, the ``--signing-key`` and
-   ``--signing-key-type`` arguments to ``genesis build`` are
-   misleading, as the mcuboot image won't trust the key used to sign
-   the application. Don't use these for now.
+   non-dev keys without editing the mcuboot source code.
+
+   As such, the ``--signing-key`` and ``--signing-key-type`` arguments
+   to ``zmp build`` are misleading, as the mcuboot image won't trust
+   the key used to sign the application. Don't use these for now.
 
 .. todo::
 
    Re-work after resolution of https://trello.com/c/mSZPuXxG and
    https://projects.linaro.org/browse/LITE-147
 
-The top-level command is ``genesis build``. By default, it takes a
+The top-level command is ``zmp build``. By default, it takes a
 path to an application inside the Zephyr microPlatform installation directory,
 and builds a signed application image, as well as an mcuboot binary
 capable of loading that application image. (The default behavior can
@@ -56,9 +56,9 @@ be changed through various options.)
 
 To get help, run this from the Zephyr microPlatform root directory::
 
-    ./genesis build -h
+    ./zmp build -h
 
-The ``genesis build`` command always builds out of tree; that is,
+The ``zmp build`` command always builds out of tree; that is,
 build artifacts are never generated in the source code directories. By
 default, they are stored under ``outdir`` in the Zephyr microPlatform top-level
 directory.
@@ -68,7 +68,7 @@ Examples:
 - To build an application ``some-application`` available in the
   Zephyr microPlatform tree, targeting the default board (96b_nitrogen)::
 
-      ./genesis build some-application
+      ./zmp build some-application
 
   This generates artifacts under ``outdir`` like so::
 
@@ -85,9 +85,9 @@ Examples:
 - To build the same application for another board,
   e.g. ``96b_carbon``, use the ``-b`` option::
 
-      ./genesis build -b 96b_carbon some-application
+      ./zmp build -b 96b_carbon some-application
 
-  The ``-b`` option can be used in any ``genesis build`` command to
+  The ``-b`` option can be used in any ``zmp build`` command to
   target other boards.
 
   Running this after building for 96Boards Nitrogen as in the above
@@ -105,7 +105,7 @@ Examples:
 - It's fine to build application sources in a subdirectory. For
   example, running::
 
-    ./genesis build some-nested/application-name
+    ./zmp build some-nested/application-name
 
   will generate::
 
@@ -123,64 +123,65 @@ Examples:
 - To build or incrementally compile the application image only, not
   updating the mcuboot image, use ``-o``::
 
-      ./genesis build -o app some-application
+      ./zmp build -o app some-application
 
 - Similarly, to build or incrementally compile mcuboot only::
 
-      ./genesis build -o mcuboot some-application
+      ./zmp build -o mcuboot some-application
 
 .. _zephyr-configure:
 
-Configure an Application: ``genesis configure``
+Configure an Application: ``zmp configure``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Zephyr RTOS uses a configuration system called Kconfig, which is
-borrowed from the Linux kernel. The ``genesis configure`` command lets
+borrowed from the Linux kernel. The ``zmp configure`` command lets
 you change the configuration database for an application build, using
 any of the Kconfig front-ends supported on your platform.
 
-The top-level command is ``genesis configure``.
+The top-level command is ``zmp configure``.
 
-**This command can only be run after using** ``genesis build`` **to
+**This command can only be run after using** ``zmp build`` **to
 create the build directory, which contains the configuration
 database.**
 
 To get help, run this from the Zephyr microPlatform root directory::
 
-    ./genesis configure -h
+    ./zmp configure -h
 
 Example uses:
 
 - To change the application configuration (not the mcuboot
   configuration) for ``some-application`` for the default board::
 
-      ./genesis configure -o app some-application
+      ./zmp configure -o app some-application
 
 - To change the mcuboot (not application) configuration for another
   board, ``96b_carbon``::
 
-      ./genesis configure -o mcuboot -b 96b_carbon some-application
+      ./zmp configure -o mcuboot -b 96b_carbon some-application
 
-If you don't specify ``-o``, then ``genesis configure`` will let you
-change both the mcuboot and application configurations.
+If you don't specify ``-o``, then ``zmp configure`` will sequentially
+run the application and mcuboot configuration interfaces, in that
+order.
 
-Note that ``genesis configure`` accepts many of the same options as
-:ref:`genesis build <zephyr-build>`.
+Note that ``zmp configure`` accepts many of the same options as
+:ref:`zmp build <zephyr-build>`.
 
 For more information on Kconfig in Zephyr, see `Configuration Options
 Reference Guide
 <https://www.zephyrproject.org/doc/reference/kconfig/index.html>`_.
 
-.. _rtos-flash:
+.. _zephyr-flash:
 
-Flash an Application to a Device: ``genesis flash``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Flash an Application to a Device: ``zmp flash``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After building an application and mcuboot binary with :ref:`genesis
-build <zephyr-build>`\ [#makefileexport]_, the ``genesis flash``
+After building an application and mcuboot binary with :ref:`zmp
+build <zephyr-build>`\ [#makefileexport]_, the ``zmp flash``
 command can be used to flash it to a board, usually via USB.
 
-The ``genesis flash`` command uses information about the board
+The ``zmp flash`` command uses information about the board
 obtained from Zephyr's build system to choose a flashing utility, and
 run it with the correct arguments to flash mcuboot and the application
 binary to an attached board. Before using this command, make sure you
@@ -191,26 +192,25 @@ described in its `Zephyr documentation
 
 To get help, run this from the Zephyr microPlatform root directory::
 
-  ./genesis flash -h
+  ./zmp flash -h
 
 Basic uses:
 
 - To flash the artifacts for ``some-application`` to the default board::
 
-    ./genesis flash some-application
+    ./zmp flash some-application
 
 - To flash to a different board, ``96b_carbon``::
 
-    ./genesis flash -b 96b_carbon some-application
+    ./zmp flash -b 96b_carbon some-application
 
 - To flash to a particular board, given the device ID supported by its
   underlying flashing utility::
 
-    ./genesis flash -d SOME_BOARD_ID some-application
+    ./zmp flash -b SOME_BOARD -d SOME_BOARD_ID some-application
 
 The command also accepts an ``-e`` argument, which can be used to pass
 extra arguments to the flashing utility.
-
 
 Create an Application
 ~~~~~~~~~~~~~~~~~~~~~
@@ -224,12 +224,10 @@ Create an Application
 Debug a Running Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. todo:: improve this.
+.. todo:: improve this once 'make debug' is re-worked upstream
 
 Attach a debugger in the host environment to the device, and provide
-the ELF binaries to it for symbol tables. On boards which support
-CMSIS-DAP, `pyOCD <https://github.com/mbedmicro/pyOCD>`_ is the
-recommended solution.
+the ELF binaries from the build tree to it for symbol tables.
 
 Integrate an External Dependency
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -293,19 +291,19 @@ sync``.
 
 .. [#makefileexport]
 
-   It's possible to use ``genesis flash`` on directories not generated
-   by ``genesis build``, but it assumes an output directory hierarchy
-   matching what :ref:`genesis build <zephyr-build>` creates,
+   It's possible to use ``zmp flash`` on directories not generated
+   by ``zmp build``, but it assumes an output directory hierarchy
+   matching what :ref:`zmp build <zephyr-build>` creates,
    including the presence of a `Makefile.export`_.
 
 .. [#zephyrflash]
 
    If your board's Zephyr support does not include ``make flash``,
-   ``genesis flash`` will not work either.
+   ``zmp flash`` will not work either.
 
-   ``genesis flash`` exists because the Zephyr ``make flash`` target
+   ``zmp flash`` exists mainly because the Zephyr ``make flash`` target
    currently only allows flashing a single application binary to a
    board at a fixed address. This is not sufficient for the
    Zephyr microPlatform, which has a more complex flashing process due to the
    presence of a bootloader and an application, which must be flashed in
-   different locations.
+   different locations. This is being addressed in upstream Zephyr.
