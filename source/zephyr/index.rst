@@ -15,9 +15,9 @@ The Zephyr microPlatform is based on the `Zephyr
    :maxdepth: 1
 
    getting-started
-   branching
    workflow
    prod-workflow
+   branching
 
 
 .. todo::
