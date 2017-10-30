@@ -121,18 +121,29 @@ Your hawkBit container is now ready for use.
 
 **Required Equipment**: workstation computer.
 
-First, create a `CloudMQTT`_ account. The free CloudMQTT plan is
-enough to run this demo.
+Get a `CloudMQTT`_ account if you don't have one already, and sign
+in. After you've signed in, `create a new CloudMQTT instance`_ to use
+with this system.  The free instance plan is enough to run this demo,
+as shown below:
 
-After logging in to your account, go to your `CloudMQTT Control Panel`_,
-and create a new instance. Then click on the "Details" button
-next to the new instance in your control panel. Record the following
-information about the instance:
+.. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-instance.png
+   :align: center
+   :alt: CloudMQTT instance creation user interface
+
+Then click on the "Details" button next to the new instance
+in your control panel. Record the following information about the
+instance:
 
 - CLOUDMQTT_SERVER: the URL of the server
-- CLOUDMQTT_PORT: the port to connect to on the server
 - CLOUDMQTT_USER: the auto-generated username
 - CLOUDMQTT_PASSWORD: the auto-generated password
+- CLOUDMQTT_PORT: the port to connect to on the server
+
+The information is in your instance's details page as shown:
+
+.. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-details.png
+   :align: center
+   :alt: CloudMQTT instance creation user interface
 
 .. _dm-hawkbit-mqtt-linux:
 
@@ -166,11 +177,13 @@ fetch updates from hawkBit.
   you recorded earlier::
 
     CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
-    GW_HOSTNAME=192.168.0.3 ./iot-gateway.sh
+        GW_HOSTNAME=GATEWAY_IP_ADDRESS \
+        ./iot-gateway.sh
 
-  The script assumes its executing from the system where the hawkBit server
-  resides. If this isn't the case, the GITCI=<hawkBit IP> variable must be set.
-
+  The script assumes its executing from the same machine the hawkBit
+  server is running on. If this isn't the case, you must additionally
+  set the variable ``GITCI`` to the IP address of your workstation
+  running the hawkBit container.
 
 .. _dm-hawkbit-mqtt-zephyr:
 
@@ -211,10 +224,10 @@ data are being sent to the cloud, and do a FOTA update.
 Cloud Sensor Updates
 --------------------
 
-From your `CloudMQTT Control Panel`_, load your instance's Details
-page and click the "Websocket UI" button to get a live view of data
-being sent to the server. You should see new data appear every few
-seconds; it will look like this:
+Choose the instance you created for this demo from your `CloudMQTT
+instances list`_, then click the "Websocket UI" button to get a live view
+of data being sent to the server. You should see new data appear every
+few seconds; it will look like this:
 
 .. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-websocket-ui.png
    :align: center
@@ -391,8 +404,9 @@ tracker`_.
 .. _CloudMQTT:
    https://www.cloudmqtt.com
 
-.. _CloudMQTT Control Panel:
-   https://customer.cloudmqtt.com/customer/
+.. _CloudMQTT instances list:
+.. _create a new CloudMQTT instance:
+   https://customer.cloudmqtt.com/instance
 
 .. _Ansible:
    https://www.ansible.com
