@@ -1,22 +1,11 @@
-.. _Install Ansible:
-   http://docs.ansible.com/ansible/latest/intro_installation.html
+- Follow instructions in :ref:`iot-gateway` to install Ansible and
+  fetch the ``gateway-ansible`` repository onto your system.
 
-- Follow the :ref:`iot-gateway` guide to log into the Basic IoT
-  Gateway console and change the password for the ``osf`` user. The
-  default password is ``osf``.
+- After connecting your gateway to the network, record its IP address,
+  ``GATEWAY_IP_ADDRESS``, which you can obtain when using WiFi by
+  running this at the console::
 
-- Connect your IoT gateway to the network.
-
-  You can connect a HiKey to a local WiFi network\ [#hikeyethernet]_
-  from its serial console as follows::
-
-    sudo nmcli device wifi connect <NetworkSSID> password <NetworkPassword>
-
-  After connecting to the network, record the IP address of your
-  gateway, GATEWAY_IP_ADDRESS, which you can obtain when using WiFi
-  with::
-
-    ip addr show wlan0 | grep -o 'inet [.0-9]*'
+    ip addr show wlan0 | grep -o 'inet [.0-9]*' | sed 's/inet //'
 
   (If you're using Ethernet, ``ip addr show`` will show all IP
   addresses on the system.)
@@ -30,15 +19,8 @@
 
     ssh-copy-id osf@GATEWAY_IP_ADDRESS
 
-  Use the new password for the ``linaro`` account you set earlier.
-
-- `Install Ansible`_, which will let you install and control
-  containers on your IoT gateway via SSH from your workstation.
-
-- Clone the ``gateway-ansible`` repository, which contains an Ansible
-  playbook to set up the gateway for this system::
-
-    git clone https://github.com/OpenSourceFoundries/gateway-ansible
+  Use the password for the ``osf`` account you set earlier (the
+  default is ``osf``, but we recommend that you change it).
 
 .. _GitHub guide to SSH keys:
    https://help.github.com/articles/connecting-to-github-with-ssh/

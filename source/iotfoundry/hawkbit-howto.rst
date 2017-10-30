@@ -152,9 +152,9 @@ The information is in your instance's details page as shown:
 
 **Required Equipment**: IoT gateway and workstation to flash the board.
 
-Follow the Linux microPlatform :ref:`linux-getting-started` to set up
-a `96Boards HiKey`_ gateway for container-based application
-deployment.
+Follow the Linux microPlatform :ref:`linux-getting-started` to flash a
+`96Boards HiKey`_ gateway with the microPlatform build, log in via the
+console, and connect to the network.
 
 If you don't have a HiKey, the Getting Started guide contains
 information for other boards, provided on a best-effort basis.
@@ -177,8 +177,7 @@ fetch updates from hawkBit.
   you recorded earlier::
 
     CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
-        GW_HOSTNAME=GATEWAY_IP_ADDRESS \
-        ./iot-gateway.sh
+        GW_HOSTNAME=GATEWAY_IP_ADDRESS ./iot-gateway.sh
 
   The script assumes its executing from the same machine the hawkBit
   server is running on. If this isn't the case, you must additionally
@@ -376,12 +375,6 @@ Known Issues
 
 Issues and observations are logged within `Linaro's Bugzilla issue
 tracker`_.
-
-.. rubric:: Footnotes
-
-.. [#hikeyethernet]
-
-   You can also use a USB Ethernet dongle.
 
 .. _96Boards Nitrogen:
    https://www.96boards.org/product/nitrogen/

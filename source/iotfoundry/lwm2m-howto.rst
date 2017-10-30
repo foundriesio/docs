@@ -282,9 +282,3 @@ Known Issues
 Issues and observations are logged within Linaro's `Bugzilla issue
 tracker
 <https://bugs.linaro.org/buglist.cgi?component=IoT%20end-to-end&list_id=12808&product=Linaro%20Technologies>`_.
-
-.. rubric:: Footnotes
-
-.. [#hikeyethernet]
-
-   You can also use a USB Ethernet dongle.
