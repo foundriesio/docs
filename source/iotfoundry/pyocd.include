@@ -1,6 +1,3 @@
-.. _pip Installation:
-   https://pip.pypa.io/en/stable/installing/
-
 Flashing this board requires pyOCD. To install::
 
   pip install --user pyOCD
@@ -11,3 +8,6 @@ following udev rules as root, then unplug and plug back in any boards
 you may have connected::
 
   echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
+
+.. _pip Installation:
+   https://pip.pypa.io/en/stable/installing/
