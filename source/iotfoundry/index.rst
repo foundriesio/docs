@@ -6,30 +6,34 @@ End-to-end Demonstration Systems
 The IoT Foundry provides IoT platform demonstration systems with
 end-to-end connectivity. It is comprised of:
 
-- Containers for cloud data and device management systems,
-- a Basic IoT Gateway based on the :ref:`linux-top`, and
-- demonstration apps based on the :ref:`zephyr-top`, which support
+- A :ref:`linux-top` build and containerized gateway applications for
+  cloud data and device management systems,
+- Demonstration apps based on the :ref:`zephyr-top`, which support
   cloud data and device management systems, and connect to the cloud
   through the gateway.
+
+Using these systems, you can exchange telemetry data with the cloud,
+and perform firmware over the air (FOTA) device updates.
 
 We continuously test and maintain these systems, and keep them
 synchronized with the upstream projects they depend on.
 
 The two end-to-end demonstration systems we currently support are:
 
-HTTP / MQTT via Hawkbit
------------------------
-  .. toctree::
-     :maxdepth: 1
+hawkBit FOTA and MQTT
+---------------------
 
-     hawkbit-howto
-     hawkbit-appendix
+.. toctree::
+   :maxdepth: 1
 
-CoAP / LWM2M via Leshan
------------------------
+   hawkbit-howto
+   hawkbit-appendix
 
-  .. toctree::
-     :maxdepth: 1
+LWM2M FOTA and Data
+-------------------
 
-     lwm2m-howto
-     lwm2m-appendix
+.. toctree::
+   :maxdepth: 1
+
+   lwm2m-howto
+   lwm2m-appendix
