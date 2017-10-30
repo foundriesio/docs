@@ -76,9 +76,10 @@ This is broken down into the following steps.
 
 **Required Equipment**: workstation which supports `Docker`_.
 
-Run a demonstration-grade hawkBit server::
+Run a demonstration-grade hawkBit server on your workstation (not the
+gateway)::
 
-    docker run -dit --name hawkbit -p 8080:8080 linarotechnologies/hawkbit-update-server
+    docker run -dit --name hawkbit -p 8080:8080 opensourcefoundries/hawkbit-update-server
 
 .. warning::
 
@@ -97,13 +98,14 @@ to start for the first time.
 
 After running the hawkBit container, visit http://localhost:8080/UI to
 load the administrative interface, and log in with the default
-username and password (admin/admin).
-
-Your browser window should look like this:
+username and password (``admin``/``admin``). Your browser window
+should look like this:
 
 .. figure:: /_static/dm-hawkbit-mqtt/hawkbit-initial.png
    :align: center
    :alt: hawkBit Administrator Interface
+
+Your hawkBit container is now ready for use.
 
 .. note::
 
@@ -111,8 +113,6 @@ Your browser window should look like this:
    "System Config" area. This will instruct your IoT devices to check
    for updates more frequently. The default is 5 minutes; the minimum
    value is 30 seconds.
-
-Your hawkBit container is now ready for use.
 
 .. _dm-hawkbit-mqtt-cloudmqtt:
 
