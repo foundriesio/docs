@@ -39,3 +39,6 @@
   playbook to set up the gateway for this system::
 
     git clone https://github.com/OpenSourceFoundries/gateway-ansible
+
+.. _GitHub guide to SSH keys:
+   https://help.github.com/articles/connecting-to-github-with-ssh/

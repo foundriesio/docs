@@ -43,15 +43,6 @@ Using this demonstration system, you can:
   the air update. The device will boot the update after checking its
   cryptographic signature.
 
-.. _96Boards Nitrogen:
-   https://www.96boards.org/product/nitrogen/
-
-.. _96Boards HiKey:
-   https://www.96boards.org/product/hikey/
-
-.. _UART Serial Mezzanine:
-   https://www.96boards.org/product/uartserial/
-
 Get the Hardware
 ================
 
@@ -68,30 +59,6 @@ Support for other boards is provided on a best-effort basis.
 
 Prepare the System
 ==================
-
-.. _building and running hawkBit:
-   https://eclipse.org/hawkbit/documentation/guide/runhawkbit.html
-
-.. _hawkBit security:
-   https://eclipse.org/hawkbit/documentation/security/security.html
-
-.. _Docker:
-   https://www.docker.com/
-
-.. _CloudMQTT:
-   https://www.cloudmqtt.com
-
-.. _CloudMQTT Control Panel:
-   https://customer.cloudmqtt.com/customer/
-
-.. _Ansible:
-   https://www.ansible.com
-
-.. _GitHub guide to SSH keys:
-   https://help.github.com/articles/connecting-to-github-with-ssh/
-
-.. _Android platform tools:
-   https://developer.android.com/studio/releases/platform-tools.html
 
 This is broken down into the following steps.
 
@@ -394,12 +361,40 @@ system.
 Known Issues
 ============
 
-Issues and observations are logged within Linaro's `Bugzilla issue
-tracker
-<https://bugs.linaro.org/buglist.cgi?component=IoT%20end-to-end&list_id=12808&product=Linaro%20Technologies>`_.
+Issues and observations are logged within `Linaro's Bugzilla issue
+tracker`_.
 
 .. rubric:: Footnotes
 
 .. [#hikeyethernet]
 
    You can also use a USB Ethernet dongle.
+
+.. _96Boards Nitrogen:
+   https://www.96boards.org/product/nitrogen/
+
+.. _96Boards HiKey:
+   https://www.96boards.org/product/hikey/
+
+.. _UART Serial Mezzanine:
+   https://www.96boards.org/product/uartserial/
+
+.. _Docker:
+   https://www.docker.com/
+
+.. _building and running hawkBit:
+   https://eclipse.org/hawkbit/documentation/guide/runhawkbit.html
+
+.. _hawkBit security:
+   https://eclipse.org/hawkbit/documentation/security/security.html
+
+.. _CloudMQTT:
+   https://www.cloudmqtt.com
+
+.. _CloudMQTT Control Panel:
+   https://customer.cloudmqtt.com/customer/
+
+.. _Ansible:
+   https://www.ansible.com
+
+.. _Linaro's Bugzilla issue tracker: https://bugs.linaro.org/buglist.cgi?component=IoT%20end-to-end&list_id=12808&product=Linaro%20Technologies
