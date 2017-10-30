@@ -64,7 +64,7 @@ We currently recommend:
 - `96Boards HiKey`_ as an IoT gateway, with `UART Serial
   Mezzanine`_ for console access
 
-Source for other boards is provided on a best-effort basis.
+Support for other boards is provided on a best-effort basis.
 
 Prepare the System
 ==================
