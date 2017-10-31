@@ -358,7 +358,6 @@ like this while the update is being downloaded and installed::
     [MCUBOOT] [WRN] zephyr_flash_area_warn_on_open: area 1 has 1 users
     [MCUBOOT] [INF] main: Jumping to the first image slot
     ***** BOOTING ZEPHYR OS v1.8.99 - BUILD: Aug  3 2017 13:28:24 *****
-    [0000000] [fota/main] [INF] main: Linaro FOTA example application
 
     [Startup output omitted]
 
@@ -399,5 +398,3 @@ Reporting Issues
 
 .. _Ansible:
    https://www.ansible.com
-
-.. _Linaro's Bugzilla issue tracker: https://bugs.linaro.org/buglist.cgi?component=IoT%20end-to-end&list_id=12808&product=Linaro%20Technologies
