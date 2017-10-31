@@ -1,4 +1,4 @@
-Flashing this board requires pyOCD. To install::
+Flashing this board requires pyOCD. To install this dependency, run::
 
   pip install --user pyOCD
 
