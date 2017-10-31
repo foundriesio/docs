@@ -367,11 +367,10 @@ like this while the update is being downloaded and installed::
 Congratulations! You've just done your first FOTA update using this
 system.
 
-Known Issues
-============
+Reporting Issues
+================
 
-Issues and observations are logged within `Linaro's Bugzilla issue
-tracker`_.
+.. todo:: provide public and subscriber trackers once chosen
 
 .. _96Boards Nitrogen:
    https://www.96boards.org/product/nitrogen/
