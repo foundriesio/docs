@@ -179,7 +179,7 @@ fetch updates from hawkBit.
     CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
         GW_HOSTNAME=GATEWAY_IP_ADDRESS ./iot-gateway.sh
 
-  The script assumes its executing from the same machine the hawkBit
+  The script assumes it's executing from the same machine the hawkBit
   server is running on. If this isn't the case, you must additionally
   set the variable ``GITCI`` to the IP address of your workstation
   running the hawkBit container.
