@@ -139,7 +139,7 @@ for the files you downloaded previously::
   fastboot.exe flash fastboot fip.bin
   fastboot.exe flash nvme nvme.img
   fastboot.exe flash boot boot-XXXX.uefi.img
-  fastboot.exe flash system rpb-ltd-gateway-image-hikey-YYYY.rootfs.img
+  fastboot.exe flash system lmp-gateway-image-hikey-YYYY.rootfs.img
 
 Mac OS X and Linux
 ~~~~~~~~~~~~~~~~~~
@@ -163,7 +163,7 @@ the files you downloaded previously::
   fastboot flash fastboot fip.bin
   fastboot flash nvme nvme.img
   fastboot flash boot boot-XXXX.uefi.img
-  fastboot flash system rpb-ltd-gateway-image-hikey-YYYY.rootfs.img
+  fastboot flash system lmp-gateway-image-hikey-YYYY.rootfs.img
 
 Boot the Board
 --------------
