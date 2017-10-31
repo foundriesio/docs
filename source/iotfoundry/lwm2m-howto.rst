@@ -24,7 +24,7 @@ IoT devices, an IoT gateway, and a web application, Leshan, that is used as the
 LWM2M server.  With Leshan you can issue commands, query data
 and perform firmware over the air (FOTA) updates on the IoT device(s).
 
-A block diagram of this system is shown here, and though it is not explicitely
+A block diagram of this system is shown here, and though it is not explicitly
 shown, one or more IoT devices can connect to the network through the same
 gateway.
 
