@@ -250,24 +250,21 @@ like this:
    96Boards Nitrogen registered with hawkBit.
 
 It's time to upload a firmware binary to the server, and update it
-using this UI. To make uploading the binaries to the demonstration
-hawkBit server easier, download this Python script to your Zephyr
-microPlatform installation directory:
+using this UI. We've provided a Python script to make this easier,
+which works with either Python 2 or 3.
 
-https://raw.githubusercontent.com/linaro-technologies/hawkbit/master/hawkbit.py
+Run it from the Zephyr microPlatform installation directory::
 
-.. todo:: hawkbit.py should be a versioned part of the release
-
-From the Zephyr microPlatform installation directory::
-
-    python /path/to/hawkbit.py \
-                      -ds 'http://localhost:8080/rest/v1/distributionsets' \
-                      -sm 'http://localhost:8080/rest/v1/softwaremodules' \
-                      -d 'Nitrogen End-to-end IoT system' \
+    python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
+                      -d '96Boards Nitrogen Update' \
                       -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/96b_nitrogen/app/dm-hawkbit-mqtt-96b_nitrogen-signed.bin \
-                      -sv "1.0" -p "Linaro" -n "Nitrogen E2E preview" -t os
+                      -sv "1.0" -p "OSF" -n "96b_nitrogen update" -t os
 
-Above, 1.0 is an arbitrary version number.
+Above, 1.0 is an arbitrary version number. If hawkBit is running on a
+different machine, use the ``-ds`` and ``-sm`` options. For more help
+on using this script, run::
+
+  python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py -h
 
 You will see an update in the hawkBit UI for the new image:
 
