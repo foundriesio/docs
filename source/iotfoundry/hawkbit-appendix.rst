@@ -22,14 +22,14 @@ Additional IoT Devices
 Now run this from the Zephyr microPlatform installation directory to
 build the main application::
 
-  ./genesis build -b 96b_carbon zephyr-fota-samples/dm-hawkbit-mqtt
+  ./zmp build -b 96b_carbon zephyr-fota-samples/dm-hawkbit-mqtt
 
 .. include:: dfu-util.include
 
 To flash the STM32, first put your Carbon into DFU mode again. Then,
 from the Zephyr microPlatform installation directory, run::
 
-  ./genesis flash -b 96b_carbon zephyr-fota-samples/dm-hawkbit-mqtt
+  ./zmp flash -b 96b_carbon zephyr-fota-samples/dm-hawkbit-mqtt
 
 FRDM-K64F
 ~~~~~~~~~
@@ -42,7 +42,7 @@ FRDM-K64F
 Now you can build the binaries. From the Zephyr microPlatform
 installation directory::
 
-    ./genesis build -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
+    ./zmp build -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
 
 .. include:: pyocd.include
 
@@ -50,7 +50,7 @@ To flash the binaries, plug the K64F into your system via the USB
 connector labeled "SDA USB". Then, from the Zephyr microPlatform installation
 directory::
 
-    ./genesis flash -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
+    ./zmp flash -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
 
 .. _dm-hawkbit-mqtt-appendix-hawkbit:
 
@@ -60,10 +60,12 @@ Additional hawkBit Information
 This section contains additional information for more complex use
 cases or further development.
 
+.. todo:: add directive for container and hub to swap in subscriber info
+
 - Upstream Github: https://github.com/eclipse/hawkbit
 - Data model: https://github.com/eclipse/hawkbit/wiki/Data-model
-- Docker container: https://github.com/linaro-technologies/extra-containers/tree/master/hawkbit-update-server
-- Docker Hub: https://hub.docker.com/r/linarotechnologies/hawkbit-update-server
+- Docker container: https://github.com/OpenSourceFoundries/core-containers
+- Docker Hub: https://hub.docker.com/r/opensourcefoundries/hawkbit-update-server/
 
 Hawkbit Restrictions
 ~~~~~~~~~~~~~~~~~~~~
@@ -190,7 +192,7 @@ Rest Commands:
 
       curl 'http://your-hawkbit-server.example.com:8080/rest/v1/softwaremodules' -i -H 'Authorization: Basic YWRtaW46YWRtaW4=' -H 'Content-Type: application/json' -X POST -d '[ {
       "name" : "Zephyr Firmware",
-      "vendor" : "Linaro",
+      "vendor" : "Open Source Foundries",
       "description" : "Firmware Images for Zephyr",
       "type" : "os",
       "version" : "1.5"
@@ -241,7 +243,7 @@ Rest Commands:
 
       curl 'http://your-hawkbit-server.example.com:8080/rest/v1/softwaremodules' -i -H 'Authorization: Basic YWRtaW46YWRtaW4=' -H 'Content-Type: application/json' -X POST -d '[ {
       "name" : "Zephyr Firmware",
-      "vendor" : "Linaro",
+      "vendor" : "Open Source Foundries",
       "description" : "Firmware Images for Zephyr",
       "type" : "os",
       "version" : "1.5"

@@ -24,7 +24,7 @@ Zephyr microPlatform installation directory:
 
 .. code-block:: console
 
-  ./genesis build -b 96b_carbon_nrf51 -c prj_96b_carbon_nrf51.conf \
+  ./zmp build -b 96b_carbon_nrf51 -c prj_96b_carbon_nrf51.conf \
                   --skip-signature zephyr/samples/bluetooth/hci_spi/
 
 This creates a firmware binary for the nRF51 at the following

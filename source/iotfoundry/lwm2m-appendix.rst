@@ -22,14 +22,14 @@ Additional IoT Devices
 Now run this from the Zephyr microPlatform installation directory to
 build the main application::
 
-  ./genesis build -b 96b_carbon zephyr-fota-samples/dm-lwm2m
+  ./zmp build -b 96b_carbon zephyr-fota-samples/dm-lwm2m
 
 .. include:: dfu-util.include
 
 To flash the STM32, first put your Carbon into DFU mode again. Then,
 from the Zephyr microPlatform installation directory, run::
 
-  ./genesis flash -b 96b_carbon zephyr-fota-samples/dm-lwm2m
+  ./zmp flash -b 96b_carbon zephyr-fota-samples/dm-lwm2m
 
 FRDM-K64F
 ~~~~~~~~~
@@ -51,7 +51,7 @@ like this after the other networking configuration:
 Now you can build the binaries. From the Zephyr microPlatform
 installation directory::
 
-    ./genesis build -b frdm_k64f zephyr-fota-samples/dm-lwm2m
+    ./zmp build -b frdm_k64f zephyr-fota-samples/dm-lwm2m
 
 .. include:: pyocd.include
 
@@ -59,7 +59,7 @@ To flash the binaries, plug the K64F into your system via the USB
 connector labeled "SDA USB". Then, from the Zephyr microPlatform installation
 directory::
 
-    ./genesis flash -b frdm_k64f zephyr-fota-samples/dm-lwm2m
+    ./zmp flash -b frdm_k64f zephyr-fota-samples/dm-lwm2m
 
 .. _dm-lwm2m-appendix-leshan:
 
@@ -69,7 +69,5 @@ Additional Leshan Information
 This section contains additional information for more complex use
 cases or further development.
 
-- Upstream Github:
-- Data model:
-- Docker container: https://github.com/linaro-technologies
-- Docker Hub: https://hub.docker.com/r/linarotechnologies/
+- Docker container: https://github.com/OpenSourceFoundries/core-containers
+- Docker Hub: https://hub.docker.com/r/opensourcefoundries/leshan
