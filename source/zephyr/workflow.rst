@@ -45,8 +45,7 @@ Build an Application: ``zmp build``
 
 .. todo::
 
-   Re-work after resolution of https://trello.com/c/mSZPuXxG and
-   https://projects.linaro.org/browse/LITE-147
+   Re-work after mcuboot can consume a key at build time.
 
 The top-level command is ``zmp build``. By default, it takes a
 path to an application inside the Zephyr microPlatform installation directory,
@@ -215,11 +214,10 @@ extra arguments to the flashing utility.
 Create an Application
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. todo:: fill this in when it's possible.
+.. todo::
 
-   https://trello.com/c/Yj5vW4zf
-   https://projects.linaro.org/browse/LITE-91
-   https://projects.linaro.org/browse/LITE-125
+   Provide a primer; upstream Zephyr has enough DT machinery to make
+   this possible now.
 
 Debug a Running Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
