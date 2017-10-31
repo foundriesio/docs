@@ -45,15 +45,6 @@ Using this demonstration system, you can:
 Get the Hardware
 ================
 
-.. _96Boards Nitrogen:
-   https://www.96boards.org/product/nitrogen/
-
-.. _96Boards HiKey:
-   https://www.96boards.org/product/hikey/
-
-.. _UART Serial Mezzanine:
-   https://www.96boards.org/product/uartserial/
-
 To set up this system, you will need a Linux or macOS workstation
 computer, one or more IoT devices, and an IoT gateway.
 
@@ -67,15 +58,6 @@ Source for other boards is provided on a best-effort basis.
 
 Prepare the System
 ==================
-
-.. _Docker:
-   https://www.docker.com/
-
-.. _Ansible:
-   https://www.ansible.com
-
-.. _GitHub guide to SSH keys:
-   https://help.github.com/articles/connecting-to-github-with-ssh/
 
 This is broken down into the following steps.
 
@@ -282,3 +264,21 @@ Known Issues
 Issues and observations are logged within Linaro's `Bugzilla issue
 tracker
 <https://bugs.linaro.org/buglist.cgi?component=IoT%20end-to-end&list_id=12808&product=Linaro%20Technologies>`_.
+
+.. _96Boards Nitrogen:
+   https://www.96boards.org/product/nitrogen/
+
+.. _96Boards HiKey:
+   https://www.96boards.org/product/hikey/
+
+.. _UART Serial Mezzanine:
+   https://www.96boards.org/product/uartserial/
+
+.. _Docker:
+   https://www.docker.com/
+
+.. _Ansible:
+   https://www.ansible.com
+
+.. _GitHub guide to SSH keys:
+   https://help.github.com/articles/connecting-to-github-with-ssh/
