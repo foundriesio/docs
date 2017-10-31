@@ -242,8 +242,5 @@ Possible next steps:
 .. _Android SDK Platform Tools for Linux:
    https://dl.google.com/android/repository/platform-tools-latest-linux.zip
 
-.. _gateway-containers README.md:
-   https://github.com/linaro-technologies/gateway-containers/blob/master/README.md
-
 .. _HiKey board recovery documentation:
    https://github.com/96boards/documentation/blob/master/ConsumerEdition/HiKey/Installation/BoardRecovery.md#set-board-link-options
