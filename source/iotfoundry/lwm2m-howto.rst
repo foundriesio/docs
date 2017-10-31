@@ -74,14 +74,15 @@ This is broken down into the following steps.
 
 **Required Equipment**: workstation which supports `Docker`_.
 
-Start the Linaro Technologies container with the following command::
+Run a demonstration-grade Leshan server on your workstation (not the
+gateway)::
 
     docker run --restart=always -d -t -p 5683:5683/udp -p 5684:5684/udp \
       --read-only --tmpfs=/tmp -p 8081:8080 \
-      --name leshan linarotechnologies/leshan:latest
+      --name leshan opensourcefoundries/leshan:latest
 
 After running the Leshan container, visit http://localhost:8081/ to
-load the Leshan web interface.
+load its web interface.
 
 You can also browse the Security tab:
 
@@ -258,12 +259,10 @@ Updating the firmware is provided by the LWM2M firmware update object.
 - Congratulations! You've just done your first FOTA update using this
   system.
 
-Known Issues
-============
+Reporting Issues
+================
 
-Issues and observations are logged within Linaro's `Bugzilla issue
-tracker
-<https://bugs.linaro.org/buglist.cgi?component=IoT%20end-to-end&list_id=12808&product=Linaro%20Technologies>`_.
+.. todo:: provide public and subscriber trackers once chosen
 
 .. _96Boards Nitrogen:
    https://www.96boards.org/product/nitrogen/
