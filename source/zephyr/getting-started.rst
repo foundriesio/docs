@@ -141,7 +141,7 @@ Subscribers
 ~~~~~~~~~~~
 
 The latest continuous release is available to Zephyr microPlatform
-subscribers from `git.foundries.io`_. Install it as follows.
+subscribers from source.foundries.io. Install it as follows.
 
 #. Configure Git to cache usernames and passwords you enter in memory for
    one hour::
@@ -151,18 +151,8 @@ subscribers from `git.foundries.io`_. Install it as follows.
    Using a credential helper is necessary for ``repo sync`` to work
    unprompted later\ [#git-creds]_.
 
-#. Subscribers have access to their own namespace on
-   `git.foundries.io`_, namely
-   ``https://git.foundries.io/subscriber/YOUR_NAMESPACE``.  Ensure you
-   have access to the Zephyr microPlatform manifest repository in that
-   namespace by editing the following URL and loading the page:
-
-   .. code-block:: none
-
-     https://git.foundries.io/subscriber/YOUR_NAMESPACE/microplatforms/zephyr/zmp-manifest
-
-#. If you haven't already, create a `personal access token on
-   git.foundries.io`_.
+#. If you haven't already, create a `personal access token for git on
+   foundries.io`_.
 
 #. Make an installation directory for the Zephyr microPlatform, and
    change into its directory::
@@ -171,12 +161,12 @@ subscribers from `git.foundries.io`_. Install it as follows.
 
 #. Install the latest release using ``repo``::
 
-     repo init -u https://git.foundries.io/subscriber/YOUR_NAMESPACE/microplatforms/zephyr/zmp-manifest
+     repo init -u https://source.foundries.io/zmp-manifest
      repo sync
 
-   When prompted by ``repo init``, enter your username (you can find
-   it on your `git.foundries.io account page`_) and the personal
-   access token you created earlier.
+   When prompted by ``repo init``, enter your personal access token for
+   your username and nothing for the password.
+
 
 Public
 ~~~~~~
@@ -422,11 +412,7 @@ microPlatform <zephyr-install>` inside the running container.
 
 .. _pip: https://pip.pypa.io/en/stable/installing/
 
-.. _git.foundries.io: https://git.foundries.io
-
-.. _personal access token on git.foundries.io: https://git.foundries.io/profile/personal_access_tokens
-
-.. _git.foundries.io account page: https://git.foundries.io/profile/account
+.. _personal access token for git on foundries.io: https://foundries.io/s/
 
 .. _Open Source Foundries GitHub: https://github.com/OpenSourceFoundries
 
