@@ -2,108 +2,164 @@
 
 .. _iot-gateway:
 
-IoT Gateway Containers
-======================
+Getting Started: IoT Gateway Applications
+=========================================
 
-This page describes how to use containerized reference applications to
+This page describes how to access containerized reference applications to
 enable IoT gateway functionality using the Linux microPlatform.
+
+All you need to use these applications is a gateway device with the
+Linux microPlatform installed on it, a workstation computer, and an
+Internet connection. (See the :ref:`Linux microPlatform Getting
+Started <linux-getting-started>` guide for instructions on installing
+the microPlatform on your gateway device).
 
 .. note::
 
-   This page is a generic reference on what's available. For
-   step-by-step instructions to set up complete systems, check out
-   :ref:`iotfoundry-top`.
+   This page is a generic reference on the gateway applications. For
+   step-by-step instructions to set up complete systems using these
+   applications, check out :ref:`iotfoundry-top` after completing
+   these instructions.
 
-All you need to get started is a gateway device supported by the Linux
-microPlatform, a computer, and an Internet connection.
+Linux microPlatform releases include the following resources for
+container-based gateway development:
 
-Install the Linux microPlatform
--------------------------------
-
-Follow the instructions in the Linux microPlatform
-:ref:`linux-getting-started` guide to set up your target hardware.
+- **Docker registries** with prebuilt gateway container images.
+- **Ansible playbooks and control scripts** for easily deploying
+  containers to gateway devices.
+- **Dockerfiles** and other resources for building customized
+  containers based on these releases.
 
 Install Ansible
 ---------------
 
 The easiest way to get started with containers on your device is by
-installing Ansible on your workstation, and using Ansible playbooks
-provided by Open Source Foundries.
+using Ansible playbooks provided by Open Source Foundries, so the
+first step is to install Ansible.
 
-Linux and macOS
-~~~~~~~~~~~~~~~
+- Linux and macOS: `Install the latest Ansible release`_. (Our
+  playbooks require more recent versions of Ansible than some Linux
+  distribution package managers provide).
 
-`Install the latest Ansible release`_. (Our playbooks require more
-recent versions of Ansible than some Linux distribution package
-managers provide).
+- Windows: While Ansible isn't supported on Windows, you can run
+  `Ubuntu in a Docker container`_ and install Ansible on
+  Ubuntu. Another alternative (though not officially supported by
+  Microsoft or Ansible) is to install `Ansible in the Windows
+  Subsystem for Linux`_.
 
-Windows
-~~~~~~~
+Access Container Registry
+-------------------------
 
-While Ansible isn't supported on Windows, you can run `Ubuntu in a
-Docker container`_ and install Ansible on Ubuntu. Another alternative
-(though not officially supported by Microsoft or Ansible) is to
-install `Ansible in the Windows Subsystem for Linux`_.
+Open Source Foundries provides a continuously updated container
+registry to subscribers. Public releases to Docker Hub lag these
+subscriber releases.
 
-Load Gateway Containers
------------------------
+Subscriber Container Registry
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now to deploy some key containerized applications to your device.
+Subscribers have access to the latest gateway container builds from
+the Open Source Foundries Docker container registry, hub.foundries.io.
 
-Subscribers
-~~~~~~~~~~~
+To log in to the subscriber container registry, run:
 
-Subscribers have access to the latest gateway-containers repository
-via their namespace (``YOUR_NAMESPACE``) on `git.foundries.io`_:
+.. code-block:: console
 
-.. code-block:: none
+   $ docker login hub.foundries.io --username=this-is-ignored --password=<your-subscriber-token>
 
-   https://git.foundries.io/subscriber/YOUR_NAMESPACE/microplatforms/linux/gateway-containers
-
-Start with the top-level ``README.md`` file in that repository, and
-move on to the containers which interest you.
-
-Prebuilt container images are available in the gateway-containers
-Container Registry:
+The username is currently ignored. Use your subscriber token in the
+password field.  A successful interaction looks like this:
 
 .. code-block:: none
 
-   https://git.foundries.io/subscriber/YOUR_NAMESPACE/microplatforms/linux/gateway-containers/container_registry
+   $ docker login hub.foundries.io --username=this-is-ignored --password=<your-subscriber-token>
+   Login Succeeded
 
-Open Source Foundries provides Ansible playbooks to deploy these
-containers to your board; these are available in each subscriber's
-gateway-ansible repository:
+You can now access subscriber containers on the workstation where you
+logged in.
+
+.. note::
+
+   This login step is necessary for running server applications
+   provided by the registry on non-gateway computers.  You'll provide
+   Ansible playbooks the same token when deploying other containers
+   onto your gateway device.
+
+Public Container Registry
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Public releases of the gateway containers are available via the `Open
+Source Foundries Docker Hub`_ page and registry.
+
+Clone Ansible Playbooks and Container Build Files
+-------------------------------------------------
+
+Subscribers can access the latest playbooks and container build files
+from the Open Source Foundries Git server, source.foundries.io. Public
+releases to GitHub lag these subscriber releases.
+
+Subscriber Playbooks and Dockerfiles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On Linux and macOS environments, you can set up passwordless login to
+these repositories by creating a :file:`.netrc` file in your home
+directory, **only readable by your user**, with the following
+contents:
 
 .. code-block:: none
 
-   https://git.foundries.io/subscriber/YOUR_NAMESPACE/microplatforms/linux/gateway-ansible
+   machine source.foundries.io
+   login YOUR_SUBSCRIBER_TOKEN
 
-.. warning::
+For example, you can run the following to create this file if it
+doesn't already exist:
 
-   The playbooks refer by default to container images in the public
-   `Open Source Foundries Docker Hub`_ repository, which are **up to
-   six months older** than the subscriber versions.
+.. code-block:: console
 
-   For instructions on how to use the latest subscriber images from
-   your Container Registry, refer to the ``registry``,
-   ``registry_user``, etc. variables and nearby comments in the
-   playbook YAML files.
+   $ touch ~/.netrc
+   $ chmod 600 ~/.netrc
+   $ cat > ~/.netrc << EOF
+   machine source.foundries.io
+   login YOUR_SUBSCRIBER_TOKEN
+   EOF
 
-Public
-~~~~~~
+Alternatively, just enter your subscriber token when prompted for
+passwords while running the below commands. (Enter any value when
+prompted for a user name; this is currently ignored.)
 
-Check out the `gateway-containers GitHub repository`_, which contains
-the latest public container build files, along with instructions for
-how to get them running on your board. Prebuilt container images are
-available from the `Open Source Foundries Docker Hub`_ organization.
+To fetch the Ansible playbooks, run:
 
-Start with the top-level `README.md
-<https://github.com/OpenSourceFoundries/gateway-containers/blob/master/README.md>`_,
-and move on to the containers which interest you.
+.. code-block:: console
 
-Open Source Foundries provides Ansible playbooks to deploy these
-containers to your board; these are available in the `gateway-ansible
-GitHub repository`_.
+   $ git clone https://source.foundries.io/gateway-ansible
+
+To fetch the container build files, run:
+
+.. code-block:: console
+
+   $ git clone https://source.foundries.io/gateway-containers
+
+Public Playbooks and Dockerfiles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Public releases are available on GitHub.
+
+To get the Ansible playbooks, run:
+
+.. code-block:: console
+
+   $ git clone https://github.com/OpenSourceFoundries/gateway-ansible
+
+To get the container build files, run:
+
+.. code-block:: console
+
+   $ git clone https://github.com/OpenSourceFoundries/gateway-containers
+
+Next Steps
+----------
+
+Step-by-step instructions to set up complete systems using these
+applications are available in :ref:`iotfoundry-top`.
 
 .. _Ansible: https://www.ansible.com/
 
@@ -113,10 +169,4 @@ GitHub repository`_.
 
 .. _Ansible in the Windows Subsystem for Linux: http://docs.ansible.com/ansible/latest/intro_windows.html
 
-.. _git.foundries.io: https://git.foundries.io
-
-.. _gateway-containers GitHub repository: https://github.com/OpenSourceFoundries/gateway-containers
-
-.. _Open Source Foundries Docker Hub: https://hub.docker.com/u/opensourcefoundries/dashboard/
-
-.. _gateway-ansible GitHub repository: https://github.com/OpenSourceFoundries/gateway-ansible
+.. _Open Source Foundries Docker Hub: https://hub.docker.com/u/opensourcefoundries/
