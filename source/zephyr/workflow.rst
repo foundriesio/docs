@@ -265,7 +265,7 @@ Use Repo to Fetch Updates
 The Zephyr microPlatform uses the Repo tool to manage its Git
 repositories. In :ref:`zephyr-install`, you used this tool to clone
 these Git repositories into a Zephyr microPlatform installation
-directory on a development computer. See :ref:`zephyr-branching-repo`
+directory on a development computer. See :ref:`repo-primer`
 for more details on Repo.
 
 After the installation, you'll continue to use Repo to fetch upstream
@@ -417,6 +417,39 @@ microPlatform-based applications to a new board follow.
   For additional background information on porting MCUBoot to your
   board, see the `MCUBoot README-zephyr.rst`_ file.
 
+.. _repo-primer:
+
+Repo Primer
+-----------
+
+This section describes `Repo`_ and how the Zephyr microPlatform uses it.
+If you're unfamiliar with Repo, it may make later explanations
+clearer.
+
+A Zephyr microPlatform installation contains multiple `Git`_
+repositories, which are managed by a *manifest file* in a Repo
+*manifest repository*.
+
+The manifest repository's name is ``zmp-manifest``. It's a Git
+repository, just like any of the source code repositories. When
+:ref:`installing the Zephyr microPlatform <zephyr-install>`, `repo
+init`_ is given the URL for the manifest repository (either a
+subscriber or public version).
+
+The manifest repository contains a manifest file, named
+``default.xml``.  This file describes the other Git repositories in
+the Zephyr microPlatform installation, and their metadata. During
+installation, `repo sync`_ is run after ``repo init``. This clones the
+other repositories according to the contents of the manifest.
+
+Roughly speaking, the manifest file contains:
+
+- *remotes*, which specify where Zephyr microPlatform repositories are
+  hosted.
+- *projects*, which specify the Git repositories that make up the
+  microPlatform, along with the remotes to fetch them from, and Git
+  branches to check out.
+
 .. rubric:: Footnotes
 
 .. _Makefile.export:
@@ -458,3 +491,13 @@ microPlatform-based applications to a new board follow.
 .. _CONFIG_FLASH_PAGE_LAYOUT: http://docs.zephyrproject.org/reference/kconfig/CONFIG_FLASH_PAGE_LAYOUT.html#cmdoption-arg-config-flash-page-layout
 
 .. _MCUBoot README-zephyr.rst: https://github.com/runtimeco/mcuboot/blob/master/README-zephyr.rst
+
+.. _Repo: https://gerrit.googlesource.com/git-repo/
+
+.. _Git: https://git-scm.com/
+
+.. _repo init:
+   https://source.android.com/source/using-repo#init
+
+.. _repo sync:
+   https://source.android.com/source/using-repo#sync

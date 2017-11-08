@@ -16,7 +16,6 @@ The Zephyr microPlatform is based on the `Zephyr
 
    getting-started
    workflow
-   branching
 
 
 .. todo::

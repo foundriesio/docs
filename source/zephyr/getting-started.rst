@@ -135,7 +135,7 @@ workstation. Installation uses the Repo tool to fetch a variety of Git
 repositories at known-good revisions, and keep them in sync as time
 goes on.
 
-If you're new to Repo and want to know more, see :ref:`zephyr-branching-repo`.
+If you're new to Repo and want to know more, see :ref:`repo-primer`.
 
 Subscribers
 ~~~~~~~~~~~
