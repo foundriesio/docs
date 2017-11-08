@@ -10,9 +10,8 @@ enable IoT gateway functionality using the Linux microPlatform.
 
 All you need to use these applications is a gateway device with the
 Linux microPlatform installed on it, a workstation computer, and an
-Internet connection. (See the :ref:`Linux microPlatform Getting
-Started <linux-getting-started>` guide for instructions on installing
-the microPlatform on your gateway device).
+Internet connection. (See :ref:`linux-getting-started` for
+instructions on installing the microPlatform on your gateway device).
 
 .. note::
 

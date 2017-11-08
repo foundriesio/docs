@@ -152,9 +152,9 @@ The information is in your instance's details page as shown:
 
 **Required Equipment**: IoT gateway and workstation to flash the board.
 
-Follow the Linux microPlatform :ref:`linux-getting-started` to flash a
-`96Boards HiKey`_ gateway with the microPlatform build, log in via the
-console, and connect to the network.
+Follow :ref:`linux-getting-started` to flash a `96Boards HiKey`_
+gateway with the microPlatform build, log in via the console, and
+connect to the network.
 
 If you don't have a HiKey, the Getting Started guide contains
 information for other boards, provided on a best-effort basis.
