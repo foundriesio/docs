@@ -214,73 +214,208 @@ extra arguments to the flashing utility.
 Create an Application
 ---------------------
 
-.. todo::
+This is a rough guide for experimental development using the Zephyr
+microPlatform.
 
-   Provide a primer; upstream Zephyr has enough DT machinery to make
-   this possible now.
+We currently recommend that you start your application work from one
+of our :ref:`iotfoundry-top`.
 
-Debug a Running Application
----------------------------
+#. Begin by selecting one of the systems, and reproducing the demo on
+   your hardware.
 
-.. todo:: improve this once 'make debug' is re-worked upstream
+#. Create a new directory in the Zephyr microPlatform installation
+   directory for your application:
 
-Attach a debugger in the host environment to the device, and provide
-the ELF binaries from the build tree to it for symbol tables.
+   .. code-block:: console
 
-Integrate an External Dependency
---------------------------------
+      $ mkdir your_app
 
-.. todo:: user-friendly instructions, post-CMake transition.
+   This won't be managed by the Repo tool used to fetch updates for
+   the microPlatform itself, leaving it up to you to decide how to
+   version it, etc.
 
-.. _Application Development Primer:
-   https://www.zephyrproject.org/doc/application/application.html
+#. Copy one of the existing application sources under
+   ``zephyr-fota-samples`` to your application directory.
 
-Integrating external dependencies with Zephyr is currently not
-straightforward. One approach is to copy them into your application
-repository, either directly or as submodules.
+   For example, to copy the ``dm-lwm2m`` example:
 
-Additional information is available in the Zephyr `Application
-Development Primer`_.
+   .. code-block:: console
+
+      $ cp -r zephyr-fota-samples/dm-lwm2m/* your_app
+
+#. Make sure you can build and flash it as normal:
+
+   .. code-block:: console
+
+      $ ./zmp build -b YOUR_BOARD your_app
+      $ ./zmp flash -b YOUR_BOARD your_app
+
+#. Initialize any version control you would like on the ``your_app``
+   directory, and make adjustments to suit your purposes. You can use
+   the existing board support as a starting example.
+
+   Refer to the `Zephyr developer guides`_ and other documentation for
+   generic information on Zephyr development.
 
 .. _zephyr-repo:
 
-Use Repo to Manage Git Repositories
------------------------------------
+Use Repo to Fetch Updates
+-------------------------
 
-.. note::
+The Zephyr microPlatform uses the Repo tool to manage its Git
+repositories. In :ref:`zephyr-install`, you used this tool to clone
+these Git repositories into a Zephyr microPlatform installation
+directory on a development computer. See :ref:`zephyr-branching-repo`
+for more details on Repo.
 
-   After first installing the Zephyr microPlatform, use of Repo is optional.
-   Since Repo is essentially a wrapper around Git, it's possible to use
-   ``git`` commands directly in individual repositories as well.
+After the installation, you'll continue to use Repo to fetch upstream
+changes as follows.
 
-The Zephyr microPlatform uses the Repo tool to manage its Git repositories. In
-:ref:`zephyr-install`, you used this tool to clone these Git
-repositories into an Zephyr microPlatform installation directory on a
-developmentcomputer.
+#. Enter the ``.repo/manifests`` subdirectory of the Zephyr
+   microPlatform (this is where the Repo manifest repository is
+   installed on your system).
 
-After the installation, you can continue to use Repo to manage local
-branches and fetch upstream changes.  Importantly, you can use:
+#. Use git to note the current Git commit SHA of the manifest
+   repository. For example:
 
-- ``repo start`` to create local Git branches in multiple repositories.
-- ``repo status`` to get status output about each Zephyr microPlatform
-  repository (this is similar to ``git status``, but operates on all
-  repositories).
-- ``repo diff`` to get a diff of unstaged changes in each Git repository
-  (this is similar to ``git diff``, but operates on all repositories).
-- ``repo sync`` to fetch remote changes from all Zephyr microPlatform
-  repositories, and rebase local Git branches on top of them (alternatively,
-  use ``repo sync -n`` to fetch changes only, without rebasing).
+   .. code-block:: console
 
-See the `Repo command reference
-<https://source.android.com/source/using-repo>`_ for more details.
-However, note that because the **Zephyr microPlatform does not use Gerrit** as
-a Git repository server, repo commands which expect a Gerrit server are not
-applicable to an Zephyr microPlatform installation. For example, instead of
-using ``repo upload``, use ``git push``.
+      git --no-pager log -n1 --pretty='%H'
 
-You can also run ``repo help <command>`` to get usage for each repo
-command; for example, use ``repo help sync`` to get help on ``repo
-sync``.
+   We'll call the current SHA ``STARTING_MANIFEST_SHA``.
+
+#. Go back to the top level Zephyr microPlatform installation
+   directory, and use Repo to sync updates:
+
+   .. code-block:: console
+
+      repo sync
+
+   .. warning::
+
+      If you make any changes to any repositories managed by Repo, this
+      will attempt to rebase your local branches, which **can erase
+      history and cause conflicts**.
+
+      You can use ``repo sync -n`` to fetch changes only, without
+      rebasing, and then use Git to inspect the differences between your
+      local and the upstream branches, merge or rebase appropriately,
+      etc.
+
+      This is currently considered an advanced use case. If you are
+      trying this during the beta period and you run into problems,
+      please contact us.
+
+#. After running ``repo sync``, you can use the ``zmp`` helper script
+   documented above to re-build and re-test your application, and make
+   adjustments.
+
+   We recommend comparing your application with the updated version
+   of the sample application you started from for relevant
+   updates. This will let you adjust your application if needed to
+   keep up with upstream.
+
+If you run into problems, you can temporarily roll back to a previous
+Zephyr microPlatform release as follows:
+
+.. code-block:: console
+
+   $ cd .repo/manifests
+   $ git checkout STARTING_MANIFEST_SHA
+   $ cd ../..
+   $ repo sync
+
+However, this defeats the purpose of receiving continuous updates from
+Open Source Foundries.
+
+Port a Board
+------------
+
+.. warning::
+
+   Porting a board necessarily means altering the Zephyr repository,
+   which complicates the ``repo sync`` process used to receive
+   updates.
+
+   See the above section for more details.
+
+Start with the `Zephyr porting guides`_, and the existing supported
+boards. In addition to architecture and basic board support, you'll
+need a flash driver and working networking for MCUBoot and FOTA
+updates. Some useful starting points:
+
+- ``include/flash.h`` and the ``drivers/flash`` directory in the
+  Zephyr source tree for flash drivers.
+
+- The `Zephyr networking documentation`_
+
+Some particular areas to be aware of when porting Zephyr
+microPlatform-based applications to a new board follow.
+
+- `Device tree with flash partitions`_: your board will need a device
+  tree defined, which includes flash partitions for MCUBoot itself
+  (``boot_partition``), a partition your application runs in
+  (``slot0_partition``), a partition to download firmware updates into
+  (``slot1_partitition``; this must be the same size as
+  ``slot0_partition``), and a scratch partition for MCUBoot to use
+  when swapping images between slots 0 and 1 (``scratch_partition``;
+  this can be as small as a single sector, but be aware of extra wear
+  on your flash). Currently, ``slot0_partition``, ``slot1_partition``,
+  and ``scratch_partition`` must be contiguous on flash. The
+  ``boot_partition`` must be chosen so that the chip reset vector will
+  be loaded from there.
+
+  Each supported board has a device tree with a partition layout you
+  can use while getting started.
+
+- A device tree overlay file: your application needs a device tree
+  ``.overlay`` file instructing the Zephyr build system to use the
+  flash partitions defined in the device tree when linking.
+
+  See the example overlay files in the ``boards`` subdirectory of each
+  sample application, along with the build system files which use
+  them, for reference.
+
+  Selecting ``slot0_partition`` within your DTS overlay will ensure
+  that your application is linked appropriately:
+
+  .. code-block:: none
+
+     / {
+             chosen {
+                     zephyr,code-partition = &slot0_partition;
+             };
+     };
+
+  For additional information on this, see the documentation for
+  `CONFIG_FLASH_LOAD_OFFSET`_ and `CONFIG_FLASH_LOAD_SIZE`_. Note that
+  **these values are set automatically** by Zephyr's
+  ``scripts/dts/extract_dts_includes.py`` script as a consequence of
+  your DTS overlay file.
+
+- `CONFIG_TEXT_SECTION_OFFSET`_: On ARM targets, this is the offset
+  from ``CONFIG_FLASH_LOAD_OFFSET`` at which your application's vector
+  table is stored. This is required so ``zmp build`` can place an
+  MCUBoot header in the space between the flash load offset and the
+  beginning of your image.
+
+  If you're unsure, ``0x200`` is a generally safe default value.
+
+  Lower values (such as 0x100) may be possible depending on your
+  chip's vector table alignment requirements. Smaller values waste
+  less flash space.
+
+- To port MCUBoot to your board, you also need a Zephyr flash driver,
+  ideally (though not necessarily) with `CONFIG_FLASH_PAGE_LAYOUT`_
+  support.
+
+  (MCUBoot's build system will automatically pick up the device tree
+  partitions you define in Zephyr, and ``zmp`` will be automatically
+  be able to build MCUBoot for your board once it's got Zephyr
+  support.)
+
+  For additional background information on porting MCUBoot to your
+  board, see the `MCUBoot README-zephyr.rst`_ file.
 
 .. rubric:: Footnotes
 
@@ -305,3 +440,21 @@ sync``.
    Zephyr microPlatform, which has a more complex flashing process due to the
    presence of a bootloader and an application, which must be flashed in
    different locations. This is being addressed in upstream Zephyr.
+
+.. _Zephyr developer guides: http://docs.zephyrproject.org/application/index.html
+
+.. _Zephyr porting guides: http://docs.zephyrproject.org/porting/porting.html
+
+.. _Zephyr networking documentation: http://docs.zephyrproject.org/subsystems/networking/networking.html
+
+.. _CONFIG_TEXT_SECTION_OFFSET: http://docs.zephyrproject.org/reference/kconfig/CONFIG_TEXT_SECTION_OFFSET.html#cmdoption-arg-config-text-section-offset
+
+.. _Device tree with flash partitions: http://docs.zephyrproject.org/devices/dts/device_tree.html
+
+.. _CONFIG_FLASH_LOAD_OFFSET: http://docs.zephyrproject.org/reference/kconfig/CONFIG_FLASH_LOAD_OFFSET.html#cmdoption-arg-config-flash-load-offset
+
+.. _CONFIG_FLASH_LOAD_SIZE: http://docs.zephyrproject.org/reference/kconfig/CONFIG_FLASH_LOAD_SIZE.html#cmdoption-arg-config-flash-load-size
+
+.. _CONFIG_FLASH_PAGE_LAYOUT: http://docs.zephyrproject.org/reference/kconfig/CONFIG_FLASH_PAGE_LAYOUT.html#cmdoption-arg-config-flash-page-layout
+
+.. _MCUBoot README-zephyr.rst: https://github.com/runtimeco/mcuboot/blob/master/README-zephyr.rst
