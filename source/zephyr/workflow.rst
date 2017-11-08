@@ -131,7 +131,7 @@ Examples:
 .. _zephyr-configure:
 
 Configure an Application: ``zmp configure``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Zephyr RTOS uses a configuration system called Kconfig, which is
 borrowed from the Linux kernel. The ``zmp configure`` command lets
@@ -212,7 +212,7 @@ The command also accepts an ``-e`` argument, which can be used to pass
 extra arguments to the flashing utility.
 
 Create an Application
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 .. todo::
 
@@ -220,7 +220,7 @@ Create an Application
    this possible now.
 
 Debug a Running Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 .. todo:: improve this once 'make debug' is re-worked upstream
 
@@ -228,7 +228,7 @@ Attach a debugger in the host environment to the device, and provide
 the ELF binaries from the build tree to it for symbol tables.
 
 Integrate an External Dependency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------
 
 .. todo:: user-friendly instructions, post-CMake transition.
 
@@ -245,7 +245,7 @@ Development Primer`_.
 .. _zephyr-repo:
 
 Use Repo to Manage Git Repositories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
 .. note::
 
