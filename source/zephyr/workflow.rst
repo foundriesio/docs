@@ -422,9 +422,8 @@ microPlatform-based applications to a new board follow.
 Repo Primer
 -----------
 
-This section describes `Repo`_ and how the Zephyr microPlatform uses it.
-If you're unfamiliar with Repo, it may make later explanations
-clearer.
+This section describes `Repo`_ and how the Zephyr microPlatform uses
+it. If you're unfamiliar with Repo, it may make things clearer.
 
 A Zephyr microPlatform installation contains multiple `Git`_
 repositories, which are managed by a *manifest file* in a Repo
