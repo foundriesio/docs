@@ -1,9 +1,9 @@
-- Follow instructions in :ref:`iot-gateway` to install Ansible and
-  fetch the ``gateway-ansible`` repository onto your system.
+- If you haven't already, follow instructions in :ref:`iot-gateway` to
+  set up the necessary containers.
 
-- After connecting your gateway to the network, record its IP address,
-  ``GATEWAY_IP_ADDRESS``, which you can obtain when using WiFi by
-  running this at the console::
+- Get your gateway device's IP address, ``GATEWAY_IP_ADDRESS``.  When
+  using WiFi, you can get this by running the following on the gateway
+  console::
 
     ip addr show wlan0 | grep -o 'inet [.0-9]*' | sed 's/inet //'
 

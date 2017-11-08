@@ -62,24 +62,115 @@ Prepare the System
 
 This is broken down into the following steps.
 
-- :ref:`dm-hawkbit-mqtt-hawkbit`
 - :ref:`dm-hawkbit-mqtt-cloudmqtt`
 - :ref:`dm-hawkbit-mqtt-linux`
 - :ref:`dm-hawkbit-mqtt-gateway`
+- :ref:`dm-hawkbit-mqtt-hawkbit`
 - :ref:`dm-hawkbit-mqtt-zephyr`
 - :ref:`dm-hawkbit-mqtt-device`
 
+.. _dm-hawkbit-mqtt-cloudmqtt:
+
+1. Set up CloudMQTT
+-------------------
+
+**Required Equipment**: workstation computer.
+
+Get a `CloudMQTT`_ account if you don't have one already, and sign
+in. After you've signed in, `create a new CloudMQTT instance`_ to use
+with this system.  The free instance plan is enough to run this demo,
+as shown below:
+
+.. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-instance.png
+   :align: center
+   :alt: CloudMQTT instance creation user interface
+
+Then click on the "Details" button next to the new instance
+in your control panel. Record the following information about the
+instance:
+
+- CLOUDMQTT_SERVER: the URL of the server
+- CLOUDMQTT_USER: the auto-generated username
+- CLOUDMQTT_PASSWORD: the auto-generated password
+- CLOUDMQTT_PORT: the port to connect to on the server
+
+The information is in your instance's details page as shown:
+
+.. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-details.png
+   :align: center
+   :alt: CloudMQTT instance creation user interface
+
+.. _dm-hawkbit-mqtt-linux:
+
+2. Install the Linux microPlatform
+----------------------------------
+
+**Required Equipment**: IoT gateway and workstation to flash the board.
+
+If you haven't already, follow :ref:`linux-getting-started` to install
+the base microPlatform on a `96Boards HiKey`_.
+
+If you don't have a HiKey, the Getting Started Guide contains
+information for other boards, provided on a best-effort basis.
+
+.. _dm-hawkbit-mqtt-gateway:
+
+3. Set Up the IoT Gateway
+-------------------------
+
+**Required Equipment**: IoT gateway and workstation to run `Ansible`_.
+
+You'll now use Ansible to set up your IoT gateway to act as a network
+proxy for your IoT device to publish sensor data to CloudMQTT, and
+fetch updates from hawkBit.  This will also give you access to a
+hawkBit server you will run on your workstation to communicate with
+the IoT device through the gateway.
+
+.. include:: iot-gateway-setup-common.include
+
+- From the ``gateway-ansible`` repository, deploy the gateway
+  containers using the gateway's IP address and CloudMQTT information
+  you recorded earlier.
+
+  **Subscribers**::
+
+    CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
+        GW_HOSTNAME=GATEWAY_IP_ADDRESS REGISTRY_PASSWD=<subscriber-token> ./iot-gateway.sh
+
+  Setting REGISTRY_PASSWD to your subscriber token is necessary so
+  your gateway device can log in to the container registry.
+
+  **Public**::
+
+    CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
+        REGISTRY=hub.docker.com REGISTRY_USER=docker REGISTRY_PASSWD=docker \
+        GW_HOSTNAME=GATEWAY_IP_ADDRESS ./iot-gateway.sh
+
+  The script assumes it's executing from the same machine the hawkBit
+  server is running on. If this isn't the case, you must additionally
+  set the variable ``GITCI`` to the IP address of your workstation
+  running the hawkBit container.
+
 .. _dm-hawkbit-mqtt-hawkbit:
 
-1. Set up hawkBit
+4. Set up hawkBit
 -----------------
 
 **Required Equipment**: workstation which supports `Docker`_.
 
 Run a demonstration-grade hawkBit server on your workstation (not the
-gateway)::
+gateway).
 
-    docker run -dit --name hawkbit -p 8080:8080 opensourcefoundries/hawkbit-update-server
+**Subscribers** can run::
+
+    docker run -dit --name hawkbit -p 8080:8080 hub.foundries.io/hawkbit-update-server:latest
+
+If this command fails, make sure to run ``docker login`` as described
+in :ref:`iot-gateway`.
+
+**Public**: to run the latest public release::
+
+    docker run -dit --name hawkbit -p 8080:8080 opensourcefoundries/hawkbit-update-server:latest
 
 .. warning::
 
@@ -114,76 +205,6 @@ Your hawkBit container is now ready for use.
    for updates more frequently. The default is 5 minutes; the minimum
    value is 30 seconds.
 
-.. _dm-hawkbit-mqtt-cloudmqtt:
-
-2. Set up CloudMQTT
--------------------
-
-**Required Equipment**: workstation computer.
-
-Get a `CloudMQTT`_ account if you don't have one already, and sign
-in. After you've signed in, `create a new CloudMQTT instance`_ to use
-with this system.  The free instance plan is enough to run this demo,
-as shown below:
-
-.. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-instance.png
-   :align: center
-   :alt: CloudMQTT instance creation user interface
-
-Then click on the "Details" button next to the new instance
-in your control panel. Record the following information about the
-instance:
-
-- CLOUDMQTT_SERVER: the URL of the server
-- CLOUDMQTT_USER: the auto-generated username
-- CLOUDMQTT_PASSWORD: the auto-generated password
-- CLOUDMQTT_PORT: the port to connect to on the server
-
-The information is in your instance's details page as shown:
-
-.. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-details.png
-   :align: center
-   :alt: CloudMQTT instance creation user interface
-
-.. _dm-hawkbit-mqtt-linux:
-
-3. Install the Linux microPlatform
-----------------------------------
-
-**Required Equipment**: IoT gateway and workstation to flash the board.
-
-Follow :ref:`linux-getting-started` to flash a `96Boards HiKey`_
-gateway with the microPlatform build, log in via the console, and
-connect to the network.
-
-If you don't have a HiKey, the Getting Started guide contains
-information for other boards, provided on a best-effort basis.
-
-.. _dm-hawkbit-mqtt-gateway:
-
-4. Set Up the IoT Gateway
--------------------------
-
-**Required Equipment**: IoT gateway and workstation to run `Ansible`_.
-
-You'll now use Ansible to set up your IoT gateway to act as a network
-proxy for your IoT device to publish sensor data to CloudMQTT, and
-fetch updates from hawkBit.
-
-.. include:: iot-gateway-setup-common.include
-
-- From the ``gateway-ansible`` repository, deploy the gateway
-  containers using the gateway's IP address and CloudMQTT information
-  you recorded earlier::
-
-    CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
-        GW_HOSTNAME=GATEWAY_IP_ADDRESS ./iot-gateway.sh
-
-  The script assumes it's executing from the same machine the hawkBit
-  server is running on. If this isn't the case, you must additionally
-  set the variable ``GITCI`` to the IP address of your workstation
-  running the hawkBit container.
-
 .. _dm-hawkbit-mqtt-zephyr:
 
 5. Install the Zephyr microPlatform
@@ -192,8 +213,8 @@ fetch updates from hawkBit.
 **Required Equipment**: workstation to install the Zephyr microPlatform
 development environment, and IoT device to test installation.
 
-Follow the installation steps in the Zephyr microPlatform
-:ref:`zephyr-getting-started` guide.
+If you haven't already, follow the installation steps in the Zephyr
+microPlatform :ref:`zephyr-getting-started` guide.
 
 .. _dm-hawkbit-mqtt-device:
 
@@ -204,7 +225,7 @@ Follow the installation steps in the Zephyr microPlatform
 device.
 
 If you're using `96Boards Nitrogen`_, build and flash the
-demonstration application::
+demonstration application for this system::
 
   ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
   ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
@@ -366,10 +387,7 @@ like this while the update is being downloaded and installed::
 Congratulations! You've just done your first FOTA update using this
 system.
 
-Reporting Issues
-================
-
-.. todo:: provide public and subscriber trackers once chosen
+.. include:: reporting-issues.include
 
 .. _96Boards Nitrogen:
    https://www.96boards.org/product/nitrogen/

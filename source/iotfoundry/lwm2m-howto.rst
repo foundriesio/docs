@@ -61,21 +61,86 @@ Prepare the System
 
 This is broken down into the following steps.
 
-- :ref:`dm-lwm2m-leshan`
 - :ref:`dm-lwm2m-linux`
 - :ref:`dm-lwm2m-gateway`
+- :ref:`dm-lwm2m-leshan`
 - :ref:`dm-lwm2m-zephyr`
 - :ref:`dm-lwm2m-device`
 
+.. _dm-lwm2m-linux:
+
+1. Install the Linux microPlatform
+----------------------------------
+
+**Required Equipment**: IoT gateway and workstation to flash the board.
+
+If you haven't already, follow :ref:`linux-getting-started` to install
+the base microPlatform on a `96Boards HiKey`_.
+
+If you don't have a HiKey, the Getting Started Guide contains
+information for other boards, provided on a best-effort basis.
+
+.. _dm-lwm2m-gateway:
+
+2. Set up the IoT Gateway
+-------------------------
+
+**Required Equipment**: IoT gateway device and workstation to run `Ansible`_.
+
+You'll now use Ansible to set up your IoT gateway to act as an LWM2M
+network proxy for your IoT device. This will also give you access to a
+Leshan server you will run on your workstation to communicate via LWM2M
+with the IoT device through the gateway.
+
+.. include:: iot-gateway-setup-common.include
+
+- From the ``gateway-ansible`` repository, deploy the gateway
+  containers to your IoT gateway.
+
+  **Subscribers**::
+
+    GW_HOSTNAME=XXX REGISTRY_PASSWD=<your-subscriber-token> ./iot-gateway.sh
+
+  Setting REGISTRY_PASSWD to your subscriber token is necessary so
+  your gateway device can log in to the container registry.
+
+  **Public**::
+
+    REGISTRY=hub.docker.com REGISTRY_USER=docker REGISTRY_PASSWD=docker \
+       GW_HOSTNAME=XXX ./iot-gateway.sh
+
+  The script assumes it's executing from the system where the Leshan
+  server resides. If this isn't the case, you must additionally set
+  the variable ``GITCI`` to the IP address of the host running the
+  Leshan container.
+
+Your gateway device is now ready for use.
+
 .. _dm-lwm2m-leshan:
 
-1. Set up Leshan
+3. Set up Leshan
 ----------------
 
 **Required Equipment**: workstation which supports `Docker`_.
 
-Run a demonstration-grade Leshan server on your workstation (not the
-gateway)::
+The gateway containers provided by Open Source Foundries also include
+a demonstration-grade Leshan server you can use for this system, which
+you'll set up now.
+
+If you haven't already, follow instructions in :ref:`iot-gateway` to
+access the container registry. Then run a Leshan container **on your
+workstation, not the gateway**:
+
+**Subscribers** can run::
+
+    docker run --restart=always -d -t -p 5683:5683/udp -p 5684:5684/udp \
+      --read-only --tmpfs=/tmp -p 8081:8080 \
+      --name leshan hub.foundries.io/leshan:latest
+
+If this command fails, make sure to run ``docker login`` as described
+in :ref:`iot-gateway`.
+
+**Public**: to run the latest public release::
 
     docker run --restart=always -d -t -p 5683:5683/udp -p 5684:5684/udp \
       --read-only --tmpfs=/tmp -p 8081:8080 \
@@ -93,40 +158,6 @@ You can also browse the Security tab:
 
 Your Leshan container is now ready for use.
 
-.. _dm-lwm2m-linux:
-
-2. Install the Linux microPlatform
-----------------------------------
-
-**Required Equipment**: IoT gateway and workstation to flash the board.
-
-Follow :ref:`linux-getting-started` to set up a `96Boards HiKey`_
-gateway for container-based application deployment.
-
-If you don't have a HiKey, the Getting Started Guide contains
-information for other boards, provided on a best-effort basis.
-
-.. _dm-lwm2m-gateway:
-
-3. Set up the IoT Gateway
--------------------------
-
-**Required Equipment**: IoT gateway device and workstation to run `Ansible`_.
-
-You'll now use Ansible to set up your IoT gateway to act as a network
-proxy for your IoT device to communicate with the Leshan server you
-set up earlier.
-
-.. include:: iot-gateway-setup-common.include
-
-- From the ``gateway-ansible`` repository, deploy the gateway
-  containers to your IoT gateway::
-
-    GW_HOSTNAME=XXX ./iot-gateway.sh
-
-  The script assumes its executing from the system where the Leshan server
-  resides. If this isn't the case, the GITCI=<Leshan IP> variable must be set.
-
 .. _dm-lwm2m-zephyr:
 
 4. Install the Zephyr microPlatform
@@ -135,8 +166,8 @@ set up earlier.
 **Required Equipment**: workstation to install the Zephyr microPlatform
 development environment, and IoT device to test installation.
 
-Follow the installation steps in the Zephyr microPlatform
-:ref:`zephyr-getting-started` guide.
+If you haven't already, follow the installation steps in the Zephyr
+microPlatform :ref:`zephyr-getting-started` guide.
 
 .. _dm-lwm2m-device:
 
@@ -147,7 +178,7 @@ Follow the installation steps in the Zephyr microPlatform
 device.
 
 If you're using `96Boards Nitrogen`_, build and flash the
-demonstration application::
+demonstration application for this system::
 
   ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
   ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
@@ -258,10 +289,7 @@ Updating the firmware is provided by the LWM2M firmware update object.
 - Congratulations! You've just done your first FOTA update using this
   system.
 
-Reporting Issues
-================
-
-.. todo:: provide public and subscriber trackers once chosen
+.. include:: reporting-issues.include
 
 .. _96Boards Nitrogen:
    https://www.96boards.org/product/nitrogen/
