@@ -8,7 +8,7 @@ maintain Internet-connected embedded devices.
 - The :ref:`zephyr-top`, based on the Zephyr real-time operating
   system, is targeted at microcontroller-based devices.
 
-- The :ref:`linux-top`, based on Open Embedded and Docker, is targeted
+- The :ref:`linux-top`, based on OpenEmbedded / Yocto and Docker, is targeted
   at Linux-based devices.
 
 - :ref:`iotfoundry-top` shows you how to combine the microPlatforms

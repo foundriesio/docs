@@ -7,7 +7,7 @@ The Open Source Foundries Linux microPlatform is an extensible
 software and hardware platform that makes it easier to develop,
 secure, and maintain Internet-connected Linux-based embedded devices.
 
-The Linux microPlatform is based on `Open Embedded`_, and adds a
+The Linux microPlatform is based on `OpenEmbedded`_ / `Yocto`_, and adds a
 select set of board support package layers to enable popular
 development boards.
 
@@ -28,6 +28,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    iot-gateway
    bt-joiner
 
-.. _Open Embedded: https://www.openembedded.org/wiki/Main_Page
+.. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
+.. _Yocto: https://www.yoctoproject.org
 .. _Linux kernel: https://www.kernel.org
 .. _Docker containers: https://www.docker.com
