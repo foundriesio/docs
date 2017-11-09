@@ -37,6 +37,9 @@ To flash your microSD card, run::
 
 Where :file:`/dev/mmcblkX` is your SD card device.
 
+Please see https://elinux.org/Beagleboard:BeagleBoneBlack for additional
+board documentation.
+
 HummingBoard 2
 --------------
 
@@ -55,6 +58,9 @@ To flash your microSD card, run::
   sudo dd if=lmp-gateway-image-cubox-i.wic of=/dev/mmcblkX bs=4M
 
 Where :file:`/dev/mmcblkX` is your SD card device.
+
+Please see https://wiki.solid-run.com/doku.php?id=products:imx6:hummingboard
+for additional board documentation.
 
 96Boards HiKey
 --------------
@@ -79,6 +85,9 @@ To flash your HiKey over micro-USB::
   fastboot flash boot boot-hikey.uefi.img
   fastboot flash system lmp-gateway-image-hikey.img
 
+Please see https://github.com/96boards/documentation/tree/master/ConsumerEdition/HiKey
+for additional board documentation.
+
 96Boards Dragonboard 410c
 -------------------------
 
@@ -99,3 +108,6 @@ To flash your Dragonboard 410c over micro-USB::
 
   fastboot flash boot boot.img
   fastboot flash rootfs lmp-gateway-image-dragonboard-410c.img
+
+Please see https://github.com/96boards/documentation/tree/master/ConsumerEdition/DragonBoard-410c
+for additional board documentation.
