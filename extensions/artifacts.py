@@ -49,11 +49,6 @@ class OsfArtifactsDirective(OsfDirective):
             ret += nodes.title('', release_who.capitalize())
             self.state.document.set_id(ret)
 
-            # para = nodes.paragraph()
-            # self.build_paragraph(para, ['Paragraph 1'])
-            # ret += para
-            # return ret
-
             # Paragraph linking to the release.
             links_para = nodes.paragraph()
             rel_ref = self.build_link(version, linux_release(version))
