@@ -142,6 +142,16 @@ machines found in every enabled OpenEmbedded / Yocto Project layer,
 and force one to be selected.  ``BUILDDIR`` is optional; if it is not
 specified, the script will default to ``build-lmp``.
 
+The latest continuous release for the Linux Kernel is available to Linux
+microPlatform subscribers from source.foundries.io. Set the OpenEmbedded
+build system to fetch the Linux Kernel sources from the corresponding
+repository::
+
+  echo 'OSF_LMP_GIT_URL = "source.foundries.io"' >> conf/auto.conf
+  echo 'OSF_LMP_GIT_NAMESPACE = ""' >> conf/auto.conf
+
+.. todo:: add public kernel links
+
 To build the Linux microPlatform gateway image::
 
   bitbake lmp-gateway-image
