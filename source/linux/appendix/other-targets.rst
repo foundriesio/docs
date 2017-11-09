@@ -28,7 +28,7 @@ environment with the ``setup-environment`` script::
 
 At the end of the build, your build artifacts will be found under
 ``tmp-lmp-glibc/deploy/images/beaglebone``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image.rootfs.wic.gz``.
+flash your microSD card is ``lmp-gateway-image-beaglebone.wic.gz``.
 
 To flash your microSD card, run::
 
@@ -37,7 +37,7 @@ To flash your microSD card, run::
 
 Where :file:`/dev/mmcblkX` is your SD card device.
 
-Hummingboard 2
+HummingBoard 2
 --------------
 
 Set ``MACHINE`` to ``cubox-i`` when setting up your work environment
@@ -47,7 +47,7 @@ with the setup-environment script::
 
 At the end of the build, your build artifacts will be found under
 ``tmp-lmp-glibc/deploy/images/cubox-i``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image.rootfs.wic.gz``.
+flash your microSD card is ``lmp-gateway-image-cubox-i.wic.gz``.
 
 To flash your microSD card, run::
 
@@ -98,4 +98,4 @@ To convert the rootfs to a fastboot-compatible format::
 To flash your Dragonboard 410c over micro-USB::
 
   fastboot flash boot boot.img
-  fastboot flash rootfs lmp-gateway-image-dragonboard-410cimg
+  fastboot flash rootfs lmp-gateway-image-dragonboard-410c.img
