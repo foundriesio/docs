@@ -154,6 +154,10 @@ subscribers from source.foundries.io. Install it as follows.
 #. If you haven't already, create a `personal access token for git on
    foundries.io`_.
 
+   .. note:: Beta users will get their tokens via email.
+
+   .. todo:: remove this once https://foundries.io/s/ is up
+
 #. Make an installation directory for the Zephyr microPlatform, and
    change into its directory::
 
