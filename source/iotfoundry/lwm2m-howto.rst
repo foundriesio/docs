@@ -50,7 +50,7 @@ computer, one or more IoT devices, and an IoT gateway.
 
 We currently recommend:
 
-- `96Boards Nitrogen`_ as an IoT device
+- `BLE Nano 2`_ as an IoT device
 - `96Boards HiKey`_ as an IoT gateway, with `UART Serial
   Mezzanine`_ for console access
 
@@ -177,15 +177,15 @@ microPlatform :ref:`zephyr-getting-started` guide.
 **Required Equipment**: IoT device and workstation to flash the
 device.
 
-If you're using `96Boards Nitrogen`_, build and flash the
+If you're using `BLE Nano 2`_, build and flash the
 demonstration application for this system::
 
-  ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
-  ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+  ./zmp build -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
+  ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
 
 .. include:: pyocd.include
 
-If you don't have a Nitrogen, information for other boards is provided
+If you don't have a BLE Nano 2, information for other boards is provided
 on a best-effort basis in :ref:`dm-lwm2m-devices`.
 
 Use the System
@@ -240,59 +240,111 @@ objects by scrolling and clicking the buttons for the objects.
       :width: 4in
       :alt: Write the light settings in Leshan
 
-FOTA Updates
-------------
+Initiate a Firmware Update
+--------------------------
 
-Updating the firmware is provided by the LWM2M firmware update object.
+It's time to update the device firmware, using the Firmware Update
+object view in Leshan.
 
-- Initiate the firmware transfer
+To start the firmware update, we first write the location of the
+file in the "Package URI" field. The length of the Package URI must
+be less than 255 characters.
 
-  To start the firmware update, we will first 'write' the location of the
-  file in the "Package URI" field.  Once you send this message, the file
-  will begin transferring to the target.
+The URI must be hosted where it is routable from your device.  The
+URI can be either coap:// or http://. One simple way for your
+workstation to host an HTTP server on port 8000 with Python 3 is::
 
-  .. note::
+   $ cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/
+   $ python3 -m http.server
 
-      * the length of the Package URI field must be < 255 characters
+The update will then be available at::
 
-      * The URI must be hosted where it is routable from your device.
-        The URI can be either coap:// or http://
+   http://YOUR_WORKSTATION_IP:8000/dm-lwm2m-nrf52_blenano2-signed.bin
 
-  .. figure:: /_static/dm-leshan/leshan-packageuri.png
-      :width: 4in
-      :align: center
+You can write it like so:
 
-- Monitor the target for a completed transfer
+.. figure:: /_static/dm-leshan/leshan-packageuri.png
+    :width: 4in
+    :align: center
 
-  .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
-      :width: 4in
-      :align: center
+Once you send this message, the file will begin transferring to the
+target.
 
-- Execute the update and monitor the firmware update state
+Monitor for a Completed Transfer
+--------------------------------
 
-  The state values and their meanings are:
+Click the "Observe" button in the State line of the Firmware Update
+object:
 
-      * State == 0: Idle
-      * State == 1: Downloading
-      * State == 2: Downloaded
-      * State == 3: Updating
+.. figure:: /_static/dm-leshan/leshan-observeupdate1.png
+    :width: 4in
+    :align: center
 
-  .. figure:: /_static/dm-leshan/leshan-observeupdate1.png
-      :width: 4in
-      :align: center
+The state values and their meanings are:
 
-- After the device downloads the update file (State == 2), initiate the
-  update by clicking on the 'exec' button.
+    * State == 0: Idle
+    * State == 1: Downloading
+    * State == 2: Downloaded
+    * State == 3: Updating
 
-  When the update execution is complete, the device will restart.
+If you're connected to the device console, you will see progress like
+so::
 
-- Congratulations! You've just done your first FOTA update using this
-  system.
+  [0912360] [fota/lwm2m] [INF] firmware_block_received_cb: 77%
+  [0920080] [fota/lwm2m] [INF] firmware_block_received_cb: 78%
+  [0927350] [fota/lwm2m] [INF] firmware_block_received_cb: 79%
+  [0931870] [lib/lwm2m_rd_client] [INF] do_update_reply_cb: Update callback (code:2.4)
+  [0931870] [lib/lwm2m_rd_client] [INF] do_update_reply_cb: Update Done
+  [0932510] [fota/lwm2m] [INF] firmware_block_received_cb: 80%
+  [0939070] [fota/lwm2m] [INF] firmware_block_received_cb: 81%
+  [0946090] [fota/lwm2m] [INF] firmware_block_received_cb: 82%
+  [0951050] [fota/lwm2m] [INF] firmware_block_received_cb: 83%
+
+Monitor the transfer until the State field is 2 (Downloaded):
+
+.. figure:: /_static/dm-leshan/leshan-observeupdate2.png
+    :width: 4in
+    :align: center
+
+The device console will display something like this::
+
+  [1073870] [fota/lwm2m] [INF] firmware_block_received_cb: 98%
+  [1078930] [fota/lwm2m] [INF] firmware_block_received_cb: 99%
+  [1085540] [fota/lwm2m] [INF] firmware_block_received_cb: 100%
+
+Execute the Update
+------------------
+
+After the device has downloaded the update file, initiate the update
+by clicking on the "Exec" button on the Update line.
+
+The device console logs messages as it resets into the bootloader,
+MCUBoot, which will load the new image::
+
+  [1171230] [fota/lwm2m] [DBG] firmware_update_cb: Executing firmware update
+  [1171230] [fota/lwm2m] [INF] firmware_update_cb: Update Counter: current -1, update -1
+  [1172260] [fota/lwm2m] [INF] reboot: Rebooting device
+  [MCUBOOT] [INF] main: Starting bootloader
+  [MCUBOOT] [INF] boot_status_source: Image 0: magic=good, copy_done=0xff, image_ok=0x1
+  [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x2f, image_ok=0xff
+  [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
+  [MCUBOOT] [INF] boot_swap_type: Swap type: test
+  [MCUBOOT] [INF] main: Bootloader chainload address offset: 0x8000
+  [MCUBOOT] [INF] main: Jumping to the first image slot
+  ***** BOOTING ZEPHYR OS v1.9.99 - BUILD: Nov  8 2017 22:04:52 *****
+  [0000000] [fota/main] [INF] main: Linaro FOTA LWM2M example application
+  [0000010] [fota/main] [INF] main: Device: nrf52_blenano2, Serial: 1ef8e685
+
+When the update execution is complete, the device will register with
+Leshan again.
+
+Congratulations! You've just done your first FOTA update using this
+system.
 
 .. include:: reporting-issues.include
 
-.. _96Boards Nitrogen:
-   https://www.96boards.org/product/nitrogen/
+.. _BLE Nano 2:
+   https://redbear.cc/product/ble-nano-kit-2.html
 
 .. _96Boards HiKey:
    https://www.96boards.org/product/hikey/

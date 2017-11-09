@@ -13,7 +13,7 @@ Get Hardware
 ------------
 
 You'll need a development board supported by the Zephyr
-microPlatform. We support the `96Boards Nitrogen`_, and other boards
+microPlatform. We support the `BLE Nano 2`_, and other boards
 on a best effort basis.
 
 Set up Build Environment
@@ -37,7 +37,7 @@ We test on macOS Sierra (10.12).
 
 #. Install the tools you need to flash your board.
 
-   For `96Boards Nitrogen`_, you'll need `pyOCD`_, which you can install
+   For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install
    with `Python 2 from HomeBrew`_::
 
      brew install python
@@ -107,7 +107,7 @@ Linux
 
 #. Install the tools you need to flash your board.
 
-   For `96Boards Nitrogen`_, you'll need `pyOCD`_, which you can install
+   For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install
    with `pip`_::
 
      pip install --user pyOCD
@@ -195,10 +195,10 @@ to build application binaries which are cryptographically checked by
 mcuboot, a secure bootloader, you'll first build a simple "Hello
 World" application provided by mcuboot.
 
-If you're using 96Boards Nitrogen, run this from the ``zmp``
+If you're using a BLE Nano 2, run this from the ``zmp``
 directory you made earlier::
 
-  ./zmp build -b 96b_nitrogen mcuboot/samples/zephyr/hello-world
+  ./zmp build -b nrf52_blenano2 mcuboot/samples/zephyr/hello-world
 
 If you're using another board, run this instead::
 
@@ -216,10 +216,10 @@ Flash the Application
 
 Now you'll flash the application to your board.
 
-If you're using 96Boards Nitrogen, plug it into your computer via USB,
+If you're using BLE Nano 2, plug it into your computer via USB,
 then run this from the the Zephyr microPlatform directory::
 
-  ./zmp flash -b 96b_nitrogen mcuboot/samples/zephyr/hello-world
+  ./zmp flash -b nrf52_blenano2 mcuboot/samples/zephyr/hello-world
 
 If you're using another board, make sure it's connected, and use this
 instead::
@@ -237,7 +237,7 @@ Test the Application
 
 You're now ready to test the application itself.
 
-If you're using a 96Boards Nitrogen:
+If you're using a BLE Nano 2:
 
 - Make sure it's plugged into computer via USB. A serial port device
   (usually named ``/dev/ttyACM0`` on Linux, but the number may change
@@ -266,14 +266,13 @@ The combined output looks like this:
 
    [MCUBOOT] [INF] main: Starting bootloader
    [MCUBOOT] [INF] boot_status_source: Image 0: magic=good, copy_done=0xff, image_ok=0xff
-   [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x23, image_ok=0xff
+   [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x2f, image_ok=0xff
    [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
    [MCUBOOT] [INF] boot_swap_type: Swap type: none
    [MCUBOOT] [INF] main: Bootloader chainload address offset: 0x8000
-   [MCUBOOT] [WRN] zephyr_flash_area_warn_on_open: area 1 has 1 users
    [MCUBOOT] [INF] main: Jumping to the first image slot
-   ***** BOOTING ZEPHYR OS v1.8.99 - BUILD: Aug 15 2017 19:41:06 *****
-   Hello World from Zephyr on 96b_nitrogen!
+   ***** BOOTING ZEPHYR OS v1.9.99 - BUILD: Nov  8 2017 20:38:06 *****
+   Hello World from Zephyr on nrf52_blenano2!
 
 If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
@@ -396,7 +395,7 @@ microPlatform <zephyr-install>` inside the running container.
    To use `PuTTY`_ on Windows, see `Connecting to a local serial
    line`_ in the PuTTY documentation.
 
-.. _96Boards Nitrogen: https://www.seeedstudio.com/BLE-Nitrogen-p-2711.html
+.. _BLE Nano 2: https://redbear.cc/product/ble-nano-kit-2.html
 
 .. _Ubuntu: https://www.ubuntu.com/download/desktop
 

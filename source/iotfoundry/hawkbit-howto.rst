@@ -51,7 +51,7 @@ computer, one or more IoT devices, and an IoT gateway.
 
 We currently recommend:
 
-- `96Boards Nitrogen`_ as an IoT device
+- `BLE Nano 2`_ as an IoT device
 - `96Boards HiKey`_ as an IoT gateway, with `UART Serial
   Mezzanine`_ for console access
 
@@ -224,15 +224,15 @@ microPlatform :ref:`zephyr-getting-started` guide.
 **Required Equipment**: IoT device and workstation to flash the
 device.
 
-If you're using `96Boards Nitrogen`_, build and flash the
+If you're using `BLE Nano 2`_, build and flash the
 demonstration application for this system::
 
-  ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
-  ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
+  ./zmp build -b nrf52_blenano2 zephyr-fota-samples/dm-hawkbit-mqtt
+  ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-hawkbit-mqtt
 
 .. include:: pyocd.include
 
-If you don't have a Nitrogen, information for other boards is provided
+If you don't have a BLE Nano 2, information for other boards is provided
 on a best-effort basis in :ref:`dm-hawkbit-mqtt-devices`.
 
 Use the System
@@ -252,8 +252,7 @@ few seconds; it will look like this:
 .. figure:: /_static/dm-hawkbit-mqtt/cloudmqtt-websocket-ui.png
    :align: center
 
-   MQTT messages from 96Boards Nitrogen appearing in CloudMQTT
-   Websocket UI.
+   MQTT messages from BLE Nano 2 appearing in CloudMQTT Websocket UI.
 
 You can now connect other subscribers to this CloudMQTT instance,
 which can act on the data.
@@ -265,10 +264,10 @@ Now let's perform a FOTA update. In the hawkBit server UI, you should
 see the 96Boards device show up in the "Targets" pane. It will look
 like this:
 
-.. figure:: /_static/dm-hawkbit-mqtt/96b-target.png
+.. figure:: /_static/dm-hawkbit-mqtt/iot-device-target.png
    :align: center
 
-   96Boards Nitrogen registered with hawkBit.
+   BLE Nano 2 registered with hawkBit.
 
 It's time to upload a firmware binary to the server, and update it
 using this UI. We've provided a Python script to make this easier,
@@ -277,9 +276,9 @@ which works with either Python 2 or 3.
 Run it from the Zephyr microPlatform installation directory::
 
     python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
-                      -d '96Boards Nitrogen Update' \
-                      -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/96b_nitrogen/app/dm-hawkbit-mqtt-96b_nitrogen-signed.bin \
-                      -sv "1.0" -p "OSF" -n "96b_nitrogen update" -t os
+                      -d 'BLE Nano 2 Update' \
+                      -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_blenano2/app/dm-hawkbit-mqtt-nrf52_blenano2-signed.bin \
+                      -sv "1.0" -p "OSF" -n "nrf52_blenano2 update" -t os
 
 Above, 1.0 is an arbitrary version number. If hawkBit is running on a
 different machine, use the ``-ds`` and ``-sm`` options. For more help
@@ -304,7 +303,7 @@ upgrade (which should be at ``/dev/ttyACM0`` or so on Linux systems).
 - You'll next need to confirm the action. Click a button towards the
   bottom of your screen labeled "You Have Actions". This should now
   have a "1" at its top right, since you've assigned the distribution
-  to your Nitrogen:
+  to your IoT device:
 
   .. figure:: /_static/dm-hawkbit-mqtt/you-have-actions.png
      :align: center
@@ -324,73 +323,81 @@ fetch the update the next time they poll.
 .. note::
 
    By default, devices wait five minutes between polls. If you don't
-   want to wait and are using 96Boards Nitrogen, you can press the
-   "RST" button on the board to reset it; it will check for updates
-   shortly after booting.
+   want to wait, just power cycle the IoT device; the
+   ``dm-hawkbit-mqttt`` application checks for updates shortly after
+   booting.
 
 While hawkBit is waiting for the device to download and install the
 update, a yellow circle will appear next to it in the targets list:
 
-.. figure:: /_static/dm-hawkbit-mqtt/96b-nitrogen-waiting.png
+.. figure:: /_static/dm-hawkbit-mqtt/iot-device-waiting.png
    :align: center
 
-   Waiting for 96Boards Nitrogen to update.
-
-When the device informs hawkBit that the download has been
-successfully installed, this will turn into a green check box:
-
-.. figure:: /_static/dm-hawkbit-mqtt/96b-nitrogen-ok.png
-   :align: center
-
-   96Boards Nitrogen successfully updated.
+   Waiting for BLE Nano 2 to update.
 
 If you're connected to the device's serial console, look for output
-like this while the update is being downloaded and installed::
+like this while the update is being downloaded::
 
-    [0031200] [fota/hawkbit] [INF] hawkbit_report_update_status: Reporting action ID feedback: success
-    [0031210] [fota/hawkbit] [DBG] hawkbit_query:
+  [0730950] [fota/hawkbit] [INF] hawkbit_ddi_poll: Valid action ID 1 found, proceeding with the update
+  [0730960] [fota/hawkbit] [INF] hawkbit_report_dep_fbk: Reporting deployment feedback success (proceeding) for action 1
+  [0730970] [fota/hawkbit] [DBG] hawkbit_report_dep_fbk: JSON response: {"id":"1","status":{"execution":"proceeding","result":{"finished":"success"}}}
+  [0730980] [fota/hawkbit] [DBG] hawkbit_query: [POST] HOST:gitci.com:8080 URL:/DEFAULT/controller/v1/nrf52_blenano2-1ef8e685/deploymentBase/1/feedback
+  [0731300] [fota/hawkbit] [DBG] hawkbit_query: Hawkbit query completed
+  [0731410] [fota/hawkbit] [INF] hawkbit_install_update: Starting the download and flash process
+  [0732660] [fota/hawkbit] [DBG] install_update_cb: 1%
+  [0733360] [fota/hawkbit] [DBG] install_update_cb: 2%
+  [0734260] [fota/hawkbit] [DBG] install_update_cb: 3%
 
-    POST /DEFAULT/controller/v1/96b_nitrogen-4c1906d0/deploymentBase/1/feedback HTTP/1.1
-    Host: gitci.com:8080
-    Content-Type: application/json
-    Content-Length: 78
-    Connection: close
+  [... etc.]
 
-    {"id":"1","status":{"result":{"finished":"success"},"execution":"proceeding"}}
-    [0031570] [fota/tcp] [DBG] tcp_received_cb: FIN received, closing network context
-    [0031580] [fota/hawkbit] [DBG] hawkbit_query: Hawkbit query completed
-    [0031690] [fota/hawkbit] [INF] hawkbit_install_update: Starting the download and flash process
-    [0032990] [fota/hawkbit] [DBG] hawkbit_download_cb: 1%
-    [0033740] [fota/hawkbit] [DBG] hawkbit_download_cb: 2%
-    [0034440] [fota/hawkbit] [DBG] hawkbit_download_cb: 3%
-    [0035290] [fota/hawkbit] [DBG] hawkbit_download_cb: 4%
-    [...]
-    [0627620] [fota/hawkbit] [DBG] hawkbit_download_cb: 98%
-    [0628470] [fota/hawkbit] [DBG] hawkbit_download_cb: 99%
-    [0629060] [fota/hawkbit] [INF] hawkbit_install_update: Download: downloaded bytes 212992
-    [0629070] [fota/hawkbit] [INF] hawkbit_ddi_poll: Triggering OTA update.
-    [0629180] [fota/hawkbit] [INF] hawkbit_ddi_poll: Image id 4 flashed successfuly, rebooting now
-    [MCUBOOT] [INF] main: Starting bootloader
-    [MCUBOOT] [INF] boot_status_source: Image 0: magic=good, copy_done=0xff, image_ok=0xff
-    [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x23, image_ok=0xff
-    [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
-    [MCUBOOT] [INF] boot_swap_type: Swap type: none
-    [MCUBOOT] [INF] main: Bootloader chainload address offset: 0x8000
-    [MCUBOOT] [WRN] zephyr_flash_area_warn_on_open: area 1 has 1 users
-    [MCUBOOT] [INF] main: Jumping to the first image slot
-    ***** BOOTING ZEPHYR OS v1.8.99 - BUILD: Aug  3 2017 13:28:24 *****
+Finally, when the update is installed, the device will reset and
+MCUBoot will load the new image, which will initialize itself::
 
-    [Startup output omitted]
+  [MCUBOOT] [INF] main: Starting bootloader
+  [MCUBOOT] [INF] boot_status_source: Image 0: magic=good, copy_done=0xff, image_ok=0x1
+  [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x2f, image_ok=0xff
+  [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
+  [MCUBOOT] [INF] boot_swap_type: Swap type: test
+  [MCUBOOT] [INF] main: Bootloader chainload address offset: 0x8000
+  [MCUBOOT] [INF] main: Jumping to the first image slot
+  ***** BOOTING ZEPHYR OS v1.9.99 - BUILD: Nov  8 2017 21:33:01 *****
+  Setting Bluetooth MAC
+  [0000000] [fota/main] [INF] main: Linaro FOTA example application
+  [0000010] [fota/main] [INF] main: Device: nrf52_blenano2, Serial: 1ef8e685
+  starting test - Running Built in Self Test (BIST)
+  Initializing Hawkbit backend
+  [0000020] [fota/hawkbit] [INF] hawkbit_start: ACID: current -1, update 1
+  [0000030] [fota/hawkbit] [INF] hawkbit_start: Current boot status ff
+  [0000040] [fota/hawkbit] [INF] hawkbit_start: Updated boot status to 1
+  [0000150] [fota/hawkbit] [DBG] hawkbit_start: Erased flash bank at offset 3c000
+  [0000260] [fota/hawkbit] [INF] hawkbit_start: ACID updated, current 1, update 1
+  [0000260] [fota/hawkbit] [INF] hawkbit_service: Starting FOTA Service Thread
+  PASS - hawkbit_init.
 
-    {"id":"1","status":{"result":{"finished":"success"},"execution":"closed"}}
+During its next poll, the IoT device will inform hawkBit that it has
+successfully booted::
+
+  [0031260] [fota/hawkbit] [DBG] hawkbit_ddi_poll: artifact address: /DEFAULT/controller/v1/nrf52_blenano2-1ef8e685/softwaremodules/1/artifacts/dm-hawkbit-mqtt-nrf52_blenano2-signed.bin
+  [0031270] [fota/hawkbit] [DBG] hawkbit_ddi_poll: artifact file size: 212992
+  [0031280] [fota/hawkbit] [INF] hawkbit_report_dep_fbk: Reporting deployment feedback success (closed) for action 1
+  [0031290] [fota/hawkbit] [DBG] hawkbit_report_dep_fbk: JSON response: {"id":"1","status":{"execution":"closed","result":{"finished":"success"}}}
+  [0031300] [fota/hawkbit] [DBG] hawkbit_query: [POST] HOST:gitci.com:8080 URL:/DEFAULT/controller/v1/nrf52_blenano2-1ef8e685/deploymentBase/1/feedback
+  [0031620] [fota/hawkbit] [DBG] hawkbit_query: Hawkbit query completed
+
+At this point, the yellow circle will turn into a green check box:
+
+.. figure:: /_static/dm-hawkbit-mqtt/iot-device-ok.png
+   :align: center
+
+   BLE Nano 2 successfully updated.
 
 Congratulations! You've just done your first FOTA update using this
 system.
 
 .. include:: reporting-issues.include
 
-.. _96Boards Nitrogen:
-   https://www.96boards.org/product/nitrogen/
+.. _BLE Nano 2:
+   https://redbear.cc/product/ble-nano-kit-2.html
 
 .. _96Boards HiKey:
    https://www.96boards.org/product/hikey/

@@ -61,6 +61,20 @@ directory::
 
     ./zmp flash -b frdm_k64f zephyr-fota-samples/dm-lwm2m
 
+96Boards Nitrogen
+~~~~~~~~~~~~~~~~~
+
+Like FRDM-K64F, this board also requires pyOCD to flash.
+
+To build the binaries, run this from the Zephyr microPlatform
+installation directory::
+
+  ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+
+To flash the board::
+
+  ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+
 .. _dm-lwm2m-appendix-leshan:
 
 Additional Leshan Information

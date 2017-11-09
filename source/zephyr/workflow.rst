@@ -65,20 +65,20 @@ directory.
 Examples:
 
 - To build an application ``some-application`` available in the
-  Zephyr microPlatform tree, targeting the default board (96b_nitrogen)::
+  Zephyr microPlatform tree, targeting the BLE Nano 2::
 
-      ./zmp build some-application
+      ./zmp build -b nrf52_blenano2 some-application
 
   This generates artifacts under ``outdir`` like so::
 
       outdir
       └── some-application
-          └── 96b_nitrogen
+          └── nrf52_blenano2
               ├── app
               └── mcuboot
 
-  The application build for ``96b_nitrogen`` is in
-  ``outdir/some-application/96b_nitrogen/app``. The mcuboot build is
+  The application build for ``nrf52_blenano2`` is in
+  ``outdir/some-application/nrf52_blenano2/app``. The mcuboot build is
   in ``mcuboot``, next to ``app``.
 
 - To build the same application for another board,
@@ -89,7 +89,7 @@ Examples:
   The ``-b`` option can be used in any ``zmp build`` command to
   target other boards.
 
-  Running this after building for 96Boards Nitrogen as in the above
+  Running this after building for BLE Nano 2 as in the above
   example results in a parallel set of build artifacts, like so::
 
       outdir
@@ -97,7 +97,7 @@ Examples:
           ├── 96b_carbon
           │   ├── app
           │   └── mcuboot
-          └── 96b_nitrogen
+          └── nrf52_blenano2
               ├── app
               └── mcuboot
 
@@ -111,22 +111,22 @@ Examples:
     outdir
     └── some-nested
         └── application-name
-            └── 96b_nitrogen
+            └── nrf52_blenano2
                 ├── app
                 └── mcuboot
 
-  Note that the signed image in ``96b_nitrogen/app`` is named
-  ``application-name-96b_nitrogen-signed.bin``; i.e., just the base
+  Note that the signed image in ``nrf52_blenano2/app`` is named
+  ``application-name-nrf52_blenano2-signed.bin``; i.e., just the base
   name of the application directory is used.
 
 - To build or incrementally compile the application image only, not
   updating the mcuboot image, use ``-o``::
 
-      ./zmp build -o app some-application
+      ./zmp build -b nrf52_blenano2 -o app some-application
 
 - Similarly, to build or incrementally compile mcuboot only::
 
-      ./zmp build -o mcuboot some-application
+      ./zmp build -b nrf52_blenano2 -o mcuboot some-application
 
 .. _zephyr-configure:
 
