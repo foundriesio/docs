@@ -169,7 +169,7 @@ Note that ``zmp configure`` accepts many of the same options as
 
 For more information on Kconfig in Zephyr, see `Configuration Options
 Reference Guide
-<https://www.zephyrproject.org/doc/reference/kconfig/index.html>`_.
+<http://docs.zephyrproject.org/reference/kconfig/index.html>`_.
 
 .. _zephyr-flash:
 
@@ -186,7 +186,7 @@ run it with the correct arguments to flash mcuboot and the application
 binary to an attached board. Before using this command, make sure you
 can flash your board using the Zephyr ``make flash`` command as
 described in its `Zephyr documentation
-<https://www.zephyrproject.org/doc/boards/boards.html>`_\
+<http://docs.zephyrproject.org/boards/boards.html>`_\
 [#zephyrflash]_.
 
 To get help, run this from the Zephyr microPlatform root directory::
@@ -452,7 +452,7 @@ Roughly speaking, the manifest file contains:
 .. rubric:: Footnotes
 
 .. _Makefile.export:
-   https://www.zephyrproject.org/doc/application/application.html#support-for-building-third-party-library-code
+   http://docs.zephyrproject.org/application/application.html#support-for-building-third-party-library-code
 
 .. [#makefileexport]
 

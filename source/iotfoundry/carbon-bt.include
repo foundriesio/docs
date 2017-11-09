@@ -8,7 +8,7 @@
    https://www.segger.com/products/debug-probes/j-link/models/j-link-base/
 
 .. _96b_carbon_nrf51 flashing instructions:
-   https://www.zephyrproject.org/doc/boards/arm/96b_carbon_nrf51/doc/96b_carbon_nrf51.html
+   http://docs.zephyrproject.org/boards/arm/96b_carbon_nrf51/doc/96b_carbon_nrf51.html
 
 In order to use the 96Boards Carbon with this demonstration system,
 you'll first need to set up a secondary chip on the board that provides

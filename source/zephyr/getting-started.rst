@@ -210,8 +210,8 @@ If you're using another board, run this instead::
 
 Where ``your_board`` is Zephyr's ``BOARD`` name for your
 board. (Here's a `list of Zephyr boards
-<https://www.zephyrproject.org/doc/boards/boards.html>`_, but some of
-them may not work with the Zephyr microPlatform.)
+<http://docs.zephyrproject.org/boards/boards.html>`_, but some of them
+may not work with the Zephyr microPlatform.)
 
 (If you want to know more, see :ref:`zephyr-build`.)
 
