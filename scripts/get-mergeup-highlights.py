@@ -10,11 +10,16 @@ import textwrap
 import pygit2
 
 DEFAULT_INDENT = (' ' * 14)
-MERGEUP_SAUCE_TAG = 'LTD mergeup'
+MERGEUP_SAUCE_TAGS = ['LTD mergeup', 'OSF mergeup']
 HIGHLIGHTS = '''highlights
 ----------'''
 UPSTREAM_CHANGES = '''upstream changes
 ----------------'''
+
+
+def is_mergeup_commit(commit):
+    short = commit.message.splitlines()[0]
+    return any(tag in short for tag in MERGEUP_SAUCE_TAGS)
 
 
 def mergeup_commits(repository_path, baseline_commit, stop_commit=None):
@@ -23,7 +28,7 @@ def mergeup_commits(repository_path, baseline_commit, stop_commit=None):
         stop_commit = repository.head.target
     walker = repository.walk(stop_commit, pygit2.GIT_SORT_TIME)
     walker.hide(baseline_commit)
-    return [c for c in walker if MERGEUP_SAUCE_TAG in c.message]
+    return [c for c in walker if is_mergeup_commit(c)]
 
 
 def mergeup_highlights(commit):
