@@ -88,7 +88,7 @@ To flash your HiKey over micro-USB::
 Please see https://github.com/96boards/documentation/tree/master/ConsumerEdition/HiKey
 for additional board documentation.
 
-96Boards Dragonboard 410c
+96Boards DragonBoard 410c
 -------------------------
 
 Set ``MACHINE`` to ``dragonboard-410c`` when setting up your work
@@ -104,7 +104,7 @@ To convert the rootfs to a fastboot-compatible format::
   gunzip -f lmp-gateway-image-dragonboard-410c.ext4.gz
   ext2simg -v lmp-gateway-image-dragonboard-410c.ext4 lmp-gateway-image-dragonboard-410c.img
 
-To flash your Dragonboard 410c over micro-USB::
+To flash your DragonBoard 410c over micro-USB::
 
   fastboot flash boot boot.img
   fastboot flash rootfs lmp-gateway-image-dragonboard-410c.img
