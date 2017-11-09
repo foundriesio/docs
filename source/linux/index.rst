@@ -26,7 +26,9 @@ IPv6/IPv4 routing and MQTT message brokering.
 
    getting-started
    iot-gateway
+   building
    bt-joiner
+   appendix/index
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org
