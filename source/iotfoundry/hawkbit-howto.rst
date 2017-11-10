@@ -52,8 +52,7 @@ computer, one or more IoT devices, and an IoT gateway.
 We currently recommend:
 
 - `BLE Nano 2`_ as an IoT device
-- `96Boards HiKey`_ as an IoT gateway, with `UART Serial
-  Mezzanine`_ for console access
+- `Raspberry Pi 3`_ as an IoT gateway
 
 Support for other boards is provided on a best-effort basis.
 
@@ -108,10 +107,11 @@ The information is in your instance's details page as shown:
 **Required Equipment**: IoT gateway and workstation to flash the board.
 
 If you haven't already, follow :ref:`linux-getting-started` to install
-the base microPlatform on a `96Boards HiKey`_.
+the base microPlatform on a `Raspberry Pi 3`_.
 
-If you don't have a HiKey, the Getting Started Guide contains
-information for other boards, provided on a best-effort basis.
+If you don't have a Raspberry Pi 3, :ref:`lmp-appendix-other-targets`
+contains information for other boards, provided on a best-effort
+basis.
 
 .. _dm-hawkbit-mqtt-gateway:
 
@@ -399,11 +399,8 @@ system.
 .. _BLE Nano 2:
    https://redbear.cc/product/ble-nano-kit-2.html
 
-.. _96Boards HiKey:
-   https://www.96boards.org/product/hikey/
-
-.. _UART Serial Mezzanine:
-   https://www.96boards.org/product/uartserial/
+.. _Raspberry Pi 3:
+   https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
 
 .. _Docker:
    https://www.docker.com/

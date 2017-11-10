@@ -29,16 +29,6 @@ osf_subscriber_tags = ''
 # The most recently released public version number.
 osf_public_version = '17.10.1'
 
-# The name of the current "reference" board for the Linux
-# microPlatform, which gets special treatment in the documentation.
-# This needs to fit in the release artifacts links, e.g.
-#
-# https://foundries.io/r/lmp/17.10.1/artifacts/build-{osf_lmp_reference_board}/some/artifact
-osf_lmp_reference_board = 'hikey'
-
-# Full display name of the LMP reference board.
-osf_lmp_reference_board_full = '96Boards HiKey'
-
 # -- General configuration ------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -64,7 +54,6 @@ extensions = [
 # Links that shouldn't get checked for validity
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
-    'https://github.com/96boards/documentation/blob/master/ConsumerEdition/HiKey/Installation/BoardRecovery.md#set-board-link-options',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
