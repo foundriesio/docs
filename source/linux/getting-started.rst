@@ -82,6 +82,23 @@ To enable the serial console:
 #. Insert micro SD into Raspberry Pi 3, connect serial console and
    power on the board.
 
+After you've connected to the serial console, you can log in. The
+default username is ``osf``, and the default password is ``osf``. You
+should change these before connecting to the network.
+
+Connect to the Network
+----------------------
+
+If using WiFi, you can connect with:
+
+.. code-block:: console
+
+   sudo nmcli device wifi connect NETWORK_SSID password NETWORK_PASSWORD
+
+Where ``NETWORK_SSID`` is your WiFi network's SSID, and
+``NETWORK_PASSWORD`` is the password.
+
+USB Ethernet dongles should also work out of the box.
 
 Next Steps
 ----------
