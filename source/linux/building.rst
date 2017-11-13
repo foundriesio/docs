@@ -57,6 +57,8 @@ On Debian-based Linux distributions, including Ubuntu, run::
 On other Linux distributions, please check the `Yocto Project Quick
 Start Guide`_ for additional guidance.
 
+.. _lmp-building-install:
+
 Install the Linux microPlatform
 -------------------------------
 

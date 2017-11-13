@@ -22,7 +22,7 @@ on macOS and Windows. It can also be useful for reproducible builds.
       git config --global user.name "Your Full Name"
       git config --global user.email "your-email-address@example.com"
 
-You can now follow instructions in :ref:`lmp-building-get-hardware` to
+You can now follow instructions in :ref:`lmp-building-install` to
 build the Linux microPlatform inside the running container.
 
 .. _Install Docker:
