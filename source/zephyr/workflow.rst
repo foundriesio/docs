@@ -294,8 +294,8 @@ changes as follows.
    .. warning::
 
       If you make any changes to any repositories managed by Repo, this
-      will attempt to rebase your local branches, which **can erase
-      history and cause conflicts**.
+      will attempt to rebase your local branches, which **can cause
+      conflicts**. Please see :ref:`zephyr-out-of-tree` for more details.
 
       You can use ``repo sync -n`` to fetch changes only, without
       rebasing, and then use Git to inspect the differences between your
@@ -327,6 +327,8 @@ Zephyr microPlatform release as follows:
 
 However, this defeats the purpose of receiving continuous updates from
 Open Source Foundries.
+
+.. _zephyr-out-of-tree:
 
 Managing Out of Tree Patches
 ----------------------------
