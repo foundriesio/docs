@@ -328,6 +328,34 @@ Zephyr microPlatform release as follows:
 However, this defeats the purpose of receiving continuous updates from
 Open Source Foundries.
 
+Managing Out of Tree Patches
+----------------------------
+
+While an upstream first approach is recommended for development, situations
+come up when out-of-tree patches are necessary for a microPlatform project
+such as Zephyr. `Repo`_ has built-in tooling to handle this workflow. The
+``repo start`` command informs Repo that development will take place in a
+given branch name for a project. Once Repo is aware there are development
+branches for a project, ``repo sync`` will take care of rebasing the patch(es).
+
+.. code-block:: console
+
+   # work starts at latest microPlatform release
+   # A fix is required in Zephyr, the patch was submitted upstream, but is
+   # is still awaiting review. In the meantime, a branch can be used with:
+   $ repo start github-pr-XXX zephyr
+   $ cd zephyr
+   # apply the patch(es) to zephyr
+   $ git commit -a -m "out-of-tree patch waiting for zephyr merge #12"
+   ...
+   # A new update comes in for the microPlatform
+   $ repo sync
+   ...
+   # If no merge conflicts are detected, everything is done. Otherwise
+   # you will have to drop into the zephyr directory and use Git to
+   # resolve the merge conflict.
+
+
 Port a Board
 ------------
 
