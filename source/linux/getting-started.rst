@@ -89,6 +89,9 @@ should change these before connecting to the network.
 Connect to the Network
 ----------------------
 
+Both native Ethernet and USB Ethernet dongles should work out of the box
+if a DHCP Server is available on the same local network.
+
 If using WiFi, you can connect with:
 
 .. code-block:: console
@@ -97,8 +100,6 @@ If using WiFi, you can connect with:
 
 Where ``NETWORK_SSID`` is your WiFi network's SSID, and
 ``NETWORK_PASSWORD`` is the password.
-
-USB Ethernet dongles should also work out of the box.
 
 Next Steps
 ----------
