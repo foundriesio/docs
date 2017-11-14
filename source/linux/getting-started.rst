@@ -101,6 +101,22 @@ If using WiFi, you can connect with:
 Where ``NETWORK_SSID`` is your WiFi network's SSID, and
 ``NETWORK_PASSWORD`` is the password.
 
+Locating the Board via Zeroconf
+-------------------------------
+
+Zeroconf is a set of technologies that allows automatic discovery of systems
+and services available on a local area network. It helps by assigning a local
+address name (e.g. raspberrypi3.local instead of 192.168.1.10), which can be
+used by other zeroconf compatible services (e.g. Bonjour on macOS).
+
+Avahi (a free zeroconf implementation) is available by default on the Linux
+microPlatform, making it easy for other zeroconf-compatible hosts to locate
+the IP address assigned to the board, which can be specially useful when a
+console is not available.
+
+To locate your board, simply use ``raspberrypi3.local`` instead of the board's
+IP address.
+
 Next Steps
 ----------
 
