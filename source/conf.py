@@ -19,8 +19,8 @@ from os.path import abspath, dirname, join
 
 # -- Open Source Foundries / OSF configuration ----------------------------
 
-# The most recently released subscriber version number
-osf_subscriber_version = '17.10.2'
+# The next-to-be released subscriber version number
+osf_subscriber_version = '0.2'
 
 # Tags to append to the subscriber version (alpha, beta, etc.), if any.
 # (This doesn't affect links to artifacts.)
