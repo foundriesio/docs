@@ -27,7 +27,7 @@ environment with the ``setup-environment`` script::
   MACHINE=beaglebone source setup-environment [BUILDDIR]
 
 At the end of the build, your build artifacts will be found under
-``tmp-lmp-glibc/deploy/images/beaglebone``. The artifact you will use to
+``deploy/images/beaglebone``. The artifact you will use to
 flash your microSD card is ``lmp-gateway-image-beaglebone.wic.gz``.
 
 To flash your microSD card, run::
@@ -49,7 +49,7 @@ with the setup-environment script::
   MACHINE=cubox-i source setup-environment [BUILDDIR]
 
 At the end of the build, your build artifacts will be found under
-``tmp-lmp-glibc/deploy/images/cubox-i``. The artifact you will use to
+``deploy/images/cubox-i``. The artifact you will use to
 flash your microSD card is ``lmp-gateway-image-cubox-i.wic.gz``.
 
 To flash your microSD card, run::
@@ -73,7 +73,7 @@ with the ``setup-environment`` script::
   MACHINE=hikey source setup-environment [BUILDDIR]
 
 At the end of the build, your build artifacts will be found under
-``tmp-lmp-glibc/deploy/images/hikey``.
+``deploy/images/hikey``.
 
 To convert the rootfs to a fastboot-compatible format, run::
 
@@ -97,7 +97,7 @@ environment with the ``setup-environment`` script::
   MACHINE=dragonboard-410c source setup-environment [BUILDDIR]
 
 At the end of the build, your build artifacts will be found under
-``tmp-lmp-glibc/deploy/images/dragonboard-410c``.
+``deploy/images/dragonboard-410c``.
 
 To convert the rootfs to a fastboot-compatible format::
 

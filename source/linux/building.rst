@@ -166,7 +166,7 @@ To build the Linux microPlatform gateway image::
    builds run much faster since some artifacts are cached.
 
 At the end of the build, your build artifacts will be found under
-``tmp-lmp-glibc/deploy/images/raspberrypi3``. The artifact you will
+``deploy/images/raspberrypi3``. The artifact you will
 use to flash your board is
 ``lmp-gateway-image-raspberrypi3.rpi-sdimg``.
 
