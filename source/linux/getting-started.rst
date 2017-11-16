@@ -165,7 +165,7 @@ We recommend these next steps:
    https://www.sparkfun.com/products/9873
 
 .. _.sdcard format:
-    https://foundries.io/r/lmp/0.1/artifacts/build-raspberrypi3/lmp-gateway-image.rootfs.sdimg
+    https://foundries.io/r/lmp/0.2/artifacts/build-raspberrypi3/lmp-gateway-image.rootfs.sdimg
 
 .. _.sdcard.xz format:
-   https://foundries.io/r/lmp/0.1/artifacts/build-raspberrypi3/lmp-gateway-image.rootfs.sdimg.xz
+   https://foundries.io/r/lmp/0.2/artifacts/build-raspberrypi3/lmp-gateway-image.rootfs.sdimg.xz
