@@ -96,6 +96,8 @@ Subscribers can access the latest playbooks and container build files
 from the Open Source Foundries Git server, source.foundries.io. Public
 releases to GitHub lag these subscriber releases.
 
+.. _iot-gateway-subscriber-playbooks:
+
 Subscriber Playbooks and Dockerfiles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
