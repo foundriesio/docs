@@ -339,9 +339,22 @@ nor supported on all platforms.
 
 #. `Install Docker`_.
 
-#. Fetch the container::
+#. Accessing Container Registry
 
-     docker pull opensourcefoundries/zmp-sdk
+   Open Source Foundries provides a continuously updated container
+   registry to subscribers. Public releases to Docker Hub lag these
+   subscriber releases.
+
+#. Public releases can be fetched from `Docker Hub`_::
+
+      docker pull opensourcefoundries/zmp-sdk
+
+#. Subscriber releases can be fetched from hub.foundries.io::
+
+      docker pull hub.foundries.io/zmp-sdk
+
+   If this command fails, make sure to run ``docker login`` as described
+   in :ref:`iot-gateway`.
 
 #. **Optional**: Create a mount in your host environment to access the
    builds; see the `Docker documentation on data management`_ for more
@@ -430,3 +443,5 @@ microPlatform <zephyr-install>` inside the running container.
 .. _PuTTY: http://www.putty.org/
 
 .. _Connecting to a local serial line: https://the.earth.li/~sgtatham/putty/0.69/htmldoc/Chapter3.html#using-serial
+
+.. _Docker Hub: https://hub.docker.com/r/opensourcefoundries/lmp-sdk/
