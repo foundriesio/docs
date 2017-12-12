@@ -13,14 +13,38 @@
 # Configuration values that are commented out serve to show the
 # default.
 
-import sys
 import os
 from os.path import abspath, dirname, join
+import subprocess
+import sys
 
 # -- Open Source Foundries / OSF configuration ----------------------------
 
-# The next-to-be released subscriber version number
-osf_subscriber_version = '0.3'
+# The next-to-be released subscriber version number.
+#
+# WARNING: you must run a clean build if you change this variable!
+#
+# sphinx-build cannot detect the dependency change, and using its -D
+# option to override would only take effect after this file is
+# loaded. That's too late to have any effect on |version| and |release|.
+osf_subscriber_version = os.environ.get('OSF_UPDATE_SUBSCRIBER_VERSION')
+if osf_subscriber_version is None:
+    try:
+        git_version = subprocess.check_output(['git', 'describe', '--tags'])
+    except subprocess.CalledProcessError:
+        print('Error: no OSF_UPDATE_SUBSCRIBER_VERSION and not in git.',
+              file=sys.stderr)
+        print('Refusing to guess the subscriber version.',
+              file=sys.stderr)
+        sys.exit(1)
+    enc = sys.getdefaultencoding()
+    try:
+        osf_subscriber_version = 'git-' + git_version.decode(enc).strip()
+    except UnicodeDecodeError:
+        print("Error: Can't decode git version", git_version, 'with encoding',
+              enc, file=sys.stderr)
+        sys.exit(1)
+
 
 # Tags to append to the subscriber version (alpha, beta, etc.), if any.
 # (This doesn't affect links to artifacts.)
