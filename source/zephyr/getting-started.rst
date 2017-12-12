@@ -40,7 +40,7 @@ We test on macOS Sierra (10.12).
    For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install
    with `Python 2 from HomeBrew`_::
 
-     brew install python
+     brew install python cmake
      pip2 install --user pyOCD
      export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
