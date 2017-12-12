@@ -29,13 +29,7 @@ Get Prebuilt images
 Prebuilt images for Linux microPlatform release v0.1 are available for
 Raspberry Pi 3 either uncompressed, or as an .xz compressed archive:
 
-- `.sdcard format`_
-- `.sdcard.xz format`_
-
-The downloaded images currently have odd names. You will need to
-rename the image to something like :file:`rpi3.sdcard` or
-:file:`rpi3.sdcard.xz`. This issue will be resolved in a subsequent
-release.
+.. osf-rpi3-links:: subscriber
 
 Flash Images To Your Board
 --------------------------
