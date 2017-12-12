@@ -1,8 +1,7 @@
 # You can set these variables from the command line.
 OUTDIR        ?= build
 SPHINXBUILD   ?= sphinx-build
-
-SPHINXOPTS    = -W
+SPHINXOPTS    ?=
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -11,7 +10,7 @@ endif
 
 # ' (this line works around an Emacs makefile-mode bug)
 
-ALLSPHINXOPTS   = -d $(OUTDIR)/doctrees $(SPHINXOPTS) source
+ALLSPHINXOPTS   = -W -d $(OUTDIR)/doctrees $(SPHINXOPTS) source
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(SPHINXOPTS) source
 
