@@ -259,7 +259,7 @@ workstation to host an HTTP server on port 8000 with Python 3 is::
 
 The update will then be available at::
 
-   http://YOUR_WORKSTATION_IP:8000/dm-lwm2m-nrf52_blenano2-signed.bin
+   http://YOUR_WORKSTATION_IP:8000/zephyr/dm-lwm2m-nrf52_blenano2-signed.bin
 
 You can write it like so:
 

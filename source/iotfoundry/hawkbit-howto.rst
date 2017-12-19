@@ -277,7 +277,7 @@ Run it from the Zephyr microPlatform installation directory::
 
     python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
                       -d 'BLE Nano 2 Update' \
-                      -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_blenano2/app/dm-hawkbit-mqtt-nrf52_blenano2-signed.bin \
+                      -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_blenano2/app/zephyr/dm-hawkbit-mqtt-nrf52_blenano2-signed.bin \
                       -sv "1.0" -p "OSF" -n "nrf52_blenano2 update" -t os
 
 Above, 1.0 is an arbitrary version number. If hawkBit is running on a
