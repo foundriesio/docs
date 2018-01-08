@@ -1,0 +1,6 @@
+.. _howto:
+
+HOWTOs
+======
+
+Stub.
