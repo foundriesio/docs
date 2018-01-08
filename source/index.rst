@@ -1,9 +1,11 @@
 Open Source Foundries microPlatforms
 ====================================
 
-The **Zephyr and Linux microPlatforms** are extensible software and
-hardware platforms that make it easier to develop, secure, and
-maintain Internet-connected embedded devices.
+The **Zephyr and Linux microPlatforms** are minimal, secure,
+continuously updated software and hardware platforms that make it
+easier to develop and maintain Internet-connected embedded
+devices. The microPlatforms are easy to use and are released as open
+source software.
 
 - The :ref:`zephyr-top`, based on the Zephyr real-time operating
   system, is targeted at microcontroller-based devices.
