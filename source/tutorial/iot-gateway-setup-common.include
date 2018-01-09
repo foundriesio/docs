@@ -1,0 +1,40 @@
+- Ensure you have an SSH key on your workstation. If you've never done
+  this before, the `GitHub guide to SSH keys`_ has useful
+  instructions.
+
+- Copy your SSH key to the gateway in order to control it with
+  Ansible::
+
+    ssh-copy-id osf@raspberrypi3.local
+
+  Use the password for the ``osf`` account you set earlier when
+  installing the Linux microPlatform (the default is ``osf``, but we
+  recommend that you change it).
+
+- Clone ``gateway-ansible``, a repository of Ansible playbooks,
+  helper scripts and files, and Dockerfiles, onto your workstation.
+
+  **Subscribers**:
+
+  For passwordless authentication, create a file named :file:`.netrc`
+  (note the leading ``.``) in your home directory, readable only by
+  your user, with the following contents:
+
+  .. code-block:: none
+
+     machine source.foundries.io
+     login <your-subscriber-token>
+
+  If you don't createa :file:`.netrc`, enter your subscriber token
+  when prompted for a username, and leave the password blank.
+
+  Now clone the gateway-ansible repository::
+
+    git clone https://source.foundries.io/gateway-ansible
+
+  **Public**::
+
+    git clone https://github.com/OpenSourceFoundries/gateway-ansible
+
+.. _GitHub guide to SSH keys:
+   https://help.github.com/articles/connecting-to-github-with-ssh/
