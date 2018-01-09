@@ -3,4 +3,7 @@
 Reference Manuals
 =================
 
-Stub.
+.. toctree::
+
+   linux
+   zephyr
