@@ -1,0 +1,8 @@
+.. This is an include file which tells people about dfu-util.
+
+You'll need to install dfu-util to flash this binary. A recent version
+of dfu-util is required; depending on your host operating system, you
+may need to build this from source.
+
+- dfu-util URL: http://dfu-util.sourceforge.net/
+- Git Repository: git://git.code.sf.net/p/dfu-util/dfu-util

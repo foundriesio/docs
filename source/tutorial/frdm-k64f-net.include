@@ -1,0 +1,29 @@
+.. This is an include file for samples which describe how to configure
+   the local network environment on FRDM-K64F
+
+.. _FRDM-K64F:
+   https://www.nxp.com/products/microcontrollers-and-processors/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k2x-usb/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F
+
+Building for `FRDM-K64F`_ requires some configuration information
+which depends on your local network:
+
+- An IP address to use for the IoT gateway
+- Whether the board should use DHCP, or a static IP address
+
+This information must be written to the file |frdm-k64f-net-file|
+in the Zephyr microPlatform installation directory.
+
+To use DHCP, with gateway IP address A.B.C.D, create the file with the
+following contents.
+
+.. code-block:: kconfig
+
+  CONFIG_NET_DHCPV4=y
+  CONFIG_NET_APP_PEER_IPV4_ADDR="A.B.C.D"
+
+To use a static IP address X.Y.Z.W for the FRDM-K64F instead, use this.
+
+.. code-block:: kconfig
+
+  CONFIG_NET_APP_MY_IPV4_ADDR="X.Y.Z.W"
+  CONFIG_NET_APP_PEER_IPV4_ADDR="A.B.C.D"
