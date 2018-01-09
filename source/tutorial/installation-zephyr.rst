@@ -199,6 +199,8 @@ GitHub`_ organization.
      repo init -u https://github.com/OpenSourceFoundries/zmp-manifest
      repo sync
 
+.. _tutorial-zephyr-build:
+
 Build an Application
 --------------------
 
