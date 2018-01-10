@@ -7,9 +7,6 @@ easier to develop and maintain Internet-connected embedded
 devices. The microPlatforms are easy to use and are released as open
 source software.
 
-The microPlatforms documentation is being restructured. The new,
-in-progress documentation is available in the following pages.
-
 .. toctree::
    :maxdepth: 2
 
@@ -17,15 +14,6 @@ in-progress documentation is available in the following pages.
    howto/index
    reference/index
    other/index
-
-Older pages are available below. These are being migrated to the new
-documentation tree above.
-
-.. toctree::
-
-   zephyr/index
-   linux/index
-   iotfoundry/index
 
 .. ifconfig:: todo_include_todos is True
 
