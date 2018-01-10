@@ -65,8 +65,6 @@ for additional board documentation.
 96Boards HiKey
 --------------
 
-.. todo:: reference or move the getting-started etc. pictures here
-
 Set ``MACHINE`` to ``hikey`` when setting up your work environment
 with the ``setup-environment`` script::
 
