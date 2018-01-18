@@ -79,9 +79,9 @@ Examples:
   in ``mcuboot``, next to ``app``.
 
 - To build the same application for another board,
-  e.g. ``96b_carbon``, use the ``-b`` option::
+  e.g. ``frdm_k64f``, use the ``-b`` option::
 
-      ./zmp build -b 96b_carbon some-application
+      ./zmp build -b frdm_k64f some-application
 
   The ``-b`` option can be used in any ``zmp build`` command to
   target other boards.
@@ -91,7 +91,7 @@ Examples:
 
       outdir
       └── some-application
-          ├── 96b_carbon
+          ├── frdm_k64f
           │   ├── app
           │   └── mcuboot
           └── nrf52_blenano2
@@ -153,9 +153,9 @@ Example uses:
       ./zmp configure -o app some-application
 
 - To change the mcuboot (not application) configuration for another
-  board, ``96b_carbon``::
+  board, ``frdm_k64f``::
 
-      ./zmp configure -o mcuboot -b 96b_carbon some-application
+      ./zmp configure -o mcuboot -b frdm_k64f some-application
 
 If you don't specify ``-o``, then ``zmp configure`` will sequentially
 run the application and mcuboot configuration interfaces, in that
@@ -196,9 +196,9 @@ Basic uses:
 
     ./zmp flash some-application
 
-- To flash to a different board, ``96b_carbon``::
+- To flash to a different board, ``frdm_k64f``::
 
-    ./zmp flash -b 96b_carbon some-application
+    ./zmp flash -b frdm_k64f some-application
 
 .. rubric:: Footnotes
 

@@ -8,23 +8,6 @@ Using Other Zephyr Boards
 This document contains additional information related to using the
 system on other boards.
 
-96Boards Carbon
----------------
-
-.. include:: carbon-bt.include
-
-Now run this from the Zephyr microPlatform installation directory to
-build the main application::
-
-  ./zmp build -b 96b_carbon zephyr-fota-samples/dm-lwm2m
-
-.. include:: dfu-util.include
-
-To flash the STM32, first put your Carbon into DFU mode again. Then,
-from the Zephyr microPlatform installation directory, run::
-
-  ./zmp flash -b 96b_carbon zephyr-fota-samples/dm-lwm2m
-
 FRDM-K64F
 ---------
 
