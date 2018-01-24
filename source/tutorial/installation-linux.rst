@@ -153,9 +153,9 @@ Connecting to the Board via Zeroconf
 ------------------------------------
 
 If, as is likely, your local network supports Zeroconf, you can
-log in via SSH using ``raspberrypi3.local`` as the hostname::
+log in via SSH using ``raspberrypi3-64.local`` as the hostname::
 
-  ssh osf@raspberrypi3.local
+  ssh osf@raspberrypi3-64.local
 
 The board should be ready to connect within a minute or two of booting.
 
@@ -164,7 +164,7 @@ haven't already.
 
 Zeroconf is a set of technologies that allows automatic discovery of
 systems and services available on a local area network. It helps by
-assigning a local address name (e.g. ``raspberrypi3.local`` instead of
+assigning a local address name (e.g. ``raspberrypi3-64.local`` instead of
 ``192.168.1.10``), which can be used by other Zeroconf compatible
 services like Bonjour on macOS.
 
@@ -172,7 +172,7 @@ Avahi, a free Zeroconf implementation, is available by default on the Linux
 microPlatform, making it easy for other Zeroconf-compatible hosts to locate
 the IP address assigned to the board.
 
-To use Zeroconf, simply use ``raspberrypi3.local`` in place of the
+To use Zeroconf, simply use ``raspberrypi3-64.local`` in place of the
 board's IP address when that is needed.
 
 Deploy nginx Container
@@ -210,7 +210,7 @@ After the image is complete, the running container will stay connected
 to your terminal.
 
 You can now check that it's working by connecting to
-http://raspberrypi3.local in your browser. You should see an nginx
+http://raspberrypi3-64.local in your browser. You should see an nginx
 splash page load, as well as log messages appearing in the terminal
 where you typed ``docker run``, like so:
 
@@ -223,8 +223,8 @@ where you typed ``docker run``, like so:
 Example terminal output::
 
   10.0.0.111 - - [09/Jan/2018:21:07:21 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
-  2018/01/09 21:07:22 [error] 7#7: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.0.111, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "raspberrypi3.local", referrer: "http://raspberrypi3.local/"
-  10.0.0.111 - - [09/Jan/2018:21:07:22 +0000] "GET /favicon.ico HTTP/1.1" 404 571 "http://raspberrypi3.local/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
+  2018/01/09 21:07:22 [error] 7#7: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.0.111, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "raspberrypi3-64.local", referrer: "http://raspberrypi3.local/"
+  10.0.0.111 - - [09/Jan/2018:21:07:22 +0000] "GET /favicon.ico HTTP/1.1" 404 571 "http://raspberrypi3-64.local/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
 
 Press Control-C to stop the container. You can now remove it using::
 

@@ -119,7 +119,7 @@ Now that you’ve installed the Linux microPlatform, it’s time to build
 the Linux microPlatform gateway image.
 
 The supported ``MACHINE`` target used by this guide is
-``raspberrypi3``. (For information on other hardware platforms, see
+``raspberrypi3-64``. (For information on other hardware platforms, see
 :ref:`ref-linux-targets`.)
 
 The default distribution (``DISTRO``) is automatically set to ``lmp``,
@@ -128,7 +128,7 @@ which is provided by the meta-osf layer (see
 
 Set up your work environment using the ``setup-environment`` script::
 
-  MACHINE=raspberrypi3 source setup-environment [BUILDDIR]
+  MACHINE=raspberrypi3-64 source setup-environment [BUILDDIR]
 
 If ``MACHINE`` is not provided, the script will list all possible
 machines found in every enabled OpenEmbedded / Yocto Project layer,
@@ -149,9 +149,9 @@ To build the Linux microPlatform gateway image::
    builds run much faster since some artifacts are cached.
 
 At the end of the build, your build artifacts will be found under
-``deploy/images/raspberrypi3``. The artifact you will
+``deploy/images/raspberrypi3-64``. The artifact you will
 use to flash your board is
-``lmp-gateway-image-raspberrypi3.rpi-sdimg``.
+``lmp-gateway-image-raspberrypi3-64.rpi-sdimg``.
 
 Install the lmp-gateway Image
 -----------------------------

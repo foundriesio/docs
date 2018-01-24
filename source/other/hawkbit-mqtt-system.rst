@@ -133,7 +133,7 @@ fetch updates from hawkBit.
   **Subscribers**::
 
     CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
-        GW_HOSTNAME=raspberrypi3.local REGISTRY_PASSWD=<subscriber-token> ./iot-gateway.sh
+        GW_HOSTNAME=raspberrypi3-64.local REGISTRY_PASSWD=<subscriber-token> ./iot-gateway.sh
 
   Setting REGISTRY_PASSWD to your subscriber token is necessary so
   your gateway device can log in to the container registry.
@@ -142,7 +142,7 @@ fetch updates from hawkBit.
 
     CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
         REGISTRY=hub.docker.com REGISTRY_USER=docker REGISTRY_PASSWD=docker \
-        GW_HOSTNAME=raspberrypi3.local ./iot-gateway.sh
+        GW_HOSTNAME=raspberrypi3-64.local ./iot-gateway.sh
 
   These instructions assume use of `Raspberry Pi 3`_ on a local
   network supporting Zeroconf.  Adjust ``GW_HOSTNAME`` as needed if

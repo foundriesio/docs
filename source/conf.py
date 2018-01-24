@@ -78,7 +78,7 @@ extensions = [
 # Links that shouldn't get checked for validity
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
-    'http://raspberrypi3.local'
+    'http://raspberrypi3-64.local'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

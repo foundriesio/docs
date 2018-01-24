@@ -25,7 +25,7 @@ class OsfRPi3LinksDirective(OsfDirective):
             raise self.error('unsupported type {}'.format(type))
 
         def art_ref(tag, artifact):
-            path = 'build-raspberrypi3/{}'.format(artifact)
+            path = 'build-raspberrypi3-64/{}'.format(artifact)
             return self.build_link('{} ({})'.format(artifact, tag),
                                    linux_artifact(version, path))
 

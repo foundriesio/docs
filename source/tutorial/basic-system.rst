@@ -105,7 +105,7 @@ network proxy for your IoT device.
 
   **Subscribers**::
 
-    GW_HOSTNAME=raspberrypi3.local REGISTRY_PASSWD=<your-subscriber-token> ./iot-gateway.sh
+    GW_HOSTNAME=raspberrypi3-64.local REGISTRY_PASSWD=<your-subscriber-token> ./iot-gateway.sh
 
   Setting REGISTRY_PASSWD to your subscriber token is necessary to
   ensure your gateway device can log in to the container registry. If
@@ -115,7 +115,7 @@ network proxy for your IoT device.
   **Public**::
 
     REGISTRY=hub.docker.com REGISTRY_USER=docker REGISTRY_PASSWD=docker \
-       GW_HOSTNAME=raspberrypi3.local ./iot-gateway.sh
+       GW_HOSTNAME=raspberrypi3-64.local ./iot-gateway.sh
 
   These instructions assume ``iot-gateway.sh`` is run on the same machine
   running the hawkBit server. Set ``MGMT_SERVER`` to the IP address of
