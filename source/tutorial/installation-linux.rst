@@ -223,7 +223,7 @@ where you typed ``docker run``, like so:
 Example terminal output::
 
   10.0.0.111 - - [09/Jan/2018:21:07:21 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
-  2018/01/09 21:07:22 [error] 7#7: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.0.111, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "raspberrypi3-64.local", referrer: "http://raspberrypi3.local/"
+  2018/01/09 21:07:22 [error] 7#7: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.0.111, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "raspberrypi3-64.local", referrer: "http://raspberrypi3-64.local/"
   10.0.0.111 - - [09/Jan/2018:21:07:22 +0000] "GET /favicon.ico HTTP/1.1" 404 571 "http://raspberrypi3-64.local/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
 
 Press Control-C to stop the container. You can now remove it using::
