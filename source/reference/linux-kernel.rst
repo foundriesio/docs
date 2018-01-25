@@ -14,7 +14,7 @@ subscribers at `source.foundries.io/linux.git`_.
 The Linux Kernel recipe can be found in the :ref:`Meta-OSF layer
 <ref-linux-layers-meta-osf>`, under the ``meta-osf/recipes-kernel/linux``
 directory (linux-osf). You can find the common Linux distro config at
-``meta-osf/recipes-kernel/linux/linux-osf/distro.config``, which
+``meta-osf/recipes-kernel/linux/linux-osf/distro.cfg``, which
 provides the base configs required by systemd, the Docker runtime, and
 drivers for additional WiFi / Bluetooth adapters.
 
