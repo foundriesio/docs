@@ -361,7 +361,7 @@ with these instructions, which may be useful on other development platforms.
 
 .. _Python 2 from HomeBrew: http://docs.python-guide.org/en/latest/starting/install/osx/
 
-.. _Windows Subsystem for Linux: https://msdn.microsoft.com/commandline/wsl/about
+.. _Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/about
 
 .. _changing files in Linux directories using Windows tools: https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/
 
@@ -375,6 +375,6 @@ with these instructions, which may be useful on other development platforms.
 
 .. _screen: http://savannah.gnu.org/projects/screen
 
-.. _PuTTY: http://www.putty.org/
+.. _PuTTY: https://www.putty.org/
 
 .. _Connecting to a local serial line: https://the.earth.li/~sgtatham/putty/0.69/htmldoc/Chapter3.html#using-serial

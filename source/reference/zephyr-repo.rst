@@ -77,7 +77,7 @@ locally checked out branches.
 .. _Git: https://git-scm.com/
 
 .. _repo init:
-   https://source.android.com/source/using-repo#init
+   https://source.android.com/setup/using-repo#init
 
 .. _repo sync:
-   https://source.android.com/source/using-repo#sync
+   https://source.android.com/setup/using-repo#init

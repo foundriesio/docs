@@ -116,4 +116,4 @@ microPlatform-based applications to a new board follow.
 
 .. _CONFIG_FLASH_PAGE_LAYOUT: http://docs.zephyrproject.org/reference/kconfig/CONFIG_FLASH_PAGE_LAYOUT.html#cmdoption-arg-config-flash-page-layout
 
-.. _MCUBoot README-zephyr.rst: https://github.com/runtimeco/mcuboot/blob/master/README-zephyr.rst
+.. _MCUBoot README-zephyr.rst: https://github.com/runtimeco/mcuboot/blob/master/docs/readme-zephyr.md

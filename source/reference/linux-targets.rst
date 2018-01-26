@@ -83,7 +83,7 @@ To flash your HiKey over micro-USB::
   fastboot flash boot boot-hikey.uefi.img
   fastboot flash system lmp-gateway-image-hikey.img
 
-Please see https://github.com/96boards/documentation/tree/master/ConsumerEdition/HiKey
+Please see https://www.96boards.org/documentation/ConsumerEdition/HiKey/
 for additional board documentation.
 
 96Boards DragonBoard 410c
@@ -107,5 +107,5 @@ To flash your DragonBoard 410c over micro-USB::
   fastboot flash boot boot.img
   fastboot flash rootfs lmp-gateway-image-dragonboard-410c.img
 
-Please see https://github.com/96boards/documentation/tree/master/ConsumerEdition/DragonBoard-410c
+Please see https://www.96boards.org/documentation/ConsumerEdition/DragonBoard-410c/
 for additional board documentation.
