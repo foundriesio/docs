@@ -31,6 +31,7 @@ environment compared to the "vanilla" Zephyr distribution by providing:
 
    zephyr-zmp
    zephyr-repo
+   zephyr-branching
 
 .. _Zephyr:
    https://www.zephyrproject.org/
