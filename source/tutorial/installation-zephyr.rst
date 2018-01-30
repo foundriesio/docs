@@ -49,7 +49,7 @@ We test on macOS Sierra (10.12).
 #. Install dependencies for the Zephyr microPlatform::
 
      brew install dtc python3 repo gpg
-     pip3 install --user ply pyyaml pycrypto pyasn1 ecdsa pyelftools
+     pip3 install --user ply pyyaml cryptography pyelftools
 
 #. Install the tools you need to flash your board.
 
