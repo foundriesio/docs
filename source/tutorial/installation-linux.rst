@@ -67,7 +67,7 @@ Ethernet works out of the box if a DHCP server is available on the
 local network.
 
 #. Connect an Ethernet cable to the Raspberry Pi 3.
-#. Safely unmount the SD card from your computer, and insert it into
+#. Remove the SD card from your computer, and insert it into
    the Raspberry Pi 3.
 #. Apply power to the Raspberry Pi 3.
 
