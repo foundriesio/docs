@@ -117,7 +117,7 @@ Linux
      sudo add-apt-repository ppa:osf-maintainers/ppa
      sudo apt-get update
      sudo apt-get install zmp-dev
-     pip3 install --user pyelftools
+     pip3 install --user pyelftools cryptography
 
    On other distributions, see :ref:`tutorial-zephyr-dependencies`.
 
@@ -314,9 +314,7 @@ with these instructions, which may be useful on other development platforms.
   - `setuptools <https://packaging.python.org/installing/>`_
   - `PLY <http://www.dabeaz.com/ply/>`_
   - `PyYaml <http://pyyaml.org/wiki/PyYAML>`_
-  - `Crypto <https://www.dlitz.net/software/pycrypto/>`_
-  - `ECDSA <https://pypi.python.org/pypi/ecdsa/>`_
-  - `ASN.1 <http://pyasn1.sourceforge.net/>`_
+  - `Cryptography <https://cryptography.io/en/latest/>`_
   - `pyelftools <https://github.com/eliben/pyelftools>`_
 
 - `Google Repo <https://gerrit.googlesource.com/git-repo/>`_
