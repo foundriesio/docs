@@ -31,27 +31,15 @@ Later on, you'll replace the simple nginx container with several
 different containers to turn your Linux microPlatform device into an
 LWM2M gateway for your IoT devices.
 
-Get Prebuilt images
--------------------
+Get Prebuilt Image
+------------------
 
-- **Subscribers**: prebuilt images for Linux microPlatform update
-  |version| are available for subscribers either uncompressed, or as
-  an .xz compressed archive:
+A prebuilt image for Linux microPlatform update |version| is available:
 
-  .. osf-rpi3-links:: subscriber
+.. osf-rpi3-links::
 
-- **Public**: publicly available images will be provided at a later
-  date.
-
-After downloading the image, you must rename it so it has an
-``.sdcard`` (or ``.sdcard.img``) extension, instead of ``.sdimg`` (or
-``.sdimg.xz``). This is necessary for Etcher to recognize it. A future
-update to the binary artifacts will eliminate this step.
-
-.. todo:: add links to correct public RPI3 update when available
-
-Flash Images To SD Card
------------------------
+Flash Image To SD Card
+----------------------
 
 The Raspberry Pi foundation recommends using the the cross-platform
 `Etcher`_ tool to flash images onto the SD card you'll use to boot
