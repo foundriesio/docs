@@ -9,5 +9,6 @@ in contrast to the more generic references in :ref:`ref`.
 
 .. toctree::
 
+   linux-net-debug
    zephyr-workflows
    zephyr-boards
