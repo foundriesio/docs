@@ -214,7 +214,7 @@ before following these steps to write new firmware.
 Start a Python 3 HTTP on your workstation from the Zephyr
 microPlatform binary build directory for this application::
 
-   $ cd zmp/outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/
+   $ cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/
    $ python3 -m http.server
 
 The update will then be available at::
