@@ -16,15 +16,15 @@ Layer                                 Description
 `OpenEmbedded-Core`_ (Base)           This is the main collaboration point when working on
                                       OpenEmbedded projects and is part of the core recipes. It is
                                       distro-less and contains only emulated machine support.
+                                      It also provides the default toolchain used by the Linux
+                                      microPlatform (lmp) distribution.
 `Meta-OpenEmbedded`_                  This layer houses a collection of layers and recipes for the
                                       OE-core universe. Since the reduction in recipes to the core,
                                       meta-openembedded was created for everything else. There are
                                       currently approximately 650 recipes in this layer. It is used by
                                       the Linux microPlatform for additional utilities and network
                                       support.
-`Meta-Linaro`_ (Toolchain)            This layer provides OP-TEE and the Linaro
-                                      Toolchain, which is the default toolchain used by the Linux
-                                      microPlatform (lmp) distribution.
+`Meta-Linaro`_                        This layer provides OP-TEE support.
 `Meta-Virtualization`_                This layer provides support for building Docker, LXC, Xen, KVM,
                                       Libvirt, and associated packages necessary for constructing
                                       OE-based virtualized / container solutions. It is used by the
