@@ -151,7 +151,7 @@ To build the Linux microPlatform gateway image::
 At the end of the build, your build artifacts will be found under
 ``deploy/images/raspberrypi3-64``. The artifact you will
 use to flash your board is
-``lmp-gateway-image-raspberrypi3-64.rpi-sdimg``.
+``lmp-gateway-image-raspberrypi3-64.wic.gz``.
 
 Install the lmp-gateway Image
 -----------------------------
