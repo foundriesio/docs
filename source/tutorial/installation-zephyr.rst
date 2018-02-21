@@ -49,7 +49,7 @@ We test on macOS Sierra (10.12).
 #. Install dependencies for the Zephyr microPlatform::
 
      brew install dtc python3 repo gpg
-     pip3 install --user ply pyyaml cryptography pyelftools intelhex
+     pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja
 
 #. Install the tools you need to flash your board.
 
@@ -305,7 +305,7 @@ with these instructions, which may be useful on other development platforms.
 - `Device tree compiler (dtc)
   <https://git.kernel.org/pub/scm/utils/dtc/dtc.git>`_
 - `Git <https://git-scm.com/>`_
-- `GNU Make <https://www.gnu.org/software/make/>`_
+- `Ninja <https://ninja-build.org/>`_
 - `GCC and G++ <https://gcc.gnu.org/>`_ with 32-bit application support
 - `gperf <https://www.gnu.org/software/gperf/>`_
 - `bzip2 <http://www.bzip.org/>`_
