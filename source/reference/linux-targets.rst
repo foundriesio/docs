@@ -21,19 +21,19 @@ are useful; not all receive equal testing.
 BeagleBone Black
 ----------------
 
-Set ``MACHINE`` to ``beaglebone`` when setting up your work
+Set ``MACHINE`` to ``beaglebone-yocto`` when setting up your work
 environment with the ``setup-environment`` script::
 
-  MACHINE=beaglebone source setup-environment [BUILDDIR]
+  MACHINE=beaglebone-yocto source setup-environment [BUILDDIR]
 
 At the end of the build, your build artifacts will be found under
-``deploy/images/beaglebone``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-beaglebone.wic.gz``.
+``deploy/images/beaglebone-yocto``. The artifact you will use to
+flash your microSD card is ``lmp-gateway-image-beaglebone-yocto.wic.gz``.
 
 To flash your microSD card, run::
 
-  gunzip -f lmp-gateway-image-beaglebone.wic.gz
-  sudo dd if=lmp-gateway-image-beaglebone.wic of=/dev/mmcblkX bs=4M
+  gunzip -f lmp-gateway-image-beaglebone-yocto.wic.gz
+  sudo dd if=lmp-gateway-image-beaglebone-yocto.wic of=/dev/mmcblkX bs=4M
 
 Where :file:`/dev/mmcblkX` is your SD card device.
 
