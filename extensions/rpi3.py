@@ -17,7 +17,7 @@ class OsfRPi3LinksDirective(OsfDirective):
             version = 'latest'
 
         def art_ref(tag, artifact):
-            path = 'build-raspberrypi3-64/{}'.format(artifact)
+            path = 'supported-raspberrypi3-64/{}'.format(artifact)
             return self.build_link('{} ({})'.format(artifact, tag),
                                    linux_artifact(version, path))
 
