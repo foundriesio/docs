@@ -11,7 +11,7 @@ information on using ``zmp`` with other boards and in additional
 contexts.
 
 After installing the Zephyr microPlatform repositories and build environment,
-the Zephyr and mcuboot build systems and other tools can be used
+the Zephyr and MCUboot build systems and other tools can be used
 directly. However, these interfaces can be hard to use when first developing
 applications. For this reason, the Zephyr microPlatform provides a helper
 script, named ``zmp``, which provides a higher-level interface.
@@ -46,7 +46,7 @@ Build an Application: ``zmp build``
 
 The top-level command is ``zmp build``. By default, it takes a
 path to an application inside the Zephyr microPlatform installation directory,
-and builds a signed application image, as well as an mcuboot binary
+and builds a signed application image, as well as an MCUboot binary
 capable of loading that application image. (The default behavior can
 be changed through various options.)
 
@@ -75,7 +75,7 @@ Examples:
               └── mcuboot
 
   The application build for ``nrf52_blenano2`` is in
-  ``outdir/some-application/nrf52_blenano2/app``. The mcuboot build is
+  ``outdir/some-application/nrf52_blenano2/app``. The MCUboot build is
   in ``mcuboot``, next to ``app``.
 
 - To build the same application for another board,
@@ -117,11 +117,11 @@ Examples:
   name of the application directory is used.
 
 - To build or incrementally compile the application image only, not
-  updating the mcuboot image, use ``-o``::
+  updating the MCUboot image, use ``-o``::
 
       ./zmp build -b nrf52_blenano2 -o app some-application
 
-- Similarly, to build or incrementally compile mcuboot only::
+- Similarly, to build or incrementally compile MCUboot only::
 
       ./zmp build -b nrf52_blenano2 -o mcuboot some-application
 
@@ -147,18 +147,18 @@ To get help, run this from the Zephyr microPlatform root directory::
 
 Example uses:
 
-- To change the application configuration (not the mcuboot
+- To change the application configuration (not the MCUboot
   configuration) for ``some-application`` for the default board::
 
       ./zmp configure -o app some-application
 
-- To change the mcuboot (not application) configuration for another
+- To change the MCUboot (not application) configuration for another
   board, ``frdm_k64f``::
 
       ./zmp configure -o mcuboot -b frdm_k64f some-application
 
 If you don't specify ``-o``, then ``zmp configure`` will sequentially
-run the application and mcuboot configuration interfaces, in that
+run the application and MCUboot configuration interfaces, in that
 order.
 
 Note that ``zmp configure`` accepts many of the same options as
@@ -173,13 +173,13 @@ Reference Guide
 Flash an Application to a Device: ``zmp flash``
 -----------------------------------------------
 
-After building an application and mcuboot binary with :ref:`zmp build
+After building an application and MCUboot binary with :ref:`zmp build
 <ref-zephyr-zmp-build>`, the ``zmp flash`` command can be used to
 flash it to a board, usually via USB.
 
 The ``zmp flash`` command relies on Zephyr's build system to choose a
 flashing utility, and run it with the correct arguments to flash
-mcuboot and the application binary to an attached board.
+MCUboot and the application binary to an attached board.
 
 If you experience errors using this command, make sure you can flash
 your board using Zephyr's CMake build system's ``flash`` target as
@@ -212,7 +212,7 @@ Basic uses:
    This is because ``zmp flash`` currently relies on some additional
    modifications to the Zephyr CMake build system's ``flash`` target,
    which allow overridding the target binary to flash a signed blob
-   which MCUBoot can chain-load. These modifications are currently
+   which MCUboot can chain-load. These modifications are currently
    only supported for the dfu-util and pyOCD flasher backends. This is
    a temporary measure which is being addressed in the Zephyr upstream
    repository.
