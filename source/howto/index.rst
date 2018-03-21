@@ -12,3 +12,4 @@ in contrast to the more generic references in :ref:`ref`.
    linux-net-debug
    zephyr-workflows
    zephyr-boards
+   zephyr-mcuboot-keys
