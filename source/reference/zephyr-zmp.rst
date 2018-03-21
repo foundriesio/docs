@@ -42,27 +42,30 @@ directory.
 
 Examples:
 
-- To build an application ``some-application`` available in the
-  Zephyr microPlatform tree, targeting the BLE Nano 2::
+- To build the Zephyr "Hello World" application, sign it for loading
+  by MCUboot, and MCUboot itself, with all binaries targeting the BLE
+  Nano 2::
 
-      ./zmp build -b nrf52_blenano2 some-application
+      ./zmp build -b nrf52_blenano2 zephyr/samples/hello_world
 
   This generates artifacts under ``outdir`` like so::
 
-      outdir
-      └── some-application
-          └── nrf52_blenano2
-              ├── app
-              └── mcuboot
+    outdir/
+    └── zephyr
+        └── samples
+            └── hello_world
+                └── nrf52_blenano2
+                    ├── app
+                    └── mcuboot
 
   The application build for ``nrf52_blenano2`` is in
-  ``outdir/some-application/nrf52_blenano2/app``. The MCUboot build is
-  in ``mcuboot``, next to ``app``.
+  ``outdir/zephyr/samples/hello_world/nrf52_blenano2/app``. The
+  MCUboot build is in ``mcuboot``, next to ``app``.
 
 - To build the same application for another board,
   e.g. ``frdm_k64f``, use the ``-b`` option::
 
-      ./zmp build -b frdm_k64f some-application
+      ./zmp build -b frdm_k64f zephyr/samples/hello_world
 
   The ``-b`` option can be used in any ``zmp build`` command to
   target other boards.
@@ -70,41 +73,25 @@ Examples:
   Running this after building for BLE Nano 2 as in the above
   example results in a parallel set of build artifacts, like so::
 
-      outdir
-      └── some-application
-          ├── frdm_k64f
-          │   ├── app
-          │   └── mcuboot
-          └── nrf52_blenano2
-              ├── app
-              └── mcuboot
-
-- It's fine to build application sources in a subdirectory. For
-  example, running::
-
-    ./zmp build some-nested/application-name
-
-  will generate::
-
-    outdir
-    └── some-nested
-        └── application-name
-            └── nrf52_blenano2
-                ├── app
-                └── mcuboot
-
-  Note that the signed image in ``nrf52_blenano2/app`` is named
-  ``application-name-nrf52_blenano2-signed.bin``; i.e., just the base
-  name of the application directory is used.
+    outdir/
+    └── zephyr
+        └── samples
+            └── hello_world
+                ├── frdm_k64f
+                │   ├── app
+                │   └── mcuboot
+                └── nrf52_blenano2
+                    ├── app
+                    └── mcuboot
 
 - To build or incrementally compile the application image only, not
   updating the MCUboot image, use ``-o``::
 
-      ./zmp build -b nrf52_blenano2 -o app some-application
+      ./zmp build -b nrf52_blenano2 -o app zephyr/samples/hello_world
 
 - Similarly, to build or incrementally compile MCUboot only::
 
-      ./zmp build -b nrf52_blenano2 -o mcuboot some-application
+      ./zmp build -b nrf52_blenano2 -o mcuboot zephyr/samples/hello_world
 
 .. _ref-zephyr-zmp-configure:
 
@@ -129,14 +116,15 @@ To get help, run this from the Zephyr microPlatform root directory::
 Example uses:
 
 - To change the application configuration (not the MCUboot
-  configuration) for ``some-application`` for the default board::
+  configuration) for ``zephyr/samples/hello_world`` for the
+  ``nrf52_blenano2`` board::
 
-      ./zmp configure -o app some-application
+      ./zmp configure -o app -b nrf52_blenano2 zephyr/samples/hello_world
 
 - To change the MCUboot (not application) configuration for another
   board, ``frdm_k64f``::
 
-      ./zmp configure -o mcuboot -b frdm_k64f some-application
+      ./zmp configure -o mcuboot -b frdm_k64f zephyr/samples/hello_world
 
 If you don't specify ``-o``, then ``zmp configure`` will sequentially
 run the application and MCUboot configuration interfaces, in that
@@ -173,13 +161,19 @@ To get help, run this from the Zephyr microPlatform root directory::
 
 Basic uses:
 
-- To flash the artifacts for ``some-application`` to the default board::
+- To flash the artifacts for ``zephyr/samples/hello_world`` to
+  ``nrf52_blenano2`` board::
 
-    ./zmp flash some-application
+    ./zmp flash -b nrf52_blenano2 zephyr/samples/hello_world
+
+- To re-flash just the "Hello world" application, not re-flashing
+  MCUboot::
+
+    ./zmp flash -o app -b nrf52_blenano2 zephyr/samples/hello_world
 
 - To flash to a different board, ``frdm_k64f``::
 
-    ./zmp flash -b frdm_k64f some-application
+    ./zmp flash -b frdm_k64f zephyr/samples/hello_world
 
 .. rubric:: Footnotes
 
