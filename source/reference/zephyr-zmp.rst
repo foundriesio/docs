@@ -3,23 +3,17 @@
 Zephyr microPlatform zmp Tool
 =============================
 
-This page describes the ``zmp`` tool used for developing and flashing
-embedded applications with the Zephyr microPlatform. It assumes that
-the Zephyr microPlatform has successfully been installed using Repo as
-described in :ref:`tutorial-zephyr`, but provides additional
-information on using ``zmp`` with other boards and in additional
-contexts.
-
-After installing the Zephyr microPlatform repositories and build environment,
-the Zephyr and MCUboot build systems and other tools can be used
-directly. However, these interfaces can be hard to use when first developing
-applications. For this reason, the Zephyr microPlatform provides a helper
-script, named ``zmp``, which provides a higher-level interface.
+This page describes a helper script, ``zmp``, provided by the Zephyr
+microPlatform. ``zmp`` provides a higher-level interface to the Zephyr
+and MCUboot build systems, which is optional, but can be easier to use.
 
 The ``zmp`` utility is installed into the root of the Zephyr microPlatform
 tree by ``repo sync``. It accepts multiple commands useful during
 development; they are documented below. Run ``./zmp -h`` from the
 Zephyr microPlatform installation directory for additional information.
+
+(See :ref:`tutorial-zephyr` for details on installing the Zephyr
+microPlatform.)
 
 .. _ref-zephyr-zmp-build:
 
@@ -32,11 +26,10 @@ Build an Application: ``zmp build``
    ``zmp build`` must be done with care; see :ref:`howto-mcuboot-keys`
    for details.
 
-The top-level command is ``zmp build``. By default, it takes a
-path to an application inside the Zephyr microPlatform installation directory,
-and builds a signed application image, as well as an MCUboot binary
-capable of loading that application image. (The default behavior can
-be changed through various options.)
+The ``zmp build`` command builds signed Zephyr microPlatform
+application images, as well as MCUboot binaries capable of loading
+those images. It is a wrapper for the CMake toolchains provided by
+Zephyr and MCUboot which makes interoperation easier.
 
 To get help, run this from the Zephyr microPlatform root directory::
 
@@ -123,11 +116,11 @@ borrowed from the Linux kernel. The ``zmp configure`` command lets
 you change the configuration database for an application build, using
 any of the Kconfig front-ends supported on your platform.
 
-The top-level command is ``zmp configure``.
+.. important::
 
-**This command can only be run after using** ``zmp build`` **to
-create the build directory, which contains the configuration
-database.**
+   This command can only be run after using ``zmp build`` to
+   create the build directory, which contains the configuration
+   database.
 
 To get help, run this from the Zephyr microPlatform root directory::
 
