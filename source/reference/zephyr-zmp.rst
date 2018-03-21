@@ -28,21 +28,9 @@ Build an Application: ``zmp build``
 
 .. warning::
 
-   As described in :ref:`tutorial-zephyr-build`, mcuboot binaries and
-   Zephyr microPlatform applications are built and signed with
-   development keys which are not secret. While this makes development
-   and testing more convenient, it is not suitable for production.
-
-   However, it's not currently possible to generate mcuboot images
-   that trust non-dev keys without editing the mcuboot source tree.
-
-   As such, the ``--signing-key`` and ``--signing-key-type`` arguments
-   to ``zmp build`` are misleading, as the mcuboot image won't trust
-   the key used to sign the application. Don't use these for now.
-
-.. todo::
-
-   Re-work after mcuboot can consume a key at build time.
+   Using the ``--signing-key`` and ``--signing-key-type`` arguments to
+   ``zmp build`` must be done with care; see :ref:`howto-mcuboot-keys`
+   for details.
 
 The top-level command is ``zmp build``. By default, it takes a
 path to an application inside the Zephyr microPlatform installation directory,
