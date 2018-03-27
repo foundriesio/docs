@@ -331,4 +331,4 @@ secure LWM2M communications using DTLS.
    https://www.ansible.com
 
 .. _Install Ansible:
-   http://docs.ansible.com/ansible/latest/intro_installation.html
+   http://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html

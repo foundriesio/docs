@@ -311,7 +311,7 @@ with these instructions, which may be useful on other development platforms.
 - `bzip2 <http://www.bzip.org/>`_
 - `Python 3 <https://www.python.org/>`_ with the following packages:
 
-  - `setuptools <https://packaging.python.org/installing/>`_
+  - `setuptools <https://packaging.python.org/tutorials/installing-packages/>`_
   - `PLY <http://www.dabeaz.com/ply/>`_
   - `PyYaml <http://pyyaml.org/wiki/PyYAML>`_
   - `Cryptography <https://cryptography.io/en/latest/>`_
