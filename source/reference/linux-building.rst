@@ -177,13 +177,13 @@ recommended for those new to either project.
 .. _OpenEmbedded wiki:
     https://www.openembedded.org/wiki/Main_Page
 .. _Yocto Project main page:
-   https://yoctoproject.org/
+   https://www.yoctoproject.org/
 .. _Yocto Project Quick Start Guide:
    https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html
 .. _Yocto Project Reference Manual:
    https://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html
 .. _BitBake Manual:
-   http://www.yoctoproject.org/docs/current/bitbake-user-manual/bitbake-user-manual.html
+   https://www.yoctoproject.org/docs/current/bitbake-user-manual/bitbake-user-manual.html
 
 .. _subscriber token on foundries.io/s/:
    https://foundries.io/s/

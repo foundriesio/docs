@@ -440,7 +440,7 @@ Appendix: hawkBit References
 This section contains additional reference material regarding hawkBit.
 
 - Upstream Github: https://github.com/eclipse/hawkbit
-- Data model: https://github.com/eclipse/hawkbit/wiki/Data-model
+- Data model: http://www.eclipse.org/hawkbit/documentation/architecture/datamodel.html
 - Open Source Foundries Docker container: https://github.com/OpenSourceFoundries/core-containers
 - Open Source Foundries Docker Hub: https://hub.docker.com/r/opensourcefoundries/hawkbit-update-server/
 
