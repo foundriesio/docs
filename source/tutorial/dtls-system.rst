@@ -62,7 +62,7 @@ and re-flash the application with DTLS enabled, along with the
 credentials partition::
 
   rm -rf outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2
-  ./zmp build -b nrf52_blenano2 --conf-file "prj_dtls.conf boards/nrf52_blenano2.conf" zephyr-fota-samples/dm-lwm2m
+  ./zmp build --overlay-config=overlay-dtls.conf zephyr-fota-samples/dm-lwm2m
   ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
   pyocd-flashtool -se -t nrf52 --address 0x7f000 cred.bin
 
