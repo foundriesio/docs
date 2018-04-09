@@ -29,6 +29,8 @@ Layer                                 Description
                                       Libvirt, and associated packages necessary for constructing
                                       OE-based virtualized / container solutions. It is used by the
                                       Linux microPlatform for Docker container runtime support.
+`Meta-Updater`_                       This layer provides support for OTA Software Updates using
+                                      OSTree and TUF / Uptane.
 `Meta-OSF`_ (Distro)                  This layer provides the Linux microPlatform distribution
                                       configuration, unified Kernel and images.
 `Meta-RaspberryPi`_ (BSP)             This is the board support layer for the Raspberry Pi boards.
@@ -62,13 +64,15 @@ default set of packages used by the image via the
 ``CORE_IMAGE_BASE_INSTALL`` variable.
 
 .. _OpenEmbedded-Core:
-    https://github.com/openembedded/openembedded-core
+   https://github.com/openembedded/openembedded-core
 .. _Meta-OpenEmbedded:
    https://github.com/openembedded/meta-openembedded
 .. _Meta-Linaro:
    https://git.linaro.org/openembedded/meta-linaro.git/
 .. _Meta-Virtualization:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/
+.. _Meta-Updater:
+   https://github.com/advancedtelematic/meta-updater
 .. _Meta-OSF:
    https://github.com/opensourcefoundries/meta-osf
 .. _Meta-RaspberryPi:
