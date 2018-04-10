@@ -192,7 +192,7 @@ environment with the ``setup-environment`` script::
 
 At the end of the build, your build artifacts will be found under
 ``deploy/images/dragonboard-410c``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-cdragonboard-410c.wic.gz``.
+flash your microSD card is ``lmp-gateway-image-dragonboard-410c.wic.gz``.
 
 To flash your microSD card, run::
 
@@ -220,7 +220,7 @@ environment with the ``setup-environment`` script::
 
 At the end of the build, your build artifacts will be found under
 ``deploy/images/dragonboard-820c``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-cdragonboard-820c.wic.gz``.
+flash your microSD card is ``lmp-gateway-image-dragonboard-820c.wic.gz``.
 
 To flash your microSD card, run::
 
