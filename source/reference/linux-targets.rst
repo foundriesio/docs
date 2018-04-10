@@ -191,17 +191,49 @@ environment with the ``setup-environment`` script::
   MACHINE=dragonboard-410c source setup-environment [BUILDDIR]
 
 At the end of the build, your build artifacts will be found under
-``deploy/images/dragonboard-410c``.
+``deploy/images/dragonboard-410c``. The artifact you will use to
+flash your microSD card is ``lmp-gateway-image-cdragonboard-410c.wic.gz``.
 
-To convert the rootfs to a fastboot-compatible format::
+To flash your microSD card, run::
 
-  gunzip -f lmp-gateway-image-dragonboard-410c.ext4.gz
-  ext2simg -v lmp-gateway-image-dragonboard-410c.ext4 lmp-gateway-image-dragonboard-410c.img
+  gunzip -f lmp-gateway-image-dragonboard-410c.wic.gz
+  sudo dd if=lmp-gateway-image-dragonboard-410c.wic of=/dev/mmcblkX bs=4M
 
-To flash your DragonBoard 410c over micro-USB::
+Where :file:`/dev/mmcblkX` is your SD card device.
 
-  fastboot flash boot boot.img
-  fastboot flash rootfs lmp-gateway-image-dragonboard-410c.img
+U-Boot is provided as part of the fastboot boot image.
+
+To flash your DragonBoard 410c boot image over micro-USB::
+
+  fastboot flash boot boot-dragonboard-410c.img
 
 Please see https://www.96boards.org/documentation/consumer/dragonboard410c/
+for additional board documentation.
+
+96Boards DragonBoard 820c
+-------------------------
+
+Set ``MACHINE`` to ``dragonboard-820c`` when setting up your work
+environment with the ``setup-environment`` script::
+
+  MACHINE=dragonboard-820c source setup-environment [BUILDDIR]
+
+At the end of the build, your build artifacts will be found under
+``deploy/images/dragonboard-820c``. The artifact you will use to
+flash your microSD card is ``lmp-gateway-image-cdragonboard-820c.wic.gz``.
+
+To flash your microSD card, run::
+
+  gunzip -f lmp-gateway-image-dragonboard-820c.wic.gz
+  sudo dd if=lmp-gateway-image-dragonboard-820c.wic of=/dev/mmcblkX bs=4M
+
+Where :file:`/dev/mmcblkX` is your SD card device.
+
+U-Boot is provided as part of the fastboot boot image.
+
+To flash your DragonBoard 820c boot image over micro-USB::
+
+  fastboot flash boot boot-dragonboard-820c.img
+
+Please see https://www.96boards.org/documentation/consumer/dragonboard820c/
 for additional board documentation.
