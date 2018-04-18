@@ -79,8 +79,8 @@ extensions = [
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
     'http://raspberrypi3-64.local',
-    # This is causing false negatives:
-    'https://elinux.org/Beagleboard:BeagleBoneBlack',
+    # This site is causing false negatives:
+    r'https://elinux.org/.*',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
