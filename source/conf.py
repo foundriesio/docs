@@ -78,7 +78,7 @@ extensions = [
 # Links that shouldn't get checked for validity
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
-    'http://raspberrypi3-64.local',
+    'http://.*[.]local',
     # This site is causing false negatives:
     r'https://elinux.org/.*',
 ]
