@@ -79,6 +79,7 @@ extensions = [
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
     'http://.*[.]local',
+    'http://your-device-ip-address/',
     # This site is causing false negatives:
     r'https://elinux.org/.*',
 ]
