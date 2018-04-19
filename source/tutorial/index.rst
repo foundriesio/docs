@@ -29,6 +29,8 @@ Using this demonstration system, you can:
 To set up and use this system, follow these pages in order.
 
 .. toctree::
+   :maxdepth: 3
+
    dependencies
    installation
    basic-system
