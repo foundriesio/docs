@@ -214,24 +214,27 @@ GitHub`_ organization.
 Build an Application
 --------------------
 
-Now that you've installed the Zephyr microPlatform, it's time to build a
-demonstration application.
+Now that you've installed the Zephyr microPlatform, it's time to build
+a demonstration application using the ``zmp`` tool provided in the
+Zephyr microPlatform installation directory.
 
-Since one of the main features of the microPlatform is making it easy
-to build application binaries which are cryptographically checked by
-MCUBoot, a secure bootloader, you'll first build a simple "Hello
-World" application provided by MCUBoot.
+You'll start with a "hello world" app. However, ``zmp`` will also sign
+the application image for chainloading by MCUboot, a secure bootloader
+for microcontrollers, as well as build an MCUboot image for your
+board.
 
-.. warning::
+.. important::
 
-   This cryptographic verification uses a publicly available RSA key
-   pair bundled with MCUBoot, for ease of demonstration. The private
+   The build uses a publicly available RSA key pair bundled with
+   MCUBoot itself by default, for ease of demonstration (the private
    key is in :file:`mcuboot/root-rsa-2048.pem`; the public key is
-   embedded in the sources in :file:`boot/zephyr/keys.c`. This key
-   pair is for **development use only**.
+   embedded in the sources in :file:`mcuboot/boot/zephyr/keys.c`).
 
-   For secure deployment, **you must generate and use your own keys**
-   in your production image build environment.
+   This key pair is for **development use only**.
+
+   For production, **you must generate and use your own keys**, or
+   anyone will be able to sign binaries for your boards. See
+   :ref:`howto-mcuboot-keys` for details.
 
 When using a BLE Nano 2, run this from the ``zmp`` directory you made
 earlier::
