@@ -48,7 +48,7 @@ We test on macOS Sierra (10.12).
 
 #. Install dependencies for the Zephyr microPlatform::
 
-     brew install dtc python3 repo gpg
+     brew install dtc python3 repo gpg cmake
      pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja
 
 #. Install the tools you need to flash your board.
@@ -56,7 +56,7 @@ We test on macOS Sierra (10.12).
    For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install
    with `Python 2 from HomeBrew`_::
 
-     brew install python cmake
+     brew install python
      pip2 install --user pyOCD
      export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
