@@ -113,7 +113,7 @@ Linux
 
 1. Install dependencies for the Zephyr microPlatform.
 
-   On Ubuntu 16.04::
+   On Ubuntu (16.04 and up)::
 
      sudo add-apt-repository ppa:osf-maintainers/ppa
      sudo apt-get update
@@ -131,9 +131,8 @@ Linux
      # Make sure this is a Python 2 pip!
      pip install --user pyOCD
 
-   On Linux platforms, you also need to install the following udev
-   rules as root, then unplug and plug back in any boards you may have
-   connected::
+#. Install the following udev rules as root, then unplug and plug back
+   in any boards you have connected::
 
      echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
 
