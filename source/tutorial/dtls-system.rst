@@ -15,11 +15,6 @@ These instructions assume you are using a BLE Nano 2.
 
    This is an experimental feature, with important security limitations.
 
-   - The application implementation currently does not use a
-     high-quality source of random values. Random values are commonly
-     used throughout the DTLS protocol for various security
-     properties.
-
    - The firmware update procedure uses plain HTTP, rather than LWM2M
      over DTLS. This leaks the contents of the updated firmware
      binary. (This can be used in denial of service and information
