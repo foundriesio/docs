@@ -239,7 +239,7 @@ board.
 When using a BLE Nano 2, run this from the ``zmp`` directory you made
 earlier::
 
-  ./zmp build -b nrf52_blenano2 mcuboot/samples/zephyr/hello-world
+  ./zmp build -b nrf52_blenano2 zephyr/samples/hello_world/
 
 (For more information, see :ref:`ref-zephyr-zmp-build`.)
 
@@ -258,27 +258,32 @@ If you're using a BLE Nano 2:
 - Open the device with your favorite serial console program\
   [#serial]_ at 115200 baud.
 
-Flash the Application
----------------------
+Flash MCUboot and the Application
+---------------------------------
 
 Now you'll flash MCUBoot and the ``hello-world`` application to your board.
 
 When using BLE Nano 2, run this from the the Zephyr microPlatform
 directory::
 
-  ./zmp flash -b nrf52_blenano2 mcuboot/samples/zephyr/hello-world
+  ./zmp flash -b nrf52_blenano2 zephyr/samples/hello_world/
 
 (For more information, see :ref:`ref-zephyr-zmp-flash`.)
 
 You should now see some messages printed on the board's console.
 
-When the board boots:
+During the flashing process:
 
-#. The MCUBoot bootloader runs first, and checks the cryptographic
-   signature on the application binary.
+#. The chip's flash is completely erased, and MCUboot is installed. It
+   is unable to find an application, since it's a fresh install.
 
-#. If the signature is valid for the given binary, will run the
-   application itself.
+#. The signed "hello world" application image is flashed, and the chip
+   is reset.
+
+#. MCUBoot runs out of reset, and checks the cryptographic signature
+   on the application binary.
+
+#. Since the signature is valid, MCUboot runs the application itself.
 
 #. The application you just built will print a "Hello World" message
    on screen.
@@ -287,15 +292,23 @@ The combined output looks like this:
 
 .. code-block:: none
 
+   ***** Booting Zephyr OS vX.Y.Z-NN-gabcdef *****
    [MCUBOOT] [INF] main: Starting bootloader
-   [MCUBOOT] [INF] boot_status_source: Image 0: magic=good, copy_done=0xff, image_ok=0xff
-   [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x2f, image_ok=0xff
+   [MCUBOOT] [INF] boot_status_source: Image 0: magic=unset, copy_done=0xff, image_ok=0xff
+   [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x0, image_ok=0xff
+   [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
+   [MCUBOOT] [INF] boot_swap_type: Swap type: none
+   [MCUBOOT] [ERR] main: Unable to find bootable image
+   ***** Booting Zephyr OS vX.Y.Z-NN-gabcdef *****
+   [MCUBOOT] [INF] main: Starting bootloader
+   [MCUBOOT] [INF] boot_status_source: Image 0: magic=unset, copy_done=0xff, image_ok=0xff
+   [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x0, image_ok=0xff
    [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
    [MCUBOOT] [INF] boot_swap_type: Swap type: none
    [MCUBOOT] [INF] main: Bootloader chainload address offset: 0x8000
    [MCUBOOT] [INF] main: Jumping to the first image slot
-   ***** BOOTING ZEPHYR OS v1.9.99 - BUILD: Nov  8 2017 20:38:06 *****
-   Hello World from Zephyr on nrf52_blenano2!
+   ***** Booting Zephyr OS vX.Y.Z-NN-gabcdef *****
+   Hello World! arm
 
 If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
