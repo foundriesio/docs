@@ -61,7 +61,10 @@ We test on macOS Sierra (10.12).
      pip2 install --user pyOCD
      export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
-   Otherwise, check your board's documentation.
+   For other boards, check your board's documentation.  At this time,
+   the Zephyr microPlatform only supports boards that can be flashed
+   with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
+   the USB DFU protocol).
 
 #. Configure your username and password in Git::
 
@@ -130,6 +133,11 @@ Linux
 
      # Make sure this is a Python 2 pip!
      pip install --user pyOCD
+
+   For other boards, check your board's documentation.  At this time,
+   the Zephyr microPlatform only supports boards that can be flashed
+   with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
+   the USB DFU protocol).
 
 #. Install the following udev rules as root, then unplug and plug back
    in any boards you have connected::
