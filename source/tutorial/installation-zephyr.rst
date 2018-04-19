@@ -314,6 +314,28 @@ If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
 115200 baud, and run ``zmp flash`` to flash and run the program.
 
+Change the Application and Reflash
+----------------------------------
+
+Next, make a trivial change to the application: change "Hello World"
+to "Hello Zephyr microPlatform" in
+:file:`zephyr/samples/hello_world/src/main.c`.
+
+Re-build just the application (since you don't need to rebuild MCUboot)::
+
+  ./zmp build -o app -b nrf52_blenano2 zephyr/samples/hello_world
+
+And re-flash the application only (so you don't erase the entire chip
+flash as part of installing MCUboot itself)::
+
+  ./zmp flash -o app -b nrf52_blenano2 zephyr/samples/hello_world
+
+The console output will now end with:
+
+.. code-block:: none
+
+   Hello Zephyr microPlatform! arm
+
 The Zephyr microPlatform development environment is now set up on your
 workstation, and you've verified you can flash your device. Move on to
 the next page to set up the basic LWM2M system.
