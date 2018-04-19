@@ -315,6 +315,7 @@ with these instructions, which may be useful on other development platforms.
 - `Device tree compiler (dtc)
   <https://git.kernel.org/pub/scm/utils/dtc/dtc.git>`_
 - `Git <https://git-scm.com/>`_
+- `CMake <https://cmake.org/>`_ version 3.8.2 or later
 - `Ninja <https://ninja-build.org/>`_
 - `GCC and G++ <https://gcc.gnu.org/>`_ with 32-bit application support
 - `gperf <https://www.gnu.org/software/gperf/>`_
@@ -329,6 +330,7 @@ with these instructions, which may be useful on other development platforms.
   - `IntelHex <https://pypi.python.org/pypi/IntelHex>`_
 
 - `Google Repo <https://gerrit.googlesource.com/git-repo/>`_
+- `GPG <https://www.gnupg.org/>`_ (optional, but strongly recommended)
 
 .. rubric:: Footnotes
 
