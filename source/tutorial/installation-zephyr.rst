@@ -53,8 +53,9 @@ We test on macOS Sierra (10.12).
 
 #. Install the tools you need to flash your board.
 
-   For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install
-   with `Python 2 from HomeBrew`_::
+   For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
+   the pip2 provided by HomeBrew's Python 2 (`not pip3
+   <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
 
      brew install python
      pip2 install --user pyOCD
@@ -123,9 +124,11 @@ Linux
 
 #. Install the tools you need to flash your board.
 
-   For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install
-   with `pip`_::
+   For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
+   `pip`_ (`not pip3
+   <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
 
+     # Make sure this is a Python 2 pip!
      pip install --user pyOCD
 
    On Linux platforms, you also need to install the following udev
@@ -357,8 +360,6 @@ with these instructions, which may be useful on other development platforms.
 .. _pyOCD: https://github.com/mbedmicro/pyOCD
 
 .. _HomeBrew: https://brew.sh/
-
-.. _Python 2 from HomeBrew: http://docs.python-guide.org/en/latest/starting/install/osx/
 
 .. _Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/about
 
