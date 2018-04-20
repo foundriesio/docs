@@ -93,6 +93,36 @@ Examples:
 
       ./zmp build -b nrf52_blenano2 -o mcuboot zephyr/samples/hello_world
 
+``zmp build``: Device Tree Overlays
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Zephyr provides a `device tree overlay`_ feature.
+
+If a file named :file:`boards/BOARD.overlay` is in your application
+directory, where ``BOARD`` is your board, ``zmp build`` generates an
+application image with that device tree overlay applied.
+
+It's also sometimes useful to share a device tree overlay between an
+application and its MCUboot build.
+
+If a file named :file:`boards/BOARD-mcuboot.overlay` is in your
+application directory, ``zmp build`` generates both application and
+MCUboot images with the same device tree overlay applied. (This is in
+addition to any other device tree overlays specified for each build.)
+
+.. important::
+
+   If you've already got an application or MCUboot build in your
+   output directory and add an overlay file, you need to run :ref:`zmp
+   pristine <ref-zephyr-zmp-clean>` before ``zmp build`` for it to
+   take effect.
+
+For example, if you want to set up custom `flash partitions`_ that
+override the defaults provided by Zephyr for your board, those
+partitions can be placed in a device tree overlay. However, both the
+application and MCUboot need the same overlay applied, or MCUboot will
+look for your application on flash using the default partitions.
+
 .. _ref-zephyr-zmp-configure:
 
 Configure an Application: ``zmp configure``
@@ -234,3 +264,9 @@ Example uses:
    only supported for the dfu-util and pyOCD flasher backends. This is
    a temporary measure which is being addressed in the Zephyr upstream
    repository.
+
+.. _device tree overlay:
+   http://docs.zephyrproject.org/application/application.html#application-dt
+
+.. _flash partitions:
+   http://docs.zephyrproject.org/devices/dts/flash_partitions.html
