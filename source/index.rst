@@ -12,7 +12,8 @@ source software.
 
    tutorial/index
    howto/index
-   reference/index
+   reference/linux
+   reference/zephyr
    other/index
 
 .. ifconfig:: todo_include_todos is True

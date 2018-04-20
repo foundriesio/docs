@@ -3,13 +3,21 @@
 HOWTOs
 ======
 
-The following pages contain detailed documentation for specific
-topics. The aim is to provide concrete instructions for common tasks,
-in contrast to the more generic references in :ref:`ref`.
+These pages contain step-by-step instructions for specific tasks.
+See the reference manuals for more complete details.
+
+Linux microPlatform HOWTOs
+--------------------------
 
 .. toctree::
 
    linux-net-debug
+
+Zephyr microPlatform HOWTOs
+---------------------------
+
+.. toctree::
+
    zephyr-workflows
    zephyr-boards
    zephyr-mcuboot-keys
