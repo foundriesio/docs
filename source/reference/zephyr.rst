@@ -5,8 +5,12 @@ Zephyr microPlatform Reference Manual
 
 The Open Source Foundries Zephyr microPlatform is an extensible
 software and hardware platform that makes it easier to develop,
-secure, and maintain Internet-connected microcontroller-based embedded
-devices.
+secure, and maintain Internet-connected microcontroller-based embedded devices.
+
+.. note::
+
+   Just getting started? Check out :ref:`tutorial-zephyr` in the
+   :ref:`tutorial`.
 
 The Zephyr microPlatform is based on the `Zephyr`_ real-time operating
 system, and the `MCUBoot`_ secure bootloader.
