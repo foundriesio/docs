@@ -82,6 +82,8 @@ linkcheck_ignore = [
     'http://your-device-ip-address/',
     # This site is causing false negatives:
     r'https://elinux.org/.*',
+    # Also causing problems:
+    r'http://mediawiki.compulab.com/.*',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
