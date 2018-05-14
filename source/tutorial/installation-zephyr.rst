@@ -49,7 +49,7 @@ We test on macOS Sierra (10.12).
 #. Install dependencies for the Zephyr microPlatform::
 
      brew install dtc python3 repo gpg cmake
-     pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja
+     pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja pyserial
 
 #. Install the tools you need to flash your board.
 
@@ -121,7 +121,7 @@ Linux
      sudo add-apt-repository ppa:osf-maintainers/ppa
      sudo apt-get update
      sudo apt-get install zmp-dev
-     pip3 install --user pyelftools cryptography intelhex
+     pip3 install --user pyelftools cryptography intelhex pyserial
 
    On other distributions, see :ref:`tutorial-zephyr-dependencies`.
 
