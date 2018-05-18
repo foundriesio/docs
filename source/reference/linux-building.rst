@@ -179,7 +179,7 @@ recommended for those new to either project.
 .. _Yocto Project main page:
    https://www.yoctoproject.org/
 .. _Yocto Project Quick Start Guide:
-   https://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html
+   https://www.yoctoproject.org/docs/current/brief-yoctoprojectqs/brief-yoctoprojectqs.html
 .. _Yocto Project Reference Manual:
    https://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html
 .. _BitBake Manual:
