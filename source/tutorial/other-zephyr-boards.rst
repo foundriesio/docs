@@ -51,3 +51,24 @@ installation directory::
 To flash the board::
 
   ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+
+NRF52832 DK
+-----------
+
+This requires `nrfjprog`_ to be installed to flash.
+
+To build the binaries, run this from the Zephyr microPlatform
+installation directory::
+
+  ./zmp build -b nrf52_pca10040 zephyr-fota-samples/dm-lwm2m
+
+To flash the board::
+
+  ./zmp flash -b nrf52_pca10040 zephyr-fota-samples/dm-lwm2m
+
+Please note that the flash partitions used by this application for the
+application and MCUboot override the defaults provided by the board in
+upstream Zephyr.
+
+.. _nrfjprog:
+    http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.tools%2Fdita%2Ftools%2Fnrf5x_command_line_tools%2Fnrf5x_nrfjprogexe.html
