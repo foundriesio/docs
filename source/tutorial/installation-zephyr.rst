@@ -51,6 +51,19 @@ We test on macOS Sierra (10.12).
      brew install dtc python3 repo gpg cmake
      pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja pyserial
 
+   .. note::
+
+      If you are running pip version 10, you may see this error::
+
+        ModuleNotFoundError: No module named 'pip.req'
+
+      If that happens, install ninja with brew instead of pip::
+
+        brew install ninja
+
+      This is being tracked upstream as `ninja bug #1431
+      <https://github.com/ninja-build/ninja/issues/1431>`_.
+
 #. Install the tools you need to flash your board.
 
    For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
