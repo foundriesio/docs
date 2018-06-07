@@ -18,6 +18,28 @@ https://foundries.io/mp/lmp/latest/artifacts/.
 Please note that these builds are provided for reference in hopes they
 are useful; not all receive equal testing.
 
+Intel Core i7 (e.g. MinnowBoard Turbot)
+---------------------------------------
+
+Set ``MACHINE`` to ``intel-corei7-64`` when setting up your work
+environment with the ``setup-environment`` script::
+
+  MACHINE=intel-corei7-64 source setup-environment [BUILDDIR]
+
+At the end of the build, your build artifacts will be found under
+``deploy/images/intel-corei7-64``. The artifact you will use to
+flash your microSD card is ``lmp-gateway-image-intel-corei7-64.wic.gz``.
+
+To flash your microSD card, run::
+
+  gunzip -f lmp-gateway-image-intel-corei7-64.wic.gz
+  sudo dd if=lmp-gateway-image-intel-corei7-64.wic of=/dev/mmcblkX bs=4M
+
+Where :file:`/dev/mmcblkX` is your SD card device.
+
+Please see https://minnowboard.org/tutorials/getting-started-minnowboard-turbot-dual-e
+for additional board documentation.
+
 BeagleBone Black
 ----------------
 
