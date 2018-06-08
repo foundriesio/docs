@@ -259,3 +259,27 @@ To flash your DragonBoard 820c boot image over micro-USB::
 
 Please see https://www.96boards.org/documentation/consumer/dragonboard820c/
 for additional board documentation.
+
+SiFive HiFive Unleashed Freedom U540
+------------------------------------
+
+Set ``MACHINE`` to ``freedom-u540`` when setting up your work
+environment with the ``setup-environment`` script::
+
+  MACHINE=freedom-u540 source setup-environment [BUILDDIR]
+
+Build the Linux microPlatform minimal image ``lmp-mini-image`` instead of the
+usual ``lmp-gateway-image``, as there is no golang and docker support for
+RISC-V yet. At the end of the build, your build artifacts will be found
+under ``deploy/images/freedom-u540``. The artifact you will use to
+flash your microSD card is ``lmp-mini-image-freedom-u540.wic.gz``.
+
+To flash your microSD card, run::
+
+  gunzip -f lmp-mini-image-freedom-u540.wic.gz
+  sudo dd if=lmp-mini-image-freedom-u540.wic of=/dev/mmcblkX bs=4M
+
+Where :file:`/dev/mmcblkX` is your SD card device.
+
+Please see https://www.sifive.com/documentation/boards/hifive-unleashed/hifive-unleashed-getting-started-guide/
+for additional board documentation.
