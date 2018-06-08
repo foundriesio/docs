@@ -82,6 +82,7 @@ linkcheck_ignore = [
     'http://your-device-ip-address/',
     # This site is causing false negatives:
     r'https://elinux.org/.*',
+    r'https://blogs.msdn.microsoft.com/.*',  # temporary blacklist
 ]
 
 # Add any paths that contain templates here, relative to this directory.
