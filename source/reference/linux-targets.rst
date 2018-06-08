@@ -283,3 +283,52 @@ Where :file:`/dev/mmcblkX` is your SD card device.
 
 Please see https://www.sifive.com/documentation/boards/hifive-unleashed/hifive-unleashed-getting-started-guide/
 for additional board documentation.
+
+Generic RISC-V 64 Machine
+-------------------------
+
+Set ``MACHINE`` to ``qemuriscv64`` when setting up your work
+environment with the ``setup-environment`` script::
+
+  MACHINE=qemuriscv64 source setup-environment [BUILDDIR]
+
+Build the Linux microPlatform minimal image ``lmp-mini-image`` instead of the
+usual ``lmp-gateway-image``, as there is no golang and docker support for
+RISC-V yet. At the end of the build, your build artifacts will be found
+under ``deploy/images/qemuriscv64``. The artifacts required by QEMU are ``bbl``
+(Berkeley Boot Loader + Kernel + Initrd) and
+``lmp-mini-image-qemuriscv64.otaimg``.
+
+Install QEMU >= 2.12.0
+~~~~~~~~~~~~~~~~~~~~~~
+
+The minimal QEMU version required for RISC-V support is 2.12.0.
+
+To install latest QEMU on macOS, run::
+
+  brew install qemu
+
+To install latest QEMU on Ubuntu 18.04, run::
+
+  sudo add-apt-repository ppa:osf-maintainers/riscv
+  sudo apt-get update
+  sudo apt-get install qemu-system-misc
+
+Boot the generic RISC-V target with QEMU
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To boot the generic RISC-V target, run::
+
+  qemu-system-riscv64 -machine virt -smp 2 -m 512 -serial mon:stdio -serial null \
+      -kernel bbl -append 'root=/dev/vda rw console=ttyS0' \
+      --drive file=lmp-mini-image-qemuriscv64.otaimg,format=raw,id=hd0 \
+      -device virtio-blk-device,drive=hd0 -device virtio-net-device,netdev=usernet \
+      -netdev user,id=usernet,hostfwd=tcp::22222-:22 -nographic
+
+You can SSH into the RISC-V 64 guest by using the port forwarded to the RISC-V
+64 guest::
+
+  ssh -p 22222 osf@localhost
+
+Please see https://wiki.qemu.org/Documentation/Platforms/RISCV for additional
+information.
