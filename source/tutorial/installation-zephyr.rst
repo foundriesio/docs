@@ -49,7 +49,7 @@ We test on macOS Sierra (10.12).
 #. Install dependencies for the Zephyr microPlatform::
 
      brew install dtc python3 repo gpg cmake
-     pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja pyserial
+     pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja pyserial click
 
    .. note::
 
@@ -134,7 +134,7 @@ Linux
      sudo add-apt-repository ppa:osf-maintainers/ppa
      sudo apt-get update
      sudo apt-get install zmp-dev
-     pip3 install --user pyelftools cryptography intelhex pyserial
+     pip3 install --user pyelftools cryptography intelhex pyserial click
 
    On other distributions, see :ref:`tutorial-zephyr-dependencies`.
 
@@ -379,6 +379,7 @@ with these instructions, which may be useful on other development platforms.
   - `Cryptography <https://cryptography.io/en/latest/>`_
   - `pyelftools <https://github.com/eliben/pyelftools>`_
   - `IntelHex <https://pypi.python.org/pypi/IntelHex>`_
+  - `Click <http://click.pocoo.org/>`_
 
 - `Google Repo <https://gerrit.googlesource.com/git-repo/>`_
 - `GPG <https://www.gnupg.org/>`_ (optional, but strongly recommended)
