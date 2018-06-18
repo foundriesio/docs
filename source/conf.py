@@ -83,6 +83,7 @@ linkcheck_ignore = [
     # This site is causing false negatives:
     r'https://elinux.org/.*',
     r'https://blogs.msdn.microsoft.com/.*',  # temporary blacklist
+    r'https://www.tcpdump.org/.*',           # ditto
 ]
 
 # Add any paths that contain templates here, relative to this directory.
