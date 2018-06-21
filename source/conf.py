@@ -80,6 +80,7 @@ linkcheck_ignore = [
     r'http://localhost:\d+/?',
     'http://.*[.]local',
     'http://your-device-ip-address/',
+    'https://app.atsgarage.com/#/.*',        # requires login
     # This site is causing false negatives:
     r'https://elinux.org/.*',
     r'https://blogs.msdn.microsoft.com/.*',  # temporary blacklist

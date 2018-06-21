@@ -1,6 +1,6 @@
 """Open Source Foundries Sphinx extensions"""
 
-from rpi3 import OsfRPi3LinksDirective
+from rpi3 import OsfRPi3LinksDirective, OsfRPi3OSTreeDirective
 
 
 def setup(app):
@@ -11,6 +11,7 @@ def setup(app):
     '''Latest released version to the public'''
 
     app.add_directive('osf-rpi3-links', OsfRPi3LinksDirective)
+    app.add_directive('osf-rpi3-ostree', OsfRPi3OSTreeDirective)
 
     return {
         'version': '0.2',
