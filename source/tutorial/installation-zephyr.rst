@@ -29,8 +29,10 @@ This document describes how to:
 - Boot the device, verifying that MCUBoot correctly validates and
   chain-loads the Zephyr image
 
-Make sure you have set up dependencies as described in
-:ref:`tutorial-dependencies` before continuing.
+.. important::
+
+   Make sure you've obtained dependencies as described in
+   :ref:`tutorial-dependencies` before continuing.
 
 Set up Build Environment
 ------------------------
@@ -74,6 +76,9 @@ We test on macOS Sierra (10.12).
      pip2 install --user pyOCD
      export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
+
+   For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
+
    For other boards, check your board's documentation.  At this time,
    the Zephyr microPlatform only supports boards that can be flashed
    with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
@@ -89,6 +94,17 @@ in :ref:`tutorial-zephyr-install`.
 
 Windows 10 (Experimental)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+   Due to the Zephyr microPlatform's current use of the Repo tool to
+   manage multiple Git repositories, only experimental directions
+   using the Windows Subsystem for Linux are provided. This is because
+   Repo does not work on Windows.
+
+   When possible, the Zephyr microPlatform will use `Zephyr's West
+   tool`_ to manage repositories instead, enabling first-class Windows
+   support.
 
 Windows versions supporting the Windows Subsystem for Linux have
 experimental support. For this to work, you will need 64 bit Windows
@@ -134,7 +150,8 @@ Linux
      sudo add-apt-repository ppa:osf-maintainers/ppa
      sudo apt-get update
      sudo apt-get install zmp-dev
-     pip3 install --user pyelftools cryptography intelhex pyserial click
+     pip3 install --user pyelftools intelhex pyserial click \
+                         cryptography --only-binary cryptography
 
    On other distributions, see :ref:`tutorial-zephyr-dependencies`.
 
@@ -144,8 +161,11 @@ Linux
    `pip`_ (`not pip3
    <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
 
+     sudo apt-get install python-pip
      # Make sure this is a Python 2 pip!
      pip install --user pyOCD
+
+   For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
 
    For other boards, check your board's documentation.  At this time,
    the Zephyr microPlatform only supports boards that can be flashed
@@ -170,17 +190,18 @@ Install the Zephyr microPlatform
 --------------------------------
 
 The Zephyr microPlatform can be installed in any directory on your
-workstation. Installation uses the Repo tool to fetch a variety of Git
-repositories at known-good revisions, and keep them in sync as time
-goes on.
+workstation.
 
-If you're new to Repo and want to know more, see :ref:`ref-zephyr-repo`.
+The Zephyr microPlatform currently uses the Repo tool to fetch a
+variety of Git repositories at known-good revisions, and keep them in
+sync as time goes on. If you're new to Repo and want to know more, see
+:ref:`ref-zephyr-repo`.
 
 Subscribers
 ~~~~~~~~~~~
 
 The latest continuous release is available to Zephyr microPlatform
-subscribers from source.foundries.io. Install it as follows.
+subscribers from `source.foundries.io`_. Install it as follows.
 
 #. Configure Git to cache usernames and passwords you enter in memory for
    one hour::
@@ -190,11 +211,11 @@ subscribers from source.foundries.io. Install it as follows.
    Using some credential helper is necessary for ``repo sync`` to work
    properly later\ [#git-creds]_.
 
-#. If you haven't already, `create a subscriber token on
+#. If you haven't already, `create a subscriber access token on
    foundries.io/s/`_.
 
 #. Make an installation directory for the Zephyr microPlatform, and
-   change into its directory::
+   change into it::
 
      mkdir zmp && cd zmp
 
@@ -203,8 +224,8 @@ subscribers from source.foundries.io. Install it as follows.
      repo init -u https://source.foundries.io/zmp-manifest
      repo sync
 
-   When prompted by ``repo init``, enter your subscriber token for
-   your username and nothing for the password.
+   When prompted by ``repo init``, enter your subscriber access token
+   for your username and nothing for the password.
 
 Public
 ~~~~~~
@@ -228,8 +249,8 @@ Build an Application
 --------------------
 
 Now that you've installed the Zephyr microPlatform, it's time to build
-a demonstration application using the ``zmp`` tool provided in the
-Zephyr microPlatform installation directory.
+a demonstration application using the :ref:`zmp tool <ref-zephyr-zmp>`
+provided in the Zephyr microPlatform installation directory [#zmpwest]_.
 
 You'll start with a "hello world" app. However, ``zmp`` will also sign
 the application image for chainloading by MCUboot, a secure bootloader
@@ -254,6 +275,9 @@ earlier::
 
   ./zmp build -b nrf52_blenano2 zephyr/samples/hello_world/
 
+For nRF52 DK, use ``-b nrf52_pca10040``; for nRF52840 DK, use ``-b
+nrf52840_pca10056``.
+
 (For more information, see :ref:`ref-zephyr-zmp-build`.)
 
 Connect to the Board's Console
@@ -262,12 +286,12 @@ Connect to the Board's Console
 Next, connect to your board's console so you'll be able to see the
 message printed when you flash the application in the next step.
 
-If you're using a BLE Nano 2:
+- Make sure your board plugged into computer via USB. A serial port
+  device (usually named ``/dev/ttyACM0`` or ``/dev/ttyUSB0`` on Linux,
+  but the number may change if you've got other devices plugged in)
+  should be created when the board enumerates if it supports USB
+  serial.
 
-- Make sure it's plugged into computer via USB. A serial port device
-  (usually named ``/dev/ttyACM0`` on Linux, but the number may change
-  if you've got other devices plugged in) will be created when the
-  board enumerates.
 - Open the device with your favorite serial console program\
   [#serial]_ at 115200 baud.
 
@@ -280,6 +304,9 @@ When using BLE Nano 2, run this from the the Zephyr microPlatform
 directory::
 
   ./zmp flash -b nrf52_blenano2 zephyr/samples/hello_world/
+
+For nRF52 DK, use ``-b nrf52_pca10040``; for nRF52840 DK, use ``-b
+nrf52840_pca10056``.
 
 (For more information, see :ref:`ref-zephyr-zmp-flash`.)
 
@@ -334,14 +361,18 @@ Next, make a trivial change to the application: change "Hello World"
 to "Hello Zephyr microPlatform" in
 :file:`zephyr/samples/hello_world/src/main.c`.
 
-Re-build just the application (since you don't need to rebuild MCUboot)::
+On BLE Nano 2, re-build just the application (since you don't need to
+rebuild MCUboot)::
 
   ./zmp build -o app -b nrf52_blenano2 zephyr/samples/hello_world
 
-And re-flash the application only (so you don't erase the entire chip
+Now re-flash the application only (so you don't erase the entire chip
 flash as part of installing MCUboot itself)::
 
   ./zmp flash -o app -b nrf52_blenano2 zephyr/samples/hello_world
+
+For nRF52 DK, use ``-b nrf52_pca10040``; for nRF52840 DK, use ``-b
+nrf52840_pca10056``.
 
 The console output will now end with:
 
@@ -391,6 +422,15 @@ with these instructions, which may be useful on other development platforms.
    If you don't want to do that, see
    https://git-scm.com/docs/gitcredentials for some alternatives.
 
+.. [#zmpwest]
+
+   The ``zmp`` tool is optional; it's possible to build this all
+   "manually" without using this tool, but instructions are not
+   provided here. To see what ``zmp`` is doing, run ``zmp --debug
+   COMMAND <args>`` instead of ``zmp COMMAND <args>``.
+
+   In the future, zmp will be replaced by Zephyr's West tool.
+
 .. [#signatures]
 
    Since this tutorial is meant to help you get started, the binaries
@@ -420,7 +460,14 @@ with these instructions, which may be useful on other development platforms.
 
 .. _pyOCD: https://github.com/mbedmicro/pyOCD
 
+.. _nRF5x Command Line Tools:
+   http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.tools%2Fdita%2Ftools%2Fnrf5x_command_line_tools%2Fnrf5x_installation.html
+
+.. _source.foundries.io: https://source.foundries.io
+
 .. _HomeBrew: https://brew.sh/
+
+.. _Zephyr's West tool: http://docs.zephyrproject.org/west/index.html
 
 .. _Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/about
 
@@ -428,7 +475,8 @@ with these instructions, which may be useful on other development platforms.
 
 .. _pip: https://pip.pypa.io/en/stable/installing/
 
-.. _create a subscriber token on foundries.io/s/: https://foundries.io/s/
+.. _create a subscriber access token on foundries.io/s/:
+   https://foundries.io/s/
 
 .. _Open Source Foundries GitHub: https://github.com/OpenSourceFoundries
 
