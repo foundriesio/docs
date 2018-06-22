@@ -33,6 +33,7 @@ Layer                                 Description
                                       OSTree and TUF / Uptane.
 `Meta-OSF`_ (Distro)                  This layer provides the Linux microPlatform distribution
                                       configuration, unified Kernel and images.
+`Meta-Intel`_ (BSP)                   This is the board support layer for Intel based devices.
 `Meta-RaspberryPi`_ (BSP)             This is the board support layer for the Raspberry Pi boards.
 `Meta-RISC-V`_ (BSP)                  This is the general hardware specific BSP overlay for RISC-V
                                       based devices.
@@ -77,6 +78,8 @@ default set of packages used by the image via the
    https://github.com/advancedtelematic/meta-updater
 .. _Meta-OSF:
    https://github.com/opensourcefoundries/meta-osf
+.. _Meta-Intel:
+   https://git.yoctoproject.org/cgit.cgi/meta-intel/
 .. _Meta-RaspberryPi:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/
 .. _Meta-RISC-V:
