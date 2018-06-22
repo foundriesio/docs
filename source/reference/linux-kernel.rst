@@ -11,8 +11,8 @@ Linux microPlatform.
 
 - A public tree, which may be out of date, is available at:
   https://github.com/OpenSourceFoundries/linux/. Development is done
-  in branches; for example, development for the v4.14 series is in the
-  ``linux-v4.14.y`` branch.
+  in branches; for example, development for the v4.16 series is in the
+  ``linux-v4.16.y`` branch.
 
 The Linux Kernel recipe can be found in the :ref:`Meta-OSF layer
 <ref-linux-layers-meta-osf>`, under the ``meta-osf/recipes-kernel/linux``
