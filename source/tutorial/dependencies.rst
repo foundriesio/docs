@@ -13,38 +13,59 @@ microPlatform device.
 The Zephyr and Linux microPlatforms are portable, and builds for
 several boards are available. To get started, however, we recommend:
 
-**Zephyr microPlatform**:
+**Zephyr microPlatform**: at least one of the following:
+
+.. important:: Only one of these Zephyr devices is required to
+               complete the tutorial.
 
 - `RedBear BLE Nano 2`_ kit: make sure to purchase the kit, which
   includes the DAPLink board, and not just a standalone BLE Nano 2
-  board.
+  board. [#rb]_
+- `nRF52 DK`_ (for nRF52832)
+- `nRF52840 DK`_
 
 **Linux microPlatform**:
 
 - `Raspberry Pi 3 Model B`_
-- 3.3 volt USB to TTL Serial Cable, such as this `SparkFun FTDI Basic
-  Breakout 3.3V`_
 - SD card compatible with Raspberry Pi 3 (see this `Embedded
   Linux wiki guide`_ for examples)
-- Ethernet cable (optional)
+- Ethernet cable (recommended)
+- 3.3 volt USB to TTL Serial Cable, such as this `SparkFun FTDI Basic
+  Breakout 3.3V`_ (optional, only needed if connecting via WiFi)
 
 This hardware was chosen mainly because it is well-tested with the
-microPlatforms, as well as commonly and relatively inexpensively
-available.
+microPlatforms, commonly available, and relatively inexpensive.
+Performance seems adequate for connecting up to five or so Zephyr
+microPlatform devices.
 
 Subscriber Token (Optional)
 ---------------------------
 
 The latest Linux and Zephyr microPlatform updates are made
 continuously available to subscribers. To access subscriber-only
-content, you'll need to generate a token at https://foundries.io/s/\ .
+content, you'll need to generate an Access Token at
+https://foundries.io/s/\ .
 
-Non-subscribers can use latest public release. Public releases match
-the subscriber trees, but lag behind them; they are typically released
-once or twice a year.
+Non-subscribers can use the latest public release. Public releases
+match the subscriber trees, but lag behind them; they are typically
+released once or twice a year.
+
+.. rubric:: Footnotes
+
+.. [#rb]
+
+   Since RedBear was acquired by Particle, supply of these boards has
+   become limited; availability is expected to continue through Q1
+   2019.
 
 .. _RedBear BLE Nano 2:
    https://redbear.cc/product/ble-nano-kit-2.html
+
+.. _nRF52 DK:
+   https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52-DK
+
+.. _nRF52840 DK:
+   https://www.nordicsemi.com/eng/Products/nRF52840-DK
 
 .. _Raspberry Pi 3 Model B:
    https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
