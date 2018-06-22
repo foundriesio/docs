@@ -286,10 +286,10 @@ Connect to the Board's Console
 Next, connect to your board's console so you'll be able to see the
 message printed when you flash the application in the next step.
 
-- Make sure your board plugged into computer via USB. A serial port
-  device (usually named ``/dev/ttyACM0`` or ``/dev/ttyUSB0`` on Linux,
-  but the number may change if you've got other devices plugged in)
-  should be created when the board enumerates if it supports USB
+- Make sure your board is plugged into your computer via USB. A serial
+  port device (usually named ``/dev/ttyACM0`` or ``/dev/ttyUSB0`` on
+  Linux, but the number may change if you've got other devices plugged
+  in) should be created when the board enumerates if it supports USB
   serial.
 
 - Open the device with your favorite serial console program\
