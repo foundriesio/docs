@@ -138,7 +138,7 @@ for this system::
   ./zmp build -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
   ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
 
-.. include:: pyocd.include
+If using the nRF DK boards, change the ``-b`` option appropriately.
 
 .. _tutorial-basic-use:
 
@@ -191,7 +191,7 @@ which appear next to them.
 
 - Change state of the light object
 
-  Click 'Write' buttons to bring up interfaces for changing data. An
+  Click "Write" buttons to bring up interfaces for changing data. An
   example of this interface for the light object is shown here.
 
   .. figure:: /_static/tutorial/leshan-changelight.png
@@ -211,11 +211,13 @@ things simple, you'll "update" the firmware using the same binary you
 built previously, but you can also change and rebuild the program
 before following these steps to write new firmware.
 
-Start a Python 3 HTTP on your workstation from the Zephyr
+Start a Python 3 HTTP server on your workstation from the Zephyr
 microPlatform binary build directory for this application::
 
    $ cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/
    $ python3 -m http.server
+
+(Adjust the build directory as needed for other boards.)
 
 The update will then be available at::
 
