@@ -4,9 +4,9 @@ Install microPlatforms
 ======================
 
 Now that you have the necessary :ref:`dependencies
-<tutorial-dependencies>`, set up a development environment on your
-workstation and install the microPlatforms on your devices using these
-pages.
+<tutorial-dependencies>`, you can go on to set up a development
+environment on your workstation and install the microPlatforms on your
+devices.
 
 .. toctree::
    :maxdepth: 2
