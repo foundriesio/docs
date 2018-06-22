@@ -8,10 +8,12 @@ Install Linux microPlatform
 The Linux microPlatform is split into two parts:
 
 1. A *base system*, which is built using OpenEmbedded / Yocto. It
-   provides a minimal runtime for application development.
+   provides a minimal runtime for application development which is
+   over the air updatable.
 
 2. Applications, which are developed and deployed as *containers*
-   running on the base system. Currently, Docker containers are
+   running on the base system. Application updates are accomplished by
+   running updated containers. Currently, Docker containers are
    supported.
 
 .. figure:: /_static/tutorial/linux-microplatform.png
@@ -36,7 +38,7 @@ microPlatform device into an LWM2M gateway for your IoT devices.)
 
 .. important::
 
-   Make sure you've set up dependencies as described in
+   Make sure you've obtained dependencies as described in
    :ref:`tutorial-dependencies` before continuing.
 
 .. _tutorial-linux-base:
@@ -44,7 +46,7 @@ microPlatform device into an LWM2M gateway for your IoT devices.)
 Install Base microPlatform
 --------------------------
 
-In this step, you'll install the base microPlatform and connect to
+You'll start by installing the base microPlatform and connecting to
 your device's console.
 
 Instructions for officially supported boards are listed
@@ -103,6 +105,12 @@ the next step.
 
 Option 1: Zeroconf
 ~~~~~~~~~~~~~~~~~~
+
+**On Raspberry Pi 3**::
+
+  ping -c 3 raspberrypi3-64.local
+
+**On other boards**:
 
 Linux microPlatform devices attempt to make themselves available on
 the local network using Zeroconf [#zeroconf]_ at ``hostname.local``.
@@ -174,7 +182,7 @@ registry::
     docker login hub.foundries.io --username=unused
 
 The username is currently ignored, but you must provide a value. When
-prompted for the password, enter your subscriber token.
+prompted for the password, enter your subscriber access token.
 
 Then run the latest subscriber nginx container::
 
@@ -190,8 +198,8 @@ To run the latest public nginx container available on Docker Hub::
 Connect to nginx
 ~~~~~~~~~~~~~~~~
 
-After the image is complete, the running container will stay connected
-to your terminal.
+After the image is downloaded, the running container will stay
+connected to your terminal.
 
 You can now check that it's working by connecting to
 http://your-device-hostname.local (for example,
@@ -219,6 +227,13 @@ Press Control-C to stop the container. You can now remove it using::
 
 The Linux microPlatform is now successfully deployed on your
 device.
+
+Next Steps
+----------
+
+You can either continue the tutorial at :ref:`tutorial-zephyr`, or
+learn more about the Linux microPlatform in :ref:`howto` and the
+:ref:`ref-linux`.
 
 .. include:: reporting-issues.include
 

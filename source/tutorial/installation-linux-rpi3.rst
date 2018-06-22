@@ -55,8 +55,8 @@ enabled, so a graphical shell is not available.)
    unfortunately requires this device to run at significantly reduced
    speeds, and causes serious Bluetooth instability.
 
-Option 1: Ethernet
-~~~~~~~~~~~~~~~~~~
+Option 1: Ethernet (Recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Ethernet works out of the box if a DHCP server is available on the
 local network.
@@ -138,22 +138,35 @@ The default password is ``osf``; we recommend changing it now if you
 haven't already. For this to work, your local network needs to support
 Zeroconf and the hostname must be otherwise unclaimed.
 
-If it doesn't work, try one of the following.
-
-- List connected devices and their local IP addresses on your network
-  router's administrative interface, and try logging in via SSH.
-
-- Temporarily enable the UART and determine available IP addresses
-  with commands like::
-
-    ip addr show
-
 Finish Installation
 -------------------
 
 Once you have an SSH console connection, finish your installation by
 setting up application containers. Follow instructions in
 :ref:`tutorial-linux-nginx` for a demonstration.
+
+Appendix: Troubleshooting
+-------------------------
+
+If the above methods to connect to the network don't work, try one of
+the following.
+
+- Temporarily enable and connect to the UART (see directions above in
+  the WiFi section) and determine available IP addresses with::
+
+    # Ethernet
+    ip addr show eth0 scope global
+
+    # WiFi
+    ip addr show wlan0 scope global
+
+  Then connect by IP address::
+
+    ssh osf@rpi3.ip.addr.ess
+
+- List connected devices and their local IP addresses on your network
+  router's administrative interface, and log in by IP address as
+  above.
 
 .. _Raspberry Pi 3:
    https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
