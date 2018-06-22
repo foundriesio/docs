@@ -34,6 +34,8 @@ Layer                                 Description
 `Meta-OSF`_ (Distro)                  This layer provides the Linux microPlatform distribution
                                       configuration, unified Kernel and images.
 `Meta-RaspberryPi`_ (BSP)             This is the board support layer for the Raspberry Pi boards.
+`Meta-RISC-V`_ (BSP)                  This is the general hardware specific BSP overlay for RISC-V
+                                      based devices.
 `Meta-Yocto`_ (BSP)                   This is the board support layer for the Yocto Project hardware
                                       references, such as BeagleBone Black.
 `Meta-96boards`_ (BSP)                This layer is managed by Linaro and intended for boards that do
@@ -77,6 +79,8 @@ default set of packages used by the image via the
    https://github.com/opensourcefoundries/meta-osf
 .. _Meta-RaspberryPi:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/
+.. _Meta-RISC-V:
+   https://github.com/riscv/meta-riscv
 .. _Meta-Yocto:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-yocto/
 .. _Meta-96boards:
