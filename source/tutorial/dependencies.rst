@@ -26,7 +26,7 @@ several boards are available. To get started, however, we recommend:
 
 **Linux microPlatform**:
 
-- `Raspberry Pi 3 Model B`_
+- `Raspberry Pi 3 Model B`_ or `Raspberry Pi 3 Model B+`_
 - SD card compatible with Raspberry Pi 3 (see this `Embedded
   Linux wiki guide`_ for examples)
 - Ethernet cable (recommended)
@@ -69,6 +69,9 @@ released once or twice a year.
 
 .. _Raspberry Pi 3 Model B:
    https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
+
+.. _Raspberry Pi 3 Model B+:
+   https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
 
 .. _SparkFun FTDI Basic Breakout 3.3V:
    https://www.sparkfun.com/products/9873

@@ -50,7 +50,8 @@ You'll start by installing the base microPlatform and connecting to
 your device's console.
 
 Instructions for officially supported boards are listed
-here. Currently, this is limited to the Raspberry Pi 3 Model B.
+here. Currently, this is limited to the Raspberry Pi 3 Model B and
+Raspberry Pi 3 Model B+.
 
 - :ref:`tutorial-linux-rpi3`
 

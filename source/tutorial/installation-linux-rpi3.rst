@@ -13,7 +13,7 @@ Install Base Linux microPlatform: Raspberry Pi 3
 
 These are the board-specific instructions for :ref:`installing the
 base Linux microPlatform <tutorial-linux-base>` on the Raspberry Pi 3
-Model B.
+Model B and Model B+.
 
 Get Prebuilt Image
 ------------------
