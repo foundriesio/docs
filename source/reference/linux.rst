@@ -27,6 +27,7 @@ The Linux microPlatform also provides reference applications as
 IPv6/IPv4 routing and MQTT message brokering.
 
 .. toctree::
+   :maxdepth: 1
 
    linux-building
    linux-targets
