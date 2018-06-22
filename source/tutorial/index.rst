@@ -7,6 +7,12 @@ Start here for a step by step tutorial on how to install the
 microPlatforms, then use them to set up an end-to-end IoT
 demonstration system using the OMA Lightweight M2M (LWM2M) protocol.
 
+.. note::
+
+   If you are only interested in installing one of the microPlatforms,
+   you can go directly to :ref:`tutorial-linux` or
+   :ref:`tutorial-zephyr`.
+
 A block diagram of this system is shown here, and though it is not
 explicitly shown, one or more IoT devices can connect to the network
 through the same gateway.
@@ -18,15 +24,16 @@ through the same gateway.
 
 Using this demonstration system, you can:
 
-- See live data readings from your devices using the Leshan web application.
+- See live data readings from your devices using the Leshan web
+  application
 
-- Send commands to the device, such as turning on and off an LED.
+- Send commands to the device, such as turning on and off an LED
 
-- Use Leshan to update your IoT device firmware.
+- Use Leshan to update your IoT device firmware
 
-- Secure your network communication using the DTLS protocol.
+- Secure your network communication using the DTLS protocol
 
-To set up and use this system, follow these pages in order.
+To set up and use this system, follow these pages in order
 
 .. toctree::
    :maxdepth: 3
