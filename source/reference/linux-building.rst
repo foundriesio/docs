@@ -135,7 +135,33 @@ machines found in every enabled OpenEmbedded / Yocto Project layer,
 and force one to be selected.  ``BUILDDIR`` is optional; if it is not
 specified, the script will default to ``build-lmp``.
 
-.. todo:: add public kernel links and required conf changes
+Subscribers
+~~~~~~~~~~~
+
+Bitbake requires passwordless authentication when fetching repositories
+from https://source.foundries.io.
+
+Create a file named :file:`.netrc` (note the leading ``.``) in your home
+directory, readable only by your user, with the following contents:
+
+.. code-block:: none
+
+  machine source.foundries.io
+  login <your-subscriber-token>
+
+Public
+~~~~~~
+
+OSF projects default to https://source.foundries.io, which is only available
+for subscribers.
+
+Change ``conf/local.conf`` and set the OSF_LMP_GIT variables to point to
+GitHub instead:
+
+.. code-block:: none
+
+  echo 'OSF_LMP_GIT_URL = "github.com"' >> conf/local.conf
+  echo 'OSF_LMP_GIT_NAMESPACE = "opensourcefoundries/"' >> conf/local.conf
 
 To build the Linux microPlatform gateway image::
 
