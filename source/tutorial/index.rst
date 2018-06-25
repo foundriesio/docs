@@ -33,7 +33,7 @@ Using this demonstration system, you can:
 
 - Secure your network communication using the DTLS protocol
 
-To set up and use this system, follow these pages in order
+To set up and use this system, follow these pages in order.
 
 .. toctree::
    :maxdepth: 3
