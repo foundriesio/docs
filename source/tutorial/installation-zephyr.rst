@@ -380,9 +380,12 @@ The console output will now end with:
 
    Hello Zephyr microPlatform! arm
 
-The Zephyr microPlatform development environment is now set up on your
-workstation, and you've verified you can flash your device. Move on to
-the next page to set up the basic LWM2M system.
+Next Steps
+----------
+
+You can either continue the tutorial at :ref:`tutorial-basic`, or
+learn more about the Zephyr microPlatform in :ref:`howto` and
+:ref:`ref-zephyr`.
 
 .. include:: reporting-issues.include
 
