@@ -17,10 +17,10 @@ through the same gateway.
    :align: center
    :figwidth: 5in
 
-The system contains Zephyr-based IoT devices, an IoT gateway, and a
-web application, Leshan, that is used as the LWM2M server.  With
-Leshan you can issue commands, query data and perform firmware over
-the air (FOTA) updates on the IoT device(s).
+The system contains Zephyr-based IoT devices, a Linux-based IoT
+gateway, and a web application, Leshan, that is used as the LWM2M
+server.  With Leshan, you can issue commands, query data, and perform
+firmware over the air (FOTA) updates on the IoT device(s).
 
 Using the demonstration system described here, you can:
 
@@ -48,8 +48,8 @@ Open Source Foundries provides pre-built Leshan Docker containers for
 use on your workstation, and `Ansible`_ playbooks and associated shell
 scripts you can run there which make it easier to set up your gateway.
 
-Begin by installing Docker and Ansible on your workstation (not your
-gateway device).
+To install Docker and Ansible on your workstation (not your gateway
+device), follow these guides:
 
 - `Install Docker`_
 - `Install Ansible`_
@@ -64,7 +64,7 @@ Continue by starting a demonstration-grade Leshan server on your workstation.
 **Subscribers**:
 
 First, log in to the Open Source Foundries subscriber container
-registry on your worksation (not the gateway device)::
+registry on your workstation (not the gateway device)::
 
     docker login hub.foundries.io --username=unused
 
@@ -80,7 +80,7 @@ Now run the latest subscriber container, again on your workstation::
 
 **Public**:
 
-Containers for the latest public relase are available from Docker Hub.
+Containers for the latest public release are available from Docker Hub.
 Run this on your workstation::
 
     docker run --restart=always -d -t -p 5683:5683/udp -p 5684:5684/udp \
