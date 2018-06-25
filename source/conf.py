@@ -51,7 +51,7 @@ if osf_subscriber_version is None:
 osf_subscriber_tags = ''
 
 # The most recently released public version number.
-osf_public_version = '17.10.1'
+osf_public_version = '0.22'
 
 # -- General configuration ------------------------------------------------
 
