@@ -103,7 +103,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Open Source Foundries microPlatforms'
-copyright = '2017, Open Source Foundries, Ltd'
+copyright = '2017-2018, Open Source Foundries, Ltd'
 author = 'Open Source Foundries, Ltd.'
 
 # The version info for the project you're documenting, acts as replacement for
