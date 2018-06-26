@@ -16,6 +16,7 @@ class OsfRPi3LinksDirective(OsfDirective):
         }
 
     def run(self):
+        self.state.document.settings.env.note_dependency(__file__)
         config = self.get_config()
 
         if 'public' in self.options:
@@ -49,6 +50,7 @@ class OsfRPi3OSTreeDirective(OsfDirective):
         }
 
     def run(self):
+        self.state.document.settings.env.note_dependency(__file__)
         config = self.get_config()
         if 'public' in self.options:
             version = config.osf_public_version
