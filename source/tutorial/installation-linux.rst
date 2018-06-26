@@ -31,10 +31,6 @@ This document describes how to:
 - Run the nginx web server in a container on the device, demonstrating
   application deployment.
 
-(Later on in the Getting Started Tutorial, you'll replace the simple
-nginx container with several different containers to turn your Linux
-microPlatform device into an LWM2M gateway for your IoT devices.)
-
 .. important::
 
    Make sure you've obtained dependencies as described in
@@ -274,19 +270,16 @@ nginx web server.
 
          docker run --name nginx-demo -p 80:80 opensourcefoundries/nginx:|docker_public_tag|
 
-Connect to nginx
-~~~~~~~~~~~~~~~~
-
 After the image is downloaded, the running container will stay
 connected to your terminal.
 
-You can now check that it's working by connecting to
+Connect to nginx
+~~~~~~~~~~~~~~~~
+
+Check that nginx is running by connecting to
 http://your-device-hostname.local (for example,
 http://raspberrypi3-64.local) or http://your-device-ip-address/ in
-your browser.
-
-You should see an nginx splash page load, as well as log messages
-appearing in the terminal where you typed ``docker run``, like so:
+your Web browser. You will see a splash page:
 
 .. figure:: /_static/tutorial/nginx-demo.png
    :alt: nginx splash page
@@ -294,13 +287,14 @@ appearing in the terminal where you typed ``docker run``, like so:
 
    nginx splash page
 
-Example terminal output::
+Log messages will also appear in the terminal where you typed ``docker
+run``, like so::
 
   10.0.0.111 - - [09/Jan/2018:21:07:21 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
   2018/01/09 21:07:22 [error] 7#7: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.0.111, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "raspberrypi3-64.local", referrer: "http://raspberrypi3-64.local/"
   10.0.0.111 - - [09/Jan/2018:21:07:22 +0000] "GET /favicon.ico HTTP/1.1" 404 571 "http://raspberrypi3-64.local/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
 
-Press Control-C to stop the container. You can now remove it using::
+Press Control-C to stop the container, then remove it using::
 
   docker rm nginx-demo
 
