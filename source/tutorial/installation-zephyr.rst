@@ -422,7 +422,7 @@ with these instructions, which may be useful on other development platforms.
   - `PyYaml <http://pyyaml.org/wiki/PyYAML>`_
   - `Cryptography <https://cryptography.io/en/latest/>`_
   - `pyelftools <https://github.com/eliben/pyelftools>`_
-  - `IntelHex <https://pypi.python.org/pypi/IntelHex>`_
+  - `IntelHex <https://pypi.org/project/IntelHex/>`_
   - `Click <http://click.pocoo.org/>`_
 
 - `Google Repo <https://gerrit.googlesource.com/git-repo/>`_
