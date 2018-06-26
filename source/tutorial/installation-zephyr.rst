@@ -37,152 +37,151 @@ This document describes how to:
 Set up Build Environment
 ------------------------
 
-Before installing the the Zephyr microPlatform, you need to set up
-your workstation build environment. Instructions for each supported
-platform follow.
+Select your platform for instructions:
 
-macOS
-~~~~~
+.. content-tabs::
 
-We test on macOS Sierra (10.12).
+   .. tab-container:: linux
+      :title: Linux
 
-#. Install `HomeBrew`_.
+      1. Install dependencies for the Zephyr microPlatform.
 
-#. Install dependencies for the Zephyr microPlatform::
+         On Ubuntu (16.04 and up)::
 
-     brew install dtc python3 repo gpg cmake
-     pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja pyserial click
+           sudo add-apt-repository ppa:osf-maintainers/ppa
+           sudo apt-get update
+           sudo apt-get install zmp-dev
+           pip3 install --user pyelftools intelhex pyserial click \
+                               cryptography --only-binary cryptography
 
-   .. note::
+         On other distributions, see :ref:`tutorial-zephyr-dependencies`.
 
-      If you are running pip version 10, you may see this error::
+      #. Install the tools you need to flash your board.
 
-        ModuleNotFoundError: No module named 'pip.req'
+         For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
+         `pip`_ (`not pip3
+         <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
 
-      If that happens, install ninja with brew instead of pip::
+           sudo apt-get install python-pip
+           # Make sure this is a Python 2 pip!
+           pip install --user pyOCD
 
-        brew install ninja
+         For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
 
-      This is being tracked upstream as `ninja bug #1431
-      <https://github.com/ninja-build/ninja/issues/1431>`_.
+         For other boards, check your board's documentation.  At this time,
+         the Zephyr microPlatform only supports boards that can be flashed
+         with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
+         the USB DFU protocol).
 
-#. Install the tools you need to flash your board.
+      #. Install the following udev rules as root, then unplug and plug back
+         in any boards you have connected::
 
-   For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
-   the pip2 provided by HomeBrew's Python 2 (`not pip3
-   <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
+           echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
 
-     brew install python
-     pip2 install --user pyOCD
-     export PATH=$PATH:$HOME/Library/Python/2.7/bin
+      #. Configure your username and password in Git::
+
+           git config --global user.name "Your Full Name"
+           git config --global user.email "your-email-address@example.com"
+
+      Your system is now ready to install the Zephyr microPlatform.
+
+   .. tab-container:: macos
+      :title: macOS
+
+      We test on macOS Sierra (10.12).
+
+      #. Install `HomeBrew`_.
+
+      #. Install dependencies for the Zephyr microPlatform::
+
+           brew install dtc python3 repo gpg cmake
+           pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja pyserial click
+
+         .. note::
+
+            If you are running pip version 10, you may see this error::
+
+              ModuleNotFoundError: No module named 'pip.req'
+
+            If that happens, install ninja with brew instead of pip::
+
+              brew install ninja
+
+            This is being tracked upstream as `ninja bug #1431
+            <https://github.com/ninja-build/ninja/issues/1431>`_.
+
+      #. Install the tools you need to flash your board.
+
+         For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
+         the pip2 provided by HomeBrew's Python 2 (`not pip3
+         <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
+
+           brew install python
+           pip2 install --user pyOCD
+           export PATH=$PATH:$HOME/Library/Python/2.7/bin
 
 
-   For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
+         For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
 
-   For other boards, check your board's documentation.  At this time,
-   the Zephyr microPlatform only supports boards that can be flashed
-   with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
-   the USB DFU protocol).
+         For other boards, check your board's documentation.  At this time,
+         the Zephyr microPlatform only supports boards that can be flashed
+         with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
+         the USB DFU protocol).
 
-#. Configure your username and password in Git::
+      #. Configure your username and password in Git::
 
-     git config --global user.name "Your Full Name"
-     git config --global user.email "your-email-address@example.com"
+           git config --global user.name "Your Full Name"
+           git config --global user.email "your-email-address@example.com"
 
-Your build environment is now ready; continue by following the steps
-in :ref:`tutorial-zephyr-install`.
+      Your system is now ready to install the Zephyr microPlatform.
 
-Windows 10 (Experimental)
-~~~~~~~~~~~~~~~~~~~~~~~~~
+   .. tab-container:: windows
+      :title: Windows 10 (Experimental)
 
-.. note::
+      .. note::
 
-   Due to the Zephyr microPlatform's current use of the Repo tool to
-   manage multiple Git repositories, only experimental directions
-   using the Windows Subsystem for Linux are provided. This is because
-   Repo does not work on Windows.
+         Due to the Zephyr microPlatform's current use of the Repo tool to
+         manage multiple Git repositories, only experimental directions
+         using the Windows Subsystem for Linux are provided. This is because
+         Repo does not work on Windows.
 
-   When possible, the Zephyr microPlatform will use `Zephyr's West
-   tool`_ to manage repositories instead, enabling first-class Windows
-   support.
+         When possible, the Zephyr microPlatform will use `Zephyr's West
+         tool`_ to manage repositories instead, enabling first-class Windows
+         support.
 
-Windows versions supporting the Windows Subsystem for Linux have
-experimental support. For this to work, you will need 64 bit Windows
-10 Anniversary Update or later.
+      Windows versions supporting the Windows Subsystem for Linux have
+      experimental support. For this to work, you will need 64 bit Windows
+      10 Anniversary Update or later.
 
-These instructions should let you build binaries; however, flashing
-support is not yet documented.
+      These instructions should let you build binaries; however, flashing
+      support is not yet documented.
 
-#. Install the `Windows Subsystem for Linux`_, then open a Bash
-   window to enter commands.
+      #. Install the `Windows Subsystem for Linux`_, then open a Bash
+         window to enter commands.
 
-#. Change to your Windows user directory with a command like this::
+      #. Change to your Windows user directory with a command like this::
 
-     cd /mnt/c/Users/YOUR-USER-NAME
+           cd /mnt/c/Users/YOUR-USER-NAME
 
-   You can press the Tab key after typing ``/Users/`` to see a list of
-   user names.
+         You can press the Tab key after typing ``/Users/`` to see a list of
+         user names.
 
-   .. warning::
+         .. warning::
 
-      Skipping this step means you won't be able to use the
-      microPlatform with Windows tools like Explorer, graphical
-      editors, etc.
+            Skipping this step means you won't be able to use the
+            microPlatform with Windows tools like Explorer, graphical
+            editors, etc.
 
-      As documented by Microsoft, `changing files in Linux directories
-      using Windows tools`_ can damage your system.
+            As documented by Microsoft, `changing files in Linux directories
+            using Windows tools`_ can damage your system.
 
-#. We recommend making sure your Linux subsystem is up to date with
-   these commands (which can take a while they first time they're run)::
+      #. We recommend making sure your Linux subsystem is up to date with
+         these commands (which can take a while they first time they're run)::
 
-     apt-get update
-     apt-get upgrade
+           apt-get update
+           apt-get upgrade
 
-#. Finish by following the Ubuntu instructions in the next section.
-
-Linux
-~~~~~
-
-1. Install dependencies for the Zephyr microPlatform.
-
-   On Ubuntu (16.04 and up)::
-
-     sudo add-apt-repository ppa:osf-maintainers/ppa
-     sudo apt-get update
-     sudo apt-get install zmp-dev
-     pip3 install --user pyelftools intelhex pyserial click \
-                         cryptography --only-binary cryptography
-
-   On other distributions, see :ref:`tutorial-zephyr-dependencies`.
-
-#. Install the tools you need to flash your board.
-
-   For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
-   `pip`_ (`not pip3
-   <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
-
-     sudo apt-get install python-pip
-     # Make sure this is a Python 2 pip!
-     pip install --user pyOCD
-
-   For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
-
-   For other boards, check your board's documentation.  At this time,
-   the Zephyr microPlatform only supports boards that can be flashed
-   with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
-   the USB DFU protocol).
-
-#. Install the following udev rules as root, then unplug and plug back
-   in any boards you have connected::
-
-     echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
-
-#. Configure your username and password in Git::
-
-     git config --global user.name "Your Full Name"
-     git config --global user.email "your-email-address@example.com"
-
-Your system is now ready to install the Zephyr microPlatform.
+      #. Finish by following the Ubuntu Linux instructions.
 
 .. _tutorial-zephyr-install:
 
