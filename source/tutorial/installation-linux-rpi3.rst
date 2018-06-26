@@ -18,9 +18,14 @@ Model B and Model B+.
 Get Prebuilt Image
 ------------------
 
-A prebuilt image for Linux microPlatform update |version| is available:
+**Subscribers:** a prebuilt image for update |version| is available:
 
 .. osf-rpi3-links::
+
+**Public:** a prebuilt image for update |public_version| is available:
+
+.. osf-rpi3-links::
+   :public:
 
 Flash Image To SD Card
 ----------------------
