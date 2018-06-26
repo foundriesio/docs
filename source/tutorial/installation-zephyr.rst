@@ -258,17 +258,39 @@ Choose a subscriber or public installation:
 
 .. _tutorial-zephyr-build:
 
-Build an Application
---------------------
+Build MCUboot and Hello World Application
+-----------------------------------------
 
-Now that you've installed the Zephyr microPlatform, it's time to build
-a demonstration application using the :ref:`zmp tool <ref-zephyr-zmp>`
-provided in the Zephyr microPlatform installation directory [#zmpwest]_.
+Choose your board, and run the command from the ``zmp`` directory you
+made earlier:
 
-You'll start with a "hello world" app. However, ``zmp`` will also sign
-the application image for chainloading by MCUboot, a secure bootloader
-for microcontrollers, as well as build an MCUboot image for your
-board.
+.. content-tabs::
+
+   .. tab-container:: nrf52_blenano2
+      :title: BLE Nano 2
+
+      .. code-block:: console
+
+         ./zmp build -b nrf52_blenano2 zephyr/samples/hello_world/
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         ./zmp build -b nrf52_pca10040 zephyr/samples/hello_world/
+
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         ./zmp build -b nrf52840_pca10056 zephyr/samples/hello_world/
+
+In addition to the ``hello_world`` app, this builds an MCUboot binary
+for your board and application.
+
+(For more information, see :ref:`ref-zephyr-zmp-build`.)
 
 .. important::
 
@@ -281,16 +303,6 @@ board.
    For production, **you must generate and use your own keys**, or
    anyone will be able to sign binaries for your boards. See
    :ref:`howto-mcuboot-keys` for details.
-
-When using a BLE Nano 2, run this from the ``zmp`` directory you made
-earlier::
-
-  ./zmp build -b nrf52_blenano2 zephyr/samples/hello_world/
-
-For nRF52 DK, use ``-b nrf52_pca10040``; for nRF52840 DK, use ``-b
-nrf52840_pca10056``.
-
-(For more information, see :ref:`ref-zephyr-zmp-build`.)
 
 Connect to the Board's Console
 ------------------------------
@@ -310,15 +322,30 @@ message printed when you flash the application in the next step.
 Flash MCUboot and the Application
 ---------------------------------
 
-Now you'll flash MCUBoot and the ``hello-world`` application to your board.
+Now you'll flash MCUBoot and the ``hello-world`` application to your board:
 
-When using BLE Nano 2, run this from the the Zephyr microPlatform
-directory::
+.. content-tabs::
 
-  ./zmp flash -b nrf52_blenano2 zephyr/samples/hello_world/
+   .. tab-container:: nrf52_blenano2
+      :title: BLE Nano 2
 
-For nRF52 DK, use ``-b nrf52_pca10040``; for nRF52840 DK, use ``-b
-nrf52840_pca10056``.
+      .. code-block:: console
+
+         ./zmp flash -b nrf52_blenano2 zephyr/samples/hello_world/
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         ./zmp flash -b nrf52_pca10040 zephyr/samples/hello_world/
+
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         ./zmp flash -b nrf52840_pca10056 zephyr/samples/hello_world/
 
 (For more information, see :ref:`ref-zephyr-zmp-flash`.)
 
@@ -373,18 +400,31 @@ Next, make a trivial change to the application: change "Hello World"
 to "Hello Zephyr microPlatform" in
 :file:`zephyr/samples/hello_world/src/main.c`.
 
-On BLE Nano 2, re-build just the application (since you don't need to
-rebuild MCUboot)::
+Since you've already flashed MCUboot, you can just re-flash the
+updated application to your board:
 
-  ./zmp build -o app -b nrf52_blenano2 zephyr/samples/hello_world
+.. content-tabs::
 
-Now re-flash the application only (so you don't erase the entire chip
-flash as part of installing MCUboot itself)::
+   .. tab-container:: nrf52_blenano2
+      :title: BLE Nano 2
 
-  ./zmp flash -o app -b nrf52_blenano2 zephyr/samples/hello_world
+      .. code-block:: console
 
-For nRF52 DK, use ``-b nrf52_pca10040``; for nRF52840 DK, use ``-b
-nrf52840_pca10056``.
+         ./zmp flash -o app -b nrf52_blenano2 zephyr/samples/hello_world/
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         ./zmp flash -o app -b nrf52_pca10040 zephyr/samples/hello_world/
+
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         ./zmp flash -o app -b nrf52840_pca10056 zephyr/samples/hello_world/
 
 The console output will now end with:
 
