@@ -124,6 +124,8 @@ You'll now use Ansible to set up your IoT gateway to act as a network
 proxy for your IoT device to publish sensor data to CloudMQTT, and
 fetch updates from hawkBit.
 
+.. |iot-gateway-setup-server| replace:: hawkBit
+
 .. include:: /tutorial/iot-gateway-setup-common.include
 
 - From the ``gateway-ansible`` repository, deploy the gateway
@@ -135,8 +137,12 @@ fetch updates from hawkBit.
     CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
         GW_HOSTNAME=raspberrypi3-64.local REGISTRY_PASSWD=<subscriber-token> ./iot-gateway.sh
 
-  Setting REGISTRY_PASSWD to your subscriber token is necessary so
-  your gateway device can log in to the container registry.
+  Providing your subscriber token is necessary so your gateway device
+  can log in to the container registry. If you're concerned about
+  typing it directly into the terminal, you can set it in the
+  environment variable ``REGISTRY_PASSWD`` by any means you find
+  sufficiently secure. Similar comments apply to the
+  ``CLOUDMQTT_PASSWD`` environment variable.
 
   **Public**::
 
@@ -144,14 +150,7 @@ fetch updates from hawkBit.
         REGISTRY=hub.docker.com REGISTRY_USER=docker REGISTRY_PASSWD=docker \
         GW_HOSTNAME=raspberrypi3-64.local ./iot-gateway.sh
 
-  These instructions assume use of `Raspberry Pi 3`_ on a local
-  network supporting Zeroconf.  Adjust ``GW_HOSTNAME`` as needed if
-  your environment is different.
 
-  They also assume ``iot-gateway.sh`` is run on the same machine
-  running the hawkBit server. Set ``MGMT_SERVER`` to the IP address of
-  the machine running the hawkBit container if your environment is
-  different.
 
 Your gateway device is now ready for use.
 

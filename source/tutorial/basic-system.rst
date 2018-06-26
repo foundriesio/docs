@@ -98,6 +98,8 @@ Set up IoT Gateway
 You'll now use Ansible to set up your IoT gateway to act as an LWM2M
 network proxy for your IoT device.
 
+.. |iot-gateway-setup-server| replace:: Leshan
+
 .. include:: iot-gateway-setup-common.include
 
 - From the ``gateway-ansible`` repository cloned on your workstation,
@@ -107,20 +109,17 @@ network proxy for your IoT device.
 
     GW_HOSTNAME=raspberrypi3-64.local REGISTRY_PASSWD=<your-subscriber-token> ./iot-gateway.sh
 
-  Setting REGISTRY_PASSWD to your subscriber token is necessary to
-  ensure your gateway device can log in to the container registry. If
-  you're concerned about typing it directly into the terminal, you can
-  set it in the environment via any means you find sufficiently secure.
+  Providing your subscriber token is necessary to ensure your gateway
+  device can log in to the container registry. If you're concerned
+  about typing it directly into the terminal, you can set it in the
+  environment variable ``REGISTRY_PASSWD`` by any means you find
+  sufficiently secure.
 
   **Public**::
 
     REGISTRY=hub.docker.com REGISTRY_USER=docker REGISTRY_PASSWD=docker \
        GW_HOSTNAME=raspberrypi3-64.local ./iot-gateway.sh
 
-  These instructions assume ``iot-gateway.sh`` is run on the same machine
-  running the hawkBit server. Set ``MGMT_SERVER`` to the IP address of
-  the machine running the hawkBit container if your environment is
-  different.
 
 Your gateway device is now ready for use.
 

@@ -1,3 +1,16 @@
+.. note::
+
+   These instructions assume the ``iot-gateway.sh`` helper script is
+   run on the same machine as the |iot-gateway-setup-server|
+   server. Provide an ``-m MGMT_SERVER`` option with the hostname or
+   IP address of the machine running the |iot-gateway-setup-server|
+   container if your environment is different.
+
+   They also assume you can SSH into a Raspberry Pi 3 gateway using
+   the ``raspberrypi3-64.local`` Zeroconf hostname. Substitute the
+   hostname or IP address of your gateway if your environment is
+   different.
+
 - Ensure you have an SSH key on your workstation. If you've never done
   this before, the `GitHub guide to SSH keys`_ has useful
   instructions.
@@ -25,7 +38,7 @@
      machine source.foundries.io
      login <your-subscriber-token>
 
-  If you don't createa :file:`.netrc`, enter your subscriber token
+  If you don't create a :file:`.netrc`, enter your subscriber token
   when prompted for a username, and leave the password blank.
 
   Now clone the gateway-ansible repository::
