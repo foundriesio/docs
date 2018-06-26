@@ -349,25 +349,7 @@ Now you'll flash MCUBoot and the ``hello-world`` application to your board:
 
 (For more information, see :ref:`ref-zephyr-zmp-flash`.)
 
-You should now see some messages printed on the board's console.
-
-During the flashing process:
-
-#. The chip's flash is completely erased, and MCUboot is installed. It
-   is unable to find an application, since it's a fresh install.
-
-#. The signed "hello world" application image is flashed, and the chip
-   is reset.
-
-#. MCUBoot runs out of reset, and checks the cryptographic signature
-   on the application binary.
-
-#. Since the signature is valid, MCUboot runs the application itself.
-
-#. The application you just built will print a "Hello World" message
-   on screen.
-
-The combined output looks like this:
+The board's console should print messages that look roughly like this:
 
 .. code-block:: none
 
@@ -388,6 +370,22 @@ The combined output looks like this:
    [MCUBOOT] [INF] main: Jumping to the first image slot
    ***** Booting Zephyr OS vX.Y.Z-NN-gabcdef *****
    Hello World! arm
+
+During the flashing process:
+
+#. The chip's flash is completely erased, and MCUboot is installed. It
+   is unable to find an application, since it's a fresh install.
+
+#. The signed "hello world" application image is flashed, and the chip
+   is reset.
+
+#. MCUBoot runs out of reset, and checks the cryptographic signature
+   on the application binary.
+
+#. Since the signature is valid, MCUboot runs the application itself.
+
+#. The application you just built will print a "Hello World" message
+   on screen.
 
 If you're using another board, you may need to do something slightly
 different, but the basic idea is the same: connect a serial console at
