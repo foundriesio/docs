@@ -96,6 +96,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.ifconfig',
     'sphinx.ext.todo',
+    'sphinxcontrib.contentui',
     'osf_sphinx_ext',
 ]
 
