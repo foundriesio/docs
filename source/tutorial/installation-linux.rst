@@ -25,9 +25,8 @@ The Linux microPlatform is split into two parts:
 
 This document describes how to:
 
-- Install the base system onto your device and connect to its console.
-
-- Connect the device to the network.
+- Install the base system onto your device, connect it to the network,
+  and connect to its console.
 
 - Run the nginx web server in a container on the device, demonstrating
   application deployment.
@@ -50,42 +49,180 @@ You'll start by installing the base microPlatform and connecting to
 your device's console.
 
 Instructions for officially supported boards are listed
-here. Currently, this is limited to the Raspberry Pi 3 Model B and
-Raspberry Pi 3 Model B+.
+here. **Currently, this is limited to the Raspberry Pi 3 Models B and
+B+.**
 
-- :ref:`tutorial-linux-rpi3`
+If you're using another board or want to build from source, see
+:ref:`ref-linux-targets` and :ref:`ref-linux-building` in the
+reference manual.
 
-(If you're using another board, see :ref:`ref-linux-targets` and
-:ref:`ref-linux-building` in the reference manual for more
-information.)
+**Get Prebuilt Image**
 
-.. _tutorial-linux-net:
+Download a subscriber or publicly available image:
 
-Connect to the Network
-----------------------
+.. content-tabs::
 
-At this point, you should have shell access to your device.  If you've
-already got a network connection as well, you can skip this section.
+   .. tab-container:: subscribers
+      :title: Subscribers
 
-Option 1: WiFi
-~~~~~~~~~~~~~~
+      Update |version| is available to subscribers:
 
-Run this command from your Linux microPlatform device console to
-connect to a WiFi network::
+      .. osf-rpi3-links::
 
-    sudo nmcli device wifi connect NETWORK_SSID password NETWORK_PASSWORD
+   .. tab-container:: public
+      :title: Public
 
-Where ``NETWORK_SSID`` is your WiFi network's SSID, and
-``NETWORK_PASSWORD`` is the password.
+      Update |public_version| is publicly available:
 
-(The default password is ``osf``; you should change it before
-connecting to the network, of course.)
+      .. osf-rpi3-links::
+         :public:
 
-Option 2: Ethernet
-~~~~~~~~~~~~~~~~~~
+**Flash Image To SD Card**
 
-Ethernet with DHCP works out of the box on all supported
-boards. Simply connect an Ethernet cable.
+The Raspberry Pi foundation recommends using the the cross-platform
+`Etcher`_ tool to flash images onto the SD card you'll use to boot
+your `Raspberry Pi 3`_.
+
+After you've installed Etcher on your system:
+
+#. Attach an SD card onto your host computer. Refer to this `Embedded
+   Linux wiki guide`_ for a list of SD cards compatible with Raspberry
+   Pi 3.
+#. Run Etcher, and select the pre-built Linux microPlatform image you
+   downloaded on your file system.
+#. Select the SD card you mounted from Etcher, and flash it.
+
+Additional, more advanced guides are available for `macOS`_,
+`Windows`_, and `Linux`_.
+
+**Boot Raspberry Pi 3 and Connect to the Network**
+
+Choose a method:
+
+.. content-tabs::
+
+   .. tab-container:: ethernet
+      :title: Ethernet (Recommended)
+
+      Ethernet works out of the box if a DHCP server is available on the
+      local network.
+
+      #. Connect an Ethernet cable to the Raspberry Pi 3.
+      #. Remove the SD card from your computer, and insert it into
+         the Raspberry Pi 3.
+      #. Apply power to the Raspberry Pi 3.
+
+      Your board will connect to the network via Ethernet. The board should
+      be ready to connect within a minute or two of booting.
+
+   .. tab-container:: wifi
+      :title: WiFi
+
+      If you don't have Ethernet connectivity, you can connect to a
+      WiFi network by temporarily enabling the UART console on your
+      Raspberry Pi 3 and running a command to connect to your WiFi
+      network.
+
+      .. note::
+
+         While a hardware serial port is available, enabling it
+         unfortunately requires this device to run at significantly
+         reduced speeds, and causes serious Bluetooth instability.
+         Make sure to disable the console and reboot before
+         proceeding.
+
+      You'll need a 3.3 volt USB to TTL serial adapter, such as this
+      `SparkFun FTDI Basic Breakout 3.3V`_.
+
+      #. Mount the micro SD card containing the SD image you
+         flashed on your workstation PC.
+
+      #. Edit the ``config.txt`` file on the VFAT partition,
+         adding a new line with the following content::
+
+            enable_uart=1
+
+      #. Safely unmount the micro SD card, remove it from your
+         workstation, and insert it into the Raspberry Pi 3.
+
+      #. Connect the adapter to your Raspberry Pi 3's UART and
+         to your workstation computer via USB, e.g. by following
+         `this AdaFruit guide`_.
+
+      #. Connect a serial console program on your workstation to
+         the adapter, and power on the Raspberry Pi 3.
+
+      #. When prompted, log in via the console. The default
+         username is ``osf``, and the default password is
+         ``osf``. You should change the password before
+         connecting to the network.
+
+      #. Connect to the network using the following command::
+
+            sudo nmcli device wifi connect NETWORK_SSID password NETWORK_PASSWORD
+
+         Where ``NETWORK_SSID`` is your WiFi network's SSID, and
+         ``NETWORK_PASSWORD`` is the password.
+
+      #. Safely shut down the Raspberry Pi 3, re-mount the SD
+         card on your host workstation, and delete the line you
+         added to ``config.txt``.
+
+      #. Unmount the SD card from your workstation, insert it
+         into the Raspberry Pi 3, and reboot it.
+
+      .. warning::
+
+         Do not skip the final steps. Functionality with the
+         serial console enabled is severely degraded.
+
+      Your board will connect to the network you've saved after
+      rebooting. You can now log in using SSH.
+
+**Log in via SSH**
+
+Use ``osf`` as the username and ``raspberrypi3-64.local`` as the
+hostname::
+
+  ssh osf@raspberrypi3-64.local
+
+The default password is ``osf``; we recommend changing it now if you
+haven't already. For this to work, your local network needs to support
+Zeroconf\ [#zeroconf]_ and the hostname must be otherwise unclaimed.
+
+If that doesn't work, you can also log in by IP address. See
+:ref:`Troubleshooting <tutorial-linux-troubleshooting>` below for
+advice.
+
+**Finish Installation**
+
+Once you have an SSH console connection, finish your installation by
+setting up application containers. Follow instructions in
+:ref:`tutorial-linux-nginx` for a demonstration.
+
+.. _tutorial-linux-troubleshooting:
+
+**Troubleshooting**
+
+If the above methods to connect your Raspberry Pi 3 to the
+network don't work, try one of the following.
+
+- Temporarily enable and connect to the UART (see directions above in
+  the WiFi section) and determine available IP addresses with::
+
+    # Ethernet
+    ip addr show eth0 scope global
+
+    # WiFi
+    ip addr show wlan0 scope global
+
+  Then connect by IP address::
+
+    ssh osf@rpi3.ip.addr.ess
+
+- List connected devices and their local IP addresses on your network
+  router's administrative interface, and log in by IP address as
+  above.
 
 Test Your Connection
 ~~~~~~~~~~~~~~~~~~~~
@@ -94,71 +231,6 @@ Test your Linux microPlatform device's network connection any way you
 would like. For example::
 
     ping -c 3 opensourcefoundries.com
-
-.. _tutorial-linux-ping:
-
-Ping Your Device
-----------------
-
-You now need to find your device's Zeroconf hostname or IP address, so
-you can load the nginx splash page in your workstation's browser in
-the next step.
-
-Option 1: Zeroconf
-~~~~~~~~~~~~~~~~~~
-
-**On Raspberry Pi 3**::
-
-  ping -c 3 raspberrypi3-64.local
-
-**On other boards**:
-
-Linux microPlatform devices attempt to make themselves available on
-the local network using Zeroconf [#zeroconf]_ at ``hostname.local``.
-You can get your device's hostname from the shell prompt.
-
-For example, if your device's shell prompt looks like:
-
-.. code-block:: none
-
-   hostname:~$
-
-Then try pinging your device **from your development workstation
-shell** with::
-
-    ping -c 3 hostname.local
-
-If that works, go ahead and deploy the nginx container.
-
-Option 2: By IP Address
-~~~~~~~~~~~~~~~~~~~~~~~
-
-To print global IPv4 addresses, run this **from your Linux
-microPlatform device**::
-
-    ip -4 addr show scope global
-
-You can replace ``-4`` with ``-6`` for IPv6.
-
-For example, in the following output::
-
-  $ ip -4 addr show scope global
-  2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-      inet 10.0.0.203/24 brd 10.0.0.255 scope global dynamic eth0
-         valid_lft 595628sec preferred_lft 595628sec
-  6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
-      inet 172.17.0.1/16 scope global docker0
-         valid_lft forever preferred_lft forever
-
-The device IP address is ``10.0.0.203``. (Ignore any ``dockerX``
-networks).
-
-To ping the device in the above example, run this **from your
-development workstation shell**::
-
-    ping -c 3 10.0.0.203
-
-If that works, go ahead and deploy the nginx container.
 
 .. _tutorial-linux-nginx:
 
@@ -174,31 +246,33 @@ nginx web server.
    Run these commands on your Linux microPlatform device, **not your
    workstation**.
 
-Option 1: Subscribers
-~~~~~~~~~~~~~~~~~~~~~
+.. content-tabs::
 
-First, log in to the Open Source Foundries subscriber container
-registry::
+   .. tab-container:: subscribers
+      :title: Subscribers
 
-    docker login hub.foundries.io --username=unused
+      First, log in to the Open Source Foundries subscriber container
+      registry::
 
-The username is currently ignored, but you must provide a value. When
-prompted for the password, enter your subscriber access token.
+          docker login hub.foundries.io --username=unused
 
-Now run update |version| of the container:
+      The username is currently ignored, but you must provide a value. When
+      prompted for the password, enter your subscriber access token.
 
-.. parsed-literal::
+      Now run update |version| of the container:
 
-   docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:|docker_subscriber_tag|
+      .. parsed-literal::
 
-Option 2: Public
-~~~~~~~~~~~~~~~~
+         docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:|docker_subscriber_tag|
 
-Run update |public_version| of the container:
+   .. tab-container:: public
+      :title: Public
 
-.. parsed-literal::
+      Run update |public_version| of the container:
 
-   docker run --name nginx-demo -p 80:80 opensourcefoundries/nginx:|docker_public_tag|
+      .. parsed-literal::
+
+         docker run --name nginx-demo -p 80:80 opensourcefoundries/nginx:|docker_public_tag|
 
 Connect to nginx
 ~~~~~~~~~~~~~~~~
@@ -262,3 +336,27 @@ learn more about the Linux microPlatform in :ref:`howto` and the
 
 .. _Open Source Foundries organization's registry:
    https://hub.docker.com/u/opensourcefoundries/
+
+.. _Raspberry Pi 3:
+   https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
+
+.. _Etcher:
+    https://etcher.io/
+
+.. _Embedded Linux wiki guide:
+   https://elinux.org/RPi_SD_cards
+
+.. _macOS:
+    https://www.raspberrypi.org/documentation/installation/installing-images/mac.md
+
+.. _Windows:
+   https://www.raspberrypi.org/documentation/installation/installing-images/windows.md
+
+.. _Linux:
+   https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
+
+.. _this AdaFruit guide:
+   https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/connect-the-lead
+
+.. _SparkFun FTDI Basic Breakout 3.3V:
+   https://www.sparkfun.com/products/9873
