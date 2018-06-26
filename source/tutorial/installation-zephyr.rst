@@ -270,9 +270,8 @@ board.
 .. important::
 
    The build uses a publicly available RSA key pair bundled with
-   MCUBoot itself by default, for ease of demonstration (the private
-   key is in :file:`mcuboot/root-rsa-2048.pem`; the public key is
-   embedded in the sources in :file:`mcuboot/boot/zephyr/keys.c`).
+   MCUBoot itself by default, for ease of demonstration (the
+   key is in :file:`mcuboot/root-rsa-2048.pem`).
 
    This key pair is for **development use only**.
 
