@@ -45,11 +45,12 @@ When you installed the Zephyr microPlatform, you ran something like
 this::
 
   mkdir zmp && cd zmp
-  repo init -u https://some-url/zmp-manifest
+  repo init -u https://some-url/zmp-manifest [-b some-tag]
   repo sync
 
-This checks out the manifest file in the master branch of the manifest
-repository and puts it in a hidden ``.repo`` subdirectory of ``zmp``.
+This checks out the manifest file in the manifest repository and puts
+it in a hidden ``.repo`` subdirectory of ``zmp``. If you specify a
+tag, that revision of the manifest is used; otherwise, master is used.
 
 During installation, `repo sync`_ is run after ``repo init``. This
 parses the manifest file in the ``.repo`` directory, clones the

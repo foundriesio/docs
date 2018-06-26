@@ -88,10 +88,15 @@ subscribers from `source.foundries.io`_. Install it as follows.
 
      mkdir lmp && cd lmp
 
-#. Install the latest release using repo::
+   (You can also reuse an existing installation directory.)
 
-     repo init -u https://source.foundries.io/lmp-manifest
-     repo sync
+#. Install update |version| using repo:
+
+   .. parsed-literal::
+
+      repo init -u https://source.foundries.io/lmp-manifest \\
+                -b |repo_subscriber_tag|
+      repo sync
 
    When prompted by repo init, enter your subscriber token for
    your username and nothing for the password.
@@ -107,9 +112,14 @@ GitHub`_ organization.
 
      mkdir lmp && cd lmp
 
-#. Install the latest release using repo::
+   (You can also reuse an existing installation directory.)
 
-     repo init -u https://github.com/OpenSourceFoundries/lmp-manifest
+#. Install update |public_version| using repo:
+
+   .. parsed-literal::
+
+     repo init -u https://github.com/OpenSourceFoundries/lmp-manifest \\
+               -b |repo_public_tag|
      repo sync
 
 Build the lmp-gateway Image

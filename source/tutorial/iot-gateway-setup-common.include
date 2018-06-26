@@ -41,13 +41,25 @@
   If you don't create a :file:`.netrc`, enter your subscriber token
   when prompted for a username, and leave the password blank.
 
-  Now clone the gateway-ansible repository::
+  Now clone the gateway-ansible repository and check out the revision
+  for update |version|:
 
-    git clone https://source.foundries.io/gateway-ansible
+  .. parsed-literal::
 
-  **Public**::
+     git clone https://source.foundries.io/gateway-ansible
+     cd gateway-ansible
+     git checkout |git_subscriber_tag|
 
-    git clone https://github.com/OpenSourceFoundries/gateway-ansible
+  **Public**:
+
+  Clone the gateway-ansible repository and check out the revision for
+  update |public_version|:
+
+  .. parsed-literal::
+
+     git clone https://github.com/OpenSourceFoundries/gateway-ansible
+     cd gateway-ansible
+     git checkout |git_public_tag|
 
 .. _GitHub guide to SSH keys:
    https://help.github.com/articles/connecting-to-github-with-ssh/
