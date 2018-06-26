@@ -50,8 +50,12 @@ if osf_subscriber_version is None:
 # (This doesn't affect links to artifacts.)
 osf_subscriber_tags = ''
 
-# The most recently released public version number.
-osf_public_version = '0.22'
+# The most recently released public version number. We keep the most
+# recently pushed version in here, but also allow an environment
+# override to allow last-minute decisions about making updates public.
+osf_public_version = os.environ.get('OSF_UPDATE_PUBLIC_VERSION')
+if osf_public_version is None:
+    osf_public_version = '0.22'
 
 # -- General configuration ------------------------------------------------
 
