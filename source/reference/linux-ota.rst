@@ -112,16 +112,18 @@ Then download and extract the following OSTree repository tarball to the
 
 .. osf-rpi3-ostree::
 
-Extract and upload the image::
+Extract and upload the image:
 
-  $ tar -jxvf raspberrypi3-64-ostree_repo.tar.bz2
+.. parsed-literal::
 
-  # Run the image publishing script
-  $ docker run --rm -it -v $PWD:/build --workdir=/build \
-      opensourcefoundries/aktualizr \
-      ota-publish -m raspberrypi3-64 -c credentials.zip -r ostree_repo
-  #Note: The first image you publish will push every file, successive publishing
-  #      will only publish the files that have changed
+   $ tar -jxvf raspberrypi3-64-ostree_repo.tar.bz2
+
+   # Run the image publishing script
+   $ docker run --rm -it -v $PWD:/build --workdir=/build \
+       opensourcefoundries/aktualizr:|docker_public_tag| \
+       ota-publish -m raspberrypi3-64 -c credentials.zip -r ostree_repo
+   #Note: The first image you publish will push every file, successive publishing
+   #      will only publish the files that have changed
 
 2. Verify the Package can be viewed on the ATS Garage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

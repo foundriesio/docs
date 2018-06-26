@@ -72,20 +72,25 @@ The username is currently ignored when logging in, but a value must
 be provided. When prompted for the password, enter your subscriber
 token.
 
-Now run the latest subscriber container, again on your workstation::
+Run update |version| of the container, also on your workstation:
 
-    docker run --restart=always -d -t -p 5683:5683/udp -p 5684:5684/udp \
-      --read-only --tmpfs=/tmp -p 8081:8080 \
-      --name leshan hub.foundries.io/leshan:latest
+.. parsed-literal::
+
+   docker run --restart=always -d -t -p 5683:5683/udp \\
+     -p 5684:5684/udp -p 8081:8080 \\
+     --read-only --tmpfs=/tmp --name leshan \\
+     hub.foundries.io/leshan:|docker_subscriber_tag|
 
 **Public**:
 
-Containers for the latest public release are available from Docker Hub.
-Run this on your workstation::
+Run update |public_version| of the container on your workstation:
 
-    docker run --restart=always -d -t -p 5683:5683/udp -p 5684:5684/udp \
-      --read-only --tmpfs=/tmp -p 8081:8080 \
-      --name leshan opensourcefoundries/leshan:latest
+.. parsed-literal::
+
+   docker run --restart=always -d -t -p 5683:5683/udp \\
+     -p 5684:5684/udp -p 8081:8080 \\
+     --read-only --tmpfs=/tmp \\
+     --name leshan opensourcefoundries/leshan:|docker_public_tag|
 
 After running the Leshan container, visit http://localhost:8081/ to
 load its web interface. Your Leshan container is now ready for use.
@@ -105,9 +110,14 @@ network proxy for your IoT device.
 - From the ``gateway-ansible`` repository cloned on your workstation,
   deploy the gateway containers to your gateway using Ansible.
 
-  **Subscribers**::
+  **Subscribers**:
 
-    GW_HOSTNAME=raspberrypi3-64.local REGISTRY_PASSWD=<your-subscriber-token> ./iot-gateway.sh
+  Set up the IoT gateway for update |version|:
+
+  .. parsed-literal::
+
+     ./iot-gateway.sh -g raspberrypi3-64.local \\
+                      -p <your-subscriber-token> -t |docker_subscriber_tag|
 
   Providing your subscriber token is necessary to ensure your gateway
   device can log in to the container registry. If you're concerned
@@ -115,11 +125,14 @@ network proxy for your IoT device.
   environment variable ``REGISTRY_PASSWD`` by any means you find
   sufficiently secure.
 
-  **Public**::
+  **Public**:
 
-    REGISTRY=hub.docker.com REGISTRY_USER=docker REGISTRY_PASSWD=docker \
-       GW_HOSTNAME=raspberrypi3-64.local ./iot-gateway.sh
+  Set up the IoT gateway for update |public_version|:
 
+  .. parsed-literal::
+
+     ./iot-gateway.sh -g raspberrypi3-64.local -p docker \\
+                      -r hub.docker.com -u docker -t |docker_public_tag|
 
 Your gateway device is now ready for use.
 

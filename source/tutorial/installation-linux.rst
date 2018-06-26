@@ -185,16 +185,20 @@ registry::
 The username is currently ignored, but you must provide a value. When
 prompted for the password, enter your subscriber access token.
 
-Then run the latest subscriber nginx container::
+Now run update |version| of the container:
 
-    docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:latest
+.. parsed-literal::
+
+   docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:|docker_subscriber_tag|
 
 Option 2: Public
 ~~~~~~~~~~~~~~~~
 
-To run the latest public nginx container available on Docker Hub::
+Run update |public_version| of the container:
 
-    docker run --name nginx-demo -p 80:80 opensourcefoundries/nginx:latest
+.. parsed-literal::
+
+   docker run --name nginx-demo -p 80:80 opensourcefoundries/nginx:|docker_public_tag|
 
 Connect to nginx
 ~~~~~~~~~~~~~~~~

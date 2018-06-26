@@ -132,10 +132,16 @@ fetch updates from hawkBit.
   containers using the CloudMQTT information you recorded
   earlier.
 
-  **Subscribers**::
+  **Subscribers**:
 
-    CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
-        GW_HOSTNAME=raspberrypi3-64.local REGISTRY_PASSWD=<subscriber-token> ./iot-gateway.sh
+  Set up the IoT gateway for update |version|:
+
+  .. parsed-literal::
+
+     export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
+     export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
+      ./iot-gateway.sh -g raspberrypi3-64.local \\
+                       -p <your-subscriber-token> -t |docker_subscriber_tag|
 
   Providing your subscriber token is necessary so your gateway device
   can log in to the container registry. If you're concerned about
@@ -144,13 +150,16 @@ fetch updates from hawkBit.
   sufficiently secure. Similar comments apply to the
   ``CLOUDMQTT_PASSWD`` environment variable.
 
-  **Public**::
+  **Public**:
 
-    CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX \
-        REGISTRY=hub.docker.com REGISTRY_USER=docker REGISTRY_PASSWD=docker \
-        GW_HOSTNAME=raspberrypi3-64.local ./iot-gateway.sh
+  Set up the IoT gateway for update |public_version|:
 
+  .. parsed-literal::
 
+     export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
+     export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
+      ./iot-gateway.sh -g raspberrypi3-64.local -p docker \\
+                       -r hub.docker.com -u docker -t |docker_public_tag|
 
 Your gateway device is now ready for use.
 
@@ -185,15 +194,23 @@ The username is currently ignored when logging in, but a value must
 be provided. When prompted for the password, enter your subscriber
 token.
 
-Now run hawkBit on your workstation::
+Now run update |version| of the hawkBit container on your workstation:
 
-    docker run -dit --name hawkbit -p 8080:8080 hub.foundries.io/hawkbit-update-server:latest
+.. parsed-literal::
+
+   docker run -dit --name hawkbit -p 8080:8080 \\
+              hub.foundries.io/hawkbit-update-server:|docker_subscriber_tag|
 
 If this command fails, ensure ``docker login`` succeeds and retry.
 
-**Public**: to run the latest public release on Docker Hub::
+**Public**:
 
-    docker run -dit --name hawkbit -p 8080:8080 opensourcefoundries/hawkbit-update-server:latest
+Run update |public_version| of the hawkBit container on your workstation:
+
+.. parsed-literal::
+
+   docker run -dit --name hawkbit -p 8080:8080 \\
+              opensourcefoundries/hawkbit-update-server:|docker_public_tag|
 
 This container can take approximately 40 seconds for the application
 to start for the first time.
