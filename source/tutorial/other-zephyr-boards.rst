@@ -11,43 +11,49 @@ system on other boards.
 FRDM-K64F
 ---------
 
-.. |frdm-k64f-net-file| replace::
-   ``zephyr-fota-samples/dm-lwm2m/boards/frdm_k64f-local.conf``
+.. toggle-header::
+   :header: Click to show/hide
 
-.. include:: frdm-k64f-net.include
+   .. |frdm-k64f-net-file| replace::
+      ``zephyr-fota-samples/dm-lwm2m/boards/frdm_k64f-local.conf``
 
-In addition, |frdm-k64f-net-file| must contain a line which specifies
-the IP address of the COAP proxy. In this case, that's just the IP
-address of your gateway device. To use IP address L.M.N.O, add a line
-like this after the other networking configuration:
+   .. include:: frdm-k64f-net.include
 
-.. code-block:: kconfig
+   In addition, |frdm-k64f-net-file| must contain a line which specifies
+   the IP address of the COAP proxy. In this case, that's just the IP
+   address of your gateway device. To use IP address L.M.N.O, add a line
+   like this after the other networking configuration:
 
-   CONFIG_LWM2M_FIRMWARE_UPDATE_PULL_COAP_PROXY_ADDR="L.M.N.O"
+   .. code-block:: kconfig
 
-Now you can build the binaries. From the Zephyr microPlatform
-installation directory::
+      CONFIG_LWM2M_FIRMWARE_UPDATE_PULL_COAP_PROXY_ADDR="L.M.N.O"
 
-    ./zmp build -b frdm_k64f zephyr-fota-samples/dm-lwm2m
+   Now you can build the binaries. From the Zephyr microPlatform
+   installation directory::
 
-.. include:: pyocd.include
+       ./zmp build -b frdm_k64f zephyr-fota-samples/dm-lwm2m
 
-To flash the binaries, plug the K64F into your system via the USB
-connector labeled "SDA USB". Then, from the Zephyr microPlatform installation
-directory::
+   .. include:: pyocd.include
 
-    ./zmp flash -b frdm_k64f zephyr-fota-samples/dm-lwm2m
+   To flash the binaries, plug the K64F into your system via the USB
+   connector labeled "SDA USB". Then, from the Zephyr microPlatform installation
+   directory::
+
+       ./zmp flash -b frdm_k64f zephyr-fota-samples/dm-lwm2m
 
 96Boards Nitrogen
 -----------------
 
-Like FRDM-K64F, this board also requires pyOCD to flash.
+.. toggle-header::
+   :header: Click to show/hide
 
-To build the binaries, run this from the Zephyr microPlatform
-installation directory::
+   To build the binaries, run this from the Zephyr microPlatform
+   installation directory::
 
-  ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+     ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
 
-To flash the board::
+   .. include:: pyocd.include
 
-  ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+   To flash the board::
+
+     ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
