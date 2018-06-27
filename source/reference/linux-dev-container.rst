@@ -12,31 +12,38 @@ on macOS and Windows.
 
 #. `Install Docker`_.
 
-#. **Subscribers only:** log in to the Open Source Foundries
-   subscriber container registry on the system which will run the
-   development container::
+#. Run the container as the ``builder`` user, either using a
+   subscriber or public version:
 
-       docker login hub.foundries.io --username=unused
+   .. content-tabs::
 
-   The username is currently ignored when logging in, but a value must
-   be provided. When prompted for the password, enter your subscriber
-   access token.
+      .. tab-container:: subscribers
+         :title: Subscribers
 
-#. Run the container as the ``builder`` user.
+         First, log in to the Open Source Foundries subscriber
+         container registry on the system which will run the
+         development container::
 
-   **Subscribers:** run update |version| of the container:
+             docker login hub.foundries.io --username=unused
 
-   .. parsed-literal::
+         The username is currently ignored when logging in, but a
+         value must be provided. When prompted for the password, enter
+         your subscriber access token.
 
-      docker run -it -u builder --name lmp-sdk \\
-             hub.foundries.io/lmp-sdk:|docker_subscriber_tag|
+         Then run update |version| of the container:
 
-   **Public:** run update |public_version| of the container:
+         .. parsed-literal::
 
-   .. parsed-literal::
+            docker run -it -u builder --name lmp-sdk hub.foundries.io/lmp-sdk:|docker_subscriber_tag|
 
-      docker run -it -u builder --name lmp-sdk \\
-             opensourcefoundries/lmp-sdk:|docker_public_tag|
+      .. tab-container:: public
+         :title: Public
+
+         Update |public_version| of the container is publicly available:
+
+         .. parsed-literal::
+
+            docker run -it -u builder --name lmp-sdk opensourcefoundries/lmp-sdk:|docker_public_tag|
 
 #. Set up Git inside the container::
 
