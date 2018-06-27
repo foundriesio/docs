@@ -57,76 +57,78 @@ Start Guide`_ for additional guidance.
 Install the Linux microPlatform
 -------------------------------
 
-The Linux microPlatform can be installed in any directory on your
+The Linux microPlatform sources can be placed in any directory on your
 workstation, as long it provides enough disk space for the complete
-build. Installation uses the Repo tool to fetch a variety of Git
-repositories at known-good revisions, and keep them in sync as time
-goes on.
+build. This uses the Repo tool to fetch a variety of Git repositories
+at known-good revisions, and keep them in sync as time goes on.
 
 (If you're new to Repo and want to know more, see
 :ref:`ref-zephyr-repo`.)
 
-Subscribers
-~~~~~~~~~~~
+Select subscriber or public instructions:
 
-The latest continuous release is available to Linux microPlatform
-subscribers from `source.foundries.io`_. Install it as follows.
+.. content-tabs::
 
-#. Configure Git to cache usernames and passwords you enter in memory
-   for one hour::
+   .. tab-container:: subscribers
+      :title: Subscribers
 
-     git config --global credential.helper 'cache --timeout=3600'
+      The latest continuous release is available to Linux microPlatform
+      subscribers from `source.foundries.io`_. Install it as follows.
 
-   Using a credential helper is necessary for repo sync to work
-   unprompted later.
+      #. Configure Git to cache usernames and passwords you enter in memory
+         for one hour::
 
-#. If you haven’t already, create a `subscriber token on
-   foundries.io/s/`_.
+           git config --global credential.helper 'cache --timeout=3600'
 
-#. Make an installation directory for the Linux microPlatform, and
-   change into its directory::
+         Using a credential helper is necessary for repo sync to work
+         unprompted later.
 
-     mkdir lmp && cd lmp
+      #. If you haven’t already, create a `subscriber token on
+         foundries.io/s/`_.
 
-   (You can also reuse an existing installation directory.)
+      #. Make an installation directory for the Linux microPlatform, and
+         change into its directory::
 
-#. Install update |version| using repo:
+           mkdir lmp && cd lmp
 
-   .. parsed-literal::
+         (You can also reuse an existing installation directory.)
 
-      repo init -u https://source.foundries.io/lmp-manifest \\
-                -b |repo_subscriber_tag|
-      repo sync
+      #. Install update |version| using repo:
 
-   When prompted by repo init, enter your subscriber token for
-   your username and nothing for the password.
+         .. parsed-literal::
 
-Public
-~~~~~~
+            repo init -u https://source.foundries.io/lmp-manifest \\
+                      -b |repo_subscriber_tag|
+            repo sync
 
-The latest public release is available from the `Open Source Foundries
-GitHub`_ organization.
+         When prompted by repo init, enter your subscriber token for
+         your username and nothing for the password.
 
-#. Make an installation directory for the Linux microPlatform, and change
-   into its directory::
+   .. tab-container:: public
+      :title: Public
 
-     mkdir lmp && cd lmp
+      The latest public release is available from the `Open Source Foundries
+      GitHub`_ organization.
 
-   (You can also reuse an existing installation directory.)
+      #. Make an installation directory for the Linux microPlatform,
+         and change into its directory::
 
-#. Install update |public_version| using repo:
+           mkdir lmp && cd lmp
 
-   .. parsed-literal::
+         (You can also reuse an existing installation directory.)
 
-     repo init -u https://github.com/OpenSourceFoundries/lmp-manifest \\
-               -b |repo_public_tag|
-     repo sync
+      #. Install update |public_version| using repo:
 
-Build the lmp-gateway Image
----------------------------
+         .. parsed-literal::
 
-Now that you’ve installed the Linux microPlatform, it’s time to build
-the Linux microPlatform gateway image.
+           repo init -u https://github.com/OpenSourceFoundries/lmp-manifest \\
+                     -b |repo_public_tag|
+           repo sync
+
+Set up Work Environment
+-----------------------
+
+Next, set up your work environment for building the source.
 
 The supported ``MACHINE`` target used by this guide is
 ``raspberrypi3-64``. (For information on other hardware platforms, see
@@ -145,33 +147,40 @@ machines found in every enabled OpenEmbedded / Yocto Project layer,
 and force one to be selected.  ``BUILDDIR`` is optional; if it is not
 specified, the script will default to ``build-lmp``.
 
-Subscribers
-~~~~~~~~~~~
+Build the lmp-gateway Image
+---------------------------
 
-Bitbake requires passwordless authentication when fetching repositories
-from https://source.foundries.io.
+Select either subscriber or public instructions:
 
-Create a file named :file:`.netrc` (note the leading ``.``) in your home
-directory, readable only by your user, with the following contents:
+.. content-tabs::
 
-.. code-block:: none
+     .. tab-container:: subscriber
+        :title: Subscribers
 
-  machine source.foundries.io
-  login <your-subscriber-token>
+        Bitbake requires passwordless authentication when fetching repositories
+        from https://source.foundries.io.
 
-Public
-~~~~~~
+        Create a file named :file:`.netrc` (note the leading ``.``) in your home
+        directory, readable only by your user, with the following contents:
 
-OSF projects default to https://source.foundries.io, which is only available
-for subscribers.
+        .. code-block:: none
 
-Change ``conf/local.conf`` and set the OSF_LMP_GIT variables to point to
-GitHub instead:
+          machine source.foundries.io
+          login <your-subscriber-token>
 
-.. code-block:: none
+     .. tab-container:: public
+        :title: Public
 
-  echo 'OSF_LMP_GIT_URL = "github.com"' >> conf/local.conf
-  echo 'OSF_LMP_GIT_NAMESPACE = "opensourcefoundries/"' >> conf/local.conf
+        OSF projects default to https://source.foundries.io, which is
+        only available for subscribers.
+
+        Change ``conf/local.conf`` and set the OSF_LMP_GIT variables
+        to point to GitHub instead:
+
+        .. code-block:: none
+
+          echo 'OSF_LMP_GIT_URL = "github.com"' >> conf/local.conf
+          echo 'OSF_LMP_GIT_NAMESPACE = "opensourcefoundries/"' >> conf/local.conf
 
 To build the Linux microPlatform gateway image::
 
