@@ -21,314 +21,344 @@ are useful; not all receive equal testing.
 Intel Core i7 (e.g. MinnowBoard Turbot)
 ---------------------------------------
 
-Set ``MACHINE`` to ``intel-corei7-64`` when setting up your work
-environment with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=intel-corei7-64 source setup-environment [BUILDDIR]
+    Set ``MACHINE`` to ``intel-corei7-64`` when setting up your work
+    environment with the ``setup-environment`` script::
 
-At the end of the build, your build artifacts will be found under
-``deploy/images/intel-corei7-64``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-intel-corei7-64.wic.gz``.
+      MACHINE=intel-corei7-64 source setup-environment [BUILDDIR]
 
-To flash your microSD card, run::
+    At the end of the build, your build artifacts will be found under
+    ``deploy/images/intel-corei7-64``. The artifact you will use to
+    flash your microSD card is ``lmp-gateway-image-intel-corei7-64.wic.gz``.
 
-  gunzip -f lmp-gateway-image-intel-corei7-64.wic.gz
-  sudo dd if=lmp-gateway-image-intel-corei7-64.wic of=/dev/mmcblkX bs=4M
+    To flash your microSD card, run::
 
-Where :file:`/dev/mmcblkX` is your SD card device.
+      gunzip -f lmp-gateway-image-intel-corei7-64.wic.gz
+      sudo dd if=lmp-gateway-image-intel-corei7-64.wic of=/dev/mmcblkX bs=4M
 
-Please see https://minnowboard.org/tutorials/getting-started-minnowboard-turbot-dual-e
-for additional board documentation.
+    Where :file:`/dev/mmcblkX` is your SD card device.
+
+    Please see https://minnowboard.org/tutorials/getting-started-minnowboard-turbot-dual-e
+    for additional board documentation.
 
 BeagleBone Black
 ----------------
 
-Set ``MACHINE`` to ``beaglebone-yocto`` when setting up your work
-environment with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=beaglebone-yocto source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``beaglebone-yocto`` when setting up your work
+   environment with the ``setup-environment`` script::
 
-At the end of the build, your build artifacts will be found under
-``deploy/images/beaglebone-yocto``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-beaglebone-yocto.wic.gz``.
+     MACHINE=beaglebone-yocto source setup-environment [BUILDDIR]
 
-To flash your microSD card, run::
+   At the end of the build, your build artifacts will be found under
+   ``deploy/images/beaglebone-yocto``. The artifact you will use to
+   flash your microSD card is ``lmp-gateway-image-beaglebone-yocto.wic.gz``.
 
-  gunzip -f lmp-gateway-image-beaglebone-yocto.wic.gz
-  sudo dd if=lmp-gateway-image-beaglebone-yocto.wic of=/dev/mmcblkX bs=4M
+   To flash your microSD card, run::
 
-Where :file:`/dev/mmcblkX` is your SD card device.
+     gunzip -f lmp-gateway-image-beaglebone-yocto.wic.gz
+     sudo dd if=lmp-gateway-image-beaglebone-yocto.wic of=/dev/mmcblkX bs=4M
 
-Please see https://elinux.org/Beagleboard:BeagleBoneBlack for additional
-board documentation.
+   Where :file:`/dev/mmcblkX` is your SD card device.
+
+   Please see https://elinux.org/Beagleboard:BeagleBoneBlack for additional
+   board documentation.
 
 IOT-GATE-iMX7
 -------------
 
-Set ``MACHINE`` to ``cl-som-imx7`` when setting up your work
-environment with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=cl-som-imx7 source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``cl-som-imx7`` when setting up your work
+   environment with the ``setup-environment`` script::
 
-At the end of the build, your build artifacts will be found under
-``deploy/images/cl-som-imx7``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-cl-som-imx7.wic.gz``.
+     MACHINE=cl-som-imx7 source setup-environment [BUILDDIR]
 
-To flash your microSD card, run::
+   At the end of the build, your build artifacts will be found under
+   ``deploy/images/cl-som-imx7``. The artifact you will use to
+   flash your microSD card is ``lmp-gateway-image-cl-som-imx7.wic.gz``.
 
-  gunzip -f lmp-gateway-image-cl-som-imx7.wic.gz
-  sudo dd if=lmp-gateway-image-cl-som-imx7.wic of=/dev/mmcblkX bs=4M
+   To flash your microSD card, run::
 
-Where :file:`/dev/mmcblkX` is your SD card device.
+     gunzip -f lmp-gateway-image-cl-som-imx7.wic.gz
+     sudo dd if=lmp-gateway-image-cl-som-imx7.wic of=/dev/mmcblkX bs=4M
 
-Close the E2 jumper (near the audio socket) to boot from the SD card.
+   Where :file:`/dev/mmcblkX` is your SD card device.
 
-Update the U-Boot environment based on latest U-Boot:
+   Close the E2 jumper (near the audio socket) to boot from the SD card.
 
-#. From the U-Boot prompt, erase default environment and save the new environment::
+   Update the U-Boot environment based on latest U-Boot:
 
-     CL-SOM-iMX7 # env default -a
-     CL-SOM-iMX7 # saveenv
+   #. From the U-Boot prompt, erase default environment and save the new environment::
 
-#. Then set fdtfile in case EEPROM has an invalid product name::
+        CL-SOM-iMX7 # env default -a
+        CL-SOM-iMX7 # saveenv
 
-     CL-SOM-iMX7 # setenv fdtfile imx7d-sbc-iot-imx7.dtb
-     CL-SOM-iMX7 # saveenv
+   #. Then set fdtfile in case EEPROM has an invalid product name::
 
-Please see http://mediawiki.compulab.com/w/index.php5/IOT-GATE-iMX7:_Getting_Started
-for additional board documentation.
+        CL-SOM-iMX7 # setenv fdtfile imx7d-sbc-iot-imx7.dtb
+        CL-SOM-iMX7 # saveenv
+
+   Please see http://mediawiki.compulab.com/w/index.php5/IOT-GATE-iMX7:_Getting_Started
+   for additional board documentation.
 
 Toradex Colibri iMX7D (Aster)
 -----------------------------
 
-Set ``MACHINE`` to ``colibri-imx7`` when setting up your work
-environment with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=colibri-imx7 source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``colibri-imx7`` when setting up your work
+   environment with the ``setup-environment`` script::
 
-At the end of the build, your build artifacts will be found under
-``deploy/images/colibri-imx7``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-colibri-imx7.wic.gz``.
+     MACHINE=colibri-imx7 source setup-environment [BUILDDIR]
 
-To flash your microSD card, run::
+   At the end of the build, your build artifacts will be found under
+   ``deploy/images/colibri-imx7``. The artifact you will use to
+   flash your microSD card is ``lmp-gateway-image-colibri-imx7.wic.gz``.
 
-  gunzip -f lmp-gateway-image-colibri-imx7.wic.gz
-  sudo dd if=lmp-gateway-image-colibri-imx7.wic of=/dev/mmcblkX bs=4M
+   To flash your microSD card, run::
 
-Where :file:`/dev/mmcblkX` is your SD card device.
+     gunzip -f lmp-gateway-image-colibri-imx7.wic.gz
+     sudo dd if=lmp-gateway-image-colibri-imx7.wic of=/dev/mmcblkX bs=4M
 
-To update U-Boot on Toradex Colibri iMX7D 512MB NAND:
+   Where :file:`/dev/mmcblkX` is your SD card device.
 
-#. From the U-Boot prompt::
+   To update U-Boot on Toradex Colibri iMX7D 512MB NAND:
 
-     Colibri iMX7 # run setupdate
-     Colibri iMX7 # run update
+   #. From the U-Boot prompt::
 
-#. Reboot and from the U-Boot prompt update the device tree based on
-   your module (e.g. Aster)::
+        Colibri iMX7 # run setupdate
+        Colibri iMX7 # run update
 
-     Colibri iMX7 # setenv fdt_board aster
-     Colibri iMX7 # saveenv
-     Colibri iMX7 # reset
+   #. Reboot and from the U-Boot prompt update the device tree based on
+      your module (e.g. Aster)::
 
-To update U-Boot on Toradex Colibri iMX7D 1GB eMMC:
+        Colibri iMX7 # setenv fdt_board aster
+        Colibri iMX7 # saveenv
+        Colibri iMX7 # reset
 
-#. From the U-Boot prompt, update the device tree name and boot into LMP::
+   To update U-Boot on Toradex Colibri iMX7D 1GB eMMC:
 
-     Colibri iMX7 # setenv fdt_board emmc-aster
-     Colibri iMX7 # run bootcmd
+   #. From the U-Boot prompt, update the device tree name and boot into LMP::
 
-#. Once booted into LMP, flash U-Boot (as root)::
+        Colibri iMX7 # setenv fdt_board emmc-aster
+        Colibri iMX7 # run bootcmd
 
-     mkdir /tmp/boot
-     mount /dev/mmcblk0p1 /tmp/boot
-     echo 0 > /sys/block/mmcblk2boot0/force_ro
-     dd if=/tmp/boot/u-boot-emmc.imx of=/dev/mmcblk2boot0 bs=512 seek=2
+   #. Once booted into LMP, flash U-Boot (as root)::
 
-#. Reboot and from the U-Boot prompt update the device tree based on
-   your module (e.g. Aster)::
+        mkdir /tmp/boot
+        mount /dev/mmcblk0p1 /tmp/boot
+        echo 0 > /sys/block/mmcblk2boot0/force_ro
+        dd if=/tmp/boot/u-boot-emmc.imx of=/dev/mmcblk2boot0 bs=512 seek=2
 
-     Colibri iMX7 # setenv fdt_board emmc-aster
-     Colibri iMX7 # saveenv
-     Colibri iMX7 # reset
+   #. Reboot and from the U-Boot prompt update the device tree based on
+      your module (e.g. Aster)::
 
-#. Boot LMP and change eMMC back to read-only (as root)::
+        Colibri iMX7 # setenv fdt_board emmc-aster
+        Colibri iMX7 # saveenv
+        Colibri iMX7 # reset
 
-     echo 1 > /sys/block/mmcblk2boot0/force_ro
+   #. Boot LMP and change eMMC back to read-only (as root)::
 
-Please see https://developer.toradex.com for additional board documentation.
+        echo 1 > /sys/block/mmcblk2boot0/force_ro
+
+   Please see https://developer.toradex.com for additional board documentation.
 
 HummingBoard 2
 --------------
 
-Set ``MACHINE`` to ``cubox-i`` when setting up your work environment
-with the setup-environment script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=cubox-i source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``cubox-i`` when setting up your work environment
+   with the setup-environment script::
 
-At the end of the build, your build artifacts will be found under
-``deploy/images/cubox-i``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-cubox-i.wic.gz``.
+     MACHINE=cubox-i source setup-environment [BUILDDIR]
 
-To flash your microSD card, run::
+   At the end of the build, your build artifacts will be found under
+   ``deploy/images/cubox-i``. The artifact you will use to
+   flash your microSD card is ``lmp-gateway-image-cubox-i.wic.gz``.
 
-  gunzip -f lmp-gateway-image-cubox-i.wic.gz
-  sudo dd if=lmp-gateway-image-cubox-i.wic of=/dev/mmcblkX bs=4M
+   To flash your microSD card, run::
 
-Where :file:`/dev/mmcblkX` is your SD card device.
+     gunzip -f lmp-gateway-image-cubox-i.wic.gz
+     sudo dd if=lmp-gateway-image-cubox-i.wic of=/dev/mmcblkX bs=4M
 
-Please see https://wiki.solid-run.com/doku.php?id=products:imx6:hummingboard
-for additional board documentation.
+   Where :file:`/dev/mmcblkX` is your SD card device.
+
+   Please see https://wiki.solid-run.com/doku.php?id=products:imx6:hummingboard
+   for additional board documentation.
 
 96Boards HiKey
 --------------
 
-Set ``MACHINE`` to ``hikey`` when setting up your work environment
-with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=hikey source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``hikey`` when setting up your work environment
+   with the ``setup-environment`` script::
 
-At the end of the build, your build artifacts will be found under
-``deploy/images/hikey``.
+     MACHINE=hikey source setup-environment [BUILDDIR]
 
-To convert the rootfs to a fastboot-compatible format, run::
+   At the end of the build, your build artifacts will be found under
+   ``deploy/images/hikey``.
 
-  gunzip -f lmp-gateway-image-hikey.ext4.gz
-  ext2simg -v lmp-gateway-image-hikey.ext4 lmp-gateway-image-hikey.img
+   To convert the rootfs to a fastboot-compatible format, run::
 
-To flash your HiKey over micro-USB::
+     gunzip -f lmp-gateway-image-hikey.ext4.gz
+     ext2simg -v lmp-gateway-image-hikey.ext4 lmp-gateway-image-hikey.img
 
-  fastboot flash boot boot-hikey.uefi.img
-  fastboot flash system lmp-gateway-image-hikey.img
+   To flash your HiKey over micro-USB::
 
-Please see https://www.96boards.org/documentation/consumer/hikey/
-for additional board documentation.
+     fastboot flash boot boot-hikey.uefi.img
+     fastboot flash system lmp-gateway-image-hikey.img
+
+   Please see https://www.96boards.org/documentation/consumer/hikey/
+   for additional board documentation.
 
 96Boards DragonBoard 410c
 -------------------------
 
-Set ``MACHINE`` to ``dragonboard-410c`` when setting up your work
-environment with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=dragonboard-410c source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``dragonboard-410c`` when setting up your work
+   environment with the ``setup-environment`` script::
 
-At the end of the build, your build artifacts will be found under
-``deploy/images/dragonboard-410c``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-dragonboard-410c.wic.gz``.
+     MACHINE=dragonboard-410c source setup-environment [BUILDDIR]
 
-To flash your microSD card, run::
+   At the end of the build, your build artifacts will be found under
+   ``deploy/images/dragonboard-410c``. The artifact you will use to
+   flash your microSD card is ``lmp-gateway-image-dragonboard-410c.wic.gz``.
 
-  gunzip -f lmp-gateway-image-dragonboard-410c.wic.gz
-  sudo dd if=lmp-gateway-image-dragonboard-410c.wic of=/dev/mmcblkX bs=4M
+   To flash your microSD card, run::
 
-Where :file:`/dev/mmcblkX` is your SD card device.
+     gunzip -f lmp-gateway-image-dragonboard-410c.wic.gz
+     sudo dd if=lmp-gateway-image-dragonboard-410c.wic of=/dev/mmcblkX bs=4M
 
-U-Boot is provided as part of the fastboot boot image.
+   Where :file:`/dev/mmcblkX` is your SD card device.
 
-To flash your DragonBoard 410c boot image over micro-USB::
+   U-Boot is provided as part of the fastboot boot image.
 
-  fastboot flash boot boot-dragonboard-410c.img
+   To flash your DragonBoard 410c boot image over micro-USB::
 
-Please see https://www.96boards.org/documentation/consumer/dragonboard410c/
-for additional board documentation.
+     fastboot flash boot boot-dragonboard-410c.img
+
+   Please see https://www.96boards.org/documentation/consumer/dragonboard410c/
+   for additional board documentation.
 
 96Boards DragonBoard 820c
 -------------------------
 
-Set ``MACHINE`` to ``dragonboard-820c`` when setting up your work
-environment with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=dragonboard-820c source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``dragonboard-820c`` when setting up your work
+   environment with the ``setup-environment`` script::
 
-At the end of the build, your build artifacts will be found under
-``deploy/images/dragonboard-820c``. The artifact you will use to
-flash your microSD card is ``lmp-gateway-image-dragonboard-820c.wic.gz``.
+     MACHINE=dragonboard-820c source setup-environment [BUILDDIR]
 
-To flash your microSD card, run::
+   At the end of the build, your build artifacts will be found under
+   ``deploy/images/dragonboard-820c``. The artifact you will use to
+   flash your microSD card is ``lmp-gateway-image-dragonboard-820c.wic.gz``.
 
-  gunzip -f lmp-gateway-image-dragonboard-820c.wic.gz
-  sudo dd if=lmp-gateway-image-dragonboard-820c.wic of=/dev/mmcblkX bs=4M
+   To flash your microSD card, run::
 
-Where :file:`/dev/mmcblkX` is your SD card device.
+     gunzip -f lmp-gateway-image-dragonboard-820c.wic.gz
+     sudo dd if=lmp-gateway-image-dragonboard-820c.wic of=/dev/mmcblkX bs=4M
 
-U-Boot is provided as part of the fastboot boot image.
+   Where :file:`/dev/mmcblkX` is your SD card device.
 
-To flash your DragonBoard 820c boot image over micro-USB::
+   U-Boot is provided as part of the fastboot boot image.
 
-  fastboot flash boot boot-dragonboard-820c.img
+   To flash your DragonBoard 820c boot image over micro-USB::
 
-Please see https://www.96boards.org/documentation/consumer/dragonboard820c/
-for additional board documentation.
+     fastboot flash boot boot-dragonboard-820c.img
+
+   Please see https://www.96boards.org/documentation/consumer/dragonboard820c/
+   for additional board documentation.
 
 SiFive HiFive Unleashed Freedom U540
 ------------------------------------
 
-Set ``MACHINE`` to ``freedom-u540`` when setting up your work
-environment with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=freedom-u540 source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``freedom-u540`` when setting up your work
+   environment with the ``setup-environment`` script::
 
-Build the Linux microPlatform minimal image ``lmp-mini-image`` instead of the
-usual ``lmp-gateway-image``, as there is no golang and docker support for
-RISC-V yet. At the end of the build, your build artifacts will be found
-under ``deploy/images/freedom-u540``. The artifact you will use to
-flash your microSD card is ``lmp-mini-image-freedom-u540.wic.gz``.
+     MACHINE=freedom-u540 source setup-environment [BUILDDIR]
 
-To flash your microSD card, run::
+   Build the Linux microPlatform minimal image ``lmp-mini-image``
+   instead of the usual ``lmp-gateway-image``, as there is no golang
+   and docker support for RISC-V yet. At the end of the build, your
+   build artifacts will be found under
+   ``deploy/images/freedom-u540``. The artifact you will use to flash
+   your microSD card is ``lmp-mini-image-freedom-u540.wic.gz``.
 
-  gunzip -f lmp-mini-image-freedom-u540.wic.gz
-  sudo dd if=lmp-mini-image-freedom-u540.wic of=/dev/mmcblkX bs=4M
+   To flash your microSD card, run::
 
-Where :file:`/dev/mmcblkX` is your SD card device.
+     gunzip -f lmp-mini-image-freedom-u540.wic.gz
+     sudo dd if=lmp-mini-image-freedom-u540.wic of=/dev/mmcblkX bs=4M
 
-Please see https://www.sifive.com/documentation/boards/hifive-unleashed/hifive-unleashed-getting-started-guide/
-for additional board documentation.
+   Where :file:`/dev/mmcblkX` is your SD card device.
+
+   Please see https://www.sifive.com/documentation/boards/hifive-unleashed/hifive-unleashed-getting-started-guide/
+   for additional board documentation.
 
 Generic RISC-V 64 Machine
 -------------------------
 
-Set ``MACHINE`` to ``qemuriscv64`` when setting up your work
-environment with the ``setup-environment`` script::
+.. toggle-header::
+   :header: Click to show/hide
 
-  MACHINE=qemuriscv64 source setup-environment [BUILDDIR]
+   Set ``MACHINE`` to ``qemuriscv64`` when setting up your work
+   environment with the ``setup-environment`` script::
 
-Build the Linux microPlatform minimal image ``lmp-mini-image`` instead of the
-usual ``lmp-gateway-image``, as there is no golang and docker support for
-RISC-V yet. At the end of the build, your build artifacts will be found
-under ``deploy/images/qemuriscv64``. The artifacts required by QEMU are ``bbl``
-(Berkeley Boot Loader + Kernel + Initrd) and
-``lmp-mini-image-qemuriscv64.otaimg``.
+     MACHINE=qemuriscv64 source setup-environment [BUILDDIR]
 
-Install QEMU >= 2.12.0
-~~~~~~~~~~~~~~~~~~~~~~
+   Build the Linux microPlatform minimal image ``lmp-mini-image``
+   instead of the usual ``lmp-gateway-image``, as there is no golang
+   and docker support for RISC-V yet. At the end of the build, your
+   build artifacts will be found under
+   ``deploy/images/qemuriscv64``. The artifacts required by QEMU are
+   ``bbl`` (Berkeley Boot Loader + Kernel + Initrd) and
+   ``lmp-mini-image-qemuriscv64.otaimg``.
 
-The minimal QEMU version required for RISC-V support is 2.12.0.
+   **Install QEMU >= 2.12.0**
 
-To install latest QEMU on macOS, run::
+   The minimal QEMU version required for RISC-V support is 2.12.0.
 
-  brew install qemu
+   To install latest QEMU on macOS, run::
 
-To install latest QEMU on Ubuntu 18.04, run::
+     brew install qemu
 
-  sudo add-apt-repository ppa:osf-maintainers/riscv
-  sudo apt-get update
-  sudo apt-get install qemu-system-misc
+   To install latest QEMU on Ubuntu 18.04, run::
 
-Boot the generic RISC-V target with QEMU
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     sudo add-apt-repository ppa:osf-maintainers/riscv
+     sudo apt-get update
+     sudo apt-get install qemu-system-misc
 
-To boot the generic RISC-V target, run::
+   **Boot the generic RISC-V target with QEMU**
 
-  qemu-system-riscv64 -machine virt -smp 2 -m 512 -serial mon:stdio -serial null \
-      -kernel bbl -append 'root=/dev/vda rw console=ttyS0' \
-      --drive file=lmp-mini-image-qemuriscv64.otaimg,format=raw,id=hd0 \
-      -device virtio-blk-device,drive=hd0 -device virtio-net-device,netdev=usernet \
-      -netdev user,id=usernet,hostfwd=tcp::22222-:22 -nographic
+   To boot the generic RISC-V target, run::
 
-You can SSH into the RISC-V 64 guest by using the port forwarded to the RISC-V
-64 guest::
+     qemu-system-riscv64 -machine virt -smp 2 -m 512 -serial mon:stdio -serial null \
+         -kernel bbl -append 'root=/dev/vda rw console=ttyS0' \
+         --drive file=lmp-mini-image-qemuriscv64.otaimg,format=raw,id=hd0 \
+         -device virtio-blk-device,drive=hd0 -device virtio-net-device,netdev=usernet \
+         -netdev user,id=usernet,hostfwd=tcp::22222-:22 -nographic
 
-  ssh -p 22222 osf@localhost
+   You can SSH into the RISC-V 64 guest by using the port forwarded to
+   the RISC-V 64 guest::
 
-Please see https://wiki.qemu.org/Documentation/Platforms/RISCV for additional
-information.
+     ssh -p 22222 osf@localhost
+
+   Please see https://wiki.qemu.org/Documentation/Platforms/RISCV for additional
+   information.
