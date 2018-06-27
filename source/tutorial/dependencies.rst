@@ -44,7 +44,7 @@ Subscriber Token (Optional)
 The latest Linux and Zephyr microPlatform updates are made
 continuously available to subscribers. To access subscriber-only
 content, you'll need to generate an Access Token at
-https://foundries.io/s/\ .
+https://foundries.io/settings/tokens/.
 
 Non-subscribers can use the latest public release. Public releases
 match the subscriber trees, but lag behind them; they are typically
