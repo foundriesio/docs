@@ -38,116 +38,122 @@ Edition) and ATS Garage have a few caveats you should be aware of:
    will happen until a **new** image is released. Any updates before
    that time must be performed manually.
 
-Option 1: Using the Subscriber Demo Server
-------------------------------------------
+Updating Your Linux microPlatform Device
+----------------------------------------
 
-Linux microPlatform subscribers have the easiest path to experimenting with
-OTAs. Subscribers have access to a `device management interface`_ for up to
-5 devices. The Linux microPlatform image includes a program to register the
-device with the `foundries.io`_ OTA community edition server. Registering
-the device is as simple as::
+Choose a method:
 
-    sudo lmp-device-register -n <name of your device as it should appear in UI>
-    # Follow the instructions which appear in the terminal.
+.. content-tabs::
 
-    # systemd will eventually restart aktualizr and the device will register.
-    # To make it happen immediately run:
-    sudo systemctl restart aktualizr
+   .. tab-container:: lmp-server
+      :title: OSF Subscriber Demo Server
 
-Once registered, the device will show up under
-https://foundries.io/devices/ and you'll have the ability to start managing
-updates from there.
+      Linux microPlatform subscribers have the easiest path to
+      experimenting with OTAs. Subscribers have access to a `device
+      management interface`_ for up to 5 devices. The Linux
+      microPlatform image includes a program to register the device
+      with the `foundries.io`_ OTA community edition
+      server. Registering the device is as simple as::
 
-Option 2: Using ATS Garage
---------------------------
+          sudo lmp-device-register -n <name of your device as it should appear in UI>
+          # Follow the instructions which appear in the terminal.
 
-Users are also free to use `ATS Garage`_ to manage their devices. Documentation
-can be found at https://docs.atsgarage.com/usage/devices.html. Once you have
-an account with ATS Garage you can follow these steps to get your device
-registered:
+          # systemd will eventually restart aktualizr and the device will register.
+          # To make it happen immediately run:
+          sudo systemctl restart aktualizr
 
-1. Upload Image to ATS Garage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      Once registered, the device will show up under
+      https://foundries.io/devices/ and you'll have the ability to
+      start managing updates from there.
 
-This section contains an example for publishing a Raspberry Pi 3 image to
-ATS Garage. You can change the downloaded artifacts and ``ota-publish``
-arguments for other boards.
+   .. tab-container:: ats-garage
+      :title: ATS Garage
 
-First create a directory to save the files to::
+      All users are also free to use `ATS Garage`_ to manage their
+      devices. Documentation can be found at
+      https://docs.atsgarage.com/usage/devices.html. Once you have an
+      account with ATS Garage you can follow these steps to get your device
+      registered:
 
-  mkdir lmp-bin && cd lmp-bin
+      **1. Upload Image to ATS Garage**
 
-Next download your ATS Garage credentials file to the newly created
-``lmp-bin`` directory:
+      This section contains an example for publishing a Raspberry Pi 3 image to
+      ATS Garage. You can change the downloaded artifacts and ``ota-publish``
+      arguments for other boards.
 
-  https://app.atsgarage.com/#/profile/access-keys
+      First create a directory to save the files to::
 
-**Subscribers:**
+        mkdir lmp-bin && cd lmp-bin
 
-Download and extract the following OSTree repository tarball to the
-``lmp-bin`` directory:
+      Next download your ATS Garage credentials file to the newly created
+      ``lmp-bin`` directory:
 
-.. osf-rpi3-ostree::
+        https://app.atsgarage.com/#/profile/access-keys
 
-Extract and upload the image using update |version| of the
-``aktualizr`` container:
+      **Subscribers:**
 
-.. parsed-literal::
+      Download and extract the following OSTree repository tarball to the
+      ``lmp-bin`` directory:
 
-   tar -jxvf raspberrypi3-64-ostree_repo.tar.bz2
+      .. osf-rpi3-ostree::
 
-   docker run --rm -it -v $PWD:/build --workdir=/build \\
-          hub.foundries.io/aktualizr:|docker_subscriber_tag| \\
-          ota-publish -m raspberrypi3-64 -c credentials.zip \\
-                      -r ostree_repo
+      Extract and upload the image using update |version| of the
+      ``aktualizr`` container:
 
-**Public:**
+      .. parsed-literal::
 
-Download and extract the following OSTree repository tarball to the
-``lmp-bin`` directory:
+         tar -jxvf raspberrypi3-64-ostree_repo.tar.bz2
 
-.. osf-rpi3-ostree::
-   :public:
+         docker run --rm -it -v $PWD:/build --workdir=/build \\
+                hub.foundries.io/aktualizr:|docker_subscriber_tag| \\
+                ota-publish -m raspberrypi3-64 -c credentials.zip \\
+                            -r ostree_repo
 
-Extract and upload the image using update |public_version| of the
-``aktualizr`` container:
+      **Public:**
 
-.. parsed-literal::
+      Download and extract the following OSTree repository tarball to the
+      ``lmp-bin`` directory:
 
-   tar -jxvf raspberrypi3-64-ostree_repo.tar.bz2
+      .. osf-rpi3-ostree::
+         :public:
 
-   docker run --rm -it -v $PWD:/build --workdir=/build \\
-          opensourcefoundries/aktualizr:|docker_public_tag| \\
-          ota-publish -m raspberrypi3-64 -c credentials.zip \\
-                      -r ostree_repo
+      Extract and upload the image using update |public_version| of the
+      ``aktualizr`` container:
 
-.. note::
+      .. parsed-literal::
 
-   The first image published pushes every file in the system. Any
-   following publish steps only push files which have changed.
+         tar -jxvf raspberrypi3-64-ostree_repo.tar.bz2
 
-2. Verify Upload
-~~~~~~~~~~~~~~~~
+         docker run --rm -it -v $PWD:/build --workdir=/build \\
+                opensourcefoundries/aktualizr:|docker_public_tag| \\
+                ota-publish -m raspberrypi3-64 -c credentials.zip \\
+                            -r ostree_repo
 
-Visit https://app.atsgarage.com/#/packages/ and verify the package is
-available.
+      .. note::
 
-3. Register Device
-~~~~~~~~~~~~~~~~~~
+         The first image published pushes every file in the system. Any
+         following publish steps only push files which have changed.
 
-You'll now need to copy your ATS credentials to the device and
-register it. For example, if SSHing into a Raspberry Pi 3::
+      **2. Verify Upload**
 
-  # From host computer with credentials.zip:
-  scp credentials.zip osf@raspberrypi3-64.local:~/
+      Visit https://app.atsgarage.com/#/packages/ and verify the package is
+      available.
 
-  # From target device:
-  sudo mv credentials.zip /var/sota/sota_provisioning_credentials.zip
-  sudo cp /usr/lib/sota/sota_autoprov.toml /var/sota/sota.toml
+      **3. Register Device**
 
-Aktualizr will start automatically once it finds
-:file:`/var/sota/sota.toml`; you can also restart it with ``systemctl
-restart aktualizr`` if you are impatient.
+      You'll now need to copy your ATS credentials to the device and
+      register it. For example, if SSHing into a Raspberry Pi 3::
+
+        # From host computer with credentials.zip:
+        scp credentials.zip osf@raspberrypi3-64.local:~/
+
+        # From target device:
+        sudo mv credentials.zip /var/sota/sota_provisioning_credentials.zip
+        sudo cp /usr/lib/sota/sota_autoprov.toml /var/sota/sota.toml
+
+      Aktualizr will start automatically once it finds
+      :file:`/var/sota/sota.toml`; you can also restart it with ``systemctl
+      restart aktualizr`` if you are impatient.
 
 Debugging OTA Issues
 --------------------
