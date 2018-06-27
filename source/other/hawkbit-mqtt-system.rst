@@ -132,41 +132,45 @@ fetch updates from hawkBit.
   containers using the CloudMQTT information you recorded
   earlier.
 
-  **Subscribers**:
+  .. content-tabs::
 
-  Set up the IoT gateway for update |version|:
+     .. tab-container:: subscribers
+        :title: Subscribers
 
-  .. parsed-literal::
+        Set up the IoT gateway for update |version|:
 
-     export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
-     export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
-      ./iot-gateway.sh -g raspberrypi3-64.local \\
-                       -p <your-subscriber-token> -t |docker_subscriber_tag|
+        .. parsed-literal::
 
-  Providing your subscriber token is necessary so your gateway device
-  can log in to the container registry. If you're concerned about
-  typing it directly into the terminal, you can set it in the
-  environment variable ``REGISTRY_PASSWD`` by any means you find
-  sufficiently secure. Similar comments apply to the
-  ``CLOUDMQTT_PASSWD`` environment variable.
+           export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
+           export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
+            ./iot-gateway.sh -g raspberrypi3-64.local \\
+                             -p <your-subscriber-token> -t |docker_subscriber_tag|
 
-  **Public**:
+        Providing your subscriber token is necessary so your gateway device
+        can log in to the container registry. If you're concerned about
+        typing it directly into the terminal, you can set it in the
+        environment variable ``REGISTRY_PASSWD`` by any means you find
+        sufficiently secure. Similar comments apply to the
+        ``CLOUDMQTT_PASSWD`` environment variable.
 
-  Set up the IoT gateway for update |public_version|:
+     .. tab-container:: public
+        :title: Public
 
-  .. parsed-literal::
+        Set up the IoT gateway for update |public_version|:
 
-     export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
-     export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
-      ./iot-gateway.sh -g raspberrypi3-64.local -p docker \\
-                       -r hub.docker.com -u docker -t |docker_public_tag|
+        .. parsed-literal::
+
+           export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
+           export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
+            ./iot-gateway.sh -g raspberrypi3-64.local -p docker \\
+                             -r hub.docker.com -u docker -t |docker_public_tag|
 
 Your gateway device is now ready for use.
 
 .. _hawkbit-mqtt-hawkbit:
 
-Set up hawkBit
---------------
+Run hawkBit Container
+---------------------
 
 Now run a demonstration-grade hawkBit server on your workstation (not
 the gateway).
@@ -183,37 +187,44 @@ the gateway).
    the official documentation on `building and running hawkBit`_ and
    `hawkBit security`_.
 
-**Subscribers**:
+.. content-tabs::
 
-First, log in to the Open Source Foundries subscriber container
-registry on your worksation (not the gateway device)::
+   .. tab-container:: subscribers
+      :title: Subscribers
 
-    docker login hub.foundries.io --username=unused
+      First, log in to the Open Source Foundries subscriber container
+      registry on your workstation (not the gateway device)::
 
-The username is currently ignored when logging in, but a value must
-be provided. When prompted for the password, enter your subscriber
-token.
+          docker login hub.foundries.io --username=unused
 
-Now run update |version| of the hawkBit container on your workstation:
+      The username is currently ignored when logging in, but a value must
+      be provided. When prompted for the password, enter your subscriber
+      token.
 
-.. parsed-literal::
+      Now run update |version| of the hawkBit container on your workstation:
 
-   docker run -dit --name hawkbit -p 8080:8080 \\
-              hub.foundries.io/hawkbit-update-server:|docker_subscriber_tag|
+      .. parsed-literal::
 
-If this command fails, ensure ``docker login`` succeeds and retry.
+         docker run -dit --name hawkbit -p 8080:8080 \\
+                    hub.foundries.io/hawkbit-update-server:|docker_subscriber_tag|
 
-**Public**:
+      If this command fails, ensure ``docker login`` succeeds and retry.
 
-Run update |public_version| of the hawkBit container on your workstation:
+   .. tab-container:: public
+      :title: Public
 
-.. parsed-literal::
+      Run update |public_version| of the hawkBit container on your workstation:
 
-   docker run -dit --name hawkbit -p 8080:8080 \\
-              opensourcefoundries/hawkbit-update-server:|docker_public_tag|
+      .. parsed-literal::
+
+         docker run -dit --name hawkbit -p 8080:8080 \\
+                    opensourcefoundries/hawkbit-update-server:|docker_public_tag|
 
 This container can take approximately 40 seconds for the application
 to start for the first time.
+
+Load hawkBit Web Interface
+--------------------------
 
 After running the hawkBit container, visit http://localhost:8080/UI to
 load the administrative interface, and log in with the default
@@ -223,8 +234,6 @@ should look like this:
 .. figure:: /_static/other/hawkbit-mqtt/hawkbit-initial.png
    :align: center
    :alt: hawkBit Administrator Interface
-
-Your hawkBit container is now ready for use.
 
 .. note::
 
@@ -238,16 +247,44 @@ Your hawkBit container is now ready for use.
 Set Up the IoT Device(s)
 ------------------------
 
-Using `BLE Nano 2`_, build and flash the demonstration application for
-this system::
+Build and flash the demonstration application for your board:
 
-  ./zmp build -b nrf52_blenano2 zephyr-fota-samples/dm-hawkbit-mqtt
-  ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-hawkbit-mqtt
+.. content-tabs::
 
-.. include:: /tutorial/pyocd.include
+   .. tab-container:: nrf52_blenano2
+      :title: BLE Nano 2
 
-If you don't have a BLE Nano 2, information for other boards is provided
-on a best-effort basis below in :ref:`hawkbit-mqtt-devices`.
+      .. code-block:: console
+
+         ./zmp build -b nrf52_blenano2 zephyr-fota-samples/dm-hawkbit-mqtt
+         ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-hawkbit-mqtt
+
+      .. include:: /tutorial/pyocd.include
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         ./zmp build -b nrf52_pca10040 zephyr-fota-samples/dm-hawkbit-mqtt
+         ./zmp flash -b nrf52_pca10040 zephyr-fota-samples/dm-hawkbit-mqtt
+
+      Flashing nRF52 DK requires the nRF5x command line tools to be
+      installed on your workstation.
+
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         ./zmp build -b nrf52840_pca10056 zephyr-fota-samples/dm-hawkbit-mqtt
+         ./zmp flash -b nrf52840_pca10056 zephyr-fota-samples/dm-hawkbit-mqtt
+
+      Flashing nRF52840 DK requires the nRF5x command line tools to be
+      installed on your workstation.
+
+Information for other boards is provided on a best-effort basis below
+in :ref:`hawkbit-mqtt-devices`.
 
 Use the System
 ==============
@@ -275,24 +312,51 @@ FOTA Updates
 ------------
 
 Now let's perform a FOTA update. In the hawkBit server UI, you should
-see the 96Boards device show up in the "Targets" pane. It will look
-like this:
+see the board show up in the "Targets" pane. It will look like this:
 
 .. figure:: /_static/other/hawkbit-mqtt/iot-device-target.png
    :align: center
 
-   BLE Nano 2 registered with hawkBit.
+   Board registered with hawkBit.
 
 It's time to upload a firmware binary to the server, and update it
 using this UI. We've provided a Python script to make this easier,
 which works with either Python 2 or 3.
 
-Run it from the Zephyr microPlatform installation directory::
+Run the appropriate command for your board from the Zephyr
+microPlatform installation directory:
 
-    python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
-                      -d 'BLE Nano 2 Update' \
-                      -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_blenano2/app/zephyr/dm-hawkbit-mqtt-nrf52_blenano2-signed.bin \
-                      -sv "1.0" -p "OSF" -n "nrf52_blenano2 update" -t os
+.. content-tabs::
+
+   .. tab-container:: nrf52_blenano2
+      :title: BLE Nano 2
+
+      .. code-block:: console
+
+         python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
+                           -d 'BLE Nano 2 Update' \
+                           -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_blenano2/app/zephyr/dm-hawkbit-mqtt-nrf52_blenano2-signed.bin \
+                           -sv "1.0" -p "OSF" -n "nrf52_blenano2 update" -t os
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
+                           -d 'nRF52 DK Update' \
+                           -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_pca10040/app/zephyr/dm-hawkbit-mqtt-nrf52_pca10040-signed.bin \
+                           -sv "1.0" -p "OSF" -n "nrf52_pca10040 update" -t os
+
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
+                           -d 'nRF52840 DK Update' \
+                           -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52840_pca10056/app/zephyr/dm-hawkbit-mqtt-nrf52840_pca10056-signed.bin \
+                           -sv "1.0" -p "OSF" -n "nrf52840_pca10056 update" -t os
 
 Above, 1.0 is an arbitrary version number. If hawkBit is running on a
 different machine, use the ``-ds`` and ``-sm`` options. For more help
@@ -347,7 +411,7 @@ update, a yellow circle will appear next to it in the targets list:
 .. figure:: /_static/other/hawkbit-mqtt/iot-device-waiting.png
    :align: center
 
-   Waiting for BLE Nano 2 to update.
+   Waiting for board to update.
 
 If you're connected to the device's serial console, look for output
 like this while the update is being downloaded::
@@ -403,7 +467,7 @@ At this point, the yellow circle will turn into a green check box:
 .. figure:: /_static/other/hawkbit-mqtt/iot-device-ok.png
    :align: center
 
-   BLE Nano 2 successfully updated.
+   Board is successfully updated.
 
 Congratulations! You've just done your first FOTA update using this
 system.
@@ -412,69 +476,56 @@ system.
 
 .. _hawkbit-mqtt-devices:
 
-Appendix: Additional IOT devices
+Appendix: Additional IoT devices
 ================================
 
 FRDM-K64F
 ---------
 
-.. |frdm-k64f-net-file| replace::
-   ``zephyr-fota-samples/dm-hawkbit-mqtt/boards/frdm_k64f-local.conf``
+.. toggle-header::
+   :header: Click to show/hide
 
-.. include:: /tutorial/frdm-k64f-net.include
+   .. |frdm-k64f-net-file| replace::
+      ``zephyr-fota-samples/dm-hawkbit-mqtt/boards/frdm_k64f-local.conf``
 
-Now you can build the binaries. From the Zephyr microPlatform
-installation directory::
+   .. include:: /tutorial/frdm-k64f-net.include
 
-    ./zmp build -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
+   Now you can build the binaries. From the Zephyr microPlatform
+   installation directory::
 
-.. include:: /tutorial/pyocd.include
+       ./zmp build -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
 
-To flash the binaries, plug the K64F into your system via the USB
-connector labeled "SDA USB". Then, from the Zephyr microPlatform installation
-directory::
+   .. include:: /tutorial/pyocd.include
 
-    ./zmp flash -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
+   To flash the binaries, plug the K64F into your system via the USB
+   connector labeled "SDA USB". Then, from the Zephyr microPlatform installation
+   directory::
+
+       ./zmp flash -b frdm_k64f zephyr-fota-samples/dm-hawkbit-mqtt
 
 96Boards Nitrogen
 -----------------
 
-Like FRDM-K64F, this board also requires pyOCD to flash.
+.. toggle-header::
+   :header: Click to show/hide
 
-To build the binaries, run this from the Zephyr microPlatform
-installation directory::
+   To build the binaries, run this from the Zephyr microPlatform
+   installation directory::
 
-  ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
+     ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
 
-To flash the board::
+   .. include:: /tutorial/pyocd.include
 
-  ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
+   To flash the board::
 
-
-NRF52832 DK
------------
-
-This requires `nrfjprog`_ to be installed to flash.
-
-To build the binaries, run this from the Zephyr microPlatform
-installation directory::
-
-  ./zmp build -b nrf52_pca10040 zephyr-fota-samples/dm-lwm2m
-
-To flash the board::
-
-  ./zmp flash -b nrf52_pca10040 zephyr-fota-samples/dm-lwm2m
-
-Please note that the flash partitions used by this application for the
-application and MCUboot override the defaults provided by the board in
-upstream Zephyr.
+     ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-hawkbit-mqtt
 
 Appendix: hawkBit References
 ============================
 
 This section contains additional reference material regarding hawkBit.
 
-- Upstream Github: https://github.com/eclipse/hawkbit
+- Upstream GitHub: https://github.com/eclipse/hawkbit
 - Data model: http://www.eclipse.org/hawkbit/documentation/architecture/datamodel.html
 - Open Source Foundries Docker container: https://github.com/OpenSourceFoundries/core-containers
 - Open Source Foundries Docker Hub: https://hub.docker.com/r/opensourcefoundries/hawkbit-update-server/
