@@ -25,41 +25,46 @@
   recommend that you change it).
 
 - Clone ``gateway-ansible``, a repository of Ansible playbooks,
-  helper scripts and files, and Dockerfiles, onto your workstation.
+  helper scripts and files, and Dockerfiles, onto your workstation,
+  using either the subscriber or public repository:
 
-  **Subscribers**:
+  .. content-tabs::
 
-  For passwordless authentication, create a file named :file:`.netrc`
-  (note the leading ``.``) in your home directory, readable only by
-  your user, with the following contents:
+     .. tab-container:: subscribers
+        :title: Subscribers
 
-  .. code-block:: none
+        For passwordless authentication, create a file named :file:`.netrc`
+        (note the leading ``.``) in your home directory, readable only by
+        your user, with the following contents:
 
-     machine source.foundries.io
-     login <your-subscriber-token>
+        .. code-block:: none
 
-  If you don't create a :file:`.netrc`, enter your subscriber token
-  when prompted for a username, and leave the password blank.
+           machine source.foundries.io
+           login <your-subscriber-token>
 
-  Now clone the gateway-ansible repository and check out the revision
-  for update |version|:
+        If you don't create a :file:`.netrc`, enter your subscriber token
+        when prompted for a username, and leave the password blank.
 
-  .. parsed-literal::
+        Now clone the gateway-ansible repository and check out the revision
+        for update |version|:
 
-     git clone https://source.foundries.io/gateway-ansible
-     cd gateway-ansible
-     git checkout |git_subscriber_tag|
+        .. parsed-literal::
 
-  **Public**:
+           git clone https://source.foundries.io/gateway-ansible
+           cd gateway-ansible
+           git checkout |git_subscriber_tag|
 
-  Clone the gateway-ansible repository and check out the revision for
-  update |public_version|:
+     .. tab-container:: public
+        :title: Public
 
-  .. parsed-literal::
+        Clone the gateway-ansible repository and check out the revision for
+        update |public_version|:
 
-     git clone https://github.com/OpenSourceFoundries/gateway-ansible
-     cd gateway-ansible
-     git checkout |git_public_tag|
+        .. parsed-literal::
+
+           git clone https://github.com/OpenSourceFoundries/gateway-ansible
+           cd gateway-ansible
+           git checkout |git_public_tag|
 
 .. _GitHub guide to SSH keys:
    https://help.github.com/articles/connecting-to-github-with-ssh/

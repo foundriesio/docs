@@ -59,41 +59,47 @@ device), follow these guides:
 Run Leshan on Workstation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Continue by starting a demonstration-grade Leshan server on your workstation.
+Continue by starting a demonstration-grade Leshan server on your
+workstation, using either a subscriber or public container image:
 
-**Subscribers**:
+.. content-tabs::
 
-First, log in to the Open Source Foundries subscriber container
-registry on your workstation (not the gateway device)::
+   .. tab-container:: subscribers
+      :title: Subscribers
 
-    docker login hub.foundries.io --username=unused
+      First, log in to the Open Source Foundries subscriber container
+      registry on your workstation (not the gateway device)::
 
-The username is currently ignored when logging in, but a value must
-be provided. When prompted for the password, enter your subscriber
-token.
+          docker login hub.foundries.io --username=unused
 
-Run update |version| of the container, also on your workstation:
+      The username is currently ignored when logging in, but a value must
+      be provided. When prompted for the password, enter your subscriber
+      access token.
 
-.. parsed-literal::
+      Run update |version| of the container, also on your workstation:
 
-   docker run --restart=always -d -t -p 5683:5683/udp \\
-     -p 5684:5684/udp -p 8081:8080 \\
-     --read-only --tmpfs=/tmp --name leshan \\
-     hub.foundries.io/leshan:|docker_subscriber_tag|
+      .. parsed-literal::
 
-**Public**:
+         docker run --restart=always -d -t -p 5683:5683/udp \\
+           -p 5684:5684/udp -p 8081:8080 \\
+           --read-only --tmpfs=/tmp --name leshan \\
+           hub.foundries.io/leshan:|docker_subscriber_tag|
 
-Run update |public_version| of the container on your workstation:
 
-.. parsed-literal::
+   .. tab-container:: public
+      :title: Public
 
-   docker run --restart=always -d -t -p 5683:5683/udp \\
-     -p 5684:5684/udp -p 8081:8080 \\
-     --read-only --tmpfs=/tmp \\
-     --name leshan opensourcefoundries/leshan:|docker_public_tag|
+      Run update |public_version| of the container on your workstation:
 
-After running the Leshan container, visit http://localhost:8081/ to
-load its web interface. Your Leshan container is now ready for use.
+      .. parsed-literal::
+
+         docker run --restart=always -d -t -p 5683:5683/udp \\
+           -p 5684:5684/udp -p 8081:8080 \\
+           --read-only --tmpfs=/tmp \\
+           --name leshan opensourcefoundries/leshan:|docker_public_tag|
+
+Your Leshan container is now ready for use. Load its web interface at
+http://localhost:8081/.
 
 .. _tutorial-basic-gateway:
 
@@ -110,29 +116,33 @@ network proxy for your IoT device.
 - From the ``gateway-ansible`` repository cloned on your workstation,
   deploy the gateway containers to your gateway using Ansible.
 
-  **Subscribers**:
+  .. content-tabs::
 
-  Set up the IoT gateway for update |version|:
+     .. tab-container:: subscribers
+        :title: Subscribers
 
-  .. parsed-literal::
+        Set up the IoT gateway for update |version|:
 
-     ./iot-gateway.sh -g raspberrypi3-64.local \\
-                      -p <your-subscriber-token> -t |docker_subscriber_tag|
+        .. parsed-literal::
 
-  Providing your subscriber token is necessary to ensure your gateway
-  device can log in to the container registry. If you're concerned
-  about typing it directly into the terminal, you can set it in the
-  environment variable ``REGISTRY_PASSWD`` by any means you find
-  sufficiently secure.
+           ./iot-gateway.sh -g raspberrypi3-64.local \\
+                            -p <your-subscriber-token> -t |docker_subscriber_tag|
 
-  **Public**:
+        Providing your subscriber token is necessary to ensure your gateway
+        device can log in to the container registry. If you're concerned
+        about typing it directly into the terminal, you can set it in the
+        environment variable ``REGISTRY_PASSWD`` by any means you find
+        sufficiently secure.
 
-  Set up the IoT gateway for update |public_version|:
+     .. tab-container:: public
+        :title: Public
 
-  .. parsed-literal::
+        Set up the IoT gateway for update |public_version|:
 
-     ./iot-gateway.sh -g raspberrypi3-64.local -p docker \\
-                      -r hub.docker.com -u docker -t |docker_public_tag|
+        .. parsed-literal::
+
+           ./iot-gateway.sh -g raspberrypi3-64.local -p docker \\
+                            -r hub.docker.com -u docker -t |docker_public_tag|
 
 Your gateway device is now ready for use.
 
@@ -141,16 +151,33 @@ Your gateway device is now ready for use.
 Set up IoT Device(s)
 ~~~~~~~~~~~~~~~~~~~~
 
-**Required Equipment**: IoT device and workstation to flash the
-device.
+Build and flash the demonstration application for your board:
 
-When using BLE Nano 2, build and flash the demonstration application
-for this system::
+.. content-tabs::
 
-  ./zmp build -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
-  ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
+   .. tab-container:: nrf52_blenano2
+      :title: BLE Nano 2
 
-If using the nRF DK boards, change the ``-b`` option appropriately.
+      .. code-block:: console
+
+         ./zmp build -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
+         ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         ./zmp build -b nrf52_pca10040 zephyr-fota-samples/dm-lwm2m
+         ./zmp flash -b nrf52_pca10040 zephyr-fota-samples/dm-lwm2m
+
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         ./zmp build -b nrf52840_pca10056 zephyr-fota-samples/dm-lwm2m
+         ./zmp flash -b nrf52840_pca10056 zephyr-fota-samples/dm-lwm2m
 
 .. _tutorial-basic-use:
 
@@ -224,16 +251,47 @@ built previously, but you can also change and rebuild the program
 before following these steps to write new firmware.
 
 Start a Python 3 HTTP server on your workstation from the Zephyr
-microPlatform binary build directory for this application::
+microPlatform binary build directory for your board:
 
-   $ cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/
-   $ python3 -m http.server
+.. content-tabs::
 
-(Adjust the build directory as needed for other boards.)
+   .. tab-container:: nrf52_blenano2
+      :title: BLE Nano 2
 
-The update will then be available at::
+      .. code-block:: console
 
-   http://YOUR_WORKSTATION_IP:8000/zephyr/dm-lwm2m-nrf52_blenano2-signed.bin
+         cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/
+         python3 -m http.server
+
+      The update will then be available at::
+
+         http://YOUR_WORKSTATION_IP:8000/zephyr/dm-lwm2m-nrf52_blenano2-signed.bin
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52_pca10040/app/
+         python3 -m http.server
+
+      The update will then be available at::
+
+         http://YOUR_WORKSTATION_IP:8000/zephyr/dm-lwm2m-nrf52_pca10040-signed.bin
+
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52840_pca10056/app/
+         python3 -m http.server
+
+      The update will then be available at::
+
+         http://YOUR_WORKSTATION_IP:8000/zephyr/dm-lwm2m-nrf52840_pca10056-signed.bin
+
+(Adjust the above as needed for other boards.)
 
 To start the firmware update, click the Write button for the "Package
 URI" field in the Firmware Update object, then write this value in the
