@@ -192,7 +192,7 @@ the gateway).
    .. tab-container:: subscribers
       :title: Subscribers
 
-      First, log in to the Open Source Foundries subscriber container
+      First, log in to the Foundries.io subscriber container
       registry on your workstation (not the gateway device)::
 
           docker login hub.foundries.io --username=unused
@@ -527,8 +527,8 @@ This section contains additional reference material regarding hawkBit.
 
 - Upstream GitHub: https://github.com/eclipse/hawkbit
 - Data model: http://www.eclipse.org/hawkbit/documentation/architecture/datamodel.html
-- Open Source Foundries Docker container: https://github.com/OpenSourceFoundries/core-containers
-- Open Source Foundries Docker Hub: https://hub.docker.com/r/opensourcefoundries/hawkbit-update-server/
+- Foundries.io Docker container: https://github.com/OpenSourceFoundries/core-containers
+- Foundries.io Docker Hub: https://hub.docker.com/r/opensourcefoundries/hawkbit-update-server/
 
 .. _BLE Nano 2:
    https://redbear.cc/product/ble-nano-kit-2.html

@@ -78,7 +78,7 @@ Zephyr microPlatform release as follows:
    $ repo sync
 
 However, this defeats the purpose of receiving continuous updates from
-Open Source Foundries.
+Foundries.io.
 
 .. _howto-zephyr-out-of-tree:
 

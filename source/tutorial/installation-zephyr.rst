@@ -238,7 +238,7 @@ Choose a subscriber or public installation:
    .. tab-container:: public
       :title: Public
 
-      The latest public release is available from the `Open Source Foundries
+      The latest public release is available from the `Foundries.io
       GitHub`_ organization.
 
       #. Make an installation directory for the Zephyr microPlatform, and
@@ -531,7 +531,7 @@ with these instructions, which may be useful on other development platforms.
 .. _create a subscriber access token on app.foundries.io:
    https://app.foundries.io/settings/tokens
 
-.. _Open Source Foundries GitHub: https://github.com/OpenSourceFoundries
+.. _Foundries.io GitHub: https://github.com/OpenSourceFoundries
 
 .. _picocom: https://github.com/npat-efault/picocom
 

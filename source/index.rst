@@ -1,5 +1,4 @@
-Open Source Foundries microPlatforms
-====================================
+Foundries.io microPlatforms
 
 The **Zephyr and Linux microPlatforms** are minimal, secure,
 continuously updated software and hardware platforms that make it

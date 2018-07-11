@@ -13,7 +13,7 @@ Zephyr microPlatform Git repositories, and what you can expect from them.
    - The ``master`` branch in the :ref:`manifest repository
      <ref-zephyr-repo>` always tracks the latest development.
 
-   - Commits in the Open Source Foundries Zephyr and mcuboot trees
+   - Commits in the Foundries.io Zephyr and mcuboot trees
      which aren't present upstream have special tags, called
      :ref:`sauce tags <zephyr-branching-sauce>`, in their `Git`_
      shortlogs, so they can be easily identified and their purpose
@@ -23,8 +23,8 @@ Zephyr microPlatform Git repositories, and what you can expect from them.
      microPlatform branches receive non-fast-forward updates onto the
      new upstream development versions.
 
-   - Currently, Zephyr microPlatform repositories provided by Open
-     Source Foundries (i.e., projects without external upstreams)
+   - Currently, Zephyr microPlatform repositories provided by
+     Foundries.io (i.e., projects without external upstreams)
      always get `fast-forward`_ updates.
 
 Why Have Branching Rules?
@@ -41,14 +41,14 @@ The details are given below in :ref:`zephyr-branching-rationale`.
 Branch Maintenance
 ------------------
 
-For repositories with upstreams, like Zephyr and MCUBoot, Open Source
-Foundries maintains some out of tree patches. To make this work
+For repositories with upstreams, like Zephyr and MCUBoot, Foundries.io
+maintains some out of tree patches. To make this work
 smoothly, we typically bring in upstream changes by merging into our
 tree. You'll see merge commits with ``[OSF mergeup]`` in the
 shortlog when this happens. See below for a complete list of sauce tags.
 
-However, whenever the upstream releases a new version, the Open Source
-Foundries branch history is cleaned up and re-written onto the new
+However, whenever the upstream releases a new version, the Foundries.io
+branch history is cleaned up and re-written onto the new
 development tree for the next version. This is a destructive change,
 but you can always get the old version using the manifests from
 previous updates.
@@ -61,8 +61,8 @@ these commits as a starting point when merging the new history into
 your own tree if you are also managing changes to these repositories
 -- since the code is the same, the merge will succeed.
 
-For source code repositories without upstreams, where Open Source
-Foundries is maintaining the code, Zephyr microPlatform updates will
+For source code repositories without upstreams, where Foundries.io
+is maintaining the code, Zephyr microPlatform updates will
 always contain fast-forward changes from the previous update.
 
 .. _zephyr-branching-sauce:
@@ -74,7 +74,7 @@ Sauce Tags for OSF Patches
 
    The important thing to know is:
 
-   When Open Source Foundries adds a patch to a repository with an
+   When Foundries.io adds a patch to a repository with an
    upstream, we add an "OSF" tag in the Git shortlog to make the
    commit easy to see.
 
@@ -214,8 +214,8 @@ There are two "types" of repository in a Zephyr microPlatform installation:
   external upstream, like
 
 Rather than cloning the upstream versions of the Zephyr and mcuboot
-repositories in a Zephyr microPlatform installation, Open Source
-Foundries maintains its own trees. This is for two reasons.
+repositories in a Zephyr microPlatform installation, Foundries.io
+maintains its own trees. This is for two reasons.
 
 1. It lets us track known-good revisions, especially when they include
    OSF patches.

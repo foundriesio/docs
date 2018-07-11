@@ -18,7 +18,7 @@ from os.path import abspath, dirname, join
 import subprocess
 import sys
 
-# -- Open Source Foundries / OSF configuration ----------------------------
+# -- Foundries.io / OSF (for now) configuration ----------------------------
 
 # The next-to-be released subscriber version number.
 #
@@ -131,9 +131,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Open Source Foundries microPlatforms'
-copyright = '2017-2018, Open Source Foundries, Ltd'
-author = 'Open Source Foundries, Ltd.'
+project = 'Foundries.io microPlatforms'
+copyright = '2017-2018, Foundries.io, Ltd'
+author = 'Foundries.io, Ltd.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

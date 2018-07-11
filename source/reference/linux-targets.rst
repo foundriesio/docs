@@ -11,7 +11,7 @@ for other targets. It is provided on a best-effort basis.
 Prebuilt Binaries
 -----------------
 
-Several boards have reference builds provided by Open Source Foundries
+Several boards have reference builds provided by Foundries.io
 in the latest Linux microPlatform release, available at
 https://app.foundries.io/mp/lmp/latest/artifacts/.
 

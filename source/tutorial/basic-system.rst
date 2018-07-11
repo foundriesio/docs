@@ -44,7 +44,7 @@ Begin by preparing the system for use.
 Set up Workstation
 ~~~~~~~~~~~~~~~~~~
 
-Open Source Foundries provides pre-built Leshan Docker containers for
+Foundries.io provides pre-built Leshan Docker containers for
 use on your workstation, and `Ansible`_ playbooks and associated shell
 scripts you can run there which make it easier to set up your gateway.
 
@@ -67,7 +67,7 @@ workstation, using either a subscriber or public container image:
    .. tab-container:: subscribers
       :title: Subscribers
 
-      First, log in to the Open Source Foundries subscriber container
+      First, log in to the Foundries.io subscriber container
       registry on your workstation (not the gateway device)::
 
           docker login hub.foundries.io --username=unused

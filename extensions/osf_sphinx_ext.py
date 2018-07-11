@@ -1,4 +1,4 @@
-"""Open Source Foundries Sphinx extensions"""
+"""Foundries.io (OSF, for now) Sphinx extensions"""
 
 from rpi3 import OsfRPi3LinksDirective, OsfRPi3OSTreeDirective
 

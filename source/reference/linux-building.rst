@@ -107,7 +107,7 @@ Select subscriber or public instructions:
    .. tab-container:: public
       :title: Public
 
-      The latest public release is available from the `Open Source Foundries
+      The latest public release is available from the `Foundries.io
       GitHub`_ organization.
 
       #. Make an installation directory for the Linux microPlatform,
@@ -233,7 +233,7 @@ recommended for those new to either project.
 .. _create a subscriber access token on app.foundries.io:
    https://app.foundries.io/settings/tokens
 
-.. _Open Source Foundries GitHub:
+.. _Foundries.io GitHub:
     https://github.com/OpenSourceFoundries
 
 .. _source.foundries.io:

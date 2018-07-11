@@ -3,7 +3,7 @@
 Linux microPlatform Reference Manual
 ====================================
 
-The Open Source Foundries Linux microPlatform is an extensible
+The Foundries.io Linux microPlatform is an extensible
 software and hardware platform that makes it easier to develop,
 secure, and maintain Internet-connected Linux-based embedded devices.
 

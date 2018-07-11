@@ -3,7 +3,7 @@
 Zephyr microPlatform Reference Manual
 =====================================
 
-The Open Source Foundries Zephyr microPlatform is an extensible
+The Foundries.io Zephyr microPlatform is an extensible
 software and hardware platform that makes it easier to develop,
 secure, and maintain Internet-connected microcontroller-based embedded devices.
 
@@ -27,9 +27,8 @@ environment compared to the "vanilla" Zephyr distribution by providing:
   shell commands.
 
 - Reference applications which can be used in concert with the Linux
-  microPlatform and cloud system containers provided by Open Source
-  Foundries to create functional IOT systems to use as a basis for
-  development.
+  microPlatform and cloud system containers provided by Foundries.io
+  to create functional IOT systems to use as a basis for development.
 
 .. toctree::
 

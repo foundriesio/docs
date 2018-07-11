@@ -226,7 +226,7 @@ Test Your Connection
 Test your Linux microPlatform device's network connection any way you
 would like. For example::
 
-    ping -c 3 opensourcefoundries.com
+    ping -c 3 foundries.io
 
 .. _tutorial-linux-nginx:
 
@@ -247,7 +247,7 @@ nginx web server.
    .. tab-container:: subscribers
       :title: Subscribers
 
-      First, log in to the Open Source Foundries subscriber container
+      First, log in to the Foundries.io subscriber container
       registry::
 
           docker login hub.foundries.io --username=unused
@@ -327,9 +327,6 @@ learn more about the Linux microPlatform in :ref:`howto` and the
 
    To use Zeroconf, simply use ``hostname.local`` in place of the
    board's IP address when that is needed.
-
-.. _Open Source Foundries organization's registry:
-   https://hub.docker.com/u/opensourcefoundries/
 
 .. _Raspberry Pi 3:
    https://www.raspberrypi.org/products/raspberry-pi-3-model-b/

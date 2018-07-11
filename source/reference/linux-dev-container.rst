@@ -20,7 +20,7 @@ on macOS and Windows.
       .. tab-container:: subscribers
          :title: Subscribers
 
-         First, log in to the Open Source Foundries subscriber
+         First, log in to the Foundries.io subscriber
          container registry on the system which will run the
          development container::
 

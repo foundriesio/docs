@@ -65,8 +65,7 @@ locally checked out branches.
 
    If you've got locally checked out branches when you run ``repo
    sync``, **your Git history is rewritten**. This happens because the
-   local branch is rebased onto the new commit from Open Source
-   Foundries.
+   local branch is rebased onto the new commit from Foundries.io.
 
    If you're concerned about the effects of the rebase, use ``repo
    sync -n`` to fetch changes from the network, but leave local
