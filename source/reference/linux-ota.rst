@@ -52,7 +52,7 @@ Choose a method:
       experimenting with OTAs. Subscribers have access to a `device
       management interface`_ for up to 5 devices. The Linux
       microPlatform image includes a program to register the device
-      with the `foundries.io`_ OTA community edition
+      with the foundries.io OTA community edition
       server. Registering the device is as simple as::
 
           sudo lmp-device-register -n <name of your device as it should appear in UI>
@@ -63,7 +63,7 @@ Choose a method:
           sudo systemctl restart aktualizr
 
       Once registered, the device will show up under
-      https://foundries.io/devices/ and you'll have the ability to
+      https://app.foundries.io/devices/ and you'll have the ability to
       start managing updates from there.
 
    .. tab-container:: ats-garage
@@ -190,8 +190,7 @@ yet been rebooted so that the image can become active.
 .. _Uptane: https://uptane.github.io/
 .. _OSTree: https://ostree.readthedocs.io/en/latest/
 .. _Aktualizr: https://github.com/advancedtelematic/aktualizr/
-.. _foundries.io: https://foundries.io/
 .. _OTA Community Edition: https://github.com/advancedtelematic/ota-community-edition
-.. _device management interface: https://foundries.io/devices/
+.. _device management interface: https://app.foundries.io/devices/
 .. _ATS Garage: https://app.atsgarage.com
 .. _supported offering: https://atsgarage.com/en/pricing.html

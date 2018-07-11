@@ -83,8 +83,8 @@ Select subscriber or public instructions:
          Using a credential helper is necessary for repo sync to work
          unprompted later.
 
-      #. If you haven’t already, create a `subscriber token on
-         foundries.io/s/`_.
+      #. If you haven’t already, `create a subscriber access token on
+         app.foundries.io`_.
 
       #. Make an installation directory for the Linux microPlatform, and
          change into its directory::
@@ -230,8 +230,8 @@ recommended for those new to either project.
 .. _BitBake Manual:
    https://www.yoctoproject.org/docs/current/bitbake-user-manual/bitbake-user-manual.html
 
-.. _subscriber token on foundries.io/s/:
-   https://foundries.io/s/
+.. _create a subscriber access token on app.foundries.io:
+   https://app.foundries.io/settings/tokens
 
 .. _Open Source Foundries GitHub:
     https://github.com/OpenSourceFoundries

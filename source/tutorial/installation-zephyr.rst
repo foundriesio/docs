@@ -215,7 +215,7 @@ Choose a subscriber or public installation:
          properly later\ [#git-creds]_.
 
       #. If you haven't already, `create a subscriber access token on
-         foundries.io/s/`_.
+         app.foundries.io`_.
 
       #. Make an installation directory for the Zephyr microPlatform, and
          change into it::
@@ -528,8 +528,8 @@ with these instructions, which may be useful on other development platforms.
 
 .. _pip: https://pip.pypa.io/en/stable/installing/
 
-.. _create a subscriber access token on foundries.io/s/:
-   https://foundries.io/s/
+.. _create a subscriber access token on app.foundries.io:
+   https://app.foundries.io/settings/tokens
 
 .. _Open Source Foundries GitHub: https://github.com/OpenSourceFoundries
 

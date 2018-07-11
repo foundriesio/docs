@@ -3,10 +3,10 @@
 from docutils import nodes
 from docutils.parsers.rst import Directive
 
-ZEPHYR_RELEASE_URL_FMT = 'https://foundries.io/mp/zmp/{}'
-ZEPHYR_RELEASE_ARTIFACTS_URL_FMT = 'https://foundries.io/mp/zmp/{}/artifacts'
-LINUX_RELEASE_URL_FMT = 'https://foundries.io/mp/lmp/{}'
-LINUX_RELEASE_ARTIFACTS_URL_FMT = 'https://foundries.io/mp/lmp/{}/artifacts'
+ZEPHYR_RELEASE_URL_FMT = 'https://app.foundries.io/mp/zmp/{}'
+ZEPHYR_RELEASE_ARTIFACTS_URL_FMT = 'https://app.foundries.io/mp/zmp/{}/artifacts'
+LINUX_RELEASE_URL_FMT = 'https://app.foundries.io/mp/lmp/{}'
+LINUX_RELEASE_ARTIFACTS_URL_FMT = 'https://app.foundries.io/mp/lmp/{}/artifacts'
 
 
 def linux_release(version):

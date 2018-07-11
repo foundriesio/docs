@@ -43,8 +43,8 @@ Subscriber Token (Optional)
 
 The latest Linux and Zephyr microPlatform updates are made
 continuously available to subscribers. To access subscriber-only
-content, you'll need to generate an Access Token at
-https://foundries.io/settings/tokens/.
+content, you'll need to `create a subscriber access token on
+app.foundries.io`_.
 
 Non-subscribers can use the latest public release. Public releases
 match the subscriber trees, but lag behind them; they are typically
@@ -78,3 +78,6 @@ released once or twice a year.
 
 .. _Embedded Linux wiki guide:
    https://elinux.org/RPi_SD_cards
+
+.. _create a subscriber access token on app.foundries.io:
+   https://app.foundries.io/settings/tokens
