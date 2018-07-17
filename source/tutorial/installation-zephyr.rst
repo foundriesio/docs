@@ -48,7 +48,7 @@ Select your platform for instructions:
 
          On Ubuntu (16.04 and up)::
 
-           sudo add-apt-repository ppa:osf-maintainers/ppa
+           sudo add-apt-repository ppa:fio-maintainers/ppa
            sudo apt-get update
            sudo apt-get install zmp-dev
            pip3 install --user pyelftools intelhex pyserial click \

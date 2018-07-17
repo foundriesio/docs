@@ -341,7 +341,7 @@ Generic RISC-V 64 Machine
 
    To install latest QEMU on Ubuntu 18.04, run::
 
-     sudo add-apt-repository ppa:osf-maintainers/riscv
+     sudo add-apt-repository ppa:fio-maintainers/riscv
      sudo apt-get update
      sudo apt-get install qemu-system-misc
 
