@@ -59,44 +59,24 @@ device), follow these guides:
 Run Leshan on Workstation
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+If you haven't already, log in to the Foundries.io container registry
+on your workstation (not the gateway device)::
+
+  docker login hub.foundries.io --username=unused
+
+The username is currently ignored when logging in, but a value must be
+provided. When prompted for the password, enter your subscriber access
+token.
+
 Continue by starting a demonstration-grade Leshan server on your
-workstation, using either a subscriber or public container image:
+workstation for microPlatform subscriber update |version|:
 
-.. content-tabs::
+.. parsed-literal::
 
-   .. tab-container:: subscribers
-      :title: Subscribers
-
-      First, log in to the Foundries.io subscriber container
-      registry on your workstation (not the gateway device)::
-
-          docker login hub.foundries.io --username=unused
-
-      The username is currently ignored when logging in, but a value must
-      be provided. When prompted for the password, enter your subscriber
-      access token.
-
-      Run update |version| of the container, also on your workstation:
-
-      .. parsed-literal::
-
-         docker run --restart=always -d -t -p 5683:5683/udp \\
-           -p 5684:5684/udp -p 8081:8080 \\
-           --read-only --tmpfs=/tmp --name leshan \\
-           hub.foundries.io/leshan:|docker_subscriber_tag|
-
-
-   .. tab-container:: public
-      :title: Public
-
-      Run update |public_version| of the container on your workstation:
-
-      .. parsed-literal::
-
-         docker run --restart=always -d -t -p 5683:5683/udp \\
-           -p 5684:5684/udp -p 8081:8080 \\
-           --read-only --tmpfs=/tmp \\
-           --name leshan opensourcefoundries/leshan:|docker_public_tag|
+   docker run --restart=always -d -t -p 5683:5683/udp \\
+              -p 5684:5684/udp -p 8081:8080 \\
+              --read-only --tmpfs=/tmp --name leshan \\
+              hub.foundries.io/leshan:|docker_subscriber_tag|
 
 Your Leshan container is now ready for use. Load its web interface at
 http://localhost:8081/.
@@ -116,33 +96,18 @@ network proxy for your IoT device.
 - From the ``gateway-ansible`` repository cloned on your workstation,
   deploy the gateway containers to your gateway using Ansible.
 
-  .. content-tabs::
+  Set up the IoT gateway for update |version|:
 
-     .. tab-container:: subscribers
-        :title: Subscribers
+  .. parsed-literal::
 
-        Set up the IoT gateway for update |version|:
+     ./iot-gateway.sh -g raspberrypi3-64.local \\
+                      -p <your-subscriber-token> -t |docker_subscriber_tag|
 
-        .. parsed-literal::
-
-           ./iot-gateway.sh -g raspberrypi3-64.local \\
-                            -p <your-subscriber-token> -t |docker_subscriber_tag|
-
-        Providing your subscriber token is necessary to ensure your gateway
-        device can log in to the container registry. If you're concerned
-        about typing it directly into the terminal, you can set it in the
-        environment variable ``REGISTRY_PASSWD`` by any means you find
-        sufficiently secure.
-
-     .. tab-container:: public
-        :title: Public
-
-        Set up the IoT gateway for update |public_version|:
-
-        .. parsed-literal::
-
-           ./iot-gateway.sh -g raspberrypi3-64.local -p docker \\
-                            -r hub.docker.com -u docker -t |docker_public_tag|
+  Providing your subscriber token is necessary to ensure your gateway
+  device can log in to the container registry. If you're concerned
+  about typing it directly into the terminal, you can set it in the
+  environment variable ``REGISTRY_PASSWD`` by any means you find
+  sufficiently secure.
 
 Your gateway device is now ready for use.
 

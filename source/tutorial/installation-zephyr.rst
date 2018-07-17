@@ -196,65 +196,39 @@ variety of Git repositories at known-good revisions, and keep them in
 sync as time goes on. If you're new to Repo and want to know more, see
 :ref:`ref-zephyr-repo`.
 
-Choose a subscriber or public installation:
+The latest continuous release is available to Zephyr microPlatform
+subscribers from `source.foundries.io`_. Install it as follows.
 
-.. content-tabs::
+#. Configure Git to cache usernames and passwords you enter in memory for
+   one hour::
 
-   .. tab-container:: subscribers
-      :title: Subscribers
+     git config --global credential.helper 'cache --timeout=3600'
 
-      The latest continuous release is available to Zephyr microPlatform
-      subscribers from `source.foundries.io`_. Install it as follows.
+   .. important::
 
-      #. Configure Git to cache usernames and passwords you enter in memory for
-         one hour::
+      Using some credential helper is necessary for ``repo sync`` to
+      work properly later\ [#git-creds]_.
 
-           git config --global credential.helper 'cache --timeout=3600'
+#. If you haven't already, `create a subscriber access token on
+   app.foundries.io`_.
 
-         Using some credential helper is necessary for ``repo sync`` to work
-         properly later\ [#git-creds]_.
+#. Make an installation directory for the Zephyr microPlatform, and
+   change into it::
 
-      #. If you haven't already, `create a subscriber access token on
-         app.foundries.io`_.
+     mkdir zmp && cd zmp
 
-      #. Make an installation directory for the Zephyr microPlatform, and
-         change into it::
+   (You can also reuse an existing installation directory.)
 
-           mkdir zmp && cd zmp
+#. Install update |version| using ``repo``:
 
-         (You can also reuse an existing installation directory.)
+   .. parsed-literal::
 
-      #. Install update |version| using ``repo``:
+      repo init -u https://source.foundries.io/zmp-manifest \\
+                -b |repo_subscriber_tag|
+      repo sync
 
-         .. parsed-literal::
-
-            repo init -u https://source.foundries.io/zmp-manifest \\
-                      -b |repo_subscriber_tag|
-            repo sync
-
-         When prompted by ``repo init``, enter your subscriber access token
-         for your username and nothing for the password.
-
-   .. tab-container:: public
-      :title: Public
-
-      The latest public release is available from the `Foundries.io
-      GitHub`_ organization.
-
-      #. Make an installation directory for the Zephyr microPlatform, and
-         change into its directory::
-
-           mkdir zmp && cd zmp
-
-         (You can also reuse an existing installation directory.)
-
-      #. Install update |public_version| using ``repo``:
-
-         .. parsed-literal::
-
-            repo init -u https://github.com/OpenSourceFoundries/zmp-manifest \\
-                      -b |repo_public_tag|
-            repo sync
+   When prompted by ``repo init``, enter your subscriber access token
+   for your username and nothing for the password.
 
 .. _tutorial-zephyr-build:
 
@@ -530,8 +504,6 @@ with these instructions, which may be useful on other development platforms.
 
 .. _create a subscriber access token on app.foundries.io:
    https://app.foundries.io/settings/tokens
-
-.. _Foundries.io GitHub: https://github.com/OpenSourceFoundries
 
 .. _picocom: https://github.com/npat-efault/picocom
 

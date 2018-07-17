@@ -12,38 +12,21 @@ on macOS and Windows.
 
 #. `Install Docker`_.
 
-#. Run the container as the ``builder`` user, either using a
-   subscriber or public version:
+#. If you haven't already, log in to the Foundries.io subscriber
+   container registry on the system which will run the development
+   container::
 
-   .. content-tabs::
+       docker login hub.foundries.io --username=unused
 
-      .. tab-container:: subscribers
-         :title: Subscribers
+   The username is currently ignored when logging in, but a
+   value must be provided. When prompted for the password, enter
+   your subscriber access token.
 
-         First, log in to the Foundries.io subscriber
-         container registry on the system which will run the
-         development container::
+#. Run update |version| of the container as the ``builder`` user:
 
-             docker login hub.foundries.io --username=unused
+   .. parsed-literal::
 
-         The username is currently ignored when logging in, but a
-         value must be provided. When prompted for the password, enter
-         your subscriber access token.
-
-         Then run update |version| of the container:
-
-         .. parsed-literal::
-
-            docker run -it -u builder --name lmp-sdk hub.foundries.io/lmp-sdk:|docker_subscriber_tag|
-
-      .. tab-container:: public
-         :title: Public
-
-         Update |public_version| of the container is publicly available:
-
-         .. parsed-literal::
-
-            docker run -it -u builder --name lmp-sdk opensourcefoundries/lmp-sdk:|docker_public_tag|
+      docker run -it -u builder --name lmp-sdk hub.foundries.io/lmp-sdk:|docker_subscriber_tag|
 
 #. Set up Git inside the container::
 
@@ -55,6 +38,3 @@ build the Linux microPlatform inside the running container.
 
 .. _Install Docker:
    https://docs.docker.com/engine/installation/
-
-.. _Docker Hub:
-   https://hub.docker.com/r/opensourcefoundries/lmp-sdk/

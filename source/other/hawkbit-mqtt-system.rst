@@ -132,38 +132,21 @@ fetch updates from hawkBit.
   containers using the CloudMQTT information you recorded
   earlier.
 
-  .. content-tabs::
+  To set up the IoT gateway for update |version|:
 
-     .. tab-container:: subscribers
-        :title: Subscribers
+  .. parsed-literal::
 
-        Set up the IoT gateway for update |version|:
+     export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
+     export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
+      ./iot-gateway.sh -g raspberrypi3-64.local \\
+                       -p <your-subscriber-token> -t |docker_subscriber_tag|
 
-        .. parsed-literal::
-
-           export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
-           export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
-            ./iot-gateway.sh -g raspberrypi3-64.local \\
-                             -p <your-subscriber-token> -t |docker_subscriber_tag|
-
-        Providing your subscriber token is necessary so your gateway device
-        can log in to the container registry. If you're concerned about
-        typing it directly into the terminal, you can set it in the
-        environment variable ``REGISTRY_PASSWD`` by any means you find
-        sufficiently secure. Similar comments apply to the
-        ``CLOUDMQTT_PASSWD`` environment variable.
-
-     .. tab-container:: public
-        :title: Public
-
-        Set up the IoT gateway for update |public_version|:
-
-        .. parsed-literal::
-
-           export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
-           export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
-            ./iot-gateway.sh -g raspberrypi3-64.local -p docker \\
-                             -r hub.docker.com -u docker -t |docker_public_tag|
+  Providing your subscriber token is necessary so your gateway device
+  can log in to the container registry. If you're concerned about
+  typing it directly into the terminal, you can set it in the
+  environment variable ``REGISTRY_PASSWD`` by any means you find
+  sufficiently secure. Similar comments apply to the
+  ``CLOUDMQTT_PASSWD`` environment variable.
 
 Your gateway device is now ready for use.
 
@@ -187,38 +170,25 @@ the gateway).
    the official documentation on `building and running hawkBit`_ and
    `hawkBit security`_.
 
-.. content-tabs::
+If you haven't already, log in to the Foundries.io subscriber
+container registry on your workstation (not the gateway
+device)::
 
-   .. tab-container:: subscribers
-      :title: Subscribers
+    docker login hub.foundries.io --username=unused
 
-      First, log in to the Foundries.io subscriber container
-      registry on your workstation (not the gateway device)::
+The username is currently ignored when logging in, but a value must
+be provided. When prompted for the password, enter your subscriber
+token.
 
-          docker login hub.foundries.io --username=unused
+Now run update |version| of the hawkBit container on your workstation:
 
-      The username is currently ignored when logging in, but a value must
-      be provided. When prompted for the password, enter your subscriber
-      token.
+.. parsed-literal::
 
-      Now run update |version| of the hawkBit container on your workstation:
+   docker run -dit --name hawkbit -p 8080:8080 \\
+              hub.foundries.io/hawkbit-update-server:|docker_subscriber_tag|
 
-      .. parsed-literal::
-
-         docker run -dit --name hawkbit -p 8080:8080 \\
-                    hub.foundries.io/hawkbit-update-server:|docker_subscriber_tag|
-
-      If this command fails, ensure ``docker login`` succeeds and retry.
-
-   .. tab-container:: public
-      :title: Public
-
-      Run update |public_version| of the hawkBit container on your workstation:
-
-      .. parsed-literal::
-
-         docker run -dit --name hawkbit -p 8080:8080 \\
-                    opensourcefoundries/hawkbit-update-server:|docker_public_tag|
+If this command fails, make sure you are logged in to the container
+registry.
 
 This container can take approximately 40 seconds for the application
 to start for the first time.
@@ -527,8 +497,6 @@ This section contains additional reference material regarding hawkBit.
 
 - Upstream GitHub: https://github.com/eclipse/hawkbit
 - Data model: http://www.eclipse.org/hawkbit/documentation/architecture/datamodel.html
-- Foundries.io Docker container: https://github.com/OpenSourceFoundries/core-containers
-- Foundries.io Docker Hub: https://hub.docker.com/r/opensourcefoundries/hawkbit-update-server/
 
 .. _BLE Nano 2:
    https://redbear.cc/product/ble-nano-kit-2.html

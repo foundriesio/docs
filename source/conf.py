@@ -50,22 +50,14 @@ if osf_subscriber_version is None:
 # (This doesn't affect links to artifacts.)
 osf_subscriber_tags = ''
 
-# The most recently released public version number. We keep the most
-# recently pushed version in here, but also allow an environment
-# override to allow last-minute decisions about making updates public.
-osf_public_version = os.environ.get('OSF_UPDATE_PUBLIC_VERSION')
-if osf_public_version is None:
-    osf_public_version = '0.22'
-
 # -- General configuration ------------------------------------------------
 
-# Derive the subscriber and public tags to use for this build from the
+# Derive the subscriber tags to use for this build from the
 # corresponding version information.
 if osf_subscriber_version.startswith('git-'):
     docker_subscriber_tag = 'latest'
 else:
     docker_subscriber_tag = osf_subscriber_version
-docker_public_tag = osf_public_version
 
 # Provide Git tags for the same information. (This can produce
 # somewhat strange command lines for development builds, like cloning
@@ -75,13 +67,11 @@ if osf_subscriber_version.startswith('git-'):
     git_subscriber_tag = 'master'
 else:
     git_subscriber_tag = 'osf-' + osf_subscriber_version + osf_subscriber_tags
-git_public_tag = 'osf-' + osf_public_version
 
 # And likewise for repo manifests (which have a different tag
 # namespace than the project tags, that happens to mostly match the
 # docker tags.)
 repo_subscriber_tag = 'refs/tags/' + docker_subscriber_tag
-repo_public_tag = 'refs/tags/public-' + docker_public_tag
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -190,20 +180,12 @@ todo_include_todos = True
 
 # Standard epilog to be included in all files.
 rst_epilog = '''
-.. |public_version| replace:: {}
-
 .. |docker_subscriber_tag| replace:: {}
-.. |docker_public_tag| replace:: {}
-
 .. |git_subscriber_tag| replace:: {}
-.. |git_public_tag| replace:: {}
-
 .. |repo_subscriber_tag| replace:: {}
-.. |repo_public_tag| replace:: {}
-'''.format(osf_public_version,
-           docker_subscriber_tag, docker_public_tag,
-           git_subscriber_tag, git_public_tag,
-           repo_subscriber_tag, repo_public_tag)
+'''.format(docker_subscriber_tag,
+           git_subscriber_tag,
+           repo_subscriber_tag)
 
 # -- Options for HTML output ----------------------------------------------
 

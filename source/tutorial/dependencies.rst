@@ -38,17 +38,13 @@ microPlatforms, commonly available, and relatively inexpensive.
 Performance seems adequate for connecting up to five or so Zephyr
 microPlatform devices.
 
-Subscriber Token (Optional)
----------------------------
+Subscriber Token
+----------------
 
 The latest Linux and Zephyr microPlatform updates are made
 continuously available to subscribers. To access subscriber-only
 content, you'll need to `create a subscriber access token on
 app.foundries.io`_.
-
-Non-subscribers can use the latest public release. Public releases
-match the subscriber trees, but lag behind them; they are typically
-released once or twice a year.
 
 .. rubric:: Footnotes
 

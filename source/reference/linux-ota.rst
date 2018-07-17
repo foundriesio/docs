@@ -81,19 +81,17 @@ Choose a method:
       ATS Garage. You can change the downloaded artifacts and ``ota-publish``
       arguments for other boards.
 
-      First create a directory to save the files to::
+      First, create a directory to save the files to::
 
         mkdir lmp-bin && cd lmp-bin
 
-      Next download your ATS Garage credentials file to the newly created
+      Next, download your ATS Garage credentials file to the newly created
       ``lmp-bin`` directory:
 
         https://app.atsgarage.com/#/profile/access-keys
 
-      **Subscribers:**
-
-      Download and extract the following OSTree repository tarball to the
-      ``lmp-bin`` directory:
+      Then download and extract the following OSTree repository
+      tarball to the ``lmp-bin`` directory:
 
       .. osf-rpi3-ostree::
 
@@ -106,26 +104,6 @@ Choose a method:
 
          docker run --rm -it -v $PWD:/build --workdir=/build \\
                 hub.foundries.io/aktualizr:|docker_subscriber_tag| \\
-                ota-publish -m raspberrypi3-64 -c credentials.zip \\
-                            -r ostree_repo
-
-      **Public:**
-
-      Download and extract the following OSTree repository tarball to the
-      ``lmp-bin`` directory:
-
-      .. osf-rpi3-ostree::
-         :public:
-
-      Extract and upload the image using update |public_version| of the
-      ``aktualizr`` container:
-
-      .. parsed-literal::
-
-         tar -jxvf raspberrypi3-64-ostree_repo.tar.bz2
-
-         docker run --rm -it -v $PWD:/build --workdir=/build \\
-                opensourcefoundries/aktualizr:|docker_public_tag| \\
                 ota-publish -m raspberrypi3-64 -c credentials.zip \\
                             -r ostree_repo
 

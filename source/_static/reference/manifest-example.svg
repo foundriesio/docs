@@ -14,7 +14,7 @@
    viewBox="0 0 250.00001 125.25313"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="manifest-example.svg">
   <defs
      id="defs2" />
@@ -31,11 +31,11 @@
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="3551"
-     inkscape:window-height="1614"
+     inkscape:window-width="3840"
+     inkscape:window-height="2099"
      inkscape:window-x="0"
-     inkscape:window-y="55"
-     inkscape:window-maximized="0">
+     inkscape:window-y="34"
+     inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
        id="grid4769"
@@ -138,20 +138,18 @@
          sodipodi:role="line"
          x="17.469097"
          y="45.939182"
-         style="stroke-width:0.18244188"
-         id="tspan4542"><tspan
-           style="stroke:#008000"
-           id="tspan4555">  &lt;remote name=&quot;osf&quot;</tspan></tspan><tspan
+         style="stroke:#008000;stroke-width:0.18244188"
+         id="tspan4542">  &lt;remote</tspan><tspan
          sodipodi:role="line"
          x="17.469097"
          y="50.196159"
          style="stroke:#008000;stroke-width:0.18244188"
-         id="tspan4544">          fetch=&quot;https://github.com/</tspan><tspan
+         id="tspan898">    name=&quot;fio&quot;</tspan><tspan
          sodipodi:role="line"
          x="17.469097"
          y="54.453136"
          style="stroke:#008000;stroke-width:0.18244188"
-         id="tspan4546">                 OpenSourceFoundries/&quot;/&gt;</tspan><tspan
+         id="tspan4546">    fetch=&quot;https://source.foundries.io&quot;/&gt;</tspan><tspan
          sodipodi:role="line"
          x="17.469097"
          y="58.710114"
@@ -191,7 +189,7 @@
          x="17.469097"
          y="88.508957"
          style="fill:#800080;stroke-width:0.18244188"
-         id="tspan4562">           remote=&quot;osf&quot;</tspan><tspan
+         id="tspan4562">           remote=&quot;fio&quot;</tspan><tspan
          sodipodi:role="line"
          x="17.469097"
          y="92.76593"
@@ -206,7 +204,7 @@
          x="17.469097"
          y="101.27989"
          style="fill:#0000ff;stroke-width:0.18244188"
-         id="tspan4568">           remote=&quot;osf&quot;</tspan><tspan
+         id="tspan4568">           remote=&quot;fio&quot;</tspan><tspan
          sodipodi:role="line"
          x="17.469097"
          y="105.53687"
@@ -325,7 +323,7 @@
          sodipodi:role="line"
          id="tspan4868"
          x="174.8421"
-         y="78.829216">https://github.com/OpenSourceFoundries/zephyr</tspan><tspan
+         y="78.829216">https://source.foundries.io/zephyr</tspan><tspan
          sodipodi:role="line"
          id="tspan4870"
          x="174.8421"
@@ -350,7 +348,7 @@
          sodipodi:role="line"
          id="tspan4868-5"
          x="184.44907"
-         y="107.65317">https://github.com/OpenSourceFoundries/zephyr-fota-samples</tspan><tspan
+         y="107.65317">https://source.foundries.io/zephyr-fota-samples</tspan><tspan
          style="stroke:#0000ff;stroke-width:0.17933974"
          sodipodi:role="line"
          id="tspan4870-2"
@@ -376,10 +374,10 @@
          sodipodi:role="line"
          id="tspan4599"
          x="179.23198"
-         y="47.634144">This tells repo that the &quot;osf&quot; remote has base URL:</tspan><tspan
+         y="47.634144">This tells repo that the &quot;fio&quot; remote has base URL:</tspan><tspan
          sodipodi:role="line"
          id="tspan4601"
          x="179.23198"
-         y="52.043865">https://github.com/OpenSourceFoundries/</tspan></text>
+         y="52.043865">https://source.foundries.io</tspan></text>
   </g>
 </svg>

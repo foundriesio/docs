@@ -7,9 +7,6 @@ def setup(app):
     app.add_config_value('osf_subscriber_version', None, 'env')
     '''Latest released version for subscribers'''
 
-    app.add_config_value('osf_public_version', None, 'env')
-    '''Latest released version to the public'''
-
     app.add_directive('osf-rpi3-links', OsfRPi3LinksDirective)
     app.add_directive('osf-rpi3-ostree', OsfRPi3OSTreeDirective)
 

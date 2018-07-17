@@ -24,47 +24,28 @@
   installing the Linux microPlatform (the default is ``osf``, but we
   recommend that you change it).
 
-- Clone ``gateway-ansible``, a repository of Ansible playbooks,
-  helper scripts and files, and Dockerfiles, onto your workstation,
-  using either the subscriber or public repository:
+- Clone ``gateway-ansible`` update |version|:
 
-  .. content-tabs::
+  .. parsed-literal::
 
-     .. tab-container:: subscribers
-        :title: Subscribers
+     git clone https://source.foundries.io/gateway-ansible
+     cd gateway-ansible
+     git checkout |git_subscriber_tag|
 
-        For passwordless authentication, create a file named :file:`.netrc`
-        (note the leading ``.``) in your home directory, readable only by
-        your user, with the following contents:
+  Enter your subscriber token when prompted for a username, and leave
+  the password blank.
 
-        .. code-block:: none
+  (This contains Ansible playbooks, helper scripts and files, and
+  Dockerfiles.)
 
-           machine source.foundries.io
-           login <your-subscriber-token>
+  For passwordless authentication, create a file named :file:`.netrc`
+  (note the leading ``.``) in your home directory, readable only by
+  your user, with the following contents:
 
-        If you don't create a :file:`.netrc`, enter your subscriber token
-        when prompted for a username, and leave the password blank.
+  .. code-block:: none
 
-        Now clone the gateway-ansible repository and check out the revision
-        for update |version|:
-
-        .. parsed-literal::
-
-           git clone https://source.foundries.io/gateway-ansible
-           cd gateway-ansible
-           git checkout |git_subscriber_tag|
-
-     .. tab-container:: public
-        :title: Public
-
-        Clone the gateway-ansible repository and check out the revision for
-        update |public_version|:
-
-        .. parsed-literal::
-
-           git clone https://github.com/OpenSourceFoundries/gateway-ansible
-           cd gateway-ansible
-           git checkout |git_public_tag|
+     machine source.foundries.io
+     login <your-subscriber-token>
 
 .. _GitHub guide to SSH keys:
    https://help.github.com/articles/connecting-to-github-with-ssh/

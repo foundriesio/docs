@@ -16,8 +16,7 @@ repositories, which are managed by a *manifest file* in a Repo
 The manifest repository's name is ``zmp-manifest``. It's a Git
 repository, just like any of the source code repositories. When
 :ref:`installing the Zephyr microPlatform <tutorial-zephyr>`, `repo
-init`_ is given the URL for the manifest repository (either a
-subscriber or public version).
+init`_ is given the URL for the manifest repository.
 
 The manifest repository contains a manifest file, named
 ``default.xml``.  This file describes the other Git repositories in

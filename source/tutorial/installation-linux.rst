@@ -54,24 +54,9 @@ reference manual.
 
 **Get Prebuilt Image**
 
-Download a subscriber or publicly available image:
+Update |version| is available to subscribers:
 
-.. content-tabs::
-
-   .. tab-container:: subscribers
-      :title: Subscribers
-
-      Update |version| is available to subscribers:
-
-      .. osf-rpi3-links::
-
-   .. tab-container:: public
-      :title: Public
-
-      Update |public_version| is publicly available:
-
-      .. osf-rpi3-links::
-         :public:
+.. osf-rpi3-links::
 
 **Flash Image To SD Card**
 
@@ -242,36 +227,29 @@ nginx web server.
    Run these commands on your Linux microPlatform device, **not your
    workstation**.
 
-.. content-tabs::
+First, log in to the Foundries.io subscriber container
+registry::
 
-   .. tab-container:: subscribers
-      :title: Subscribers
+    docker login hub.foundries.io --username=unused
 
-      First, log in to the Foundries.io subscriber container
-      registry::
+The username is currently ignored, but you must provide a value. When
+prompted for the password, enter your subscriber access token.
 
-          docker login hub.foundries.io --username=unused
+Now run update |version| of the container:
 
-      The username is currently ignored, but you must provide a value. When
-      prompted for the password, enter your subscriber access token.
+.. parsed-literal::
 
-      Now run update |version| of the container:
-
-      .. parsed-literal::
-
-         docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:|docker_subscriber_tag|
-
-   .. tab-container:: public
-      :title: Public
-
-      Run update |public_version| of the container:
-
-      .. parsed-literal::
-
-         docker run --name nginx-demo -p 80:80 opensourcefoundries/nginx:|docker_public_tag|
+   docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:|docker_subscriber_tag|
 
 After the image is downloaded, the running container will stay
 connected to your terminal.
+
+.. note::
+
+   You can run any container image you have access to without logging
+   in to ``hub.foundries.io``; Foundries.io's container registry
+   exists to provide multi-architecture builds for containers used in
+   our examples and reference systems.
 
 Connect to nginx
 ~~~~~~~~~~~~~~~~

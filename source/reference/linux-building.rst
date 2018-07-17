@@ -65,65 +65,36 @@ at known-good revisions, and keep them in sync as time goes on.
 (If you're new to Repo and want to know more, see
 :ref:`ref-zephyr-repo`.)
 
-Select subscriber or public instructions:
+#. Configure Git to cache usernames and passwords you enter in memory
+   for one hour::
 
-.. content-tabs::
+     git config --global credential.helper 'cache --timeout=3600'
 
-   .. tab-container:: subscribers
-      :title: Subscribers
+   .. important::
 
-      The latest continuous release is available to Linux microPlatform
-      subscribers from `source.foundries.io`_. Install it as follows.
+      Using some form of credential helper is necessary for repo sync
+      to work later.
 
-      #. Configure Git to cache usernames and passwords you enter in memory
-         for one hour::
+#. If you haven’t already, `create a subscriber access token on
+   app.foundries.io`_.
 
-           git config --global credential.helper 'cache --timeout=3600'
+#. Make an installation directory for the Linux microPlatform, and
+   change into its directory::
 
-         Using a credential helper is necessary for repo sync to work
-         unprompted later.
+     mkdir lmp && cd lmp
 
-      #. If you haven’t already, `create a subscriber access token on
-         app.foundries.io`_.
+   (You can also reuse an existing installation directory.)
 
-      #. Make an installation directory for the Linux microPlatform, and
-         change into its directory::
+#. Install update |version| using repo:
 
-           mkdir lmp && cd lmp
+   .. parsed-literal::
 
-         (You can also reuse an existing installation directory.)
+      repo init -u https://source.foundries.io/lmp-manifest \\
+                -b |repo_subscriber_tag|
+      repo sync
 
-      #. Install update |version| using repo:
-
-         .. parsed-literal::
-
-            repo init -u https://source.foundries.io/lmp-manifest \\
-                      -b |repo_subscriber_tag|
-            repo sync
-
-         When prompted by repo init, enter your subscriber token for
-         your username and nothing for the password.
-
-   .. tab-container:: public
-      :title: Public
-
-      The latest public release is available from the `Foundries.io
-      GitHub`_ organization.
-
-      #. Make an installation directory for the Linux microPlatform,
-         and change into its directory::
-
-           mkdir lmp && cd lmp
-
-         (You can also reuse an existing installation directory.)
-
-      #. Install update |public_version| using repo:
-
-         .. parsed-literal::
-
-           repo init -u https://github.com/OpenSourceFoundries/lmp-manifest \\
-                     -b |repo_public_tag|
-           repo sync
+   When prompted by repo init, enter your subscriber token for
+   your username and nothing for the password.
 
 Set up Work Environment
 -----------------------
@@ -150,39 +121,19 @@ specified, the script will default to ``build-lmp``.
 Build the lmp-gateway Image
 ---------------------------
 
-Select either subscriber or public instructions:
+Bitbake requires passwordless authentication when fetching repositories
+from https://source.foundries.io.
 
-.. content-tabs::
+To arrange for this, create a file named :file:`.netrc` (note the
+leading ``.``) in your home directory, readable only by your user,
+with the following contents:
 
-     .. tab-container:: subscriber
-        :title: Subscribers
+.. code-block:: none
 
-        Bitbake requires passwordless authentication when fetching repositories
-        from https://source.foundries.io.
+   machine source.foundries.io
+   login <your-subscriber-token>
 
-        Create a file named :file:`.netrc` (note the leading ``.``) in your home
-        directory, readable only by your user, with the following contents:
-
-        .. code-block:: none
-
-          machine source.foundries.io
-          login <your-subscriber-token>
-
-     .. tab-container:: public
-        :title: Public
-
-        OSF projects default to https://source.foundries.io, which is
-        only available for subscribers.
-
-        Change ``conf/local.conf`` and set the OSF_LMP_GIT variables
-        to point to GitHub instead:
-
-        .. code-block:: none
-
-          echo 'OSF_LMP_GIT_URL = "github.com"' >> conf/local.conf
-          echo 'OSF_LMP_GIT_NAMESPACE = "opensourcefoundries/"' >> conf/local.conf
-
-To build the Linux microPlatform gateway image::
+Then build the Linux microPlatform gateway image::
 
   bitbake lmp-gateway-image
 
@@ -232,9 +183,6 @@ recommended for those new to either project.
 
 .. _create a subscriber access token on app.foundries.io:
    https://app.foundries.io/settings/tokens
-
-.. _Foundries.io GitHub:
-    https://github.com/OpenSourceFoundries
 
 .. _source.foundries.io:
    https://source.foundries.io

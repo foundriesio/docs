@@ -11,20 +11,13 @@ class OsfRPi3LinksDirective(OsfDirective):
     '''Directive class for generating links to versioned artifacts.
     '''
 
-    option_spec = {
-        'public': directives.flag
-        }
-
     def run(self):
         self.state.document.settings.env.note_dependency(__file__)
         config = self.get_config()
 
-        if 'public' in self.options:
-            version = config.osf_public_version
-        else:
-            version = config.osf_subscriber_version
-            if version.startswith('git-'):
-                version = 'latest'
+        version = config.osf_subscriber_version
+        if version.startswith('git-'):
+            version = 'latest'
 
         def art_ref(artifact):
             path = 'supported-raspberrypi3-64/{}'.format(artifact)
@@ -45,19 +38,12 @@ class OsfRPi3OSTreeDirective(OsfDirective):
     '''Directive class for generating a link to the OSTree tarball
     '''
 
-    option_spec = {
-        'public': directives.flag
-        }
-
     def run(self):
         self.state.document.settings.env.note_dependency(__file__)
         config = self.get_config()
-        if 'public' in self.options:
-            version = config.osf_public_version
-        else:
-            version = config.osf_subscriber_version
-            if version.startswith('git-'):
-                version = 'latest'
+        version = config.osf_subscriber_version
+        if version.startswith('git-'):
+            version = 'latest'
 
         def art_ref(artifact):
             path = 'supported-raspberrypi3-64/{}'.format(artifact)

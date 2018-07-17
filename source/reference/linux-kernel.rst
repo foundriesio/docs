@@ -4,15 +4,8 @@ Linux microPlatform Kernel
 ==========================
 
 A common and unified Linux Kernel source tree is provided and used by
-Linux microPlatform.
-
-- The latest continuous release is available to Linux microPlatform
-  subscribers at `source.foundries.io/linux.git`_.
-
-- A public tree, which may be out of date, is available at:
-  https://github.com/OpenSourceFoundries/linux/. Development is done
-  in branches; for example, development for the v4.16 series is in the
-  ``linux-v4.16.y`` branch.
+the Linux microPlatform. The latest continuous release is available to
+subscribers at `source.foundries.io/linux.git`_.
 
 The Linux Kernel recipe can be found in the :ref:`Meta-OSF layer
 <ref-linux-layers-meta-osf>`, under the ``meta-osf/recipes-kernel/linux``
