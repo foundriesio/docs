@@ -164,6 +164,37 @@ and the ``a624...`` image is *pending*. That is, an update has been
 successfully downloaded and applied to OSTree, but the device has not
 yet been rebooted so that the image can become active.
 
+Automatic Rebooting After Updates
+---------------------------------
+
+Aktualizr creates an empty file ``/run/aktualizr/ostree-pending-update`` after
+completing an OSTree update, and a `systemd timer`_ can be defined for the systemd
+service file ``ostree-pending-reboot`` to automatically restart the device once
+there is a pending update.
+
+To create a systemd timer that activates the ``ostree-pending-reboot``
+service every day at 5:00 AM UTC, create a file named
+:file:`/etc/systemd/system/ostree-pending-reboot.timer` with the following
+contents:
+
+.. code-block:: ini
+
+   [Unit]
+   Description=Automatic OSTree Update Reboot Scheduling
+
+   [Timer]
+   OnCalendar=*-*-* 05:00:00
+
+   [Install]
+   WantedBy=multi-user.target
+
+Then enable and start the timer by running:
+
+.. code-block:: console
+
+   sudo systemctl enable ostree-pending-reboot.timer
+   sudo systemctl start ostree-pending-reboot.timer
+
 .. _TUF: https://theupdateframework.github.io/
 .. _Uptane: https://uptane.github.io/
 .. _OSTree: https://ostree.readthedocs.io/en/latest/
@@ -172,3 +203,4 @@ yet been rebooted so that the image can become active.
 .. _device management interface: https://app.foundries.io/devices/
 .. _ATS Garage: https://app.atsgarage.com
 .. _supported offering: https://atsgarage.com/en/pricing.html
+.. _systemd timer: https://www.freedesktop.org/software/systemd/man/systemd.timer.html
