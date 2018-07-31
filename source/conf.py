@@ -104,6 +104,7 @@ linkcheck_ignore = [
     r'https://elinux.org/.*',
     r'https://blogs.msdn.microsoft.com/.*',  # temporary blacklist
     r'https://www.tcpdump.org/.*',           # ditto
+    r'https://www.wireshark.org/.*',         # ddos protection
 ]
 
 # Add any paths that contain templates here, relative to this directory.
