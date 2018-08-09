@@ -15,6 +15,11 @@
   this before, the `GitHub guide to SSH keys`_ has useful
   instructions.
 
+  .. important::
+
+     Due to technical limitations in the provided Ansible scripts, the
+     SSH key cannot be password protected.
+
 - Copy your SSH key to the gateway in order to control it with
   Ansible::
 

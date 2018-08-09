@@ -109,6 +109,9 @@ network proxy for your IoT device.
   environment variable ``REGISTRY_PASSWD`` by any means you find
   sufficiently secure.
 
+  If you run into problems, make sure the SSH key used by your device
+  is not password-protected.
+
 Your gateway device is now ready for use.
 
 .. _tutorial-basic-device:

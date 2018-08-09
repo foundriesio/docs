@@ -148,6 +148,9 @@ fetch updates from hawkBit.
   sufficiently secure. Similar comments apply to the
   ``CLOUDMQTT_PASSWD`` environment variable.
 
+  If you run into problems, make sure the SSH key used by your device
+  is not password-protected.
+
 Your gateway device is now ready for use.
 
 .. _hawkbit-mqtt-hawkbit:
