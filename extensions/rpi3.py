@@ -1,13 +1,12 @@
-"""OSF directives related to the RPi3."""
+"""reST directives related to Foundries.io + RPi3."""
 
 from docutils import nodes
-from docutils.parsers.rst import directives
 
-from core import OsfDirective
+import core
 from core import linux_artifact
 
 
-class OsfRPi3LinksDirective(OsfDirective):
+class LmpRPi3LinksDirective(core.Directive):
     '''Directive class for generating links to versioned artifacts.
     '''
 
@@ -15,7 +14,7 @@ class OsfRPi3LinksDirective(OsfDirective):
         self.state.document.settings.env.note_dependency(__file__)
         config = self.get_config()
 
-        version = config.osf_subscriber_version
+        version = config.mp_version
         if version.startswith('git-'):
             version = 'latest'
 
@@ -34,14 +33,14 @@ class OsfRPi3LinksDirective(OsfDirective):
         return [links_para]
 
 
-class OsfRPi3OSTreeDirective(OsfDirective):
+class LmpRPi3OSTreeDirective(core.Directive):
     '''Directive class for generating a link to the OSTree tarball
     '''
 
     def run(self):
         self.state.document.settings.env.note_dependency(__file__)
         config = self.get_config()
-        version = config.osf_subscriber_version
+        version = config.mp_version
         if version.startswith('git-'):
             version = 'latest'
 

@@ -90,7 +90,7 @@ at known-good revisions, and keep them in sync as time goes on.
    .. parsed-literal::
 
       repo init -u https://source.foundries.io/lmp-manifest \\
-                -b |repo_subscriber_tag|
+                -b |repo_tag|
       repo sync
 
    When prompted by repo init, enter your subscriber token for

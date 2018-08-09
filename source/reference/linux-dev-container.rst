@@ -26,7 +26,7 @@ on macOS and Windows.
 
    .. parsed-literal::
 
-      docker run -it -u builder --name lmp-sdk hub.foundries.io/lmp-sdk:|docker_subscriber_tag|
+      docker run -it -u builder --name lmp-sdk hub.foundries.io/lmp-sdk:|docker_tag|
 
 #. Set up Git inside the container::
 

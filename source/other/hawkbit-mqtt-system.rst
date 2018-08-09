@@ -139,7 +139,7 @@ fetch updates from hawkBit.
      export CLOUDMQTT_HOST=XXX CLOUDMQTT_PORT=XXX
      export CLOUDMQTT_USER=XXX CLOUDMQTT_PASSWD=XXX
       ./iot-gateway.sh -g raspberrypi3-64.local \\
-                       -p <your-subscriber-token> -t |docker_subscriber_tag|
+                       -p <your-subscriber-token> -t |docker_tag|
 
   Providing your subscriber token is necessary so your gateway device
   can log in to the container registry. If you're concerned about
@@ -188,7 +188,7 @@ Now run update |version| of the hawkBit container on your workstation:
 .. parsed-literal::
 
    docker run -dit --name hawkbit -p 8080:8080 \\
-              hub.foundries.io/hawkbit-update-server:|docker_subscriber_tag|
+              hub.foundries.io/hawkbit-update-server:|docker_tag|
 
 If this command fails, make sure you are logged in to the container
 registry.

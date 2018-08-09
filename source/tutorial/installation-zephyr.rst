@@ -224,7 +224,7 @@ subscribers from `source.foundries.io`_. Install it as follows.
    .. parsed-literal::
 
       repo init -u https://source.foundries.io/zmp-manifest \\
-                -b |repo_subscriber_tag|
+                -b |repo_tag|
       repo sync
 
    When prompted by ``repo init``, enter your subscriber access token

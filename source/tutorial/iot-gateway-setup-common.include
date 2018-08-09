@@ -35,7 +35,7 @@
 
      git clone https://source.foundries.io/gateway-ansible
      cd gateway-ansible
-     git checkout |git_subscriber_tag|
+     git checkout |git_tag|
 
   Enter your subscriber token when prompted for a username, and leave
   the password blank.

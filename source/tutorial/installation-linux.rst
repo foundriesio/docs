@@ -56,7 +56,7 @@ reference manual.
 
 Update |version| is available to subscribers:
 
-.. osf-rpi3-links::
+.. lmp-rpi3-links::
 
 **Flash Image To SD Card**
 
@@ -239,7 +239,7 @@ Now run update |version| of the container:
 
 .. parsed-literal::
 
-   docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:|docker_subscriber_tag|
+   docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:|docker_tag|
 
 After the image is downloaded, the running container will stay
 connected to your terminal.

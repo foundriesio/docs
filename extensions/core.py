@@ -1,4 +1,4 @@
-'''Core classes and utilities for OSF Sphinx extensions.'''
+'''Core classes and utilities for our Sphinx extensions.'''
 
 from docutils import nodes
 from docutils.parsers.rst import Directive
@@ -39,7 +39,7 @@ def zephyr_artifact(version, artifact_path):
     return zephyr_artifacts(version) + '/' + artifact_path
 
 
-class OsfDirective(Directive):
+class Directive(Directive):
     '''Convenience superclass for other Directives.
 
     This hides the mess of the Sphinx/docutils state backend.'''

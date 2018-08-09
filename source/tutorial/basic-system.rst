@@ -76,7 +76,7 @@ workstation for microPlatform subscriber update |version|:
    docker run --restart=always -d -t -p 5683:5683/udp \\
               -p 5684:5684/udp -p 8081:8080 \\
               --read-only --tmpfs=/tmp --name leshan \\
-              hub.foundries.io/leshan:|docker_subscriber_tag|
+              hub.foundries.io/leshan:|docker_tag|
 
 Your Leshan container is now ready for use. Load its web interface at
 http://localhost:8081/.
@@ -101,7 +101,7 @@ network proxy for your IoT device.
   .. parsed-literal::
 
      ./iot-gateway.sh -g raspberrypi3-64.local \\
-                      -p <your-subscriber-token> -t |docker_subscriber_tag|
+                      -p <your-subscriber-token> -t |docker_tag|
 
   Providing your subscriber token is necessary to ensure your gateway
   device can log in to the container registry. If you're concerned

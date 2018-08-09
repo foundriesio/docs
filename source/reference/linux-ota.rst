@@ -93,7 +93,7 @@ Choose a method:
       Then download and extract the following OSTree repository
       tarball to the ``lmp-bin`` directory:
 
-      .. osf-rpi3-ostree::
+      .. lmp-rpi3-ostree::
 
       Extract and upload the image using update |version| of the
       ``aktualizr`` container:
@@ -103,7 +103,7 @@ Choose a method:
          tar -jxvf raspberrypi3-64-ostree_repo.tar.bz2
 
          docker run --rm -it -v $PWD:/build --workdir=/build \\
-                hub.foundries.io/aktualizr:|docker_subscriber_tag| \\
+                hub.foundries.io/aktualizr:|docker_tag| \\
                 ota-publish -m raspberrypi3-64 -c credentials.zip \\
                             -r ostree_repo
 
