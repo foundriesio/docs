@@ -68,7 +68,7 @@ locally checked out branches.
 
    If you're concerned about the effects of the rebase, use ``repo
    sync -n`` to fetch changes from the network, but leave local
-   working trees unchanged. You can then inspect the OSF branches and
+   working trees unchanged. You can then inspect the upstream branches and
    integrate them manually.
 
 .. _Repo: https://gerrit.googlesource.com/git-repo/

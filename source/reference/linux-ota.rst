@@ -46,7 +46,7 @@ Choose a method:
 .. content-tabs::
 
    .. tab-container:: lmp-server
-      :title: OSF Subscriber Demo Server
+      :title: Foundries.io Subscriber Demo Server
 
       Linux microPlatform subscribers have the easiest path to
       experimenting with OTAs. Subscribers have access to a `device
