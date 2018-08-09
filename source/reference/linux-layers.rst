@@ -31,7 +31,7 @@ Layer                                 Description
                                       Linux microPlatform for Docker container runtime support.
 `Meta-Updater`_                       This layer provides support for OTA Software Updates using
                                       OSTree and TUF / Uptane.
-`Meta-OSF`_ (Distro)                  This layer provides the Linux microPlatform distribution
+`Meta-LMP`_ (Distro)                  This layer provides the Linux microPlatform distribution
                                       configuration, unified Kernel and images.
 `Meta-Intel`_ (BSP)                   This is the board support layer for Intel based devices.
 `Meta-RaspberryPi`_ (BSP)             This is the board support layer for the Raspberry Pi boards.
@@ -49,12 +49,12 @@ Layer                                 Description
                                       (not officially supported by Meta-Freescale maintainers).
 ==================================    ============================================================
 
-.. _ref-linux-layers-meta-osf:
+.. _ref-linux-layers-meta-lmp:
 
-Linux microPlatform Meta-OSF Layer
+Linux microPlatform Meta-LMP Layer
 ----------------------------------
 
-The Meta-OSF layer provides the Linux microPlatform distribution
+The Meta-LMP layer provides the Linux microPlatform distribution
 configuration and a base set of recipes and configs, such as a unified
 Linux kernel and a gateway image.
 
@@ -76,8 +76,8 @@ default set of packages used by the image via the
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/
 .. _Meta-Updater:
    https://github.com/advancedtelematic/meta-updater
-.. _Meta-OSF:
-   https://github.com/opensourcefoundries/meta-osf
+.. _Meta-LMP:
+   https://source.foundries.io/meta-lmp.git/
 .. _Meta-Intel:
    https://git.yoctoproject.org/cgit.cgi/meta-intel/
 .. _Meta-RaspberryPi:

@@ -106,7 +106,7 @@ The supported ``MACHINE`` target used by this guide is
 :ref:`ref-linux-targets`.)
 
 The default distribution (``DISTRO``) is automatically set to ``lmp``,
-which is provided by the meta-osf layer (see
+which is provided by the meta-lmp layer (see
 :ref:`ref-linux-layers` for more details).
 
 Set up your work environment using the ``setup-environment`` script::
