@@ -13,10 +13,13 @@
 # Configuration values that are commented out serve to show the
 # default.
 
+import json
 import os
-from os.path import abspath, dirname, join
 import subprocess
 import sys
+
+from os.path import abspath, dirname, join
+from urllib.request import urlopen
 
 # -- Foundries.io configuration -------------------------------------------
 
@@ -28,13 +31,7 @@ import sys
 # option to override would only take effect after this file is
 # loaded. That's too late to have any effect on |version| and |release|.
 mp_version = os.environ.get('MP_UPDATE_VERSION')
-if mp_version is None:
-    mp_version = os.environ.get('OSF_UPDATE_SUBSCRIBER_VERSION')
-    if mp_version is not None:
-        print('Warning: please use MP_UPDATE_VERSION',
-              'in the build environment;'
-              'OSF_UPDATE_SUBSCRIBER_VERSION is deprecated.',
-              file=sys.stderr)
+lmp_build = os.environ.get('LMP_BUILD')
 if mp_version is None:
     try:
         git_version = subprocess.check_output(['git', 'describe', '--tags'])
@@ -52,6 +49,17 @@ if mp_version is None:
               enc, file=sys.stderr)
         sys.exit(1)
 
+if lmp_build is None:
+    with urlopen('https://api.foundries.io/updates/') as resp:
+        latest = json.loads(resp.read().decode())['data'][0]
+        for product in latest['products']:
+            if product['name'] == 'lmp':
+                lmp_build = product['build']
+                break
+        else:
+            sys.exit('Unable to find latest ZMP and LMP builds')
+
+print('LMP build number is %s' % lmp_build)
 
 # Tags to append to the subscriber version (alpha, beta, etc.), if any.
 # (This doesn't affect links to artifacts.)
