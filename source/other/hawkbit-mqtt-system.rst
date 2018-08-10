@@ -170,8 +170,8 @@ the gateway).
 
    Among other potential issues, the server has an insecure default
    administrative username/password pair. For more information, see
-   the official documentation on `building and running hawkBit`_ and
-   `hawkBit security`_.
+   e.g. the official documentation on `building and running hawkBit`_
+   `authentication`_, and `authorization`_.
 
 If you haven't already, log in to the Foundries.io subscriber
 container registry on your workstation (not the gateway
@@ -499,7 +499,7 @@ Appendix: hawkBit References
 This section contains additional reference material regarding hawkBit.
 
 - Upstream GitHub: https://github.com/eclipse/hawkbit
-- Data model: http://www.eclipse.org/hawkbit/documentation/architecture/datamodel.html
+- Data model: https://www.eclipse.org/hawkbit/concepts/datamodel/
 
 .. _BLE Nano 2:
    https://redbear.cc/product/ble-nano-kit-2.html
@@ -511,10 +511,13 @@ This section contains additional reference material regarding hawkBit.
    https://www.docker.com/
 
 .. _building and running hawkBit:
-   https://eclipse.org/hawkbit/documentation/guide/runhawkbit.html
+   http://www.eclipse.org/hawkbit/gettingstarted/
 
-.. _hawkBit security:
-   https://eclipse.org/hawkbit/documentation/security/security.html
+.. _authentication:
+   https://www.eclipse.org/hawkbit/concepts/authentication/
+
+.. _authorization:
+   https://www.eclipse.org/hawkbit/concepts/authorization/
 
 .. _CloudMQTT:
    https://www.cloudmqtt.com

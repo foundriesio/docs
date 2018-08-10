@@ -433,7 +433,7 @@ with these instructions, which may be useful on other development platforms.
 
   - `setuptools <https://packaging.python.org/tutorials/installing-packages/>`_
   - `PLY <http://www.dabeaz.com/ply/>`_
-  - `PyYaml <http://pyyaml.org/wiki/PyYAML>`_
+  - `PyYaml <https://pyyaml.org/wiki/PyYAML>`_
   - `Cryptography <https://cryptography.io/en/latest/>`_
   - `pyelftools <https://github.com/eliben/pyelftools>`_
   - `IntelHex <https://pypi.org/project/IntelHex/>`_

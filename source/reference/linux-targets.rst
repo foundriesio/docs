@@ -104,7 +104,7 @@ IOT-GATE-iMX7
         CL-SOM-iMX7 # setenv fdtfile imx7d-sbc-iot-imx7.dtb
         CL-SOM-iMX7 # saveenv
 
-   Please see http://mediawiki.compulab.com/w/index.php5/IOT-GATE-iMX7:_Getting_Started
+   Please see https://www.mediawiki.compulab.com/index.php/IOT-GATE-iMX7:_Getting_Started
    for additional board documentation.
 
 Toradex Colibri iMX7D (Aster)
@@ -250,7 +250,7 @@ HummingBoard 2
 
      fastboot flash boot boot-dragonboard-410c.img
 
-   Please see https://www.96boards.org/documentation/consumer/dragonboard410c/
+   Please see https://www.96boards.org/documentation/consumer/dragonboard/dragonboard410c/
    for additional board documentation.
 
 96Boards DragonBoard 820c
@@ -281,7 +281,7 @@ HummingBoard 2
 
      fastboot flash boot boot-dragonboard-820c.img
 
-   Please see https://www.96boards.org/documentation/consumer/dragonboard820c/
+   Please see https://www.96boards.org/documentation/consumer/dragonboard/dragonboard820c/
    for additional board documentation.
 
 SiFive HiFive Unleashed Freedom U540
