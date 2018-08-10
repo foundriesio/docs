@@ -5,6 +5,7 @@ from rpi3 import LmpRPi3LinksDirective, LmpRPi3OSTreeDirective
 
 def setup(app):
     app.add_config_value('mp_version', None, 'env')
+    app.add_config_value('lmp_build', None, 'env')
     '''Latest released version for subscribers'''
 
     app.add_directive('lmp-rpi3-links', LmpRPi3LinksDirective)

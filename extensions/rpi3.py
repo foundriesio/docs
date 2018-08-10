@@ -14,13 +14,9 @@ class LmpRPi3LinksDirective(core.Directive):
         self.state.document.settings.env.note_dependency(__file__)
         config = self.get_config()
 
-        version = config.mp_version
-        if version.startswith('git-'):
-            version = 'latest'
-
         def art_ref(artifact):
             path = 'supported-raspberrypi3-64/{}'.format(artifact)
-            url = linux_artifact(version, path)
+            url = linux_artifact(config.lmp_build, path)
             return self.build_link(url, url)
 
         # Paragraph linking to the release.
@@ -40,13 +36,10 @@ class LmpRPi3OSTreeDirective(core.Directive):
     def run(self):
         self.state.document.settings.env.note_dependency(__file__)
         config = self.get_config()
-        version = config.mp_version
-        if version.startswith('git-'):
-            version = 'latest'
 
         def art_ref(artifact):
             path = 'supported-raspberrypi3-64/{}'.format(artifact)
-            url = linux_artifact(version, path)
+            url = linux_artifact(config.lmp_build, path)
             return self.build_link(url, url)
 
         # Paragraph linking to the release.

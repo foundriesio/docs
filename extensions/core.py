@@ -7,14 +7,14 @@ LINUX_RELEASE_URL_FMT = 'https://app.foundries.io/mp/lmp/{}'
 LINUX_RELEASE_ARTIFACTS_URL_FMT = LINUX_RELEASE_URL_FMT + '/artifacts'
 
 
-def linux_artifacts(version):
+def linux_artifacts(lmp_build):
     '''Get URL of a Linux microPlatform release's artifacts page.'''
-    return LINUX_RELEASE_ARTIFACTS_URL_FMT.format(version)
+    return LINUX_RELEASE_ARTIFACTS_URL_FMT.format(lmp_build)
 
 
-def linux_artifact(version, artifact_path):
+def linux_artifact(lmp_build, artifact_path):
     '''Get URL of a Linux microPlatform release's artifact.'''
-    return linux_artifacts(version) + '/' + artifact_path
+    return linux_artifacts(lmp_build) + '/' + artifact_path
 
 
 class Directive(Directive):
