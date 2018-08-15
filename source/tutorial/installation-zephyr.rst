@@ -428,7 +428,7 @@ with these instructions, which may be useful on other development platforms.
 - `Ninja <https://ninja-build.org/>`_
 - `GCC and G++ <https://gcc.gnu.org/>`_ with 32-bit application support
 - `gperf <https://www.gnu.org/software/gperf/>`_
-- `bzip2 <http://www.bzip.org/>`_
+- bzip2
 - `Python 3 <https://www.python.org/>`_ with the following packages:
 
   - `setuptools <https://packaging.python.org/tutorials/installing-packages/>`_
