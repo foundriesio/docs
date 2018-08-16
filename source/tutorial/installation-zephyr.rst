@@ -59,12 +59,9 @@ Select your platform for instructions:
       #. Install the tools you need to flash your board.
 
          For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
-         `pip`_ (`not pip3
-         <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
+         pip3::
 
-           sudo apt-get install python-pip
-           # Make sure this is a Python 2 pip!
-           pip install --user pyOCD
+           pip3 install --user pyOCD
 
          For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
 
@@ -112,14 +109,9 @@ Select your platform for instructions:
 
       #. Install the tools you need to flash your board.
 
-         For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
-         the pip2 provided by HomeBrew's Python 2 (`not pip3
-         <https://github.com/mbedmicro/pyOCD/issues/208>`_!)::
+         For `BLE Nano 2`_, you'll need `pyOCD`_::
 
-           brew install python
-           pip2 install --user pyOCD
-           export PATH=$PATH:$HOME/Library/Python/2.7/bin
-
+           pip3 install --user pyOCD
 
          For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
 
@@ -499,8 +491,6 @@ with these instructions, which may be useful on other development platforms.
 .. _Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/about
 
 .. _changing files in Linux directories using Windows tools: https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/
-
-.. _pip: https://pip.pypa.io/en/stable/installing/
 
 .. _create a subscriber access token on app.foundries.io:
    https://app.foundries.io/settings/tokens
