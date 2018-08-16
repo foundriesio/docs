@@ -91,21 +91,8 @@ Select your platform for instructions:
 
       #. Install dependencies for the Zephyr microPlatform::
 
-           brew install dtc python3 repo gpg cmake
-           pip3 install --user ply pyyaml cryptography pyelftools intelhex ninja pyserial click
-
-         .. note::
-
-            If you are running pip version 10, you may see this error::
-
-              ModuleNotFoundError: No module named 'pip.req'
-
-            If that happens, install ninja with brew instead of pip::
-
-              brew install ninja
-
-            This is being tracked upstream as `ninja bug #1431
-            <https://github.com/ninja-build/ninja/issues/1431>`_.
+           brew install dtc python3 repo gpg cmake ninja
+           pip3 install --user ply pyyaml cryptography pyelftools intelhex pyserial click
 
       #. Install the tools you need to flash your board.
 
