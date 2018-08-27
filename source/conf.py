@@ -120,7 +120,7 @@ linkcheck_ignore = [
     r'https://blogs.msdn.microsoft.com/.*',  # temporary blacklist
     r'https://www.tcpdump.org/.*',           # ditto
     r'https://www.wireshark.org/.*',         # ddos protection
-    r'https://support.foundries.io.*',       # temporary (site is down)
+    r'https://redbear.cc/product/ble-nano-kit-2.html',  # before deprecating
 ]
 
 # Add any paths that contain templates here, relative to this directory.
