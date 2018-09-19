@@ -112,6 +112,11 @@ Choose a method:
          The first image published pushes every file in the system. Any
          following publish steps only push files which have changed.
 
+      .. note::
+
+         You can configure app.foundries.io to publish updates to your ATS
+         Garage account automatically at https://app.foundries.io/settings/ota.
+
       **2. Verify Upload**
 
       Visit https://app.atsgarage.com/#/packages/ and verify the package is
