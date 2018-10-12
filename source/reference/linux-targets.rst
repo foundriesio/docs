@@ -309,7 +309,7 @@ SiFive HiFive Unleashed Freedom U540
 
    Where :file:`/dev/mmcblkX` is your SD card device.
 
-   Please see https://www.sifive.com/documentation/boards/hifive-unleashed/hifive-unleashed-getting-started-guide/
+   Please see https://www.sifive.com/boards/hifive-unleashed/
    for additional board documentation.
 
 Generic RISC-V 64 Machine
