@@ -30,3 +30,37 @@ on how to work and manage the kernel metadata and configuration fragments.
 .. _source.foundries.io/linux.git: https://source.foundries.io/linux.git
 .. _source.foundries.io/lmp-kernel-cache.git: https://source.foundries.io/lmp-kernel-cache.git
 .. _Yocto Project Linux Kernel Development Manual: https://www.yoctoproject.org/docs/2.5/kernel-dev/kernel-dev.html#kernel-dev-advanced
+
+Linux microPlatform with Linux upstream
+---------------------------------------
+
+The recipe ``meta-lmp/recipes-kernel/linux/linux-lmp-dev.bb`` can be used to
+build the Linux microPlatform with the upstream kernel tree instead of the LMP
+unified tree. ``linux-lmp-dev`` also uses the Linux microPlatform Kernel
+Configuration Fragments repository for a compatible configuration.
+
+Building Linux microPlatform with linux-lmp-dev
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Set the ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-dev`` in
+``conf/auto.conf`` after setting up your Linux microPlatform development
+environment (``source setup-environment``)::
+
+    $ echo 'PREFERRED_PROVIDER_virtual/kernel = "linux-lmp-dev"' >> conf/auto.conf
+
+Now just build any of the supported Linux microPlatform images.
+
+Specifying Linux git tree, branch and commit revision
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following variables can be also set in ``conf/auto.conf`` in order
+to build ``linux-lmp-dev`` using a specific linux tree, branch or commit
+revision::
+
+    KERNEL_REPO = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git" # Kernel git repository
+    KERNEL_BRANCH = "master" # Git kernel branch (default: master)
+    KERNEL_COMMIT = "94710cac0e" # Kernel commit revision (default: HEAD)
+    KERNEL_META_REPO = "git://source.foundries.io/lmp-kernel-cache.git" # Kernel configuration fragments repository
+    KERNEL_META_BRANCH = "master" # Git kernel meta branch (default: master)
+    KERNEL_META_COMMIT = "1c67180cfe" # Kernel meta commit revision (default: HEAD)
+    LINUX_VERSION = "4.19-rc" # Linux kernel base version (base package version)
