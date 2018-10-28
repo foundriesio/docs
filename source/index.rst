@@ -1,5 +1,5 @@
-Foundries.io microPlatforms
-===========================
+Foundries.io_ microPlatforms
+============================
 
 The **Zephyr and Linux microPlatforms** are minimal, secure,
 continuously updated software and hardware platforms that make it
@@ -23,3 +23,4 @@ devices.
    (This only appears when ``todo_include_todos`` is True.)
 
 .. todolist::
+.. _Foundries.io: https://foundries.io
