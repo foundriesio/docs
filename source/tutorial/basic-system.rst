@@ -37,80 +37,31 @@ secure channels using the DTLS protocol.
 Prepare the System
 ------------------
 
-Begin by preparing the system for use.
-
-.. _tutorial-basic-workstation:
-
-Set up Workstation
-~~~~~~~~~~~~~~~~~~
-
-Foundries.io provides pre-built Leshan Docker containers for
-use on your workstation, and `Ansible`_ playbooks and associated shell
-scripts you can run there which make it easier to set up your gateway.
-
-To install Docker and Ansible on your workstation (not your gateway
-device), follow these guides:
-
-- `Install Docker`_
-- `Install Ansible`_
-
-.. _tutorial-basic-leshan:
-
-Run Leshan on Workstation
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you haven't already, log in to the Foundries.io container registry
-on your workstation (not the gateway device)::
-
-  docker login hub.foundries.io --username=unused
-
-The username is currently ignored when logging in, but a value must be
-provided. When prompted for the password, enter your subscriber access
-token.
-
-Continue by starting a demonstration-grade Leshan server on your
-workstation for microPlatform subscriber update |version|:
-
-.. parsed-literal::
-
-   docker run --restart=always -d -t -p 5683:5683/udp \\
-              -p 5684:5684/udp -p 8081:8080 \\
-              --read-only --tmpfs=/tmp --name leshan \\
-              hub.foundries.io/leshan:|docker_tag|
-
-Your Leshan container is now ready for use. Load its web interface at
-http://localhost:8081/.
-
-.. _tutorial-basic-gateway:
-
 Set up IoT Gateway
 ~~~~~~~~~~~~~~~~~~
 
-You'll now use Ansible to set up your IoT gateway to act as an LWM2M
-network proxy for your IoT device.
+The `gateway-containers`_ project includes a simple `docker-compose file`_
+that can start up a minimal set of containers to support this tutorial.
+Log into your gateway using SSH and then run::
 
-.. |iot-gateway-setup-server| replace:: Leshan
+    # Give the docker daemon access to hub.foundries.io
+    # When docker prompts for a password, use one of your access tokens
+    # from https://app.foundries.io/settings/tokens/
+    docker login hub.foundries.io --username=unused
 
-.. include:: iot-gateway-setup-common.include
+    # When git asks for a password, enter one of your Foundries.io access tokens
+    git clone https://doesntmatter@source.foundries.io/gateway-containers.git
 
-- From the ``gateway-ansible`` repository cloned on your workstation,
-  deploy the gateway containers to your gateway using Ansible.
+    cd gateway-containers
+    docker-compose up -d
 
-  Set up the IoT gateway for update |version|:
+You can watch the logs of the containers with::
 
-  .. parsed-literal::
+    # From your gateway-containers directory:
+    docker-compose logs -f            # tail logs from all containers
+    docker-compose logs -f bt-joiner  # tail logs for a single container
 
-     ./iot-gateway.sh -g raspberrypi3-64.local \\
-                      -p <your-subscriber-token> -t |docker_tag|
-
-  Providing your subscriber token is necessary to ensure your gateway
-  device can log in to the container registry. If you're concerned
-  about typing it directly into the terminal, you can set it in the
-  environment variable ``REGISTRY_PASSWD`` by any means you find
-  sufficiently secure.
-
-  If you run into problems, make sure the SSH key used by your device
-  is not password-protected.
+To get a list of running containers, use ``docker ps``.
 
 Your gateway device is now ready for use.
 
@@ -153,7 +104,9 @@ Use the System
 --------------
 
 Now that your system is fully set up, it's time to check that sensor
-data are being sent to the cloud, and do a FOTA update.
+data are being sent to the cloud, and do a FOTA update. Your device
+should be connecting to https://mgmt.foundries.io/leshan/ via the
+containers running on the gateway now.
 
 .. note::
 
@@ -361,14 +314,9 @@ secure LWM2M communications using DTLS.
 
 .. include:: reporting-issues.include
 
-.. _Docker:
-   https://www.docker.com/
+.. _gateway-containers:
+   https://source.foundries.io/gateway-containers.git
 
-.. _Install Docker:
-   https://docs.docker.com/engine/installation/
+.. _docker-compose file:
+   https://source.foundries.io/gateway-containers.git/tree/docker-compose.yml
 
-.. _Ansible:
-   https://www.ansible.com
-
-.. _Install Ansible:
-   https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
