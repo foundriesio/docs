@@ -93,8 +93,8 @@ at known-good revisions, and keep them in sync as time goes on.
                 -b |repo_tag|
       repo sync
 
-   When prompted by repo init, enter your subscriber token for
-   your username and nothing for the password.
+   When prompted by repo init, enter anything (eg "doesntmatter") for the
+   username and enter your subscriber token for the password.
 
 Set up Work Environment
 -----------------------
