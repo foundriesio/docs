@@ -147,7 +147,8 @@ Toradex Colibri iMX7D (Aster)
 
    #. From the U-Boot prompt, update the device tree name and boot into LMP::
 
-        Colibri iMX7 # setenv fdt_board emmc-aster
+        Colibri iMX7 # setenv boot_targets "mmc1 mmc0 usb0 dhcp"
+        Colibri iMX7 # setenv fdt_board aster
         Colibri iMX7 # run bootcmd
 
    #. Once booted into LMP, flash U-Boot (as root)::
@@ -160,7 +161,8 @@ Toradex Colibri iMX7D (Aster)
    #. Reboot and from the U-Boot prompt update the device tree based on
       your module (e.g. Aster)::
 
-        Colibri iMX7 # setenv fdt_board emmc-aster
+        Colibri iMX7 # setenv boot_targets "mmc1 mmc0 usb0 dhcp"
+        Colibri iMX7 # setenv fdt_board aster
         Colibri iMX7 # saveenv
         Colibri iMX7 # reset
 
