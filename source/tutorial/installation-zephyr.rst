@@ -51,7 +51,7 @@ Select your platform for instructions:
            sudo add-apt-repository ppa:fio-maintainers/ppa
            sudo apt-get update
            sudo apt-get install zmp-dev
-           pip3 install --user pyelftools intelhex pyserial click \
+           pip3 install --user pykwalify pyelftools intelhex pyserial click \
                                cryptography --only-binary cryptography
 
          On other distributions, see :ref:`tutorial-zephyr-dependencies`.
@@ -92,7 +92,7 @@ Select your platform for instructions:
       #. Install dependencies for the Zephyr microPlatform::
 
            brew install dtc python3 repo gpg cmake ninja
-           pip3 install --user ply pyyaml cryptography pyelftools intelhex pyserial click
+           pip3 install --user ply pykwalify pyyaml cryptography pyelftools intelhex pyserial click
 
       #. Install the tools you need to flash your board.
 
@@ -412,6 +412,7 @@ with these instructions, which may be useful on other development platforms.
 
   - `setuptools <https://packaging.python.org/tutorials/installing-packages/>`_
   - `PLY <http://www.dabeaz.com/ply/>`_
+  - `pyKwalify <https://github.com/grokzen/pykwalify>`_
   - `PyYaml <https://pyyaml.org/wiki/PyYAML>`_
   - `Cryptography <https://cryptography.io/en/latest/>`_
   - `pyelftools <https://github.com/eliben/pyelftools>`_
