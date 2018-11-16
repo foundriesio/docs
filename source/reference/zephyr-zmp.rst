@@ -165,7 +165,7 @@ Note that ``zmp configure`` accepts many of the same options as
 
 For more information on Kconfig in Zephyr, see `Configuration Options
 Reference Guide
-<http://docs.zephyrproject.org/reference/kconfig/index.html>`_.
+<http://docs.zephyrproject.org/latest/reference/kconfig/index.html>`_.
 
 .. _ref-zephyr-zmp-flash:
 
@@ -183,7 +183,7 @@ MCUboot and the application binary to an attached board.
 If you experience errors using this command, make sure you can flash
 your board using Zephyr's CMake build system's ``flash`` target as
 described in its `Zephyr documentation
-<http://docs.zephyrproject.org/boards/boards.html>`_\ [#zephyrflash]_.
+<http://docs.zephyrproject.org/latest/boards/boards.html>`_\ [#zephyrflash]_.
 
 To get help, run this from the Zephyr microPlatform root directory::
 
@@ -266,7 +266,7 @@ Example uses:
    repository.
 
 .. _device tree overlay:
-   http://docs.zephyrproject.org/application/application.html#application-dt
+   http://docs.zephyrproject.org/latest/application/application.html#application-dt
 
 .. _flash partitions:
-   http://docs.zephyrproject.org/devices/dts/flash_partitions.html
+   http://docs.zephyrproject.org/latest/devices/dts/flash_partitions.html

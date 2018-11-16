@@ -102,18 +102,18 @@ microPlatform-based applications to a new board follow.
   For additional background information on porting MCUBoot to your
   board, see the `MCUBoot README-zephyr.rst`_ file.
 
-.. _Zephyr porting guides: http://docs.zephyrproject.org/porting/porting.html
+.. _Zephyr porting guides: http://docs.zephyrproject.org/latest/porting/porting.html
 
-.. _Zephyr networking documentation: http://docs.zephyrproject.org/subsystems/networking/networking.html
+.. _Zephyr networking documentation: http://docs.zephyrproject.org/latest/subsystems/networking/networking.html
 
-.. _Device tree with flash partitions: http://docs.zephyrproject.org/devices/dts/device_tree.html
+.. _Device tree with flash partitions: http://docs.zephyrproject.org/latest/devices/dts/device_tree.html
 
-.. _CONFIG_TEXT_SECTION_OFFSET: http://docs.zephyrproject.org/reference/kconfig/CONFIG_TEXT_SECTION_OFFSET.html#cmdoption-arg-config-text-section-offset
+.. _CONFIG_TEXT_SECTION_OFFSET: http://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_TEXT_SECTION_OFFSET.html#cmdoption-arg-config-text-section-offset
 
-.. _CONFIG_FLASH_LOAD_OFFSET: http://docs.zephyrproject.org/reference/kconfig/CONFIG_FLASH_LOAD_OFFSET.html#cmdoption-arg-config-flash-load-offset
+.. _CONFIG_FLASH_LOAD_OFFSET: http://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_FLASH_LOAD_OFFSET.html#cmdoption-arg-config-flash-load-offset
 
-.. _CONFIG_FLASH_LOAD_SIZE: http://docs.zephyrproject.org/reference/kconfig/CONFIG_FLASH_LOAD_SIZE.html#cmdoption-arg-config-flash-load-size
+.. _CONFIG_FLASH_LOAD_SIZE: http://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_FLASH_LOAD_SIZE.html#cmdoption-arg-config-flash-load-size
 
-.. _CONFIG_FLASH_PAGE_LAYOUT: http://docs.zephyrproject.org/reference/kconfig/CONFIG_FLASH_PAGE_LAYOUT.html#cmdoption-arg-config-flash-page-layout
+.. _CONFIG_FLASH_PAGE_LAYOUT: http://docs.zephyrproject.org/latest/reference/kconfig/CONFIG_FLASH_PAGE_LAYOUT.html#cmdoption-arg-config-flash-page-layout
 
 .. _MCUBoot README-zephyr.rst: https://github.com/runtimeco/mcuboot/blob/master/docs/readme-zephyr.md

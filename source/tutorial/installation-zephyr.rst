@@ -474,7 +474,7 @@ with these instructions, which may be useful on other development platforms.
 
 .. _HomeBrew: https://brew.sh/
 
-.. _Zephyr's West tool: http://docs.zephyrproject.org/west/index.html
+.. _Zephyr's West tool: http://docs.zephyrproject.org/latest/west/index.html
 
 .. _Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/about
 
