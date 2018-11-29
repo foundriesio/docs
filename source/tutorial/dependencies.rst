@@ -61,7 +61,7 @@ app.foundries.io`_.
    https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52-DK
 
 .. _nRF52840 DK:
-   https://www.nordicsemi.com/eng/Products/nRF52840-DK
+   https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK
 
 .. _Raspberry Pi 3 Model B:
    https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
