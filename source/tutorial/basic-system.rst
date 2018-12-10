@@ -44,13 +44,7 @@ The `gateway-containers`_ project includes a simple `docker-compose file`_
 that can start up a minimal set of containers to support this tutorial.
 Log into your gateway using SSH and then run::
 
-    # Give the docker daemon access to hub.foundries.io
-    # When docker prompts for a password, use one of your access tokens
-    # from https://app.foundries.io/settings/tokens/
-    docker login hub.foundries.io --username=unused
-
-    # When git asks for a password, enter one of your Foundries.io access tokens
-    git clone https://doesntmatter@source.foundries.io/gateway-containers.git
+    git clone https://github.com/foundriesio/gateway-containers.git
 
     cd gateway-containers
     docker-compose up -d
@@ -315,8 +309,8 @@ secure LWM2M communications using DTLS.
 .. include:: reporting-issues.include
 
 .. _gateway-containers:
-   https://source.foundries.io/gateway-containers.git
+   https://github.com/foundriesio/gateway-containers.git
 
 .. _docker-compose file:
-   https://source.foundries.io/gateway-containers.git/tree/docker-compose.yml
+   https://github.com/foundriesio/gateway-containers/blob/master/docker-compose.lwm2m.yml
 
