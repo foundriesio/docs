@@ -77,12 +77,12 @@ The important files this generates (when combined with the previous
 steps) are:
 
 - A custom MCUboot binary which trusts your public key in
-  :file:`outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/mcuboot/zephyr/zephyr.bin`. Use
+  :file:`build/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/mcuboot/zephyr/zephyr.bin`. Use
   this binary when flashing devices you are going to deploy to the
   field.
 
 - A Zephyr binary which is signed with your private key in
-  :file:`outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/zephyr/dm-lwm2m-nrf52_blenano2-signed.bin`. You
+  :file:`build/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/zephyr/dm-lwm2m-nrf52_blenano2-signed.bin`. You
   can distribute this binary in FOTA updates.
 
 To verify your setup, flash the custom MCUboot to your board, along
