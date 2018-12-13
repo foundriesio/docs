@@ -227,15 +227,7 @@ nginx web server.
    Run these commands on your Linux microPlatform device, **not your
    workstation**.
 
-First, log in to the Foundries.io subscriber container
-registry::
-
-    docker login hub.foundries.io --username=unused
-
-The username is currently ignored, but you must provide a value. When
-prompted for the password, enter your subscriber access token.
-
-Now run update |version| of the container:
+Run update |version| of the container:
 
 .. parsed-literal::
 
@@ -243,13 +235,6 @@ Now run update |version| of the container:
 
 After the image is downloaded, the running container will stay
 connected to your terminal.
-
-.. note::
-
-   You can run any container image you have access to without logging
-   in to ``hub.foundries.io``; Foundries.io's container registry
-   exists to provide multi-architecture builds for containers used in
-   our examples and reference systems.
 
 Connect to nginx
 ~~~~~~~~~~~~~~~~

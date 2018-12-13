@@ -173,25 +173,10 @@ the gateway).
    e.g. the official documentation on `building and running hawkBit`_
    `authentication`_, and `authorization`_.
 
-If you haven't already, log in to the Foundries.io subscriber
-container registry on your workstation (not the gateway
-device)::
-
-    docker login hub.foundries.io --username=unused
-
-The username is currently ignored when logging in, but a value must
-be provided. When prompted for the password, enter your subscriber
-token.
-
-Now run update |version| of the hawkBit container on your workstation:
-
 .. parsed-literal::
 
    docker run -dit --name hawkbit -p 8080:8080 \\
               hub.foundries.io/hawkbit-update-server:|docker_tag|
-
-If this command fails, make sure you are logged in to the container
-registry.
 
 This container can take approximately 40 seconds for the application
 to start for the first time.

@@ -12,16 +12,6 @@ on macOS and Windows.
 
 #. `Install Docker`_.
 
-#. If you haven't already, log in to the Foundries.io subscriber
-   container registry on the system which will run the development
-   container::
-
-       docker login hub.foundries.io --username=unused
-
-   The username is currently ignored when logging in, but a
-   value must be provided. When prompted for the password, enter
-   your subscriber access token.
-
 #. Run update |version| of the container as the ``builder`` user:
 
    .. parsed-literal::
