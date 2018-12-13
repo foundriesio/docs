@@ -77,7 +77,7 @@ default set of packages used by the image via the
 .. _Meta-Updater:
    https://github.com/advancedtelematic/meta-updater
 .. _Meta-LMP:
-   https://source.foundries.io/meta-lmp.git/
+   https://github.com/foundriesio/meta-lmp/
 .. _Meta-Intel:
    https://git.yoctoproject.org/cgit.cgi/meta-intel/
 .. _Meta-RaspberryPi:
