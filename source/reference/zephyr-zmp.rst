@@ -3,6 +3,17 @@
 Zephyr microPlatform zmp Tool
 =============================
 
+.. important::
+
+   The ``zmp`` tool was developed because of perceived complexity in
+   Zephyr's building and flashing tools.
+
+   Foundries.io has been working with upstream Zephyr to move many of
+   zmp's features -- such as flashing and debugging with command line
+   options and arguments -- upstream into the "west" tool.
+
+   When this task is finished, ``zmp`` will be replaced with west.
+
 This page describes a helper script, ``zmp``, provided by the Zephyr
 microPlatform. ``zmp`` provides a higher-level interface to the Zephyr
 and MCUboot build systems, which is optional, but can be easier to use.
@@ -37,7 +48,7 @@ To get help, run this from the Zephyr microPlatform root directory::
 
 The ``zmp build`` command always builds out of tree; that is,
 build artifacts are never generated in the source code directories. By
-default, they are stored under ``outdir`` in the Zephyr microPlatform top-level
+default, they are stored under ``build`` in the Zephyr microPlatform top-level
 directory.
 
 Examples:
@@ -48,9 +59,9 @@ Examples:
 
       ./zmp build -b nrf52_blenano2 zephyr/samples/hello_world
 
-  This generates artifacts under ``outdir`` like so::
+  This generates artifacts under ``build`` like so::
 
-    outdir/
+    build/
     └── zephyr
         └── samples
             └── hello_world
@@ -59,7 +70,7 @@ Examples:
                     └── mcuboot
 
   The application build for ``nrf52_blenano2`` is in
-  ``outdir/zephyr/samples/hello_world/nrf52_blenano2/app``. The
+  ``build/zephyr/samples/hello_world/nrf52_blenano2/app``. The
   MCUboot build is in ``mcuboot``, next to ``app``.
 
 - To build the same application for another board,
@@ -73,7 +84,7 @@ Examples:
   Running this after building for BLE Nano 2 as in the above
   example results in a parallel set of build artifacts, like so::
 
-    outdir/
+    build/
     └── zephyr
         └── samples
             └── hello_world

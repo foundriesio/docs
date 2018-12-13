@@ -175,7 +175,7 @@ microPlatform binary build directory for your board:
 
       .. code-block:: console
 
-         cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/
+         cd build/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/
          python3 -m http.server
 
       The update will then be available at::
@@ -187,7 +187,7 @@ microPlatform binary build directory for your board:
 
       .. code-block:: console
 
-         cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52_pca10040/app/
+         cd build/zephyr-fota-samples/dm-lwm2m/nrf52_pca10040/app/
          python3 -m http.server
 
       The update will then be available at::
@@ -199,7 +199,7 @@ microPlatform binary build directory for your board:
 
       .. code-block:: console
 
-         cd outdir/zephyr-fota-samples/dm-lwm2m/nrf52840_pca10056/app/
+         cd build/zephyr-fota-samples/dm-lwm2m/nrf52840_pca10056/app/
          python3 -m http.server
 
       The update will then be available at::

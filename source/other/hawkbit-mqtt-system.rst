@@ -293,7 +293,7 @@ microPlatform installation directory:
 
          python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
                            -d 'BLE Nano 2 Update' \
-                           -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_blenano2/app/zephyr/dm-hawkbit-mqtt-nrf52_blenano2-signed.bin \
+                           -f build/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_blenano2/app/zephyr/dm-hawkbit-mqtt-nrf52_blenano2-signed.bin \
                            -sv "1.0" -p "Testing" -n "nrf52_blenano2 update" -t os
 
    .. tab-container:: nrf52_pca10040
@@ -303,7 +303,7 @@ microPlatform installation directory:
 
          python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
                            -d 'nRF52 DK Update' \
-                           -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_pca10040/app/zephyr/dm-hawkbit-mqtt-nrf52_pca10040-signed.bin \
+                           -f build/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52_pca10040/app/zephyr/dm-hawkbit-mqtt-nrf52_pca10040-signed.bin \
                            -sv "1.0" -p "Testing" -n "nrf52_pca10040 update" -t os
 
    .. tab-container:: nrf52840_pca10056
@@ -313,7 +313,7 @@ microPlatform installation directory:
 
          python zephyr-fota-samples/dm-hawkbit-mqtt/scripts/hawkbit.py \
                            -d 'nRF52840 DK Update' \
-                           -f outdir/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52840_pca10056/app/zephyr/dm-hawkbit-mqtt-nrf52840_pca10056-signed.bin \
+                           -f build/zephyr-fota-samples/dm-hawkbit-mqtt/nrf52840_pca10056/app/zephyr/dm-hawkbit-mqtt-nrf52840_pca10056-signed.bin \
                            -sv "1.0" -p "Testing" -n "nrf52840_pca10056 update" -t os
 
 Above, 1.0 is an arbitrary version number. If hawkBit is running on a
