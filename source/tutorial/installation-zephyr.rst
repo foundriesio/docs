@@ -176,20 +176,7 @@ sync as time goes on. If you're new to Repo and want to know more, see
 :ref:`ref-zephyr-repo`.
 
 The latest continuous release is available to Zephyr microPlatform
-subscribers from `source.foundries.io`_. Install it as follows.
-
-#. Configure Git to cache usernames and passwords you enter in memory for
-   one hour::
-
-     git config --global credential.helper 'cache --timeout=3600'
-
-   .. important::
-
-      Using some credential helper is necessary for ``repo sync`` to
-      work properly later\ [#git-creds]_.
-
-#. If you haven't already, `create a subscriber access token on
-   app.foundries.io`_.
+subscribers from `github.com/foundriesio`_. Install it as follows.
 
 #. Make an installation directory for the Zephyr microPlatform, and
    change into it::
@@ -202,12 +189,8 @@ subscribers from `source.foundries.io`_. Install it as follows.
 
    .. parsed-literal::
 
-      repo init -u https://source.foundries.io/zmp-manifest \\
-                -b |repo_tag|
+      repo init -u https://github.com/foundriesio/zmp-manifest -b |repo_tag|
       repo sync
-
-   When prompted by ``repo init``, enter your subscriber access token
-   for your username and nothing for the password.
 
 .. _tutorial-zephyr-build:
 
@@ -470,7 +453,7 @@ with these instructions, which may be useful on other development platforms.
 .. _nRF5x Command Line Tools:
    http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.tools%2Fdita%2Ftools%2Fnrf5x_command_line_tools%2Fnrf5x_installation.html
 
-.. _source.foundries.io: https://source.foundries.io
+.. _github.com/foundriesio: https://github.com/foundriesio
 
 .. _HomeBrew: https://brew.sh/
 
