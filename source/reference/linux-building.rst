@@ -65,19 +65,6 @@ at known-good revisions, and keep them in sync as time goes on.
 (If you're new to Repo and want to know more, see
 :ref:`ref-zephyr-repo`.)
 
-#. Configure Git to cache usernames and passwords you enter in memory
-   for one hour::
-
-     git config --global credential.helper 'cache --timeout=3600'
-
-   .. important::
-
-      Using some form of credential helper is necessary for repo sync
-      to work later.
-
-#. If you haven’t already, `create a subscriber access token on
-   app.foundries.io`_.
-
 #. Make an installation directory for the Linux microPlatform, and
    change into its directory::
 
@@ -89,12 +76,8 @@ at known-good revisions, and keep them in sync as time goes on.
 
    .. parsed-literal::
 
-      repo init -u https://source.foundries.io/lmp-manifest \\
-                -b |repo_tag|
+      repo init -u https://github.com/foundriesio/lmp-manifest -b |repo_tag|
       repo sync
-
-   When prompted by repo init, enter anything (eg "doesntmatter") for the
-   username and enter your subscriber token for the password.
 
 Set up Work Environment
 -----------------------
@@ -121,19 +104,7 @@ specified, the script will default to ``build-lmp``.
 Build the lmp-gateway Image
 ---------------------------
 
-Bitbake requires passwordless authentication when fetching repositories
-from https://source.foundries.io.
-
-To arrange for this, create a file named :file:`.netrc` (note the
-leading ``.``) in your home directory, readable only by your user,
-with the following contents:
-
-.. code-block:: none
-
-   machine source.foundries.io
-   login <your-subscriber-token>
-
-Then build the Linux microPlatform gateway image::
+You can build the Linux microPlatform gateway image by running::
 
   bitbake lmp-gateway-image
 
@@ -180,9 +151,3 @@ recommended for those new to either project.
    https://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html
 .. _BitBake Manual:
    https://www.yoctoproject.org/docs/current/bitbake-user-manual/bitbake-user-manual.html
-
-.. _create a subscriber access token on app.foundries.io:
-   https://app.foundries.io/settings/tokens
-
-.. _source.foundries.io:
-   https://source.foundries.io
