@@ -149,7 +149,7 @@
          x="17.469097"
          y="54.453136"
          style="stroke:#008000;stroke-width:0.18244188"
-         id="tspan4546">    fetch=&quot;https://source.foundries.io&quot;/&gt;</tspan><tspan
+         id="tspan4546">    fetch=&quot;https://github.com/foundriesio&quot;/&gt;</tspan><tspan
          sodipodi:role="line"
          x="17.469097"
          y="58.710114"
@@ -323,7 +323,7 @@
          sodipodi:role="line"
          id="tspan4868"
          x="174.8421"
-         y="78.829216">https://source.foundries.io/zephyr</tspan><tspan
+         y="78.829216">https://github.com/foundriesio/zephyr</tspan><tspan
          sodipodi:role="line"
          id="tspan4870"
          x="174.8421"
@@ -348,7 +348,7 @@
          sodipodi:role="line"
          id="tspan4868-5"
          x="184.44907"
-         y="107.65317">https://source.foundries.io/zephyr-fota-samples</tspan><tspan
+         y="107.65317">https://githb.com/foundriesio/zephyr-fota-samples</tspan><tspan
          style="stroke:#0000ff;stroke-width:0.17933974"
          sodipodi:role="line"
          id="tspan4870-2"
@@ -378,6 +378,6 @@
          sodipodi:role="line"
          id="tspan4601"
          x="179.23198"
-         y="52.043865">https://source.foundries.io</tspan></text>
+         y="52.043865">https://github.com/foundriesio</tspan></text>
   </g>
 </svg>
