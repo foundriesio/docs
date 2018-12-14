@@ -98,16 +98,25 @@ Use the System
 --------------
 
 Now that your system is fully set up, it's time to check that sensor
-data are being sent to the cloud, and do a FOTA update. Your device
-should be connecting to https://mgmt.foundries.io/leshan/ via the
-containers running on the gateway now.
+data are being sent to the cloud, and do a FOTA update.
+
+Look in your IoT device console for a log line ending in something
+like this:
+
+.. code-block:: none
+
+   LWM2M Endpoint Client Name: zmp:sn:deadbeef
+
+Above, the value ``zmp:sn:deadbeef`` is your device's client ID, which
+it uses to register with the LWM2M server. Look for that ID in the
+clients list at https://mgmt.foundries.io/leshan/#/clients, and click
+on it to view available LWM2M objects on your device.
 
 .. note::
 
-   The Leshan user web interface is a simple web application, which
-   does not provide a complete end-to-end device management system.
-   The container's simplicity makes it useful as a demonstration and
-   prototyping system for LWM2M devices.
+   This LWM2M server interface is provided by Foundries.io only for
+   ease of use bringing up the system and prototyping. Availability
+   etc. are not guaranteed.
 
 Read and Write Objects
 ~~~~~~~~~~~~~~~~~~~~~~
