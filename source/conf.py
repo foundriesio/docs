@@ -121,6 +121,7 @@ linkcheck_ignore = [
     r'https://www.tcpdump.org/.*',           # ditto
     r'https://www.wireshark.org/.*',         # ddos protection
     r'https://redbear.cc/product/ble-nano-kit-2.html',  # before deprecating
+    r'https://mgmt.foundries.io/leshan/#/clients',  # I have no idea, it works
 ]
 
 # Add any paths that contain templates here, relative to this directory.
