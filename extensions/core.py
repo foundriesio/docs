@@ -3,18 +3,19 @@
 from docutils import nodes
 from docutils.parsers.rst import Directive
 
-LINUX_RELEASE_URL_FMT = 'https://app.foundries.io/mp/lmp/{}'
-LINUX_RELEASE_ARTIFACTS_URL_FMT = LINUX_RELEASE_URL_FMT + '/artifacts'
 
-
-def linux_artifacts(lmp_build):
-    '''Get URL of a Linux microPlatform release's artifacts page.'''
-    return LINUX_RELEASE_ARTIFACTS_URL_FMT.format(lmp_build)
-
-
-def linux_artifact(lmp_build, artifact_path):
+def linux_github_artifact(lmp_build, artifact_path):
     '''Get URL of a Linux microPlatform release's artifact.'''
-    return linux_artifacts(lmp_build) + '/' + artifact_path
+    fmt = 'https://github.com/foundriesio/lmp-manifest/releases/download/' \
+          '{build}/{path}'
+    return fmt.format(build=lmp_build, path=artifact_path)
+
+
+def linux_subscriber_artifact(lmp_build, artifact_path):
+    '''Get a *subscriber* URL to an LMP artifact.'''
+
+    fmt = 'https://app.foundries.io/mp/lmp/{build}/artifacts/{path}'
+    return fmt.format(build=lmp_build, path=artifact_path)
 
 
 class Directive(Directive):

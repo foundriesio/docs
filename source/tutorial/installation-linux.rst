@@ -54,7 +54,7 @@ reference manual.
 
 **Get Prebuilt Image**
 
-Update |version| is available to subscribers:
+Update |version| can be downloaded here:
 
 .. lmp-rpi3-links::
 

@@ -13,7 +13,7 @@ Prebuilt Binaries
 
 Several boards have reference builds provided by Foundries.io
 in the latest Linux microPlatform release, available at
-https://app.foundries.io/mp/lmp/latest/artifacts/.
+https://github.com/foundriesio/lmp-manifest/releases/latest.
 
 Please note that these builds are provided for reference in hopes they
 are useful; not all receive equal testing.
