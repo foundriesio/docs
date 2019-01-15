@@ -122,6 +122,7 @@ linkcheck_ignore = [
     r'https://www.wireshark.org/.*',         # ddos protection
     r'https://redbear.cc/product/ble-nano-kit-2.html',  # before deprecating
     r'https://mgmt.foundries.io/leshan/#/clients',  # I have no idea, it works
+    r'https://github.com/foundriesio/lmp-manifest/releases/download/.*',  # Release artifacts done show up until *after* this runs
 ]
 
 # Add any paths that contain templates here, relative to this directory.
