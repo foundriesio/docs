@@ -194,7 +194,7 @@ HummingBoard 2
 
    Where :file:`/dev/mmcblkX` is your SD card device.
 
-   Please see https://wiki.solid-run.com/doku.php?id=products:imx6:hummingboard
+   Please see https://developer.solid-run.com/products/hummingboard-gate-edge/
    for additional board documentation.
 
 96Boards HiKey
