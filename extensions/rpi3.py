@@ -3,7 +3,7 @@
 from docutils import nodes
 
 import core
-from core import linux_artifact
+from core import linux_github_artifact, linux_subscriber_artifact
 
 
 class LmpRPi3LinksDirective(core.Directive):
@@ -15,8 +15,7 @@ class LmpRPi3LinksDirective(core.Directive):
         config = self.get_config()
 
         def art_ref(artifact):
-            path = 'supported-raspberrypi3-64/{}'.format(artifact)
-            url = linux_artifact(config.lmp_build, path)
+            url = linux_github_artifact(config.lmp_build, artifact)
             return self.build_link(url, url)
 
         # Paragraph linking to the release.
@@ -39,7 +38,7 @@ class LmpRPi3OSTreeDirective(core.Directive):
 
         def art_ref(artifact):
             path = 'supported-raspberrypi3-64/{}'.format(artifact)
-            url = linux_artifact(config.lmp_build, path)
+            url = linux_subscriber_artifact(config.lmp_build, path)
             return self.build_link(url, url)
 
         # Paragraph linking to the release.
