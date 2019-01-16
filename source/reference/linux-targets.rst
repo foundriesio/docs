@@ -327,40 +327,34 @@ Generic RISC-V 64 Machine
 
    Build the Linux microPlatform minimal image ``lmp-mini-image``
    instead of the usual ``lmp-gateway-image``, as there is no golang
-   and docker support for RISC-V yet. At the end of the build, your
-   build artifacts will be found under
-   ``deploy/images/qemuriscv64``. The artifacts required by QEMU are
-   ``bbl`` (Berkeley Boot Loader + Kernel + Initrd) and
-   ``lmp-mini-image-qemuriscv64.otaimg``.
+   and docker support for RISC-V yet::
 
-   **Install QEMU >= 2.12.0**
+     bitbake lmp-mini-image
 
-   The minimal QEMU version required for RISC-V support is 2.12.0.
-
-   To install latest QEMU on macOS, run::
-
-     brew install qemu
-
-   To install latest QEMU on Ubuntu 18.04, run::
-
-     sudo add-apt-repository ppa:fio-maintainers/riscv
-     sudo apt-get update
-     sudo apt-get install qemu-system-misc
+   The artifacts required by QEMU are ``bbl`` (Berkeley Boot Loader +
+   Kernel + initrd) and ``lmp-mini-image-qemuriscv64.ota-ext4`` in
+   ``deploy/images/qemuriscv64``.
 
    **Boot the generic RISC-V target with QEMU**
 
-   To boot the generic RISC-V target, run::
+   At the end of the build, change directory to where the build
+   artifacts are found, then copy the image to where ``runqemu``
+   expects it and run it::
 
-     qemu-system-riscv64 -machine virt -smp 2 -m 512 -serial mon:stdio -serial null \
-         -kernel bbl -append 'root=/dev/vda rw console=ttyS0' \
-         --drive file=lmp-mini-image-qemuriscv64.otaimg,format=raw,id=hd0 \
-         -device virtio-blk-device,drive=hd0 -device virtio-net-device,netdev=usernet \
-         -netdev user,id=usernet,hostfwd=tcp::22222-:22 -nographic
+     cd deploy/images/qemuriscv64
+     cp lmp-mini-image-qemuriscv64.ota-ext4 lmp-mini-image-qemuriscv64.ext4
+     runqemu nographic slirp qemuparams="-m 512"
+
+   Please see
+   https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29
+   for information and additional details on networking restrictions.
+
+   **SSH into guest**
 
    You can SSH into the RISC-V 64 guest by using the port forwarded to
    the RISC-V 64 guest::
 
-     ssh -p 22222 osf@localhost
+     ssh -p 2222 osf@localhost
 
    Please see https://wiki.qemu.org/Documentation/Platforms/RISCV for additional
    information.
