@@ -15,7 +15,7 @@ class LmpRPi3LinksDirective(core.Directive):
         config = self.get_config()
 
         def art_ref(artifact):
-            url = linux_github_artifact(config.lmp_build, artifact)
+            url = linux_github_artifact(config.mp_version, artifact)
             return self.build_link(url, url)
 
         # Paragraph linking to the release.
