@@ -102,7 +102,7 @@ microPlatform-based applications to a new board follow.
   For additional background information on porting MCUBoot to your
   board, see the `MCUBoot README-zephyr.rst`_ file.
 
-.. _Zephyr porting guides: http://docs.zephyrproject.org/latest/porting/porting.html
+.. _Zephyr porting guides: http://docs.zephyrproject.org/latest/porting/index.html
 
 .. _Zephyr networking documentation: http://docs.zephyrproject.org/latest/subsystems/networking/networking.html
 
