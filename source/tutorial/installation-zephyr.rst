@@ -51,29 +51,16 @@ Select your platform for instructions:
            sudo add-apt-repository ppa:fio-maintainers/ppa
            sudo apt-get update
            sudo apt-get install zmp-dev
-           pip3 install --user pykwalify pyelftools intelhex pyserial click \
-                               cryptography --only-binary cryptography
+           pip3 install --user west
 
          On other distributions, see :ref:`tutorial-zephyr-dependencies`.
 
       #. Install the tools you need to flash your board.
 
-         For `BLE Nano 2`_, you'll need `pyOCD`_, which you can install with
-         pip3::
-
-           pip3 install --user pyOCD
-
          For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
+         (Make sure you install the SEGGER tools too.)
 
-         For other boards, check your board's documentation.  At this time,
-         the Zephyr microPlatform only supports boards that can be flashed
-         with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
-         the USB DFU protocol).
-
-      #. Install the following udev rules as root, then unplug and plug back
-         in any boards you have connected::
-
-           echo 'ATTR{idProduct}=="0204", ATTR{idVendor}=="0d28", MODE="0666", GROUP="plugdev"' > /etc/udev/rules.d/50-cmsis-dap.rules
+         For other boards, check `your board's documentation`_.
 
       #. Configure your username and password in Git::
 
@@ -91,21 +78,15 @@ Select your platform for instructions:
 
       #. Install dependencies for the Zephyr microPlatform::
 
-           brew install dtc python3 repo gpg cmake ninja
-           pip3 install --user ply pykwalify pyyaml cryptography pyelftools intelhex pyserial click
+           brew install cmake ninja gperf ccache dtc python3
+           pip3 install --user west
 
       #. Install the tools you need to flash your board.
 
-         For `BLE Nano 2`_, you'll need `pyOCD`_::
-
-           pip3 install --user pyOCD
-
          For the nRF DK boards, you'll need the `nRF5x Command Line Tools`_.
+         (Make sure you install the SEGGER tools too.)
 
-         For other boards, check your board's documentation.  At this time,
-         the Zephyr microPlatform only supports boards that can be flashed
-         with pyOCD, nrfjprog, or dfu-util's DfuSe (i.e. STM32 extensions to
-         the USB DFU protocol).
+         For other boards, check `your board's documentation`_.
 
       #. Configure your username and password in Git::
 
@@ -115,52 +96,63 @@ Select your platform for instructions:
       Your system is now ready to install the Zephyr microPlatform.
 
    .. tab-container:: windows
-      :title: Windows 10 (Experimental)
+      :title: Windows 10
 
       .. note::
 
-         Due to the Zephyr microPlatform's current use of the Repo tool to
-         manage multiple Git repositories, only experimental directions
-         using the Windows Subsystem for Linux are provided. This is because
-         Repo does not work on Windows.
+         Earlier versions of Windows may work, but are not tested.
 
-         When possible, the Zephyr microPlatform will use `Zephyr's West
-         tool`_ to manage repositories instead, enabling first-class Windows
-         support.
+      #. Install `Chocolatey`_.
 
-      Windows versions supporting the Windows Subsystem for Linux have
-      experimental support. For this to work, you will need 64 bit Windows
-      10 Anniversary Update or later.
+      #. Open ``cmd.exe`` as an Administrator (press Windows,
+         ``cmd.exe``, right-click the result, click "Run as
+         Administrator").
 
-      These instructions should let you build binaries; however, flashing
-      support is not yet documented.
+      #. For convenience, disable global confirmation for choco
+         command entry::
 
-      #. Install the `Windows Subsystem for Linux`_, then open a Bash
-         window to enter commands.
+           choco feature enable -n allowGlobalConfirmation
 
-      #. Change to your Windows user directory with a command like this::
+      #. Install CMake::
 
-           cd /mnt/c/Users/YOUR-USER-NAME
+           choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
 
-         You can press the Tab key after typing ``/Users/`` to see a list of
-         user names.
+      #. Install the rest of the Zephyr tools you need::
 
-         .. warning::
+           choco install git ninja gperf dtc-msys2 python
 
-            Skipping this step means you won't be able to use the
-            microPlatform with Windows tools like Explorer, graphical
-            editors, etc.
+      #. Install the tools you need to flash your board.
 
-            As documented by Microsoft, `changing files in Linux directories
-            using Windows tools`_ can damage your system.
+         For the nRF DK boards, you'll need the `nRF5x Command Line
+         Tools`_. (Note Nordic recommends a particular version of the
+         required SEGGER tools as well.)
 
-      #. We recommend making sure your Linux subsystem is up to date with
-         these commands (which can take a while they first time they're run)::
+         For other boards, check `your board's documentation`_.
 
-           apt-get update
-           apt-get upgrade
+      #. Configure your username and password in Git::
 
-      #. Finish by following the Ubuntu Linux instructions.
+           git config --global user.name "Your Full Name"
+           git config --global user.email "your-email-address@example.com"
+
+      Your system is now ready to install the Zephyr microPlatform.
+
+Install and Set Up a Toolchain
+------------------------------
+
+For nRF DK boards (and other boards based on ARM Cortex-M cores), the
+`GNU Arm Embedded`_ toolchain works on Mac, Linux, and
+Windows. Install it somewhere on your system in a directory with no
+spaces in the path.
+
+Now set these environment variables:
+
+- :envvar:`ZEPHYR_TOOLCHAIN_VARIANT`: set this to ``gnuarmemb``.
+- :envvar:`GNUARMEMB_TOOLCHAIN_PATH`: set this to the location you
+  installed the toolchain.
+
+If you're on Linux, you can also try the `Zephyr SDK`_ as an
+alternative. This comes with some additional tools, such as a recent
+OpenOCD, that may be useful on non-nRF boards.
 
 .. _tutorial-zephyr-install:
 
@@ -168,77 +160,44 @@ Install the Zephyr microPlatform
 --------------------------------
 
 The Zephyr microPlatform can be installed in any directory on your
-workstation.
+workstation. These instructions create a directory named
+:file:`zmp`. You can change this to anything you want.
 
-The Zephyr microPlatform currently uses the Repo tool to fetch a
-variety of Git repositories at known-good revisions, and keep them in
-sync as time goes on. If you're new to Repo and want to know more, see
-:ref:`ref-zephyr-repo`.
+The latest continuous release is available as open source software on
+GitHub from `github.com/foundriesio`_. Install it as follows.
 
-The latest continuous release is available to Zephyr microPlatform
-subscribers from `github.com/foundriesio`_. Install it as follows.
-
-#. Make an installation directory for the Zephyr microPlatform, and
-   change into it::
-
-     mkdir zmp && cd zmp
-
-   (You can also reuse an existing installation directory.)
-
-#. Install update |version| using ``repo``:
+#. Install Zephyr microPlatform update |version| using the Zephyr
+   ``west`` tool in a new directory named :file:`zmp`:
 
    .. parsed-literal::
 
-      repo init -u https://github.com/foundriesio/zmp-manifest -b |repo_tag|
-      repo sync
+      west init -m https://github.com/foundriesio/zmp-manifest --mr |manifest_tag| zmp
+      cd zmp
+      west update
 
-.. _tutorial-zephyr-build:
+   .. note::
 
-Build MCUboot and Hello World Application
------------------------------------------
+      If you just want to install the latest, drop the "-\\-mr
+      |manifest_tag|" option.
 
-Choose your board, and run the command from the ``zmp`` directory you
-made earlier:
+#. Install additional dependencies required by Zephyr and MCUboot
+   (make sure you are in the :file:`zmp` directory created by ``west
+   init``)::
 
-.. content-tabs::
+     # Windows and macOS
+     pip3 install -r zephyr/scripts/requirements.txt
+     pip3 install -r mcuboot/scripts/requirements.txt
+     pip3 install -r zmp-manifest/requirements.txt
 
-   .. tab-container:: nrf52_blenano2
-      :title: BLE Nano 2
+     # Linux
+     pip3 install --user -r zephyr/scripts/requirements.txt
+     pip3 install --user -r mcuboot/scripts/requirements.txt
+     pip3 install --user -r zmp-manifest/requirements.txt
 
-      .. code-block:: console
+   .. note::
 
-         ./zmp build -b nrf52_blenano2 zephyr/samples/hello_world/
-
-   .. tab-container:: nrf52_pca10040
-      :title: nRF52 DK (nRF52832)
-
-      .. code-block:: console
-
-         ./zmp build -b nrf52_pca10040 zephyr/samples/hello_world/
-
-   .. tab-container:: nrf52840_pca10056
-      :title: nRF52840 DK
-
-      .. code-block:: console
-
-         ./zmp build -b nrf52840_pca10056 zephyr/samples/hello_world/
-
-In addition to the ``hello_world`` app, this builds an MCUboot binary
-for your board and application.
-
-(For more information, see :ref:`ref-zephyr-zmp-build`.)
-
-.. important::
-
-   The build uses a publicly available RSA key pair bundled with
-   MCUBoot itself by default, for ease of demonstration (the
-   key is in :file:`mcuboot/root-rsa-2048.pem`).
-
-   This key pair is for **development use only**.
-
-   For production, **you must generate and use your own keys**, or
-   anyone will be able to sign binaries for your boards. See
-   :ref:`howto-mcuboot-keys` for details.
+      These requirements change with time. If something stops working
+      after an update, run these lines again and retry.
 
 Connect to the Board's Console
 ------------------------------
@@ -255,37 +214,105 @@ message printed when you flash the application in the next step.
 - Open the device with your favorite serial console program\
   [#serial]_ at 115200 baud.
 
-Flash MCUboot and the Application
----------------------------------
+.. _tutorial-zephyr-mcuboot:
 
-Now you'll flash MCUBoot and the ``hello-world`` application to your board:
+Build and Flash MCUboot
+-----------------------
+
+Choose your board from the below options, and run the corresponding
+commands from the ``zmp`` directory you made earlier to build and
+flash MCUboot on the board.
 
 .. content-tabs::
-
-   .. tab-container:: nrf52_blenano2
-      :title: BLE Nano 2
-
-      .. code-block:: console
-
-         ./zmp flash -b nrf52_blenano2 zephyr/samples/hello_world/
 
    .. tab-container:: nrf52_pca10040
       :title: nRF52 DK (nRF52832)
 
       .. code-block:: console
 
-         ./zmp flash -b nrf52_pca10040 zephyr/samples/hello_world/
+         west build -s mcuboot/boot/zephyr -d build-mcuboot -b nrf52_pca10040
+         west flash -d build-mcuboot
 
    .. tab-container:: nrf52840_pca10056
       :title: nRF52840 DK
 
       .. code-block:: console
 
-         ./zmp flash -b nrf52840_pca10056 zephyr/samples/hello_world/
+         west build -s mcuboot/boot/zephyr -d build-mcuboot -b nrf52840_pca10056
+         west flash -d build-mcuboot
 
-(For more information, see :ref:`ref-zephyr-zmp-flash`.)
+You will see something that looks like the following:
 
-The board's console should print messages that look roughly like this:
+.. code-block:: none
+
+   ***** Booting Zephyr OS zephyr-v1.13.0-4453-gf2ef52f122 *****
+   [00:00:00.004,333] <inf> mcuboot: Starting bootloader
+   [00:00:00.010,986] <inf> mcuboot: Image 0: magic=unset, copy_done=0x3, image_ok=0x3
+   [00:00:00.019,348] <inf> mcuboot: Scratch: magic=unset, copy_done=0xc0, image_ok=0x3
+   [00:00:00.027,801] <inf> mcuboot: Boot source: slot 0
+   [00:00:00.036,193] <inf> mcuboot: Swap type: none
+   [00:00:00.041,503] <err> mcuboot: Unable to find bootable image
+
+.. important::
+
+   The default MCUboot build uses a publicly available RSA key pair
+   bundled with MCUBoot (:file:`mcuboot/root-rsa-2048.pem`) for ease
+   of demonstration.
+
+   This key pair is for **development use only**.
+
+   For production, **you must generate and use your own keys**, or
+   anyone will be able to sign binaries for your boards. See
+   :ref:`howto-mcuboot-keys` for details on how to do this.
+
+MCUboot is now installed on your board. You only need to do this once;
+from now on, you'll just install bootable application images onto the
+same board to be loaded and run by MCUboot. No Zephyr application is
+available on the flash which can be loaded by MCUboot yet, though,
+which explains the ``Unable to find bootable image`` error message.
+
+Let's fix that now.
+
+.. _tutorial-zephyr-hello_world:
+
+Build and Flash "Hello World" for MCUBoot
+-----------------------------------------
+
+Now it's time to build and flash Zephyr's ``hello_world`` app. Unlike
+the Zephyr getting started tutorial, you're going to build and flash
+it as an application image which can be loaded by the MCUboot
+bootloader that's already on your board.
+
+.. content-tabs::
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         west build -s zephyr/samples/hello_world -d build-hello \
+                    -b nrf52_pca10040 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
+         west sign -t imgtool -d build-hello -- --key mcuboot/root-rsa-2048.pem
+         west flash -d build-hello --hex-file zephyr.signed.hex
+
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         west build -s zephyr/samples/hello_world -d build-hello \
+                    -b nrf52840_pca10056 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
+         west sign -t imgtool -d build-hello -- --key mcuboot/root-rsa-2048.pem
+         west flash -d build-hello --hex-file zephyr.signed.hex
+
+.. note::
+
+   This requires that ``west flash`` for your board supports (and in
+   fact prefers) to flash Intel Hex files. This is the case for the
+   flash back-end which uses the nRF5x Command Line Tools.
+
+When running ``west flash``, the board should reset and the console
+should print messages that look roughly like this:
 
 .. code-block:: none
 
@@ -295,22 +322,12 @@ The board's console should print messages that look roughly like this:
    [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x0, image_ok=0xff
    [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
    [MCUBOOT] [INF] boot_swap_type: Swap type: none
-   [MCUBOOT] [ERR] main: Unable to find bootable image
-   ***** Booting Zephyr OS vX.Y.Z-NN-gabcdef *****
-   [MCUBOOT] [INF] main: Starting bootloader
-   [MCUBOOT] [INF] boot_status_source: Image 0: magic=unset, copy_done=0xff, image_ok=0xff
-   [MCUBOOT] [INF] boot_status_source: Scratch: magic=unset, copy_done=0x0, image_ok=0xff
-   [MCUBOOT] [INF] boot_status_source: Boot source: slot 0
-   [MCUBOOT] [INF] boot_swap_type: Swap type: none
    [MCUBOOT] [INF] main: Bootloader chainload address offset: 0x8000
    [MCUBOOT] [INF] main: Jumping to the first image slot
    ***** Booting Zephyr OS vX.Y.Z-NN-gabcdef *****
-   Hello World! arm
+   Hello World! <BOARD>
 
-During the flashing process:
-
-#. The chip's flash is completely erased, and MCUboot is installed. It
-   is unable to find an application, since it's a fresh install.
+During this second flashing process:
 
 #. The signed "hello world" application image is flashed, and the chip
    is reset.
@@ -324,54 +341,51 @@ During the flashing process:
    on screen.
 
 If you're using another board, you may need to do something slightly
-different, but the basic idea is the same: connect a serial console at
-115200 baud, and run ``zmp flash`` to flash and run the program.
+different (especially depending on your flashing tools), but the basic
+idea is the same.
 
 Change the Application and Reflash
 ----------------------------------
 
-Next, make a trivial change to the application: change "Hello World"
-to "Hello Zephyr microPlatform" in
-:file:`zephyr/samples/hello_world/src/main.c`.
-
-Since you've already flashed MCUboot, you can just re-flash the
-updated application to your board:
+Next, build and flash the dining philosophers sample.  You've already
+flashed MCUboot, so just flash the new application:
 
 .. content-tabs::
-
-   .. tab-container:: nrf52_blenano2
-      :title: BLE Nano 2
-
-      .. code-block:: console
-
-         ./zmp flash -o app -b nrf52_blenano2 zephyr/samples/hello_world/
 
    .. tab-container:: nrf52_pca10040
       :title: nRF52 DK (nRF52832)
 
       .. code-block:: console
 
-         ./zmp flash -o app -b nrf52_pca10040 zephyr/samples/hello_world/
+         west build -s zephyr/samples/philosophers -d build-philosophers \
+                    -b nrf52_pca10040 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
+         west sign -t imgtool -d build-philosophers -- --key mcuboot/root-rsa-2048.pem
+         west flash -d build-philosophers --hex-file zephyr.signed.hex
 
    .. tab-container:: nrf52840_pca10056
       :title: nRF52840 DK
 
       .. code-block:: console
 
-         ./zmp flash -o app -b nrf52840_pca10056 zephyr/samples/hello_world/
+         west build -s zephyr/samples/philosophers -d build-philosophers \
+                     -b nrf52840_pca10056 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
+         west sign -t imgtool -d build-philosophers -- --key mcuboot/root-rsa-2048.pem
+         west flash -d build-philosophers --hex-file zephyr.signed.hex
 
-The console output will now end with:
-
-.. code-block:: none
-
-   Hello Zephyr microPlatform! arm
+The console output will now show a text view of the famous "dining
+philosophers" concurrency puzzle executing.
 
 Next Steps
 ----------
 
-You can either continue the tutorial at :ref:`tutorial-basic`, or
-learn more about the Zephyr microPlatform in :ref:`howto` and
-:ref:`ref-zephyr`.
+So far this just seems like an extra-complicated way to flash an
+ordinary Zephyr application. However, if you can continue the tutorial
+at :ref:`tutorial-basic`, you'll learn how to flash an application
+that can update itself over the air, using MCUboot to install updated
+application images.
+
+Alternatively, learn more about the Zephyr microPlatform in
+:ref:`howto` and :ref:`ref-zephyr`.
 
 .. include:: reporting-issues.include
 
@@ -384,48 +398,16 @@ Here is a list of dependencies needed to install the Zephyr microPlatform
 with these instructions, which may be useful on other development platforms.
 
 - `Device tree compiler (dtc)
-  <https://git.kernel.org/pub/scm/utils/dtc/dtc.git>`_
+  <https://git.kernel.org/pub/scm/utils/dtc/dtc.git>`_ version 1.4.6 or later
 - `Git <https://git-scm.com/>`_
 - `CMake <https://cmake.org/>`_ version 3.8.2 or later
 - `Ninja <https://ninja-build.org/>`_
-- `GCC and G++ <https://gcc.gnu.org/>`_ with 32-bit application support
 - `gperf <https://www.gnu.org/software/gperf/>`_
-- bzip2
-- `Python 3 <https://www.python.org/>`_ with the following packages:
-
-  - `setuptools <https://packaging.python.org/tutorials/installing-packages/>`_
-  - `PLY <http://www.dabeaz.com/ply/>`_
-  - `pyKwalify <https://github.com/grokzen/pykwalify>`_
-  - `PyYaml <https://pyyaml.org/wiki/PyYAML>`_
-  - `Cryptography <https://cryptography.io/en/latest/>`_
-  - `pyelftools <https://github.com/eliben/pyelftools>`_
-  - `IntelHex <https://pypi.org/project/IntelHex/>`_
-  - `Click <http://click.pocoo.org/>`_
-
-- `Google Repo <https://gerrit.googlesource.com/git-repo/>`_
-- `GPG <https://www.gnupg.org/>`_ (optional, but strongly recommended)
+- `Python 3 <https://www.python.org/>`_ with the `west
+  <https://pypi.org/project/west/>`_ project and various additional
+  requirements in the :file:`requirements.txt` files mentioned above.
 
 .. rubric:: Footnotes
-
-.. [#git-creds]
-
-   If you don't want to do that, see
-   https://git-scm.com/docs/gitcredentials for some alternatives.
-
-.. [#zmpwest]
-
-   The ``zmp`` tool is optional; it's possible to build this all
-   "manually" without using this tool, but instructions are not
-   provided here. To see what ``zmp`` is doing, run ``zmp --debug
-   COMMAND <args>`` instead of ``zmp COMMAND <args>``.
-
-   In the future, zmp will be replaced by Zephyr's West tool.
-
-.. [#signatures]
-
-   Since this tutorial is meant to help you get started, the binaries
-   are signed with keys that aren't secret, and **are not suitable for
-   production use**.
 
 .. [#serial]
 
@@ -446,25 +428,18 @@ with these instructions, which may be useful on other development platforms.
 .. _MCUBoot:
    https://mcuboot.com/
 
-.. _BLE Nano 2: https://redbear.cc/product/ble-nano-kit-2.html
-
-.. _pyOCD: https://github.com/mbedmicro/pyOCD
-
 .. _nRF5x Command Line Tools:
-   http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.tools%2Fdita%2Ftools%2Fnrf5x_command_line_tools%2Fnrf5x_installation.html
+   https://www.nordicsemi.com/DocLib/Content/User_Guides/nrf5x_cltools/latest/UG/cltools/nrf5x_command_line_tools_lpage
+
+.. _GNU Arm Embedded:
+   https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads
+
+.. _Zephyr SDK:
+   https://docs.zephyrproject.org/latest/getting_started/installation_linux.html#install-the-zephyr-software-development-kit-sdk
 
 .. _github.com/foundriesio: https://github.com/foundriesio
 
 .. _HomeBrew: https://brew.sh/
-
-.. _Zephyr's West tool: http://docs.zephyrproject.org/latest/tools/west/index.html
-
-.. _Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/about
-
-.. _changing files in Linux directories using Windows tools: https://blogs.msdn.microsoft.com/commandline/2016/11/17/do-not-change-linux-files-using-windows-apps-and-tools/
-
-.. _create a subscriber access token on app.foundries.io:
-   https://app.foundries.io/settings/tokens
 
 .. _picocom: https://github.com/npat-efault/picocom
 
@@ -473,3 +448,9 @@ with these instructions, which may be useful on other development platforms.
 .. _PuTTY: https://www.putty.org/
 
 .. _Connecting to a local serial line: https://the.earth.li/~sgtatham/putty/0.69/htmldoc/Chapter3.html#using-serial
+
+.. _Chocolatey:
+   https://chocolatey.org/
+
+.. _your board's documentation:
+   https://docs.zephyrproject.org/latest/boards/boards.html

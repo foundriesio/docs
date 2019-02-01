@@ -59,11 +59,8 @@ Install the Linux microPlatform
 
 The Linux microPlatform sources can be placed in any directory on your
 workstation, as long it provides enough disk space for the complete
-build. This uses the Repo tool to fetch a variety of Git repositories
+build. This uses the `Google Repo`_ tool to fetch a variety of Git repositories
 at known-good revisions, and keep them in sync as time goes on.
-
-(If you're new to Repo and want to know more, see
-:ref:`ref-zephyr-repo`.)
 
 #. Make an installation directory for the Linux microPlatform, and
    change into its directory::
@@ -76,7 +73,7 @@ at known-good revisions, and keep them in sync as time goes on.
 
    .. parsed-literal::
 
-      repo init -u https://github.com/foundriesio/lmp-manifest -b |repo_tag|
+      repo init -u https://github.com/foundriesio/lmp-manifest -b |manifest_tag|
       repo sync
 
 Set up Work Environment
@@ -151,3 +148,6 @@ recommended for those new to either project.
    https://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html
 .. _BitBake Manual:
    https://www.yoctoproject.org/docs/current/bitbake-user-manual/bitbake-user-manual.html
+
+.. _Google Repo:
+   https://source.android.com/setup/develop/repo

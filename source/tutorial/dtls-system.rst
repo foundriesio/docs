@@ -9,7 +9,10 @@ This page describes how to enable DTLS-based LWM2M communication
 between the gateway and IoT devices in the basic system you've already
 set up.
 
-These instructions assume you are using a BLE Nano 2.
+.. important::
+
+   These instructions assume you are using an nRF52840 based board;
+   the extra code needed to enable DTLS doesn't fit on nRF52832.
 
 .. warning::
 
@@ -28,15 +31,15 @@ These instructions assume you are using a BLE Nano 2.
      interacting with any device objects using an unauthenticated and
      unencrypted interface.
 
-Generate Credentials Partition
-------------------------------
+Generate and Flash Credentials Partition
+----------------------------------------
 
 You first need to generate a binary blob containing device credentials
-to use.
+to use, and flash it onto the device.
 
 From the ZMP installation directory, run a command like this::
 
-  ./zephyr-fota-samples/dm-lwm2m/scripts/gen_cred_partition.py --device-id=deadbeef --device-token=000102030405060708090a0b0c0d0e0f --output=cred.bin
+  ./zmp-samples/dm-lwm2m/scripts/gen_cred_partition.py --device-id=deadbeef --device-token=000102030405060708090a0b0c0d0e0f --output=cred.bin
 
 The arguments are as follows.
 
@@ -49,30 +52,30 @@ The arguments are as follows.
   0x01, etc.
 - ``--output`` is the output file which will contain the binary.
 
+Now flash the partitition to your device. Inspect your board's device
+tree in the build directory for its correct location on the device
+flash.
+
 Build and Flash IoT Device With DTLS Enabled
 --------------------------------------------
 
-Again from the ZMP installation directory, you now need to re-build
-and re-flash the application with DTLS enabled, along with the
-credentials partition::
+You now need to re-build and re-flash the application with DTLS
+enabled, along with the credentials partition (the location of the
+credentials partition is set by your board's device tree overlay
+file)::
 
-  rm -rf build/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2
-  ./zmp build --overlay-config=overlay-dtls.conf zephyr-fota-samples/dm-lwm2m
-  ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
-  pyocd-flashtool -se -t nrf52 --address 0x7f000 cred.bin
+  west build -s zmp-samples/dm-lwm2m -d build-lwm2m-dtls -- -DOVERLAY_CONFIG=overlay-dtls.conf
+  west sign -t imgtool -d build-dm-lwm2m-dtls -- --key mcuboot/root-rsa-2048.pem
+  west flash -d build-dm-lwm2m-dtls --hex-file zephyr.signed.hex
 
 Provision Leshan With Device Token
 ----------------------------------
 
-Now use the Leshan REST API to provision the device ID and token as in
-the following command line. (Make sure to change each occurrence of
-``deadbeef`` to your device ID, and the key from ``000102...0f`` to
-the key value you chose earlier.)
+Now use the Leshan web interface to provision the device ID and
+token. If using the demonstration server, this interface is available
+here:
 
-As noted above, this command line uses HTTP, and thus leaks the key,
-for example to any eavesdropper on the local network::
-
-  curl -v -X PUT -H "Content-Type: application/json" -d "{\"endpoint\":\"deadbeef\",\"psk\":{\"identity\":\"deadbeef\",\"key\":\"000102030405060708090a0b0c0d0e0f\"}}" http://localhost:8081/api/security/deadbeef
+https://mgmt.foundries.io/leshan/#/security
 
 Use the System
 --------------

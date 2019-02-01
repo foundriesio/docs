@@ -83,7 +83,7 @@ if mp_version.startswith('git-'):
 else:
     git_tag = 'mp-' + mp_version + mp_tags
 
-# And likewise for repo manifests (which have a different tag
+# And likewise for repo and west manifests (which have a different tag
 # namespace than the project tags, that happens to mostly match the
 # docker tags.)
 manifest_tag = ('refs/tags/' + docker_tag if docker_tag != 'latest'
@@ -113,6 +113,7 @@ extensions = [
 # Links that shouldn't get checked for validity
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
+    'http://YOUR_WORKSTATION_IP:8000',
     'http://.*[.]local',
     'http://your-device-ip-address/',
     'https://app.atsgarage.com/#/.*',        # requires login
@@ -202,8 +203,8 @@ todo_include_todos = True
 rst_epilog = '''
 .. |docker_tag| replace:: {}
 .. |git_tag| replace:: {}
-.. |repo_tag| replace:: {}
-'''.format(docker_tag, git_tag, repo_tag)
+.. |manifest_tag| replace:: {}
+'''.format(docker_tag, git_tag, manifest_tag)
 
 # -- Options for HTML output ----------------------------------------------
 
