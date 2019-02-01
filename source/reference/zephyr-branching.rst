@@ -10,8 +10,8 @@ Zephyr microPlatform Git repositories, and what you can expect from them.
 
    The important things to know are:
 
-   - The ``master`` branch in the :ref:`manifest repository
-     <ref-zephyr-repo>` always tracks the latest development.
+   - The ``master`` branch in the `ZmP west manifest repository`_
+     always tracks the latest development.
 
    - Commits in the Foundries.io Zephyr and mcuboot trees
      which aren't present upstream have special tags, called
@@ -243,8 +243,11 @@ working smoothly:
 - Developers can stage local and integrate upstream changes into
   Zephyr microPlatform branches.
 - Continuous Integration can track and test incoming changes.
-- The Repo manifests in each microPlatform update serve as a permanent
-  record despite histories which rebase.
+- The west manifest file in each microPlatform update serves as a
+  permanent record despite histories which rebase.
+
+.. _ZmP west manifest repository:
+   https://github.com/foundriesio/zmp-manifest
 
 .. _Git: https://git-scm.com/
 

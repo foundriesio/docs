@@ -18,6 +18,4 @@ Zephyr microPlatform HOWTOs
 
 .. toctree::
 
-   zephyr-workflows
-   zephyr-boards
    zephyr-mcuboot-keys

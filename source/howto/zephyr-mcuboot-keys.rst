@@ -1,7 +1,7 @@
 .. _howto-mcuboot-keys:
 
-Zephyr microPlatform MCUboot Key Provisioning HOWTO
-===================================================
+MCUboot Key Provisioning HOWTO
+==============================
 
 This page explains how to use your own firmware signing key pair to
 secure the boot process on your Zephyr microPlatform devices.
@@ -23,10 +23,11 @@ From the Zephyr microPlatform installation directory, generate an RSA
 
 .. code-block:: console
 
-   $ ./mcuboot/scripts/imgtool.py keygen -k my-secret-key.pem -t rsa-2048
+   ./mcuboot/scripts/imgtool.py keygen -k my-key.pem -t rsa-2048
 
-(This is the default key type used by MCUboot; if you configured
-MCUboot differently, you need to adjust the ``-t`` option.)
+(MCUboot uses 2048 bit RSA keys by default; if you want a different
+key type, you need to change ``-t`` option and adjust your MCUboot
+build configuration accordingly.)
 
 .. important::
 
@@ -38,60 +39,66 @@ Configure MCUboot to Use Your Key
 
 Now edit the MCUboot configuration to set the
 ``CONFIG_BOOT_SIGNATURE_KEY_FILE`` Kconfig value to point to your .pem
-file, which you created in the previous step. There are multiple ways
-to do this, e.g.:
+file, which you created in the previous step.
 
-1. To update your build directory :file:`.config`, setting up the key for
-   just this build::
+We present two options for doing this below; choose which one is best
+for you. If in doubt, use option 1, then save the resulting MCUboot
+binary and flash it to boards as needed.
 
-     ./zmp configure -o mcuboot YOUR_APP_NAME
+Option 1: One-Time Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   Search for the Kconfig option (type ``/`` to enter the search view,
-   enter the config option name, then hit enter to select it and enter
-   the interface to change its value).
+To do a one-time update of an existing MCUboot build directory's
+:file:`.config` file, setting up the key **temporarily**, start by
+running this::
 
-2. To make the change permanent and part of your MCUboot repository,
-   edit :file:`mcuboot/boot/zephyr/prj.conf` to set the value, and
-   commit the change. (This means all users of your Git tree need
-   access to the key, though.)
+  west build -t menuconfig -d build-mcuboot
 
-Which one you choose depends on your circumstances and
-requirements. If in doubt, use choice 1 to produce an MCUboot binary
-that you can then save and distribute to any other users, etc. who
-need to boot images signed by your private key.
+Then, in the ``menuconfig`` interface:
 
-Build App With Custom MCUboot image
------------------------------------
+#. Type :kbd:`/` to enter the search UI
+#. Type ``BOOT_SIGNATURE_KEY_FILE`` in the search box to find the
+   option, and press :kbd:`Enter` to select it.
+#. Press :kbd:`Enter` again to change its value, typing the
+   absolute path to your key file, :file:`my-key.pem`, then
+   pressing :kbd:`Enter` to set the new value.
+#. Type :kbd:`S` to save the configuration. Accept the default
+   file name to save it over your existing :file:`.config` file
+   in the build directory.
 
-You can now rebuild your Zephyr microPlatform application binary,
-along with a customized MCUboot binary which trusts your public
-key. Here is an example building the ``zephyr-fota-samples/dm-lwm2m``
-application for the ``nrf52_blenano2`` board using the :ref:`zmp
-<ref-zephyr-zmp>` tool:
+Option 2: Permanent Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+To make the change permanent and part of your MCUboot repository,
+edit :file:`mcuboot/boot/zephyr/prj.conf` to set the value, and
+commit the change. (This means all users of your Git tree need
+access to the key.)
 
-   $ ./zmp build -K my-secret-key.pem -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
+Build and Flash Custom MCUboot
+------------------------------
 
-The important files this generates (when combined with the previous
-steps) are:
+After configuring MCUboot to use your key using either option 1 or 2,
+build and flash it to your board as usual::
 
-- A custom MCUboot binary which trusts your public key in
-  :file:`build/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/mcuboot/zephyr/zephyr.bin`. Use
-  this binary when flashing devices you are going to deploy to the
-  field.
+  west build -s mcuboot/boot/zephyr -d build-mcuboot
+  west flash -d build-mcuboot
 
-- A Zephyr binary which is signed with your private key in
-  :file:`build/zephyr-fota-samples/dm-lwm2m/nrf52_blenano2/app/zephyr/dm-lwm2m-nrf52_blenano2-signed.bin`. You
-  can distribute this binary in FOTA updates.
+Build, Sign, and Flash App With Custom Key
+------------------------------------------
 
-To verify your setup, flash the custom MCUboot to your board, along
-with the signed binary into the main firmware image area. For example,
-using the ``zmp`` tool:
+You can now sign your Zephyr application binary with the new
+key. Assuming the build directory is in :file:`build-my-app`::
 
-.. code-block:: console
+ west sign -t imgtool -d build-my-app -- --key my-secret-key.pem
 
-   ./zmp flash -b nrf52_blenano2 zephyr-fota-samples/dm-lwm2m
+This generates :file:`zephyr.signed.bin` and :file:`zephyr.signed.hex`
+files in the current directory. You can choose different file names
+with the `-H` and `-B` options.
+
+To verify your setup, flash the signed binary to your board. E.g. if
+your west runner uses Intel Hex files::
+
+  west flash -d build-my-app --hex-file zephyr.signed.hex
 
 Appendix: Boot Process Overview
 -------------------------------

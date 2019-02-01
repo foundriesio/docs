@@ -14,8 +14,10 @@ FRDM-K64F
 .. toggle-header::
    :header: Click to show/hide
 
+   .. include:: pyocd.include
+
    .. |frdm-k64f-net-file| replace::
-      ``zephyr-fota-samples/dm-lwm2m/boards/frdm_k64f-local.conf``
+      ``zmp-samples/dm-lwm2m/boards/frdm_k64f-local.conf``
 
    .. include:: frdm-k64f-net.include
 
@@ -28,18 +30,11 @@ FRDM-K64F
 
       CONFIG_LWM2M_FIRMWARE_UPDATE_PULL_COAP_PROXY_ADDR="L.M.N.O"
 
-   Now you can build the binaries. From the Zephyr microPlatform
-   installation directory::
+   To build and flash::
 
-       ./zmp build -b frdm_k64f zephyr-fota-samples/dm-lwm2m
-
-   .. include:: pyocd.include
-
-   To flash the binaries, plug the K64F into your system via the USB
-   connector labeled "SDA USB". Then, from the Zephyr microPlatform installation
-   directory::
-
-       ./zmp flash -b frdm_k64f zephyr-fota-samples/dm-lwm2m
+     west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b frdm_k64f
+     west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
+     west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
 
 96Boards Nitrogen
 -----------------
@@ -47,13 +42,24 @@ FRDM-K64F
 .. toggle-header::
    :header: Click to show/hide
 
-   To build the binaries, run this from the Zephyr microPlatform
-   installation directory::
+   .. include:: pyocd.include
 
-     ./zmp build -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+   To build and flash::
+
+     west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b 96b_nitrogen
+     west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
+     west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
+
+BLE Nano 2
+----------
+
+.. toggle-header::
+   :header: Click to show/hide
 
    .. include:: pyocd.include
 
-   To flash the board::
+   To build and flash::
 
-     ./zmp flash -b 96b_nitrogen zephyr-fota-samples/dm-lwm2m
+     west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b nrf52_blenano2
+     west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
+     west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
