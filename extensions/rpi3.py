@@ -15,8 +15,12 @@ class LmpRPi3LinksDirective(core.Directive):
         config = self.get_config()
 
         def art_ref(artifact):
-            url = linux_github_artifact(config.mp_version, artifact)
-            return self.build_link(url, url)
+            if config.mp_version.startswith('git-'):
+                return self.build_link('(dev docs build; use app.foundries.io)',
+                                       'https://app.foundries.io')
+            else:
+                url = linux_github_artifact(config.mp_version, artifact)
+                return self.build_link(url, url)
 
         # Paragraph linking to the release.
         links_para = nodes.paragraph()
