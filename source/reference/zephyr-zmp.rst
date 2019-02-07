@@ -277,7 +277,7 @@ Example uses:
    repository.
 
 .. _device tree overlay:
-   http://docs.zephyrproject.org/latest/application/application.html#application-dt
+   https://docs.zephyrproject.org/latest/application/index.html#application-dt
 
 .. _flash partitions:
    http://docs.zephyrproject.org/latest/devices/dts/flash_partitions.html
