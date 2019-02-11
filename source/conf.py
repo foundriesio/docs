@@ -86,7 +86,8 @@ else:
 # And likewise for repo manifests (which have a different tag
 # namespace than the project tags, that happens to mostly match the
 # docker tags.)
-repo_tag = 'refs/tags/' + docker_tag
+manifest_tag = ('refs/tags/' + docker_tag if docker_tag != 'latest'
+                else 'refs/heads/master')
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
