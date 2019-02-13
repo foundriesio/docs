@@ -62,9 +62,9 @@ Build and Flash IoT Device With DTLS Enabled
 You now need to re-build and re-flash the application with DTLS
 enabled, along with the credentials partition (the location of the
 credentials partition is set by your board's device tree overlay
-file)::
+file). For example, to build for ``reel_board``::
 
-  west build -s zmp-samples/dm-lwm2m -d build-lwm2m-dtls -- -DOVERLAY_CONFIG=overlay-dtls.conf
+  west build --board reel_board -s zmp-samples/dm-lwm2m -d build-dm-lwm2m-dtls -- -DOVERLAY_CONFIG=overlay-dtls.conf
   west sign -t imgtool -d build-dm-lwm2m-dtls -- --key mcuboot/root-rsa-2048.pem
   west flash -d build-dm-lwm2m-dtls --hex-file zephyr.signed.hex
 
