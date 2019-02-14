@@ -79,7 +79,7 @@ Select your platform for instructions:
       #. Install dependencies for the Zephyr microPlatform::
 
            brew install cmake ninja gperf ccache dtc python3
-           pip3 install --user west
+           pip3 install west
 
       #. Install the tools you need to flash your board.
 
@@ -133,6 +133,10 @@ Select your platform for instructions:
 
            git config --global user.name "Your Full Name"
            git config --global user.email "your-email-address@example.com"
+
+      #. Install west::
+
+           pip install west
 
       Your system is now ready to install the Zephyr microPlatform.
 
