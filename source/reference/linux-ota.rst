@@ -172,7 +172,7 @@ yet been rebooted so that the image can become active.
 Automatic Rebooting After Updates
 ---------------------------------
 
-Aktualizr creates an empty file ``/run/aktualizr/ostree-pending-update`` after
+Aktualizr creates an empty file ``/var/run/aktualizr-session/need_reboot`` after
 completing an OSTree update, and a `systemd timer`_ can be defined for the systemd
 service file ``ostree-pending-reboot`` to automatically restart the device once
 there is a pending update.
