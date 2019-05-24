@@ -22,7 +22,7 @@ several boards are available. To get started easily, we recommend:
 
 **Zephyr microPlatform**:
 
-- `nRF52840 DK`_
+- `nRF52840 DK`_ - a low cost development board for the Nordic nRF52840 SoC with Bluetooth, Thread and Zigbee support
 
 .. _Raspberry Pi 3 Model B:
    https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
