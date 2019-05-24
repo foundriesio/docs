@@ -11,8 +11,9 @@ set up.
 
 .. important::
 
-   These instructions assume you are using an nRF52840 based board;
-   the extra code needed to enable DTLS doesn't fit on nRF52832.
+   These instructions assume you are using a Zephyr-supported nRF52840 
+   based product, such as the nRF52840-DK development kit or the Reel
+   Board badge. 
 
 .. warning::
 
@@ -20,9 +21,9 @@ set up.
 
    - The firmware update procedure uses plain HTTP, rather than LWM2M
      over DTLS. This leaks the contents of the updated firmware
-     binary. (This can be used in denial of service and information
+     binary. This can be used in denial of service and information
      disclosure attacks, but the MCUBoot binary will still refuse to
-     boot unsigned binaries.)
+     boot unsigned binaries.
 
    - The Leshan server still allows unauthenticated HTTP access to the
      IoT devices via its user interface and REST API. For example,
@@ -80,5 +81,5 @@ https://mgmt.foundries.io/leshan/#/security
 Use the System
 --------------
 
-You should now be able to use the system with DTLS enabled in
+You should now be able to use the system with DTLS enabled in the
 :ref:`same ways as the basic system <tutorial-basic-use>`.
