@@ -91,15 +91,30 @@ Then, build and flash the basic LWM2M system's application.
    communication security. You can enable DTLS-based security on
    nRF52840 devices using instructions in the next document in this
    tutorial.
+   
+By default the system uses 802.15.4 OpenThread nesh for 
+communications with the nRF52840-DK endpoints(s). However, you 
+can alternatively use BLE/6LoWPAN. If you use BLE you may see 
+reduced reliability using the Raspberry Pi as a gateway if you
+use more than a few BLE endpoints. 
 
 .. content-tabs::
 
-   .. tab-container:: nrf52840_pca10056
-      :title: nRF52840 DK
+   .. tab-container:: nrf52840_pca10056_OT
+      :title: nRF52840-DK OpenThread
 
       .. code-block:: console
 
          west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b nrf52840_pca10056
+         west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
+         west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
+         
+   .. tab-container:: nrf52840_pca10056_BLE
+      :title: nRF52840-DK Bluetooth
+
+      .. code-block:: console
+
+         west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b nrf52840_pca10056 -- -DOVERLAY_CONFIG=overlay-ble.conf 
          west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
          west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
 
