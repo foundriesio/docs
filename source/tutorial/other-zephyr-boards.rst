@@ -8,11 +8,8 @@ Using Other Zephyr Boards
 This document contains additional information related to using the
 system on other boards.
 
-FRDM-K64F
----------
-
 .. toggle-header::
-   :header: Click to show/hide
+   :header: NXP FRDM-K64F
 
    .. include:: pyocd.include
 
@@ -36,11 +33,8 @@ FRDM-K64F
      west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
      west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
 
-96Boards Nitrogen
------------------
-
 .. toggle-header::
-   :header: Click to show/hide
+   :header: 96Boards Nitrogen
 
    .. include:: pyocd.include
 
@@ -50,11 +44,8 @@ FRDM-K64F
      west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
      west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
 
-BLE Nano 2
-----------
-
 .. toggle-header::
-   :header: Click to show/hide
+   :header: BLE Nano2
 
    .. include:: pyocd.include
 
