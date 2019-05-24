@@ -55,10 +55,10 @@ Log into your gateway using SSH and then run::
     cd gateway-containers
     docker-compose up -d
     
-To optionally add support for BLE devices you will also need to run the 
-following command::
+If you wish to add support for BLE devices then you will also need to run 
+the following command::
 
-   docker-compose -f docker-compose.ble.yml
+   docker-compose -f docker-compose.ble.yml up -d
 
 You can watch the logs of the containers with::
 
