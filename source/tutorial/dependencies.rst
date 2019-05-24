@@ -13,7 +13,7 @@ several boards are available. To get started easily, we recommend:
 **Linux microPlatform**:
 
 - `Raspberry Pi 3 Model B`_ or `Raspberry Pi 3 Model B+`_
-- nRF52840 Dongle - a low cost USB device to enable Raspberry Pi 3 or other gateway device to support 802.15.4 OpenThread
+- `nRF52840 Dongle`_ - a low cost USB device to enable Raspberry Pi 3 or other gateway device to support 802.15.4 OpenThread
 - SD card compatible with Raspberry Pi 3 (see this `Embedded
   Linux wiki guide`_ for examples)
 - Ethernet cable (or you can use WiFi)
@@ -41,3 +41,6 @@ several boards are available. To get started easily, we recommend:
 
 .. _nRF52840 DK:
    https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK
+   
+.. _nRF52840 Dongle:
+   https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-Dongle
