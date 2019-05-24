@@ -44,11 +44,9 @@ Install Base microPlatform
 You'll start by installing the base microPlatform and connecting to
 your device's console.
 
-Instructions for officially supported boards are listed
-here. **Currently, this is limited to the Raspberry Pi 3 Models B and
-B+.**
-
-If you're using another board or want to build from source, see
+This document provides instructions for the Raspberry Pi 3 models B 
+and B+ reference development boards. If you are using a different
+board, or want to build from sourcem then see
 :ref:`ref-linux-targets` and :ref:`ref-linux-building` in the
 reference manual.
 
@@ -73,7 +71,7 @@ After you've installed Etcher on your system:
    downloaded on your file system.
 #. Select the SD card you mounted from Etcher, and flash it.
 
-Additional, more advanced guides are available for `macOS`_,
+More detailed guides are available for `macOS`_,
 `Windows`_, and `Linux`_.
 
 **Boot Raspberry Pi 3 and Connect to the Network**
