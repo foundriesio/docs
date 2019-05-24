@@ -20,7 +20,9 @@ several boards are available. To get started easily, we recommend:
 - 3.3 volt USB to TTL Serial Cable, such as this `SparkFun FTDI Basic
   Breakout 3.3V`_ (optional, only needed if connecting via WiFi)
 
-**Zephyr microPlatform**: `nRF52840 DK`_.
+**Zephyr microPlatform**:
+
+- `nRF52840 DK`_
 
 .. rubric:: Footnotes
 
