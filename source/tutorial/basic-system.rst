@@ -22,6 +22,12 @@ gateway, and a web application, Leshan, that is used as the LWM2M
 server.  With Leshan, you can issue commands, query data, and perform
 firmware over the air (FOTA) updates on the IoT device(s).
 
+By default we use the OpenThread stack for gateway to mesh device 
+communications. We also provide instructions on how to additionally 
+enable Bluetooth BLE support. However, note that many gateway devices, 
+including the Raspberry Pi 3, may exhibit unreliability when connecting 
+to more than several devices using BLE.
+
 Using the demonstration system described here, you can:
 
 - See live data readings from your devices using the Leshan web application.
@@ -48,6 +54,11 @@ Log into your gateway using SSH and then run::
 
     cd gateway-containers
     docker-compose up -d
+    
+To optionally add support for BLE devices you will also need to run the 
+following command::
+
+   docker-compose -f docker-compose.ble.yml
 
 You can watch the logs of the containers with::
 
