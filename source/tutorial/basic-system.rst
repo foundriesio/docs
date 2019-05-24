@@ -6,7 +6,7 @@ Set Up Basic LWM2M System
 Now that you have installed the :ref:`Zephyr <tutorial-zephyr>` and
 :ref:`Linux <tutorial-linux>` microPlatforms, it's time to use them to
 set up an end-to-end IoT demonstration system using the OMA
-Lightweight M2M (LWM2M) protocol.
+Lightweight M2M (LWM2M) protocol and OpenThread 802.15.4 stack. 
 
 A block diagram of this system is shown here. Though it is not
 explicitly shown, one or more IoT devices can connect to the network
@@ -94,15 +94,6 @@ Then, build and flash the basic LWM2M system's application.
 
 .. content-tabs::
 
-   .. tab-container:: nrf52_pca10040
-      :title: nRF52 DK (nRF52832)
-
-      .. code-block:: console
-
-         west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b nrf52_pca10040
-         west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
-         west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
-
    .. tab-container:: nrf52840_pca10056
       :title: nRF52840 DK
 
@@ -135,8 +126,8 @@ on it to view available LWM2M objects on your device.
 .. note::
 
    This LWM2M server interface is provided by Foundries.io only for
-   ease of use bringing up the system and prototyping. Availability
-   etc. are not guaranteed.
+   ease of use bringing up the system, demonstration and prototyping. 
+   Availability and uptime are not guaranteed.
 
 Read and Write Objects
 ----------------------
