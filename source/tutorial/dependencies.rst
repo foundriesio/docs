@@ -15,11 +15,11 @@ several boards are available. To get started easily, we recommend:
 - `Raspberry Pi 3 Model B`_ or `Raspberry Pi 3 Model B+`_
 - SD card compatible with Raspberry Pi 3 (see this `Embedded
   Linux wiki guide`_ for examples)
-- Ethernet cable (WiFi is also possible)
+- Ethernet cable (or you can use WiFi)
 - 3.3 volt USB to TTL Serial Cable, such as this `SparkFun FTDI Basic
   Breakout 3.3V`_ (optional, only needed if connecting via WiFi)
 
-**Zephyr microPlatform**: `nRF52 DK`_ (for nRF52832) or `nRF52840 DK`_.
+**Zephyr microPlatform**: `nRF52840 DK`_.
 
 .. rubric:: Footnotes
 
