@@ -24,8 +24,6 @@ several boards are available. To get started easily, we recommend:
 
 - `nRF52840 DK`_
 
-.. rubric:: Footnotes
-
 .. _Raspberry Pi 3 Model B:
    https://www.raspberrypi.org/products/raspberry-pi-3-model-b/
 
