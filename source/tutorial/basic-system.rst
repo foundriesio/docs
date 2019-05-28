@@ -8,9 +8,8 @@ Now that you have installed the :ref:`Zephyr <tutorial-zephyr>` and
 set up an end-to-end IoT demonstration system using the OMA
 Lightweight M2M (LWM2M) protocol and OpenThread 802.15.4 stack. 
 
-A block diagram of this system is shown here. Though it is not
-explicitly shown, one or more IoT devices can connect to the network
-through the same gateway.
+A block diagram of this system is shown here. Multiple IoT devices can 
+connect to the network through the gateway.
 
 .. figure:: /_static/tutorial/lwm2m-system-diagram.svg
    :alt: LWM2M System Diagram
