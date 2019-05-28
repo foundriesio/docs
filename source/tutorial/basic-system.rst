@@ -46,6 +46,15 @@ Prepare the System
 Set up IoT Gateway
 ------------------
 
+We use the Nordic nRF52840 Dongle device to provide 802.15.4 communications
+with OpenThread. Follow the `directions`_ on the Nordic web site to program 
+the Dongle with the OpenThread NCP firmware using the nRFConnect programmer. 
+A ready to install `binary file`_ is available from Foundries.io. You may 
+also build this yourself from the github.com OpenThread project. Note that 
+once installed this dongle may be used on any gateway using the LmP that 
+supports the reference software including x86 and Arm-based platforms. 
+Install the programmed Dongle into any of the Raspberry Pi USB ports. 
+
 The `gateway-containers`_ project includes a simple `docker-compose file`_
 that can start up a minimal set of containers to support this tutorial.
 Log into your gateway using SSH and then run::
@@ -313,4 +322,12 @@ secure LWM2M communications using DTLS.
 
 .. _docker-compose file:
    https://github.com/foundriesio/gateway-containers/blob/master/docker-compose.lwm2m.yml
+   
+.. _directions:
+   https://infocenter.nordicsemi.com/index.jsp?topic=%2Fug_nrf52840_dongle%2FUG%2Fnrf52840_Dongle%2Fintro.html&cp=3_0_5&tags=nRF52840%2CnRF52840+Dongle
+   
+.. _binary file:
+   https://drive.google.com/drive/u/0/folders/1tj5yyXxPFmi37KZ7Cf2r0GqK4dvJrZUW
+
+
 
