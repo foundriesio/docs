@@ -11,7 +11,7 @@ Lightweight M2M (LWM2M) protocol and OpenThread 802.15.4 stack.
 A block diagram of this system is shown here. Multiple IoT devices can 
 connect to the network through the gateway.
 
-.. figure:: /_static/tutorial/lwm2m-system-diagram.svg
+.. figure:: /_static/tutorial/lwm2m-system-diagram.png
    :alt: LWM2M System Diagram
    :align: center
    :figwidth: 5in
