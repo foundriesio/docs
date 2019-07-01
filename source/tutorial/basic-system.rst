@@ -6,11 +6,10 @@ Set Up Basic LWM2M System
 Now that you have installed the :ref:`Zephyr <tutorial-zephyr>` and
 :ref:`Linux <tutorial-linux>` microPlatforms, it's time to use them to
 set up an end-to-end IoT demonstration system using the OMA
-Lightweight M2M (LWM2M) protocol.
+Lightweight M2M (LWM2M) protocol and OpenThread 802.15.4 stack.
 
-A block diagram of this system is shown here. Though it is not
-explicitly shown, one or more IoT devices can connect to the network
-through the same gateway.
+A block diagram of this system is shown here. Multiple IoT devices can
+connect to the network through the gateway.
 
 .. figure:: /_static/tutorial/lwm2m-system-diagram.svg
    :alt: LWM2M System Diagram
@@ -21,6 +20,12 @@ The system contains Zephyr-based IoT devices, a Linux-based IoT
 gateway, and a web application, Leshan, that is used as the LWM2M
 server.  With Leshan, you can issue commands, query data, and perform
 firmware over the air (FOTA) updates on the IoT device(s).
+
+By default we use the OpenThread stack for gateway to mesh device
+communications. We also provide instructions on how to additionally
+enable Bluetooth BLE support. However, note that many gateway devices,
+including the Raspberry Pi 3, may exhibit unreliability when connecting
+to more than several devices using BLE.
 
 Using the demonstration system described here, you can:
 
@@ -40,6 +45,15 @@ Prepare the System
 Set up IoT Gateway
 ------------------
 
+We use the Nordic nRF52840 Dongle device to provide 802.15.4 communications
+with OpenThread. Follow the `directions`_ on the Nordic web site to program
+the Dongle with the OpenThread NCP firmware using the nRFConnect programmer.
+A ready to install `binary file`_ is available from Foundries.io. You may
+also build this yourself from the github.com OpenThread project. Note that
+once installed this dongle may be used on any gateway using the LmP that
+supports the reference software including x86 and Arm-based platforms.
+Install the programmed Dongle into any of the Raspberry Pi USB ports.
+
 The `gateway-containers`_ project includes a simple `docker-compose file`_
 that can start up a minimal set of containers to support this tutorial.
 Log into your gateway using SSH and then run::
@@ -48,6 +62,11 @@ Log into your gateway using SSH and then run::
 
     cd gateway-containers
     docker-compose up -d
+
+If you wish to add support for BLE devices then you will also need to run
+the following command::
+
+   docker-compose -f docker-compose.ble.yml up -d
 
 You can watch the logs of the containers with::
 
@@ -81,23 +100,29 @@ Then, build and flash the basic LWM2M system's application.
    nRF52840 devices using instructions in the next document in this
    tutorial.
 
+By default the system uses 802.15.4 OpenThread mesh for
+communications with the nRF52840-DK endpoints(s). However, you
+can alternatively use BLE/6LoWPAN. If you use BLE you may see
+reduced reliability using the Raspberry Pi as a gateway if you
+use more than a few BLE endpoints.
+
 .. content-tabs::
 
-   .. tab-container:: nrf52_pca10040
-      :title: nRF52 DK (nRF52832)
-
-      .. code-block:: console
-
-         west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b nrf52_pca10040
-         west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
-         west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
-
-   .. tab-container:: nrf52840_pca10056
-      :title: nRF52840 DK
+   .. tab-container:: nrf52840_pca10056_OT
+      :title: nRF52840-DK OpenThread
 
       .. code-block:: console
 
          west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b nrf52840_pca10056
+         west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
+         west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
+
+   .. tab-container:: nrf52840_pca10056_BLE
+      :title: nRF52840-DK Bluetooth
+
+      .. code-block:: console
+
+         west build -s zmp-samples/dm-lwm2m -d build-dm-lwm2m -b nrf52840_pca10056 -- -DCONFIG_FOTA_NET_BLE6LOWPAN=y
          west sign -t imgtool -d build-dm-lwm2m -- --key mcuboot/root-rsa-2048.pem
          west flash -d build-dm-lwm2m --hex-file zephyr.signed.hex
 
@@ -124,8 +149,8 @@ on it to view available LWM2M objects on your device.
 .. note::
 
    This LWM2M server interface is provided by Foundries.io only for
-   ease of use bringing up the system and prototyping. Availability
-   etc. are not guaranteed.
+   ease of use bringing up the system, demonstration and prototyping.
+   Availability and uptime are not guaranteed.
 
 Read and Write Objects
 ----------------------
@@ -297,3 +322,8 @@ secure LWM2M communications using DTLS.
 .. _docker-compose file:
    https://github.com/foundriesio/gateway-containers/blob/master/docker-compose.lwm2m.yml
 
+.. _directions:
+   https://infocenter.nordicsemi.com/index.jsp?topic=%2Fug_nrf52840_dongle%2FUG%2Fnrf52840_Dongle%2Fintro.html&cp=3_0_5&tags=nRF52840%2CnRF52840+Dongle
+
+.. _binary file:
+   https://drive.google.com/file/d/1-K9kPOtlFre5PGcFVtbpvDEaCHwOfRgI/view?usp=sharing
