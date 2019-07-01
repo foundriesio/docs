@@ -9,7 +9,7 @@ What is an Over-the-Air Update System?
 --------------------------------------
 
 Over-the-air (OTA) update systems provide a secure means of updating a device
-remotely. The Linux microPlatform has choosen to support a framework based on
+remotely. The Linux microPlatform has chosen to support a framework based on
 on the TUF_/Uptane_ specifications. This is implemented by using root
 file systems managed with OSTree_ and the Aktualizr_ open source project.
 
