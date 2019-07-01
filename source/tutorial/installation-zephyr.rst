@@ -229,20 +229,20 @@ flash MCUboot on the board.
 
 .. content-tabs::
 
-   .. tab-container:: nrf52_pca10040
-      :title: nRF52 DK (nRF52832)
-
-      .. code-block:: console
-
-         west build -s mcuboot/boot/zephyr -d build-mcuboot -b nrf52_pca10040
-         west flash -d build-mcuboot
-
    .. tab-container:: nrf52840_pca10056
       :title: nRF52840 DK
 
       .. code-block:: console
 
          west build -s mcuboot/boot/zephyr -d build-mcuboot -b nrf52840_pca10056
+         west flash -d build-mcuboot
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         west build -s mcuboot/boot/zephyr -d build-mcuboot -b nrf52_pca10040
          west flash -d build-mcuboot
 
 You will see something that looks like the following:
@@ -289,16 +289,6 @@ bootloader that's already on your board.
 
 .. content-tabs::
 
-   .. tab-container:: nrf52_pca10040
-      :title: nRF52 DK (nRF52832)
-
-      .. code-block:: console
-
-         west build -s zephyr/samples/hello_world -d build-hello \
-                    -b nrf52_pca10040 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
-         west sign -t imgtool -d build-hello -- --key mcuboot/root-rsa-2048.pem
-         west flash -d build-hello --hex-file zephyr.signed.hex
-
    .. tab-container:: nrf52840_pca10056
       :title: nRF52840 DK
 
@@ -306,6 +296,16 @@ bootloader that's already on your board.
 
          west build -s zephyr/samples/hello_world -d build-hello \
                     -b nrf52840_pca10056 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
+         west sign -t imgtool -d build-hello -- --key mcuboot/root-rsa-2048.pem
+         west flash -d build-hello --hex-file zephyr.signed.hex
+
+   .. tab-container:: nrf52_pca10040
+      :title: nRF52 DK (nRF52832)
+
+      .. code-block:: console
+
+         west build -s zephyr/samples/hello_world -d build-hello \
+                    -b nrf52_pca10040 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
          west sign -t imgtool -d build-hello -- --key mcuboot/root-rsa-2048.pem
          west flash -d build-hello --hex-file zephyr.signed.hex
 
@@ -356,6 +356,16 @@ flashed MCUboot, so just flash the new application:
 
 .. content-tabs::
 
+   .. tab-container:: nrf52840_pca10056
+      :title: nRF52840 DK
+
+      .. code-block:: console
+
+         west build -s zephyr/samples/philosophers -d build-philosophers \
+                    -b nrf52840_pca10056 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
+         west sign -t imgtool -d build-philosophers -- --key mcuboot/root-rsa-2048.pem
+         west flash -d build-philosophers --hex-file zephyr.signed.hex
+
    .. tab-container:: nrf52_pca10040
       :title: nRF52 DK (nRF52832)
 
@@ -363,16 +373,6 @@ flashed MCUboot, so just flash the new application:
 
          west build -s zephyr/samples/philosophers -d build-philosophers \
                     -b nrf52_pca10040 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
-         west sign -t imgtool -d build-philosophers -- --key mcuboot/root-rsa-2048.pem
-         west flash -d build-philosophers --hex-file zephyr.signed.hex
-
-   .. tab-container:: nrf52840_pca10056
-      :title: nRF52840 DK
-
-      .. code-block:: console
-
-         west build -s zephyr/samples/philosophers -d build-philosophers \
-                     -b nrf52840_pca10056 -- -DCONFIG_BOOTLOADER_MCUBOOT=y
          west sign -t imgtool -d build-philosophers -- --key mcuboot/root-rsa-2048.pem
          west flash -d build-philosophers --hex-file zephyr.signed.hex
 
