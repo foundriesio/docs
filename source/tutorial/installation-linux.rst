@@ -46,7 +46,7 @@ your device's console.
 
 This document provides instructions for the Raspberry Pi 3 models B
 and B+ reference development boards. If you are using a different
-board, or want to build from sourcem then see
+board, or want to build from source then see
 :ref:`ref-linux-targets` and :ref:`ref-linux-building` in the
 reference manual.
 
