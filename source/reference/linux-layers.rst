@@ -40,10 +40,7 @@ Layer                                 Description
 `Meta-Yocto`_ (BSP)                   This is the board support layer for the Yocto Project hardware
                                       references, such as BeagleBone Black.
 `Meta-96boards`_ (BSP)                This layer is managed by Linaro and intended for boards that do
-                                      not have their own board support layer repository. Currently used
-                                      for HiKey / HiKey960 Consumer Edition board support.
-`Meta-Qcom`_ (BSP)                    This is the board support layer for Qualcomm boards. Currently
-                                      supports DragonBoard 410c and DragonBoard 820c.
+                                      not have their own board support layer repository.
 `Meta-Freescale`_ (BSP)               This is the board support layer for the Freescale platforms.
 `Meta-Freescale-3rdparty`_ (BSP)      This is an additional board support layer for Freescale platforms
                                       (not officially supported by Meta-Freescale maintainers).
@@ -88,8 +85,6 @@ default set of packages used by the image via the
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-yocto/
 .. _Meta-96boards:
    https://github.com/96boards/meta-96boards
-.. _Meta-Qcom:
-   https://github.com/ndechesne/meta-qcom
 .. _Meta-Freescale:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-freescale/
 .. _Meta-Freescale-3rdparty:
