@@ -225,11 +225,11 @@ nginx web server.
    Run these commands on your Linux microPlatform device, **not your
    workstation**.
 
-Run update |version| of the container:
+Run the nginx web server container (stable-alpine tag):
 
 .. parsed-literal::
 
-   docker run --name nginx-demo -p 80:80 hub.foundries.io/nginx:|docker_tag|
+   docker run --name nginx-demo -p 80:80 nginx:stable-alpine
 
 After the image is downloaded, the running container will stay
 connected to your terminal.
