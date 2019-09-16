@@ -132,8 +132,8 @@ Choose a method:
          the adapter, and power on the Raspberry Pi 3.
 
       #. When prompted, log in via the console. The default
-         username is ``osf``, and the default password is
-         ``osf``. You should change the password before
+         username is ``fio``, and the default password is
+         ``fio``. You should change the password before
          connecting to the network.
 
       #. Connect to the network using the following command::
@@ -160,12 +160,12 @@ Choose a method:
 
 **Log in via SSH**
 
-Use ``osf`` as the username and ``raspberrypi3-64.local`` as the
+Use ``fio`` as the username and ``raspberrypi3-64.local`` as the
 hostname::
 
-  ssh osf@raspberrypi3-64.local
+  ssh fio@raspberrypi3-64.local
 
-The default password is ``osf``; we recommend changing it now if you
+The default password is ``fio``; we recommend changing it now if you
 haven't already. For this to work, your local network needs to support
 Zeroconf\ [#zeroconf]_ and the hostname must be otherwise unclaimed.
 
@@ -197,7 +197,7 @@ network don't work, try one of the following.
 
   Then connect by IP address::
 
-    ssh osf@rpi3.ip.addr.ess
+    ssh fio@rpi3.ip.addr.ess
 
 - List connected devices and their local IP addresses on your network
   router's administrative interface, and log in by IP address as

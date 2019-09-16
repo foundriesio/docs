@@ -23,10 +23,10 @@
 - Copy your SSH key to the gateway in order to control it with
   Ansible::
 
-    ssh-copy-id osf@raspberrypi3-64.local
+    ssh-copy-id fio@raspberrypi3-64.local
 
-  Use the password for the ``osf`` account you set earlier when
-  installing the Linux microPlatform (the default is ``osf``, but we
+  Use the password for the ``fio`` account you set earlier when
+  installing the Linux microPlatform (the default is ``fio``, but we
   recommend that you change it).
 
 - Clone ``gateway-ansible`` update |version|:

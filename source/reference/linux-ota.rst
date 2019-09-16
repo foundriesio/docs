@@ -128,7 +128,7 @@ Choose a method:
       register it. For example, if SSHing into a Raspberry Pi 3::
 
         # From host computer with credentials.zip:
-        scp credentials.zip osf@raspberrypi3-64.local:~/
+        scp credentials.zip fio@raspberrypi3-64.local:~/
 
         # From target device:
         sudo mv credentials.zip /var/sota/sota_provisioning_credentials.zip
