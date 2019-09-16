@@ -265,7 +265,7 @@ Generic RISC-V 64 Machine
    You can SSH into the RISC-V 64 guest by using the port forwarded to
    the RISC-V 64 guest::
 
-     ssh -p 2222 osf@localhost
+     ssh -p 2222 fio@localhost
 
    Please see https://wiki.qemu.org/Documentation/Platforms/RISCV for additional
    information.
