@@ -1,11 +1,15 @@
-FoundriesFactory Manual
-=======================
+Your Factory
+============
 
-Start here for a step by step tutorial on how to install the
-Linux microPlatform and use aktualizr-lite for OTA updates.
-
-To set up and use this system, follow these pages in order.
+TODO - words and more words
 
 .. toctree::
    :maxdepth: 3
 
+   getting-started
+   first-boot
+   managing
+   source-code
+   containers
+   updating-the-core
+   extending
