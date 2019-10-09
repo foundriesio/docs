@@ -388,9 +388,6 @@ at :ref:`tutorial-basic`, you'll learn how to flash an application
 that can update itself over the air, using MCUboot to install updated
 application images.
 
-Alternatively, learn more about the Zephyr microPlatform in
-:ref:`howto` and :ref:`ref-zephyr`.
-
 .. include:: reporting-issues.include
 
 .. _tutorial-zephyr-dependencies:

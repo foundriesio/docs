@@ -12,7 +12,6 @@ devices.
    tutorial/index
    howto/index
    reference/linux
-   reference/zephyr
 
 .. ifconfig:: todo_include_todos is True
 
