@@ -23,13 +23,7 @@ The Linux microPlatform is split into two parts:
 
    Linux microPlatform
 
-This document describes how to:
-
-- Install the base system onto your device, connect it to the network,
-  and connect to its console.
-
-- Run a web server in a container on the device, demonstrating
-  application deployment.
+This document describes how to install base system onto your device.
 
 .. important::
 
@@ -177,7 +171,7 @@ advice.
 
 Once you have an SSH console connection, finish your installation by
 setting up aktualizr-lite. Follow instructions in
-:ref:`tutorial-aklite` for a demonstration.
+:ref:`tutorial-using` for a demonstration.
 
 .. _tutorial-linux-troubleshooting:
 
@@ -211,22 +205,6 @@ would like. For example::
 
     ping -c 3 foundries.io
 
-.. _tutorial-aklite:
-
-Using Aktualizr-lite
---------------------
-
-Aktualizr-lite is the update agent included with the Linux microPlatform. It
-runs as a system daemon periodically looking for new updates to apply to
-your device. There are a few interesting things you can do with aktualizr-lite:
-
-Configuring Docker Apps
-~~~~~~~~~~~~~~~~~~~~~~~
-TODO - and link to docker-app reference
-
-Controlling incoming updates
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TODO - describe how to controll reboot and flocking options - probably link to reference doc
 
 .. include:: reporting-issues.include
 
