@@ -1,7 +1,5 @@
-.. _tutorial:
-
-Getting Started Tutorial
-========================
+Using the Community Factory
+===========================
 
 Start here for a step by step tutorial on how to install the
 Linux microPlatform and use aktualizr-lite for OTA updates.
