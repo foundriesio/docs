@@ -12,10 +12,3 @@ Linux microPlatform HOWTOs
 .. toctree::
 
    linux-net-debug
-
-Zephyr microPlatform HOWTOs
----------------------------
-
-.. toctree::
-
-   zephyr-mcuboot-keys

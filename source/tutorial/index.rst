@@ -42,4 +42,3 @@ To set up and use this system, follow these pages in order.
    installation
    basic-system
    dtls-system
-   other-zephyr-boards

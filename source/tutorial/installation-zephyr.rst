@@ -265,10 +265,6 @@ You will see something that looks like the following:
 
    This key pair is for **development use only**.
 
-   For production, **you must generate and use your own keys**, or
-   anyone will be able to sign binaries for your boards. See
-   :ref:`howto-mcuboot-keys` for details on how to do this.
-
 MCUboot is now installed on your board. You only need to do this once;
 from now on, you'll just install bootable application images onto the
 same board to be loaded and run by MCUboot. No Zephyr application is
