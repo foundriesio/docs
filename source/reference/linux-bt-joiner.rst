@@ -6,8 +6,7 @@ Linux microPlatform bt-joiner Container
 This page provides additional information on the ``bt-joiner`` Linux
 microPlatform container which is provided by Foundries.io.
 This container is used to provide IPv6 connectivity over
-Bluetooth Low Energy to Zephyr microPlatform devices in the system
-described in :ref:`tutorial-basic`.
+Bluetooth Low Energy to Zephyr devices.
 
 .. _ref-linux-bt-joiner-whitelist:
 
