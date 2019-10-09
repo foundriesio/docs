@@ -4,7 +4,7 @@ Getting Started Tutorial
 ========================
 
 Start here for a step by step tutorial on how to install the
-Linux microPlatform.
+Linux microPlatform and use aktualizr-lite for OTA updates.
 
 To set up and use this system, follow these pages in order.
 

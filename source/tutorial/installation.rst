@@ -28,7 +28,7 @@ This document describes how to:
 - Install the base system onto your device, connect it to the network,
   and connect to its console.
 
-- Run the nginx web server in a container on the device, demonstrating
+- Run a web server in a container on the device, demonstrating
   application deployment.
 
 .. important::
@@ -176,8 +176,8 @@ advice.
 **Finish Installation**
 
 Once you have an SSH console connection, finish your installation by
-setting up application containers. Follow instructions in
-:ref:`tutorial-linux-nginx` for a demonstration.
+setting up aktualizr-lite. Follow instructions in
+:ref:`tutorial-aklite` for a demonstration.
 
 .. _tutorial-linux-troubleshooting:
 
@@ -211,57 +211,22 @@ would like. For example::
 
     ping -c 3 foundries.io
 
-.. _tutorial-linux-nginx:
+.. _tutorial-aklite:
 
-Deploy nginx Container
-----------------------
+Using Aktualizr-lite
+--------------------
 
-You'll now finish installing the Linux microPlatform by deploying an
-example containerized application on your device which provides an
-nginx web server.
+Aktualizr-lite is the update agent included with the Linux microPlatform. It
+runs as a system daemon periodically looking for new updates to apply to
+your device. There are a few interesting things you can do with aktualizr-lite:
 
-.. important::
+Configuring Docker Apps
+~~~~~~~~~~~~~~~~~~~~~~~
+TODO - and link to docker-app reference
 
-   Run these commands on your Linux microPlatform device, **not your
-   workstation**.
-
-Run the nginx web server container (stable-alpine tag):
-
-.. parsed-literal::
-
-   docker run --name nginx-demo -p 80:80 nginx:stable-alpine
-
-After the image is downloaded, the running container will stay
-connected to your terminal.
-
-Connect to nginx
-~~~~~~~~~~~~~~~~
-
-Check that nginx is running by connecting to
-http://your-device-hostname.local (for example,
-http://raspberrypi3-64.local) or http://your-device-ip-address/ in
-your Web browser. You will see a splash page:
-
-.. figure:: /_static/tutorial/nginx-demo.png
-   :alt: nginx splash page
-   :align: center
-
-   nginx splash page
-
-Log messages will also appear in the terminal where you typed ``docker
-run``, like so::
-
-  10.0.0.111 - - [09/Jan/2018:21:07:21 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
-  2018/01/09 21:07:22 [error] 7#7: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.0.0.111, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "raspberrypi3-64.local", referrer: "http://raspberrypi3-64.local/"
-  10.0.0.111 - - [09/Jan/2018:21:07:22 +0000] "GET /favicon.ico HTTP/1.1" 404 571 "http://raspberrypi3-64.local/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" "-"
-
-Press Control-C to stop the container, then remove it using::
-
-  docker rm nginx-demo
-
-The Linux microPlatform is now successfully deployed on your
-device.
-
+Controlling incoming updates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TODO - describe how to controll reboot and flocking options - probably link to reference doc
 
 .. include:: reporting-issues.include
 
