@@ -10,8 +10,8 @@ free on our supported devices as well as private, customer owned Factories.
 .. toctree::
    :maxdepth: 2
 
-   tutorial/lmp-factory
-   factory-manual/index
+   community-factory/index
+   customer-factory/index
    howto/index
    reference/linux
 
