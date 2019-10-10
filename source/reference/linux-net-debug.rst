@@ -1,7 +1,7 @@
 .. _howto-linux-net-debug:
 
-Linux microPlatform Network Debugging HOWTO
-===========================================
+Network Debugging
+=================
 
 This page provides information on debugging network related issues on
 the Linux microPlatform.
