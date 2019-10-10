@@ -1,4 +1,69 @@
 Containers
 ==========
 
-TODO words and more words
+The Linux microPlatform has the ability to securely deliver and orchestrate
+containers using TUF_. This section will guide you through your first deployment.
+
+Our update solution ota-lite uses the `Docker App`_ cloud native application
+bundle specification for orchestrating container deployments. This is
+essentially a docker-compose definition with a bit of context wrapped around
+it to make the applications a bit more generic.
+
+If you followed the steps above to register your device, you may have noticed
+the flag ``-a shellhttpd`` being set. This sets the service to watch for
+targets with the name "shellhttpd" and pull and deploy them if new ones exist.
+
+.. _TUF:
+   https://theupdateframework.github.io/overview.html
+
+.. _Docker App:
+   https://github.com/docker/app/
+
+However, ``shellhttpd`` is disabled until you instruct your factory to build
+the container and Docker App definition. To enable it, clone your **containers.git**
+project, and make the following changes::
+
+  git clone https://source.foundries.io/partners/<myfactory>/containers.git/
+  cd containers
+  git mv shellhttpd.dockerapp.disabled shellhttpd.dockerapp
+  git mv shellhttpd.disabled shellhttpd
+  git commit -m "enable shellhttpd docker-app"
+  git push
+
+If the git clone fails with an unable to access error then check you have a
+valid token in your ``.netrc`` file. You can look at
+:ref:`ref-getting-started` for instructions.
+
+You can monitor your CI builds here:
+
+ https://ci.foundries.io/projects/<myfactory>/lmp/
+
+Once the container has been built, and the Docker App has been published,
+your device will begin to update. Once the update is complete, you can check
+the status of the container by running the following command::
+
+ docker ps -a
+
+Then from your host machine you can access the HTTP server from a browser at:
+http://<your_device_IP>:8080
+
+Now that you have successfully deployed your first docker-app, you are free to
+create your own containers and app definitions. Simply push them to the
+**containers.git** repo and "voila"!
+
+If you create a new Docker App deployment, and want it to be deployed on a
+device, edit the sota.toml on that specific device like below::
+
+ sudo vim /var/sota/sota.toml
+
+Extend the docker_apps list like the example below::
+
+ - docker_apps = "shellhttpd"
+ + docker_apps = "shellhttpd, mynewapp"
+
+Now restart the aktualizr-lite daemon to reload the configuration:
+
+sudo systemctl restart aktualizr-lite
+
+Assuming that your new Docker App has been published, the device will begin to
+update.

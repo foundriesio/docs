@@ -1,3 +1,5 @@
+.. _ref-getting-started:
+
 Getting Started
 ===============
 
