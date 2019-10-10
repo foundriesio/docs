@@ -34,7 +34,7 @@ To get started using the Foundries Factory please follow the steps below:
 
       Create token dialog
 
-   On your host, create a file named `.netrc` *(note the leading .)* in
+   On your host, create a file named ``.netrc`` *(note the leading .)* in
    your home directory, readable only by your user, with the following contents::
 
      machine source.foundries.io
@@ -59,7 +59,7 @@ To get started using the Foundries Factory please follow the steps below:
 
    Click on the default raspberrypi3-64 build
 
-   Download the `lmp-factory-image-raspberrypi3-64.img.gz` artifact.
+   Download the ``lmp-factory-image-raspberrypi3-64.img.gz`` artifact.
 
 #. Now follow the instructions in :ref:`tutorial-linux` to install your
    factory build on a microSD card.
