@@ -11,6 +11,6 @@ TODO - words and more words
    writing-images
    managing
    source-code
-   containers
    updating-the-core
+   containers
    extending
