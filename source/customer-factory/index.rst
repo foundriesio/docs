@@ -8,6 +8,7 @@ TODO - words and more words
 
    getting-started
    first-boot
+   writing-images
    managing
    source-code
    containers
