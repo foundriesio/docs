@@ -59,6 +59,13 @@ To get started using the Foundries Factory please follow the steps below:
 
    Find your factory build, it will be "<myfactory>/lmp". Select it.
 
+   .. figure:: /_static/ci-links.png
+      :alt: ci.foundries.io
+      :align: center
+      :width: 2in
+
+      CI Projects list
+
    Click on the default raspberrypi3-64 build
 
    Download the ``lmp-factory-image-raspberrypi3-64.img.gz`` artifact.

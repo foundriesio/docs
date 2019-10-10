@@ -31,7 +31,6 @@ IPv6/IPv4 routing and MQTT message brokering.
    linux-dev-container
    linux-layers
    linux-repo
-   linux-ota
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org
