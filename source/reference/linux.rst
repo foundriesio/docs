@@ -1,7 +1,7 @@
 .. _ref-linux:
 
-Linux microPlatform Reference Manual
-====================================
+Advanced Topics
+===============
 
 The Foundries.io Linux microPlatform is an extensible
 software and hardware platform that makes it easier to develop,
