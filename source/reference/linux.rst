@@ -32,6 +32,8 @@ IPv6/IPv4 routing and MQTT message brokering.
    linux-layers
    linux-repo
    linux-net-debug
+   device-tags
+   docker-apps
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org

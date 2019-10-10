@@ -58,10 +58,8 @@ when updates are applied.
 .. _flock:
    https://linux.die.net/man/2/flock
 
-Tags
-----
-TODO
+Other advanced topics
+---------------------
 
-Docker Apps
------------
-TODO
+ * :ref:`ref-device-tags`
+ * :ref:`ref-docker-apps`
