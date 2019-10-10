@@ -51,5 +51,6 @@ update to any registered devices.
 
 Any changes pushed to ``containers.git`` will trigger a container build job, and
 any containers defined will be pushed to your factory’s private Docker
-registry at https://hub.foundries.io/<myfactory/<mycontainer>:latest.
+registry at:
 
+ https://hub.foundries.io/<myfactory>/<mycontainer>:latest

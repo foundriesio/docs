@@ -61,9 +61,9 @@ Extend the docker_apps list like the example below::
  - docker_apps = "shellhttpd"
  + docker_apps = "shellhttpd, mynewapp"
 
-Now restart the aktualizr-lite daemon to reload the configuration:
+Now restart the aktualizr-lite daemon to reload the configuration::
 
-sudo systemctl restart aktualizr-lite
+ sudo systemctl restart aktualizr-lite
 
 Assuming that your new Docker App has been published, the device will begin to
 update.
