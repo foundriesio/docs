@@ -113,6 +113,7 @@ extensions = [
 # Links that shouldn't get checked for validity
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
+    'http://YOUR_DEVICE_IP:8080',
     'http://YOUR_WORKSTATION_IP:8000',
     'http://.*[.]local',
     'http://your-device-ip-address/',

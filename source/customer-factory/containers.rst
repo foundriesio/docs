@@ -45,7 +45,8 @@ the status of the container by running the following command::
  docker ps -a
 
 Then from your host machine you can access the HTTP server from a browser at:
-http://<your_device_IP>:8080
+
+ http://YOUR_DEVICE_IP:8080
 
 Now that you have successfully deployed your first docker-app, you are free to
 create your own containers and app definitions. Simply push them to the
