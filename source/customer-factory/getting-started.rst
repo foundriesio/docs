@@ -27,7 +27,7 @@ To get started using the FoundriesFactory please follow the steps below:
 
    Select "Create New Token".
 
-   Give the token a name, and select "Create".
+   Give the token a name and select "Create".
 
    .. figure:: /_static/create-token-dialog.png
       :alt: Create token dialog
@@ -54,8 +54,7 @@ To get started using the FoundriesFactory please follow the steps below:
    This view will display the public Linux microPlatform builds, along with
    any continuous integration jobs defined in your factory.
    *Your factory’s continuous integration jobs are private to you and your
-   organization. They cannot be accessed without authentication through
-   https://app.foundries.io.*
+   organization.*
 
    Find your factory build, it will be "<myfactory>/lmp". Select it.
 
@@ -73,4 +72,4 @@ To get started using the FoundriesFactory please follow the steps below:
 #. Now follow the instructions in :ref:`tutorial-linux` to install your
    factory build on a microSD card.
 
-#. Insert the SD card into the Raspberry Pi 3, connect ethernet and apply power.
+#. Insert the SD card into the Raspberry Pi 3, connect Ethernet and apply power.
