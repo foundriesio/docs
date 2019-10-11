@@ -24,7 +24,6 @@ Layer                                 Description
                                       currently approximately 650 recipes in this layer. It is used by
                                       the Linux microPlatform for additional utilities and network
                                       support.
-`Meta-Linaro`_                        This layer provides OP-TEE support.
 `Meta-Virtualization`_                This layer provides support for building Docker, LXC, Xen, KVM,
                                       Libvirt, and associated packages necessary for constructing
                                       OE-based virtualized / container solutions. It is used by the
@@ -39,8 +38,6 @@ Layer                                 Description
                                       based devices.
 `Meta-Yocto`_ (BSP)                   This is the board support layer for the Yocto Project hardware
                                       references, such as BeagleBone Black.
-`Meta-96boards`_ (BSP)                This layer is managed by Linaro and intended for boards that do
-                                      not have their own board support layer repository.
 `Meta-Freescale`_ (BSP)               This is the board support layer for the Freescale platforms.
 `Meta-Freescale-3rdparty`_ (BSP)      This is an additional board support layer for Freescale platforms
                                       (not officially supported by Meta-Freescale maintainers).
@@ -67,8 +64,6 @@ default set of packages used by the image via the
    https://github.com/openembedded/openembedded-core
 .. _Meta-OpenEmbedded:
    https://github.com/openembedded/meta-openembedded
-.. _Meta-Linaro:
-   https://git.linaro.org/openembedded/meta-linaro.git/
 .. _Meta-Virtualization:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/
 .. _Meta-Updater:
@@ -83,8 +78,6 @@ default set of packages used by the image via the
    https://github.com/riscv/meta-riscv
 .. _Meta-Yocto:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-yocto/
-.. _Meta-96boards:
-   https://github.com/96boards/meta-96boards
 .. _Meta-Freescale:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-freescale/
 .. _Meta-Freescale-3rdparty:
