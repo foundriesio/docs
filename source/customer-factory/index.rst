@@ -8,9 +8,9 @@ This section will guide you through your personal or enterprise factory.
 
    getting-started
    first-boot
-   writing-images
    managing
    source-code
    updating-the-core
    containers
+   writing-images
    extending
