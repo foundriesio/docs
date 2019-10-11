@@ -15,6 +15,13 @@ OpenEmbedded / Yocto Project. If you're just getting started, it's
 strongly recommended to begin with the documentation provided in
 :ref:`ref-linux-building-ref`.
 
+ .. note::
+
+  Locally built images are useful for local development, testing and
+  for hardware enablement, but are not meant to be updated via OTA.
+  For OTA support we recommend creating your own Factory and using
+  our continuous integration system.
+
 .. _ref-linux-building-hw:
 
 Get Hardware
