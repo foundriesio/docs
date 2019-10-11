@@ -18,15 +18,16 @@ You will find four git repositories, below is a brief description of each one.
 meta-subscriber-overrides.git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This OE layer defines what is included into your factory image. You can
-override, add, and remove packages provided in the default Linux microPlatform base.
+This OE layer defines what is included into your factory image. You can add
+board specific customizations and override, add and remove packages provided
+in the default Linux microPlatform base.
 
 lmp-manifest.git
 ~~~~~~~~~~~~~~~~
 
 The repo manifest for the platform build. It defines which layer versions
-are included in your platform image. The default.xml file is the latest
-released manifest of our Linux microPlatform, and the <myfactory>.xml
+are included in your platform image. The ``default.xml`` file is the latest
+released manifest of our Linux microPlatform, and the ``<myfactory>.xml``
 includes your factory changes which allows you to customize your image
 against our common base.
 
