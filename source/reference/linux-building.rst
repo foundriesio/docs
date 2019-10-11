@@ -6,8 +6,8 @@ Building the Linux microPlatform
 ================================
 
 This is a guide for building the base Linux microPlatform from source
-for Raspberry Pi 3. Additional information specific to other targets
-is provided in :ref:`ref-linux-targets`.
+for Raspberry Pi 3 (64-bit). Additional information specific to other
+targets is provided in :ref:`ref-linux-targets`.
 
 This guide assumes the reader is familiar with basic concepts of
 OpenEmbedded. It is not meant to be an introduction to the
@@ -34,20 +34,20 @@ Set Up Build Environment
 On Debian-based Linux distributions, including Ubuntu, run::
 
    $ sudo apt-get install coreutils gawk wget git-core diffstat unzip \
-       texinfo gcc-multilib build-essential chrpath socat cpio \
-       openjdk-9-jre python python3 python3-pip python3-pexpect xz-utils \
-       debianutils iputils-ping libsdl1.2-dev xterm \
-       android-tools-fsutils repo whiptail
+       texinfo g++ gcc-multilib build-essential chrpath socat cpio \
+       openjdk-11-jre python2.7 python3 python3-pip python3-pexpect xz-utils \
+       debianutils iputils-ping libsdl1.2-dev xterm libssl-dev libelf-dev \
+       android-tools-fsutils ca-certificates repo whiptail
 
 .. note::
 
-   If you are running Ubuntu 16.04, make sure to enable the universe
+   If you are running Ubuntu 18.04, make sure to enable the universe
    repository by adding following line to your
    :file:`/etc/apt/sources.list`:
 
    .. code-block:: none
 
-      deb http://archive.ubuntu.com/ubuntu/ xenial universe
+      deb http://archive.ubuntu.com/ubuntu/ bionic universe
 
 On other Linux distributions, please check the `Yocto Project Quick
 Start Guide`_ for additional guidance.
