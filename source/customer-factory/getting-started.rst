@@ -3,7 +3,7 @@
 Getting Started
 ===============
 
-To get started using the Foundries Factory please follow the steps below:
+To get started using the FoundriesFactory please follow the steps below:
 
 #. Login to https://app.foundries.io and generate an access token.
 
