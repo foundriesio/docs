@@ -1,7 +1,7 @@
 Your Factory
 ============
 
-TODO - words and more words
+This section will guide you through your personal or enterprise factory.
 
 .. toctree::
    :maxdepth: 3
