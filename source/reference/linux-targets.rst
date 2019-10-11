@@ -68,45 +68,6 @@ BeagleBone Black
    Please see https://elinux.org/Beagleboard:BeagleBoneBlack for additional
    board documentation.
 
-IOT-GATE-iMX7
--------------
-
-.. toggle-header::
-   :header: Click to show/hide
-
-   Set ``MACHINE`` to ``cl-som-imx7`` when setting up your work
-   environment with the ``setup-environment`` script::
-
-     MACHINE=cl-som-imx7 source setup-environment [BUILDDIR]
-
-   At the end of the build, your build artifacts will be found under
-   ``deploy/images/cl-som-imx7``. The artifact you will use to
-   flash your microSD card is ``lmp-gateway-image-cl-som-imx7.wic.gz``.
-
-   To flash your microSD card, run::
-
-     gunzip -f lmp-gateway-image-cl-som-imx7.wic.gz
-     sudo dd if=lmp-gateway-image-cl-som-imx7.wic of=/dev/mmcblkX bs=4M
-
-   Where :file:`/dev/mmcblkX` is your SD card device.
-
-   Close the E2 jumper (near the audio socket) to boot from the SD card.
-
-   Update the U-Boot environment based on latest U-Boot:
-
-   #. From the U-Boot prompt, erase default environment and save the new environment::
-
-        CL-SOM-iMX7 # env default -a
-        CL-SOM-iMX7 # saveenv
-
-   #. Then set fdtfile in case EEPROM has an invalid product name::
-
-        CL-SOM-iMX7 # setenv fdtfile imx7d-sbc-iot-imx7.dtb
-        CL-SOM-iMX7 # saveenv
-
-   Please see https://www.mediawiki.compulab.com/index.php/IOT-GATE-iMX7:_Getting_Started
-   for additional board documentation.
-
 Toradex Colibri iMX7D (Aster)
 -----------------------------
 
@@ -171,31 +132,6 @@ Toradex Colibri iMX7D (Aster)
         echo 1 > /sys/block/mmcblk2boot0/force_ro
 
    Please see https://developer.toradex.com for additional board documentation.
-
-HummingBoard 2
---------------
-
-.. toggle-header::
-   :header: Click to show/hide
-
-   Set ``MACHINE`` to ``cubox-i`` when setting up your work environment
-   with the setup-environment script::
-
-     MACHINE=cubox-i source setup-environment [BUILDDIR]
-
-   At the end of the build, your build artifacts will be found under
-   ``deploy/images/cubox-i``. The artifact you will use to
-   flash your microSD card is ``lmp-gateway-image-cubox-i.wic.gz``.
-
-   To flash your microSD card, run::
-
-     gunzip -f lmp-gateway-image-cubox-i.wic.gz
-     sudo dd if=lmp-gateway-image-cubox-i.wic of=/dev/mmcblkX bs=4M
-
-   Where :file:`/dev/mmcblkX` is your SD card device.
-
-   Please see https://developer.solid-run.com/products/hummingboard-gate-edge/
-   for additional board documentation.
 
 SiFive HiFive Unleashed Freedom U540
 ------------------------------------
