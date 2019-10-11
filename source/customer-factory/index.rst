@@ -1,5 +1,5 @@
-Your Factory
-============
+Your FoundriesFactory
+=====================
 
 This section will guide you through your personal or enterprise factory.
 
