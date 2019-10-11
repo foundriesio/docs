@@ -5,7 +5,7 @@
 Linux microPlatform Development Container
 =========================================
 
-You can install a Docker container based on Ubuntu 16.04 which
+You can install a Docker container based on Ubuntu 18.04 which
 provides a Linux microPlatform build environment. This is the
 recommended work environment for building Linux microPlatform images
 on macOS and Windows.
