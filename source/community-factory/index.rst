@@ -13,3 +13,4 @@ To set up and use this system, follow these pages in order.
    installation
    using
    docker-apps
+   create-factory
