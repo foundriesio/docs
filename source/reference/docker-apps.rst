@@ -174,6 +174,16 @@ aktualizr/aktualizr-lite includes support, then you simply configure your
  # https://github.com/docker/app/blob/master/examples/voting-app/example-parameters/my-environment.yml
  #docker_app_params = "/var/sota/params.yml"
 
+Your next OTA update will include docker-apps.  However, you can force the
+current update to include docker-apps by running the following::
+
+  # stop aktualizr-lite
+  sudo systemctl stop aktualizr-lite
+  # run a manual update
+  sudo aktualizr-lite update
+  # start aktualizr-lite
+  sudo systemctl start aktualizr-lite
+
 What’s Missing?
 ---------------
 
