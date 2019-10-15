@@ -1,5 +1,5 @@
-Foundries.io_ Documentation
-===========================
+FoundriesFactory_ Documentation
+===============================
 
 The **Linux microPlatform** is a minimal, secure, continuously updated software
 platform. Its built and maintained using the **FoundriesFactory** product.
@@ -22,4 +22,4 @@ free on our supported devices as well as private, customer owned Factories.
    (This only appears when ``todo_include_todos`` is True.)
 
 .. todolist::
-.. _Foundries.io: https://foundries.io
+.. _FoundriesFactory: https://foundries.io
