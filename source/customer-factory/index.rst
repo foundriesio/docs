@@ -12,7 +12,7 @@ This section will guide you through your personal or enterprise factory.
    first-boot
    managing
    source-code
-   updating-the-core
    containers
+   updating-the-core
    writing-images
    extending
