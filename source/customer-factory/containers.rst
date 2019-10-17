@@ -11,9 +11,10 @@ bundle specification for orchestrating container deployments. This is
 essentially a docker-compose definition with a bit of context wrapped around
 it to make the applications a bit more generic.
 
-If you followed the steps above to register your device, you may have noticed
-the flag ``-a shellhttpd`` being set. This sets the service to watch for
-targets with the name "shellhttpd" and pull and deploy them if new ones exist.
+If you followed the steps described at :ref:`tutorial-managing` to register
+your device, you may have noticed the flag ``-a shellhttpd`` being set. This
+sets the service to watch for targets with the name "shellhttpd" and pull
+and deploy them if new ones exist.
 
 .. _TUF:
    https://theupdateframework.github.io/overview.html

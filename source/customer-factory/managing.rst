@@ -1,3 +1,5 @@
+.. _tutorial-managing:
+
 Managing the Device
 ===================
 
