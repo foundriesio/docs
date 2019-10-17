@@ -7,7 +7,7 @@ registered devices.
 
 A couple of quick notes:
 
- * The default user and password is fio; we recommend changing it now if you haven’t already.
+ * The default user and password is ``fio``; we recommend changing it now if you haven’t already.
  * For dynamic host name resolution to work, your local network needs to support Zeroconf and the hostname must be otherwise unclaimed.
 
 Registering the Device with the OTA Server
