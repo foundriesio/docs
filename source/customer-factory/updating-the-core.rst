@@ -14,7 +14,7 @@ manifest::
 
   #!/bin/sh
   cd lmp-manifest
-  git fetch https://github.com/foundriesio/lmp-manifest
+  git fetch --tags https://github.com/foundriesio/lmp-manifest
   latest=$(git rev-parse FETCH_HEAD)
   git merge-base --is-ancestor $latest HEAD && (echo "No changes found upstream"; exit 0)
 
