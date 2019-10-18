@@ -55,6 +55,38 @@ Now that you have successfully deployed your first docker-app, you are free to
 create your own containers and app definitions. Simply push them to the
 **containers.git** repo and "voila"!
 
+Importing Docker Apps
+~~~~~~~~~~~~~~~~~~~~~
+
+If you would like to import existing docker-apps into your factory (this
+example uses our Community Docker App store), the process is simple.
+To import our ``openthread-gateway.dockerapp`` into your factory, run
+the following commands::
+
+  git clone https://source.foundries.io/partners/<myfactory>/containers.git
+  cd containers
+  git remote add fio https://github.com/foundriesio/containers.git
+  git remote update
+  git checkout remotes/fio/master -- openthread-gateway.dockerapp
+  git add openthread-gateway.dockerapp
+  git commit -m "add openthread docker-app"
+  git push
+
+The above commands will checkout the docker-app definition from the community
+container repository and push it into your FoundriesFactory container repository.
+This will trigger a container build.  Once complete the new docker-app will be
+available for use on your devices::
+
+  sudo vim /var/sota/sota.toml
+
+If you have followed the example above, extend the ``docker_apps`` list in the ``pacman`` section of the ``sota.toml`` file like the example below::
+
+  - docker_apps = "shellhttpd"
+  + docker_apps = "shellhttpd openthread-gateway"
+
+Creating Docker Apps
+~~~~~~~~~~~~~~~~~~~~
+
 If you create a new Docker App deployment, and want it to be deployed on a
 device, edit the sota.toml on that specific device like below::
 
