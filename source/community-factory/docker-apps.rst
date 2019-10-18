@@ -24,5 +24,30 @@ and NAT64 for IPv6->IPv4 traffic translation.
      This requires an OpenThread compatible NCP to be configured and installed
      on your machine.
 
+How to enable a Docker App
+==========================
+
+In order to enable a Docker App deployment you first need to configure aktualizr/aktualizr-lite. 
+
+As the root user create a file ``/var/sota/sota.toml`` with the following contents::
+
+ [pacman]
+ docker_apps = "shellhttpd"
+
+This example enables the ``shellhttpd`` docker-app. If you would like to enable multiple docker-apps you can simply create a list::
+
+ docker_apps = "shellhttpd, x-kiosk"
+
+Which will enable ``shellhttpd`` and ``x-kiosk``. 
+
+Your next OTA update will include docker-apps.  However, you can force the current update to include docker-apps by running the following::
+
+ # stop aktualizr-lite
+ sudo systemctl stop aktualizr-lite
+ # run a manual update
+ sudo aktualizr-lite update
+ # start aktualizr-lite
+ sudo systemctl start aktualizr-lite
+
 .. _Docker App:
    https://github.com/docker/app
