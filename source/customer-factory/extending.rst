@@ -1,6 +1,8 @@
 Extending the Linux microPlatform
 =================================
 
+.. _ref-adding-packages-image:
+
 Adding Packages to the Image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The **meta-subscriber-overrides.git** repo allows you to customize the

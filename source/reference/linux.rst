@@ -27,6 +27,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    linux-building
    linux-targets
    linux-kernel
+   linux-persistent-log
    linux-dev-container
    linux-layers
    linux-repo
