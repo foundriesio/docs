@@ -1,7 +1,7 @@
 .. _tutorial-containers:
 
-Containers
-==========
+Docker Apps
+===========
 
 The Linux microPlatform has the ability to securely deliver and orchestrate
 containers using TUF_. This section will guide you through your first deployment.
@@ -15,6 +15,8 @@ If you followed the steps described at :ref:`tutorial-managing` to register
 your device, you may have noticed the flag ``-a shellhttpd`` being set. This
 sets the service to watch for targets with the name "shellhttpd" and pull
 and deploy them if new ones exist.
+
+The following guide will detail how to create your own `Docker App`_ store.
 
 .. _TUF:
    https://theupdateframework.github.io/overview.html

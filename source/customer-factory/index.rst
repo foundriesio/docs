@@ -10,7 +10,7 @@ This section will guide you through your personal or enterprise factory.
    first-boot
    managing
    source-code
-   containers
+   docker-apps
    updating-the-core
    writing-images
    extending
