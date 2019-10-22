@@ -22,15 +22,10 @@ will register your device(s) via Foundries.io REST API.
    factory::
 
     # -a - this allows you to specify an optional comma separated list of
-    #      Docker Apps to manage on the device
+    #      Docker Apps to manage on the device. Check :ref:`tutorial-containers`
+    #      for more information.
     # -n - the name of the device as you'd like it to appear in fioctl and the UI
-    sudo lmp-device-register -a shellhttpd -n device-name-01
-
-   .. note::
-     This command specifies ``shellhttpd`` as the default Docker App to use when
-     registering the device, but it will not be installed until it gets created
-     and made available at your own factory. Check :ref:`tutorial-containers`
-     for more information.
+    sudo lmp-device-register -n device-name-01
 
 #. There will be a challenge that needs to be pasted into the URL printed out
    on the screen. Enter the challenge into the text field on the website.
