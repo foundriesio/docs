@@ -11,6 +11,9 @@ bundle specification for orchestrating container deployments. This is
 essentially a docker-compose definition with a bit of context wrapped around
 it to make the applications a bit more generic.
 
+Creating your Docker App Store
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The following guide will detail how to create your own `Docker App`_ store.
 
 .. _TUF:
