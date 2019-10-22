@@ -11,11 +11,6 @@ bundle specification for orchestrating container deployments. This is
 essentially a docker-compose definition with a bit of context wrapped around
 it to make the applications a bit more generic.
 
-If you followed the steps described at :ref:`tutorial-managing` to register
-your device, you may have noticed the flag ``-a shellhttpd`` being set. This
-sets the service to watch for targets with the name "shellhttpd" and pull
-and deploy them if new ones exist.
-
 The following guide will detail how to create your own `Docker App`_ store.
 
 .. _TUF:
@@ -23,6 +18,8 @@ The following guide will detail how to create your own `Docker App`_ store.
 
 .. _Docker App:
    https://github.com/docker/app/
+
+In your factory we have provided the ``shellhttpd`` docker application for reference.
 
 However, ``shellhttpd`` is disabled until you instruct your factory to build
 the container and Docker App definition. To enable it, clone your **containers.git**
@@ -44,8 +41,23 @@ You can monitor your CI builds here:
  https://ci.foundries.io/projects/<myfactory>/lmp/
 
 Once the container has been built, and the Docker App has been published,
-your device will begin to update. Once the update is complete, you can check
-the status of the container by running the following command::
+your device will be presented with a new Docker App target that can be 
+updated. 
+
+To enable this new Docker App target, on the device edit the following file::
+
+  sudo vim /var/sota/sota.toml
+
+Under the the ``pacman`` section of the ``sota.toml`` file add the following line::
+
+  docker_apps = "shellhttpd"
+
+Save the file and restart the ``aktualizr-lite`` daemon to reload the configuration::
+
+  sudo systemctl restart aktualizr-lite
+
+Your device will begin to update, and once the update is complete, you can check the 
+status of the container by running the following commands:
 
  docker ps -a
 
@@ -83,8 +95,7 @@ available for use on your devices::
 
 If you have followed the example above, extend the ``docker_apps`` list in the ``pacman`` section of the ``sota.toml`` file like the example below::
 
-  - docker_apps = "shellhttpd"
-  + docker_apps = "shellhttpd openthread-gateway"
+  docker_apps = "shellhttpd openthread-gateway"
 
 Creating Docker Apps
 ~~~~~~~~~~~~~~~~~~~~
@@ -96,8 +107,7 @@ device, edit the sota.toml on that specific device like below::
 
 Extend the docker_apps list like the example below::
 
- - docker_apps = "shellhttpd"
- + docker_apps = "shellhttpd, mynewapp"
+ docker_apps = "shellhttpd, mynewapp"
 
 Now restart the aktualizr-lite daemon to reload the configuration::
 
