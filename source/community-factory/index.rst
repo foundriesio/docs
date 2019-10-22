@@ -14,4 +14,4 @@ To set up and use this system, follow these pages in order.
    docker-apps
    create-factory
 
-.. _platforms https://github.com/foundriesio/lmp-manifest/releases
+.. _platforms: https://github.com/foundriesio/lmp-manifest/releases
