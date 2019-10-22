@@ -9,7 +9,7 @@ users.
 .. _release:
    https://github.com/foundriesio/lmp-manifest/releases
 
-If you would like to try out the latest, we provide a helper script in your ``lmp-manifest`` project called ``update-manifest``.
+If you would like to try out the latest, we provide a helper script in your ``lmp-manifest`` project called ``update-factory-manifest``.
 
 This script will automatically attempt to update your manifest to the latest version of the Linux microPlatform. If there are merge conflicts, it will be up to you to fix and commit them.
 
@@ -17,7 +17,7 @@ To run the script, run the following command from within your ``lmp-manifest`` p
 
   git clone https://source.foundries.io/partners/<myfactory>/lmp-manifest.git
   cd lmp-manifest/scripts/
-  ./update-manifest
+  ./update-factory-manifest
 
 When the new manifest files have been successfully pushed, a new platform build will be triggered, and once published the update can be deployed.
 
