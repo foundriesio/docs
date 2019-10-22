@@ -98,7 +98,7 @@ available for use on your devices::
 
 If you have followed the example above, extend the ``docker_apps`` list in the ``pacman`` section of the ``sota.toml`` file like the example below::
 
-  docker_apps = "shellhttpd openthread-gateway"
+  docker_apps = "shellhttpd, openthread-gateway"
 
 Creating Docker Apps
 ~~~~~~~~~~~~~~~~~~~~
