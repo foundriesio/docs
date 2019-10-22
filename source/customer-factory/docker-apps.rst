@@ -1,7 +1,7 @@
 .. _tutorial-containers:
 
-Docker Apps
-===========
+Docker App Store
+================
 
 The Linux microPlatform has the ability to securely deliver and orchestrate
 containers using TUF_. This section will guide you through your first deployment.
