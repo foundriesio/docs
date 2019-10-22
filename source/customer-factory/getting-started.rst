@@ -168,7 +168,7 @@ Viewing Builds
 
    .. note::
 
-     Your factory’s continuous integration jobs are private to you and your
+     The continuous integration jobs in your factory are private to you and your
      organization.
 
    Find your factory build, it will be ``<myfactory>/lmp``. Select it.
