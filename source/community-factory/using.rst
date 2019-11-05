@@ -21,8 +21,8 @@ of important options.  This is defined by creating/updating the device's
  # tags is a comma separated list of TUF Target tags a device will accept
  # updates for. By default this will be "promoted" which means it only takes
  # Foundries.io official updates. This field could also be changed to do
- # something like promoted and "post-merge" builds (in master but not promoted)
- # tags = "promoted, post-merge"
+ # something like promoted and "postmerge" builds (in master but not promoted)
+ # tags = "promoted, postmerge"
  #
  # By default a device won't run any Docker Apps. This field allows you to
  # run applications from the FoundriesFactory App Store.
