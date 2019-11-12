@@ -13,6 +13,7 @@ free on our supported devices, as well as private, customer-owned Factories.
    community-factory/index
    customer-factory/index
    reference/linux
+   foundries.io <https://foundries.io>
 
 .. ifconfig:: todo_include_todos is True
 
