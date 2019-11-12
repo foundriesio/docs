@@ -144,7 +144,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Foundries.io microPlatforms'
+project = 'FoundriesFactory<sup>&#174;</sup>'
 copyright = '2017-2019, Foundries.io, Ltd'
 author = 'Foundries.io, Ltd.'
 
