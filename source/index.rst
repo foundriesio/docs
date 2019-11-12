@@ -2,9 +2,9 @@ FoundriesFactory_ Documentation
 ===============================
 
 The **Linux microPlatform** is a minimal, secure, continuously updated software
-platform. Its built and maintained using the **FoundriesFactory** product.
+platform. It's built and maintained using the **FoundriesFactory** product.
 Foundries.io maintains a community focused Factory that users can try out for
-free on our supported devices as well as private, customer owned Factories.
+free on our supported devices, as well as private, customer-owned Factories.
 
 
 .. toctree::
