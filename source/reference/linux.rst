@@ -35,6 +35,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    device-tags
    docker-apps
    aktualizr-lite
+   secure-boot
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org
