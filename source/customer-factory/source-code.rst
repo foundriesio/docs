@@ -55,3 +55,9 @@ any containers defined will be pushed to your factory’s private Docker
 registry at:
 
  https://hub.foundries.io/<myfactory>/<mycontainer>:latest
+
+
+.. note::
+
+   Commit messages that include ``[skip ci]`` or ``[ci skip]`` will not
+   trigger CI builds.
