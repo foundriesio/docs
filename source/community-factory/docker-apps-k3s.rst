@@ -25,8 +25,8 @@ Accessing k3s via kubectl
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before running kubectl commands, config details must be incorporated
-from the k3s instance. Said details may be extracted directly from a
-running container instance like so::
+from the k3s instance. They may be extracted directly from a running
+container instance like so::
 
   lmp-device:~$ docker exec k3s_master_1 cat /var/lib/rancher/k3s/agent/kubeconfig.yaml
   apiVersion: v1
@@ -46,7 +46,7 @@ to::
   
   server: https://kubernetes:6443
 
-Then, the host machine's ``/etc/hosts`` file will need this snippet::
+Then, add this snippet to the host machine's ``/etc/hosts`` file::
   
   <INSERT_IP_ADDRESS_OF_LMP_DEVICE> kubernetes
 

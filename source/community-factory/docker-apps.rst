@@ -34,6 +34,10 @@ Please refer to :ref:`additional details <docker-apps-k3s>` for running k3s insi
      Requires resources sufficient to run k3s and any additional services it
      may orchestrate.
 
+  .. toctree::
+   
+     docker-apps-k3s
+
 How to enable a Docker App
 ==========================
 
