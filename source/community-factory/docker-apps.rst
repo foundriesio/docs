@@ -24,6 +24,16 @@ and NAT64 for IPv6->IPv4 traffic translation.
      This requires an OpenThread compatible NCP to be configured and installed
      on your machine.
 
+k3s
+~~~
+This docker-app is a minimal installation of kubernetes using Rancher's `k3s`_.
+Please refer to :ref:`additional details <docker-apps-k3s>` for running k3s inside lmp devices.
+
+  .. note::
+
+     Requires resources sufficient to run k3s and any additional services it
+     may orchestrate.
+
 How to enable a Docker App
 ==========================
 
@@ -51,3 +61,5 @@ Your next OTA update will include docker-apps.  However, you can force the curre
 
 .. _Docker App:
    https://github.com/docker/app
+.. _k3s:
+   https://github.com/rancher/k3s
