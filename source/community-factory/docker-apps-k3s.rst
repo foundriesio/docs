@@ -1,3 +1,5 @@
+:orphan:
+
 .. _docker-apps-k3s:
 
 Rancher k3s Docker App
