@@ -6,7 +6,7 @@ Rancher k3s Docker App
 ======================
 
 The `k3s`_ docker app represents a minimalistic single node installation
-of `kubernetes`_ capable of running on resource constrained devices such
+of `Kubernetes`_ capable of running on resource constrained devices such
 as the Raspberry Pi. 
 
 Accessing k3s locally
