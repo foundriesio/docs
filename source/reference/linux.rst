@@ -33,6 +33,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    linux-repo
    linux-net-debug
    device-tags
+   advanced-tagging
    docker-apps
    aktualizr-lite
 
