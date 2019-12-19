@@ -133,6 +133,45 @@ Toradex Colibri iMX7D (Aster)
 
    Please see https://developer.toradex.com for additional board documentation.
 
+i.MX 8M Mini Evaluation Kit
+---------------------------
+
+.. toggle-header::
+   :header: Click to show/hide
+
+   Build the manufacturing tools (mfgtools) by setting ``MACHINE`` to
+   ``imx8mmevk`` and ``DISTRO`` to ``lmp-mfgtool`` when setting up
+   your work environment with the ``setup-environment`` script::
+
+     DISTRO=lmp-mfgtools MACHINE=imx8mmevk source setup-environment [BUILDDIR]
+     bitbake mfgtools-files
+
+   At the end of the build, your manufacturing build artifacts will be
+   found under ``deploy/images/imx8mmevk``. The artifact you will use for
+   flashing your eMMC device is ``mfgtool-files.tar.gz``.
+
+   Build the Linux microPlatform image by setting ``MACHINE`` to
+   ``imx8mmevk`` and ``DISTRO`` to ``lmp`` when setting up your work
+   environment with the ``setup-environment`` script::
+
+     DISTRO=lmp MACHINE=imx8mmevk source setup-environment [BUILDDIR]
+     bitbake lmp-gateway-image
+
+   At the end of the build, your build artifacts will be found under
+   ``deploy/images/imx8mmevk``. The artifact you will use to
+   flash your eMMC device is ``lmp-gateway-image-imx8mmevk.wic``.
+
+   To flash your board, change the boot switch to download mode, connect a USB-C
+   cable, turn on the board and run::
+
+     tar -zxvf mfgtool-files.tar.gz
+     cd mfgtool-files
+     sed -i 's/lmp-image-imx8mmevk.wic/lmp-gateway-image-imx8mmevk.wic/g' full_image.uuu
+     sudo ./uuu full_image.uuu
+
+   Power off the board, change the boot switch back to eMMC / SDHC3 and power it
+   on again.
+
 SiFive HiFive Unleashed Freedom U540
 ------------------------------------
 
