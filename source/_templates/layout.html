@@ -1,14 +1,27 @@
 {% extends "!layout.html" %}
 
+{%- block extrahead %}
+{{ super() }}
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-110020416-1']);
+  _gaq.push(['_trackPageview']);
+</script>
+{% endblock %}
+
 {% block footer %}
 {{ super() }}
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+<div class="footer">This page uses <a href="https://analytics.google.com/">
+Google Analytics</a> to collect statistics. You can disable it by blocking
+the JavaScript coming from www.google-analytics.com.
+<script>
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ?
+              'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
 </script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-110020416-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+</div>
 {% endblock %}
