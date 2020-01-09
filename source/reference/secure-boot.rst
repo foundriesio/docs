@@ -6,13 +6,13 @@ Secure Boot on IMX
 ==================
 On the IMX platforms, secure boot is implemented via the High Availability Boot component of the on-chip ROM. The ROM is responsible for loading the initial program image, the bootloader; HAB then enables the ROM to authenticate it using digital signatures.
  
-HAB also provides a mechanism to establish a root of trust for the remaining software components and stablishes a secure state - the close state - on the IMX IC secure state machine in hardware.
+HAB also provides a mechanism to establish a root of trust for the remaining software components and establishes a secure state - the close state - on the IMX IC secure state machine in hardware.
 
 Our implementation
 ------------------
 Foundries LMP uses U-Boot as the bootloader with SPL being its first stage loader. Our secure boot implementation will put the IC in a secure state accepting only signed SPL firmware.
 
-SPL then boots the trusted execution environment - OP-TEE - where we run an 'early' trusted application, fiovb - Foundries.IO verified Boot. This trusted application provides secure access to the Replay Protected Memory Block partition in MMC which is used to store keys and firmware and rollback information.
+SPL then boots the trusted execution environment - OP-TEE - where we run an 'early' trusted application, fiovb - Foundries.IO verified Boot. This trusted application provides secure access to the Replay Protected Memory Block partition in MMC which is used to store keys, firmware and rollback information.
 
 OP-TEE also prepares the next stage bootloader - U-Boot - and generates an overlay DTS for the Linux kernel consumption. Then it jumps to U-Boot which controls the M4 firmware upgrade process using the fiovb trusted application. U-boot also implements the fiovb command to validate the trusted application functionality. 
 
@@ -49,9 +49,9 @@ For development purposes, we keep iMX HAB4 sample keys and certificates at ``lmp
 	0xA71BBE78
 	0xA3AD024A
 
-The Security Reference Manual for your specific SoC will indicate which fuses need to be programed with the SRK fuse information. On the i.MX7ULP these are stored in the fuse bank 5, words 0 to 7.
+The Security Reference Manual for your specific SoC will indicate which fuses need to be programed with the SRK fuse information. On the i.MX7ULP the A7 fuses are stored in the fuse bank 5, words 0 to 7 and the M4 fuses are stored in the fuse bank 6, words 0 to 7.
 
-To program these fuses you could use U-Boot's fuse command as follows::
+To program the A7 fuses you could use U-Boot's fuse command as follows::
 
 	=> fuse prog 5 0 0xEA2F0B50
 	=> fuse prog 5 1 0x871167F7
@@ -62,7 +62,18 @@ To program these fuses you could use U-Boot's fuse command as follows::
 	=> fuse prog 5 6 0xA71BBE78
 	=> fuse prog 5 7 0xA3AD024A
 
-Alternatively, use the kernel to do that or SDP via NXP's Universal Update Utility with a script as follows::
+For the M4 fuses it would look like this::
+
+	=> fuse prog 6 0 0xEA2F0B50
+	=> fuse prog 6 1 0x871167F7
+	=> fuse prog 6 2 0xF5CECF5D
+	=> fuse prog 6 3 0x364727C3
+	=> fuse prog 6 4 0x8DD52832
+	=> fuse prog 6 5 0xF158F65F
+	=> fuse prog 6 6 0xA71BBE78
+	=> fuse prog 6 7 0xA3AD024A
+
+Alternatively, use the kernel to program the A7 fuses using SDP via NXP's Universal Update Utility with a script as follows (replace @@MACHINE@@ with your machine name)::
 
 	uuu_version 1.0.1
 	
@@ -83,6 +94,27 @@ Alternatively, use the kernel to do that or SDP via NXP's Universal Update Utili
 	
 	FBK: DONE
 
+And the following script would work for setting the M4 fuses::
+
+	uuu_version 1.0.1
+	
+	SDP: boot -f SPL-@@MACHINE@@
+	
+	SDPU: delay 1000
+	SDPU: write -f u-boot-@@MACHINE@@.itb
+	SDPU: jump
+	
+	FB: ucmd fuse prog -y 6 0 0xEA2F0B50
+	FB: ucmd fuse prog -y 6 1 0x871167F7
+	FB: ucmd fuse prog -y 6 2 0xF5CECF5D
+	FB: ucmd fuse prog -y 6 3 0x364727C3
+	FB: ucmd fuse prog -y 6 4 0x8DD52832
+	FB: ucmd fuse prog -y 6 5 0xF158F65F
+	FB: ucmd fuse prog -y 6 6 0xA71BBE78
+	FB: ucmd fuse prog -y 6 7 0xA3AD024A
+	
+	FBK: DONE
+
 Upon reboot, if **CONFIG_IMX_HAB** was enabled in U-boot and since we still didn't close the secure state of the platform, HAB will raise events to indicate that an unsigned image has been executed. Those events can be inspected by running U-Boot's command ``hab_status``.
 
 To secure the platform, there is an extra fuse that needs to be programmed: we will only take that step once we are sure that we can successfully sign and boot a signed image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
@@ -91,29 +123,38 @@ How to sign an SPL image (I)
 ----------------------------
 To build a signed image, you need to create a Command Sequence File - CSF - describing all the commands that the ROM will execute during secure boot. These commands instruct HAB on which memory areas of the image to authenticate, which keys to install and use, what data to write to a register and so on. In addition, the necessary certificates and signatures involved in the verification of the image are attached to the CSF generated binary output.
 
-We keep a template at ``lmp-manifest/conf/imx_hab4/u-boot-spl-sign.csf-template``. You must provide the necessary tables and the keys for your product. 
+We keep a template at ``lmp-manifest/conf/imx_hab4/u-boot-spl-sign.csf-template``.
 
-The authenticate data command "blocks" line contains three values and the file containing the data being signed:
+This template is used by the ``lmp-manifest/conf/imx_hab4/sign-file.sh`` script which dynamically generates the authenticate data command "blocks" line(s) based on your binary.  The command "blocks" line contains three values:
 
-- The first value is the address on the target where HAB expects the signed image data to begin.
- 
-- The second value is the offset into the file where CST will begin signing. 
-
-- The third value is length in bytes of the data to sign starting from the offset. 
+* The first value is the address on the target where HAB expects the signed image data to begin.
+* The second value is the offset into the file where CST will begin signing.
+* The third value is length in bytes of the data to sign starting from the offset.
 
 
 It is also required that the IVT and DCD regions are signed. HAB will verify the DCD and IVT fall in an authenticated region: The CSF will not successfully authenticate unless all commands are successful and all required regions are signed.
 
-The information required to fill the data command block line can be retrieved from the SPL binary. Once SPL has been built with **CONFIG_IMX_HAB** enabled, either use mkimage to retrive the information or inspect the SPL log file::
+In the case of the SPL, you must enable **CONFIG_IMX_HAB** to include the IVT and DCD information.
 
-	$ tools/mkimage -l SPL | grep HAB
-	HAB Blocks: 0x2f010400 0x00000000 0x00016c00
+The ``lmp-manifest/conf/imx_hab4/sign-file.sh`` script executes NXP's Code Signing Tool after preparing the CSF information based on the template::
 
-Once the CSF file has been edited to include this information you will just need to execute NXP's Code Signing Tool and append the generated binary to the SPL image. Notice that the @@KEY_ROOT@@ values in the template file need to be changed to the full path of the key files::
+	$ cd conf/imx_hab4/
+	$ ./sign-file.sh --cst ./cst --spl SPL
 
-	$ cst -o csf-spl.bin -i u-boot-spl-sign.csf-template
-	$ cat SPL csf-spl.bin > SPL.signed
+	SETTINGS FOR  : ./sign-file.sh
+	--------------:
+	CST BINARY    : ./cst
+	CSF TEMPLATE  : u-boot-spl-sign.csf-template
+	BINARY FILE   : SPL
+	KEYS DIRECTORY: .
+	FIX-SDP-DCD   : no
 
+	FOUND HAB Blocks 0x2f010400 0x00000000 0x00018c00
+	CSF Processed successfully and signed data available in SPL_csf.bin
+	$ ls SPL.signed
+	SPL.signed
+
+All intermediate files generated during the signing process are removed by the script.
 
 Booting this signed SPL image and inspecting the HAB status should give no HAB events indicating that the image was correctly signed::
 
@@ -138,100 +179,48 @@ Rebooting the board and checking the HAB status should give::
 	HAB Configuration: 0xcc, HAB State: 0x99
 	No HAB Events Found!
 
+.. warning::
+    A production device should also "lock" the SRK values to prevent bricking a closed device.  Refer to the Security Reference Manual for the location and values of these fuses.
+
+
 How to sign an SPL image for SDP (II)
 -------------------------------------
-Once the device has been closed only signed images will be able to run on the processor: this means that upgrades via UUU/SDP will stop working unless the SPL it uses is properly signed.
+Once the device has been closed, only signed images will be able to run on the processor: this means that upgrades via UUU/SDP will stop working unless the SPL it uses is properly signed.
 The following restrictions need to be applied to this signed image:
 
- - SDP requires that the CSF is modified to include a check for the DCD table 
-
- - SDP requires that the DCD address of the image is cleared from the header
-
-DCD table to the CSF
-~~~~~~~~~~~~~~~~~~~~
-To add the DCD table to the CSF begin by inspecting the SPL image looking for the DCD table information::
-
-	/tools/mkimage -l SPL
-
-	Image Type:   Freescale IMX Boot Image
-	Image Ver:    2 (i.MX53/6/7 compatible)
-	Mode:         DCD
-	Data Size:    147552 Bytes = 144.09 KiB = 0.14 MiB
-	Load Address: 2f010420
-	Entry Point:  2f011000
-	HAB Blocks:   0x2f010400 0x00000000 0x00021c00
-	DCD Blocks:   0x00910000 0x0000002c 0x00000258
-
-The DCD is always programmed to OCRAM.
-
-Make sure the address on the target where HAB expects the data is consistent with the debug information provided by mkimage: for example on the i.MX7ULP case which we are documenting, we should replace 0x0091000 with 0x2f010000 - a fix to display the right DCD block information using mkimag has been sent to upstream U-boot and is under review.
-
-In order for HAB to check the DCD register map we need to extend the CSF authentication tag as follows::
-
-	[Authenticate Data]
-	Verification index = 2
-	Blocks = 0x2f010000 0x02c 0x00258 "SPL.bin"
-
-	[Authenticate Data]
-	Verification index = 2
-	Blocks = 0x2f010400 0x000 0x21c00 "SPL.bin"	
-
-You could check ``lmp-manifest/conf/imx_hab4/u-boot-spl-mfg-sign.csf-template`` for the functional template we have used for development.
+* SDP requires that the CSF is modified to include a check for the DCD table 
+* SDP requires that the DCD address of the image is cleared from the header
 
 
-Clear the DCD address from the header
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To clear and set the DCD address from the header we use ``conf/imx_hab4/mod_4_mfgtool.sh`` on the SPL image::
+The process for signing the SPL image for SDP is the same as before except with the addition of the ``--fix-sdp-dcd`` parameter::
 
- 	#!/bin/bash
-	if [ $# -lt 2 ] || [ ! -e $2 ]; then
-	        echo You must provide an action and a valid u-boot file as parameters
-	        echo Example: $0 clear_dcd_addr u-boot.imx
-	        exit 1
-	fi
+	$ cd conf/imx_hab4/
+	$ ./sign-file.sh --cst ./cst --spl SPL --fix-sdp-dcd
 
-	# DCD address must be cleared for signature, as mfgtool will clear it.
-	if [ "$1" == "clear_dcd_addr" ]; then
-        	# store the DCD address
-	        dd if=$2 of=dcd_addr.bin bs=1 count=4 skip=12
-	        # generate a NULL address for the DCD
-	        dd if=/dev/zero of=zero.bin bs=1 count=4
-	        # replace the DCD address with the NULL address
-	        dd if=zero.bin of=$2 seek=12 bs=1 conv=notrunc
-	        rm zero.bin
-	fi
+	SETTINGS FOR  : ./sign-file.sh
+	--------------:
+	CST BINARY    : ./cst
+	CSF TEMPLATE  : u-boot-spl-sign.csf-template
+	BINARY FILE   : SPL
+	KEYS DIRECTORY: .
+	FIX-SDP-DCD   : yes
 
-	# DCD address must be set for mfgtool to localize the DCD table.
-	if [ "$1" == "set_dcd_addr" ]; then
-	        # restore the DCD address with the original address
-	        dd if=dcd_addr.bin of=$2 seek=12 bs=1 conv=notrunc
-	        rm dcd_addr.bin
-	fi
-
-
-Sign the image for SDP
-~~~~~~~~~~~~~~~~~~~~~~
-Finally, putting it all together, signing the image for SDP could be sumarized as follows::
-
-	#!/bin/bash
-	PROG_NAME=SPL
-
-	# Clear the DCD address
-	./mod_4_mfgtool.sh clear_dcd_addr SPL.bin
-
-	# Generate the signatures 
-	./cst_64 --o SPL_csf.bin --i SPL.csf
-
-	# Set the DCD address
-	./mod_4_mfgtool.sh set_dcd_addr SPL.bin
-
-	# Append the signature to the SPL binary
-	cat SPL.bin SPL_csf.bin > SPL_signed.bin
+	4+0 records in
+	4+0 records out
+	4 bytes copied, 8.3445e-05 s, 47.9 kB/s
+	4+0 records in
+	4+0 records out
+	4 bytes copied, 6.6832e-05 s, 59.9 kB/s
+	FOUND DCD Blocks 0x2f010000 0x0000002c 0x00000258
+	FOUND HAB Blocks 0x2f010400 0x00000000 0x00021c00
+	CSF Processed successfully and signed data available in SPL_csf.bin
+	$ ls SPL.signed
+	SPL.signed
 
 Booting signed images with the `Universal Update Utility`_
 -----------------------------------------------------------
 When booting signed images we need to let SDP know the the DCD location as well as inform that the DCD has been cleared.
-So a tipycal UUU boot script would be as::
+So a tipycal UUU boot script would be as (replace ``@@MACHINE@@`` with your machine configuration name)::
 
 	uuu_version 1.0.1
 	
@@ -246,6 +235,33 @@ Moreover, if the device has been closed and it is only accepting signed images, 
 
 .. note::
 	All these flags `-dcdaddr`_, `-cleardcd`_ and `-pp`_ required for SDP have been contributed to the Universal Update Utility by Foundries.IO. Make sure your UUU release is up-to-date with these changes.
+
+How to sign an M4 binary for HAB validation
+-------------------------------------------
+If you wish to use the i.MX HAB validation process when booting an M4 binary, it will also need to be signed in a similar manner.  This is also true for SoCs such as i.MX7ULP which support "dual-boot" mode.  The M4 bootrom loads the M4 binary at power on.  If the device is in a closed state, the bootrom requires the M4 binary to be signed.
+
+Signing the M4 application image is nearly the same as before.  Instead of the ``--spl`` parameter, use ``--m4app``::
+
+	$ cd conf/imx_hab4/
+	$ ./sign-file.sh --cst ./cst --m4app sdk20-app_flash.img
+
+	SETTINGS FOR  : ./sign-file.sh
+	--------------:
+	CST BINARY    : ./cst
+	CSF TEMPLATE  : u-boot-spl-sign.csf-template
+	BINARY FILE   : sdk20-app_flash.img
+	KEYS DIRECTORY: .
+
+	4+0 records in
+	4+0 records out
+	4 bytes copied, 8.5903e-05 s, 46.6 kB/s
+	4+0 records in
+	4+0 records out
+	4 bytes copied, 0.000117146 s, 34.1 kB/s
+	FOUND HAB Blocks 0x1ffd1000 0x00001000 00015000
+	CSF Processed successfully and signed data available in sdk20-app_flash.img_csf.bin
+	$ ls sdk20-app_flash.img.signed
+	sdk20-app_flash.img.signed
 
 
 .. _Secure Boot Using HABv4 Guide:
