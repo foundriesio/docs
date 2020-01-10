@@ -40,7 +40,7 @@ Intel Core i7 (e.g. MinnowBoard Turbot)
 
     Where :file:`/dev/mmcblkX` is your SD card device.
 
-    Please see https://minnowboard.org/tutorials/getting-started-minnowboard-turbot-dual-e
+    Please see https://elinux.org/Minnowboard:Basics
     for additional board documentation.
 
 BeagleBone Black
