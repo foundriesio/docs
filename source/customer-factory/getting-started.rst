@@ -181,7 +181,7 @@ Viewing Builds
       CI Projects list
 
    Click on the default raspberrypi3-64 build and download the
-   ``lmp-factory-image-raspberrypi3-64.img.gz`` artifact.
+   ``lmp-factory-image-raspberrypi3-64.wic.gz`` artifact.
 
 
 Install your factory build
