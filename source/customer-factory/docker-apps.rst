@@ -28,7 +28,7 @@ However, ``shellhttpd`` is disabled until you instruct your factory to build
 the container and Docker App definition. To enable it, clone your **containers.git**
 project, and make the following changes::
 
-  git clone https://source.foundries.io/partners/<myfactory>/containers.git/
+  git clone https://source.foundries.io/factories/<myfactory>/containers.git/
   cd containers
   git mv shellhttpd.dockerapp.disabled shellhttpd.dockerapp
   git mv shellhttpd.disabled shellhttpd
@@ -80,7 +80,7 @@ example uses our Community Docker App store), the process is simple.
 To import our ``openthread-gateway.dockerapp`` into your factory, run
 the following commands::
 
-  git clone https://source.foundries.io/partners/<myfactory>/containers.git
+  git clone https://source.foundries.io/factories/<myfactory>/containers.git
   cd containers
   git remote add fio https://github.com/foundriesio/containers.git
   git remote update
