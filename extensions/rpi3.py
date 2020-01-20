@@ -26,7 +26,7 @@ class LmpRPi3LinksDirective(core.Directive):
         links_para = nodes.paragraph()
 
         # Link to file to get for the release.
-        link = art_ref('lmp-gateway-image-raspberrypi3-64.img.gz')
+        link = art_ref('lmp-gateway-image-raspberrypi3-64.wic.gz')
         links_para += link
 
         return [links_para]
