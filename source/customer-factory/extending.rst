@@ -13,7 +13,7 @@ Add packages to the list for ``CORE_IMAGE_BASE_INSTALL`` located in
 
 For a quick example let’s add the "stress-ng" utility package to the build.::
 
-  git clone https://source.foundries.io/partners/<myfactory>/meta-subscriber-overrides.git
+  git clone https://source.foundries.io/factories/<myfactory>/meta-subscriber-overrides.git
   vi meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb
 
 If the git clone fails with an unable to access error then check you have a

@@ -15,7 +15,7 @@ This script will automatically attempt to update your manifest to the latest ver
 
 To run the script, run the following command from within your ``lmp-manifest`` project::
 
-  git clone https://source.foundries.io/partners/<myfactory>/lmp-manifest.git
+  git clone https://source.foundries.io/factories/<myfactory>/lmp-manifest.git
   cd lmp-manifest/scripts/
   ./update-factory-manifest
 
