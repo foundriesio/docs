@@ -37,6 +37,8 @@ IPv6/IPv4 routing and MQTT message brokering.
    docker-apps
    aktualizr-lite
    secure-boot
+   container-secrets
+   factory-definition
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org
