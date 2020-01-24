@@ -51,7 +51,8 @@ The `fioctl`_ tool includes support for managing secrets for a factory::
   fioctl secrets list
 
   # Add/Update secrets defined in the factory:
-  fioctl secrets update secret_1=blah secret_2=$(cat $HOME/.ssh/id_rsa)
+  # NOTE: quotes are needed for arguments with spaces or multi-line files
+  fioctl secrets update secret_1=blah secret_2="$(cat $HOME/.ssh/id_rsa)"
 
 .. _fioctl:
    https://github.com/foundriesio/fioctl
