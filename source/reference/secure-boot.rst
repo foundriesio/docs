@@ -115,9 +115,12 @@ And the following script would work for setting the M4 fuses::
 	
 	FBK: DONE
 
-Upon reboot, if **CONFIG_IMX_HAB** was enabled in U-boot and since we still didn't close the secure state of the platform, HAB will raise events to indicate that an unsigned image has been executed. Those events can be inspected by running U-Boot's command ``hab_status``.
+Upon reboot, if **CONFIG_IMX_HAB** was enabled in U-boot, HAB will raise events to indicate that an **unsigned SPL image** has been executed. Those events can be inspected by running U-Boot's command ``hab_status``.
 
-To secure the platform, there is an extra fuse that needs to be programmed: we will only take that step once we are sure that we can successfully sign and boot a signed image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
+.. note::
+    Once the security fuses have been programmed, we recommend that all your UUU scripts are modified to use only **signed SPL** images since some of those scripts might depend on the occurance - or not - of HAB events.
+
+To secure the platform, there is an extra fuse that needs to be programmed: we will only take that step once we are sure that we can successfully sign and boot a signed SPL image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
 
 How to sign an SPL image (I)
 ----------------------------
@@ -156,7 +159,7 @@ The ``lmp-manifest/conf/imx_hab4/sign-file.sh`` script executes NXP's Code Signi
 
 All intermediate files generated during the signing process are removed by the script.
 
-Booting this signed SPL image and inspecting the HAB status should give no HAB events indicating that the image was correctly signed::
+Booting this signed SPL image and inspecting the HAB status should give no HAB events therefore indicating that the image was correctly signed::
 
 	=> hab_status
 	Secure boot disabled
@@ -220,14 +223,18 @@ The process for signing the SPL image for SDP is the same as before except with 
 Booting signed images with the `Universal Update Utility`_
 -----------------------------------------------------------
 When booting signed images we need to let SDP know the the DCD location as well as inform that the DCD has been cleared.
-So a tipycal UUU boot script would be as (replace ``@@MACHINE@@`` with your machine configuration name)::
+So a tipycal UUU boot script would be as (replace ``@@MACHINE@@`` with your machine configuration name)
 
-	uuu_version 1.0.1
+.. code-block:: python
+   :emphasize-lines: 3
+		     
+   uuu_version 1.0.1
+
+   SDP: boot -f SPL.signed-@@MACHINE@@ -dcdaddr 0x2f010000 -cleardcd
 	
-	SDP: boot -f SPL-@@MACHINE@@ -dcdaddr 0x2f010000 -cleardcd
-	
-	SDPU: delay 1000
-	SDPU: write -f u-boot-@@MACHINE@@.itb
+   SDPU: delay 1000
+   SDPU: write -f u-boot-@@MACHINE@@.itb
+
 
 Moreover, if the device has been closed and it is only accepting signed images, **it is recommended that UUU is started before powering the board and before connecting it to the host PC so that UUU polls for the connection and responds to it as soon as possible**. To that effect we need to make sure of UUU's polling period flag::
 
