@@ -3,3 +3,6 @@
 .atom-build.yml
 build/
 extensions/__pycache__/
+
+### IDE
+.idea
