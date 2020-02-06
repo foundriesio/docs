@@ -68,8 +68,8 @@ BeagleBone Black
    Please see https://elinux.org/Beagleboard:BeagleBoneBlack for additional
    board documentation.
 
-Toradex Colibri iMX7D (Aster)
------------------------------
+Toradex Colibri iMX7D eMMC (Aster)
+----------------------------------
 
 .. toggle-header::
    :header: Click to show/hide
@@ -90,20 +90,6 @@ Toradex Colibri iMX7D (Aster)
 
    Where :file:`/dev/mmcblkX` is your SD card device.
 
-   To update U-Boot on Toradex Colibri iMX7D 512MB NAND:
-
-   #. From the U-Boot prompt::
-
-        Colibri iMX7 # run setupdate
-        Colibri iMX7 # run update
-
-   #. Reboot and from the U-Boot prompt update the device tree based on
-      your module (e.g. Aster)::
-
-        Colibri iMX7 # setenv fdt_board aster
-        Colibri iMX7 # saveenv
-        Colibri iMX7 # reset
-
    To update U-Boot on Toradex Colibri iMX7D 1GB eMMC:
 
    #. From the U-Boot prompt, update the device tree name and boot into LMP::
@@ -116,8 +102,8 @@ Toradex Colibri iMX7D (Aster)
 
         mkdir /tmp/boot
         mount /dev/mmcblk0p1 /tmp/boot
-        echo 0 > /sys/block/mmcblk2boot0/force_ro
-        dd if=/tmp/boot/u-boot-emmc.imx of=/dev/mmcblk2boot0 bs=512 seek=2
+        echo 0 > /sys/block/mmcblk1boot0/force_ro
+        dd if=/tmp/boot/u-boot-emmc.imx of=/dev/mmcblk1boot0 bs=512 seek=2
 
    #. Reboot and from the U-Boot prompt update the device tree based on
       your module (e.g. Aster)::
@@ -129,7 +115,7 @@ Toradex Colibri iMX7D (Aster)
 
    #. Boot LMP and change eMMC back to read-only (as root)::
 
-        echo 1 > /sys/block/mmcblk2boot0/force_ro
+        echo 1 > /sys/block/mmcblk1boot0/force_ro
 
    Please see https://developer.toradex.com for additional board documentation.
 
