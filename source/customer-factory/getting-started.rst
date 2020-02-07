@@ -110,7 +110,7 @@ Purchase a factory subscription
 
 Factory Generation
 ~~~~~~~~~~~~~~~~~~
-  It will take a few minutes for your factory to be created. You will recieved an email when it is ready for use. Please follow the rest of this guide once you have an operational factory.
+  It will take a few minutes for your factory to be created. You will receive an email when it is ready for use. Please follow the rest of this guide once you have an operational factory.
 
 
 Generate an access token
@@ -125,10 +125,10 @@ Generate an access token
 
       Settings pulldown menu
 
-   From the left menu, select **Access Tokens**.
+   From the left menu, select **Tokens**.
 
    .. figure:: /_static/access-tokens-link.png
-      :alt: Access tokens link
+      :alt: Tokens link
       :align: center
       :width: 3in
 
@@ -152,7 +152,7 @@ Generate an access token
      login <your access token>
 
 Viewing Builds
-~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~
 
   Click the **Builds** icon the upper navigation bar to view your factory builds.
 
