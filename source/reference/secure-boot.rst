@@ -5,7 +5,7 @@
 Secure Boot on IMX
 ==================
 On the IMX platforms, secure boot is implemented via the High Availability Boot component of the on-chip ROM. The ROM is responsible for loading the initial program image, the bootloader; HAB then enables the ROM to authenticate it using digital signatures.
- 
+
 HAB also provides a mechanism to establish a root of trust for the remaining software components and establishes a secure state - the close state - on the IMX IC secure state machine in hardware.
 
 Our implementation
@@ -14,18 +14,18 @@ Foundries LMP uses U-Boot as the bootloader with SPL being its first stage loade
 
 SPL then boots the trusted execution environment - OP-TEE - where we run an 'early' trusted application, fiovb - Foundries.IO verified Boot. This trusted application provides secure access to the Replay Protected Memory Block partition in MMC which is used to store keys, firmware and rollback information.
 
-OP-TEE also prepares the next stage bootloader - U-Boot - and generates an overlay DTS for the Linux kernel consumption. Then it jumps to U-Boot which controls the M4 firmware upgrade process using the fiovb trusted application. U-boot also implements the fiovb command to validate the trusted application functionality. 
+OP-TEE also prepares the next stage bootloader - U-Boot - and generates an overlay DTS for the Linux kernel consumption. Then it jumps to U-Boot which controls the M4 firmware upgrade process using the fiovb trusted application. U-boot also implements the fiovb command to validate the trusted application functionality.
 
 U-boot then jumps to the kernel entry point.
 
 HAB Architecture Overview
 -------------------------
-HAB authentication is based on public key cryptography using the RSA algorithm in which image data is signed offline using a series of private keys. The resulting signed image data is then verified on the i.MX processor using the corresponding public keys. 
+HAB authentication is based on public key cryptography using the RSA algorithm in which image data is signed offline using a series of private keys. The resulting signed image data is then verified on the i.MX processor using the corresponding public keys.
 
-This key structure is known as a PKI tree; super root keys, or SRK, are components of the PKI tree: HAB relies on a table of the public SRKs to be hashed and placed in fuses on the target. 
-The i.MX Code Signing Tool (CST) is used to generate the HABv4 signatures for images using the PKI tree data and SRK table. 
+This key structure is known as a PKI tree; super root keys, or SRK, are components of the PKI tree: HAB relies on a table of the public SRKs to be hashed and placed in fuses on the target.
+The i.MX Code Signing Tool (CST) is used to generate the HABv4 signatures for images using the PKI tree data and SRK table.
 
-On the target, HAB evaluates the SRK table included in the signature by hashing it and comparing the result to the SRK fuse values: if the SRK verification is successful, this establishes the root of trust, and the remainder of the signature can be processed to authenticate the image. 
+On the target, HAB evaluates the SRK table included in the signature by hashing it and comparing the result to the SRK fuse values: if the SRK verification is successful, this establishes the root of trust, and the remainder of the signature can be processed to authenticate the image.
 
 How to Secure the Platform
 --------------------------
@@ -76,13 +76,13 @@ For the M4 fuses it would look like this::
 Alternatively, use the kernel to program the A7 fuses using SDP via NXP's Universal Update Utility with a script as follows (replace @@MACHINE@@ with your machine name)::
 
 	uuu_version 1.0.1
-	
+
 	SDP: boot -f SPL-@@MACHINE@@
-	
+
 	SDPU: delay 1000
 	SDPU: write -f u-boot-@@MACHINE@@.itb
 	SDPU: jump
-	
+
 	FB: ucmd fuse prog -y 5 0 0xEA2F0B50
 	FB: ucmd fuse prog -y 5 1 0x871167F7
 	FB: ucmd fuse prog -y 5 2 0xF5CECF5D
@@ -91,19 +91,19 @@ Alternatively, use the kernel to program the A7 fuses using SDP via NXP's Univer
 	FB: ucmd fuse prog -y 5 5 0xF158F65F
 	FB: ucmd fuse prog -y 5 6 0xA71BBE78
 	FB: ucmd fuse prog -y 5 7 0xA3AD024A
-	
+
 	FBK: DONE
 
 And the following script would work for setting the M4 fuses::
 
 	uuu_version 1.0.1
-	
+
 	SDP: boot -f SPL-@@MACHINE@@
-	
+
 	SDPU: delay 1000
 	SDPU: write -f u-boot-@@MACHINE@@.itb
 	SDPU: jump
-	
+
 	FB: ucmd fuse prog -y 6 0 0xEA2F0B50
 	FB: ucmd fuse prog -y 6 1 0x871167F7
 	FB: ucmd fuse prog -y 6 2 0xF5CECF5D
@@ -112,7 +112,7 @@ And the following script would work for setting the M4 fuses::
 	FB: ucmd fuse prog -y 6 5 0xF158F65F
 	FB: ucmd fuse prog -y 6 6 0xA71BBE78
 	FB: ucmd fuse prog -y 6 7 0xA3AD024A
-	
+
 	FBK: DONE
 
 Upon reboot, if **CONFIG_IMX_HAB** was enabled in U-boot, HAB will raise events to indicate that an **unsigned SPL image** has been executed. Those events can be inspected by running U-Boot's command ``hab_status``.
@@ -191,7 +191,7 @@ How to sign an SPL image for SDP (II)
 Once the device has been closed, only signed images will be able to run on the processor: this means that upgrades via UUU/SDP will stop working unless the SPL it uses is properly signed.
 The following restrictions need to be applied to this signed image:
 
-* SDP requires that the CSF is modified to include a check for the DCD table 
+* SDP requires that the CSF is modified to include a check for the DCD table
 * SDP requires that the DCD address of the image is cleared from the header
 
 
@@ -225,13 +225,13 @@ Booting signed images with the `Universal Update Utility`_
 When booting signed images we need to let SDP know the the DCD location as well as inform that the DCD has been cleared.
 So a tipycal UUU boot script would be as (replace ``@@MACHINE@@`` with your machine configuration name)
 
-.. code-block:: python
+.. code-block:: console
    :emphasize-lines: 3
-		     
+
    uuu_version 1.0.1
 
    SDP: boot -f SPL.signed-@@MACHINE@@ -dcdaddr 0x2f010000 -cleardcd
-	
+
    SDPU: delay 1000
    SDPU: write -f u-boot-@@MACHINE@@.itb
 
