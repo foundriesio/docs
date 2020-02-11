@@ -151,6 +151,45 @@ a "new" target, the OSTree hash is the same as the one for "144"::
 
 This allows the next update to be effectively a no-op for the base OS image, but it does bring in the updated Docker App(s).
 
+Parameters
+----------
+
+Parameterizing can be useful when specific devices need to override the default
+parameters set in the Docker App definition. The Docker App parameters listed in
+this section are managed, in the sense that each parameters is defined and given
+a default value in the Docker App definition.
+
+Consider the Docker App example above. Lets say we would like to set the ``MSG``
+parameter without changing the Docker App definition, we can override the default
+value using a parameters file.
+
+On the device, create a ``params.yml`` at a writeable location.
+
+``sudo vim /var/sota/params.yml``
+
+Now add the parameter override using this yaml format.
+
+.. code-block:: yaml
+
+MSG: Hello New Message
+
+Save the file, and add a reference to this parameter file in our ``sota.toml``.
+
+.. note:: Running ``aktualizr-lite`` in daemon mode (default) will allow the system to detect changes to your ``sota.toml`` and ``params.yml``. Meaning that if these files are changed, and the ``aktualizr-lite`` daemon is restarted, it will detect new changes and evaluate the system to ensure the Docker Apps are running with the latest configuration. This feature is helpful to add/remove or update Docker Apps running on your device.
+
+If you are running ``aktualizr-lite`` in daemon mode (default) you must stop it
+first before editing the configuration.
+
+``sudo systemctl stop aktualizr-lite``
+
+``sudo vim /var/sota/sota.toml``
+
+Add the following line to the ``[pacman]`` block of your ``sota.toml``
+
+``docker_app_params = "/var/sota/params.yml"``
+
+Then restart the ``aktualizr-lite`` daemon to update the parameters passed to ``shellhttpd``.
+
 What’s Missing?
 ---------------
 
