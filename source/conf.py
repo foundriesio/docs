@@ -145,7 +145,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'FoundriesFactory<sup>&#174;</sup>'
-copyright = '2017-2019, Foundries.io, Ltd'
+copyright = '2017-2020, Foundries.io, Ltd'
 author = 'Foundries.io, Ltd.'
 
 # The version info for the project you're documenting, acts as replacement for
