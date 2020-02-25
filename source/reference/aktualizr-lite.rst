@@ -18,7 +18,7 @@ To disable daemon mode:
 
 To enable daemon mode:
 
-``sudo systemctl disable aktualizr-lite``
+``sudo systemctl enable aktualizr-lite``
 
 To restart the daemon:
 
