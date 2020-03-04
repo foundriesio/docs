@@ -37,11 +37,6 @@ will register your device(s) via Foundries.io REST API.
 
       Device activation page
 
-#. Once the device has been registered, from a console on the device run the
-   following command::
-
-    sudo systemctl restart aktualizr-lite
-
 #. Now your device is registered, and any new platform builds produced will be
    pushed down to this device, and be applied. You can view all the devices
    registered to your factory at: https://app.foundries.io/devices/. You can
