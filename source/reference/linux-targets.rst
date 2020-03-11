@@ -129,8 +129,8 @@ i.MX 8M Mini Evaluation Kit
    ``imx8mmevk`` and ``DISTRO`` to ``lmp-mfgtool`` when setting up
    your work environment with the ``setup-environment`` script::
 
-     DISTRO=lmp-mfgtools MACHINE=imx8mmevk source setup-environment [BUILDDIR]
-     bitbake mfgtools-files
+     DISTRO=lmp-mfgtool MACHINE=imx8mmevk source setup-environment [BUILDDIR]
+     bitbake mfgtool-files
 
    At the end of the build, your manufacturing build artifacts will be
    found under ``deploy/images/imx8mmevk``. The artifact you will use for

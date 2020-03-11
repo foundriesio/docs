@@ -276,7 +276,7 @@ If you are running with a *Cryptographic Acceleration and Assurance Module* devi
 
 So if the user-specific application requires any changes in the CAAM MID registers, it is necessary to add the “Unlock CAAM MID” command into the CSF file.
 
-Not doing so, since the CAAM will not have been cofigured for the proper MIDs, leaves some of the CAAM registers not accessible for writing and any attempt to write to them will cause system **core aborts**
+Not doing so, since the CAAM will not have been configured for the proper MIDs, leaves some of the CAAM registers not accessible for writing and any attempt to write to them will cause system **core aborts**
 
 .. note::
 	The current NXP BSP implementation expects the CAAM registers to be unlocked when configuring the CAAM to operate in the non-secure TrustZone world. This applies when OP-TEE is enabled on the i.MX 6, i.MX 7, and i.MX 7ULP processors.
