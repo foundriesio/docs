@@ -119,8 +119,8 @@ Toradex Colibri iMX7D eMMC (Aster)
 
    Please see https://developer.toradex.com for additional board documentation.
 
-i.MX 8M Mini Evaluation Kit
----------------------------
+i.MX 8M Mini LPD4 Evaluation Kit
+--------------------------------
 
 .. toggle-header::
    :header: Click to show/hide
@@ -157,6 +157,12 @@ i.MX 8M Mini Evaluation Kit
 
    Power off the board, change the boot switch back to eMMC / SDHC3 and power it
    on again.
+
+   .. note::
+
+      Notice that the i.MX 8M Mini LPD4-EVK is different to i.MX 8M Mini D4-EVK.
+      Find more information at `NXP i.MX8 Mini`_.
+
 
 SiFive HiFive Unleashed Freedom U540
 ------------------------------------
@@ -230,3 +236,7 @@ Generic RISC-V 64 Machine
 
    Please see https://wiki.qemu.org/Documentation/Platforms/RISCV for additional
    information.
+
+
+.. _NXP i.MX8 Mini:
+   https://www.nxp.com/design/development-boards/i.mx-evaluation-and-development-boards/evaluation-kit-for-the-i.mx-8m-mini-applications-processor:8MMINILPD4-EVK
