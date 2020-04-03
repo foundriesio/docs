@@ -189,13 +189,12 @@ Rebooting the board and checking the HAB status should give::
 How to sign an SPL image for SDP (II)
 -------------------------------------
 Once the device has been closed, only signed images will be able to run on the processor: this means that upgrades via UUU/SDP will stop working unless the SPL it uses is properly signed.
-The following restrictions need to be applied to this signed image:
 
+1. **On older SoCs**, the SDP impose the following restrictions:
 * SDP requires that the CSF is modified to include a check for the DCD table
 * SDP requires that the DCD address of the image is cleared from the header
 
-
-The process for signing the SPL image for SDP is the same as before except with the addition of the ``--fix-sdp-dcd`` parameter::
+To comply with these requirements we need to sign the image adding the ``--fix-sdp-dcd`` parameter::
 
 	$ cd conf/imx_hab4/
 	$ ./sign-file.sh --cst ./cst --spl SPL --fix-sdp-dcd
@@ -220,9 +219,17 @@ The process for signing the SPL image for SDP is the same as before except with 
 	$ ls SPL.signed
 	SPL.signed
 
+2.  **On newer SoCs** (ie imx7ulp), using the ``--fix-sdp-dcd`` parameter is not required.
+
+
+.. note::
+	Which SoCs fall in which category can be identified by inspecting the `Universal Update Utility`_  g_RomInfo: if the option ROM_INFO_HID_SKIP_DCD is configured, then the DCD does **not** need to be fixed for that SoC.
+
+   
 Booting signed images with the `Universal Update Utility`_
 -----------------------------------------------------------
-When booting signed images we need to let SDP know the the DCD location as well as inform that the DCD has been cleared.
+
+1. **On older SoCs** we need to let SDP know the DCD location as well as inform that the DCD has been cleared.
 So a tipycal UUU boot script would be as (replace ``@@MACHINE@@`` with your machine configuration name)
 
 .. code-block:: console
@@ -235,13 +242,23 @@ So a tipycal UUU boot script would be as (replace ``@@MACHINE@@`` with your mach
    SDPU: delay 1000
    SDPU: write -f u-boot-@@MACHINE@@.itb
 
+2) **On newer SoCs** - those where SDP does not impose DCD restrictions - the UUU boot script woild be:
 
-Moreover, if the device has been closed and it is only accepting signed images, **it is recommended that UUU is started before powering the board and before connecting it to the host PC so that UUU polls for the connection and responds to it as soon as possible**. To that effect we need to make sure of UUU's polling period flag::
+.. code-block:: console
+
+   uuu_version 1.0.1
+
+   SDP: boot -f SPL.signed-@@MACHINE@@
+
+   SDPU: delay 1000
+   SDPU: write -f u-boot-@@MACHINE@@.itb
+   
+On both cases, if the device has been closed and it is only accepting signed images, **it is recommended that UUU is started before powering the board and before connecting it to the host PC so that UUU polls for the connection and responds to it as soon as possible**. To that effect we need to make sure of UUU's polling period flag::
 
 	$ uuu -pp 1 file.uuu
 
 .. note::
-	All these flags `-dcdaddr`_, `-cleardcd`_ and `-pp`_ required for SDP have been contributed to the Universal Update Utility by Foundries.IO. Make sure your UUU release is up-to-date with these changes.
+	These flags `-dcdaddr`_, `-cleardcd`_ and `-pp`_ required for SDP on older SoCs have been contributed to the Universal Update Utility by Foundries.IO. Make sure your UUU release is up-to-date with these changes.
 
 How to sign an M4 binary for HAB validation
 -------------------------------------------
