@@ -18,6 +18,16 @@ OP-TEE also prepares the next stage bootloader - U-Boot - and generates an overl
 
 U-boot then jumps to the kernel entry point.
 
+Therefore a system like the one described which boots without TF-A would look as follows:
+
+
+   .. figure:: /_static/imx-secure-boot.png
+      :align: center
+      :width: 6in
+
+.. note::
+    Systems using TF-A (ie, imx8) would be slightly different.
+	      
 HAB Architecture Overview
 -------------------------
 HAB authentication is based on public key cryptography using the RSA algorithm in which image data is signed offline using a series of private keys. The resulting signed image data is then verified on the i.MX processor using the corresponding public keys.
