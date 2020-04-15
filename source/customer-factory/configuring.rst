@@ -58,5 +58,10 @@ interesting things that can be done with this include "on-changed" and
   }
   EOF
 
+Further Reading
+~~~~~~~~~~~~~~~
+
+More details can be found in :ref:`ref-configuration-management`.
+
 .. _fioctl command line tool:
    https://github.com/foundriesio/fioctl/releases
