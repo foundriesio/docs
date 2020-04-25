@@ -28,6 +28,16 @@ Therefore a system like the one described which boots without TF-A would look as
 .. note::
     Systems using TF-A (ie, imx8) would be slightly different.
 	      
+The communication path to gain access from userland via the pseudo trusted application (PTA) to RPMB follows the OP-TEE standard convention for PTAs as the image below describes: userland uses libteec to issue an ioctl to the linux tee driver which in turn transitions the processor to its secure state and calls the application entrypoint.
+
+Notice the distinction had we decided to implement FIOVB as a secured user application instead of a PTA.
+
+
+   .. figure:: /_static/optee-pta-access.png
+      :align: center
+      :width: 6in
+
+      
 HAB Architecture Overview
 -------------------------
 HAB authentication is based on public key cryptography using the RSA algorithm in which image data is signed offline using a series of private keys. The resulting signed image data is then verified on the i.MX processor using the corresponding public keys.
