@@ -66,5 +66,28 @@ will register your device(s) via Foundries.io REST API.
     sudo ostree admin status
 
 
+Managing Device Updates
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Once registered, a device's updates options can be remotely managed with
+``fioctl devices config updates``::
+
+  # Configure the device to run the "shellhttpd" app
+  fioctl devices config updates <device> --apps shellhttpd
+
+  # Configure the device to run 2 apps (comma separate the apps)
+  fioctl devices config updates <device> --apps app1,app2
+
+  # Configure the device to take updates from the "master" tag:
+  fioctl devices config updates <device> --tags master
+
+These updates are handled on the device by the `fioconfig`_ daemon. This
+checks for configuration updates on a configurable periodic interval. The
+factory default is 5 minutes. So - changes can take up to 5 minutes before
+they appear.
+
 .. _fioctl command line tool:
    https://github.com/foundriesio/fioctl/releases
+
+.. _fioconfig:
+   https://github.com/foundriesio/fioconfig
