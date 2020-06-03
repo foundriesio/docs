@@ -24,6 +24,14 @@ repository in the file `factory-config.yml`::
     machines:
     - raspberrypi-cm3
 
+    # Optional: Override options when specific git references are updated
+    # ref_options:
+    #  refs/heads/devel:
+    #    machines:  # Optional: This requires foundries.io support to change
+    #      - raspberrypi3-64
+    #    params:    # Optional: Add/Override environment variables in build
+    #      IMAGE: lmp-mini
+
     # Optional: Control how OTA_LITE tags are handled.
     #           See "Advanced Tagging" for more details
     # tagging:
