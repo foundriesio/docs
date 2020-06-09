@@ -43,6 +43,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    container-secrets
    factory-definition
    configuration-management
+   device-testing
    offline-keys
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
