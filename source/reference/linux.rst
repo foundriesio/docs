@@ -35,6 +35,8 @@ IPv6/IPv4 routing and MQTT message brokering.
    device-tags
    advanced-tagging
    docker-apps
+   compose-apps
+   app-conversion
    vpn
    aktualizr-lite
    secure-boot
