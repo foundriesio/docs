@@ -34,6 +34,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    linux-net-debug
    device-tags
    advanced-tagging
+   containers
    compose-apps
    app-conversion
    vpn
