@@ -34,7 +34,6 @@ IPv6/IPv4 routing and MQTT message brokering.
    linux-net-debug
    device-tags
    advanced-tagging
-   docker-apps
    compose-apps
    app-conversion
    vpn
@@ -45,6 +44,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    configuration-management
    device-testing
    offline-keys
+   docker-apps
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org
