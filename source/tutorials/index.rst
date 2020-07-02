@@ -9,3 +9,4 @@ This section includes some step by step guides to help you reproduce some demos 
    :maxdepth: 1
 
    aws
+   google
