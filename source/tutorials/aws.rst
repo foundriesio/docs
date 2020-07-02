@@ -25,11 +25,11 @@ Go to: "`AWS Management Console`_" > "Services" > "`IAM`_".
 Select: "Users" > "Add user".
 
    .. figure:: /_static/tutorials/aws/user1.png
-      :alt: Device activation page
+      :alt: Add user
       :align: center
       :width: 6in
 
-      Device activation page
+      Add user
 
 Input the following text into the prompted options:
 User name: TutorialUser
@@ -39,33 +39,33 @@ Then select: "Next".
 
 
    .. figure:: /_static/tutorials/aws/user2.png
-      :alt: Device activation page
+      :alt: Add user name
       :align: center
       :width: 8in
 
-      Device activation page
+      Add user name
 
 Select: "Attach existing policies directly" and "AdministratorAccess".
 Then, select: "Next".
 
 
    .. figure:: /_static/tutorials/aws/user3.png
-      :alt: Device activation page
+      :alt: Add user permission
       :align: center
       :width: 7in
 
-      Device activation page
+      Add user permission
 
 Select: "Next again" > "Create User".
 
 Finally, copy the "Access Key ID" and "Secret Access Key" to an annotation text file.
 
    .. figure:: /_static/tutorials/aws/user4.png
-      :alt: Device activation page
+      :alt: Access Key ID
       :align: center
       :width: 7in
 
-      Device activation page
+      Access Key ID
 
 Then: "Close".
 
@@ -79,42 +79,42 @@ First, navigate to: "`AWS Management Console`_" > "Services" > "`IAM`_".
 Select: "Roles" > "Create Roles".
 
    .. figure:: /_static/tutorials/aws/role1.png
-      :alt: Device activation page
+      :alt: Create Roles
       :align: center
       :width: 6in
 
-      Device activation page
+      Create Roles
 
 Select: "AWS Service" > "IoT".
 Now select the use case: "IoT".
 Finally, select: "Next".
 
    .. figure:: /_static/tutorials/aws/role2.png
-      :alt: Device activation page
+      :alt: Select a service
       :align: center
       :width: 7in
 
-      Device activation page
+      Select a service
 
 Select: "Next".
 
    .. figure:: /_static/tutorials/aws/role3.png
-      :alt: Device activation page
+      :alt: Attached permission policies
       :align: center
       :width: 7in
 
-      Device activation page
+      Attached permission policies
 
 Select: "Next" a final time. 
 Complete "Role Name": IoTProvisioning
 Now select: "Create Role".
 
    .. figure:: /_static/tutorials/aws/role4.png
-      :alt: Device activation page
+      :alt: Create role
       :align: center
       :width: 7in
 
-      Device activation page
+      Create role
 
 Select the Role that we just created by clicking on the role name:
 
@@ -123,11 +123,11 @@ IoTProvisioning
 Copy the "Role ARN": arn:aws:iam::xxxxxxxxxxxx:role/IoTProvisioning
 
    .. figure:: /_static/tutorials/aws/role5.png
-      :alt: Device activation page
+      :alt: Role ARN
       :align: center
       :width: 6in
 
-      Device activation page
+      Role ARN
 
 Policy
 ------
@@ -138,11 +138,11 @@ Navigate to: "`AWS Management Console`_" > "Services" > "`IoT Core`_".
 Select: "Secure" > "Policies" > "Create Policy".
 
    .. figure:: /_static/tutorials/aws/policie1.png
-      :alt: Device activation page
+      :alt: Create Policy
       :align: center
       :width: 12in
 
-      Device activation page
+      Create Policy
 
 Name: IoTAccess
 
@@ -184,11 +184,11 @@ Select: "Settings" > "Endpoint"::
       xxxxxxxxxxxxxx-ats.iot.us-east-1.amazonaws.com
 
 .. figure:: /_static/tutorials/aws/endpoint1.png
-    :alt: Device activation page
+    :alt: Endpoint
     :align: center
     :width: 8in
 
-    Device activation page
+    Endpoint
 
 Creating Keys and Certificate on the Host Machine
 -------------------------------------------------
@@ -326,11 +326,11 @@ Navigate to "`AWS Management Console`_" > "Services" > "`IoT Core`_".
 Select "Secure" > "CAs" > "Create Policy"
 
    .. figure:: /_static/tutorials/aws/ca1.png
-      :alt: Device activation page
+      :alt: Create Policy
       :align: center
       :width: 6in
 
-      Device activation page
+      Create Policy
 
 FoundriesFactory
 ----------------
@@ -343,11 +343,11 @@ To interact with your FoundriesFactory you'll first need to download the necessa
 First, navigate to `Foundries App`_, find your Factory and the source code.
 
    .. figure:: /_static/tutorials/aws/sourcecode1.png
-      :alt: Device activation page
+      :alt: Source code
       :align: center
       :width: 20in
 
-      Device activation page
+      Source code
 
 Open the container repository and clone it on your host machine::
 
@@ -425,11 +425,11 @@ Add the changes to your Factory and wait for it to finish compiling your app::
  $ git push
 
 .. figure:: /_static/tutorials/aws/build1.png
-    :alt: Device activation page
+    :alt: FoundriesFactory Build
     :align: center
     :width: 8in
 
-    Device activation page
+    FoundriesFactory Build
 
 Enabling the App on your Device
 -------------------------------
@@ -452,11 +452,11 @@ On your raspberry pi, you should receive the update soon. In order to accelerate
 
 
 .. figure:: /_static/tutorials/aws/terminal1.png
-    :alt: Device activation page
+    :alt: Terminal Updating
     :align: center
     :width: 8in
 
-    Device activation page
+    Terminal Updating
 
 Debuging the AWS Container APP
 ------------------------------
@@ -469,25 +469,26 @@ In your Raspberry Pi 3 you can check the running container and with the containe
 
 
 .. figure:: /_static/tutorials/aws/terminal2.png
-      :alt: Device activation page
+      :alt: Docker logs
       :align: center
       :width: 8in
 
-      Device activation page
+      Docker logs
 
 .. figure:: /_static/tutorials/aws/terminal3.png
-      :alt: Device activation page
+      :alt: Connected to AWS
       :align: center
       :width: 8in
 
-      Device activation page
+      Connected to AWS
 
 .. figure:: /_static/tutorials/aws/terminal4.png
-      :alt: Device activation page
+      :alt: Start sending data to AWS
       :align: center
       :width: 8in
 
-      Device activation page
+      Start sending data to AWS
+
 
 Receiving data on AWS IoT core
 ------------------------------
@@ -500,11 +501,11 @@ Once this step is complete you will be able to receive data inside your AWS IoT 
 You can verify this process is working by navigating to the AWS IoT Core Portal > Test.
 
    .. figure:: /_static/tutorials/aws/mqtt1.png
-      :alt: Device activation page
+      :alt: AWS IoT Core Test Portal
       :align: center
       :width: 10in
 
-      Device activation page
+      AWS IoT Core Test Portal
 
 Subscribe to the topic::
 
@@ -512,11 +513,11 @@ Subscribe to the topic::
  $aws/things/+/shadow/update/accepted
 
 .. figure:: /_static/tutorials/aws/mqtt2.png
-    :alt: Device activation page
+    :alt: Subscription Topic
     :align: center
     :width: 10in
 
-    Device activation page
+    Subscription Topic
 
 How to change the Docker App
 ----------------------------
@@ -559,18 +560,18 @@ Back to the terminal::
 After your push is complete a new build will be started. After the build is finished your device will be automatically updated.
 
    .. figure:: /_static/tutorials/aws/update1.png
-      :alt: Device activation page
+      :alt: FoundriesFactory Build
       :align: center
       :width: 6in
 
-      Device activation page
+      FoundriesFactory Build
 
    .. figure:: /_static/tutorials/aws/uptime1.png
-      :alt: Device activation page
+      :alt: New data
       :align: center
       :width: 12in
 
-      Device activation page
+      New data
 
 .. _Foundries.io Docker App Store:
    https://github.com/foundriesio/extra-containers
