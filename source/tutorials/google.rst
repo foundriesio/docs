@@ -373,8 +373,6 @@ Use fioclt to send the files to the device safely::
 
  # Ubuntu Host Machine
  $ fioctl devices config set homeassistant32 google.config="$(cat google.config)" google.json="$(cat google.json)"
- # Ubuntu Host Machine
- $ fioctl devices config set homeassistant32 google.config="$(cat google.config)" google.json="$(cat google.json)"
 
 After some time, the files will be copied to the folder "/var/run/secrets" on your device::
 
