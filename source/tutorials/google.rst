@@ -308,12 +308,11 @@ With `fioctl`_, we will enable the application "google-iotsdk" on your device re
  # Configure the device to run the "google-iotsdk" app
  $ fioctl devices config updates raspberrypi3 --apps google-iotsdk --tags master
 
-On your raspberry pi, you should receive the update soon. In order to accelerate the process of update you can restart aktualizr-lite and watch the logs by running the following commands::
+On your raspberry pi, you should receive the update soon. You can watch the logs by running the following commands::
 
  # Ubuntu Host Machine
  $ ssh fio@raspberrypi3-64.local
  # Raspberry Pi 3 Target Machine
- $ sudo systemctl start aktualizr-lite
  $ sudo journalctl -f -u aktualizr-lite
 
 
