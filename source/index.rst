@@ -7,14 +7,11 @@ customize open source software projects including u-Boot, OP-TEE,
 OE/Yocto, the Linux microPlatform™ and Docker®.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    getting-started/index
    tutorials/index
-   platform-developer/index
-   app-developer/index
-   test-developer/index
-   reference/index
+   reference-manual/index
    foundries.io <https://foundries.io>
 
 .. ifconfig:: todo_include_todos is True
