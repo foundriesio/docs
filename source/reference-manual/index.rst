@@ -11,3 +11,4 @@ Reference Manual
    Over the Air Updates <ota/ota.rst>
    Docker <docker/docker.rst>
    Testing <testing/testing.rst>
+   Security <security/security.rst>
