@@ -7,3 +7,4 @@ Security
    :maxdepth: 1
 
    secure-boot
+   offline-keys

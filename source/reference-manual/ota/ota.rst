@@ -6,8 +6,8 @@ Over the Air Updates
 .. toctree::
    :maxdepth: 1
 
+   fioctl
    aktualizr-lite
    device-tags
    advanced-tagging
-   offline-keys
    configuration-management

@@ -1,7 +1,7 @@
 .. _ref-vpn:
 
-Virtual Private Networking
-==========================
+Remote Access
+=============
 
 .. toctree::
    :maxdepth: 1
