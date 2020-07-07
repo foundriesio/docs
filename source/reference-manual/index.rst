@@ -7,3 +7,4 @@ Reference Manual
    :maxdepth: 2
 
    Linux microPlatform <linux/linux.rst>
+   Docker <docker/docker.rst>
