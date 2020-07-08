@@ -1,7 +1,7 @@
 .. _ref-linux-layers:
 
-Linux microPlatform OpenEmbedded / Yocto Layers
-===============================================
+OpenEmbedded / Yocto Layers
+===========================
 
 The Linux microPlatform is composed of several OpenEmbedded and Yocto
 Project layers, including the core build system, distribution, images

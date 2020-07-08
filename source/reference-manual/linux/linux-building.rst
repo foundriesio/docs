@@ -2,8 +2,8 @@
 
 .. _ref-linux-building:
 
-Building the Linux microPlatform
-================================
+Building from Source
+====================
 
 This is a guide for building the base Linux microPlatform from source
 for Raspberry Pi 3 (64-bit). Additional information specific to other
