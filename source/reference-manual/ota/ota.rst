@@ -7,7 +7,7 @@ Over the Air Updates
    :maxdepth: 1
 
    fioctl
+   fioconfig
    aktualizr-lite
    device-tags
    advanced-tagging
-   configuration-management
