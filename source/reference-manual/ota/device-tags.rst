@@ -1,7 +1,7 @@
 .. _ref-device-tags:
 
-OTA Device Tags
-===============
+Device Tags
+===========
 
 The Foundries.io version of aktualizr-lite includes a concept called "device
 tags" to help maintain better control of your fleet. Each device can subscribe
