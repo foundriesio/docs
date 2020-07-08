@@ -1,7 +1,7 @@
-.. _ref-configuration-management:
+.. _ref-fioconfig:
 
-How Configuration Management Works
-==================================
+fioconfig
+=========
 
 Configuration Storage
 ~~~~~~~~~~~~~~~~~~~~~
