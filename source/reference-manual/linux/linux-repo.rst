@@ -1,7 +1,7 @@
 .. _ref-linux-repo:
 
-Repo Primer for Linux microPlatform
-===================================
+Repo Source Control Tool
+========================
 
 This section describes `Repo`_ and how the Linux microPlatform uses
 it. If you're unfamiliar with Repo, it may make things clearer.
