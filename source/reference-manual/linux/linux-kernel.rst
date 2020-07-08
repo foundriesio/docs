@@ -1,7 +1,7 @@
 .. _ref-linux-kernel:
 
-Linux microPlatform Kernel
-==========================
+Linux Kernel
+============
 
 A common and unified Linux Kernel source tree is provided and used by
 the Linux microPlatform. The latest continuous release is available

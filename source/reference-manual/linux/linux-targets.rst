@@ -2,8 +2,8 @@
 
 .. _ref-linux-targets:
 
-Additional Linux microPlatform Targets
-======================================
+Supported Hardware
+==================
 
 This section provides information on running the Linux microPlatform
 for other targets. It is provided on a best-effort basis.

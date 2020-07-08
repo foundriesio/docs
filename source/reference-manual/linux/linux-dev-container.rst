@@ -2,8 +2,8 @@
 
 .. _ref-linux-dev-container:
 
-Linux microPlatform Development Container
-=========================================
+Development Container
+=====================
 
 You can install a Docker container based on Ubuntu 18.04 which
 provides a Linux microPlatform build environment. This is the
