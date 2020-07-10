@@ -4,7 +4,8 @@ Security
 ========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
+   architecture
    secure-boot
-   offline-keys
+   ota-security
