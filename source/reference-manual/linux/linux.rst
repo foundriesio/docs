@@ -23,6 +23,7 @@ and maintained by Foundries.io on `GitHub`_.
 .. toctree::
    :maxdepth: 1
 
+   architecture
    linux-targets
    linux-repo
    linux-dev-container
