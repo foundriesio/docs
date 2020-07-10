@@ -17,7 +17,7 @@ scripts:
   make-docs: |
     #!/bin/sh -ex
     apk add --update make curl git
-    pip install sphinx_rtd_theme sphinx sphinxcontrib-contentui
+    pip install -r ./requirements.txt
     make OUTDIR=/archive SPHINXBUILD=sphinx-build singlehtml html
 
     urlbase="https://ci.foundries.io/projects/${H_PROJECT}/builds/${H_BUILD}/${H_RUN}/"
@@ -36,5 +36,5 @@ scripts:
   link-check: |
     #!/bin/sh -ex
     apk add --update make git
-    pip install sphinx_rtd_theme sphinx sphinxcontrib-contentui
+    pip install -r ./requirements.txt
     make BUILDDIR=/archive SPHINXBUILD=sphinx-build linkcheck
