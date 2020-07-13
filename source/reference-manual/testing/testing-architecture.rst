@@ -1,6 +1,6 @@
 .. highlight:: sh
 
-.. _ref-linux-architecture:
+.. _ref-testing-architecture:
 
 Architecture Overview
 =====================

@@ -6,6 +6,6 @@ Security
 .. toctree::
    :maxdepth: 2
 
-   architecture
+   security-architecture
    secure-boot
    ota-security
