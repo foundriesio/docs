@@ -1,4 +1,4 @@
-.. _ref-factory-defition:
+.. _ref-factory-definition:
 
 The Factory Definition
 ======================
