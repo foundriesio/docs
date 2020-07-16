@@ -105,7 +105,10 @@ extensions = [
     'sphinxcontrib.contentui',
     'lmp_sphinx_ext',
     'sphinxemoji.sphinxemoji',
+    'sphinx_tabs.tabs',
 ]
+
+sphinx_tabs_valid_builders = ['linkcheck']
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
