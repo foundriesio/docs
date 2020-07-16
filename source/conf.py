@@ -104,6 +104,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinxcontrib.contentui',
     'lmp_sphinx_ext',
+    'sphinxemoji.sphinxemoji',
 ]
 
 # If your documentation needs a minimal Sphinx version, state it here.
