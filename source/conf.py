@@ -317,10 +317,3 @@ htmlhelp_basename = 'fiodoc'
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
-
-# Enable running conf.py as an extension by adding a setup method
-def setup(app):
-    # RTD theme has a bug:
-    # https://rackerlabs.github.io/docs-rackspace/tools/rtd-tables.html
-    if html_theme == 'sphinx_rtd_theme':
-        app.add_stylesheet('theme_overrides.css')
