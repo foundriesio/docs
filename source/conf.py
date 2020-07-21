@@ -246,6 +246,11 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+html_context = {
+    'css_files': [
+        '_static/theme_overrides.css',  # override wide tables in RTD theme
+        ],
+     }
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -312,10 +317,3 @@ htmlhelp_basename = 'fiodoc'
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
-
-# Enable running conf.py as an extension by adding a setup method
-def setup(app):
-    # RTD theme has a bug:
-    # https://rackerlabs.github.io/docs-rackspace/tools/rtd-tables.html
-    if html_theme == 'sphinx_rtd_theme':
-        app.add_stylesheet('theme_overrides.css')
