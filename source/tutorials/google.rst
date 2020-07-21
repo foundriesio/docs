@@ -1,11 +1,11 @@
 .. _ref-google:
 
-How to Get Started with Google IoT Container
-============================================
+How to Get Started with Google IoT Containers
+=============================================
 
-In this tutorial you will be guided through the process of setting up your device - in this case a Raspberry Pi 3 - to Google IoT. By using the Google IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it data - like CPU and RAM usage - will be flowing through the Google IoT, allowing you to easily integrate your device data with any Google Service.
+In this tutorial you will be guided through the process of setting up your device - in this case a Raspberry Pi 3 - to Google IoT. By using the Google IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the Google IoT, allowing you to easily integrate your device data with any Google Service.
 
-This tutorial will additionally cover how to auto provision your device in this way you don’t need to manually copy your public key and copy it to the Google IoT console. Once you install your app, you just load two config files over fioctl and the device will start to send important system information to Google IoT.
+This tutorial will additionally cover how to auto provision your device. In this way you don’t need to manually copy your public key and copy it to the Google IoT console. Once you install your app, you just load two config files over fioctl and the device will start to send important system information to Google IoT.
 In this tutorial we’re assuming that you already have an `Google Cloud IoT Core Account`_ and your Raspberry Pi 3 is already connected to your FoundriesFactory.
 
 Google Configuration
@@ -29,7 +29,7 @@ Beside Google Cloud Platform, click in the current project:
 
       Select Your Project
 
-The project dialog will show up and then click on "NEW PPOJECT"
+The project dialog will show up and then click on "NEW PROJECT"
 
 
    .. figure:: /_static/tutorials/google/newproject.png
@@ -206,7 +206,7 @@ Base on the "Topic Name" copy the project ID::
 Device Rights
 -------------
 
-In order to avoid copy and past each device public key, we will generate a credential file that will allow the device to send the public key over the python script.
+In order to avoid copying and pasting each device public key, we will generate a credential file that will allow the device to send the public key over the python script.
 
 Go to "`Create Service Account Key`_" page:
 
@@ -302,13 +302,13 @@ Enabling the App on your Device
 
 In the following steps we assume you have your Raspberry Pi 3 with Foundries.io’s LMP running and correctly registered to your Factory.
 
-With `fioctl`_, we will enable the application "google-iotsdk" on your device registed with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
+With `fioctl`_, we will enable the application "google-iotsdk" on your device registered with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
 
  # Ubuntu Host Machine
  # Configure the device to run the "google-iotsdk" app
  $ fioctl devices config updates raspberrypi3 --apps google-iotsdk --tags master
 
-On your raspberry pi, you should receive the update soon. You can watch the logs by running the following commands::
+On your Raspberry Pi, you should receive the update soon. You can watch the logs by running the following commands::
 
  # Ubuntu Host Machine
  $ ssh fio@raspberrypi3-64.local
@@ -344,12 +344,12 @@ With the container ID check the container logs::
 
       docker log
 
-As you can see, Google IoT app is waiting to config files to connect and start sending data to the cloud.
+As you can see, Google IoT app is waiting for config files to connect and start sending data to the cloud.
 
 Config files
 ------------
 
-We need to send  two files to the device. The first one will be the ".json" file we just downloaded from google. The second one we will create with some variables needed on the application.
+We need to send  two files to the device. The first one will be the ".json" file we just downloaded from Google. The second one we will create with some variables needed on the application.
 
 Copy the credential file with the name "google.json" to your current folder::
 
@@ -383,7 +383,7 @@ After some time, the files will be copied to the folder "/var/run/secrets" on yo
 Connect and send data to Google IoT
 -----------------------------------
 
-As soon as the container findes the "google.json" and "google.config" files, it will automatically create a random device name, private key, public key, register the device and start sending data to the Google IoT Cloud.
+As soon as the container finds the "google.json" and "google.config" files, it will automatically create a random device name, private key, public key, register the device and start sending data to the Google IoT Cloud.
 
    .. figure:: /_static/tutorials/google/Connecter.png
       :alt: Connecting with Google IoT
@@ -447,5 +447,6 @@ Select your "Cloud Pub/Sub subscription" and Click on "Pull"
 
 .. _fioctl:
    https://github.com/foundriesio/fioctl
+
 
 

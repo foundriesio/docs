@@ -1,11 +1,11 @@
 .. _ref-ibm:
 
-How to Get Started with IBM Watson IoT Container
-================================================
+How to Get Started with IBM Watson IoT Containers
+=================================================
 
-In this tutorial you will be guided through the process of setting up your device - in this case a Raspberry Pi 3 - to IBM Watson IoT. By using the IBM IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it data - like CPU and RAM usage - will be flowing through the IBM Watson IoT, allowing you to easily integrate your device data with any IBM Service.
+In this tutorial you will be guided through the process of setting up your device. In this case a Raspberry Pi 3 - to IBM Watson IoT. By using the IBM IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the IBM Watson IoT, allowing you to easily integrate your device data with any IBM Service.
 
-Once you install your app, you just need load one config files over fioctl and the device will start to send important system information to IBM Watson IoT.
+Once you install your app, you just need to load one config file over fioctl and the device will start to send important system information to IBM Watson IoT.
 In this tutorial we’re assuming that you already have an `IBM Watson IoT Account`_ and your Raspberry Pi 3 is already connected to your FoundriesFactory.
 
 IBM Configuration
@@ -29,7 +29,7 @@ At the top right of the window, click on "Create resource".
 
       Create Resource
 
-Search for "internet of things" and select "Internet of Things Platform" box.
+Search for "internet of things" and select the "Internet of Things Platform" box.
 
 
    .. figure:: /_static/tutorials/ibm/iot.png
@@ -39,7 +39,7 @@ Search for "internet of things" and select "Internet of Things Platform" box.
 
       Internet of Things Platform
 
-On the next window check that the Lite (free) plan is selected and click on the Create button.
+On the next window make sure  that the Lite (free) plan is selected and click on the Create button.
 
 
    .. figure:: /_static/tutorials/ibm/create.png
@@ -65,7 +65,7 @@ Click on "Launch"
 Create Device
 -------------
 
-Now we are ready to create our first device. We are using the RaspberryPi 3B for our demonstration but you may use any LmP device for the rest of this tutorial.
+Now we are ready to create our first device. We are using the Raspberry Pi 3B for our demonstration but you may use any LmP device for the rest of this tutorial.
 
 On the Browse Devices window click on the "Create a device" button. 
 
@@ -76,9 +76,9 @@ On the Browse Devices window click on the "Create a device" button.
 
       Create a device
 
-In the "Add Device" dialog, enter your "Device  Type". In my case I will use: RPi3B
+In the "Add Device" dialog, enter your "Device  Type". In my case, I will use: RPi3B
 
-Enter your "Device ID". In my case I wull use: 0001
+Enter your "Device ID". In my case, I will use: 0001
 
 Click on "Next".
 
@@ -90,7 +90,7 @@ Click on "Next".
 
       Add Device
 
-In the "Device Information", all fields are optional. In my case, I will compleate at least model and location:
+In the "Device Information", all fields are optional. In my case, I will complete at least model and location:
 
 
    .. figure:: /_static/tutorials/ibm/details.png
@@ -100,7 +100,7 @@ In the "Device Information", all fields are optional. In my case, I will complea
 
       Device Information
 
-In the "Securety", we will use "Auto-Generated authentication token". 
+In the "Security", we will use "Auto-Generated authentication token". 
 
 Click on "Next"
 
@@ -120,7 +120,7 @@ Finally in the "Summary", click on "Finish"
 
       Add device summary
 
-After finish the device creation, you will see important informations.
+After finishing the device creation, you will see important information.
 
 Save the "Organization ID", "Device Type", "Device ID" and the "Authentication Token"
 
@@ -199,13 +199,13 @@ Enabling the App on your Device
 
 In the following steps we assume you have your Raspberry Pi 3 with Foundries.io’s LMP running and correctly registered to your Factory.
 
-With `fioctl`_, we will enable the application "ibm-iotsdk" on your device registed with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
+With `fioctl`_, we will enable the application "ibm-iotsdk" on your device registered with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
 
  # Ubuntu Host Machine
  # Configure the device to run the "ibm-iotsdk" app
  $ fioctl devices config updates raspberrypi3 --apps ibm-iotsdk --tags master
 
-On your raspberry pi, you should receive the update soon. You can watch the logs by running the following commands::
+On your Raspberry Pi, you should receive the update soon. You can watch the logs by running the following commands::
 
  # Ubuntu Host Machine
  $ ssh fio@raspberrypi3-64.local
@@ -241,12 +241,12 @@ With the container ID check the container logs::
 
       docker log
 
-As you can see, IBM IoT app is waiting to config files to connect and start sending data to the cloud.
+As you can see, IBM IoT app is waiting for  config files to connect and start sending data to the cloud.
 
 Config files
 ------------
 
-We need to send a files configuration to the device. Create a file  with some variables needed on the application.
+We need to send a file configuration to the device. Create a file  with some variables needed on the application.
 
 Create a file "ibm.config" and copy the "Organization ID", "Device Type", "Device ID" and the "Authentication Token" to the  variables::
 
@@ -277,7 +277,7 @@ After some time, the files will be copied to the folder "/var/run/secrets" on yo
 Connect and send data to IBM IoT
 -----------------------------------
 
-As soon as the container findes the "ibm.config" file, it will automatically start sending data to the IBM Watson IoT Cloud.
+As soon as the container finds the "ibm.config" file, it will automatically start sending data to the IBM Watson IoT Cloud.
 
    .. figure:: /_static/tutorials/ibm/conected.png
       :alt: Connecting with IBM Watson IoT
@@ -355,7 +355,7 @@ Click on "Next"
 
       Create Line chart Card
 
-Select the chart size you prefere.
+Select the chart size you prefer.
 
    .. figure:: /_static/tutorials/ibm/chartsize.png
       :alt: Chart Size
@@ -397,5 +397,6 @@ Now you can see your device CPU usage live in the chart.
 
 .. _fioctl:
    https://github.com/foundriesio/fioctl
+
 
 

@@ -1,9 +1,9 @@
 .. _ref-aws:
 
-How to Get Started with AWS IoT Container
-=========================================
+How to Get Started with AWS IoT Containers
+==========================================
 
-In this tutorial you will be guided through the process of setting up your device - in this case a Raspberry Pi 3 - to AWS IoT Core. By using the AWS IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it data - like CPU and RAM usage - will be flowing through the AWS IoT Core, allowing you to easily integrate your device data with any AWS Service - including Dashboard.
+In this tutorial you will be guided through the process of setting up your device. In this case a Raspberry Pi 3 - to AWS IoT Core. By using the AWS IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the AWS IoT Core, allowing you to easily integrate your device data with any AWS Service - including Dashboard.
 
 This tutorial will additionally cover how to create and deploy AWS’s just-in-time provisioning (JITP), which is the infrastructure needed for your device to be provisioned correctly the first time it attempts to connect to AWS IoT Core. After that, your container will automatically provision the device and send important system information to AWS IoT.
 
@@ -220,7 +220,7 @@ Download and install the AWS Command Line Interface (CLI)::
 Configure AWS CLI
 -----------------
 
-Configure the AWS CLI to connect to your AWS account by adding the information we saved during the preview step::
+Configure the AWS CLI to connect to your AWS account by adding the information we saved during the previews steps::
 
       # Ubuntu Host Machine
       $ aws configure
@@ -258,7 +258,7 @@ Use the private key from the key pair to generate a CA certificate. You may leav
 Verification code
 -----------------
 
-We will need a verification code to use during the process of generating the verification certificate. To do this run the following command::
+We will need a verification code to use during the process of generating the verification certificate. To do this run the following commands::
 
       # Ubuntu Host Machine
       $ aws iot get-registration-code
@@ -436,13 +436,13 @@ Enabling the App on your Device
 
 In the following steps we assume you have your Raspberry Pi 3 with Foundries.io’s LMP running and correctly registered to your Factory.
 
-With `fioctl`_, we will enable the application "aws-iotsdk" on your device registed with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
+With `fioctl`_, we will enable the application "aws-iotsdk" on your device registered with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
 
  # Ubuntu Host Machine
  # Configure the device to run the "aws-iotsdk" app
  $ fioctl devices config updates raspberrypi3 --apps aws-iotsdk --tags master
 
-On your raspberry pi, you should receive the update soon. You can watch the logs by running the following commands::
+On your Rraspberry Ppi, you should receive the update soon. You can watch the logs by running the following commands::
 
  # Ubuntu Host Machine
  $ ssh fio@raspberrypi3-64.local
@@ -457,8 +457,8 @@ On your raspberry pi, you should receive the update soon. You can watch the logs
 
     Terminal Updating
 
-Debuging the AWS Container APP
-------------------------------
+Debugging the AWS Container APP
+-------------------------------
 
 In your Raspberry Pi 3 you can check the running container and with the container ID, check the container logs::
 
@@ -592,5 +592,4 @@ After your push is complete a new build will be started. After the build is fini
 
 .. _fioctl:
    https://github.com/foundriesio/fioctl
-
 
