@@ -16,6 +16,11 @@ free on our supported devices, as well as private, customer-owned Factories.
    Foundries.io <https://foundries.io>
 
 .. toctree::
+   :maxdepth: 1
+   :caption: Getting started
+   :name: sec-learn
+
+.. toctree::
    :maxdepth: 2
    :caption: Tutorials
 
