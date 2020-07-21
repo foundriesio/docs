@@ -21,6 +21,7 @@ free on our supported devices, as well as private, customer-owned Factories.
    :name: sec-learn
 
    getting-started/signup/index
+   getting-started/git-config/index
 
 .. toctree::
    :maxdepth: 2
