@@ -16,19 +16,23 @@ example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
  
    git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n YOUR_TOKEN | base64 -w0)"
 
-You can verify that this has been done successfully by 'listing' your config.
+You can verify that this has been successful by attempting to clone a repository
+from your FoundriesFactory. As an example, you can clone your ci-scripts
+directory. 
+
+Replace ``<factory>`` with your FoundriesFactory name.
 
 .. code-block:: console
+ 
+   git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
 
-   git config --list
-
-This will show you the values currently set for your global git configuration.
-You should see ``source.foundries.io`` referenced like this in the output.
-
-.. code-block:: console
-
-   http.https://source.foundries.io.extraheader=Authorization: basic SllOTVlRMGtId1NERDZUWmhVRHhlZmEyOTYxZG13ZTFwQlZRYjl2dg==
+.. tip::
+   
+   You can also use ``git config --list`` to show you the current state of the
+   global git configuration, in which ``source.foundries.io`` should be referenced
+   along with your access token, represented as a base64 string.
 
 .. todo::
    
-   **git-config** add :ref: to 'FoundriesFactory', 'access token', 'account creation' when pages are available
+   **git-config** add :ref: to 'FoundriesFactory', 'access token', 'account
+   creation', 'ci scripts' when pages are available
