@@ -1,0 +1,38 @@
+.. _ref-git-config:
+
+Configuring Git
+===============
+
+Pushing to the git repositories in your FoundriesFactory is as simple as
+configuring git on your personal machine to use the access token you generated
+as part of your account creation. Once configured, ``git`` will know when are
+connecting to ``source.foundries.io`` and will use this token to authenticate
+you with our git server.
+
+Replace ``YOUR_TOKEN`` in the following command with your access token. An
+example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
+
+.. code-block:: console
+ 
+   git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n YOUR_TOKEN | base64 -w0)"
+
+You can verify that this has been successful by attempting to clone a repository
+from your FoundriesFactory. As an example, you can clone your ci-scripts
+directory. 
+
+Replace ``<factory>`` with your FoundriesFactory name.
+
+.. code-block:: console
+ 
+   git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
+
+.. tip::
+   
+   You can also use ``git config --list`` to show you the current state of the
+   global git configuration, in which ``source.foundries.io`` should be referenced
+   along with your access token, represented as a base64 string.
+
+.. todo::
+   
+   **git-config** add :ref: to 'FoundriesFactory', 'access token', 'account
+   creation', 'ci scripts' when pages are available

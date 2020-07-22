@@ -14,6 +14,13 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    reference-manual/index
    foundries.io <https://foundries.io>
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting started
+   :name: sec-learn
+   
+   getting-started/git-config/index
+
 .. ifconfig:: todo_include_todos is True
 
    **Documentation-wide TODO List**
