@@ -15,9 +15,13 @@ compose apps::
   git clone https://source.foundries.io/factories/<factory>/ci-scripts
 
 Edit ``factory-config.yml`` so that ``containers.params`` includes
-``DOCKER_COMPOSE_APP: "1"``. For example::
+``DOCKER_COMPOSE_APP: "1"`` for both build types. For example::
 
   containers:
+    params:
+      DOCKER_COMPOSE_APP: "1"
+
+  lmp:
     params:
       DOCKER_COMPOSE_APP: "1"
 
@@ -37,12 +41,12 @@ Converting Existing Devices
 
 Existing devices can be converted to use compose apps using fioctl::
 
-  fioctl devices config updates --compose-apps
+  fioctl devices config updates --compose-apps <device-name>
 
 If the device is using persistent volume(s) relative to its installed location
 then setting `compose-dir` can be used to not lose data::
 
-  fioctl devices config updates --compose-apps --compose-dir /var/sota/docker-apps
+  fioctl devices config updates --compose-apps --compose-dir /var/sota/docker-apps <device-name>
 
 Completing The Migration
 ------------------------
