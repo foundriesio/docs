@@ -19,6 +19,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    :caption: Getting started
    :name: sec-learn
    
+   getting-started/signup/index
    getting-started/git-config/index
 
 .. ifconfig:: todo_include_todos is True
