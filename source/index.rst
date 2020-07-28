@@ -20,6 +20,8 @@ free on our supported devices, as well as private, customer-owned Factories.
    :caption: Getting started
    :name: sec-learn
 
+   getting-started/signup/index
+
 .. toctree::
    :maxdepth: 2
    :caption: Tutorials
