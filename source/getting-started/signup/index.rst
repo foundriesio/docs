@@ -17,10 +17,10 @@ To create a FoundriesFactory, you first need to `create an account <signup_>`_ w
 Create a Factory |:factory:|
 ============================
 
-:ref:`ref-factory` is the birthplace of your personal embedded OS. When you
-create a factory, we immediately bootstrap the CI build process for a vanilla,
-unmodified :ref:`ref-linux` OS Image, which is from this point onwards, **owned
-by you**. 
+:ref:`ref-factory` is the birthplace of your embedded OS, tailored specifically
+for your product. When you create a factory, we immediately bootstrap the CI
+build process for a vanilla, unmodified :ref:`ref-linux` OS Image, which is from
+this point onwards, **owned by you**. 
 
 When your account is created, it is not associated with any factories. 
 
