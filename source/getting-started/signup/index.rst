@@ -32,6 +32,11 @@ Create one by clicking **Create Factory**
 
    Your journey begins empty handed
 
+.. note::
+   
+   |:closed_lock_with_key:| Upon factory creation you will be sent an email containing your
+   :ref:`ref-offline-keys`. Read this documentation for information on key rotation.
+
 Select Your Platform |:desktop:|
 ################################
 
