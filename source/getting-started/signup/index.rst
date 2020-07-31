@@ -72,6 +72,12 @@ This section will become more useful as you begin to build your application and
 declare new targets for us to build. You can learn about creating targets in the
 :ref:`ref-advanced-tagging` section
 
+.. note:: 
+
+   |:pencil:| If you'd like to learn, `we wrote a blog
+   <https://foundries.io/insights/2020/05/14/whats-a-target/>`_ about what targets
+   are and why we made them the way they are. 
+
 .. figure:: /_static/signup/build.png
    :width: 900
    :align: center
@@ -84,3 +90,5 @@ declare new targets for us to build. You can learn about creating targets in the
 
    |:books:| Read through the rest of this section and set up your development
    environment while you wait for us to build your OS from scratch. 
+
+.. _
