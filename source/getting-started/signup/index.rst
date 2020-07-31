@@ -82,7 +82,7 @@ declare new targets for us to build. You can learn about creating targets in the
    :width: 900
    :align: center
 
-.. note::
+.. warning::
    
    |:timer:| Bootstrapping your OS securely takes some time. Secure caching isn't simple,
    so your first build will take up to an hour to complete. Subsequent builds
