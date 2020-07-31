@@ -18,7 +18,7 @@ Create a Factory |:factory:|
 ============================
 
 :ref:`ref-factory` is the start of your embedded OS, tailored specifically
-for your product. When you create a factory, we immediately bootstrap the CI
+for your product. When you create a Factory, we immediately bootstrap the CI
 build process for a vanilla, unmodified :ref:`ref-linux` OS Image, which is from
 this point onward, **owned by you**. 
 
@@ -34,7 +34,7 @@ Create one by clicking **Create Factory**
 
 .. note::
    
-   |:closed_lock_with_key:| Upon factory creation you will be sent an email containing your
+   |:closed_lock_with_key:| Upon Factory creation you will be sent an email containing your
    :ref:`ref-offline-keys`. Read this documentation for information on key rotation.
 
 Select Your Platform |:desktop:|
@@ -54,7 +54,7 @@ provide QEMU_ images for ARM_ and RISC-V_ architectures.
 
    Your chosen platform determines what the initial value for the ``machines:``
    key will be for your first build. This key and its value can later be changed
-   via ``factory-config.yml`` in :ref:`ref-factory-definition`
+   via ``factory-config.yml`` in :ref:`ref-Factory-definition`
 
 .. _QEMU: https://www.qemu.org/
 .. _ARM: https://www.arm.com/
