@@ -56,6 +56,26 @@ provide QEMU_ images for ARM_ and RISC-V_ architectures.
    key will be for your first build. This key and its value can later be changed
    via ``factory-config.yml`` in :ref:`ref-factory-definition`
 
+.. _QEMU: https://www.qemu.org/
+.. _ARM: https://www.arm.com/
+.. _RISC-V: https://riscv.org/
+
+
+Watch Your Build |:hammer_and_wrench:|
+######################################
+
+Once you have created your Factory, an initial build of the the LmP will be
+generated for you to build your product on top of. You can monitor the progress
+of this initial build in the **Targets** tab of your Factory. 
+
+This section will become more useful as you begin to build your application and
+declare new targets for us to build. You can learn about creating targets in the
+:ref:`ref-advanced-tagging` section
+
+.. figure:: /_static/signup/build.png
+   :width: 900
+   :align: center
+
 .. note::
    
    |:timer:| Bootstrapping your OS securely takes some time. Secure caching isn't simple,
@@ -64,8 +84,3 @@ provide QEMU_ images for ARM_ and RISC-V_ architectures.
 
    |:books:| Read through the rest of this section and set up your development
    environment while you wait for us to build your OS from scratch. 
-
-.. _QEMU: https://www.qemu.org/
-.. _ARM: https://www.arm.com/
-.. _RISC-V: https://riscv.org/
-
