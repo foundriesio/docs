@@ -40,6 +40,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    vpn
    aktualizr-lite
    secure-boot
+   secure-element.050
    container-secrets
    factory-definition
    configuration-management
