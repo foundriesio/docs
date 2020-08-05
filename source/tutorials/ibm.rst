@@ -262,7 +262,7 @@ ibm.config::
  WIOTP_IDENTITY_DEVICEID='0001'
  WIOTP_AUTH_TOKEN=XXXXXXXXXX
 
-Use fioclt to send the files to the device safely::
+Use fioctl to send the files to the device safely::
 
  # Ubuntu Host Machine
  $ fioctl devices config set homeassistant32 ibm.config="$(cat ibm.config)""
