@@ -368,7 +368,7 @@ google.config::
  PROJECT_ID=foundries-282100
  REGISTRY_ID=foundries-registry
 
-Use fioclt to send the files to the device safely::
+Use fioctl to send the files to the device safely::
 
  # Ubuntu Host Machine
  $ fioctl devices config set homeassistant32 google.config="$(cat google.config)" google.json="$(cat google.json)"
