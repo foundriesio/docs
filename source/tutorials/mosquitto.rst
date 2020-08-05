@@ -60,7 +60,7 @@ Cloning your Repository
 
 There are many application examples in the `extra-containers`_ repository but each FoundriesFactory user can decide which application to enable.
 
-Download your factory container.git repository and follow the commands to copy the Mosquito app from extra-containers::
+Download your factory container.git repository and follow the commands to copy the Mosquitto app from extra-containers::
 
  # Ubuntu Host Machine
  $ mkdir getstartedvideo
