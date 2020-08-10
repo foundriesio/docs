@@ -5,6 +5,10 @@ aktualizr-lite
 
 The default OTA client shipped with the Linux microPlatform is ``aktualizr-lite``. This client is a build variant of the Aktualizr project. It is targeting users who wish to have the security aspects of TUF but do not want the complexity of Uptane.
 
+  .. figure:: /_static/aktualizr-diagram.png
+     :align: center
+     :width: 8in
+
 There are two modes ``aktualizr-lite`` supports.
 
 Daemon Mode (Default)
