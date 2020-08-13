@@ -122,8 +122,8 @@ this scenario containers.git layout might look like::
   services:
     app:
       image: hub.foundries.io/<factory>/simple-app:latest
-    environment:
-      FROM_COMPOSE: "this came from docker-compose.yml"
+      environment:
+        FROM_COMPOSE: "this came from docker-compose.yml"
 
 ::
 
