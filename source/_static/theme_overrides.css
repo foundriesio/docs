@@ -12,6 +12,10 @@
    }
 }
 
+.wy-nav-content {
+    max-width: 769px !important;
+}
+
 /* https://rackerlabs.github.io/docs-rackspace/tools/rtd-tables.html */
 /* Center the page and limit width to 1100px */
 @media only screen and (min-width: 769px) {
@@ -19,21 +23,21 @@
         /* Center the page's main pane on wide displays for better readability
  * */
         /* `max-width` is (navbar width + main pane width) */
-        max-width: 1100px;
-        margin: 0 auto;
+        max-width: 1100px !important;
+        margin: 0 auto !important;
     }
 }
 
 @media only screen and (min-width: 769px) {
     .wy-nav-side {
         /* Required to center the page on wide displays */
-        left: inherit;
+        left: inherit !important;
     }
 
 }@media only screen and (min-width: 769px) {
     .rst-versions {
         /* Required to center the page on wide displays */
-        left: inherit;
+        left: inherit !important;
     }
 }
 
