@@ -252,8 +252,6 @@ Example Configuration
 .. _launchpad: https://launchpad.net/~fio-maintainers/+archive/ubuntu/ppa
 .. _Github Releases: https://github.com/foundriesio/fioctl/releases
 
-.. todo:: Document token creation and :ref: it in Configuration section. Also required for **git-config** 
-
 .. todo:: Document M2M Services
 
 .. todo:: Create Brew, Chocolatey, PPA packages for installation
