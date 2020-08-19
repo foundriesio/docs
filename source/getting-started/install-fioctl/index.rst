@@ -244,27 +244,6 @@ Example Configuration
      token_type: bearer
    factory: stetson 
 
-Most commands require a "factory" argument::
-
-  # List all devices in the Factory with the name 'stetson'
-  fioctl devices list -f stetson
-
-.. note:: 
-   |:thought_balloon:| If you have only one Factory associated with your
-   account, :ref:`ref-fioctl` will default to it for all commands. In this case,
-   you do not have to set the ``factory:`` key in your config.
-
-By default, the :ref:`ref-fioctl` configuration is blank and contains no value
-for the ``factory:`` key.  This can be set to avoid having to specify ``-f
-<factory>`` each time.
-
-You can set the ``factory:`` key to match the name of your preferred Factory.
-Place the following in your ``fioctl.yaml``.
-
-.. code-block:: shell    
-                                       
-   factory: <The name of your Factory>
-
 .. _AUR Package: https://aur.archlinux.org/packages/fioctl-bin
 .. _Chocolatey: https://chocolatey.org/install
 .. _WSL: https://docs.microsoft.com/en-us/windows/wsl/install-win10
