@@ -82,3 +82,106 @@ Via Package Manager (Recommended)
           cd fioctl-bin
           makepkg -si
 
+Manual Installation
+^^^^^^^^^^^^^^^^^^^
+
+We use `Github Releases`_ to distribute static golang binaries. If you don't have a
+package manager, are not on a supported distribution, or would prefer to install
+manually, you can refer to this section for manual installation instructions.
+
+.. tabs::
+
+   .. group-tab:: Linux
+      
+      1. Download a Linux binary from the `Github Releases`_ page.
+      2. Put it in a folder of your choosing.
+      3. Add that folder to your ``$PATH``. e.g ``~/.bashrc`` for bash or
+         ``~/.zshrc`` for zsh. 
+
+         An example path string if installing to the home directory would look
+         like this. ``PATH="/home/stetson/fio/bin/:$PATH"``
+ 
+      We provide a script that implements those steps below. It assumes you want
+      to use a folder in your your home directory. Replace ``INSTALL_DIR`` with the
+      directory in your ``$HOME`` that you'd like to put your Foundries.io application
+      into. Additionally, you can change ``FIOCTL_VERSION`` to set the version of
+      :ref:`ref-fioctl` you'd like to install. If you use this script as is,
+      :ref:`ref-fioctl` will be installed to ``~/fio/bin/fioctl``, and it will be
+      added to your ``$PATH`` as long as you are using either ``zsh`` or ``bash`` as
+      your shell.
+
+        .. code-block:: shell
+
+           INSTALL_DIR=fio
+           FIOCTL_VERSION="0.10"
+           
+           mkdir -p ~/$INSTALL_DIR/bin
+           wget https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-linux-amd64 -O ~/$INSTALL_DIR/bin/fioctl
+           chmod +x $INSTALL_DIR/bin/fioctl
+           
+           if [ $SHELL == '/bin/bash' ]
+           then
+             echo "PATH=\"$HOME/$INSTALL_DIR/bin/:\$PATH\"" >> ~/.bashrc
+             source ~/.bashrc
+           elif [ $SHELL == '/bin/zsh' ]
+           then
+             echo "PATH=\"$HOME/$INSTALL_DIR/bin/:\$PATH\"" >> ~/.zshrc
+             source ~/.zshrc
+           fi                  
+
+   .. group-tab:: macOS
+
+      1. Download a Darwin binary from the `Github Releases`_ page.
+      2. Put it in a folder of your choosing.
+      3. Add that folder to your ``$PATH``. e.g ``~/.bashrc`` for bash or
+         ``~/.zshrc`` for zsh. 
+
+	 An example path string if installing to the home directory would look
+         like this. ``PATH="/Users/stetson/fio/bin/:$PATH"``
+   
+      We provide a script that implements those steps below. It assumes you want
+      to use a folder in your your home directory. Replace ``INSTALL_DIR`` with the
+      directory in your ``$HOME`` that you'd like to put your Foundries.io application
+      into. Additionally, you can change ``FIOCTL_VERSION`` to set the version of
+      :ref:`ref-fioctl` you'd like to install. If you use this script as is, fioctl will
+      be installed to ``~/fio/bin/fioctl``, and it will be added to your ``$PATH`` as
+      long as you are using either ``zsh`` or ``bash`` as your shells.
+
+        .. code-block:: shell
+
+           INSTALL_DIR=fio
+           FIOCTL_VERSION="0.10"
+           
+           mkdir -p ~/$INSTALL_DIR/bin
+           wget https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64 -O ~/$INSTALL_DIR/bin/fioctl
+           chmod +x $INSTALL_DIR/bin/fioctl
+           
+           if [ $SHELL == '/bin/bash' ]
+           then
+             echo "PATH=\"$HOME/$INSTALL_DIR/bin/:\$PATH\"" >> ~/.bashrc
+             source ~/.bashrc
+           elif [ $SHELL == '/bin/zsh' ]
+           then
+             echo "PATH=\"$HOME/$INSTALL_DIR/bin/:\$PATH\"" >> ~/.zshrc
+             source ~/.zshrc
+           fi     
+
+   .. group-tab:: Windows
+      
+      1. Download a Windows binary from the `Github Releases`_ page.
+      2. Put it in a folder of your choosing and rename it to ``fioctl.exe``
+      3. Press ``Win + R`` and type ``SystemPropertiesAdvanced``
+      4. Press ``enter`` or click ``OK``.
+      5. Click "Environment Variables..." in the resultant menu..
+      6. Click the ``Path`` **system** variable, then click ``Edit...``
+      7. Click ``New`` in the "Edit environment variable" menu.
+      8. Enter the path to the folder in which you have placed :ref:`ref-fioctl`. 
+
+         An example path string if installing to a folder on the desktop would
+         look like this.
+
+         ``C:\Users\Stetson\Desktop\fio\bin``
+
+      You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
+      ``fioctl``.
+
