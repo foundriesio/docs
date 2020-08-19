@@ -205,3 +205,29 @@ authentication process.
    you would with SSH keys. This way you can revoke tokens for individual systems,
    should they be compromised.
 
+Configuration
+-------------
+
+You can configure :ref:`ref-fioctl` via ``fioctl.yaml`` which can be found on
+each platform here.
+
+.. tabs::
+
+   .. group-tab:: Linux
+ 
+      .. code-block:: 
+
+         ~/.config/fioctl.yaml
+
+   .. group-tab:: macOS
+
+      .. code-block:: 
+
+         ~/.config/fioctl.yaml
+
+   .. group-tab:: Windows
+
+      .. code-block:: 
+      
+         C:\Windows\Users\<Username>\.config\fioctl.yaml
+
