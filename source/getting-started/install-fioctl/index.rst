@@ -185,3 +185,23 @@ manually, you can refer to this section for manual installation instructions.
       You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
       ``fioctl``.
 
+Post-Install
+^^^^^^^^^^^^
+Now that :ref:`ref-fioctl` is installed, you must authenticate with our backend
+before you're able to use it. This requires you to generate an API token for your
+client, which acts as authentication for all of our machine-to-machine (M2M
+Services)::
+
+  fioctl login
+
+:ref:`ref-fioctl` will now ask for your API token and walk you through the
+authentication process.
+
+.. tip::
+ 
+   |:tickets:| We recommend creating a new API token for each device you plan to
+   use our tools with. For example, if you intend to develop on multiple systems
+   such as a laptop and a desktop, you should create a new token for each, just as
+   you would with SSH keys. This way you can revoke tokens for individual systems,
+   should they be compromised.
+
