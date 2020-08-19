@@ -22,6 +22,7 @@ free on our supported devices, as well as private, customer-owned Factories.
 
    getting-started/signup/index
    getting-started/git-config/index
+   getting-started/install-fioctl/index
 
 .. toctree::
    :maxdepth: 2
