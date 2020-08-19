@@ -267,3 +267,8 @@ Place the following in your ``fioctl.yaml``.
                                        
    factory: <The name of your Factory>
 
+.. _AUR Package: https://aur.archlinux.org/packages/fioctl-bin
+.. _Chocolatey: https://chocolatey.org/install
+.. _WSL: https://docs.microsoft.com/en-us/windows/wsl/install-win10
+.. _launchpad: https://launchpad.net/~fio-maintainers/+archive/ubuntu/ppa
+.. _Github Releases: https://github.com/foundriesio/fioctl/releases
