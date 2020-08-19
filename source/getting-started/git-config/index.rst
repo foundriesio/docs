@@ -9,6 +9,8 @@ as part of your account creation. Once configured, ``git`` will know when are
 connecting to ``source.foundries.io`` and will use this token to authenticate
 you with our git server.
 
+.. note:: |:tickets:| Tokens can be generated at https://app.foundries.io/settings/tokens
+
 Replace ``YOUR_TOKEN`` in the following command with your access token. An
 example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
 
