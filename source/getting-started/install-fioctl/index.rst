@@ -195,6 +195,8 @@ credentials for interacting with Factory APIs::
 :ref:`ref-fioctl` will now ask for your API token and walk you through the
 authentication process.
 
+.. note:: |:tickets:| Tokens can be generated at https://app.foundries.io/settings/tokens
+
 .. tip::
  
    |:tickets:| We recommend creating a new API token for each device you plan to
