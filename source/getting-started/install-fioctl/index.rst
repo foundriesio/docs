@@ -18,8 +18,8 @@ Foundries.
 Installation
 ------------
 
-Via Package Manager (Recommended)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Via Package Manager 
+^^^^^^^^^^^^^^^^^^^
 
 .. tabs::
 
