@@ -231,3 +231,18 @@ each platform here.
       
          C:\Windows\Users\<Username>\.config\fioctl.yaml
 
+Example Configuration
+^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: yaml
+
+   clientcredentials:
+     access_token: A36Op7B1pQJEJFnCvuhMhPMuw7mhFbVfRpvz7OpI
+     client_id: fioid_aLAMg5iLnaCaokT3JZI09K5dHpPGVsyW
+     client_secret: fiosc_cDgaUW0WGwrUkfnLlgGxKia2Zw6kzgEcpwxvbiQA2a
+     created: "2020-08-13T02:32:03Z"
+     expires_in: 604800
+     refresh_token: 8MhqbvvGeItWO3pZDiXMrncE0oInTNvl5aOYEQMt
+     token_type: bearer
+   factory: stetson 
+
