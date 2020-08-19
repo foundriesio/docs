@@ -187,9 +187,8 @@ manually, you can refer to this section for manual installation instructions.
 Post-Install
 ^^^^^^^^^^^^
 Now that :ref:`ref-fioctl` is installed, you must authenticate with our backend
-before you're able to use it. This requires you to generate an API token for your
-client, which acts as authentication for all of our machine-to-machine (M2M
-Services)::
+before you're able to use it. This requires you to generate Oauth2 application
+credentials for interacting with Factory APIs::
 
   fioctl login
 
