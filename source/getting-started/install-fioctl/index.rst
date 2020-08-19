@@ -14,3 +14,7 @@ Foundries.
 - :ref:`Device configuration <ref-fioconfig>`
 - :ref:`OTA updates <ref-aktualizr-lite>`
 - :ref:`CI Secrets <ref-container-secrets>`
+
+Installation
+------------
+
