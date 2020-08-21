@@ -208,43 +208,9 @@ authentication process.
 Configuration
 -------------
 
-You can configure :ref:`ref-fioctl` via ``fioctl.yaml`` which can be found on
-each platform here.
-
-.. tabs::
-
-   .. group-tab:: Linux
- 
-      .. code-block:: 
-
-         ~/.config/fioctl.yaml
-
-   .. group-tab:: macOS
-
-      .. code-block:: 
-
-         ~/.config/fioctl.yaml
-
-   .. group-tab:: Windows
-
-      .. code-block:: 
-      
-         C:\Windows\Users\<Username>\.config\fioctl.yaml
-
-Example Configuration
-^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: yaml
-
-   clientcredentials:
-     access_token: A36Op7B1pQJEJFnCvuhMhPMuw7mhFbVfRpvz7OpI
-     client_id: fioid_aLAMg5iLnaCaokT3JZI09K5dHpPGVsyW
-     client_secret: fiosc_cDgaUW0WGwrUkfnLlgGxKia2Zw6kzgEcpwxvbiQA2a
-     created: "2020-08-13T02:32:03Z"
-     expires_in: 604800
-     refresh_token: 8MhqbvvGeItWO3pZDiXMrncE0oInTNvl5aOYEQMt
-     token_type: bearer
-   factory: stetson 
+.. note:: 
+   |:books:| Refer to the :ref:`ref-fioctl` section of the documentation
+   to learn more about configuration.
 
 .. _AUR Package: https://aur.archlinux.org/packages/fioctl-bin
 .. _Chocolatey: https://chocolatey.org/install
