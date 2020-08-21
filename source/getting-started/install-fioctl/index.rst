@@ -144,7 +144,7 @@ manually, you can refer to this section for manual installation instructions.
       into. Additionally, you can change ``FIOCTL_VERSION`` to set the version of
       :ref:`ref-fioctl` you'd like to install. If you use this script as is, fioctl will
       be installed to ``~/fio/bin/fioctl``, and it will be added to your ``$PATH`` as
-      long as you are using either ``zsh`` or ``bash`` as your shells.
+      long as you are using either ``zsh`` or ``bash`` as your shell.
 
         .. code-block:: shell
 
