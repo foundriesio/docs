@@ -105,7 +105,7 @@ this scenario containers.git layout might look like::
   FROM alpine
   RUN apk --no-cache add python3
   COPY ./app.py /usr/local/bin
-  CMD ["/usr/local/bin/app.py"]
+  CMD ["python3", "/usr/local/bin/app.py"]
 
 ::
 
