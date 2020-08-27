@@ -32,6 +32,7 @@ IPv6/IPv4 routing and MQTT message brokering.
    linux-layers
    linux-repo
    linux-net-debug
+   fioctl/fioctl
    device-tags
    advanced-tagging
    containers
