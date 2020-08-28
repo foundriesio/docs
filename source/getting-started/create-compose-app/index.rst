@@ -53,3 +53,40 @@ Device Configuration
 6. Configure the device to run the ``shellhttpd`` app::
    
      fioctl devices config updates <device> --apps shellhttpd
+
+About Targets
+-------------
+
+You can see the available targets your Factory has produced::
+
+  fioctl targets list
+
+**CLI Output**::
+  
+  VERSION  TAGS    APPS        HARDWARE IDs
+  -------  ----    ----        ------------
+  2        devel               raspberrypi3-64
+  3        master              raspberrypi3-64
+  4        master  shellhttpd  raspberrypi3-64
+
+details about target can be printed by passing its version number to the
+``show`` subcommand::
+ 
+  fioctl targets show 4
+
+**CLI Output**::
+
+  Tags:   master
+  CI:     https://ci.foundries.io/projects/stetson/lmp/builds/4/
+  Source:
+          https://source.foundries.io/factories/stetson/lmp-manifest.git/commit/?id=2aaebc4b16c1027c9aae167d6178a8f248027a73
+          https://source.foundries.io/factories/stetson/meta-subscriber-overrides.git/commit/?id=19cbbe7b890eafed4d88e1fb13d2d61ecef8f3e5
+          https://source.foundries.io/factories/stetson/containers.git/commit/?id=6a2ef8d1dbab0db634c52950ae4a7c18494021b2
+  
+  TARGET NAME            OSTREE HASH - SHA256
+  -----------            --------------------
+  raspberrypi3-64-lmp-4  1b0df36794efc32f1c569c8d61f115b04c4d51caa2fa99c17ec85384ae06518d
+  
+  DOCKER APP  VERSION
+  ----------  -------
+  shellhttpd  shellhttpd.dockerapp-4  
