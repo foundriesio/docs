@@ -90,3 +90,17 @@ details about target can be printed by passing its version number to the
   DOCKER APP  VERSION
   ----------  -------
   shellhttpd  shellhttpd.dockerapp-4  
+ 
+.. todo::
+   This section links to the flash-target section, yet to be submitted, which
+   details how to install the LmP on a device, it makes the assumption that the
+   device is registered
+
+.. todo::
+   reference unreferenced keywords  
+
+.. todo::
+   add :ref: to
+   https://docs.foundries.io/latest/customer-factory/configuring.html in
+   'configuration', will have to pull this in from master.
+
