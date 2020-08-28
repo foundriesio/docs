@@ -36,3 +36,20 @@ Default Example
    built by our CI system. Devices that are registered to your Factory will be
    able to see this target and conditionally update to it, depending on their
    device configuration.
+
+Device Configuration
+--------------------
+
+5. Determine the device you want to configure to use ``shellhttpd``::
+
+     fioctl devices list
+
+   your output should look like this::
+
+     NAME  FACTORY  OWNER           TARGET                  STATUS  APPS        UP TO DATE
+     ----  -------  -----           ------                  ------  ----        ----------
+     gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK      simple-app  true
+
+6. Configure the device to run the ``shellhttpd`` app::
+   
+     fioctl devices config updates <device> --apps shellhttpd
