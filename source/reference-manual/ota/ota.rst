@@ -13,3 +13,4 @@ Over the Air Updates
    device-tags
    advanced-tagging
    configuring
+   configuration-management
