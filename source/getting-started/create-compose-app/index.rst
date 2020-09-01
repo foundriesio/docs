@@ -35,7 +35,7 @@ Default Example
    When changes are made to ``containers.git`` in your Factory sources, a new target is
    built by our CI system. Devices that are registered to your Factory will be
    able to see this target and conditionally update to it, depending on their
-   device configuration.
+   :ref:`device configuration <ref-configuring-devices>`.
 
 Device Configuration
 --------------------
