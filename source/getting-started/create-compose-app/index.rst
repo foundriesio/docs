@@ -32,7 +32,7 @@ Default Example
 
 4. :ref:`ref-watch-build`
 
-   When changes are made to containers.git in your Factory sources, a new target is
+   When changes are made to ``containers.git`` in your Factory sources, a new target is
    built by our CI system. Devices that are registered to your Factory will be
    able to see this target and conditionally update to it, depending on their
    device configuration.
