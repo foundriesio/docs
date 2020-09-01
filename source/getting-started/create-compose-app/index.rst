@@ -40,7 +40,10 @@ Default Example
 Device Configuration
 --------------------
 
-5. Determine the device you want to configure to use ``shellhttpd``::
+Now that a target is being built, we want to tell our device(s) to update to
+this new target. This is done using :ref:`ref-fioctl`.
+
+1. Determine the device you want to configure to use ``shellhttpd``::
 
      fioctl devices list
 
@@ -50,7 +53,7 @@ Device Configuration
      ----  -------  -----           ------                  ------  ----        ----------
      gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK      simple-app  true
 
-6. Configure the device to run the ``shellhttpd`` app::
+2. Configure the device to run the ``shellhttpd`` app::
    
      fioctl devices config updates <device> --apps shellhttpd
 
