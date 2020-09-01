@@ -1,3 +1,5 @@
+.. _ref-configuring-devices:
+
 Configuring Devices
 ===================
 
