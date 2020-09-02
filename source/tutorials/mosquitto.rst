@@ -97,7 +97,7 @@ Enabling the App on your Device
 
 In the following steps we assume you have your Raspberry Pi 3 with Foundries.io’s LmP running and correctly registered to your Factory.
 
-With `fioctl`_, we will enable the application "mosquitto" on your device registered with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
+With `fioctl`_, we will enable the application "mosquitto" on your device registered with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`ref-configuring-devices`::
 
  # Ubuntu Host Machine
  # Configure the device to run the "mosquitto" app
