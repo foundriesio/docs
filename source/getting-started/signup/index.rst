@@ -14,7 +14,7 @@ To create a FoundriesFactory, you first need to `create an account <signup_>`_ w
 
 .. _signup: https://app.foundries.io/signup
 
-Create a Factory |:factory:|
+Create a Factory |:gear:|
 ============================
 
 :ref:`ref-factory` is the start of your embedded OS, tailored specifically
