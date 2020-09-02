@@ -3,7 +3,7 @@
 How to Get Started with AWS IoT Containers
 ==========================================
 
-In this tutorial you will be guided through the process of setting up your device. In this case a Raspberry Pi 3 - to AWS IoT Core. By using the AWS IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the AWS IoT Core, allowing you to easily integrate your device data with any AWS Service - including Dashboard.
+In this tutorial you will be guided through the process of setting up your device. In this case a Raspberry Pi 3 - to AWS IoT Core. By using the AWS IoT container available on the `extra-containers`_ repo, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the AWS IoT Core, allowing you to easily integrate your device data with any AWS Service - including Dashboard.
 
 This tutorial will additionally cover how to create and deploy AWS’s just-in-time provisioning (JITP), which is the infrastructure needed for your device to be provisioned correctly the first time it attempts to connect to AWS IoT Core. After that, your container will automatically provision the device and send important system information to AWS IoT.
 
@@ -572,7 +572,7 @@ After your push is complete a new build will be started. After the build is fini
 
       New data
 
-.. _Foundries.io Docker App Store:
+.. _extra-containers:
    https://github.com/foundriesio/extra-containers
 
 .. _AWS Account:

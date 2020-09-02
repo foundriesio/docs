@@ -58,9 +58,9 @@ FoundriesFactory
 Cloning your Repository
 -----------------------
 
-There are many application examples in `Foundries.io Docker App Store`_ repositories but each FoundriesFactory user can decide which application to enable.
+There are many application examples in the `extra-containers`_ repository but each FoundriesFactory user can decide which application to enable.
 
-Download your factory container.git repository and follow the commands to copy the Mosquito app from extra-containers::
+Download your factory container.git repository and follow the commands to copy the Mosquitto app from extra-containers::
 
  # Ubuntu Host Machine
  $ mkdir getstartedvideo
@@ -218,7 +218,7 @@ It is also possible to connect external devices. As an example, I connected my M
 
 The Mosquitto broker could be used not just to communicate between different containers but it can also be used by external devices such as the smart-heaters mentioned earlier in the tutorial. Everything depends on how you structure your topics and who publishes/subscribes to each topic.
 
-.. _Foundries.io Docker App Store:
+.. _extra-containers:
    https://github.com/foundriesio/extra-containers
 
 .. _fioctl:

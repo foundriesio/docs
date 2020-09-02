@@ -3,7 +3,7 @@
 How to Get Started with Google IoT Containers
 =============================================
 
-In this tutorial you will be guided through the process of setting up your device - in this case a Raspberry Pi 3 - to Google IoT. By using the Google IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the Google IoT, allowing you to easily integrate your device data with any Google Service.
+In this tutorial you will be guided through the process of setting up your device - in this case a Raspberry Pi 3 - to Google IoT. By using the Google IoT container available on the `extra-containers`_ repo, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the Google IoT, allowing you to easily integrate your device data with any Google Service.
 
 This tutorial will additionally cover how to auto provision your device. In this way you don’t need to manually copy your public key and copy it to the Google IoT console. Once you install your app, you just load two config files over fioctl and the device will start to send important system information to Google IoT.
 In this tutorial we’re assuming that you already have an `Google Cloud IoT Core Account`_ and your Raspberry Pi 3 is already connected to your FoundriesFactory.
@@ -368,7 +368,7 @@ google.config::
  PROJECT_ID=foundries-282100
  REGISTRY_ID=foundries-registry
 
-Use fioclt to send the files to the device safely::
+Use fioctl to send the files to the device safely::
 
  # Ubuntu Host Machine
  $ fioctl devices config set homeassistant32 google.config="$(cat google.config)" google.json="$(cat google.json)"
@@ -427,7 +427,7 @@ Select your "Cloud Pub/Sub subscription" and Click on "Pull"
       Messages
 
 
-.. _Foundries.io Docker App Store:
+.. _extra-containers:
    https://github.com/foundriesio/extra-containers
 
 .. _Google Cloud IoT Core Account:

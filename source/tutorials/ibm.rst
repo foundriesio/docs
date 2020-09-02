@@ -3,7 +3,7 @@
 How to Get Started with IBM Watson IoT Containers
 =================================================
 
-In this tutorial you will be guided through the process of setting up your device. In this case a Raspberry Pi 3 - to IBM Watson IoT. By using the IBM IoT container available on the `Foundries.io Docker App Store`_, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the IBM Watson IoT, allowing you to easily integrate your device data with any IBM Service.
+In this tutorial you will be guided through the process of setting up your device. In this case a Raspberry Pi 3 - to IBM Watson IoT. By using the IBM IoT container available on the `extra-containers`_ repo, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the IBM Watson IoT, allowing you to easily integrate your device data with any IBM Service.
 
 Once you install your app, you just need to load one config file over fioctl and the device will start to send important system information to IBM Watson IoT.
 In this tutorial we’re assuming that you already have an `IBM Watson IoT Account`_ and your Raspberry Pi 3 is already connected to your FoundriesFactory.
@@ -262,7 +262,7 @@ ibm.config::
  WIOTP_IDENTITY_DEVICEID='0001'
  WIOTP_AUTH_TOKEN=XXXXXXXXXX
 
-Use fioclt to send the files to the device safely::
+Use fioctl to send the files to the device safely::
 
  # Ubuntu Host Machine
  $ fioctl devices config set homeassistant32 ibm.config="$(cat ibm.config)""
@@ -383,7 +383,7 @@ Now you can see your device CPU usage live in the chart.
       CPU Chart
 
 
-.. _Foundries.io Docker App Store:
+.. _extra-containers:
    https://github.com/foundriesio/extra-containers
 
 .. _IBM Watson IoT Account:
