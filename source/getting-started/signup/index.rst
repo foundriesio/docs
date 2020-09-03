@@ -14,7 +14,7 @@ To create a FoundriesFactory, you first need to `create an account <signup_>`_ w
 
 .. _signup: https://app.foundries.io/signup
 
-Create a Factory |:factory:|
+Create a Factory |:gear:|
 ============================
 
 :ref:`ref-factory` is the start of your embedded OS, tailored specifically
@@ -36,6 +36,8 @@ Create one by clicking **Create Factory**
    
    |:closed_lock_with_key:| Upon Factory creation you will be sent an email containing your
    :ref:`ref-offline-keys`. Read this documentation for information on key rotation.
+
+.. _ref-select-platform:
 
 Select Your Platform |:desktop:|
 ################################
@@ -60,6 +62,7 @@ provide QEMU_ images for ARM_ and RISC-V_ architectures.
 .. _ARM: https://www.arm.com/
 .. _RISC-V: https://riscv.org/
 
+.. _ref-watch-build:
 
 Watch Your Build |:hammer_and_wrench:|
 ######################################

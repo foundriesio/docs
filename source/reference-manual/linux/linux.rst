@@ -32,6 +32,7 @@ and maintained by Foundries.io on `GitHub`_.
    linux-layers
    linux-persistent-log
    linux-net-debug
+   linux-update
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org

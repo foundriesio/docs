@@ -19,14 +19,14 @@ example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
    git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n YOUR_TOKEN | base64 -w0)"
 
 You can verify that this has been successful by attempting to clone a repository
-from your FoundriesFactory. As an example, you can clone your ci-scripts
-directory. 
+from your FoundriesFactory. As an example, you can clone your ``containers.git``
+repo. 
 
 Replace ``<factory>`` with your FoundriesFactory name.
 
 .. code-block:: console
  
-   git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
+   git clone https://source.foundries.io/factories/<factory>/containers.git
 
 .. tip::
    

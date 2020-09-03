@@ -71,3 +71,39 @@ like::
 Remote access can be disabled from fioctl with::
 
   $ fioctl devices config wireguard <device> disable
+
+
+Troubleshooting
+---------------
+
+Wireguard uses UDP. This can be difficult to troubleshoot. The best place
+to start troubleshooting is by running ``wg show`` on both the server and
+device in question. This output will help show what might be wrong. A very
+common problem is when the VPN server has a firewall blocking traffic to
+the Wireguard port. This situation will show as::
+
+ # wg show on the device:
+ interface: factory-vpn0
+  public key: sn4oAhIsJXRdTToO0ofRJRhuC7ObPOJYU+s5n8bPPSA=
+  private key: (hidden)
+  listening port: 56213
+
+ peer: hn2eMQZNLn56UVnHK8GZGvGD1dSLky0hk7sevZ4piB4=
+  endpoint: 192.168.0.111:5555
+  allowed ips: 10.42.42.1/32
+  transfer: 0 B received, 18.36 KiB sent
+  persistent keepalive: every 25 seconds
+
+ # wg show on the server:
+ interface: factory
+  public key: hn2eMQZNLn56UVnHK8GZGvGD1dSLky0hk7sevZ4piB4=
+  private key: (hidden)
+  listening port: 5555
+
+ peer: sn4oAhIsJXRdTToO0ofRJRhuC7ObPOJYU+s5n8bPPSA=
+
+The device is trying to connect, but no data has been transferred. The server
+is showing that the device hasn't established a connection (there's no data
+for the peer). If the server's IP is correct, then its likely a firewall is
+blocking UDP traffic to this port.
+
