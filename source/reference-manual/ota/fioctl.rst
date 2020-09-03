@@ -1,6 +1,6 @@
 :orphan:
 
-.. _fioctl:
+.. _ref-fioctl:
 
 fioctl
 ------
