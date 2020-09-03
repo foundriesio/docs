@@ -9,3 +9,4 @@ Security
    security-architecture
    secure-boot
    ota-security
+   secure-elements/index
