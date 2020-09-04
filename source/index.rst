@@ -26,6 +26,8 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 
    getting-started/create-compose-app/index
 
+   getting-started/flash-target/index
+
 .. ifconfig:: todo_include_todos is True
 
    **Documentation-wide TODO List**
