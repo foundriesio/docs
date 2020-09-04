@@ -86,14 +86,6 @@ Flash LmP system image
       
       1. Download Etcher_
 
-         An example path string if installing to a folder on the desktop would
-         look like this.
-
-         ``C:\Users\Stetson\Desktop\fio\bin``
-
-      You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
-      ``fioctl``.
-      
 .. _Etcher: https://www.balena.io/etcher/
 
 
