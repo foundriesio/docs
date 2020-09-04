@@ -23,6 +23,9 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    getting-started/git-config/index
    getting-started/install-fioctl/index
 
+
+   getting-started/create-compose-app/index
+
 .. ifconfig:: todo_include_todos is True
 
    **Documentation-wide TODO List**
