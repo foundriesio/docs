@@ -111,3 +111,90 @@ and booted.
   <system-image>
      Path to your LmP System image in ``wic.gz`` format.
     
+Boot Device and Connect to the Network
+--------------------------------------
+
+.. content-tabs::
+
+   .. tab-container:: ethernet
+      :title: Ethernet (Recommended)
+
+      Ethernet works out of the box if a DHCP server is available on the
+      local network.
+
+      #. Connect an Ethernet cable to the board.
+      #. Remove the SD card from your computer, and insert it into
+         the board.
+      #. Apply power to the board.
+
+      Your board will connect to the network via Ethernet and will
+      be ready to connect within a minute or two of booting.
+
+   .. tab-container:: wifi
+      :title: WiFi
+
+      .. tabs::
+
+          .. tab:: Raspberry Pi 3/4
+
+              If you don't have Ethernet connectivity, you can connect to a
+              WiFi network by temporarily enabling the UART console on your
+              Raspberry Pi and running a command to connect to your WiFi
+              network.
+        
+              .. note::
+        
+                 While a hardware serial port is available, enabling it
+                 unfortunately requires this device to run at significantly
+                 reduced speeds, and causes serious Bluetooth instability.
+                 Make sure to disable the console and reboot before
+                 proceeding.
+        
+              You'll need a 3.3 volt USB to TTL serial adapter, such as this
+              `SparkFun FTDI Basic Breakout 3.3V`_.
+        
+              #. Mount the micro SD card containing the SD image you
+                 flashed on your workstation PC.
+        
+              #. Edit the ``config.txt`` file on the VFAT partition,
+                 adding a new line with the following content::
+        
+                    enable_uart=1
+        
+              #. Safely unmount the micro SD card, remove it from your
+                 workstation, and insert it into the Raspberry Pi.
+        
+              #. Connect the adapter to your Raspberry Pi's UART and
+                 to your workstation computer via USB, e.g. by following
+                 `this AdaFruit guide`_.
+        
+              #. Connect a serial console program on your workstation to
+                 the adapter, and power on the Raspberry Pi.
+        
+              #. When prompted, log in via the console. The default
+                 username is ``fio``, and the default password is
+                 ``fio``. You should change the password before
+                 connecting to the network.
+        
+              #. Connect to the network using the following command::
+        
+                    sudo nmcli device wifi connect NETWORK_SSID password NETWORK_PASSWORD
+        
+                 Where ``NETWORK_SSID`` is your WiFi network's SSID, and
+                 ``NETWORK_PASSWORD`` is the password.
+        
+              #. Safely shut down the Raspberry Pi, re-mount the SD
+                 card on your host workstation, and delete the line you
+                 added to ``config.txt``.
+        
+              #. Unmount the SD card from your workstation, insert it
+                 into the Raspberry Pi, and reboot it.
+        
+              .. warning::
+        
+                 Do not skip the final steps. Functionality with the
+                 serial console enabled is severely degraded.
+        
+              Your board will connect to the network you've saved after
+              rebooting. You can now log in using SSH.
+        
