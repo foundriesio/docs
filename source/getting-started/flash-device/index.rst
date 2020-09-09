@@ -198,3 +198,21 @@ Boot Device and Connect to the Network
               Your board will connect to the network you've saved after
               rebooting. You can now log in using SSH.
         
+Log in via SSH
+^^^^^^^^^^^^^^
+
+.. highlight:: none
+
+Use ``fio`` as the username and ``raspberrypi3-64.local`` as the
+hostname::
+
+  ssh fio@raspberrypi3-64.local
+
+The default password is ``fio``; we recommend changing it now if you
+haven't already. For this to work, your machine needs to support
+Zeroconf\ [#zeroconf]_ and the hostname must be otherwise unclaimed.
+
+If that doesn't work, you can also log in by IP address. See
+:ref:`Troubleshooting <getting-started-troubleshooting>` below for
+advice.
+
