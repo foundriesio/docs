@@ -223,3 +223,28 @@ Once you have an SSH console connection, finish your installation by
 registering your device. Follow instructions in
 :ref:`getting-started-register` for a demonstration.
 
+.. _getting-started-troubleshooting:
+
+Troubleshooting
+^^^^^^^^^^^^^^^^^
+
+If the above methods to connect your Raspberry Pi 3 to the
+network don't work, try one of the following.
+
+- Temporarily enable and connect to the UART (see directions above in
+  the WiFi section) and determine available IP addresses with::
+
+    # Ethernet
+    ip addr show eth0 scope global
+
+    # WiFi
+    ip addr show wlan0 scope global
+
+  Then connect by IP address::
+
+    ssh fio@rpi3.ip.addr.ess
+
+- List connected devices and their local IP addresses on your network
+  router's administrative interface, and log in by IP address as
+  above.
+
