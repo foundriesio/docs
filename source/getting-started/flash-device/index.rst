@@ -13,3 +13,24 @@ Flash your Device |:cloud_lightning:|
 
       - Ethernet cable (if choosing Wired)
       - 3.3 volt USB to TTL Serial Cable (if choosing WiFi)
+
+Download LmP system image
+-------------------------
+
+When you trigger a build, it produces build artifacts as an output which can be
+downloaded from the **Targets** tab of your factory, as described in
+:ref:`ref-watch-build`.
+
+1. Navigate to the **Targets** section of your Factory.
+   
+2. Find your LmP platform build, denoted by the **trigger name**:
+   ``platform-<tag>``. 
+
+   E.G: ``lmp-factory-image-raspberrypi3-64.wic.gz``
+
+3. Download it by clicking on its name in the list of artifacts
+
+.. figure:: /_static/flash-device/artifacts.png
+   :width: 769
+   :align: center
+
