@@ -42,8 +42,8 @@ can set a few special variables to influence what's done at build time:
    skipped for arm64, the arm container could be tagged for it with:
    ``EXTRA_TAGS_arm=arm64``.
 
-  * **DOCKER_BUILD_CONTEXT** - Use an alternative directory for the docker
-    build context.
+ * **DOCKER_BUILD_CONTEXT** - Use an alternative directory for the docker
+   build context.
 
 Examples
 ~~~~~~~~
@@ -63,3 +63,18 @@ Examples
 
   # Use container.git as the build context
   BUILD_CONTEXT="../"
+
+Advanced Container Dependencies
+-------------------------------
+
+In rare occasions a Factory may need some custom code to run *before* the
+docker build logic is called on each container. This can be done with a file
+in the top-level directory of containers.git, ``pre-build.conf``.
+
+Example
+~~~~~~~
+::
+
+ # pre-build.conf
+ # Create a file with build environment for container "shellhttpd":
+ env > shellhttpd/envvars
