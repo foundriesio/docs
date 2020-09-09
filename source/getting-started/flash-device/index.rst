@@ -296,3 +296,19 @@ register your device(s) via the Foundries.io REST API.
        <factory>
          The name of your Factory
 
+.. [#zeroconf]
+
+   Zeroconf is a set of technologies that allows automatic discovery
+   of systems and services available on a local area network. It helps
+   by assigning a local address name (e.g. ``hostname.local``
+   instead of ``192.168.1.10``), which can be used by other Zeroconf
+   compatible services like Bonjour on macOS.
+
+   Avahi, a free Zeroconf implementation, is available by default on
+   the Linux microPlatform, making it easy for other
+   Zeroconf-compatible hosts to locate the IP address assigned to the
+   board.
+
+   To use Zeroconf, simply use ``hostname.local`` in place of the
+   board's IP address when that is needed.
+
