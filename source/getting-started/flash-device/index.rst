@@ -320,3 +320,12 @@ register your device(s) via the Foundries.io REST API.
 
 .. _Etcher: https://www.balena.io/etcher/
 
+.. todo:: 
+
+     Make a section on our other supported boards to link to in the note in
+     the header
+
+.. todo:: 
+
+     Make a section dedicated to the i.MX platform to link to in the "Flash LmP
+     system image" section note, regarding flashing EMMC.
