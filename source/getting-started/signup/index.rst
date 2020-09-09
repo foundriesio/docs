@@ -54,8 +54,8 @@ Select Your Platform |:desktop:|
 Choose a hardware platform from the dropdown menu in the  **Create New Factory** wizard
 and continue.
 
-The :ref:`ref-linux` supports a wide range of platforms out of the box. We even
-provide QEMU_ images for ARM_ and RISC-V_ architectures.
+The :ref:`ref-linux` supports a wide range of platforms out of the box. This
+includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
 .. figure:: /_static/signup/create.png
    :width: 400
