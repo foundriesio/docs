@@ -35,7 +35,16 @@ Create one by clicking **Create Factory**
 .. note::
    
    |:closed_lock_with_key:| Upon Factory creation you will be sent an email containing your
-   :ref:`ref-offline-keys`. Read this documentation for information on key rotation.
+   :ref:`ref-offline-keys`. Read this documentation for information on key
+   rotation. 
+
+   It is incredibly important that your keys are kept **safe and
+   private**. Please store these keys securely. 
+
+.. todo:: 
+
+    Suggest methods of storing TuF keys securely, such as by USB in a
+    safety deposit box, or yubikey.
 
 .. _ref-select-platform:
 
