@@ -312,3 +312,11 @@ register your device(s) via the Foundries.io REST API.
    To use Zeroconf, simply use ``hostname.local`` in place of the
    board's IP address when that is needed.
 
+.. _SparkFun FTDI Basic Breakout 3.3V:
+   https://www.sparkfun.com/products/9873
+ 
+.. _this AdaFruit guide:
+   https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/connect-the-lead
+
+.. _Etcher: https://www.balena.io/etcher/
+
