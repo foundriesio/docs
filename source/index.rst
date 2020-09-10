@@ -21,6 +21,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    
    getting-started/signup/index
    getting-started/git-config/index
+   getting-started/install-fioctl/index
 
 .. ifconfig:: todo_include_todos is True
 
