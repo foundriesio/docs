@@ -1,7 +1,7 @@
 .. _ref-mosquitto:
 
-How to Get Started with Mosquitto MQTT Broker Containers
-========================================================
+MQTT
+====
 
 In the world of IoT, MQTT is without question a well known protocol and it has gained a lot of popularity for device communication. By using a simple publishing and subscribing model, it makes it very easy to manage the message flow.
 In other words, a device can publish a message containing arbitrary data to a topic and all of the devices subscribed to that topic will receive the same message.
