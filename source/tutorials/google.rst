@@ -1,7 +1,7 @@
 .. _ref-google:
 
-How to Get Started with Google IoT Containers
-=============================================
+Google IoT
+==========
 
 In this tutorial you will be guided through the process of setting up your device - in this case a Raspberry Pi 3 - to Google IoT. By using the Google IoT container available on the `extra-containers`_ repo, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the Google IoT, allowing you to easily integrate your device data with any Google Service.
 

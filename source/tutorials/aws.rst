@@ -1,7 +1,7 @@
 .. _ref-aws:
 
-How to Get Started with AWS IoT Containers
-==========================================
+AWS IoT
+=======
 
 In this tutorial you will be guided through the process of setting up your device. In this case a Raspberry Pi 3 - to AWS IoT Core. By using the AWS IoT container available on the `extra-containers`_ repo, together with your FoundriesFactory, you will learn how to connect your device to the cloud with just a few simple commands. Before you know it, data - like CPU and RAM usage - will be flowing through the AWS IoT Core, allowing you to easily integrate your device data with any AWS Service - including Dashboard.
 
