@@ -26,6 +26,19 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 
    getting-started/create-compose-app/index
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Tutorials
+
+   tutorials/cloud
+   tutorials/mosquitto
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Reference Manual
+
+   reference-manual/index
+
 .. ifconfig:: todo_include_todos is True
 
    **Documentation-wide TODO List**
