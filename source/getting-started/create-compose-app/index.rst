@@ -107,3 +107,7 @@ details about target can be printed by passing its version number to the
    https://docs.foundries.io/latest/customer-factory/configuring.html in
    'configuration', will have to pull this in from master.
 
+.. todo::
+   Give more complex example such as mosquitto, homeassistant, netdata that the
+   user has to recreate rather than just enable with an 'mv' command.
+
