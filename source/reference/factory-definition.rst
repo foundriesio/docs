@@ -1,7 +1,7 @@
 .. _ref-factory-defition:
 
-The Factory Definition
-======================
+Factory Definition
+==================
 
 Each Factory can be customized to control how CI handles it. This is managed
 in the "Factory Definition" which is located in a factory's ci-scripts.git
