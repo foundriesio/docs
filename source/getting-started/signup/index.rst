@@ -35,7 +35,16 @@ Create one by clicking **Create Factory**
 .. note::
    
    |:closed_lock_with_key:| Upon Factory creation you will be sent an email containing your
-   :ref:`ref-offline-keys`. Read this documentation for information on key rotation.
+   :ref:`ref-offline-keys`. Read this documentation for information on key
+   rotation. 
+
+   It is incredibly important that your keys are kept **safe and
+   private**. Please store these keys securely. 
+
+.. todo:: 
+
+    Suggest methods of storing TuF keys securely, such as by USB in a
+    safety deposit box, or yubikey.
 
 .. _ref-select-platform:
 
@@ -45,8 +54,8 @@ Select Your Platform |:desktop:|
 Choose a hardware platform from the dropdown menu in the  **Create New Factory** wizard
 and continue.
 
-The :ref:`ref-linux` supports a wide range of platforms out of the box. We even
-provide QEMU_ images for ARM_ and RISC-V_ architectures.
+The :ref:`ref-linux` supports a wide range of platforms out of the box. This
+includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
 .. figure:: /_static/signup/create.png
    :width: 400

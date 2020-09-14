@@ -8,19 +8,28 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 
 .. toctree::
    :maxdepth: 1
-
-   getting-started/index
-   tutorials/index
-   reference-manual/index
-   foundries.io <https://foundries.io>
-
-.. toctree::
-   :maxdepth: 1
    :caption: Getting started
    :name: sec-learn
    
    getting-started/signup/index
    getting-started/git-config/index
+   getting-started/install-fioctl/index
+
+
+   getting-started/create-compose-app/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Tutorials
+
+   tutorials/cloud
+   tutorials/mosquitto
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Reference Manual
+
+   reference-manual/index
 
    getting-started/flash-device/index
    getting-started/register-device/index
