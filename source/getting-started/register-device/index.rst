@@ -36,3 +36,11 @@ register your device(s) via the Foundries.io REST API.
    Or by using :ref:`ref-fioctl`::
 
      fioctl devices list
+
+Completion
+----------
+
+Now that you're done, you might want to read :ref:`ref-tutorials` to see some
+examples of the things that can be done with your Factory. Additionally, you can
+read the :ref:`ref-manual` to learn more about the architecture of
+FoundriesFactory and the Linux microPlatform.
