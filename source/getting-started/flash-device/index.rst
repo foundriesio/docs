@@ -104,12 +104,7 @@ Once you have downloaded your LmP system image, it can be written to an SD Card
       2. Select your ``<system-image>``.
       3. Select your disk.
       4. Flash it.
-
-.. glossary::
   
-  <system-image>
-     Path to your LmP System image in ``wic.gz`` format.
-    
 Boot Device and Connect to the Network
 --------------------------------------
 
@@ -260,12 +255,6 @@ register your device(s) via the Foundries.io REST API.
    
      lmp-device-register -n <device-name>
    
-   .. glossary::
-     
-      <device-name>
-         The name of your device as is should appear on the dashboard or via
-         ``fioctl devices list``.
-
 2. You will be prompted by ``lmp-device-register`` to complete a challenge with
    our API
 
@@ -289,11 +278,6 @@ register your device(s) via the Foundries.io REST API.
    :ref:`ref-fioctl`::
 
      fioctl devices list
-
-   .. glossary::
-
-       <factory>
-         The name of your Factory
 
 .. [#zeroconf]
 
