@@ -210,13 +210,6 @@ If that doesn't work, you can also log in by IP address. See
 :ref:`Troubleshooting <getting-started-troubleshooting>` below for
 advice.
 
-Finish Installation
-^^^^^^^^^^^^^^^^^^^
-
-Once you have an SSH console connection, finish your installation by
-registering your device. Follow instructions in
-:ref:`getting-started-register` for a demonstration.
-
 .. _getting-started-troubleshooting:
 
 Troubleshooting
