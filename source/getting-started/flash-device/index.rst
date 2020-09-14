@@ -287,7 +287,7 @@ network don't work, try one of the following.
 
   Then connect by IP address::
 
-    ssh fio@rpi3.ip.addr.ess
+    ssh fio@<ip-address>
 
 - List connected devices and their local IP addresses on your network
   router's administrative interface, and log in by IP address as
