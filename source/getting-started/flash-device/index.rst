@@ -165,7 +165,7 @@ Boot Device and Connect to the Network
         
               #. Connect the adapter to your Raspberry Pi's UART and
                  to your workstation computer via USB, e.g. by following
-                 `this AdaFruit guide`_.
+                 `this Adafruit guide`_.
         
               #. Connect a serial console program on your workstation to
                  the adapter, and power on the Raspberry Pi.
@@ -293,7 +293,7 @@ network don't work, try one of the following.
 .. _Adafruit USB to TTL Serial Cable:
    https://www.adafruit.com/product/954
  
-.. _this AdaFruit guide:
+.. _this Adafruit guide:
    https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/connect-the-lead
 
 .. _Etcher: https://www.balena.io/etcher/
