@@ -47,8 +47,10 @@ Flash LmP system image
 
    .. group-tab:: Linux
 
-      1. Determine the disk you want to flash by its path, ensuring you ignore
-         partitions where ``TYPE`` is ``part`` E.G: ``/dev/mmcblk0``::
+      1. Determine the disk you want to flash by finding the device with the
+         ``SIZE`` that matches your SD card in the list below.  Be sure to ignore
+         partitions (where ``TYPE`` is ``part``).  Save the ``NAME`` for your SD card device to
+         be used in a later step as the disk path. E.G: ``/dev/mmcblk0``::
 
            lsblk -po +MODEL
 
@@ -75,7 +77,11 @@ Flash LmP system image
 
    .. group-tab:: macOS
 
-      1. Determine the disk you want to flash by its path. E.G: ``/dev/disk3``::
+      1. Determine the disk you want to flash by finding the device with the
+         ``SIZE`` that matches your SD card in the list below.  Be sure to ignore
+         partitions (lines without the * in the ``SIZE``).  Save the ``IDENTIFIER`` for your
+         SD card device to be used in a later step as the disk path. E.G:
+         ``/dev/disk3``::
 
            diskutil list
         
