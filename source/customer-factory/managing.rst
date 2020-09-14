@@ -84,7 +84,7 @@ Once registered, a device's updates options can be remotely managed with
 These updates are handled on the device by the `fioconfig`_ daemon. This
 checks for configuration updates on a configurable periodic interval. The
 factory default is 5 minutes. So - changes can take up to 5 minutes before
-they appear.
+they appear. For more details on tagging see :ref:`ref-advanced-tagging`.
 
 .. _fioctl command line tool:
    https://github.com/foundriesio/fioctl/releases
