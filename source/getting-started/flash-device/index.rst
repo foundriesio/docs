@@ -63,11 +63,11 @@ Once you have downloaded your LmP system image, it can be written to an SD Card
       2. Flash the disk.  
  
          | Replace ``<system-image>``
-         | Replace ``/dev/sdX`` with your chosen disk path.
+         | Replace ``/dev/sd<X>`` with your chosen disk path.
  
        .. code-block:: shell
 
-          gunzip -c <system-image> | sudo dd of=/dev/sdX bs=4M iflag=fullblock oflag=direct status=progress
+          gunzip -c <system-image> | sudo dd of=/dev/sd<X> bs=4M iflag=fullblock oflag=direct status=progress
 
    .. group-tab:: macOS
 
@@ -88,11 +88,11 @@ Once you have downloaded your LmP system image, it can be written to an SD Card
       2. Flash the disk.  
  
          | Replace ``<system-image>``
-         | Replace ``/dev/diskX`` with your chosen disk path.
+         | Replace ``/dev/disk<X>`` with your chosen disk path.
 
         .. code-block:: shell
  
-           gunzip -c <system-image> | sudo dd of=/dev/diskX bs=4M
+           gunzip -c <system-image> | sudo dd of=/dev/disk<X> bs=4M
 
    .. group-tab:: Windows
 
