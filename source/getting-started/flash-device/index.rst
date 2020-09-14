@@ -47,7 +47,8 @@ Flash LmP system image
 
    .. group-tab:: Linux
 
-      1. Determine the disk you want to flash by its path. E.G: ``/dev/mmcblk0``::
+      1. Determine the disk you want to flash by its path, ensuring you ignore
+         partitions where ``TYPE`` is ``part`` E.G: ``/dev/mmcblk0``::
 
            lsblk -po +MODEL
 
