@@ -32,6 +32,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    reference-manual/index
 
    getting-started/flash-device/index
+   getting-started/register-device/index
 
 .. ifconfig:: todo_include_todos is True
 
