@@ -28,7 +28,7 @@ downloaded from the **Targets** tab of your factory, as described in
 
    E.G: ``lmp-factory-image-raspberrypi3-64.wic.gz``
 
-3. Download it by clicking on its name in the list of artifacts
+3. Download it by clicking on its name in the list of artifacts.
 
 .. figure:: /_static/flash-device/artifacts.png
    :width: 769
