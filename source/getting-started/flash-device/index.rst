@@ -220,7 +220,7 @@ registering your device. Follow instructions in
 .. _getting-started-troubleshooting:
 
 Troubleshooting
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 If the above methods to connect your Raspberry Pi 3 to the
 network don't work, try one of the following.
