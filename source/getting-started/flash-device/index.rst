@@ -7,7 +7,7 @@ Flash your Device |:cloud_lightning:|
      
       **(Raspberry Pi 3 of any variant, or a Raspberry Pi 4 recommended)**
 
-    - A `suitable Micro SD Card <https://elinux.org/RPi_SD_cards>`_ to flash
+    - A `suitable microSD Card <https://elinux.org/RPi_SD_cards>`_ to flash
       your LmP target build to.
     - Wired or WiFi network with internet access.
 
