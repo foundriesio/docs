@@ -82,6 +82,7 @@ Flash LmP system image
 
          **Example Output**::
 
+           $ diskutil list
            /dev/disk3 (internal, physical):
               #:                       TYPE NAME                    SIZE       IDENTIFIER
               0:     FDisk_partition_scheme                        *15.5 GB    disk3
