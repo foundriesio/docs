@@ -202,6 +202,14 @@ hostname::
 
   ssh fio@raspberrypi3-64.local
 
+.. note:: 
+   If you are using a board other than the Raspberry Pi 3, your hostname will be
+   defaulted to the value of the ``machine:`` key value from your ``factory-config.yml`` E.G:
+
+   | ``imx8mmevk.local``
+   | ``beaglebone-yocto.local``
+   | ``intel-corei7-64.local``
+
 The default password is ``fio``; we recommend changing it now if you
 haven't already. For this to work, your machine needs to support
 Zeroconf\ [#zeroconf]_ and the hostname must be otherwise unclaimed.
