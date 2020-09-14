@@ -161,7 +161,7 @@ Boot Device and Connect to the Network
               #. Mount the micro SD card containing the SD image you
                  flashed on your workstation PC.
         
-              #. Edit the ``config.txt`` file on the VFAT partition,
+              #. Edit the ``config.txt`` file on the VFAT ``boot/`` partition,
                  adding a new line with the following content::
         
                     enable_uart=1
