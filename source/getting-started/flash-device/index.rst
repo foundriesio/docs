@@ -47,25 +47,30 @@ Flash LmP system image
 
    .. group-tab:: Linux
 
-      1. Determine the disk you want to flash by its path. E.G: ``/dev/sda``::
+      1. Determine the disk you want to flash by its path. E.G: ``/dev/mmcblk0``::
 
            lsblk -po +MODEL
 
+         .. highlight:: none
+
          **Example Output**::
 
-           NAME                          MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINT MODEL
-           /dev/sda                        8:0    0 465.8G  0 disk             HGST_HTS725050A7E630
-           └─/dev/sda1                     8:1    0 465.8G  0 part  /mnt/hdd   
-           /dev/sdb                        8:16   0 232.9G  0 disk             Samsung_SSD_860_EVO_mSATA_250GB
-       
+           $ lsblk -po +MODEL
+           NAME             MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT                 MODEL
+           /dev/mmcblk0     179:0    0  29.8G  0 disk                            
+           ├─/dev/mmcblk0p1 179:1    0  41.6M  0 part /mnt/boot    
+           └─/dev/mmcblk0p2 179:2    0  29.8G  0 part /mnt/otaroot 
+           /dev/zram0       254:0    0    26G  0 disk /out                       
+           /dev/nvme0n1     259:0    0 953.9G  0 disk                            SSDPEKKF010T8 NVMe INTEL 1024GB 
+
       2. Flash the disk.  
  
          | Replace ``<system-image>``
-         | Replace ``/dev/sd<X>`` with your chosen disk path.
+         | Replace ``/dev/mmcblk<X>`` with your chosen disk path.
  
        .. code-block:: shell
 
-          gunzip -c <system-image> | sudo dd of=/dev/sd<X> bs=4M iflag=fullblock oflag=direct status=progress
+          gunzip -c <system-image> | sudo dd of=/dev/mmcblk<X> bs=4M iflag=fullblock oflag=direct status=progress
 
    .. group-tab:: macOS
 
