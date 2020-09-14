@@ -150,7 +150,7 @@ Boot Device and Connect to the Network
                  proceeding.
         
               You'll need a 3.3 volt USB to TTL serial adapter, such as this
-              `SparkFun FTDI Basic Breakout 3.3V`_.
+              `Adafruit USB to TTL Serial Cable`_.
         
               #. Mount the micro SD card containing the SD image you
                  flashed on your workstation PC.
@@ -290,8 +290,8 @@ network don't work, try one of the following.
 .. _zeroconf:
    https://en.wikipedia.org/wiki/Zero-configuration_networking   
 
-.. _SparkFun FTDI Basic Breakout 3.3V:
-   https://www.sparkfun.com/products/9873
+.. _Adafruit USB to TTL Serial Cable:
+   https://www.adafruit.com/product/954
  
 .. _this AdaFruit guide:
    https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/connect-the-lead
