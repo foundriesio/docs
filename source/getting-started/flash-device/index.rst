@@ -238,7 +238,7 @@ Your Linux microPlatform image includes a tool, ``lmp-device-register`` that wil
 register your device(s) via the Foundries.io REST API.
 
 1. From a console on the device run this command to register the device to your
-   ifactory::
+   factory::
    
      lmp-device-register -n <device-name>
    
