@@ -255,8 +255,8 @@ register your device(s) via the Foundries.io REST API.
 
 3. After completing the previous step, the device is registered and should be
    visible by navigating to the web interface at
-   https://app.foundries.io/factories/, clicking your Factory card and selecting
-   the 'Devices' tab. 
+   https://app.foundries.io/factories/, clicking your **Factory card** and selecting
+   the **Devices** tab. 
 
    Or by using :ref:`ref-fioctl`::
 
