@@ -1,7 +1,7 @@
 .. _getting-started-register:
 
-Register your device
-====================
+Register your device |:scroll:|
+===============================
 
 Your Linux microPlatform image includes a tool, ``lmp-device-register`` that will
 register your device(s) via the Foundries.io REST API.
