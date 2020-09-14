@@ -21,6 +21,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 .. toctree::
    :maxdepth: 2
    :caption: Tutorials
+   :name: sec-tutorials
 
    tutorials/cloud
    tutorials/mosquitto
@@ -28,6 +29,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 .. toctree::
    :maxdepth: 1
    :caption: Reference Manual
+   :name: sec-manual
 
    reference-manual/index
 
