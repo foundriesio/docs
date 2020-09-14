@@ -254,9 +254,11 @@ register your device(s) via the Foundries.io REST API.
        Browser URL: https://app.foundries.io/activate/
 
 3. After completing the previous step, the device is registered and should be
-   visible to you via the web interface at
-   ``https://app.foundries.io/factories/<factory>/devices``. Or by using
-   :ref:`ref-fioctl`::
+   visible by navigating to the web interface at
+   https://app.foundries.io/factories/, clicking your Factory card and selecting
+   the 'Devices' tab. 
+
+   Or by using :ref:`ref-fioctl`::
 
      fioctl devices list
 
