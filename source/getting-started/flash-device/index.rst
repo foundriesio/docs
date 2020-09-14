@@ -313,3 +313,7 @@ network don't work, try one of the following.
 
      Make a section dedicated to the i.MX platform to link to in the "Flash LmP
      system image" section note, regarding flashing EMMC.
+
+.. todo::
+
+     Make links open in a new tab, rather than swallow the current window.
