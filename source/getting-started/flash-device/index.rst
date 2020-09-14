@@ -38,7 +38,6 @@ Flash LmP system image
 ----------------------
 
 Once you have downloaded your LmP system image, it can be written to an SD Card
-and booted.
 
 .. note:: 
    If you are developing on a platform that has EMMC available such as the NXP
