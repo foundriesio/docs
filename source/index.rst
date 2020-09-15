@@ -14,6 +14,7 @@ free on our supported devices, as well as private, customer-owned Factories.
    customer-factory/index
    reference/linux
    tutorials/index
+   FoundriesFactory Dashboard <https://app.foundries.io>
    foundries.io <https://foundries.io>
 
 .. ifconfig:: todo_include_todos is True
