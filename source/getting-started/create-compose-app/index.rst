@@ -1,5 +1,5 @@
-Create a Docker-Compose App |:cowboy:|
-======================================
+Create a Docker-Compose App
+===========================
 
 In the :ref:`ref-git-config` section, you should have set up ``git`` with your
 auth token, meaning you can clone your Factory repositories from

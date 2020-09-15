@@ -1,5 +1,5 @@
-Flash your Device |:cloud_lightning:|
-=====================================
+Flash your Device
+=================
 
 .. note::
    To follow this section, you will need:

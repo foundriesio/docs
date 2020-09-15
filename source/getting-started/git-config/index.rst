@@ -1,7 +1,7 @@
 .. _ref-git-config:
 
-Configuring Git |:computer:|
-============================
+Configuring Git
+===============
 
 Pushing to the Git repositories in your FoundriesFactory is as simple as
 configuring Git on your personal machine to use the access token you generated

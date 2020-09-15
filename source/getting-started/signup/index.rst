@@ -1,7 +1,7 @@
 .. _ref-signup:
 
-Sign Up |:clipboard:|
-==========================
+Sign Up
+=======
 
 To create a FoundriesFactory, you first need to `create an account <signup_>`_ with us. 
 
@@ -14,8 +14,8 @@ To create a FoundriesFactory, you first need to `create an account <signup_>`_ w
 
 .. _signup: https://app.foundries.io/signup
 
-Create a Factory |:gear:|
-============================
+Create a Factory
+================
 
 :ref:`ref-factory` is the start of your embedded OS, tailored specifically
 for your product. When you create a Factory, we immediately bootstrap the CI
@@ -48,8 +48,8 @@ Create one by clicking **Create Factory**
 
 .. _ref-select-platform:
 
-Select Your Platform |:desktop:|
-################################
+Select Your Platform
+####################
 
 Choose a hardware platform from the dropdown menu in the  **Create New Factory** wizard
 and continue.
@@ -73,8 +73,8 @@ includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
 .. _ref-watch-build:
 
-Watch Your Build |:hammer_and_wrench:|
-######################################
+Watch Your Build
+################
 
 Once you have created your Factory, an initial build of the the LmP will be
 generated for you to build your product on top of. You can monitor the progress

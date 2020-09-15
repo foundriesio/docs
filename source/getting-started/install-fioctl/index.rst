@@ -1,7 +1,7 @@
 .. _ref-install-fioctl:
 
-Fioctl CLI Installation |:package:|
-===================================
+Fioctl CLI Installation
+=======================
 
 :ref:`ref-fioctl` is a simple tool that interacts with the Foundries.io REST API
 for managing a Factory. It is based on the `"ota-lite" API
