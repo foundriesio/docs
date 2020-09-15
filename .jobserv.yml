@@ -16,8 +16,14 @@ triggers:
 scripts:
   make-docs: |
     #!/bin/sh -ex
-    apk add --update make curl git
     pip install -r ./requirements.txt
+
+    echo == $(date "+%F %T") Setting up fioctl docs
+    fv=$(wget -q -O-  https://api.github.com/repos/foundriesio/fioctl/releases/latest | grep tag_name | sed -E 's/.*"([^"]+)".*/\1/')
+    wget -O /tmp/fioctl https://github.com/foundriesio/fioctl/releases/download/${fv}/fioctl-linux-amd64
+    chmod +x /tmp/fioctl
+    /tmp/fioctl gen-rst ./source/reference-manual/factory/fioctl/
+
     make OUTDIR=/archive SPHINXBUILD=sphinx-build singlehtml html
 
     urlbase="https://ci.foundries.io/projects/${H_PROJECT}/builds/${H_BUILD}/${H_RUN}/"
