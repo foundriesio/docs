@@ -7,7 +7,6 @@ Over the Air Updates
    :maxdepth: 1
 
    ota-architecture
-   fioctl
    fioconfig
    aktualizr-lite
    device-tags
