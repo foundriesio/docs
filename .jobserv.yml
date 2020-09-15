@@ -4,7 +4,7 @@ triggers:
     type: github_pr
     runs:
       - name: docs
-        container: python:3.6-alpine
+        container: python:3.6
         host-tag: multiarch-osf
         script: make-docs
 
@@ -16,7 +16,6 @@ triggers:
 scripts:
   make-docs: |
     #!/bin/sh -ex
-    apk add --update make curl git
     pip install -r ./requirements.txt
     make OUTDIR=/archive SPHINXBUILD=sphinx-build singlehtml html
 
