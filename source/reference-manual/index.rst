@@ -14,4 +14,3 @@ Reference Manual
    Testing <testing/testing.rst>
    Security <security/security.rst>
    Remote Access <remote-access/remote-access.rst>
-   Fioctl <fioctl/index.rst>

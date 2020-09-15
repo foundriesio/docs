@@ -24,7 +24,7 @@ scripts:
     wget -O /tmp/fioctl https://github.com/foundriesio/fioctl/releases/download/${fv}/fioctl-linux-amd64
     chmod +x /tmp/fioctl
 
-    /tmp/fioctl gen-rst ./source/reference-manual/fioctl/
+    /tmp/fioctl gen-rst ./source/reference-manual/factory/fioctl/
 
     urlbase="https://ci.foundries.io/projects/${H_PROJECT}/builds/${H_BUILD}/${H_RUN}/"
 
