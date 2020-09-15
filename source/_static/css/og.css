@@ -1,0 +1,3 @@
+.wy-menu-vertical ul > li.toctree-l1:nth-last-child(2) {
+  margin-top: 1rem;
+}
