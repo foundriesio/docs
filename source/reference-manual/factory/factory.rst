@@ -7,3 +7,4 @@ FoundriesFactory
    :maxdepth: 1
 
    factory-definition
+   Fioctl <fioctl/index.rst>
