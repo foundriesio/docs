@@ -9,3 +9,4 @@ FoundriesFactory
    factory-architecture
    factory-definition
    developer-workflows
+   Fioctl <fioctl/index.rst>

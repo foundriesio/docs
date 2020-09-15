@@ -4,7 +4,8 @@ Reference Manual
 ================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 2 
+   :glob:
 
    FoundriesFactory <factory/factory.rst>
    Linux microPlatform <linux/linux.rst>
