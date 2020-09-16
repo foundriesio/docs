@@ -9,3 +9,4 @@ Reference Manual
    FoundriesFactory <factory/factory.rst>
    Linux microPlatform <linux/linux.rst>
    Docker <docker/docker.rst>
+   Testing <testing/testing.rst>
