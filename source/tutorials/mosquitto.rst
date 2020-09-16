@@ -73,32 +73,23 @@ Download your factory container.git repository and follow the commands to copy t
  $ git remote update
  $ git checkout remotes/fio/master -- mosquitto
 
-Edit the docker compose file and update the Factory name::
+The mosquitto folder was added with three files::
 
  # Ubuntu Host Machine
- $ vim mosquitto/docker-compose.yml
+ $ tree mosquitto/
+ mosquitto/
+ ├── docker-compose.yml
+ ├── mosquitto.conf
+ └── run.sh
 
-mosquitto/docker-compose.yml::
-
- # mosquitto/docker-compose.yml
- version: "3"
- services:
-   mosquitto:
-     image: hub.foundries.io/<your factory>/mosquitto:latest
-      tmpfs:
-       - /run
-       - /var/lock
-       - /var/log
-     ports:
-       - "1883:1883/tcp"
-     restart: always
-     read_only: true
+The only files necessary to build the docker composer app are ``docker-compose.yml`` and ``run.sh``. The ``mosquitto.conf`` file will be used next to change the default mosquitto configuration.
 
 Add the changes to your Factory and wait for it to finish compiling your app::
 
  # Ubuntu Host Machine
- $ git add mosquitto/
- $ git commit "Adding new mosquitto app"
+ $ git add mosquitto/docker-compose.yml
+ $ git add mosquitto/run.sh
+ $ git commit -m "Adding new mosquitto app"
  $ git push
 
 Enabling the App on your Device
@@ -106,7 +97,7 @@ Enabling the App on your Device
 
 In the following steps we assume you have your Raspberry Pi 3 with Foundries.io’s LmP running and correctly registered to your Factory.
 
-With `fioctl`_, we will enable the application "ibm-iotsdk" on your device registered with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
+With `fioctl`_, we will enable the application "mosquitto" on your device registered with the name **raspberrypi3**. For more information about how to register and enable application, check the page :ref:`tutorial-managing`::
 
  # Ubuntu Host Machine
  # Configure the device to run the "mosquitto" app
@@ -115,17 +106,56 @@ With `fioctl`_, we will enable the application "ibm-iotsdk" on your device regis
 Debugging the Mosquitto Container APP
 --------------------------------------
 
-On your device, you can check the running container and use the container ID to see the logs::
+On your device, you can check the running container and use the container name to see the logs::
 
  #Raspberry Pi 3 Target Machine
   $ docker ps
  CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS                   PORTS                    NAMES
  751a0be6433c        hub.foundries.io/munoz0raul/mosquitto   "/start.sh"              4 hours ago         Up 4 hours               0.0.0.0:1883->1883/tcp   mosquitto_mosquitto_1
- $ docker logs 751a0be6433c
- 1594855540: mosquitto version 1.6.3 starting
- 1594855540: Config loaded from /etc/mosquitto/conf.d/mosquitto.conf.
- 1594855540: Opening ipv4 listen socket on port 1883.
- 1594855540: Opening ipv6 listen socket on port 1883.
+ $ docker logs mosquitto_mosquitto_1
+ 1600219959: Running Default config
+ 1600219959: mosquitto version 1.6.3 starting
+ 1600219959: Config loaded from /etc/mosquitto/conf.d/mosquitto.conf.
+ 1600219959: Opening ipv4 listen socket on port 1883.
+ 1600219959: Opening ipv6 listen socket on port 1883.
+
+As you can see, mosquitto app is using the default configuration file.
+
+Use fioctl to safely send a custom configuration files to the device::
+
+ # Ubuntu Host Machine
+ $ cd mosquitto
+ $ ls
+ docker-compose.yml  mosquitto.conf  run.sh
+ $ fioctl devices config set device1 mosquitto.conf="$(cat mosquitto.conf)"
+
+After some time, the files will be copied to the folder ``/var/run/secrets`` on your device::
+
+ # Raspberry Pi 3 Target Machine as root
+ $ fio@raspberrypi3:~$ sudo su
+ $ root@raspberrypi3:/home/prjs/google/config# ls /var/run/secrets/
+ mosquitto.conf
+
+After some time, the mosquitto container will automatically recognize the new config file and will restart the application::
+
+ #Raspberry Pi 3 Target Machine
+  $ docker ps
+ CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS                   PORTS                    NAMES
+ 751a0be6433c        hub.foundries.io/munoz0raul/mosquitto   "/start.sh"              4 hours ago         Up 4 hours               0.0.0.0:1883->1883/tcp   mosquitto_mosquitto_1
+ $ docker logs mosquitto_mosquitto_1
+ 1600219959: Running Default config
+ 1600219959: mosquitto version 1.6.12 starting
+ 1600219959: Config loaded from /mosquitto/config/mosquitto.conf.
+ 1600219959: Opening ipv4 listen socket on port 1883.
+ 1600219959: Opening ipv6 listen socket on port 1883.
+ 1600219959: mosquitto version 1.6.12 running
+ 1600219959: Running Custom config
+ 1600220591: mosquitto version 1.6.12 terminating
+ 1600220592: mosquitto version 1.6.12 starting
+ 1600220592: Config loaded from /mosquitto/secrets/mosquitto.conf.
+ 1600220592: Opening ipv4 listen socket on port 1883.
+ 1600220592: Opening ipv6 listen socket on port 1883.
+ 1600220592: mosquitto version 1.6.12 running
 
 Now we need to connect and start to send messages between containers.
 
