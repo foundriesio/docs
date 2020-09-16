@@ -4,14 +4,14 @@ Configuring Git
 ===============
 
 Pushing to the Git repositories in your FoundriesFactory is as simple as
-configuring Git on your personal machine to use the access token you generated
+configuring Git on your personal machine to use the **api token** you generated
 as part of your account creation. Once configured, ``git`` will know when are
 connecting to ``source.foundries.io`` and will use this token to authenticate
 you with our Git server.
 
 .. note:: |:tickets:| Tokens can be generated at https://app.foundries.io/settings/tokens
 
-Replace ``YOUR_TOKEN`` in the following command with your access token. An
+Replace ``YOUR_TOKEN`` in the following command with your **api token**. An
 example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
 
 .. code-block:: console
@@ -32,9 +32,9 @@ Replace ``<factory>`` with your FoundriesFactory name.
    
    You can also use ``git config --list`` to show you the current state of the
    global Git configuration, in which ``source.foundries.io`` should be referenced
-   along with your access token, represented as a base64 string.
+   along with your **api token**, represented as a base64 string.
 
 .. todo::
    
-   **git-config** add :ref: to 'FoundriesFactory', 'access token', 'account
+   **git-config** add :ref: to 'FoundriesFactory', 'api token', 'account
    creation', 'ci scripts' when pages are available
