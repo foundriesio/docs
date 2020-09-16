@@ -187,7 +187,7 @@ manually, you can refer to this section for manual installation instructions.
 Post-Install
 ^^^^^^^^^^^^
 Now that :ref:`ref-fioctl` is installed, you must authenticate with our backend
-before you're able to use it. This requires you to generate Oauth2 application
+before you're able to use it. This requires you to generate OAuth2 application
 credentials for interacting with Factory APIs::
 
   fioctl login
