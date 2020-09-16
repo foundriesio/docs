@@ -1,7 +1,7 @@
-.. _ref-device-testing:
+.. _ref-fiotest:
 
-Device Testing
-==============
+fiotest
+=======
 
 The Factory includes a simple, but effective way to manage automated testing.
 It's managed by a feature called the Device Gateway Testing API. This API
