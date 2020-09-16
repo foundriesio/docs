@@ -34,7 +34,8 @@ Create one by clicking **Create Factory**
 
 .. note::
    
-   |:closed_lock_with_key:| Upon Factory creation you will be sent an email containing your
+   |:closed_lock_with_key:| Upon Factory creation you will be sent an email 
+   with instructions to securely download your
    :ref:`ref-offline-keys`. Read this documentation for information on key
    rotation. 
 
