@@ -8,14 +8,19 @@ free on our supported devices, as well as private, customer-owned Factories.
 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    community-factory/index
    customer-factory/index
-   reference/linux
    tutorials/index
    FoundriesFactory Dashboard <https://app.foundries.io>
    Foundries.io <https://foundries.io>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Reference Manual
+
+   reference-manual/index
 
 .. ifconfig:: todo_include_todos is True
 
