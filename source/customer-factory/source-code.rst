@@ -4,7 +4,7 @@ Factory Source Code
 The FoundriesFactory provides you with a private git sandbox which allows you
 to maintain and customize your platform.
 
-Navigate to https://source.foundries.io/factories/<myfactory>/
+Navigate to :samp:`https://source.foundries.io/factories/{myfactory}/`
 
 .. figure:: /_static/factory-cgit.png
    :alt: Source code navigation
@@ -54,7 +54,7 @@ Any changes pushed to ``containers.git`` will trigger a container build job, and
 any containers defined will be pushed to your factory’s private Docker
 registry at:
 
- https://hub.foundries.io/<myfactory>/<mycontainer>:latest
+ :samp:`https://hub.foundries.io/{myfactory}/{mycontainer}:latest`
 
 
 .. note::
