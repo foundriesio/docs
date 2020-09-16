@@ -4,8 +4,8 @@ Fioctl CLI Installation
 =======================
 
 :ref:`ref-fioctl` is a simple tool that interacts with the Foundries.io REST API
-for managing a Factory. It is based on the `"ota-lite" API
-<https://api.foundries.io/ota/>`_, also made by Foundries.
+for managing a Factory. It is based on the `ota-lite API
+<https://api.foundries.io/ota/>`_, also built by Foundries.io.
 
 :ref:`ref-fioctl`, is used to manage:
 
@@ -98,7 +98,7 @@ manually, you can refer to this section for manual installation instructions.
          ``~/.zshrc`` for zsh.
 
          An example path string if installing to the home directory would look
-         like this. ``PATH="/home/stetson/fio/bin/:$PATH"``
+         like this: ``PATH="/home/stetson/fio/bin/:$PATH"``
 
       We provide a script that implements those steps below. It assumes you want
       to use a folder in your your home directory. Replace ``INSTALL_DIR`` with the
@@ -187,7 +187,7 @@ manually, you can refer to this section for manual installation instructions.
 Post-Install
 ^^^^^^^^^^^^
 Now that :ref:`ref-fioctl` is installed, you must authenticate with our backend
-before you're able to use it. This requires you to generate Oauth2 application
+before you're able to use it. This requires you to generate OAuth2 application
 credentials for interacting with Factory APIs::
 
   fioctl login
