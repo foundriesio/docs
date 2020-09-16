@@ -21,10 +21,10 @@ When you trigger a build, it produces build artifacts as an output which can be
 downloaded from the **Targets** tab of your factory, as described in
 :ref:`ref-watch-build`.
 
-1. Navigate to the **Targets** section of your Factory.
+1. Navigate to the **MICROPLATFORM** section of your Factory.
 
-2. Find your LmP platform build, denoted by the **trigger name**:
-   ``platform-<tag>``.
+2. Find your ``master``  LmP platform build, denoted by the **trigger name**:
+   ``platform-master``.
 
    E.G: ``lmp-factory-image-raspberrypi3-64.wic.gz``
 
