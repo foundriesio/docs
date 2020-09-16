@@ -6,4 +6,4 @@ Testing
 .. toctree::
    :maxdepth: 1
 
-   device-testing
+   fiotest
