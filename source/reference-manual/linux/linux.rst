@@ -23,6 +23,15 @@ and maintained by Foundries.io on `GitHub`_.
 .. toctree::
    :maxdepth: 1
 
+   linux-targets
+   linux-repo
+   linux-dev-container
+   linux-building
+   linux-kernel
+   linux-layers
+   linux-persistent-log
+   linux-net-debug
+
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org
 .. _Linux kernel: https://www.kernel.org
