@@ -25,6 +25,7 @@ free on our supported devices, as well as private, customer-owned Factories.
    getting-started/install-fioctl/index
    getting-started/create-compose-app/index
    getting-started/flash-device/index
+   getting-started/register-device/index
 
 .. toctree::
    :maxdepth: 2
