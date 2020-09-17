@@ -1,6 +1,6 @@
 .. highlight:: sh
 
-.. _ref-secure-boot:
+.. _ref-secure-boot-imx:
 
 Secure Boot on IMX
 ==================
