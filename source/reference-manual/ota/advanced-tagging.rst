@@ -4,7 +4,7 @@ Advanced Tagging
 ================
 
 Some users incorporate non-trivial workflows that can require advanced tagging
-techniques. These workflows can be handled in the :ref:`ref-factory-defition`
+techniques. These workflows can be handled in the :ref:`ref-factory-definition`
 
 Terminology
 -----------
