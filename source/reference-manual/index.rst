@@ -8,5 +8,6 @@ Reference Manual
 
    FoundriesFactory <factory/factory.rst>
    Linux microPlatform <linux/linux.rst>
+   Over the Air Updates <ota/ota.rst>
    Docker <docker/docker.rst>
    Testing <testing/testing.rst>
