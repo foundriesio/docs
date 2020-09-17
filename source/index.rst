@@ -12,9 +12,15 @@ free on our supported devices, as well as private, customer-owned Factories.
 
    community-factory/index
    customer-factory/index
-   tutorials/index
    FoundriesFactory Dashboard <https://app.foundries.io>
    Foundries.io <https://foundries.io>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Tutorials
+
+   tutorials/cloud
+   tutorials/mosquitto
 
 .. toctree::
    :maxdepth: 1
