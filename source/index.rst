@@ -8,14 +8,6 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 
 .. toctree::
    :maxdepth: 1
-
-   community-factory/index
-   customer-factory/index
-   FoundriesFactory Dashboard <https://app.foundries.io>
-   Foundries.io <https://foundries.io>
-
-.. toctree::
-   :maxdepth: 1
    :caption: Getting started
    :name: sec-learn
 
