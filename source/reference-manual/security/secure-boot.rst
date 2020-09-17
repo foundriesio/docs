@@ -7,3 +7,5 @@ Secure Boot
 
 .. toctree::
    :maxdepth: 1
+
+   secure-boot-imx
