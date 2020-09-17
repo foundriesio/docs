@@ -36,7 +36,7 @@ Create one by clicking **Create Factory**
 
    Upon Factory creation you will be sent an email
    with instructions to securely download your
-   :ref:`ref-offline-keys`. Read this documentation for information on key
+   :ref:`ref-offline-keys`. Read :ref:`this documentation<ref-offline-keys>` for information on key
    rotation.
 
    It is incredibly important that your keys are kept **safe and
