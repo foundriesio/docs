@@ -9,7 +9,6 @@ This section will guide you through your personal or enterprise factory.
    getting-started
    first-boot
    managing
-   configuring
    source-code
    docker-apps
    updating-the-core
