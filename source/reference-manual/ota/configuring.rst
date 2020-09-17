@@ -61,7 +61,7 @@ interesting things that can be done with this include "on-changed" and
 Further Reading
 ~~~~~~~~~~~~~~~
 
-More details can be found in :ref:`ref-configuration-management`.
+More details can be found in :ref:`ref-fioconfig`.
 
 .. _fioctl command line tool:
    https://github.com/foundriesio/fioctl/releases
