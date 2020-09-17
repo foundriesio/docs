@@ -251,7 +251,6 @@ html_static_path = ['_static']
 
 # Add custom CSS files.
 html_css_files = [
-    'css/og.css',
     'theme_overrides.css'
 ]
 
