@@ -249,7 +249,8 @@ html_static_path = ['_static']
 
 # Add custom CSS files.
 html_css_files = [
-    'css/og.css'
+    'css/og.css',
+    'theme_overrides.css'
 ]
 
 # Add any extra paths that contain custom files (such as robots.txt or
