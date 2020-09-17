@@ -1,4 +1,4 @@
-.. _ref-vpn:
+.. _ref-wireguard:
 
 WireGuard VPN
 =============
