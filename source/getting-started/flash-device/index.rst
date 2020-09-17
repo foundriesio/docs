@@ -3,16 +3,17 @@ Flash your Device
 
 .. note::
    To follow this section, you will need:
-    - A supported board that can boot from an SD Card.
+    - A supported board.
 
-      **(Raspberry Pi 3 of any variant, or a Raspberry Pi 4 recommended)**
+      - Capable of booting from eMMC **(recommended if available)**
+      - **Or** capable of booting from a suitable `microSD Card <https://elinux.org/RPi_SD_cards>`_
 
-    - A `suitable microSD Card <https://elinux.org/RPi_SD_cards>`_ to flash
-      your LmP target build to.
     - Wired or WiFi network with internet access.
 
       - Ethernet cable (if choosing Wired)
       - 3.3 volt USB to TTL Serial Cable (if choosing WiFi)
+
+.. todo:: Link 'supported board' to section on supported boards when written.
 
 Download LmP system image
 -------------------------
@@ -26,7 +27,7 @@ downloaded from the **Targets** tab of your factory, as described in
 2. Find your ``master``  LmP platform build, denoted by the **trigger name**:
    ``platform-master``.
 
-   E.G: ``lmp-factory-image-raspberrypi3-64.wic.gz``
+   E.G: ``lmp-factory-image-machine-name.wic.gz``
 
 3. Download it by clicking on its name in the list of artifacts.
 
@@ -208,18 +209,25 @@ Log in via SSH
 
 .. highlight:: none
 
-Use ``fio`` as the username and ``raspberrypi3-64.local`` as the
+Use ``fio`` as the username and ``machine-name.local`` as the
 hostname::
 
-  ssh fio@raspberrypi3-64.local
+  ssh fio@<machine-name>.local
 
 .. note::
-   If you are using a board other than the Raspberry Pi 3, your hostname will be
-   defaulted to the value of the ``machine:`` key value from your ``factory-config.yml`` E.G:
+   Your device hostname hostname will be defaulted to the value of the
+   ``machine:`` key value from your ``factory-config.yml`` E.G:
 
+   | ``raspberrypi3-64.local``
    | ``imx8mmevk.local``
    | ``beaglebone-yocto.local``
    | ``intel-corei7-64.local``
+
+.. todo::
+
+   Link to section on machine names for each of our supported boards. This will
+   probably be something we add in the "supported boards" section when we write
+   it.
 
 The default password is ``fio``; we recommend changing it now if you
 haven't already. For this to work, your machine needs to support
@@ -234,8 +242,8 @@ advice.
 Troubleshooting
 ^^^^^^^^^^^^^^^
 
-If the above methods to connect your Raspberry Pi 3 to the
-network don't work, try one of the following.
+If the above methods to connect your device to the network don't work, try one
+of the following.
 
 - Temporarily enable and connect to the UART (see directions above in
   the WiFi section) and determine available IP addresses with::
