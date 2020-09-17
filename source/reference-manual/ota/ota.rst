@@ -10,3 +10,4 @@ Over the Air Updates
    aktualizr-lite
    device-tags
    advanced-tagging
+   configuring
