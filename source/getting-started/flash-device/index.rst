@@ -214,6 +214,8 @@ hostname::
 
   ssh fio@<machine-name>.local
 
+The default password is ``fio``; we recommend changing it once logged in.
+
 .. note::
    Your device hostname hostname will be defaulted to the value of the
    ``machine:`` key value from your ``factory-config.yml`` E.G:
@@ -229,9 +231,8 @@ hostname::
    probably be something we add in the "supported boards" section when we write
    it.
 
-The default password is ``fio``; we recommend changing it now if you
-haven't already. For this to work, your machine needs to support
-zeroconf_ the hostname must be otherwise unclaimed.
+For this to work, your machine needs to support zeroconf_ the hostname must be
+otherwise unclaimed.
 
 If that doesn't work, you can also log in by IP address. See
 :ref:`Troubleshooting <getting-started-troubleshooting>` below for
