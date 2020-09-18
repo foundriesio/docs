@@ -27,7 +27,7 @@ downloaded from the **Targets** tab of your factory, as described in
 2. Find your ``master``  LmP platform build, denoted by the **trigger name**:
    ``platform-master``.
 
-   E.G: ``lmp-factory-image-machine-name.wic.gz``
+   e.g: ``lmp-factory-image-machine-name.wic.gz``
 
 3. Download it by clicking on its name in the list of artifacts.
 
@@ -51,7 +51,7 @@ Flash LmP system image
       1. Determine the disk you want to flash by finding the device with the
          ``SIZE`` that matches your SD card in the list below.  Be sure to ignore
          partitions (where ``TYPE`` is ``part``).  Save the ``NAME`` for your SD card device to
-         be used in a later step as the disk path. E.G: ``/dev/mmcblk0``::
+         be used in a later step as the disk path. e.g: ``/dev/mmcblk0``::
 
            lsblk -po +MODEL
 
@@ -81,7 +81,7 @@ Flash LmP system image
       1. Determine the disk you want to flash by finding the device with the
          ``SIZE`` that matches your SD card in the list below.  Be sure to ignore
          partitions (lines without the * in the ``SIZE``).  Save the ``IDENTIFIER`` for your
-         SD card device to be used in a later step as the disk path. E.G:
+         SD card device to be used in a later step as the disk path. e.g:
          ``/dev/disk3``::
 
            diskutil list
@@ -239,7 +239,7 @@ The default password is ``fio``; we recommend changing it once logged in.
 
 .. note::
    Your device hostname hostname will be defaulted to the value of the
-   ``machine:`` key value from your ``factory-config.yml`` E.G:
+   ``machine:`` key value from your ``factory-config.yml`` e.g:
 
    | ``raspberrypi3-64.local``
    | ``imx8mmevk.local``
