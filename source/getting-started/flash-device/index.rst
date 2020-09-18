@@ -252,10 +252,8 @@ The default password is ``fio``; we recommend changing it once logged in.
    probably be something we add in the "supported boards" section when we write
    it.
 
-For this to work, your machine needs to support zeroconf_ the hostname must be
-otherwise unclaimed.
-
-If that doesn't work, you can also log in by IP address. See
+For this to work, your PC needs to support zeroconf_ the hostname must be
+otherwise unclaimed. If this doesn't work, you can also log in by IP address. See
 :ref:`Troubleshooting <getting-started-troubleshooting>` below for
 advice.
 
