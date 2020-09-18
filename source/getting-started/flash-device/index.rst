@@ -39,8 +39,8 @@ Flash LmP system image
 ----------------------
 
 .. note::
-   If you are developing on a platform that has EMMC available such as the NXP
-   iMX8MM-EVK, it is recommended that you boot from EMMC rather than SD. Read the
+   If you are developing on a platform that has eMMC available such as the NXP
+   iMX8MM-EVK, it is recommended that you boot from eMMC rather than SD. Read the
    <placeholder> section for details on flashing your system-image using the vendor
    provided tools.
 
@@ -301,7 +301,7 @@ of the following.
 .. todo::
 
      Make a section dedicated to the i.MX platform to link to in the "Flash LmP
-     system image" section note, regarding flashing EMMC.
+     system image" section note, regarding flashing eMMC.
 
 .. todo::
 
