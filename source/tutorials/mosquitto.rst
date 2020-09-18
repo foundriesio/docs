@@ -60,14 +60,16 @@ Cloning your Repository
 
 There are many application examples in the `extra-containers`_ repository but each FoundriesFactory user can decide which application to enable.
 
-Download your factory container.git repository and follow the commands to copy the Mosquitto app from extra-containers::
+Download your container.git repository with the commands below. Make sure you replace `<your factory>` with your factory name::
 
  # Ubuntu Host Machine
  $ mkdir getstartedvideo
  $ cd getstartevideo
- $ git clone https://source.foundries.io/factories/getstartedvideo/containers.git/
+ $ git clone https://source.foundries.io/factories/<your factory>/containers.git/
  $ cd containers
- In order to enable Mosquitto app we will need to clone some files from our reference repository:
+
+Follow the commands to copy the Mosquitto app from extra-containers::
+
  # Ubuntu Host Machine
  $ git remote add fio https://github.com/foundriesio/extra-containers.git
  $ git remote update
@@ -101,7 +103,9 @@ With `fioctl`_, we will enable the application "mosquitto" on your device regist
 
  # Ubuntu Host Machine
  # Configure the device to run the "mosquitto" app
- $ fioctl devices config updates device1 --apps mosquitto --tags master
+ $ fioctl devices config updates raspberrypi3 --apps mosquitto --tags master
+
+It may take a while for the application to be installed on the device. By default, it can take 5 to 10 minutes.
 
 Debugging the Mosquitto Container APP
 --------------------------------------
@@ -127,7 +131,7 @@ Use fioctl to safely send a custom configuration files to the device::
  $ cd mosquitto
  $ ls
  docker-compose.yml  mosquitto.conf  run.sh
- $ fioctl devices config set device1 mosquitto.conf="$(cat mosquitto.conf)"
+ $ fioctl devices config set raspberrypi3 mosquitto.conf="$(cat mosquitto.conf)"
 
 After some time, the files will be copied to the folder ``/var/run/secrets`` on your device::
 
@@ -136,7 +140,7 @@ After some time, the files will be copied to the folder ``/var/run/secrets`` on 
  $ root@raspberrypi3:/home/prjs/google/config# ls /var/run/secrets/
  mosquitto.conf
 
-After some time, the mosquitto container will automatically recognize the new config file and will restart the application::
+The mosquitto container will automatically recognize the new config file and will restart the application::
 
  #Raspberry Pi 3 Target Machine
   $ docker ps
