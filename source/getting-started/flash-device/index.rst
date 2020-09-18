@@ -141,6 +141,27 @@ Boot Device and Connect to the Network
 
       .. tabs::
 
+          .. tab:: Generic
+
+	     The LmP uses ``nmcli`` and ``NetworkManager`` to manage network
+             connectivity. Once you have gained shell access to the device, you can add a new
+             WiFi SSID to connect to by using ``nmcli``::
+
+                sudo nmcli device wifi connect NETWORK_SSID password NETWORK_PASSWORD
+
+             **Access via Serial**
+
+             If you are starting without any network connectivity that
+             could give you shell access to your device, you will need to
+	     **connect via serial** to execute the command. You may need to
+             refer to your hardware vendor's documentation on serial access.
+
+             **Access interactively**
+
+	     If your device has a video interface, you can attach it to a
+             display, plug in a USB Keyboard and **execute the command interactively**. Be
+             sure to log out from your shell session after completion when using this method.
+
           .. tab:: Raspberry Pi 3/4
 
               If you don't have Ethernet connectivity, you can connect to a
