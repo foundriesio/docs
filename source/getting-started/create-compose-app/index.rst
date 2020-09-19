@@ -49,9 +49,9 @@ this new target. This is done using :ref:`ref-fioctl`.
 
    your output should look like this::
 
-     NAME  FACTORY  OWNER           TARGET                  STATUS  APPS        UP TO DATE
-     ----  -------  -----           ------                  ------  ----        ----------
-     gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK      simple-app  true
+     NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
+     ----  -------  -----           ------                  ------  ----  ----------
+     gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK            true
 
 2. Configure the device to run the ``shellhttpd`` app::
 
