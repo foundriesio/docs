@@ -47,8 +47,13 @@ Flash LmP system image
 .. note::
    If you are developing on a platform that has eMMC available such as the NXP
    iMX8MM-EVK, it is recommended that you boot from eMMC rather than SD. Read the
-   <placeholder> section for details on flashing your system-image using the vendor
+   :ref:`ref-linux-targets` section for details on flashing your system-image using the vendor
    provided tools.
+
+.. todo:: We should provide a more comprehensive section specific to each
+   device. Essentially, we should overhaul the linux-targets section to include
+   device images, more details about each device, and bring it up to date with
+   what we support today
 
 .. tabs::
 
