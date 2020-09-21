@@ -56,7 +56,7 @@ Via Package Manager
 
         1. Enable the WSL_
         2. `Install a supported Linux Distribution
-           <https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-your-linux-distribution-of-choice>`_
+           <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice>`_
            such as Ubuntu, Debian.
         3. Launch a shell via WSL, usually bash.exe is available from the start
            menu.
