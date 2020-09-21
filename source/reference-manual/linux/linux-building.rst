@@ -127,9 +127,9 @@ use to flash your board is
 Install the lmp-gateway Image
 -----------------------------
 
-If you're using a Raspberry Pi 3, you can use the same procedure
-outlined for prebuilt binaries in :ref:`tutorial-linux`. See
-:ref:`ref-linux-targets` for additional information on other targets.
+If you're using a Raspberry Pi 3, you can use the same procedure outlined in
+:ref:`getting-started-flash-image`. See :ref:`linux-supported` for additional information
+on other targets.
 
 .. _ref-linux-building-ref:
 
