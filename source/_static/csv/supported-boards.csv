@@ -1,0 +1,21 @@
+Device Name,MACHINE
+Arm Corstone-700 MPS3,corstone700-mps3
+Arm Corstone-700 FVP,corstone700-fvp
+Arm Cortex A5 DesignStart,a5ds
+Intel NUC8,intel-corei7-64
+Intel x86-64 UEFI,intel-corei7-64
+NXP iMX6ULL-EVK,imx6ullevk
+EA iMX7ULP-UCOM,imx7ulpea-ucom
+NXP iMX8M-MINILPD4 EVK,imx8mmevk
+NXP Solidrun CuBox-i iMX6,cubox-i
+NXP Toradex Apalis-iMX6,apalis-imx6
+NXP Toradex Apalis-iMX8QM,apalis-imx8
+NXP Toradex Colibri-iMX7 (Aster),colibri-imx7-emmc
+QEMU AARCH64,qemuarm64
+QEMU RISCV-64,qemuriscv64
+Raspberry Pi3 (32 bit and CM),raspberrypi3
+Raspberry Pi3/3B (64 bit),raspberrypi3-64
+Raspberry Pi4,raspberrypi4-64
+SiFive HiFive Unleashed,freedom-u540
+TI Beaglebone Black,beaglebone-yocto
+TI Beaglebone Black Wireless,beaglebone-yocto

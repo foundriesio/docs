@@ -24,6 +24,7 @@ and maintained by Foundries.io on `GitHub`_.
    :maxdepth: 1
 
    linux-targets
+   linux-supported
    linux-repo
    linux-dev-container
    linux-building
