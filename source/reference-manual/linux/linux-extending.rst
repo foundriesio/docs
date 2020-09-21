@@ -4,7 +4,7 @@ Extending the Linux microPlatform
 .. _ref-adding-packages-image:
 
 Adding Packages to the Image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 The **meta-subscriber-overrides.git** repo allows you to customize the
 packages included in your factory image.
 
@@ -18,7 +18,7 @@ For a quick example let’s add the "stress-ng" utility package to the build.::
 
 If the git clone fails with an unable to access error then check you have a
 valid token in your ``.netrc`` file. You can look at
-:ref:`ref-getting-started` for instructions.
+:ref:`sec-learn` for instructions.
 
 Add stress to the package list.::
 
@@ -45,14 +45,14 @@ devices should be re-started.  Once restarted the stress-ng command will
 be available.
 
 List of available recipes
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 OE provides a tool_ to search layers and recipes.
 
 .. _tool:
    https://layers.openembedded.org/layerindex/branch/master/layers/
 
 Creating a Python3 Package from PyPi
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 There are python packages which do not yet have a recipe for python3 in OE.
 If this is the case with a desired package, use this template below to add a
 new package from PyPi.
