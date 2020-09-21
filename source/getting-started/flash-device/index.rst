@@ -1,3 +1,5 @@
+.. _getting-started-flash-device:
+
 Flash your Device
 =================
 
@@ -14,6 +16,8 @@ Flash your Device
       - 3.3 volt USB to TTL Serial Cable (if choosing WiFi)
 
 .. todo:: Link 'supported board' to section on supported boards when written.
+
+.. _getting-started-download:
 
 Download LmP system image
 -------------------------
@@ -34,6 +38,8 @@ downloaded from the **Targets** tab of your factory, as described in
 .. figure:: /_static/flash-device/artifacts.png
    :width: 769
    :align: center
+
+.. _getting-started-flash-image:
 
 Flash LmP system image
 ----------------------
@@ -116,6 +122,8 @@ Flash LmP system image
       2. Select your ``<system-image>``.
       3. Select your disk.
       4. Flash it.
+
+.. _getting-started-boot:
 
 Boot Device and Connect to the Network
 --------------------------------------
@@ -224,6 +232,8 @@ Boot Device and Connect to the Network
 
               Your board will connect to the network you've saved after
               rebooting. You can now log in using SSH.
+
+.. _getting-started-login:
 
 Log in via SSH
 ^^^^^^^^^^^^^^
