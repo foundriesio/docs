@@ -6,6 +6,7 @@ Over the Air Updates
 .. toctree::
    :maxdepth: 1
 
+   ota-architecture
    fioconfig
    aktualizr-lite
    device-tags
