@@ -3,7 +3,7 @@
 Sign Up
 =======
 
-To create a FoundriesFactory, you first need to `create an account <signup_>`_ with us.
+I am making some changes that will be used to show how we can do PRs directly from the github UI
 
 .. figure:: /_static/signup/login.png
    :width: 400
