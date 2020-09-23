@@ -9,4 +9,3 @@ Docker
    containers
    container-secrets
    compose-apps
-   app-conversion
