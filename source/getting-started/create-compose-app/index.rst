@@ -94,6 +94,14 @@ details about target can be printed by passing its version number to the
   ----------  -------
   shellhttpd  shellhttpd.dockerapp-4
 
+Completion
+----------
+
+Now that you're done, you might want to read :ref:`sec-tutorials` to see some
+examples of the things that can be done with your Factory. Additionally, you can
+read the :ref:`ref-manual` to learn more about the architecture of
+FoundriesFactory and the Linux microPlatform.
+
 .. todo::
    This section links to the flash-target section, yet to be submitted, which
    details how to install the LmP on a device, it makes the assumption that the
