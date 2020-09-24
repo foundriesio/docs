@@ -103,17 +103,7 @@ read the :ref:`ref-manual` to learn more about the architecture of
 FoundriesFactory and the Linux microPlatform.
 
 .. todo::
-   This section links to the flash-target section, yet to be submitted, which
-   details how to install the LmP on a device, it makes the assumption that the
-   device is registered
-
-.. todo::
    reference unreferenced keywords
-
-.. todo::
-   add :ref: to
-   https://docs.foundries.io/latest/customer-factory/configuring.html in
-   'configuration', will have to pull this in from master.
 
 .. todo::
    Give more complex example such as mosquitto, homeassistant, netdata that the

@@ -218,6 +218,4 @@ Configuration
 .. _launchpad: https://launchpad.net/~fio-maintainers/+archive/ubuntu/ppa
 .. _Github Releases: https://github.com/foundriesio/fioctl/releases
 
-.. todo:: Document M2M Services
-
 .. todo:: Create Brew, Chocolatey, PPA packages for installation

@@ -15,8 +15,6 @@ Flash your Device
       - Ethernet cable (if choosing Wired)
       - 3.3 volt USB to TTL Serial Cable (if choosing WiFi)
 
-.. todo:: Link 'supported board' to section on supported boards when written.
-
 .. _getting-started-download:
 
 Download LmP system image
@@ -264,12 +262,6 @@ The default password is ``fio``; we recommend changing it once logged in.
    | ``beaglebone-yocto.local``
    | ``intel-corei7-64.local``
 
-.. todo::
-
-   Link to section on machine names for each of our supported boards. This will
-   probably be something we add in the "supported boards" section when we write
-   it.
-
 For this to work, your PC needs to support zeroconf_ the hostname must be
 otherwise unclaimed. If this doesn't work, you can also log in by IP address. See
 :ref:`Troubleshooting <getting-started-troubleshooting>` below for
@@ -310,11 +302,6 @@ of the following.
    https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/connect-the-lead
 
 .. _Etcher: https://www.balena.io/etcher/
-
-.. todo::
-
-     Make a section on our other supported boards to link to in the note in
-     the header
 
 .. todo::
 
