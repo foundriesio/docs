@@ -5,7 +5,7 @@ Flash your Device
 
 .. note::
    To follow this section, you will need:
-    - A supported board.
+    - A :ref:`supported board <linux-supported>`.
 
       - Capable of booting from eMMC **(recommended if available)**
       - **Or** capable of booting from a suitable `microSD Card <https://elinux.org/RPi_SD_cards>`_
