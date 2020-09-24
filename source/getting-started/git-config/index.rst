@@ -5,7 +5,7 @@ Configuring Git
 
 Pushing to the Git repositories in your FoundriesFactory is as simple as
 configuring Git on your personal machine to use the **api token** you generated
-as part of your account creation. Once configured, ``git`` will know when are
+as part of your :ref:`account creation <ref-signup>`. Once configured, ``git`` will know when are
 connecting to ``source.foundries.io`` and will use this token to authenticate
 you with our Git server.
 
