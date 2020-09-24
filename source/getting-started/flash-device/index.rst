@@ -253,8 +253,11 @@ hostname::
 The default password is ``fio``; we recommend changing it once logged in.
 
 .. note::
-   Your device hostname hostname will be defaulted to the value of the
-   ``machine:`` key value from your ``factory-config.yml`` e.g:
+   Your device hostname will be defaulted to the value of the ``machine:`` key
+   value from your ``factory-config.yml`` Read the :ref:`linux-supported`
+   section for a list of supported hardware and their ``MACHINE`` value.
+
+   **Here are some examples:**
 
    | ``raspberrypi3-64.local``
    | ``imx8mmevk.local``
