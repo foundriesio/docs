@@ -13,7 +13,7 @@ Flash your Device
     - Wired or WiFi network with internet access.
 
       - Ethernet cable (if choosing Wired)
-      - 3.3 volt USB to TTL Serial Cable (if choosing WiFi)
+      - Console access to your hardware via display/keyboard **or** serial (if choosing WiFi)
 
 .. _getting-started-download:
 
