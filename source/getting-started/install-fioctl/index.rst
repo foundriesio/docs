@@ -34,14 +34,16 @@ Via Package Manager
    .. group-tab:: Windows
 
         .. note::
-           We recommend using either the WSL_ or Chocolatey_ to manage your
+           We recommend using either the WSL_ or Scoop_ to manage your
            :ref:`ref-fioctl` installation.
 
-        **Via Chocolatey**
+        **Via Scoop**
 
-        1. Install Chocolatey_
-        2. Run ``cmd.exe`` as Administrator
-        3. Run ``choco install fioctl``
+        1. Install Scoop_
+        2. From Powershell, run::
+
+             scoop bucket add fio https://github.com/foundriesio/scoop-fioctl
+             scoop install fioctl
 
         **Via Windows Subsystem for Linux (WSL)**
 
@@ -165,7 +167,7 @@ Configuration
    about configuration.
 
 .. _AUR Package: https://aur.archlinux.org/packages/fioctl-bin
-.. _Chocolatey: https://chocolatey.org/install
+.. _Scoop: https://scoop.sh/
 .. _WSL: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 .. _launchpad: https://launchpad.net/~fio-maintainers/+archive/ubuntu/ppa
 .. _Github Releases: https://github.com/foundriesio/fioctl/releases
