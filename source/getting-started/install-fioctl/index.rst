@@ -17,63 +17,6 @@ for managing a Factory. It is based on the `ota-lite API
 Installation
 ------------
 
-Via Package Manager
-^^^^^^^^^^^^^^^^^^^
-
-.. tabs::
-
-   .. group-tab:: macOS
-
-      We maintain a brew Formula_
-
-        .. code-block:: shell
-
-           brew tap foundriesio/homebrew-fioctl
-           brew install fioctl
-
-   .. group-tab:: Windows
-
-        .. note::
-           We recommend using either the WSL_ or Scoop_ to manage your
-           :ref:`ref-fioctl` installation.
-
-        **Via Scoop**
-
-        1. Install Scoop_
-        2. From Powershell, run::
-
-             scoop bucket add fio https://github.com/foundriesio/scoop-fioctl
-             scoop install fioctl
-
-        **Via Windows Subsystem for Linux (WSL)**
-
-        1. Enable the WSL_
-        2. `Install a supported Linux Distribution
-           <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice>`_
-           such as Ubuntu, Debian.
-        3. Launch a shell via WSL, usually bash.exe is available from the start
-           menu.
-        4. You can now follow our docs as if you were running Linux, refer to
-           the Ubuntu/Debian installation steps.
-
-   .. group-tab:: Arch Linux
-
-      We maintain an `AUR Package`_
-
-      **Via yay**
-
-        .. code-block:: shell
-
-          yay -S fioctl
-
-      **Or via makepkg**
-
-        .. code-block:: shell
-
-          git clone https://aur.archlinux.org/fioctl-bin.git
-          cd fioctl-bin
-          makepkg -si
-
 Manual Installation
 ^^^^^^^^^^^^^^^^^^^
 
@@ -137,6 +80,63 @@ manually, you can refer to this section for manual installation instructions.
 
       You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
       ``fioctl``.
+
+Via Package Manager
+^^^^^^^^^^^^^^^^^^^
+
+.. tabs::
+
+   .. group-tab:: macOS
+
+      We maintain a brew Formula_
+
+        .. code-block:: shell
+
+           brew tap foundriesio/homebrew-fioctl
+           brew install fioctl
+
+   .. group-tab:: Windows
+
+        .. note::
+           We recommend using either the WSL_ or Scoop_ to manage your
+           :ref:`ref-fioctl` installation.
+
+        **Via Scoop**
+
+        1. Install Scoop_
+        2. From Powershell, run::
+
+             scoop bucket add fio https://github.com/foundriesio/scoop-fioctl
+             scoop install fioctl
+
+        **Via Windows Subsystem for Linux (WSL)**
+
+        1. Enable the WSL_
+        2. `Install a supported Linux Distribution
+           <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice>`_
+           such as Ubuntu, Debian.
+        3. Launch a shell via WSL, usually bash.exe is available from the start
+           menu.
+        4. You can now follow our docs as if you were running Linux, refer to
+           the Ubuntu/Debian installation steps.
+
+   .. group-tab:: Arch Linux
+
+      We maintain an `AUR Package`_
+
+      **Via yay**
+
+        .. code-block:: shell
+
+          yay -S fioctl
+
+      **Or via makepkg**
+
+        .. code-block:: shell
+
+          git clone https://aur.archlinux.org/fioctl-bin.git
+          cd fioctl-bin
+          makepkg -si
 
 Post-Install
 ^^^^^^^^^^^^
