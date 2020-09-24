@@ -88,7 +88,7 @@ declare new targets for the Factory to build. You can learn about creating targe
 .. note::
 
    If you'd like to learn more, `we wrote a blog
-   <https://foundries.io/insights/2020/05/14/whats-a-target/>`_ about what targets
+   <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ about what targets
    are and why we made them the way they are.
 
 .. warning::
