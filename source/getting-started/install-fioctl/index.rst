@@ -34,10 +34,11 @@ Via Package Manager
 
    .. group-tab:: macOS
 
-      We maintain a brew Formula
+      We maintain a brew Formula_
 
         .. code-block:: shell
 
+           brew tap foundriesio/homebrew-fioctl
            brew install fioctl
 
    .. group-tab:: Windows
@@ -178,5 +179,6 @@ Configuration
 .. _WSL: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 .. _launchpad: https://launchpad.net/~fio-maintainers/+archive/ubuntu/ppa
 .. _Github Releases: https://github.com/foundriesio/fioctl/releases
+.. _Formula: https://github.com/foundriesio/homebrew-fioctl
 
 .. todo:: Create Brew, Chocolatey, PPA packages for installation
