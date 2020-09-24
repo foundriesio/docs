@@ -9,6 +9,10 @@ targets for your devices to update to.
 Default Example
 ---------------
 
+This default example shows how apps are enabled. You should read the contents of
+the ``shellhttpd`` folder to see how this application has been defined, or read
+the advanced example below to learn how you can define an app from scratch.
+
 1. Clone your containers.git repo and enter it::
 
      git clone https://source.foundries.io/factories/<factory>/containers.git
