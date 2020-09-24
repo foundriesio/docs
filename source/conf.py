@@ -32,6 +32,7 @@ from urllib.request import urlopen
 # loaded. That's too late to have any effect on |version| and |release|.
 mp_version = os.environ.get('MP_UPDATE_VERSION')
 lmp_build = os.environ.get('LMP_BUILD')
+fioctl_version = os.environ.get('fv')
 if mp_version is None:
     try:
         git_version = subprocess.check_output(['git', 'describe', '--tags'])
@@ -130,6 +131,7 @@ linkcheck_ignore = [
     r'https://redbear.cc/product/ble-nano-kit-2.html',  # before deprecating
     r'https://mgmt.foundries.io/leshan/#/clients',  # I have no idea, it works
     r'https://github.com/foundriesio/lmp-manifest/releases/download/.*',  # Release artifacts done show up until *after* this runs
+    r'https://github.com/foundriesio/fioctl/releases/download/.*',  # ditto
     'https://mgmt.foundries.io/leshan/#/security',
 ]
 
@@ -210,7 +212,8 @@ rst_epilog = '''
 .. |docker_tag| replace:: {}
 .. |git_tag| replace:: {}
 .. |manifest_tag| replace:: {}
-'''.format(docker_tag, git_tag, manifest_tag)
+.. |fioctl_version| replace:: {}
+'''.format(docker_tag, git_tag, manifest_tag, fioctl_version)
 
 # -- Options for HTML output ----------------------------------------------
 

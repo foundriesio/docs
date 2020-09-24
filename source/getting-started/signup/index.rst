@@ -94,7 +94,7 @@ declare new targets for the Factory to build. You can learn about creating targe
 .. warning::
 
    Bootstrapping your OS securely takes some time. Secure caching isn't simple,
-   so your first build will take up to an hour to complete. Subsequent builds
+   so your first build will take up to 3 hours to complete. Subsequent builds
    will be much faster.
 
    Read through the rest of this section and set up your development
