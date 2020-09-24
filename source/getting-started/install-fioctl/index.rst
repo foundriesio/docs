@@ -22,16 +22,6 @@ Via Package Manager
 
 .. tabs::
 
-   .. group-tab:: Ubuntu/Debian
-
-      We maintain a PPA on launchpad_.
-
-        .. code-block:: shell
-
-           sudo add-apt-repository ppa:fio-maintainers/ppa
-           sudo apt-get update
-           sudo apt-get install fioctl
-
    .. group-tab:: macOS
 
       We maintain a brew Formula_
