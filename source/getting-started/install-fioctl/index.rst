@@ -172,5 +172,3 @@ Configuration
 .. _launchpad: https://launchpad.net/~fio-maintainers/+archive/ubuntu/ppa
 .. _Github Releases: https://github.com/foundriesio/fioctl/releases
 .. _Formula: https://github.com/foundriesio/homebrew-fioctl
-
-.. todo:: Create Brew, Chocolatey, PPA packages for installation
