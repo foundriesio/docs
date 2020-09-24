@@ -92,78 +92,39 @@ manually, you can refer to this section for manual installation instructions.
 
    .. group-tab:: Linux
 
-      1. Download a Linux binary from the `Github Releases`_ page.
-      2. Put it in a folder of your choosing.
-      3. Add that folder to your ``$PATH``. e.g ``~/.bashrc`` for bash or
-         ``~/.zshrc`` for zsh.
+      1. Download a Linux binary from the `Github Releases`_ page to a directory
+         on your ``PATH``
 
-         An example path string if installing to the home directory would look
-         like this: ``PATH="/home/stetson/fio/bin/:$PATH"``
+         For example, to download version |fioctl_version| on Linux, do:
 
-      We provide a script that implements those steps below. It assumes you want
-      to use a folder in your your home directory. Replace ``INSTALL_DIR`` with the
-      directory in your ``$HOME`` that you'd like to put your Foundries.io application
-      into. Additionally, you can change ``FIOCTL_VERSION`` to set the version of
-      :ref:`ref-fioctl` you'd like to install. If you use this script as is,
-      :ref:`ref-fioctl` will be installed to ``~/fio/bin/fioctl``, and it will be
-      added to your ``$PATH`` as long as you are using either ``zsh`` or ``bash`` as
-      your shell.
+         .. parsed-literal::
 
-        .. code-block:: shell
+              sudo curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/|fioctl_version|/fioctl-linux-amd64
 
-           INSTALL_DIR=fio
-           FIOCTL_VERSION="0.10"
+      2. Make the :ref:`ref-fioctl` binary executable::
 
-           mkdir -p ~/$INSTALL_DIR/bin
-           wget https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-linux-amd64 -O ~/$INSTALL_DIR/bin/fioctl
-           chmod +x $INSTALL_DIR/bin/fioctl
+           sudo chmod +x /usr/local/bin/fioctl
 
-           if [ $SHELL == '/bin/bash' ]
-           then
-             echo "PATH=\"$HOME/$INSTALL_DIR/bin/:\$PATH\"" >> ~/.bashrc
-             source ~/.bashrc
-           elif [ $SHELL == '/bin/zsh' ]
-           then
-             echo "PATH=\"$HOME/$INSTALL_DIR/bin/:\$PATH\"" >> ~/.zshrc
-             source ~/.zshrc
-           fi
+      You can execute this again in future to overwrite your binary, therefore
+      updating or changing your version.
 
    .. group-tab:: macOS
 
-      1. Download a Darwin binary from the `Github Releases`_ page.
-      2. Put it in a folder of your choosing.
-      3. Add that folder to your ``$PATH``. e.g ``~/.bashrc`` for bash or
-         ``~/.zshrc`` for zsh.
+      1. Download a Darwin binary from the `Github Releases`_ page to a directory
+         on your ``PATH``
 
-         An example path string if installing to the home directory would look
-         like this. ``PATH="/Users/stetson/fio/bin/:$PATH"``
+         For example, to download version |fioctl_version| on macOS, do:
 
-      We provide a script that implements those steps below. It assumes you want
-      to use a folder in your your home directory. Replace ``INSTALL_DIR`` with the
-      directory in your ``$HOME`` that you'd like to put your Foundries.io application
-      into. Additionally, you can change ``FIOCTL_VERSION`` to set the version of
-      :ref:`ref-fioctl` you'd like to install. If you use this script as is, fioctl will
-      be installed to ``~/fio/bin/fioctl``, and it will be added to your ``$PATH`` as
-      long as you are using either ``zsh`` or ``bash`` as your shell.
+         .. parsed-literal::
 
-        .. code-block:: shell
+              curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/|fioctl_version|/fioctl-darwin-amd64
 
-           INSTALL_DIR=fio
-           FIOCTL_VERSION="0.10"
+      2. Make the :ref:`ref-fioctl` binary executable::
 
-           mkdir -p ~/$INSTALL_DIR/bin
-           wget https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64 -O ~/$INSTALL_DIR/bin/fioctl
-           chmod +x $INSTALL_DIR/bin/fioctl
+           chmod +x /usr/local/bin/fioctl
 
-           if [ $SHELL == '/bin/bash' ]
-           then
-             echo "PATH=\"$HOME/$INSTALL_DIR/bin/:\$PATH\"" >> ~/.bashrc
-             source ~/.bashrc
-           elif [ $SHELL == '/bin/zsh' ]
-           then
-             echo "PATH=\"$HOME/$INSTALL_DIR/bin/:\$PATH\"" >> ~/.zshrc
-             source ~/.zshrc
-           fi
+      You can execute this again in future to overwrite your binary, therefore
+      updating or changing your version.
 
    .. group-tab:: Windows
 
