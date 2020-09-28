@@ -6,60 +6,63 @@ auth token, meaning you can clone your Factory repositories from
 ``https://source.foundries.io/factories/<factory>/`` and begin creating new
 targets for your devices to update to.
 
-Default Example
----------------
+Example Apps
+------------
 
-This default example shows how apps are enabled. You should read the contents of
-the ``shellhttpd`` folder to see how this application has been defined, or read
-the advanced example below to learn how you can define an app from scratch.
+.. tabs::
 
-1. Clone your containers.git repo and enter it::
+   .. tab:: Default Example (shellhttpd)
 
-     git clone https://source.foundries.io/factories/<factory>/containers.git
-     cd containers.git
-
-  We initialise your ``containers.git`` repository with a simple compose app
-  example in ``shellhttpd.disabled/``
-
-  .. tip:: Directory names ending with ``.disabled`` in containers.git are
-     ignored by our CI system.
-
-2. Enable the ``shellhttpd`` example app::
-
-     mv shellhttpd.disabled shellhttpd
-
-3. Add, commit and push::
-
-     git add .
-     git commit -m "shellhttpd: enable shellhttpd app"
-     git push
-
-4. :ref:`ref-watch-build`
-
-   When changes are made to ``containers.git`` in your Factory sources, a new target is
-   built by our CI system. Devices that are registered to your Factory will be
-   able to see this target and conditionally update to it, depending on their
-   :ref:`device configuration <ref-configuring-devices>`.
-
-Device Configuration
---------------------
-
-Now that a target is being built, we want to tell our device(s) to update to
-this new target. This is done using :ref:`ref-fioctl`.
-
-1. Determine the device you want to configure to use ``shellhttpd``::
-
-     fioctl devices list
-
-   your output should look like this::
-
-     NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
-     ----  -------  -----           ------                  ------  ----  ----------
-     gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK            true
-
-2. Configure the device to run the ``shellhttpd`` app::
-
-     fioctl devices config updates <device> --apps shellhttpd
+      This default example shows how apps are enabled. You should read the contents of
+      the ``shellhttpd`` folder to see how this application has been defined, or read
+      the other examples to learn how you can define an app from scratch.
+      
+      1. Clone your containers.git repo and enter it::
+      
+           git clone https://source.foundries.io/factories/<factory>/containers.git
+           cd containers.git
+      
+        We initialise your ``containers.git`` repository with a simple compose app
+        example in ``shellhttpd.disabled/``
+      
+        .. tip:: Directory names ending with ``.disabled`` in containers.git are
+           ignored by our CI system.
+      
+      2. Enable the ``shellhttpd`` example app::
+      
+           mv shellhttpd.disabled shellhttpd
+      
+      3. Add, commit and push::
+      
+           git add .
+           git commit -m "shellhttpd: enable shellhttpd app"
+           git push
+      
+      4. :ref:`ref-watch-build`
+      
+         When changes are made to ``containers.git`` in your Factory sources, a new target is
+         built by our CI system. Devices that are registered to your Factory will be
+         able to see this target and conditionally update to it, depending on their
+         :ref:`device configuration <ref-configuring-devices>`.
+      
+      **Device Configuration**
+            
+      Now that a target is being built, we want to tell our device(s) to update to
+      this new target. This is done using :ref:`ref-fioctl`.
+      
+      1. Determine the device you want to configure to use ``shellhttpd``::
+      
+           fioctl devices list
+      
+         your output should look like this::
+      
+           NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
+           ----  -------  -----           ------                  ------  ----  ----------
+           gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK            true
+      
+      2. Configure the device to run the ``shellhttpd`` app::
+      
+           fioctl devices config updates <device> --apps shellhttpd
 
 About Targets
 -------------
