@@ -60,7 +60,8 @@ Example Apps
            ----  -------  -----           ------                  ------  ----  ----------
            gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK            true
       
-      #. Configure the device to run the ``shellhttpd`` app::
+      #. Configure the device to run the ``shellhttpd`` app. Make sure to
+         replace ``<device>`` with the ``NAME`` of yours::
       
            fioctl devices config updates <device> --apps shellhttpd
 
