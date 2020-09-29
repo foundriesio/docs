@@ -64,6 +64,76 @@ Example Apps
       
            fioctl devices config updates <device> --apps shellhttpd
 
+   .. tab:: mosquitto
+
+      This example describes how to create a docker-compose app for the
+      `Mosquitto MQTT Broker <https://mosquitto.org/>`_ from scratch.
+      
+      #. Clone your containers.git repo and enter it. Make sure to replace
+         ``<factory>`` in the example with the name of your Factory::
+      
+           git clone https://source.foundries.io/factories/<factory>/containers.git
+           cd containers.git
+      
+      #. Create a directory named ``mosquitto`` and ``cd`` into it. This folder
+         name defines the name of the
+         container image that will be pulled on your device from
+         ``hub.foundries.io``::
+      
+           mkdir mosquitto
+           cd mosquitto
+
+      #. Create a file named ``Dockerfile`` to describe your
+         container, with the following contents::
+
+           FROM eclipse-mosquitto:latest
+
+      #. Create a file named ``docker-compose.yml`` to describe how you want
+         this container to run, with the following contents. Make sure to
+         replace ``<factory>`` in the example below with the name of your Factory::
+
+           version: "3.2"
+
+           services:
+             mosquitto:
+               restart: always
+               image: hub.foundries.io/<factory>/mosquitto:latest
+               ports:
+                 - "1883:1883"
+ 
+      #. Add, commit and push::
+      
+           git add .
+           git commit -m "mosquitto: create mosquitto container"
+           git push
+      
+      #. :ref:`ref-watch-build`
+      
+         When changes are made to ``containers.git`` in your Factory sources, a new target is
+         built by our CI system. Devices that are registered to your Factory will be
+         able to see this target and conditionally update to it, depending on their
+         :ref:`device configuration <ref-configuring-devices>`.
+      
+      **Device Configuration**
+            
+      Now that a target is being built, we want to tell our device(s) to update to
+      this new target. This is done using :ref:`ref-fioctl`.
+      
+      #. Determine the device you want to configure to use ``mosquitto``::
+      
+           fioctl devices list
+      
+         your output should look like this::
+      
+           NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
+           ----  -------  -----           ------                  ------  ----  ----------
+           gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK            true
+      
+      #. Configure the device to run the ``mosquitto`` app. Make sure to replace
+         ``<device>`` with the ``NAME`` of yours::
+      
+           fioctl devices config updates <device> --apps mosquitto
+
 About Targets
 -------------
 
