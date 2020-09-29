@@ -17,7 +17,7 @@ Example Apps
       the ``shellhttpd`` folder to see how this application has been defined, or read
       the other examples to learn how you can define an app from scratch.
       
-      1. Clone your containers.git repo and enter it::
+      #. Clone your containers.git repo and enter it::
       
            git clone https://source.foundries.io/factories/<factory>/containers.git
            cd containers.git
@@ -28,17 +28,17 @@ Example Apps
         .. tip:: Directory names ending with ``.disabled`` in containers.git are
            ignored by our CI system.
       
-      2. Enable the ``shellhttpd`` example app::
+      #. Enable the ``shellhttpd`` example app::
       
            mv shellhttpd.disabled shellhttpd
       
-      3. Add, commit and push::
+      #. Add, commit and push::
       
            git add .
            git commit -m "shellhttpd: enable shellhttpd app"
            git push
       
-      4. :ref:`ref-watch-build`
+      #. :ref:`ref-watch-build`
       
          When changes are made to ``containers.git`` in your Factory sources, a new target is
          built by our CI system. Devices that are registered to your Factory will be
@@ -50,7 +50,7 @@ Example Apps
       Now that a target is being built, we want to tell our device(s) to update to
       this new target. This is done using :ref:`ref-fioctl`.
       
-      1. Determine the device you want to configure to use ``shellhttpd``::
+      #. Determine the device you want to configure to use ``shellhttpd``::
       
            fioctl devices list
       
@@ -60,7 +60,7 @@ Example Apps
            ----  -------  -----           ------                  ------  ----  ----------
            gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK            true
       
-      2. Configure the device to run the ``shellhttpd`` app::
+      #. Configure the device to run the ``shellhttpd`` app::
       
            fioctl devices config updates <device> --apps shellhttpd
 
