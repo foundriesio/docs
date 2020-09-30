@@ -4,7 +4,7 @@ Factory Source Code
 The FoundriesFactory provides you with a private git sandbox which allows you
 to maintain and customize your platform.
 
-Navigate to https://source.foundries.io/factories/<myfactory>/
+Navigate to https://source.foundries.io/factories/<factory>/
 
 .. figure:: /_static/factory-cgit.png
    :alt: Source code navigation
@@ -27,7 +27,7 @@ lmp-manifest.git
 
 The repo manifest for the platform build. It defines which layer versions
 are included in your platform image. The ``default.xml`` file is the latest
-released manifest of our Linux microPlatform, and the ``<myfactory>.xml``
+released manifest of our Linux microPlatform, and the ``<factory>.xml``
 includes your factory changes which allows you to customize your image
 against our common base.
 
@@ -54,7 +54,7 @@ Any changes pushed to ``containers.git`` will trigger a container build job, and
 any containers defined will be pushed to your factory’s private Docker
 registry at:
 
- https://hub.foundries.io/<myfactory>/<mycontainer>:latest
+ https://hub.foundries.io/<factory>/<container>:latest
 
 
 .. note::
