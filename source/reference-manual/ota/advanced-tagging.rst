@@ -57,21 +57,21 @@ Consider this pseudo targets example::
   targets:
     build-1:
       ostree-hash: DEADBEEF
-      docker-apps: foo:v1, bar:v1
+      compose-apps: foo:v1, bar:v1
       tags: stable
     build-2:
       ostree-hash: GOODBEEF
-      docker-apps: foo:v2, bar:v2
+      compose-apps: foo:v2, bar:v2
       tags: master
 
 If a change to the stable branch was pushed to the LmP, a new
 target, build-3, would be added. The build logic would then look through
 the targets list to find the most recent ``master`` target so that
-it can copy those docker-apps. This would result in a new target::
+it can copy those compose-apps. This would result in a new target::
 
   build-3:
     ostree-hash: NEWHASH
-    docker-apps: foo:v2, bar:v2
+    compose-apps: foo:v2, bar:v2
     tags: stable
 
 On the other hand, there might also be a new container build for ``master``.
@@ -79,12 +79,12 @@ In this case the build logic will produce two new targets::
 
   build-4:  # for stable it will be based on build-3
     ostree-hash: NEWHASH
-    docker-apps: foo:v3, bar:v3
+    compose-apps: foo:v3, bar:v3
     tags: stable
 
   build-4:  # for master, it will be based on build-2
     ostree-hash: GOODBEEF
-    docker-apps: foo:v3, bar:v3
+    compose-apps: foo:v3, bar:v3
     tags: master
 
 Scenario 2: Multiple container builds using the same platform
