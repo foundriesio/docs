@@ -107,7 +107,10 @@ extensions = [
     'lmp_sphinx_ext',
     'sphinxemoji.sphinxemoji',
     'sphinx_tabs.tabs',
+    'sphinx_copybutton',
 ]
+
+copybutton_prompt_text = "$ "
 
 sphinx_tabs_valid_builders = ['linkcheck']
 
