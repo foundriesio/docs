@@ -64,6 +64,58 @@ Examples
   # Use container.git as the build context
   BUILD_CONTEXT="../"
 
+Passing Arguments to Build Context
+----------------------------------
+
+Containers may require Dockerfile `ARG`_ support for including
+build time variables. If the file ``.docker_build_args`` exists in a
+container directory, the build script will turn the  contents
+into ``--build-arg`` options passed to the ``docker build`` command.
+
+Static information can be done by simply defining a file like::
+
+ # <container>/.docker_build_args
+ KEY=Value
+ KEY2="Value with spaces"
+
+That would produce a build command that included
+``--build-arg KEY=Value --build-arg KEY2="Value with spaces"``.
+
+The need for dynamic arguments usually means the values must
+be generated at build time. The way this can be accomplished is by
+taking advantage of ``docker-build.conf``. This file is "sourced"
+by the build script, so it can be used to generate content dynamically.
+
+Example
+~~~~~~~
+A common case is including Git commit information into the container::
+
+  <container>/docker-build.conf
+  # $TAG is set by the build script as the Git short hash of the
+  # containers.git commit being built.
+  #
+  # $x is the path to the container.
+  cat <<EOF >$x/.docker_build_args
+  GIT_SHA=$TAG
+  GIT_MSG="$(git log --format=%s -1)"
+  EOF
+
+::
+
+  <container>/Dockerfile
+  ...
+  # NOTE - These ARG's change *every* build. In order to maximize
+  # Docker build caching, they should be as close to the end of the
+  # file as possible so that the steps after these lines don't have
+  # to get re-run *every* build.
+  ARG GIT_SHA
+  ARG GIT_MSG
+  ENV GIT_SHA=$GIT_SHA
+  ENV GIT_MSG=$GIT_MSG
+
+.. _ARG:
+   https://docs.docker.com/engine/reference/builder/#arg
+
 Advanced Container Dependencies
 -------------------------------
 
