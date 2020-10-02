@@ -5,7 +5,7 @@ triggers:
     runs:
       - name: docs
         container: python:3.6
-        host-tag: multiarch-osf
+        host-tag: amd64
         script: make-docs
 
       - name: link-check
