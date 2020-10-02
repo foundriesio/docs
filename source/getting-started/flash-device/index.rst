@@ -118,13 +118,31 @@ Flash LmP system image
    .. group-tab:: Windows
 
       Windows has no ``dd`` like tool built into the operating system to flash
-      your image to disk. In this case, we recommend you download and use
-      Etcher_.
+      your image to disk. In this case, we recommend you download and use either
+      **Win32 Disk Imager** or **Rufus**.
 
-      1. Download and run Etcher_.
-      2. Select your ``<system-image>``.
-      3. Select your disk.
-      4. Flash it.
+      .. note:: 
+
+           Your system image is in a compressed wic.gz format. To follow these next
+           steps, you must extract it using a tool like 7zip_ which will leave you with a
+           .wic image file.
+
+      **Using Rufus**
+
+      #. Download and run Rufus_.
+      #. Select your disk.
+      #. **SELECT** your ``<system-image>``.
+      #. **START** the flash procedure.
+
+      **Using Win32 Disk Imager**
+
+      #. Download and run `Win32 Disk Imager`_ as **Administrator**. 
+      #. Click the blue folder icon.
+      #. Select your ``<system-image>``
+      #. Select your disk via the **Device** dropdown.
+      #. Click **Write**
+      #. Wait for the image to finish writing, and a **Write Successful** dialog will appear.
+      
 
 .. _getting-started-boot:
 
@@ -301,7 +319,11 @@ of the following.
 .. _this Adafruit guide:
    https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/connect-the-lead
 
-.. _Etcher: https://www.balena.io/etcher/
+.. _Win32 Disk Imager: https://sourceforge.net/projects/win32diskimager/files/Archive/
+
+.. _7zip: https://www.7-zip.org/download.html
+
+.. _Rufus: https://rufus.ie
 
 .. todo::
 
