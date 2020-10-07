@@ -8,3 +8,4 @@ FoundriesFactory
 
    factory-definition
    Fioctl <fioctl/index.rst>
+   api-access
