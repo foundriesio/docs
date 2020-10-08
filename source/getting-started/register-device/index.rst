@@ -9,7 +9,7 @@ register your device(s) via the Foundries.io REST API.
 1. From a console on the device run this command to register the device to your
    factory::
 
-     lmp-device-register -n <device-name>
+     sudo lmp-device-register -n <device-name>
 
 2. You will be prompted by ``lmp-device-register`` to complete a challenge with
    our API
@@ -18,7 +18,7 @@ register your device(s) via the Foundries.io REST API.
 
    **Example Output**::
 
-     Registering device, test, to factory stetson.
+     Registering device, test, to factory gavin.
      Device UUID: df1295df-ba58-40a0-9239-542ded5ab934
 
      ----------------------------------------------------------------------------

@@ -76,7 +76,7 @@ manually, you can refer to this section for manual installation instructions.
          An example path string if installing to a folder on the desktop would
          look like this.
 
-         ``C:\Users\Stetson\Desktop\fio\bin``
+         ``C:\Users\Gavin\Desktop\fio\bin``
 
       You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
       ``fioctl``.
