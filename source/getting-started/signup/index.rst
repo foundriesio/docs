@@ -104,4 +104,4 @@ declare new targets for the Factory to build. You can learn about creating targe
    Read through the rest of this section and set up your development
    environment while you wait for us to build your OS from scratch.
 
-.. _
+.. _cgit: https://git.zx2c4.com/cgit/
