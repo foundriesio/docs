@@ -11,7 +11,7 @@ you with our Git server.
 
 .. note:: Tokens can be generated at https://app.foundries.io/settings/tokens
 
-Replace ``YOUR_TOKEN`` in the following command with your **api token**. An
+Replace ``YOUR_TOKEN`` in the following command with your access token. An
 example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
 
 .. code-block:: console
@@ -32,9 +32,9 @@ Replace ``<factory>`` with your FoundriesFactory name.
 
    You can also use ``git config --list`` to show you the current state of the
    global Git configuration, in which ``source.foundries.io`` should be referenced
-   along with your **api token**, represented as a base64 string.
+   along with your access token, represented as a base64 string.
 
 .. todo::
 
-   **git-config** add :ref: to 'FoundriesFactory', 'api token', 'account
+   **git-config** add :ref: to 'FoundriesFactory', 'access token', 'account
    creation', 'ci scripts' when pages are available

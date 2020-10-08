@@ -18,7 +18,7 @@ register your device(s) via the Foundries.io REST API.
 
    **Example Output**::
 
-     Registering device, test, to factory stetson.
+     Registering device, test, to factory gavin.
      Device UUID: df1295df-ba58-40a0-9239-542ded5ab934
 
      ----------------------------------------------------------------------------

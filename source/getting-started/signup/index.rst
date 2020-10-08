@@ -27,7 +27,7 @@ When your account is created, it is not associated with any factories.
 Create one by clicking **Create Factory**
 
 .. figure:: /_static/signup/no-factories.png
-   :width: 600
+   :width: 400
    :align: center
 
    Your journey begins empty handed
@@ -52,15 +52,21 @@ Create one by clicking **Create Factory**
 Select Your Platform
 ####################
 
+Choose a hardware platform from the dropdown menu in the  **Create New Factory** wizard
+and continue.
+
 The :ref:`ref-linux` supports a wide range of platforms out of the box. This
 includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
-.. note::
+.. figure:: /_static/signup/create.png
+   :width: 400
+   :align: center
 
-   To change the platform your Factory produces builds for, you must change the
-   value of the ``machines:`` key in your ``factory-config.yml`` to one of our
-   supported boards from the :ref:`ref-linux-targets` section. Read the
-   :ref:`ref-Factory-definition` page for more details.
+.. tip::
+
+   Your chosen platform determines what the initial value for the ``machines:``
+   key will be for your first build. This key and its value can later be changed
+   via ``factory-config.yml`` in :ref:`ref-Factory-definition`
 
 .. _QEMU: https://www.qemu.org/
 .. _ARM: https://www.arm.com/
@@ -73,13 +79,7 @@ Watch Your Build
 
 Once you have created your Factory, an initial build of the LmP will be
 generated for you to build your product on top of. You can monitor the progress
-of this initial build by clicking the **MICROPLATFORM** button in your Factory
-UI. The **SOURCE CODE** button will take you to your Factory source code in the
-cgit_ web frontend.
-
-.. figure:: /_static/signup/build.png
-   :width: 900
-   :align: center
+of this initial build in the **Targets** tab of your Factory.
 
 This section will become more useful as you begin to build your application and
 declare new targets for the Factory to build. You can learn about creating targets in the
@@ -91,6 +91,10 @@ declare new targets for the Factory to build. You can learn about creating targe
    <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ about what targets
    are and why we made them the way they are.
 
+.. figure:: /_static/signup/build.png
+   :width: 900
+   :align: center
+
 .. warning::
 
    Bootstrapping your OS securely takes some time. Secure caching isn't simple,
@@ -100,4 +104,4 @@ declare new targets for the Factory to build. You can learn about creating targe
    Read through the rest of this section and set up your development
    environment while you wait for us to build your OS from scratch.
 
-.. _cgit: https://git.zx2c4.com/cgit/
+.. _

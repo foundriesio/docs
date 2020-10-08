@@ -58,7 +58,7 @@ Example Apps
       
            NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
            ----  -------  -----           ------                  ------  ----  ----------
-           gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK            true
+           foo   gavin    <unconfigured>  raspberrypi3-64-lmp-19  OK            true
       
       #. Configure the device to run the ``shellhttpd`` app. Make sure to
          replace ``<device>`` with the ``NAME`` of yours::
@@ -128,7 +128,7 @@ Example Apps
       
            NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
            ----  -------  -----           ------                  ------  ----  ----------
-           gavin stetson  <unconfigured>  raspberrypi3-64-lmp-19  OK            true
+           foo   gavin    <unconfigured>  raspberrypi3-64-lmp-19  OK            true
       
       #. Configure the device to run the ``mosquitto`` app. Make sure to replace
          ``<device>`` with the ``NAME`` of yours::
@@ -158,11 +158,11 @@ details about target can be printed by passing its version number to the
 **CLI Output**::
 
   Tags:   master
-  CI:     https://ci.foundries.io/projects/stetson/lmp/builds/4/
+  CI:     https://ci.foundries.io/projects/gavin/lmp/builds/4/
   Source:
-          https://source.foundries.io/factories/stetson/lmp-manifest.git/commit/?id=2aaebc4b16c1027c9aae167d6178a8f248027a73
-          https://source.foundries.io/factories/stetson/meta-subscriber-overrides.git/commit/?id=19cbbe7b890eafed4d88e1fb13d2d61ecef8f3e5
-          https://source.foundries.io/factories/stetson/containers.git/commit/?id=6a2ef8d1dbab0db634c52950ae4a7c18494021b2
+          https://source.foundries.io/factories/gavin/lmp-manifest.git/commit/?id=2aaebc4b16c1027c9aae167d6178a8f248027a73
+          https://source.foundries.io/factories/gavin/meta-subscriber-overrides.git/commit/?id=19cbbe7b890eafed4d88e1fb13d2d61ecef8f3e5
+          https://source.foundries.io/factories/gavin/containers.git/commit/?id=6a2ef8d1dbab0db634c52950ae4a7c18494021b2
 
   TARGET NAME            OSTREE HASH - SHA256
   -----------            --------------------
