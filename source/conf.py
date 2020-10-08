@@ -136,6 +136,7 @@ linkcheck_ignore = [
     r'https://github.com/foundriesio/lmp-manifest/releases/download/.*',  # Release artifacts done show up until *after* this runs
     r'https://github.com/foundriesio/fioctl/releases/download/.*',  # ditto
     'https://mgmt.foundries.io/leshan/#/security',
+    'https://github.com/foundriesio/fiotest#testing-specification',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

@@ -9,3 +9,4 @@ FoundriesFactory
    factory-definition
    Fioctl <fioctl/index.rst>
    Factory Sources <factory-sources.rst>
+   api-access
