@@ -177,7 +177,7 @@ Completion
 
 Now that you're done, you might want to read :ref:`sec-tutorials` to see some
 examples of the things that can be done with your Factory. Additionally, you can
-read the :ref:`ref-manual` to learn more about the architecture of
+read the :ref:`sec-manual` to learn more about the architecture of
 FoundriesFactory and the Linux microPlatform.
 
 .. todo::
