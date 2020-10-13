@@ -26,4 +26,4 @@ When the new manifest files have been successfully pushed, a new platform build 
 If something goes wrong, don’t fret! This is why we use version control!::
 
   git reset --hard HEAD~1
-  git push
+  git push -f
