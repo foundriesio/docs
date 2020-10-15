@@ -31,12 +31,12 @@ Intel Core i7 (e.g. MinnowBoard Turbot)
 
     At the end of the build, your build artifacts will be found under
     ``deploy/images/intel-corei7-64``. The artifact you will use to
-    flash your microSD card is ``lmp-gateway-image-intel-corei7-64.wic.gz``.
+    flash your microSD card is ``lmp-base-console-image-intel-corei7-64.wic.gz``.
 
     To flash your microSD card, run::
 
-      gunzip -f lmp-gateway-image-intel-corei7-64.wic.gz
-      sudo dd if=lmp-gateway-image-intel-corei7-64.wic of=/dev/mmcblkX bs=4M
+      gunzip -f lmp-base-console-image-intel-corei7-64.wic.gz
+      sudo dd if=lmp-base-console-image-intel-corei7-64.wic of=/dev/mmcblkX bs=4M
 
     Where :file:`/dev/mmcblkX` is your SD card device.
 
@@ -56,12 +56,12 @@ BeagleBone Black
 
    At the end of the build, your build artifacts will be found under
    ``deploy/images/beaglebone-yocto``. The artifact you will use to
-   flash your microSD card is ``lmp-gateway-image-beaglebone-yocto.wic.gz``.
+   flash your microSD card is ``lmp-base-console-image-beaglebone-yocto.wic.gz``.
 
    To flash your microSD card, run::
 
-     gunzip -f lmp-gateway-image-beaglebone-yocto.wic.gz
-     sudo dd if=lmp-gateway-image-beaglebone-yocto.wic of=/dev/mmcblkX bs=4M
+     gunzip -f lmp-base-console-image-beaglebone-yocto.wic.gz
+     sudo dd if=lmp-base-console-image-beaglebone-yocto.wic of=/dev/mmcblkX bs=4M
 
    Where :file:`/dev/mmcblkX` is your SD card device.
 
@@ -81,12 +81,12 @@ Toradex Colibri iMX7D eMMC (Aster)
 
    At the end of the build, your build artifacts will be found under
    ``deploy/images/colibri-imx7-emmc``. The artifact you will use to
-   flash your microSD card is ``lmp-gateway-image-colibri-imx7-emmc.wic.gz``.
+   flash your microSD card is ``lmp-base-console-image-colibri-imx7-emmc.wic.gz``.
 
    To flash your microSD card, run::
 
-     gunzip -f lmp-gateway-image-colibri-imx7-emmc.wic.gz
-     sudo dd if=lmp-gateway-image-colibri-imx7-emmc.wic of=/dev/mmcblkX bs=4M
+     gunzip -f lmp-base-console-image-colibri-imx7-emmc.wic.gz
+     sudo dd if=lmp-base-console-image-colibri-imx7-emmc.wic of=/dev/mmcblkX bs=4M
 
    Where :file:`/dev/mmcblkX` is your SD card device.
 
@@ -141,18 +141,18 @@ i.MX 8M Mini LPD4 Evaluation Kit
    environment with the ``setup-environment`` script::
 
      DISTRO=lmp MACHINE=imx8mmevk source setup-environment [BUILDDIR]
-     bitbake lmp-gateway-image
+     bitbake lmp-base-console-image
 
    At the end of the build, your build artifacts will be found under
    ``deploy/images/imx8mmevk``. The artifact you will use to
-   flash your eMMC device is ``lmp-gateway-image-imx8mmevk.wic``.
+   flash your eMMC device is ``lmp-base-console-image-imx8mmevk.wic``.
 
    To flash your board, change the boot switch to download mode, connect a USB-C
    cable, turn on the board and run::
 
      tar -zxvf mfgtool-files.tar.gz
      cd mfgtool-files
-     sed -i 's/lmp-image-imx8mmevk.wic/lmp-gateway-image-imx8mmevk.wic/g' full_image.uuu
+     sed -i 's/lmp-image-imx8mmevk.wic/lmp-base-console-image-imx8mmevk.wic/g' full_image.uuu
      sudo ./uuu full_image.uuu
 
    Power off the board, change the boot switch back to eMMC / SDHC3 and power it
@@ -176,7 +176,7 @@ SiFive HiFive Unleashed Freedom U540
      MACHINE=freedom-u540 source setup-environment [BUILDDIR]
 
    Build the Linux microPlatform minimal image ``lmp-mini-image``
-   instead of the usual ``lmp-gateway-image``, as there is no golang
+   instead of the usual ``lmp-base-console-image``, as there is no golang
    and docker support for RISC-V yet. At the end of the build, your
    build artifacts will be found under
    ``deploy/images/freedom-u540``. The artifact you will use to flash
@@ -204,7 +204,7 @@ Generic RISC-V 64 Machine
      MACHINE=qemuriscv64 source setup-environment [BUILDDIR]
 
    Build the Linux microPlatform minimal image ``lmp-mini-image``
-   instead of the usual ``lmp-gateway-image``, as there is no golang
+   instead of the usual ``lmp-base-console-image``, as there is no golang
    and docker support for RISC-V yet::
 
      bitbake lmp-mini-image
