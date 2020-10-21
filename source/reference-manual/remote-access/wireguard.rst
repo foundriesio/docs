@@ -21,6 +21,11 @@ a Factory VPN server to a customer managed server.
 Actions on VPN Server
 ---------------------
 
+.. note:: 
+   
+   Make sure to replace the ``<api token>`` and ``<factory>`` (name of your Factory)
+   placeholders with your own information in the following commands.
+
 Install dependencies::
 
    $ sudo apt install git python3 python3-requests
