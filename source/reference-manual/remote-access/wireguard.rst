@@ -40,22 +40,13 @@ Clone VPN server code::
    $ cd factory-wireguard-server
 
 
-Configure the Factory with this new service::
+Configure the Factory with this new service and enable the daemon::
 
    $ sudo ./factory-wireguard.py \
        --apitoken <api token> \  # https://app.foundries.io/settings/tokens
        --factory <factory> \
        --privatekey /root/wgpriv.key \ # where to store generated private key
        enable
-
-
-Run the daemon::
-
-   $ sudo ./factory-wireguard.py \
-       --apitoken <api token> \
-       --factory <factory> \
-       --privatekey /root/wgpriv.key \
-       daemon
 
 The daemon keeps track of connected devices by putting entries into
 ``/etc/hosts`` so that they can be easily referenced from the server.
