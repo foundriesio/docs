@@ -115,6 +115,16 @@ copybutton_prompt_text = "$ "
 
 sphinx_tabs_valid_builders = ['linkcheck']
 
+sphinxcontrib_asciinema_defaults = {
+    'preload': 1,
+    'size': 'small',
+    'speed': '2',
+    'rows': 12,
+    'cols': 80,
+    'poster': 'data:text/plain,Click to Play',
+    'idle-time-limit': 1
+}
+
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
