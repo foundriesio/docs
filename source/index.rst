@@ -26,6 +26,14 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    reference-manual/index
 
 .. toctree::
+   :maxdepth: 1
+   :glob:
+   :caption: User Guide
+   :name: sec-user-guide
+
+   user-guide/*
+
+.. toctree::
    :maxdepth: 2
    :caption: Tutorials
    :name: sec-tutorials
@@ -42,3 +50,10 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 
 .. todolist::
 .. _FoundriesFactory: https://foundries.io
+
+
+.. asciinema:: test.cast
+   :preload: 1
+   :size: small
+   :rows: 5
+   :idle-time-limit: 1
