@@ -162,6 +162,33 @@ other cryptographic operations are not stored in the SE050 NVM.
 Be aware that initializing the NVM would cause all keys and objects to be deleted
 from permanent storage. This however has no impact on the SCP03 set of keys.
 
+Importing Secure Objects to PKCS#11 tokens
+------------------------------------------
+
+After manufacturing, the NXP SE050 will contain pre-provisioned keys and certificates. These secure objects will be known to the user through internal documentation and will be accessible from the TEE by their 32 bit identifiers.
+
+To import those objects into PKCS#11 tokens, we have extended our `TEE pkcs#11 implementation`_ and developed a secured `SE050 Object Import Application`_ to interface to the TEE and gain secure access to the SE050.
+
+The following diagram succintly details the overall design:
+
+   .. figure:: /_static/se050-import-keys.png
+      :align: center
+      :width: 6in
+
+The *certificates* are retrieved in DER format using the import PTA and then written to the pkcs#11 token.
+
+The *keys* however are retrieved via a pkcs#11 key generation request to the crypto driver through the OP-TEE core; the request will contain the key identifier which the driver will query from the SE050. If successfull, the keypair is returned to pkcs#11 and commited to secure storage.
+
+
+.. note::
+      The private key will just be a handle to the actual key stored in Non Volatile Memory: private keys are **never** exposed outside the NXP SE050.
+
+
+.. _TEE pkcs#11 implementation:
+   https://github.com/foundriesio/optee-sks
+
+.. _SE050 Object Import Application:
+    https://github.com/foundriesio/optee-se050-pkcs11-import
 
 .. _SE050 Plug & Trust Secure Element:
    https://www.nxp.com/docs/en/data-sheet/SE050-DATASHEET.pdf
