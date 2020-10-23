@@ -108,6 +108,7 @@ extensions = [
     'sphinxemoji.sphinxemoji',
     'sphinx_tabs.tabs',
     'sphinx_copybutton',
+    'sphinxcontrib.asciinema',
 ]
 
 copybutton_prompt_text = "$ "
