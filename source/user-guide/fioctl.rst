@@ -21,7 +21,7 @@ List devices
 
   .. asciinema:: ../_static/asciinema/list-devices.cast
 
-Set device tag(s)
+Set device tag
   ``fioctl devices config updates <device_name> --tags <tag>``
     Filter the targets a device will accept by tag. For example, to move a
     device from accepting 'devel' builds to 'master' builds. See the
