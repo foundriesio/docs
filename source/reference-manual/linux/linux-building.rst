@@ -128,7 +128,7 @@ Install the lmp-gateway Image
 -----------------------------
 
 If you're using a Raspberry Pi 3, you can use the same procedure outlined in
-:ref:`getting-started-flash-image`. See :ref:`linux-supported` for additional information
+:ref:`gs-flash-image`. See :ref:`linux-supported` for additional information
 on other targets.
 
 .. _ref-linux-building-ref:

@@ -1,4 +1,4 @@
-.. _ref-install-fioctl:
+.. _gs-install-fioctl:
 
 Fioctl CLI Installation
 =======================
@@ -14,8 +14,12 @@ for managing a Factory. It is based on the `ota-lite API
 - :ref:`OTA updates <ref-aktualizr-lite>`
 - :ref:`CI Secrets <ref-container-secrets>`
 
+.. _gs-fioctl-installation:
+
 Installation
 ------------
+
+.. _gs-fioctl-manual-install:
 
 Manual Installation
 ^^^^^^^^^^^^^^^^^^^
@@ -81,6 +85,8 @@ manually, you can refer to this section for manual installation instructions.
       You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
       ``fioctl``.
 
+.. _gs-fioctl-package-install:
+
 Via Package Manager
 ^^^^^^^^^^^^^^^^^^^
 
@@ -138,6 +144,8 @@ Via Package Manager
           cd fioctl-bin
           makepkg -si
 
+.. _gs-fioctl-post-install:
+
 Post-Install
 ^^^^^^^^^^^^
 Now that :ref:`ref-fioctl` is installed, you must authenticate with our backend
@@ -158,6 +166,8 @@ authentication process.
    as a laptop and a desktop, you should create a new token for each, just as
    you would with SSH keys. This way you can revoke tokens for individual systems,
    should they be compromised.
+
+.. _gs-fioctl-configuration:
 
 Configuration
 -------------

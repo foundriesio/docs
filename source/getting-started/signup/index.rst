@@ -1,4 +1,4 @@
-.. _ref-signup:
+.. _gs-signup:
 
 Sign Up
 =======
@@ -47,7 +47,7 @@ Create one by clicking **Create Factory**
     Suggest methods of storing TuF keys securely, such as by USB in a
     safety deposit box, or yubikey.
 
-.. _ref-select-platform:
+.. _gs-select-platform:
 
 Select Your Platform
 ####################
@@ -72,7 +72,7 @@ includes QEMU_ images for ARM_ and RISC-V_ architectures.
 .. _ARM: https://www.arm.com/
 .. _RISC-V: https://riscv.org/
 
-.. _ref-watch-build:
+.. _gs-watch-build:
 
 Watch Your Build
 ################

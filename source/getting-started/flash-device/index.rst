@@ -1,4 +1,4 @@
-.. _getting-started-flash-device:
+.. _gs-flash-device:
 
 Flash your Device
 =================
@@ -15,14 +15,14 @@ Flash your Device
       - Ethernet cable (if choosing Wired)
       - Console access to your hardware via display/keyboard **or** serial (if choosing WiFi)
 
-.. _getting-started-download:
+.. _gs-download:
 
 Download LmP system image
 -------------------------
 
 When you trigger a build, it produces build artifacts as an output which can be
 downloaded from the **Targets** tab of your factory, as described in
-:ref:`ref-watch-build`.
+:ref:`gs-watch-build`.
 
 1. Navigate to the **Targets** section of your Factory.
 
@@ -37,7 +37,7 @@ downloaded from the **Targets** tab of your factory, as described in
    :width: 769
    :align: center
 
-.. _getting-started-flash-image:
+.. _gs-flash-image:
 
 Flash LmP system image
 ----------------------
@@ -144,7 +144,7 @@ Flash LmP system image
       #. Wait for the image to finish writing, and a **Write Successful** dialog will appear.
       
 
-.. _getting-started-boot:
+.. _gs-boot:
 
 Boot Device and Connect to the Network
 --------------------------------------
@@ -254,7 +254,7 @@ Boot Device and Connect to the Network
               Your board will connect to the network you've saved after
               rebooting. You can now log in using SSH.
 
-.. _getting-started-login:
+.. _gs-login:
 
 Log in via SSH
 ^^^^^^^^^^^^^^
@@ -282,10 +282,10 @@ The default password is ``fio``; we recommend changing it once logged in.
 
 For this to work, your PC needs to support zeroconf_ the hostname must be
 otherwise unclaimed. If this doesn't work, you can also log in by IP address. See
-:ref:`Troubleshooting <getting-started-troubleshooting>` below for
+:ref:`Troubleshooting <gs-troubleshooting>` below for
 advice.
 
-.. _getting-started-troubleshooting:
+.. _gs-troubleshooting:
 
 Troubleshooting
 ^^^^^^^^^^^^^^^

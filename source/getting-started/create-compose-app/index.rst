@@ -1,10 +1,14 @@
+.. _gs-create-a-docker-compose-app:
+
 Create a Docker-Compose App
 ===========================
 
-In the :ref:`ref-git-config` section, you should have set up ``git`` with your
+In the :ref:`gs-git-config` section, you should have set up ``git`` with your
 auth token, meaning you can clone your Factory repositories from
 ``https://source.foundries.io/factories/<factory>/`` and begin creating new
 targets for your devices to update to.
+
+.. _gs-example-apps:
 
 Example Apps
 ------------
@@ -38,7 +42,7 @@ Example Apps
            git commit -m "shellhttpd: enable shellhttpd app"
            git push
       
-      #. :ref:`ref-watch-build`
+      #. :ref:`gs-watch-build`
       
          When changes are made to ``containers.git`` in your Factory sources, a new target is
          built by our CI system. Devices that are registered to your Factory will be
@@ -108,7 +112,7 @@ Example Apps
            git commit -m "mosquitto: create mosquitto container"
            git push
       
-      #. :ref:`ref-watch-build`
+      #. :ref:`gs-watch-build`
       
          When changes are made to ``containers.git`` in your Factory sources, a new target is
          built by our CI system. Devices that are registered to your Factory will be
@@ -134,6 +138,8 @@ Example Apps
          ``<device>`` with the ``NAME`` of yours::
       
            fioctl devices config updates <device> --apps mosquitto
+
+.. _gs-about-targets:
 
 About Targets
 -------------
@@ -171,6 +177,8 @@ details about target can be printed by passing its version number to the
   DOCKER APP  VERSION
   ----------  -------
   shellhttpd  shellhttpd.dockerapp-4
+
+.. _gs-completion:
 
 Completion
 ----------
