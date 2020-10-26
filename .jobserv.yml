@@ -4,12 +4,12 @@ triggers:
     type: github_pr
     runs:
       - name: docs
-        container: python:3.8
+        container: python:3.6
         host-tag: amd64
         script: make-docs
 
       - name: link-check
-        container: python:3.8-alpine
+        container: python:3.6-alpine
         host-tag: multiarch-osf
         script: link-check
 
