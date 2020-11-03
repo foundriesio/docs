@@ -79,7 +79,8 @@ Watch Your Build
 
 Once you have created your Factory, an initial build of the LmP will be
 generated for you to build your product on top of. You can monitor the progress
-of this initial build in the **Targets** tab of your Factory.
+of this initial build in the **Targets** tab of your Factory after a few
+minutes. Additionally, you will recieve an Email once your build is complete.
 
 This section will become more useful as you begin to build your application and
 declare new targets for the Factory to build. You can learn about creating targets in the
