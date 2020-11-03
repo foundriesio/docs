@@ -21,12 +21,12 @@ Download LmP system image
 -------------------------
 
 When you trigger a build, it produces build artifacts as an output which can be
-downloaded from the **Targets** tab of your factory, as described in
+downloaded from the :guilabel:`Targets` tab of your factory, as described in
 :ref:`gs-watch-build`.
 
-1. Navigate to the **Targets** section of your Factory.
+1. Navigate to the :guilabel:`Targets` section of your Factory.
 
-2. Find your LmP platform build, denoted by the **trigger name**:
+2. Find your LmP platform build, denoted by the :guilabel:`Trigger` name:
    ``platform-<tag>``.
 
    e.g: ``lmp-factory-image-machine-name.wic.gz``
@@ -131,16 +131,16 @@ Flash LmP system image
 
       #. Download and run Rufus_.
       #. Select your disk.
-      #. **SELECT** your ``<system-image>``.
-      #. **START** the flash procedure.
+      #. :guilabel:`SELECT` your ``<system-image>``.
+      #. :guilabel:`START` the flash procedure.
 
       **Using Win32 Disk Imager**
 
       #. Download and run `Win32 Disk Imager`_ as **Administrator**. 
       #. Click the blue folder icon.
       #. Select your ``<system-image>``
-      #. Select your disk via the **Device** dropdown.
-      #. Click **Write**
+      #. Select your disk via the :guilabel:`Device` dropdown.
+      #. Click :guilabel:`Write`
       #. Wait for the image to finish writing, and a **Write Successful** dialog will appear.
       
 

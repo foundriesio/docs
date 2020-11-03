@@ -24,7 +24,7 @@ this point onward, **owned by you**.
 
 When your account is created, it is not associated with any factories.
 
-Create one by clicking **Create Factory**
+Create one by clicking :guilabel:`Create Factory`
 
 .. figure:: /_static/signup/no-factories.png
    :width: 400
@@ -53,7 +53,7 @@ Select Your Platform
 ####################
 
 Choose a hardware platform from the dropdown menu in the  **Create New Factory** wizard
-and continue.
+and continue. Click :guilabel:`Create Factory` once your details are entered.
 
 The :ref:`ref-linux` supports a wide range of platforms out of the box. This
 includes QEMU_ images for ARM_ and RISC-V_ architectures.
@@ -79,7 +79,7 @@ Watch Your Build
 
 Once you have created your Factory, an initial build of the LmP will be
 generated for you to build your product on top of. You can monitor the progress
-of this initial build in the **Targets** tab of your Factory after a few
+of this initial build in the :guilabel:`Targets` tab of your Factory after a few
 minutes. Additionally, you will recieve an Email once your build is complete.
 
 This section will become more useful as you begin to build your application and
