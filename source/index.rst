@@ -23,7 +23,13 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    :caption: Reference Manual
    :name: sec-manual
 
-   reference-manual/index
+   reference-manual/docker/docker
+   reference-manual/factory/factory
+   reference-manual/linux/linux
+   reference-manual/ota/ota
+   reference-manual/remote-access/remote-access
+   reference-manual/security/security
+   reference-manual/testing/testing
 
 .. toctree::
    :maxdepth: 1
@@ -50,10 +56,3 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 
 .. todolist::
 .. _FoundriesFactory: https://foundries.io
-
-
-.. asciinema:: test.cast
-   :preload: 1
-   :size: small
-   :rows: 5
-   :idle-time-limit: 1
