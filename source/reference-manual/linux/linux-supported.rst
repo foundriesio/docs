@@ -1,4 +1,4 @@
-.. _linux-supported:
+.. _ref-linux-supported:
 
 Supported Machines
 ==================

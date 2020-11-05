@@ -5,7 +5,7 @@ Flash your Device
 
 .. note::
    To follow this section, you will need:
-    - A :ref:`supported board <linux-supported>`.
+    - A :ref:`supported board <ref-linux-supported>`.
 
       - Capable of booting from eMMC **(recommended if available)**
       - **Or** capable of booting from a suitable `microSD Card <https://elinux.org/RPi_SD_cards>`_
@@ -45,8 +45,8 @@ Flash LmP system image
 .. note::
    If you are developing on a platform that has eMMC available such as the NXP
    iMX8MM-EVK, it is recommended that you boot from eMMC rather than SD. Read the
-   :ref:`ref-linux-targets` section for details on flashing your system-image using the vendor
-   provided tools.
+   :ref:`ref-linux-supported` section for specific details on flashing your
+   system-image using the vendor provided tools.
 
 .. todo:: We should provide a more comprehensive section specific to each
    device. Essentially, we should overhaul the linux-targets section to include
@@ -270,7 +270,7 @@ The default password is ``fio``; we recommend changing it once logged in.
 
 .. note::
    Your device hostname will be defaulted to the value of the ``machine:`` key
-   value from your ``factory-config.yml`` Read the :ref:`linux-supported`
+   value from your ``factory-config.yml`` Read the :ref:`ref-linux-supported`
    section for a list of supported hardware and their ``MACHINE`` value.
 
    **Here are some examples:**

@@ -7,7 +7,7 @@ Building from Source
 
 This is a guide for building the base Linux microPlatform from source
 for Raspberry Pi 3 (64-bit). Additional information specific to other
-targets is provided in :ref:`ref-linux-targets`.
+targets is provided in :ref:`ref-linux-supported`.
 
 This guide assumes the reader is familiar with basic concepts of
 OpenEmbedded. It is not meant to be an introduction to the
@@ -90,7 +90,7 @@ Next, set up your work environment for building the source.
 
 The supported ``MACHINE`` target used by this guide is
 ``raspberrypi3-64``. (For information on other hardware platforms, see
-:ref:`ref-linux-targets`.)
+:ref:`ref-linux-supported`.)
 
 The default distribution (``DISTRO``) is automatically set to ``lmp``,
 which is provided by the meta-lmp layer (see
@@ -128,7 +128,7 @@ Install the lmp-gateway Image
 -----------------------------
 
 If you're using a Raspberry Pi 3, you can use the same procedure outlined in
-:ref:`gs-flash-image`. See :ref:`linux-supported` for additional information
+:ref:`gs-flash-image`. See :ref:`ref-linux-supported` for additional information
 on other targets.
 
 .. _ref-linux-building-ref:

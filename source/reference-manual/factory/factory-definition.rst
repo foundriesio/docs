@@ -66,7 +66,7 @@ lmp:
 
  machines:|br| ``- <machine_1>`` |br| ``- <machine_2>``
       **Required**: Specify the list of :ref:`Supported LmP Machines
-      <linux-supported>` to build for by their ``MACHINE`` name. A Factory's
+      <ref-linux-supported>` to build for by their ``MACHINE`` name. A Factory's
       subscription is generally only good for a single machine.
 
  ref_options:
