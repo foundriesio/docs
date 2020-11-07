@@ -31,11 +31,12 @@ notify:
     .. code-block:: yaml
 
          lmp:
+           container_preload: true
            params:
-             IMAGE: lmp-factory-image
              EXAMPLE_VARIABLE_1: hello_world
            machines:
              - imx8mmevk
+           image_type: lmp-factory-image
            ref_options:
             refs/heads/devel:
               machines:
@@ -50,24 +51,42 @@ notify:
                - tag: devel
            mfg_tools:
              - machine: imx8mmevk
+               image_type: mfgtool-files
                params:
                  DISTRO: lmp-base
-                 IMAGE: mfgtool-signed-files
                  EXTRA_ARTIFACTS: "mfgtools-signed.tar.gz"
 
 lmp:
- params:
-  IMAGE: ``<lmp_image_type>``
-      **Required:** Define the LmP image type you want to produce.
+ container_preload: ``<true|false>``
+      **Optional:** Whether to preload docker images into the system-image as
+      part of a platform build via the archive built by ``containers.preload``. 
+    
+      **Default:** ``false``
+    
+      **Inherits:** ``containers.preload``
 
+ params:
   EXAMPLE_VARIABLE_1: ``<value>``
       **Optional:** Define an arbitrary environment variable to be passed into
       the LmP build. You can define as many as you want.
+
+      **Default:** This variable is user defined and does not exist unless
+      instantiated.
 
  machines:|br| ``- <machine_1>`` |br| ``- <machine_2>``
       **Required**: Specify the list of :ref:`Supported LmP Machines
       <ref-linux-supported>` to build for by their ``MACHINE`` name. A Factory's
       subscription is generally only good for a single machine.
+
+      **Default:** Set by user during :ref:`gs-signup` 
+
+ image_type:``<lmp_image_type>``
+      **Optional:** Set the LmP image type to produce by recipe name. For
+      example, ``lmp-mini-image``, ``lmp-gateway-image`` from meta-lmp_.
+
+      **Default:** ``lmp-factory-image`` |br| (from
+      **recipes-samples/images/lmp-factory-image.bb** in your
+      **meta-subscriber-overrides.git** repo)
 
  ref_options:
   refs/heads/``<branch>``:
@@ -98,41 +117,70 @@ lmp:
   refs/heads/``<branch>``:|br| ``-tag: <tag>``
       **Optional:** Control how OTA_LITE tags are handled. See
       :ref:`ref-advanced-tagging` for more details.
+
  mfg_tools:|br| ``- machine: <machine>``
       **Optional:** Do an OE build to produce manufacturing tooling for a given
       ``MACHINE``. This is used to facilitate the manufacturing process and to ensure
-      secure boot on imx devices.
+      secure boot on devices. Currently only NXP tools are supported.**
+
+      **Default:** None
+ 
+  image_type: ``<mfg_image_type>``
+      **Optional:** Sets the name of the recipe to use to build mfg_tools.
+
+      **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_) 
 
 .. sidebar:: ``containers:`` Section Example
 
     .. code-block:: yaml
 
          containers:
+           preload: true
+           assemble_system_image: false
            platforms:
              - arm
              - arm64
              - amd64
-         tagging:
-          refs/heads/master:
-            - tag: postmerge
-          refs/heads/devel-foundries:
-            - tag: devel
-          refs/heads/devel-foundries-base:
-            - tag: devel-base
-              inherit: devel
+           tagging:
+            refs/heads/master:
+              - tag: postmerge
+            refs/heads/devel-foundries:
+              - tag: devel
+            refs/heads/devel-foundries-base:
+              - tag: devel-base
+                inherit: devel
 
 containers:
+ preload: ``<true|false>``
+      **Optional:** Whether to produce an archive containing docker images as
+      part of a container build trigger. This archive can then be used to preload
+      docker containers into your system-image by setting ``lmp.preload`` to ``true``.
+
+      **Default:** ``false``
+
+      **Inherits:** ``lmp.preload``
+
+ assemble_system_image: ``<true|false>``
+      **Optional:** Whether to produce a system-image as part of container build
+      triggers. The system-image will be available As an artifact in the
+      ``assemble-system-image`` run step of builds produced with This option set to
+      ``true``.
+
+      **Default:** ``false``
+
  platforms:|br| ``- arm`` |br| ``- arm64`` |br| ``- amd64``
       **Optional:** Specify a list of architectures to build containers for.
       Containers are only built for the specified list.
 
       **Default:** ``amd64``
+
  tagging:
   refs/heads/``<branch>``:|br| ``-tag: <tag>``
       **Optional:** Control how OTA_LITE tags are handled. See
       :ref:`ref-advanced-tagging` for more details.
 
-.. todo:: Define the available params for mfg_tools
+      **Default:** This variable does not exist unless instantiated.
+
 .. todo:: provide a list of supported architectures for containers:
 .. todo:: document DOCKER_SECRETS 
 .. todo:: document container preloading
@@ -141,3 +189,5 @@ containers:
 .. |br| raw:: html
 
    <br />
+
+.. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-samples/images
