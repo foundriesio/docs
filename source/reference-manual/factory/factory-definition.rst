@@ -7,6 +7,11 @@ Each Factory can be customized to control how CI handles it. This is managed in
 the “Factory Definition” which is located in a factory’s **ci-scripts.git**
 repository in the  **factory-config.yml** file.
 
+.. _def-notify:
+
+notify
+------
+
 .. sidebar:: ``notify:`` Section Example
 
     .. code-block:: yaml
@@ -25,6 +30,11 @@ notify:
       **Optional:** If set to ``true`` users will only be notified of CI failures.
       
       **Default:** ``false``
+
+.. _def-lmp:
+
+lmp
+---
 
 .. sidebar:: ``lmp:`` Section Example
 
@@ -129,6 +139,11 @@ lmp:
       **Optional:** Sets the name of the recipe to use to build mfg_tools.
 
       **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_) 
+
+.. _def-containers:
+
+containers
+----------
 
 .. sidebar:: ``containers:`` Section Example
 
