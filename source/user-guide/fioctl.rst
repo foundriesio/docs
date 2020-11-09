@@ -148,22 +148,22 @@ Target metadata can be inspected by using 3 primary commands
 Common Commands
 ---------------
 
-View targets
+View Targets
   ``fioctl targets list -f <factory>``
-    Lists the targets your Factory has produced so far.
+    Lists the Targets a Factory has produced so far.
 
   .. asciinema:: ../_static/asciinema/view-targets.cast
 
 List devices
   ``fioctl devices list -f <factory>``
-    Lists the devices that have connected to your Factory, along with associated
-    metadata, such as device name, status, target and enabled apps.
+    Lists the devices that have connected to a Factory, along with associated
+    metadata, such as device name, status, Target and enabled apps.
 
   .. asciinema:: ../_static/asciinema/list-devices.cast
 
 Set device tag
   ``fioctl devices config updates <device_name> --tags <tag>``
-    Filter the targets a device will accept by tag. For example, to move a
+    Filter the Targets a device will accept by tag. For example, to move a
     device from accepting 'devel' builds to 'master' builds. See the
     :ref:`ref-advanced-tagging` section for more examples.
 
@@ -177,8 +177,8 @@ Set app(s) to be enabled
 
 Enable :ref:`ref-wireguard`
   ``fioctl devices config wireguard <device_name> <enable|disable>``
-    Enable or disable the Wireguard systemd service on your LmP device. This
-    requires that you configure your Factory to use an instance of Wireguard you
+    Enable or disable the Wireguard systemd service on a LmP device. This
+    requires that you configure a Factory to use an instance of Wireguard you
     have set up on your own server as described in the :ref:`ref-wireguard`
     guide.
 
