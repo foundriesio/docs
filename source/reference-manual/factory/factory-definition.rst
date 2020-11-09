@@ -63,8 +63,8 @@ lmp
              - machine: imx8mmevk
                image_type: mfgtool-files
                params:
-                 DISTRO: lmp-base
-                 EXTRA_ARTIFACTS: "mfgtools-signed.tar.gz"
+                 DISTRO: lmp-mfgtool
+                 EXTRA_ARTIFACTS: "mfgtool-files.tar.gz"
 
 lmp:
  container_preload: ``<true|false>``
