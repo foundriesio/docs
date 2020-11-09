@@ -105,12 +105,12 @@ machines found in every enabled OpenEmbedded / Yocto Project layer,
 and force one to be selected.  ``BUILDDIR`` is optional; if it is not
 specified, the script will default to ``build-lmp``.
 
-Build the lmp-gateway Image
----------------------------
+Build the lmp-base-console Image
+--------------------------------
 
-You can build the Linux microPlatform gateway image by running::
+You can build the Linux microPlatform base-console image by running::
 
-  bitbake lmp-gateway-image
+  bitbake lmp-base-console-image
 
 .. note::
 
@@ -122,10 +122,10 @@ You can build the Linux microPlatform gateway image by running::
 At the end of the build, your build artifacts will be found under
 ``deploy/images/raspberrypi3-64``. The artifact you will
 use to flash your board is
-``lmp-gateway-image-raspberrypi3-64.wic.gz``.
+``lmp-base-console-image-raspberrypi3-64.wic.gz``.
 
-Install the lmp-gateway Image
------------------------------
+Install the lmp-base-console Image
+----------------------------------
 
 If you're using a Raspberry Pi 3, you can use the same procedure outlined in
 :ref:`gs-flash-image`. See :ref:`ref-linux-supported` for additional information

@@ -92,7 +92,7 @@ lmp:
 
  image_type:``<lmp_image_type>``
       **Optional:** Set the LmP image type to produce by recipe name. For
-      example, ``lmp-mini-image``, ``lmp-gateway-image`` from meta-lmp_.
+      example, ``lmp-mini-image``, ``lmp-base-console-image`` from meta-lmp_.
 
       **Default:** ``lmp-factory-image`` |br| (from
       **recipes-samples/images/lmp-factory-image.bb** in your
