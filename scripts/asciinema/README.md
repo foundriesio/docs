@@ -27,3 +27,31 @@ docker run --rm -v <host-fioctl-config-dir>:/root/.config/fioctl.yaml -v <cast-o
 ```
 asciinema rec <name-of-cast>
 ```
+
+# demo-magic.sh
+
+This script is used to generate ascii casts in combination with asciinema. If a
+demo is included in a section, you should be able to find a `demo/` folder in
+that section. For example:
+
+```
+source/user-guide/fioctl/
+├── demo
+│   ├── ug-fioctl-enable-apps.cast
+│   └── ug-fioctl-enable-apps.sh
+└── index.rst
+```
+
+The `fioctl` user-guide section has a `demo/` folder which includes:
+
+1. The cast, as produced by the automation script.
+2. The script, which will enact a demo.
+
+The automation script, in this example `ug-fioctl-enable-apps.sh` does not
+produce a file, it only executes commands to stdout, as if they were being typed
+by a human being, so in order to record this output with Asciinema, you would
+run:
+
+```
+asciinema rec ./name-of-recording.cast -c ./ug-fioctl-enable-apps.sh
+```
