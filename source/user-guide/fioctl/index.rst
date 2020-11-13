@@ -36,7 +36,7 @@ enable.
 Inspecting Targets
 ------------------
 
-As discussed in ":ref:`gs-about-targets`", a Factory produces Targets whenever a
+As noted in ":ref:`gs-about-targets`", a Factory produces Targets whenever a
 change is pushed to the :ref:`ref-factory-sources`. A Target is a description of
 the software a device should run, as defined by a list of metadata which
 includes an **OSTree Hash** and one or more **Docker-Compose App URIs**.
