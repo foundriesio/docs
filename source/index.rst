@@ -37,7 +37,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    :caption: User Guide
    :name: sec-user-guide
 
-   user-guide/*
+   user-guide/*/*
 
 .. toctree::
    :maxdepth: 2
