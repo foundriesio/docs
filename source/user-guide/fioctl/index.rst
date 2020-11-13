@@ -5,6 +5,34 @@ This section assumes you have followed :ref:`sec-learn` to its completion. The
 aim of this section is to provide you with a template for using
 :ref:`ref-fioctl` by way of example.
 
+Enabling/Disabling Apps
+-----------------------
+
+By default all apps defined in :term:`containers.git` for any given tag are
+enabled. To change this behaviour, a whitelist of apps can be given **per
+device**, enabling only those apps that are in a comma separated list.
+
+Via Fioctl
+~~~~~~~~~~
+
+``fioctl devices config updates <device_name> --apps <app_name1>,<app_name2>``
+  Set the app(s) a device will run.
+
+**Demonstration**
+
+  .. asciinema:: ./demo/ug-fioctl-enable-apps.cast
+     :cols: 128
+     :speed: 1
+
+Via lmp-device-register
+~~~~~~~~~~~~~~~~~~~~~~~
+
+When registering a device, ``lmp-device-register`` can set a list of apps to
+enable. 
+
+``lmp-device-register --api-token=<token> --apps <app_name1>,<app_name2>``
+  Set the app(s) a device will run, during registration.
+
 Inspecting Targets
 ------------------
 
