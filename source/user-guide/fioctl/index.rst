@@ -1,9 +1,13 @@
+.. _ug-fioctl:
+
 Fioctl
 ======
 
 This section assumes you have followed :ref:`sec-learn` to its completion. The
 aim of this section is to provide you with a template for using
 :ref:`ref-fioctl` by way of example.
+
+.. _ug-fioctl-enable-apps:
 
 Enabling/Disabling Apps
 -----------------------
@@ -32,6 +36,8 @@ enable.
 
 ``lmp-device-register --api-token=<token> --apps <app_name1>,<app_name2>``
   Set the app(s) a device will run, during registration.
+
+.. _ug-fioctl-inspecting-targets:
 
 Inspecting Targets
 ------------------
@@ -172,6 +178,8 @@ Target metadata can be inspected by using 3 primary commands
            netdata       hub.foundries.io/cowboy/netdata@sha256:9fe7b87ed796025a3398e40bae4d9e3d2eef84414d9e5f4487f33e7dcb611ec7
            mosquitto     hub.foundries.io/cowboy/mosquitto@sha256:143656c7739f15da23697480f98f1dddbdffe4f16cca2e7f81f32bb7769f3d9d
            simple-app    hub.foundries.io/cowboy/simple-app@sha256:a03a03b4ca50650d5d9f171e92278a5176377c1265f764320d7b55b75d923431
+
+.. _ug-fioctl-common-commands:
 
 Common Commands
 ---------------
