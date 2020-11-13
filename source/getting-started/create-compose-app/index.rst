@@ -6,7 +6,7 @@ Create a Docker-Compose App
 In the :ref:`gs-git-config` section, you should have set up ``git`` with your
 auth token, meaning you can clone your Factory repositories from
 ``https://source.foundries.io/factories/<factory>/`` and begin creating new
-targets for your devices to update to.
+Targets for your devices to update to.
 
 .. _gs-example-apps:
 
@@ -44,9 +44,9 @@ Example Apps
       
       #. :ref:`gs-watch-build`
       
-         When changes are made to ``containers.git`` in your Factory sources, a new target is
+         When changes are made to ``containers.git`` in your Factory sources, a new Target is
          built by our CI system. Devices that are registered to your Factory will be
-         able to see this target and conditionally update to it, depending on their
+         able to see this Target and conditionally update to it, depending on their
          :ref:`device configuration <ref-configuring-devices>`.
       
       **Device Configuration** 
@@ -108,9 +108,9 @@ Example Apps
       
       #. :ref:`gs-watch-build`
       
-         When changes are made to ``containers.git`` in your Factory sources, a new target is
+         When changes are made to ``containers.git`` in your Factory sources, a new Target is
          built by our CI system. Devices that are registered to your Factory will be
-         able to see this target and conditionally update to it, depending on their
+         able to see this Target and conditionally update to it, depending on their
          :ref:`device configuration <ref-configuring-devices>`.
       
       **Device Configuration** 
@@ -132,7 +132,7 @@ Example Apps
 About Targets
 -------------
 
-You can see the available targets your Factory has produced::
+You can see the available Targets your Factory has produced::
 
   fioctl targets list
 
@@ -144,7 +144,7 @@ You can see the available targets your Factory has produced::
   3        master              raspberrypi3-64
   4        master  shellhttpd  raspberrypi3-64
 
-details about target can be printed by passing its version number to the
+details about Target can be printed by passing its version number to the
 ``show`` subcommand::
 
   fioctl targets show 4

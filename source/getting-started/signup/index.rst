@@ -83,13 +83,13 @@ of this initial build in the :guilabel:`Targets` tab of your Factory after a few
 minutes. Additionally, you will recieve an Email once your build is complete.
 
 This section will become more useful as you begin to build your application and
-declare new targets for the Factory to build. You can learn about creating targets in the
+declare new Targets for the Factory to build. You can learn about creating Targets in the
 :ref:`ref-advanced-tagging` section
 
 .. note::
 
    If you'd like to learn more, `we wrote a blog
-   <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ about what targets
+   <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ about what Targets
    are and why we made them the way they are.
 
 .. figure:: /_static/signup/build.png
