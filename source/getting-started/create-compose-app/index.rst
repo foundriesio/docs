@@ -26,11 +26,11 @@ Example Apps
            git clone https://source.foundries.io/factories/<factory>/containers.git
            cd containers.git
       
-        We initialise your ``containers.git`` repository with a simple compose app
-        example in ``shellhttpd.disabled/``
+         We initialise your ``containers.git`` repository with a simple compose app
+         example in ``shellhttpd.disabled/``
       
-        .. tip:: Directory names ending with ``.disabled`` in containers.git are
-           ignored by our CI system.
+         .. tip:: Directory names ending with ``.disabled`` in containers.git are
+            ignored by our CI system.
       
       #. Enable the ``shellhttpd`` example app::
       
@@ -49,25 +49,19 @@ Example Apps
          able to see this target and conditionally update to it, depending on their
          :ref:`device configuration <ref-configuring-devices>`.
       
-      **Device Configuration**
-            
-      Now that a target is being built, we want to tell our device(s) to update to
-      this new target. This is done using :ref:`ref-fioctl`.
-      
-      #. Determine the device you want to configure to use ``shellhttpd``::
-      
-           fioctl devices list
-      
-         your output should look like this::
-      
-           NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
-           ----  -------  -----           ------                  ------  ----  ----------
-           foo   gavin    <unconfigured>  raspberrypi3-64-lmp-19  OK            true
-      
-      #. Configure the device to run the ``shellhttpd`` app. Make sure to
-         replace ``<device>`` with the ``NAME`` of yours::
-      
-           fioctl devices config updates <device> --apps shellhttpd
+      **Device Configuration** 
+
+      Once the Target is built successfully, any devices that are registered to
+      the Factory will begin updating to this new Target. The app ``shellhttpd``
+      that has been defined will be available for usage in this Target. This can
+      be verified by running::
+
+        fioctl targets list
+
+      **By default** devices will run **all** applications that are defined in
+      the :term:`containers.git` repository and therefore available in the
+      latest Target. This behavior can be changed by enabling only specific
+      applications. Read :ref:`ug-fioctl-enable-apps` to learn how.
 
    .. tab:: mosquitto
 
@@ -119,25 +113,19 @@ Example Apps
          able to see this target and conditionally update to it, depending on their
          :ref:`device configuration <ref-configuring-devices>`.
       
-      **Device Configuration**
-            
-      Now that a target is being built, we want to tell our device(s) to update to
-      this new target. This is done using :ref:`ref-fioctl`.
-      
-      #. Determine the device you want to configure to use ``mosquitto``::
-      
-           fioctl devices list
-      
-         your output should look like this::
-      
-           NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
-           ----  -------  -----           ------                  ------  ----  ----------
-           foo   gavin    <unconfigured>  raspberrypi3-64-lmp-19  OK            true
-      
-      #. Configure the device to run the ``mosquitto`` app. Make sure to replace
-         ``<device>`` with the ``NAME`` of yours::
-      
-           fioctl devices config updates <device> --apps mosquitto
+      **Device Configuration** 
+
+      Once the Target is built successfully, any devices that are registered to
+      the Factory will begin updating to this new Target. The app ``mosquitto``
+      that has been defined will be available for usage in this Target. This can
+      be verified by running::
+
+        fioctl targets list
+
+      **By default** devices will run **all** applications that are defined in
+      the :term:`containers.git` repository and therefore available in the
+      latest Target. This behavior can be changed by enabling only specific
+      applications. Read :ref:`ug-fioctl-enable-apps` to learn how.
 
 .. _gs-about-targets:
 
