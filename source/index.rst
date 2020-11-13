@@ -47,6 +47,13 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    tutorials/cloud
    tutorials/mosquitto
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Glossary
+   :name: sec-glossary
+
+   glossary/index
+
 .. ifconfig:: todo_include_todos is True
 
    **Documentation-wide TODO List**
