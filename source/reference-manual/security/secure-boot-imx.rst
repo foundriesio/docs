@@ -26,7 +26,14 @@ Therefore a system like the one described which boots without TF-A would look as
       :width: 6in
 
 .. note::
-    Systems using TF-A (ie, imx8) would be slightly different.
+    Systems using TF-A (ie, imx8m) would be slightly different.
+
+See the following diagrams describing the secure boot sequence and succintly the Yocto configuration for imx8mm based platforms with TF-A:
+
+
+   .. figure:: /_static/imx8-secure-boot.png
+      :align: left
+      :width: 8in
 	      
 The communication path to gain access from userland via the pseudo trusted application (PTA) to RPMB follows the OP-TEE standard convention for PTAs as the image below describes: userland uses libteec to issue an ioctl to the linux tee driver which in turn transitions the processor to its secure state and calls the application entrypoint.
 
