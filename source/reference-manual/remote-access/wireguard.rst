@@ -28,7 +28,7 @@ Actions on VPN Server
 
 Install dependencies::
 
-   $ sudo apt install git wireguard python3 python3-requests
+   $ sudo apt install git wireguard wireguard-tools python3 python3-requests
 
 
 Create an API token for this service at https://app.foundries.io/settings/tokens/
