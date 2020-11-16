@@ -1,4 +1,4 @@
-.. _getting-started-register:
+.. _gs-register:
 
 Register your device
 ====================

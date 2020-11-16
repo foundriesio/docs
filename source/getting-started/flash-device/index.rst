@@ -1,11 +1,11 @@
-.. _getting-started-flash-device:
+.. _gs-flash-device:
 
 Flash your Device
 =================
 
 .. note::
    To follow this section, you will need:
-    - A :ref:`supported board <linux-supported>`.
+    - A :ref:`supported board <ref-linux-supported>`.
 
       - Capable of booting from eMMC **(recommended if available)**
       - **Or** capable of booting from a suitable `microSD Card <https://elinux.org/RPi_SD_cards>`_
@@ -15,18 +15,18 @@ Flash your Device
       - Ethernet cable (if choosing Wired)
       - Console access to your hardware via display/keyboard **or** serial (if choosing WiFi)
 
-.. _getting-started-download:
+.. _gs-download:
 
 Download LmP system image
 -------------------------
 
 When you trigger a build, it produces build artifacts as an output which can be
-downloaded from the **Targets** tab of your factory, as described in
-:ref:`ref-watch-build`.
+downloaded from the :guilabel:`Targets` tab of your factory, as described in
+:ref:`gs-watch-build`.
 
-1. Navigate to the **Targets** section of your Factory.
+1. Navigate to the :guilabel:`Targets` section of your Factory.
 
-2. Find your LmP platform build, denoted by the **trigger name**:
+2. Find your LmP platform build, denoted by the :guilabel:`Trigger` name:
    ``platform-<tag>``.
 
    e.g: ``lmp-factory-image-machine-name.wic.gz``
@@ -37,7 +37,7 @@ downloaded from the **Targets** tab of your factory, as described in
    :width: 769
    :align: center
 
-.. _getting-started-flash-image:
+.. _gs-flash-image:
 
 Flash LmP system image
 ----------------------
@@ -45,8 +45,8 @@ Flash LmP system image
 .. note::
    If you are developing on a platform that has eMMC available such as the NXP
    iMX8MM-EVK, it is recommended that you boot from eMMC rather than SD. Read the
-   :ref:`ref-linux-targets` section for details on flashing your system-image using the vendor
-   provided tools.
+   :ref:`ref-linux-supported` section for specific details on flashing your
+   system-image using the vendor provided tools.
 
 .. todo:: We should provide a more comprehensive section specific to each
    device. Essentially, we should overhaul the linux-targets section to include
@@ -131,20 +131,20 @@ Flash LmP system image
 
       #. Download and run Rufus_.
       #. Select your disk.
-      #. **SELECT** your ``<system-image>``.
-      #. **START** the flash procedure.
+      #. :guilabel:`SELECT` your ``<system-image>``.
+      #. :guilabel:`START` the flash procedure.
 
       **Using Win32 Disk Imager**
 
       #. Download and run `Win32 Disk Imager`_ as **Administrator**. 
       #. Click the blue folder icon.
       #. Select your ``<system-image>``
-      #. Select your disk via the **Device** dropdown.
-      #. Click **Write**
+      #. Select your disk via the :guilabel:`Device` dropdown.
+      #. Click :guilabel:`Write`
       #. Wait for the image to finish writing, and a **Write Successful** dialog will appear.
       
 
-.. _getting-started-boot:
+.. _gs-boot:
 
 Boot Device and Connect to the Network
 --------------------------------------
@@ -254,7 +254,7 @@ Boot Device and Connect to the Network
               Your board will connect to the network you've saved after
               rebooting. You can now log in using SSH.
 
-.. _getting-started-login:
+.. _gs-login:
 
 Log in via SSH
 ^^^^^^^^^^^^^^
@@ -270,7 +270,7 @@ The default password is ``fio``; we recommend changing it once logged in.
 
 .. note::
    Your device hostname will be defaulted to the value of the ``machine:`` key
-   value from your ``factory-config.yml`` Read the :ref:`linux-supported`
+   value from your ``factory-config.yml`` Read the :ref:`ref-linux-supported`
    section for a list of supported hardware and their ``MACHINE`` value.
 
    **Here are some examples:**
@@ -282,10 +282,10 @@ The default password is ``fio``; we recommend changing it once logged in.
 
 For this to work, your PC needs to support zeroconf_ the hostname must be
 otherwise unclaimed. If this doesn't work, you can also log in by IP address. See
-:ref:`Troubleshooting <getting-started-troubleshooting>` below for
+:ref:`Troubleshooting <gs-troubleshooting>` below for
 advice.
 
-.. _getting-started-troubleshooting:
+.. _gs-troubleshooting:
 
 Troubleshooting
 ^^^^^^^^^^^^^^^

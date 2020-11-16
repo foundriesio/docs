@@ -1,10 +1,14 @@
+.. _gs-create-a-docker-compose-app:
+
 Create a Docker-Compose App
 ===========================
 
-In the :ref:`ref-git-config` section, you should have set up ``git`` with your
+In the :ref:`gs-git-config` section, you should have set up ``git`` with your
 auth token, meaning you can clone your Factory repositories from
 ``https://source.foundries.io/factories/<factory>/`` and begin creating new
-targets for your devices to update to.
+Targets for your devices to update to.
+
+.. _gs-example-apps:
 
 Example Apps
 ------------
@@ -22,11 +26,11 @@ Example Apps
            git clone https://source.foundries.io/factories/<factory>/containers.git
            cd containers.git
       
-        We initialise your ``containers.git`` repository with a simple compose app
-        example in ``shellhttpd.disabled/``
+         We initialise your ``containers.git`` repository with a simple compose app
+         example in ``shellhttpd.disabled/``
       
-        .. tip:: Directory names ending with ``.disabled`` in containers.git are
-           ignored by our CI system.
+         .. tip:: Directory names ending with ``.disabled`` in containers.git are
+            ignored by our CI system.
       
       #. Enable the ``shellhttpd`` example app::
       
@@ -38,32 +42,26 @@ Example Apps
            git commit -m "shellhttpd: enable shellhttpd app"
            git push
       
-      #. :ref:`ref-watch-build`
+      #. :ref:`gs-watch-build`
       
-         When changes are made to ``containers.git`` in your Factory sources, a new target is
+         When changes are made to ``containers.git`` in your Factory sources, a new Target is
          built by our CI system. Devices that are registered to your Factory will be
-         able to see this target and conditionally update to it, depending on their
+         able to see this Target and conditionally update to it, depending on their
          :ref:`device configuration <ref-configuring-devices>`.
       
-      **Device Configuration**
-            
-      Now that a target is being built, we want to tell our device(s) to update to
-      this new target. This is done using :ref:`ref-fioctl`.
-      
-      #. Determine the device you want to configure to use ``shellhttpd``::
-      
-           fioctl devices list
-      
-         your output should look like this::
-      
-           NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
-           ----  -------  -----           ------                  ------  ----  ----------
-           foo   gavin    <unconfigured>  raspberrypi3-64-lmp-19  OK            true
-      
-      #. Configure the device to run the ``shellhttpd`` app. Make sure to
-         replace ``<device>`` with the ``NAME`` of yours::
-      
-           fioctl devices config updates <device> --apps shellhttpd
+      **Device Configuration** 
+
+      Once the Target is built successfully, any devices that are registered to
+      the Factory will begin updating to this new Target. The app ``shellhttpd``
+      that has been defined will be available for usage in this Target. This can
+      be verified by running::
+
+        fioctl targets list
+
+      **By default** devices will run **all** applications that are defined in
+      the :term:`containers.git` repository and therefore available in the
+      latest Target. This behavior can be changed by enabling only specific
+      applications. Read :ref:`ug-fioctl-enable-apps` to learn how.
 
    .. tab:: mosquitto
 
@@ -108,37 +106,33 @@ Example Apps
            git commit -m "mosquitto: create mosquitto container"
            git push
       
-      #. :ref:`ref-watch-build`
+      #. :ref:`gs-watch-build`
       
-         When changes are made to ``containers.git`` in your Factory sources, a new target is
+         When changes are made to ``containers.git`` in your Factory sources, a new Target is
          built by our CI system. Devices that are registered to your Factory will be
-         able to see this target and conditionally update to it, depending on their
+         able to see this Target and conditionally update to it, depending on their
          :ref:`device configuration <ref-configuring-devices>`.
       
-      **Device Configuration**
-            
-      Now that a target is being built, we want to tell our device(s) to update to
-      this new target. This is done using :ref:`ref-fioctl`.
-      
-      #. Determine the device you want to configure to use ``mosquitto``::
-      
-           fioctl devices list
-      
-         your output should look like this::
-      
-           NAME  FACTORY  OWNER           TARGET                  STATUS  APPS  UP TO DATE
-           ----  -------  -----           ------                  ------  ----  ----------
-           foo   gavin    <unconfigured>  raspberrypi3-64-lmp-19  OK            true
-      
-      #. Configure the device to run the ``mosquitto`` app. Make sure to replace
-         ``<device>`` with the ``NAME`` of yours::
-      
-           fioctl devices config updates <device> --apps mosquitto
+      **Device Configuration** 
+
+      Once the Target is built successfully, any devices that are registered to
+      the Factory will begin updating to this new Target. The app ``mosquitto``
+      that has been defined will be available for usage in this Target. This can
+      be verified by running::
+
+        fioctl targets list
+
+      **By default** devices will run **all** applications that are defined in
+      the :term:`containers.git` repository and therefore available in the
+      latest Target. This behavior can be changed by enabling only specific
+      applications. Read :ref:`ug-fioctl-enable-apps` to learn how.
+
+.. _gs-about-targets:
 
 About Targets
 -------------
 
-You can see the available targets your Factory has produced::
+You can see the available Targets your Factory has produced::
 
   fioctl targets list
 
@@ -150,7 +144,7 @@ You can see the available targets your Factory has produced::
   3        master              raspberrypi3-64
   4        master  shellhttpd  raspberrypi3-64
 
-details about target can be printed by passing its version number to the
+details about Target can be printed by passing its version number to the
 ``show`` subcommand::
 
   fioctl targets show 4
@@ -171,6 +165,8 @@ details about target can be printed by passing its version number to the
   DOCKER APP  VERSION
   ----------  -------
   shellhttpd  shellhttpd.dockerapp-4
+
+.. _gs-completion:
 
 Completion
 ----------

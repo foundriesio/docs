@@ -23,7 +23,21 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    :caption: Reference Manual
    :name: sec-manual
 
-   reference-manual/index
+   reference-manual/docker/docker
+   reference-manual/factory/factory
+   reference-manual/linux/linux
+   reference-manual/ota/ota
+   reference-manual/remote-access/remote-access
+   reference-manual/security/security
+   reference-manual/testing/testing
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :caption: User Guide
+   :name: sec-user-guide
+
+   user-guide/*/*
 
 .. toctree::
    :maxdepth: 2
@@ -32,6 +46,13 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 
    tutorials/cloud
    tutorials/mosquitto
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Glossary
+   :name: sec-glossary
+
+   glossary/index
 
 .. ifconfig:: todo_include_todos is True
 

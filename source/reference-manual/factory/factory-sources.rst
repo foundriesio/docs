@@ -1,3 +1,5 @@
+.. _ref-factory-sources:
+
 Factory Source Code
 ===================
 
