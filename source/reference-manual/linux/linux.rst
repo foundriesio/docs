@@ -29,6 +29,7 @@ and maintained by Foundries.io on `GitHub`_.
    linux-building
    linux-kernel
    linux-layers
+   linux-wic-installer
    linux-persistent-log
    linux-net-debug
    linux-update
