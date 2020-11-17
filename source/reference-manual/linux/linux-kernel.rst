@@ -8,8 +8,8 @@ the Linux microPlatform. The latest continuous release is available
 at `github.com/foundriesio/linux`_.
 
 The Linux Kernel recipe can be found in the :ref:`Meta-LMP layer
-<ref-linux-layers-meta-lmp>`, under the ``meta-lmp/recipes-kernel/linux``
-directory.
+<ref-linux-layers-meta-lmp>`, under the
+``meta-lmp-base/recipes-kernel/linux`` directory.
 
 Linux microPlatform Kernel Configuration Fragments
 --------------------------------------------------
@@ -34,28 +34,30 @@ on how to work and manage the kernel metadata and configuration fragments.
 Linux microPlatform with Linux upstream
 ---------------------------------------
 
-The recipe ``meta-lmp/recipes-kernel/linux/linux-lmp-dev.bb`` can be used to
-build the Linux microPlatform with the upstream kernel tree instead of the LMP
-unified tree. ``linux-lmp-dev`` also uses the Linux microPlatform Kernel
-Configuration Fragments repository for a compatible configuration.
+The recipe ``meta-lmp/meta-lmp-base/recipes-kernel/linux/linux-lmp-dev.bb``
+can be used to build the Linux microPlatform with the upstream kernel tree
+instead of the LMP unified tree. ``linux-lmp-dev`` also uses the Linux
+microPlatform Kernel Configuration Fragments repository for a compatible
+configuration.
 
 Building Linux microPlatform with linux-lmp-dev
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Set the ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-dev`` in
-``conf/auto.conf`` after setting up your Linux microPlatform development
-environment (``source setup-environment``)::
+``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
 
-    $ echo 'PREFERRED_PROVIDER_virtual/kernel = "linux-lmp-dev"' >> conf/auto.conf
+    $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
+    PREFERRED_PROVIDER_virtual/kernel = "linux-lmp-dev"
 
 Now just build any of the supported Linux microPlatform images.
 
 Specifying Linux git tree, branch and commit revision
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following variables can be also set in ``conf/auto.conf`` in order
-to build ``linux-lmp-dev`` using a specific linux tree, branch or commit
-revision::
+The following variables can be also set in
+``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
+in order to build ``linux-lmp-dev`` using a specific linux tree, branch or
+commit revision::
 
     KERNEL_REPO = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git" # Kernel git repository
     KERNEL_BRANCH = "master" # Git kernel branch (default: master)

@@ -31,22 +31,24 @@ When enabled, OpenEmbedded links ``/var/log`` to ``/var/volatile/log``
 (``/var/volatile`` is a tmpfs mount point), and when disabled it sets
 ``/var/log`` as a normal directory, making it persistent.
 
-Add the following to ``conf/local.conf`` or ``partner.inc`` in order to disable
-``VOLATILE_LOG_DIR``::
+Add the following to
+``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
+in order to disable ``VOLATILE_LOG_DIR``::
 
   VOLATILE_LOG_DIR = "no"
 
 Add systemd-journald-persistent to your image
 ---------------------------------------------
 
-The recipe ``systemd-journald-persistent`` provides a default configuration
-file for **systemd-journald** that enables persistent logging support. The
-default configuration sets a limit to **64M**, which is safe for most
-deployments.
+The recipe ``systemd-journald-persistent`` (in meta-lmp) provides a default
+configuration file for **systemd-journald** that enables persistent logging
+support. The default configuration sets a limit to **64M**, which is safe for
+most deployments.
 
-Add ``systemd-journald-persistent`` to ``lmp-factory-image.bb`` (or any other
-image used by your meta-subscriber-overrides layer), as described at
-:ref:`ref-adding-packages-image`.
+Add ``systemd-journald-persistent`` to
+``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb``
+(or any other image used by your meta-subscriber-overrides layer), as
+described at :ref:`ref-adding-packages-image`.
 
 Optional: customize systemd-journald options
 --------------------------------------------
@@ -61,7 +63,7 @@ Create your own **systemd-journald** configuration file by overriding
 the ``10-persistent-journal.conf`` file used by the
 ``systemd-journald-persistent`` recipe.
 
-At your meta-susbscriber-overrides layer::
+At your meta-subscriber-overrides layer::
 
   $ cat recipes-support/systemd-journald-persistent/systemd-journald-persistent.bbappend
   FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
