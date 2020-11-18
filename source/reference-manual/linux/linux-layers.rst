@@ -80,7 +80,45 @@ The ``lmp-base-console-image`` recipe can be found at
 default set of packages used by the image via the
 ``CORE_IMAGE_BASE_INSTALL`` variable.
 
-.. todo:: document meta-lmp BSP and how it gets used
+Linux microPlatform Meta-LMP BSP Layer
+--------------------------------------
+
+The Meta-LMP-BSP layer provides the Linux microPlatform BSP support for
+the supported targets, by providing kernel recipes, u-boot configuration
+fragments, WIC files, manufacturing tools scripts and so on.
+
+This layer is meant to be used as an extension of the vendor BSP
+layers (e.g. meta-freescale), but it can also handle board configuration
+files for cases where the vendor layer can't be easily compatible with
+LMP (e.g. layer based on an older Yocto release).
+
+The main configuration file provided by this layer can be found at
+``conf/machine/include/lmp-machine-custom.inc``, which gets included
+by ``meta-lmp-base/classes/lmp.bbclass`` if available (users can decide
+to use meta-lmp-base only).
+
+Here is an example of how a BSP configuration gets extended from the
+vendor BSP layer::
+
+  # Beaglebone
+  PREFERRED_PROVIDER_virtual/bootloader_beaglebone-yocto = "u-boot-fio"
+  PREFERRED_PROVIDER_u-boot_beaglebone-yocto = "u-boot-fio"
+  WKS_FILE_DEPENDS_append_beaglebone-yocto = " u-boot-default-script"
+  PREFERRED_PROVIDER_u-boot-default-script_beaglebone-yocto = "u-boot-ostree-scr-fit"
+  SOTA_CLIENT_FEATURES_append_beaglebone-yocto = " ubootenv"
+  OSTREE_KERNEL_ARGS_beaglebone-yocto ?= "console=ttyS0,115200n8 ${OSTREE_KERNEL_ARGS_COMMON}"
+  KERNEL_DEVICETREE_append_beaglebone-yocto = " am335x-boneblack-wireless.dtb"
+  IMAGE_BOOT_FILES_beaglebone-yocto = "u-boot.img MLO boot.itb"
+  KERNEL_IMAGETYPE_beaglebone-yocto = "fitImage"
+  KERNEL_CLASSES_beaglebone-yocto = " kernel-lmp-fitimage "
+
+When adding or changing the LMP BSP configuration values, please use
+``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
+instead, which gets parsed after ``lmp-machine-custom.inc`` and is
+factory specific.
+
+``lmp-machine-custom.inc`` should be used for LMP upstream BSP support
+only.
 
 .. _OpenEmbedded-Core:
    https://github.com/openembedded/openembedded-core
