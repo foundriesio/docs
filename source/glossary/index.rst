@@ -4,11 +4,6 @@ Terminology
 .. Glossary::
    :sorted:
 
-   containers.git
-     The repository in your Factory sources where containers and docker-compose
-     apps are defined, to be built by Foundries.io CI/CD. Read
-     :ref:`ref-factory-sources` for more detail.
-  
    Target
      A description of the software a device should run. This description is
      visible as metadata in :term:`targets.json`. Includes details such as OSTree
