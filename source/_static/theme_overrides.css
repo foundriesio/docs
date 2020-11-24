@@ -20,6 +20,10 @@
  width:45% !important
 }
 
+.rst-content .sidebar {
+ margin: 0px 24px 24px 24px;
+}
+
 /* https://rackerlabs.github.io/docs-rackspace/tools/rtd-tables.html */
 /* Center the page and limit width to 1100px */
 @media only screen and (min-width: 769px) {
