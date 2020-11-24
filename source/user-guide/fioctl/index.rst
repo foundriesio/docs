@@ -188,14 +188,14 @@ View Targets
   ``fioctl targets list -f <factory>``
     Lists the Targets a Factory has produced so far.
 
-  .. asciinema:: ../_static/asciinema/view-targets.cast
+  .. asciinema:: ../../_static/asciinema/view-targets.cast
 
 List devices
   ``fioctl devices list -f <factory>``
     Lists the devices that have connected to a Factory, along with associated
     metadata, such as device name, status, Target and enabled apps.
 
-  .. asciinema:: ../_static/asciinema/list-devices.cast
+  .. asciinema:: ../../_static/asciinema/list-devices.cast
 
 Set device tag
   ``fioctl devices config updates <device_name> --tags <tag>``
@@ -203,13 +203,13 @@ Set device tag
     device from accepting 'devel' builds to 'master' builds. See the
     :ref:`ref-advanced-tagging` section for more examples.
 
-  .. asciinema:: ../_static/asciinema/set-device-tags.cast
+  .. asciinema:: ../../_static/asciinema/set-device-tags.cast
 
 Set app(s) to be enabled
   ``fioctl devices config updates <device_name> --apps <app_name1>,<app_name2>``
     Set the app(s) a device will run.
 
-  .. asciinema:: ../_static/asciinema/set-apps.cast
+  .. asciinema:: ../../_static/asciinema/set-apps.cast
 
 Enable :ref:`ref-wireguard`
   ``fioctl devices config wireguard <device_name> <enable|disable>``
@@ -218,4 +218,4 @@ Enable :ref:`ref-wireguard`
     have set up on your own server as described in the :ref:`ref-wireguard`
     guide.
 
-  .. asciinema:: ../_static/asciinema/enable-wireguard.cast
+  .. asciinema:: ../../_static/asciinema/enable-wireguard.cast
