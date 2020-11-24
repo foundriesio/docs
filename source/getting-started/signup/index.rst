@@ -66,7 +66,7 @@ includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
    Your chosen platform determines what the initial value for the ``machines:``
    key will be for your first build. This key and its value can later be changed
-   via ``factory-config.yml`` in :ref:`ref-Factory-definition`
+   via ``factory-config.yml`` in the :ref:`ref-Factory-definition`
 
 .. _QEMU: https://www.qemu.org/
 .. _ARM: https://www.arm.com/
@@ -80,11 +80,11 @@ Watch Your Build
 Once you have created your Factory, an initial build of the LmP will be
 generated for you to build your product on top of. You can monitor the progress
 of this initial build in the :guilabel:`Targets` tab of your Factory after a few
-minutes. Additionally, you will recieve an Email once your build is complete.
+minutes. Additionally, you will recieve an Email once this initial build is
+complete.
 
-This section will become more useful as you begin to build your application and
-declare new Targets for the Factory to build. You can learn about creating Targets in the
-:ref:`ref-advanced-tagging` section
+The :guilabel:`Targets` tab of the Factory will become more useful as you begin
+to build your application and produce new Targets for the Factory to build.
 
 .. note::
 
@@ -98,11 +98,12 @@ declare new Targets for the Factory to build. You can learn about creating Targe
 
 .. warning::
 
-   Bootstrapping your OS securely takes some time. Secure caching isn't simple,
-   so your first build will take up to 3 hours to complete. Subsequent builds
-   will be much faster.
+   Bootstrapping your Factory securely takes some time. We do not reuse customer
+   cache between Factories. Secure caching isn't simple. so your first build
+   will take up to 3 hours to complete. **Subsequent builds will be much
+   faster.**
 
-   Read through the rest of this section and set up your development
-   environment while you wait for us to build your OS from scratch.
+   Read through the rest of this section and set up your development environment
+   while you wait for us to build your Factory from scratch.
 
 .. _cgit: https://git.zx2c4.com/cgit/
