@@ -71,15 +71,14 @@ How to Enable
        .. code-block:: 
  
           diff --git a/conf/machine/include/lmp-factory-custom.inc b/conf/machine/include/lmp-factory-custom.inc
-          index b6344ef..77e83c1 100644
+          index b6344ef..028b76a 100644
           --- a/conf/machine/include/lmp-factory-custom.inc
           +++ b/conf/machine/include/lmp-factory-custom.inc
-          @@ -1 +1,5 @@
+          @@ -1 +1,4 @@
           -# LMP factory specific customizations (either replace or extend options as defined by meta-lmp)
           \ No newline at end of file
           +# LMP factory specific customizations (either replace or extend options as defined by meta-lmp)
           +
-          +IMAGE_INSTALL_append = " lmp-auto-hostname"
           +LMP_HOSTNAME_MODE = "mac"
           +LMP_HOSTNAME_NETDEVICE = "eth0"
           diff --git a/recipes-samples/images/lmp-factory-image.bb b/recipes-samples/images/lmp-factory-image.bb
@@ -88,7 +87,7 @@ How to Enable
           +++ b/recipes-samples/images/lmp-factory-image.bb
           @@ -14,6 +14,7 @@ require recipes-samples/images/lmp-feature-sbin-path-helper.inc
            IMAGE_FEATURES += "ssh-server-openssh"
-          
+           
            CORE_IMAGE_BASE_INSTALL += " \
           +    lmp-auto-hostname \
                kernel-modules \
@@ -100,7 +99,7 @@ How to Enable
                packagegroup-core-full-cmdline-multiuser \
           -"
           \ No newline at end of file
-          +"   
+          +"
 
 |
 
