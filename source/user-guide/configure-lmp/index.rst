@@ -37,7 +37,6 @@ lmp-auto-hostname
    
       .. code-block::
    
-         IMAGE_INSTALL_append = " lmp-auto-hostname" 
          LMP_HOSTNAME_MODE = "mac"
          LMP_HOSTNAME_NETDEVICE = "eth0"
 
