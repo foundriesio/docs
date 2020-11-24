@@ -240,5 +240,5 @@ LMP_HOSTNAME_NETDEVICE
 
   **Example Value:** ``eth0`` or ``wlan0``
 
-.. _meta-lmp: https://github.com/ricardosalveti/meta-lmp/tree/master
-.. _meta-lmp-base: https://github.com/ricardosalveti/meta-lmp/tree/master/meta-lmp-base
+.. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/master
+.. _meta-lmp-base: https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base
