@@ -217,27 +217,7 @@ Token that has **devices:create** scope.
 Variables
 """""""""
 
-LMP_HOSTNAME_MODE
-  What mode the recipe should operate in.
-
-  **Values**
-    ``mac``
-      appends the mac address of a chosen network interface.
-
-      **Example Result:** ``raspberrypi4-64-dca6321669ea``
-
-    ``serial`` 
-      appends the serial number of the device.
-
-      **Example Result:** ``raspberrypi4-64-100000008305bbc3``
-
-LMP_HOSTNAME_NETDEVICE
-  *if* using ``mac`` mode, choses what network interface on devices to retrieve
-  a mac address from.
-
-  **Default:** ``eth0``
-
-  **Example Value:** ``eth0`` or ``wlan0``
+There are no variables for this recipe.
 
 .. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/master
 .. _meta-lmp-base: https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base
