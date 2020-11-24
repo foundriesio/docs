@@ -74,7 +74,8 @@ at known-good revisions, and keep them in sync as time goes on.
 
      mkdir lmp && cd lmp
 
-   (You can also reuse an existing installation directory.)
+   (You can also reuse an existing installation directory, or ``/build/lmp``
+   if building inside the lmp-sdk container, as described at :ref:`ref-linux-dev-container`)
 
 #. Install update |version| using repo:
 
@@ -93,7 +94,7 @@ The supported ``MACHINE`` target used by this guide is
 :ref:`ref-linux-supported`.)
 
 The default distribution (``DISTRO``) is automatically set to ``lmp``,
-which is provided by the meta-lmp layer (see
+which is provided by the meta-lmp-base layer (see
 :ref:`ref-linux-layers` for more details).
 
 Set up your work environment using the ``setup-environment`` script::
