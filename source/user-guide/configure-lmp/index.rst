@@ -159,8 +159,8 @@ lmp-device-auto-register
                lmp-device-auto-register \
            "
   
-     #. Create your **api-token** file. Replace ``<YOUR_API_TOKEN>`` example with
-        a **devices:create** scoped token:
+     #. Create your **api-token** file. Replace ``<YOUR_API_TOKEN>`` with a
+        **devices:create** scoped token:
      
         **recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token**
      
