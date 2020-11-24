@@ -63,16 +63,28 @@ lmp-auto-hostname
       :header: **Click to show git diff**
    
       .. code-block:: 
-   
+
+         diff --git a/conf/machine/include/lmp-factory-custom.inc b/conf/machine/include/lmp-factory-custom.inc
+         index b6344ef..77e83c1 100644
+         --- a/conf/machine/include/lmp-factory-custom.inc
+         +++ b/conf/machine/include/lmp-factory-custom.inc
+         @@ -1 +1,5 @@
+         -# LMP factory specific customizations (either replace or extend options as defined by meta-lmp)
+         \ No newline at end of file
+         +# LMP factory specific customizations (either replace or extend options as defined by meta-lmp)
+         +
+         +IMAGE_INSTALL_append = " lmp-auto-hostname"
+         +LMP_HOSTNAME_MODE = "mac"
+         +LMP_HOSTNAME_NETDEVICE = "eth0"
          diff --git a/recipes-samples/images/lmp-factory-image.bb b/recipes-samples/images/lmp-factory-image.bb
-         index 0c46cef..491c71b 100644
+         index 0c46cef..6fb0980 100644
          --- a/recipes-samples/images/lmp-factory-image.bb
          +++ b/recipes-samples/images/lmp-factory-image.bb
          @@ -14,6 +14,7 @@ require recipes-samples/images/lmp-feature-sbin-path-helper.inc
           IMAGE_FEATURES += "ssh-server-openssh"
          
           CORE_IMAGE_BASE_INSTALL += " \
-         +    lmp-device-auto-register \
+         +    lmp-auto-hostname \
               kernel-modules \
               networkmanager-nmtui \
               git \
@@ -82,21 +94,7 @@ lmp-auto-hostname
               packagegroup-core-full-cmdline-multiuser \
          -"
          \ No newline at end of file
-         +"
-         diff --git a/recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend b/recipes-support/lmp-device-auto-register/lmp-device-auto-      register.bbappend
-         new file mode 100644
-         index 0000000..72d991c
-         --- /dev/null
-         +++ b/recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend
-         @@ -0,0 +1 @@
-         +FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-         diff --git a/recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token b/recipes-support/lmp-device-auto-register/lmp-device-auto-     register/api-token
-         new file mode 100644
-         index 0000000..2cf7f63
-         --- /dev/null
-         +++ b/recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token
-         @@ -0,0 +1 @@
-         +<YOUR_API_TOKEN>
+         +"   
 
 Customize device hostnames at runtime, either by appending the **serial** number
 from the Device Tree of the hardware, or the **mac address** to the hostname.
