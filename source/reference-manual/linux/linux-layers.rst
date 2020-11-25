@@ -7,6 +7,8 @@ The Linux microPlatform is composed of several OpenEmbedded and Yocto
 Project layers, including the core build system, distribution, images
 and BSPs.
 
+.. _ref-linux-layers-meta-lmp-base-layers:
+
 Linux microPlatform Base Layers
 -------------------------------
 
@@ -37,6 +39,8 @@ Layer                                 Description
 `Meta-LMP`_ (Base)                    This layer provides the Linux microPlatform distribution
                                       configuration, unified Kernel and images.
 ==================================    ============================================================
+
+.. _ref-linux-layers-meta-lmp-bsp-layers:
 
 Linux microPlatform BSP Layers
 ------------------------------
@@ -119,6 +123,44 @@ factory specific.
 
 ``lmp-machine-custom.inc`` should be used for LMP upstream BSP support
 only.
+
+
+Customizing Linux microPlatform BSP layers list
+-----------------------------------------------
+
+The Linux microPlatform is composed by a set of base layers plus an extensive
+list of BSP layers that are all enabled by default
+(see :ref:`ref-linux-layers-meta-lmp-bsp-layers`).
+
+As this might not necessarily be desired by everyone, LmP also allows any
+Factory user to easily customize the default BSP layers enabled and used
+by a Factory.
+
+To define your own set of BSP layers (used by Bitbake), modify (or
+create if your Factory was created before LmP v76) the
+``lmp-manifest/conf/bblayers-factory.inc`` bblayers include fragment,
+replacing the BSPLAYERS variable with your own list of BSP layers.
+Make sure ``meta-lmp-bsp`` is also included by default, unless you
+want to completely define your own BSP configuration.
+
+An example for enabling only the ``meta-intel`` BSP layer::
+
+  $ cat conf/bblayers-factory.inc
+  # This is a FoundriesFactory bblayers include file
+
+  # Meta-subscriber-overrides is the main FoundriesFactory layer
+  # Do not remove unless you really know what you are doing.
+  BASELAYERS += "${OEROOT}/layers/meta-subscriber-overrides"
+
+  # Customize list of default BSP layers included by LMP by uncommenting
+  # the following lines and manually including your own list (= to replace).
+  # You can find the standard BSP list at the bblayers-bsp.inc file, which
+  # gets parsed before this file.
+  #
+  BSPLAYERS = " \
+    ${OEROOT}/layers/meta-intel \
+    ${OEROOT}/layers/meta-lmp/meta-lmp-bsp \
+  "
 
 .. _OpenEmbedded-Core:
    https://github.com/openembedded/openembedded-core
