@@ -7,6 +7,7 @@ Intel x86-64 UEFI,intel-corei7-64
 NXP iMX6ULL-EVK,imx6ullevk
 EA iMX7ULP-UCOM,imx7ulpea-ucom
 NXP iMX8M-MINILPD4 EVK,imx8mmevk
+NXP iMX8MQuad EVK,imx8mqevk
 NXP Solidrun CuBox-i iMX6,cubox-i
 NXP Toradex Apalis-iMX6,apalis-imx6
 NXP Toradex Apalis-iMX8QM,apalis-imx8
