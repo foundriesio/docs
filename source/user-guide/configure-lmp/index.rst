@@ -156,6 +156,10 @@ How to Enable
    Ensure you are inside of the :term:`meta-subscriber-overrides.git`
    repository directory.
 
+   #. Create the required directory structure for this recipe::
+
+        mkdir -p recipes-support/lmp-device-auto-register/lmp-device-auto-register
+
    #. Add ``lmp-device-auto-register`` to the list of recipes/packages in:
    
       **recipes-samples/images/lmp-factory-image.bb**
