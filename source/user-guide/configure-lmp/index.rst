@@ -38,9 +38,12 @@ How to Enable
 .. toggle-header::
    :header: **Show details**
 
+   Ensure you are inside of the :term:`meta-subscriber-overrides.git`
+   repository directory.
+
    #. Populate the recipe variables in:
    
-      **meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc**
+      **conf/machine/include/lmp-factory-custom.inc**
    
       .. code-block::
    
@@ -49,7 +52,7 @@ How to Enable
 
    #. Add ``lmp-auto-hostname`` to the list of recipes/packages in:
    
-      **meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb**
+      **recipes-samples/images/lmp-factory-image.bb**
    
       .. code-block::
          :emphasize-lines: 9
@@ -150,9 +153,12 @@ How to Enable
 .. toggle-header::
    :header: **Show details**
  
+   Ensure you are inside of the :term:`meta-subscriber-overrides.git`
+   repository directory.
+
    #. Add ``lmp-device-auto-register`` to the list of recipes/packages in:
    
-      **meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb**
+      **recipes-samples/images/lmp-factory-image.bb**
    
       .. code-block::
          :emphasize-lines: 9
@@ -180,7 +186,7 @@ How to Enable
    #. Give the recipe access to the **api-token** file via
       by adding to:
    
-      **meta-subscriber-overrides/recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend**
+      **recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend**
    
       .. code-block::
    
