@@ -55,6 +55,7 @@ How to Enable
          :emphasize-lines: 9
    
          CORE_IMAGE_BASE_INSTALL += " \
+             lmp-auto-hostname \
              kernel-modules \
              networkmanager-nmtui \
              git \
@@ -62,7 +63,6 @@ How to Enable
              packagegroup-core-full-cmdline-utils \
              packagegroup-core-full-cmdline-extended \
              packagegroup-core-full-cmdline-multiuser \
-             lmp-auto-hostname \
          "
 
     .. toggle-header::
@@ -156,6 +156,7 @@ How to Enable
          :emphasize-lines: 9
    
          CORE_IMAGE_BASE_INSTALL += " \
+             lmp-device-auto-register \
              kernel-modules \
              networkmanager-nmtui \
              git \
@@ -163,7 +164,6 @@ How to Enable
              packagegroup-core-full-cmdline-utils \
              packagegroup-core-full-cmdline-extended \
              packagegroup-core-full-cmdline-multiuser \
-             lmp-device-auto-register \
          "
  
    #. Create your **api-token** file. Replace ``<YOUR_API_TOKEN>`` with a
