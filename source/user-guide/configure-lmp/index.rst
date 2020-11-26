@@ -109,6 +109,8 @@ Variables
 LMP_HOSTNAME_MODE
   What mode the recipe should operate in.
 
+  **Default:** ``serial``
+
   **Values**
     ``mac``
       appends the mac address of a chosen network interface.
