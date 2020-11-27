@@ -30,6 +30,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    reference-manual/remote-access/remote-access
    reference-manual/security/security
    reference-manual/testing/testing
+   reference-manual/troubleshooting/troubleshooting
 
 .. toctree::
    :maxdepth: 1
