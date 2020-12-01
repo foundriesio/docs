@@ -109,29 +109,28 @@ How to Enable
 Variables
 """""""""
 
-LMP_HOSTNAME_MODE
-  What mode the recipe should operate in.
+.. confval:: LMP_HOSTNAME_MODE=<option>
+    :default: ``serial``
 
-  **Default:** ``serial``
+    .. option:: serial
 
-  **Values**
-    ``mac``
-      appends the mac address of a chosen network interface.
+       appends the serial number of the device.
+ 
+       **Example Result:** ``raspberrypi4-64-100000008305bbc3``
 
-      **Example Result:** ``raspberrypi4-64-dca6321669ea``
+    .. option:: mac
 
-    ``serial`` 
-      appends the serial number of the device.
+       appends the mac address of a chosen network interface.
+ 
+       **Example Result:** ``raspberrypi4-64-dca6321669ea``
 
-      **Example Result:** ``raspberrypi4-64-100000008305bbc3``
+.. confval:: LMP_HOSTNAME_NETDEVICE=<interface>
+    :default: ``eth0``
 
-LMP_HOSTNAME_NETDEVICE
-  *if* using ``mac`` mode, choses what network interface on devices to retrieve
-  a mac address from.
+    *if* using ``mac`` mode, choses what network interface on devices to retrieve
+    a mac address from.
 
-  **Default:** ``eth0``
-
-  **Example Value:** ``eth0`` or ``wlan0``
+    **Example Value:** ``eth0`` or ``wlan0``
 
 .. _ug-configure-lmp_lmp-device-auto-register:
 
