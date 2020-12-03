@@ -21,3 +21,13 @@ Terminology
   
    MACHINE
      The Yocto machine name. Only supported if listed in :ref:`ref-linux-supported`
+
+   system image 
+     The OS image produced by the Factory that is flashed to all devices. The
+     build artifact is usually named ``lmp-factory-image-<hardware-id>.wic.gz``
+
+   factory-config.yml
+     A file in the :term:`ci-scripts.git` repository of the Factory which
+     controls all configurable aspects of a Factory. Such as
+     :ref:`ref-advanced-tagging`, :ref:`ug-configure-lmp_container-preloading`
+     and email alerts.
