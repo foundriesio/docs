@@ -24,6 +24,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
    :name: sec-manual
 
    reference-manual/docker/docker
+   reference-manual/boards/boards
    reference-manual/factory/factory
    reference-manual/linux/linux
    reference-manual/ota/ota
