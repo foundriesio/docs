@@ -198,7 +198,6 @@ containers:
 
 .. todo:: provide a list of supported architectures for containers:
 .. todo:: document DOCKER_SECRETS 
-.. todo:: document container preloading
 
 .. # define a hard line break for HTML
 .. |br| raw:: html
