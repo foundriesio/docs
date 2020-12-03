@@ -87,3 +87,10 @@
       #. Select your disk via the :guilabel:`Device` dropdown.
       #. Click :guilabel:`Write`
       #. Wait for the image to finish writing, and a **Write Successful** dialog will appear.
+
+
+.. _Win32 Disk Imager: https://sourceforge.net/projects/win32diskimager/files/Archive/
+
+.. _7zip: https://www.7-zip.org/download.html
+
+.. _Rufus: https://rufus.ie
