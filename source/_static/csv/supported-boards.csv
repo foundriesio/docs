@@ -2,6 +2,7 @@ Device Name,MACHINE
 Arm Corstone-700 MPS3,corstone700-mps3
 Arm Corstone-700 FVP,corstone700-fvp
 Arm Cortex A5 DesignStart,a5ds
+Arm Neoverse N1 System Development Platform (N1SDP),n1sdp
 Intel NUC8,intel-corei7-64
 Intel x86-64 UEFI,intel-corei7-64
 NXP iMX6ULL-EVK,imx6ullevk
