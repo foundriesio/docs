@@ -8,13 +8,17 @@ WIC Image Installer
  .. note::
 
   Only EFI compatible systems are currently supported by the image
-  installer (e.g. intel-corei7-64).
+  installer (e.g. intel-corei7-64, n1sdp).
 
 To generate a WIC based image installer, switch the default ``WKS_FILE_sota``
 definition for your target machine to ``image-efi-installer.wks``::
 
   $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
+  # WIC-based installer for the intel-corei7-64 target
   WKS_FILE_intel-corei7-64_sota = "image-efi-installer.wks.in"
+
+  # WIC-based installer for the n1sdp target
+  WKS_FILE_n1sdp_sota = "image-efi-installer.wks.in"
 
 As WIC is only capable of consuming one single WKS file (even if multiple are
 defined via WKS_FILES), this will force the build system to only generate
