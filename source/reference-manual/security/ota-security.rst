@@ -9,3 +9,4 @@ Over the Air Updates
    :maxdepth: 1
 
    offline-keys
+   device-gateway

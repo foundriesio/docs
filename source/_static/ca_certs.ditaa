@@ -1,0 +1,25 @@
+/---------------------------------\
+|                                 |
+|        foundries.io             |
+|                                 |
+| * Online CA private key         |
+| * Server TLS private key        |
+| * factory_ca.pem (root of trust)|
+|   * Server TLS certificate      |
+|   * Online CA certificate(s)    |
+|   * Local CA certificate(s)     |
+|                                 |
+\---------------------------------/
+
+
+/---------------------------------\
+|                                 |
+|        Your computer            |
+|                                 |
+|  * factory_ca.key (in HSM)      |
+|  * local CA private key(s)      |
+|  * factory_ca.pem               |
+|    * local CA certificate(s)    |
+|                                 |
+\---------------------------------/
+
