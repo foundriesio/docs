@@ -65,7 +65,7 @@ The first step is to generate the PKI tree and commit the fuse table to the hard
 
 Please refer to NXP's `Secure Boot Using HABv4 Guide`_ for a detailed description on how to generate the PKI tree.
 
-For development purposes, we keep iMX HAB4 sample keys and certificates at ``lmp-manifest/conf/imx_hab4``. The fuse table can be inspected by executing the ``print_fuses`` script in that same directory. The output should be::
+For development purposes, we keep iMX HAB4 sample keys and certificates at ``lmp-tools/security/imx_hab4``. The fuse table can be inspected by executing the ``print_fuses`` script in that same directory. The output should be::
 
 	0xEA2F0B50
 	0x871167F7
@@ -153,9 +153,9 @@ How to sign an SPL image (I)
 ----------------------------
 To build a signed image, you need to create a Command Sequence File - CSF - describing all the commands that the ROM will execute during secure boot. These commands instruct HAB on which memory areas of the image to authenticate, which keys to install and use, what data to write to a register and so on. In addition, the necessary certificates and signatures involved in the verification of the image are attached to the CSF generated binary output.
 
-We keep a template at ``lmp-manifest/conf/imx_hab4/u-boot-spl-sign.csf-template``.
+We keep a template at ``lmp-tools/security/imx_hab4/u-boot-spl-sign.csf-template``.
 
-This template is used by the ``lmp-manifest/conf/imx_hab4/sign-file.sh`` script which dynamically generates the authenticate data command "blocks" line(s) based on your binary.  The command "blocks" line contains three values:
+This template is used by the ``lmp-tools/security/imx_hab4/sign-file.sh`` script which dynamically generates the authenticate data command "blocks" line(s) based on your binary.  The command "blocks" line contains three values:
 
 * The first value is the address on the target where HAB expects the signed image data to begin.
 * The second value is the offset into the file where CST will begin signing.
@@ -166,9 +166,9 @@ It is also required that the IVT and DCD regions are signed. HAB will verify the
 
 In the case of the SPL, you must enable **CONFIG_IMX_HAB** to include the IVT and DCD information.
 
-The ``lmp-manifest/conf/imx_hab4/sign-file.sh`` script executes NXP's Code Signing Tool after preparing the CSF information based on the template::
+The ``lmp-tools/security/imx_hab4/sign-file.sh`` script executes NXP's Code Signing Tool after preparing the CSF information based on the template::
 
-	$ cd conf/imx_hab4/
+	$ cd security/imx_hab4/
 	$ ./sign-file.sh --cst ./cst --spl SPL
 
 	SETTINGS FOR  : ./sign-file.sh
@@ -223,7 +223,7 @@ Once the device has been closed, only signed images will be able to run on the p
 
 To comply with these requirements we need to sign the image adding the ``--fix-sdp-dcd`` parameter::
 
-	$ cd conf/imx_hab4/
+	$ cd security/imx_hab4/
 	$ ./sign-file.sh --cst ./cst --spl SPL --fix-sdp-dcd
 
 	SETTINGS FOR  : ./sign-file.sh
@@ -293,7 +293,7 @@ If you wish to use the i.MX HAB validation process when booting an M4 binary, it
 
 Signing the M4 application image is nearly the same as before.  Instead of the ``--spl`` parameter, use ``--m4app``::
 
-	$ cd conf/imx_hab4/
+	$ cd security/imx_hab4/
 	$ ./sign-file.sh --cst ./cst --m4app sdk20-app_flash.img
 
 	SETTINGS FOR  : ./sign-file.sh
