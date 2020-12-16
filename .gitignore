@@ -3,6 +3,8 @@
 .atom-build.yml
 build/
 extensions/__pycache__/
+source/_build/
 
 ### IDE
 .idea
+.vscode
