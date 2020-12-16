@@ -8,3 +8,4 @@ Boards
 
    raspberrypi
    imx8mq
+   se050_imx8mq
