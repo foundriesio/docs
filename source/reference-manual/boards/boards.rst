@@ -7,3 +7,4 @@ Boards
    :maxdepth: 1
 
    raspberrypi
+   imx8mq
