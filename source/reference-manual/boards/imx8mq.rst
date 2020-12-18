@@ -6,7 +6,7 @@ i.MX 8MQuad Evaluation Kit
 Hardware Preparation
 --------------------
 
-Set up the board for updating using the maufacturing tools:
+Set up the board for updating using the manufacturing tools:
 
 .. figure:: /_static/boards/imx8mqevk.png
      :width: 400
