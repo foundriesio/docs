@@ -24,9 +24,7 @@ Installation
 Manual Installation
 ^^^^^^^^^^^^^^^^^^^
 
-We use `Github Releases`_ to distribute static golang binaries. If you don't have a
-package manager, are not on a supported distribution, or would prefer to install
-manually, you can refer to this section for manual installation instructions.
+We use `Github Releases`_ to distribute static X86_64 golang binaries. 
 
 .. tabs::
 
@@ -87,62 +85,20 @@ manually, you can refer to this section for manual installation instructions.
 
 .. _gs-fioctl-package-install:
 
-Via Package Manager
+Install From Source
 ^^^^^^^^^^^^^^^^^^^
 
-.. tabs::
+.. note:: 
 
-   .. group-tab:: macOS
+    This requires that you have Golang installed. See
+    https://golang.org/doc/install for instructions.
 
-      We maintain a brew Formula_
+If you intend to use Fioctl on a non X86_64 platform (like a Raspberry
+Pi/Pinebook/Smartphone) such as ARM, RISC-V, PPC, etc. Fioctl can be compiled
+and installed from the latest sources and installed via Golang's own package
+manager; ``go get``::
 
-        .. code-block:: shell
-
-           brew tap foundriesio/homebrew-fioctl
-           brew install fioctl
-
-   .. group-tab:: Windows
-
-        .. note::
-           We recommend using either the WSL_ or Scoop_ to manage your
-           :ref:`ref-fioctl` installation.
-
-        **Via Scoop**
-
-        1. Install Scoop_
-        2. From Powershell, run::
-
-             scoop bucket add fio https://github.com/foundriesio/scoop-fioctl
-             scoop install fioctl
-
-        **Via Windows Subsystem for Linux (WSL)**
-
-        1. Enable the WSL_
-        2. `Install a supported Linux Distribution
-           <https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice>`_
-           such as Ubuntu, Debian.
-        3. Launch a shell via WSL, usually bash.exe is available from the start
-           menu.
-        4. You can now follow our docs as if you were running Linux, refer to
-           the Ubuntu/Debian installation steps.
-
-   .. group-tab:: Arch Linux
-
-      We maintain an `AUR Package`_
-
-      **Via yay**
-
-        .. code-block:: shell
-
-          yay -S fioctl
-
-      **Or via makepkg**
-
-        .. code-block:: shell
-
-          git clone https://aur.archlinux.org/fioctl-bin.git
-          cd fioctl-bin
-          makepkg -si
+  go get github.com/foundriesio/fioctl
 
 .. _gs-fioctl-post-install:
 
