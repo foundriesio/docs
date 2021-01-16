@@ -46,7 +46,7 @@ this high level logic:
    there's no need to ask for more metadata. E.G - nothing has changed.
 
  * Ask for the snapshot.json metadata. If this file hasn't changed,
-   there's no need to ask for more metdata. E.G - the targets have
+   there's no need to ask for more metadata. E.G - the targets have
    not changed.
 
  * Ask for the targets.json metadata. At this point the device can
