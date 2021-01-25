@@ -73,7 +73,7 @@ By default LMP builds triggered in your factory after code has been merged to
 master will be tagged with "postmerge". After doing QA on this build, it can
 be "promoted" using the fioctl_ tool::
 
- fioctl targets tag -Tpostmerge,promoted raspberrypi3-64-lmp-144
+ fioctl targets tag -Tpostmerge,promoted raspberrypi3-64-lmp-144 --factory <factory>
 
 That will kick off a CI job that will tag build 144 as promoted. This would
 result in the Device 2 from the example above in updating.
