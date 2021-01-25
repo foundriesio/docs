@@ -50,8 +50,8 @@ your Factory, allowing the production of new Targets.
 
 You can individually prune/delete targets by their Target number::
 
-  fioctl targets prune <target_number>
+  fioctl targets prune <target_number> --factory <factory>
 
 Or, you can prune by tag, such as ``devel`` or ``experimental``::
 
-  fioctl targets prune --by-tag <tag>
+  fioctl targets prune --by-tag <tag> --factory <factory>

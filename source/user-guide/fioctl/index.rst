@@ -68,14 +68,14 @@ Target metadata can be inspected by using 3 primary commands
 
          .. code-block:: 
          
-           $ fioctl targets list
+           $ fioctl targets list --factory <factory>
            VERSION  TAGS    APPS                             HARDWARE IDs
            -------  ----    ----                             ------------
            1        master  simple-app,netdata               raspberrypi3-64
            2        devel   mosquitto,simple-app,netdata     raspberrypi3-64
            3        devel   simple-app,netdata,mosquitto     raspberrypi3-64
 
-``fioctl targets list -r`` 
+``fioctl targets list -r --factory <factory>``
     Lists the Targets a Factory has produced in ``-r`` (raw) json format.
     This is often piped into ``jq`` in order to format the json neatly.
 
@@ -92,7 +92,7 @@ Target metadata can be inspected by using 3 primary commands
             :linenos:
             :emphasize-lines: 16,37-45
          
-              $ fioctl targets list -r | jq
+              $ fioctl targets list -r --factory <factory> | jq
               {
                 "signatures": [
                   {
@@ -143,8 +143,8 @@ Target metadata can be inspected by using 3 primary commands
                       }
                     }
 
-``fioctl targets show <target>``
-    Prints detail about a specific Target, (e.g ``fioctl targets show 58``).
+``fioctl targets show <target> --factory <factory>``
+    Prints detail about a specific Target, (e.g ``fioctl targets show 58 --factory <factory>``).
 
     These details include:
     
@@ -161,7 +161,7 @@ Target metadata can be inspected by using 3 primary commands
 
          .. code-block::
          
-           $ fioctl targets show 58
+           $ fioctl targets show 58 --factory <factory>
            Tags:	devel
            CI:	https://ci.foundries.io/projects/cowboy/lmp/builds/58/
            Source:
