@@ -56,11 +56,7 @@ Example Apps
       that has been defined will be available for usage in this Target. This can
       be verified by running::
 
-        fioctl targets list --factory gavin
-
-      .. note::
-
-         'gavin' is the name used in :ref:`gs-signup`.
+        fioctl targets list
 
       **By default** devices will run **all** applications that are defined in
       the :term:`containers.git` repository and therefore available in the
@@ -124,11 +120,7 @@ Example Apps
       that has been defined will be available for usage in this Target. This can
       be verified by running::
 
-        fioctl targets list --factory gavin
-
-      .. note::
-
-         'gavin' is the name used in :ref:`gs-signup`.
+        fioctl targets list
 
       **By default** devices will run **all** applications that are defined in
       the :term:`containers.git` repository and therefore available in the
@@ -142,7 +134,7 @@ About Targets
 
 You can see the available Targets your Factory has produced::
 
-  fioctl targets list --factory gavin
+  fioctl targets list
 
 **CLI Output**::
 
@@ -155,7 +147,7 @@ You can see the available Targets your Factory has produced::
 details about Target can be printed by passing its version number to the
 ``show`` subcommand::
 
-  fioctl targets show 4 --factory gavin
+  fioctl targets show 4
 
 **CLI Output**::
 
