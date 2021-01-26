@@ -172,6 +172,29 @@ authentication process.
 Configuration
 -------------
 
+When working with multiple factories, specifying a factory name is mandatory.
+It can be set using 3 different methods:
+
+   * --factory/-f argument
+
+     .. code-block:: shell
+
+        fioctl targets list --factory <factory>
+
+   *  environment variable FIOCTL_FACTORY
+
+     .. code-block:: shell
+
+        export FIOCTL_FACTORY=<factory>
+        fioctl targets list
+
+   *  config file's factory option
+
+     .. code-block:: shell
+
+        echo "factory: <factory>" >> $HOME/.config/fioctl.yaml
+        fioctl targets list
+
 .. note::
    Refer to the :ref:`ref-fioctl` section of the documentation to learn more
    about configuration.
