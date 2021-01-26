@@ -4,6 +4,7 @@
 build/
 extensions/__pycache__/
 source/_build/
+venv/
 
 ### IDE
 .idea
