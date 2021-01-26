@@ -10,7 +10,7 @@ Terminology
      Hash and Docker-Compose App URIs, but is arbitrary.
   
    targets.json
-     The output of ``fioctl targets list -r --factory <factory>``
+     The output of ``fioctl targets list -r``
   
    Docker-Compose App
      Also referred to as 'app'. A folder in :term:`containers.git`, containing a

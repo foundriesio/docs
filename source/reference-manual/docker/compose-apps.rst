@@ -43,7 +43,7 @@ is distributed as compose apps. Here is a simplistic source layout::
 When changes are made to containers.git, the factory will produce a new
 Target that includes the updated ``httpd`` compose app::
 
-  $ fioctl targets show 77 --factory <factory>
+  $ fioctl targets show 77
 
   ... <snip>
 
