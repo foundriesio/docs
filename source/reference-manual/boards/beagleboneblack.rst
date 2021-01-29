@@ -1,4 +1,4 @@
-Beaglebone black
+Beaglebone Black
 ================
 
 .. include:: generic-prepare.rst
@@ -10,7 +10,7 @@ Now, flash the ``lmp-factory-image-beaglebone-yocto.wic.gz`` retrieved from the
 previous section to an SD Card. This contains the :term:`system image` that the
 device will boot.
 
-By default Beaglebone black boots from internal eMMC. There are several ways to
+By default Beaglebone Black boots from internal eMMC. There are several ways to
 avoid this:
 
    * Press S2 button before powering on
