@@ -10,4 +10,5 @@ Boards
    imx8mm
    imx8mq
    se050_imx8mq
+   se050_imx8mm
    imx6ull
