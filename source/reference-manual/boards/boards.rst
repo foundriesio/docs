@@ -6,6 +6,7 @@ Boards
 .. toctree::
    :maxdepth: 1
 
+   beagleboneblack
    raspberrypi
    imx8mm
    imx8mq
