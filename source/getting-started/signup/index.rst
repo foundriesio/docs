@@ -26,6 +26,12 @@ When your account is created, it is not associated with any factories.
 
 Create one by clicking :guilabel:`Create Factory`
 
+.. warning:: 
+
+   Once a Factory is created, the chosen platform/machine and Factory name
+   cannot be changed. Create a new Factory or contact support if a mistake is
+   made. https://support.foundries.io/
+
 .. figure:: /_static/signup/no-factories.png
    :width: 400
    :align: center
