@@ -1,0 +1,40 @@
+**Necessary artifacts**
+
+.. parsed-literal::
+
+     └── |ARCH|
+         ├── lmp-factory-image-|MACHINE|.wic.gz
+         └── |FIRMWARE_BLOB|
+
+Booting in QEMU
+---------------
+
+#. List available Targets and decide on which to boot::
+
+     fioctl targets list
+
+#. Make a directory to store the artifacts
+
+   .. parsed-literal::
+
+          mkdir -p lmp-qemu/|ARCH|
+
+#. Download the **necessary artifacts** for |ARCH|, replace ``<target_number>`` with the target you would like to boot
+
+   .. parsed-literal::
+
+        |ARTIFACT_COMMANDS|
+
+#. The directory tree should now look like this
+
+   .. parsed-literal::
+
+        lmp-qemu/
+        └── |ARCH|
+            ├── lmp-factory-image-|MACHINE|.wic
+            └── |FIRMWARE_BLOB|
+
+#. Run the following QEMU script against the artifacts inside of
+   ``lmp-qemu/``. You may want to save this as ``run.sh`` inside the
+   directory for convenience
+

@@ -25,6 +25,7 @@ OE/Yocto, the Linux microPlatform™ and Docker®.
 
    reference-manual/docker/docker
    reference-manual/boards/boards
+   reference-manual/qemu/qemu
    reference-manual/factory/factory
    reference-manual/linux/linux
    reference-manual/ota/ota
