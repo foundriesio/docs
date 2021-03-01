@@ -10,3 +10,4 @@ FoundriesFactory
    Fioctl <fioctl/index.rst>
    Factory Sources <factory-sources.rst>
    api-access
+   ../linux/linux-layers
