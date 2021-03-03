@@ -13,11 +13,12 @@ Booting in QEMU
 
      fioctl targets list
 
-#. Make a directory to store the artifacts
+#. Make a directory to store the artifacts and ``cd`` into it.
 
    .. parsed-literal::
 
           mkdir -p lmp-qemu/|ARCH|
+          cd lmp-qemu/|ARCH|
 
 #. Download the **necessary artifacts** for |ARCH|, replace ``<target_number>`` with the target you would like to boot
 
@@ -37,4 +38,3 @@ Booting in QEMU
 #. Run the following QEMU script against the artifacts inside of
    ``lmp-qemu/``. You may want to save this as ``run.sh`` inside the
    directory for convenience
-
