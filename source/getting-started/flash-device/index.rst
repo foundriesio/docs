@@ -83,7 +83,7 @@ Flash LmP system image
 
        .. code-block:: shell
 
-          gunzip -c <system-image> | sudo dd of=/dev/mmcblk<X> bs=4M iflag=fullblock oflag=direct status=progress
+          gunzip -c <system-image> | sudo dd of=/dev/mmcblk<X> bs=4096k iflag=fullblock oflag=direct status=progress
 
    .. group-tab:: macOS
 
@@ -113,7 +113,7 @@ Flash LmP system image
 
         .. code-block:: shell
 
-           gunzip -c <system-image> | sudo dd of=/dev/disk<X> bs=4M
+           gunzip -c <system-image> | sudo dd of=/dev/disk<X> bs=4096k
 
    .. group-tab:: Windows
 
