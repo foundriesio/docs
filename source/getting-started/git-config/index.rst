@@ -16,7 +16,7 @@ example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
 
 .. code-block:: console
 
-   git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n YOUR_TOKEN | base64 -w0)"
+   git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n YOUR_TOKEN | openssl base64)"
 
 You can verify that this has been successful by attempting to clone a repository
 from your FoundriesFactory. As an example, you can clone your ``containers.git``
