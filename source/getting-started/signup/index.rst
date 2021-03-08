@@ -22,6 +22,12 @@ for your product. When you create a Factory, we immediately bootstrap the CI
 build process for a vanilla, unmodified :ref:`ref-linux` OS Image, which is from
 this point onward, **owned by you**.
 
+.. tip:: 
+
+   To learn more about the daemon that we run on devices, as well as our API and
+   OTA update mechanisms, read :ref:`ref-ota-architecture` and
+   :ref:`ref-aktualizr-lite`
+
 When your account is created, it is not associated with any factories.
 
 Create one by clicking :guilabel:`Create Factory`
