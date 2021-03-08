@@ -111,6 +111,13 @@ Flash LmP system image
          | Replace ``<system-image>``
          | Replace ``/dev/disk<X>`` with your chosen disk path.
 
+        .. warning:: 
+     
+	   It may be necessary to unmount the disk if macOS has auto-mounted it
+	   like so:
+
+           ``sudo diskutil unmount /dev/disk<X>``
+
         .. code-block:: shell
 
            gunzip -c <system-image> | sudo dd of=/dev/disk<X> bs=4096k
