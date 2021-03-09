@@ -37,6 +37,19 @@ Booting in QEMU
             ├── lmp-factory-image-|MACHINE|.wic
             └── |FIRMWARE_BLOB|
 
-#. Run the following QEMU script against the artifacts inside of
+#. Run the QEMU script below against the artifacts inside of
    ``lmp-qemu/``. You may want to save this as ``run.sh`` inside the
    directory for convenience
+
+Booting Graphically
+-------------------
+
+In order to boot QEMU with an OpenGL capable virtual GPU inside (required for
+Wayland/Weston), the following flags need to be added to the QEMU CLI:
+
+.. parsed-literal::
+
+     |QEMU_GUI_FLAGS|
+
+The ``-nographic`` flag must also be removed from the QEMU CLI.
+

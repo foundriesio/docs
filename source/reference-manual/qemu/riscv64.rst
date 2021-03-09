@@ -4,6 +4,12 @@ riscv64
 .. include:: riscv64-substitutions.inc
 .. include:: qemu-instructions.template
 
+.. warning::
+
+   qemu-system-riscv64 does not currently support this functionality.
+
+   https://patchwork.kernel.org/project/qemu-devel/cover/cover.1538683492.git.alistair.francis@wdc.com/
+
 QEMU CLI
 ^^^^^^^^
 
