@@ -9,6 +9,8 @@
 Booting in QEMU
 ---------------
 
+.. warning:: These instructions require QEMU 5.2 or later.
+
 #. List available Targets and decide on which to boot::
 
      fioctl targets list
