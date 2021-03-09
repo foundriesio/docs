@@ -31,7 +31,7 @@ We use `Github Releases`_ to distribute static X86_64 golang binaries.
    .. group-tab:: Linux
 
       1. Download a Linux binary from the `Github Releases`_ page to a directory
-         on your ``PATH``
+         on your ``PATH``, make sure you have Curl installed
 
          For example, to download version |fioctl_version| on Linux, do:
 
@@ -49,7 +49,7 @@ We use `Github Releases`_ to distribute static X86_64 golang binaries.
    .. group-tab:: macOS
 
       1. Download a Darwin binary from the `Github Releases`_ page to a directory
-         on your ``PATH``
+         on your ``PATH``, make sure you have Curl installed
 
          For example, to download version |fioctl_version| on macOS, do:
 
