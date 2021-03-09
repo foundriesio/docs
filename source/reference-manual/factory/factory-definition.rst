@@ -177,8 +177,8 @@ containers:
 
  assemble_system_image: ``<true|false>``
       **Optional:** Whether to produce a system-image as part of container build
-      triggers. The system-image will be available As an artifact in the
-      ``assemble-system-image`` run step of builds produced with This option set to
+      triggers. The system-image will be available as an artifact in the
+      ``assemble-system-image`` run step of builds produced with this option set to
       ``true``.
 
       **Default:** ``false``

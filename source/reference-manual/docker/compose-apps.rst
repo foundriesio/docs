@@ -78,7 +78,7 @@ How Does It Fit Together?
 -------------------------
 
 Changes to containers produce new TUF Targets that aktualizr-lite can
-install. The intersting part of the Target in this case will be::
+install. The interesting part of the Target in this case will be::
 
  {
   ...
