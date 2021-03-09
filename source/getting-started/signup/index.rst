@@ -92,7 +92,7 @@ Watch Your Build
 Once you have created your Factory, an initial build of the LmP will be
 generated for you to build your product on top of. You can monitor the progress
 of this initial build in the :guilabel:`Targets` tab of your Factory after a few
-minutes. Additionally, you will recieve an Email once this initial build is
+minutes. Additionally, you will receive an Email once this initial build is
 complete.
 
 The :guilabel:`Targets` tab of the Factory will become more useful as you begin
