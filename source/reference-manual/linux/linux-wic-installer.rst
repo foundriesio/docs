@@ -25,7 +25,7 @@ defined via WKS_FILES), this will force the build system to only generate
 installer images by default.
 
 Remove the custom ``WKS_FILE_sota`` override to restore back to the default
-behavior and generate normal bootable WIC images
+behavior and generate normal bootable WIC images.
 
 Testing WIC Image Installer with Qemu (x86)
 -------------------------------------------
