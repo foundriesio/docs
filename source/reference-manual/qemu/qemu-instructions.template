@@ -15,6 +15,11 @@ Booting in QEMU
 
      fioctl targets list
 
+.. note::
+	Make sure to set the FIOCTL_FACTORY environment variable:
+	
+	export FIOCTL_FACTORY=<factory>
+
 #. Make a directory to store the artifacts and ``cd`` into it.
 
    .. parsed-literal::
