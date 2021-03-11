@@ -20,7 +20,7 @@ If the git clone fails with an unable to access error then check you have a
 valid token in your ``.netrc`` file. You can look at
 :ref:`sec-learn` for instructions.
 
-Add stress to the package list.::
+Add "stress-ng" to the package list.::
 
   vim \
   stress-ng \

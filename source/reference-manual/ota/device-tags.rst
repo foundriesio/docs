@@ -8,7 +8,7 @@ tags" to help maintain better control of your fleet. Each device can subscribe
 to a list of tags. If specified, a device will only apply updates from TUF that
 include a tag from its list.
 
-Lets look at an example targets.json to explain::
+Let's look at an example targets.json to explain::
 
  {
   ...

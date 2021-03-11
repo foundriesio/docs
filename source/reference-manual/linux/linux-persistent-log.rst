@@ -18,7 +18,7 @@ might not always be desired, specially during development, as being able to
 restore the log from previous recorded boots can provide useful information
 about the system.
 
-Follow the instructions bellow to change the default LmP behavior and enable
+Follow the instructions below to change the default LmP behavior and enable
 persistent logging support.
 
 Disable OpenEmbedded VOLATILE_LOG_DIR

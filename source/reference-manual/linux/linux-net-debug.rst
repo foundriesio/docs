@@ -27,7 +27,7 @@ To do this, use ``-i bt0`` when invoking ``tcpdump``:
 
    $ sudo /usr/sbin/tcpdump -i bt0
 
-Note that if you only have once such device, the network interface
+Note that if you only have one such device, the network interface
 will be torn down by the kernel if the Bluetooth link is lost. When
 that happens, you'll see a message like this from tcpdump:
 
