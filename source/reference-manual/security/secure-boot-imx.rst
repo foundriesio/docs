@@ -217,7 +217,7 @@ How to sign an SPL image for SDP (II)
 -------------------------------------
 Once the device has been closed, only signed images will be able to run on the processor: this means that upgrades via UUU/SDP will stop working unless the SPL it uses is properly signed.
 
-1. **On older SoCs**, the SDP impose the following restrictions:
+1. **On older SoCs**, the SDP imposes the following restrictions:
 * SDP requires that the CSF is modified to include a check for the DCD table
 * SDP requires that the DCD address of the image is cleared from the header
 
@@ -257,7 +257,7 @@ Booting signed images with the `Universal Update Utility`_
 -----------------------------------------------------------
 
 1. **On older SoCs** we need to let SDP know the DCD location as well as inform that the DCD has been cleared.
-So a tipycal UUU boot script would be as (replace ``@@MACHINE@@`` with your machine configuration name)
+So a typical UUU boot script would be as (replace ``@@MACHINE@@`` with your machine configuration name)
 
 .. code-block:: console
    :emphasize-lines: 3
@@ -269,7 +269,7 @@ So a tipycal UUU boot script would be as (replace ``@@MACHINE@@`` with your mach
    SDPU: delay 1000
    SDPU: write -f u-boot-@@MACHINE@@.itb
 
-2) **On newer SoCs** - those where SDP does not impose DCD restrictions - the UUU boot script woild be:
+2) **On newer SoCs** - those where SDP does not impose DCD restrictions - the UUU boot script would be:
 
 .. code-block:: console
 
@@ -320,7 +320,7 @@ If you are running with a *Cryptographic Acceleration and Assurance Module* devi
 
 So if the user-specific application requires any changes in the CAAM MID registers, it is necessary to add the “Unlock CAAM MID” command into the CSF file.
 
-Not doing so, since the CAAM will not have been configured for the proper MIDs, leaves some of the CAAM registers not accessible for writing and any attempt to write to them will cause system **core aborts**
+Not doing so, since the CAAM will not have been configured for the proper MIDs, leaves some of the CAAM registers not accessible for writing and any attempt to write to them will cause system **core aborts**.
 
 .. note::
 	The current NXP BSP implementation expects the CAAM registers to be unlocked when configuring the CAAM to operate in the non-secure TrustZone world. This applies when OP-TEE is enabled on the i.MX 6, i.MX 7, and i.MX 7ULP processors.

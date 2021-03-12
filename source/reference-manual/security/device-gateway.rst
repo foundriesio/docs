@@ -56,7 +56,7 @@ Setting up your PKI
 ``fioctl keys ca create``. There are a couple of important things to
 note about this command:
 
- * Its highly recommend that you use a PKCS#11 compatible HSM. This
+ * It's highly recommend that you use a PKCS#11 compatible HSM. This
    will ensure the safety of your factory's root of trust private key.
 
  * The "PKI Directory" is important and should be securely backed
