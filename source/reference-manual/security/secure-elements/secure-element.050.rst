@@ -51,8 +51,8 @@ At Foundries.io we believe in securing systems by extending the perimeter of the
 secure authentication, storage protection, secure communication and key management.
 
 Because a number of our customers have been targeting the NXP SE050 in their designs,
-we chose to integrate the NXP middleware with our ROT by bringing it under the
-umbrella of our Trusted Execution Environment: OP-TEE.
+we chose to integrate the NXP middleware with our ROT (root of trust) by bringing
+it under the umbrella of our Trusted Execution Environment: OP-TEE.
 
 The SE050 middleware is a behemoth of a software stack: highly configurable, highly
 flexible and therefore sometimes difficult to navigate. And derived from its flexibility
@@ -70,7 +70,7 @@ is that all private keys programmed in the device's non volatile memory will nev
 be leaked to the outside world.
 
 The SE050 also provides a real random number generator which can be exported to
-the REE to improve its entropy requirements.
+the REE (normal world) to improve its entropy requirements.
 
 Because the TEE is its only client, the TEE SE050 stack only requires a single
 global session and key store. Policies are configured so only the SCP03 enabled
