@@ -234,7 +234,7 @@ Cloning your repository
 
 To interact with your FoundriesFactory you'll first need to download the necessary repositories, change the code and send it back to the server.
 
-First, navigate to `Foundries App`_, find your Factory and the source code.
+First, navigate to `Foundries.io App`_, find your Factory and the source code.
 
    .. figure:: /_static/tutorials/google/gitfoundries.png
       :alt: Device activation page
@@ -442,7 +442,7 @@ Select your "Cloud Pub/Sub subscription" and Click on "Pull"
 .. _Google Pub/Sub:
    https://console.cloud.google.com/cloudpubsub
 
-.. _Foundries App:
+.. _Foundries.io App:
    https://app.foundries.io/
 
 .. _fioctl:

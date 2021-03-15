@@ -10,9 +10,9 @@ HAB also provides a mechanism to establish a root of trust for the remaining sof
 
 Our implementation
 ------------------
-Foundries LMP uses U-Boot as the bootloader with SPL being its first stage loader. Our secure boot implementation will put the IC in a secure state accepting only signed SPL firmware.
+Foundries.io LMP uses U-Boot as the bootloader with SPL being its first stage loader. Our secure boot implementation will put the IC in a secure state accepting only signed SPL firmware.
 
-SPL then boots the trusted execution environment - OP-TEE - where we run an 'early' trusted application, fiovb - Foundries.IO verified Boot. This trusted application provides secure access to the Replay Protected Memory Block partition in MMC which is used to store keys, firmware and rollback information.
+SPL then boots the trusted execution environment - OP-TEE - where we run an 'early' trusted application, fiovb - Foundries.io verified Boot. This trusted application provides secure access to the Replay Protected Memory Block partition in MMC which is used to store keys, firmware and rollback information.
 
 OP-TEE also prepares the next stage bootloader - U-Boot - and generates an overlay DTS for the Linux kernel consumption. Then it jumps to U-Boot which controls the M4 firmware upgrade process using the fiovb trusted application. U-boot also implements the fiovb command to validate the trusted application functionality.
 
@@ -285,7 +285,7 @@ On both cases, if the device has been closed and it is only accepting signed ima
 	$ uuu -pp 1 file.uuu
 
 .. note::
-	These flags `-dcdaddr`_, `-cleardcd`_ and `-pp`_ required for SDP on older SoCs have been contributed to the Universal Update Utility by Foundries.IO. Make sure your UUU release is up-to-date with these changes.
+	These flags `-dcdaddr`_, `-cleardcd`_ and `-pp`_ required for SDP on older SoCs have been contributed to the Universal Update Utility by Foundries.io. Make sure your UUU release is up-to-date with these changes.
 
 How to sign an M4 binary for HAB validation
 -------------------------------------------

@@ -31,7 +31,7 @@ Implementation
 ~~~~~~~~~~~~~~
 
 Configuration is managed by fioctl which communicates via the
-Foundries `REST API`_.
+Foundries.io `REST API`_.
 
 LMP devices run a configuration daemon, `fioconfig`_. This daemon checks in
 with the server every 5 minutes. The HTTP request includes a timestamp of its

@@ -340,7 +340,7 @@ Cloning your repository
 
 To interact with your FoundriesFactory you'll first need to download the necessary repositories, change the code and send it back to the server.
 
-First, navigate to `Foundries App`_, find your Factory and the source code.
+First, navigate to `Foundries.io App`_, find your Factory and the source code.
 
    .. figure:: /_static/tutorials/aws/sourcecode1.png
       :alt: Source code
@@ -587,7 +587,7 @@ After your push is complete a new build will be started. After the build is fini
 .. _IoT Core:
    https://console.aws.amazon.com/iot/home?region=us-east-1
 
-.. _Foundries App:
+.. _Foundries.io App:
    https://app.foundries.io/
 
 .. _fioctl:
