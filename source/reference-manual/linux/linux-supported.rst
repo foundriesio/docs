@@ -7,7 +7,8 @@ The :ref:`ref-factory-definition` (``ci-scripts.git``) contains a ``machines:``
 key value pair in the ``factory-config.yml`` file. When the value is changed,
 the next build you perform by pushing to the ``lmp-manifest.git`` or
 ``meta-subscriber-overrides.git`` repositories will pass the updated value to
-Yocto and begin producing targets for the ``MACHINE`` you have set.
+the Yocto Project's tools
+and begin producing targets for the ``MACHINE`` you have set.
 
 .. note::
 
