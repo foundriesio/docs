@@ -1,7 +1,7 @@
 .. _ref-linux-layers:
 
-OpenEmbedded / Yocto Layers
-===========================
+OpenEmbedded / Yocto Project Layers
+===================================
 
 The Linux microPlatform is composed of several OpenEmbedded and Yocto
 Project layers, including the core build system, distribution, images
@@ -94,7 +94,7 @@ fragments, WIC files, manufacturing tools scripts and so on.
 This layer is meant to be used as an extension of the vendor BSP
 layers (e.g. meta-freescale), but it can also handle board configuration
 files for cases where the vendor layer can't be easily compatible with
-LmP (e.g. layer based on an older Yocto release).
+LmP (e.g. layer based on an older Yocto Project release).
 
 The main configuration file provided by this layer can be found at
 ``conf/machine/include/lmp-machine-custom.inc``, which gets included

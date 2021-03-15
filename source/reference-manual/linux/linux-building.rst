@@ -137,7 +137,7 @@ on other targets.
 References
 ----------
 
-The following reference material on OpenEmbedded and Yocto is
+The following reference material on OpenEmbedded and Yocto Project is
 recommended for those new to either project.
 
 - `OpenEmbedded wiki`_

@@ -28,7 +28,7 @@ Therefore a system like the one described which boots without TF-A would look as
 .. note::
     Systems using TF-A (ie, imx8m) would be slightly different.
 
-See the following diagrams describing the secure boot sequence and succintly the Yocto configuration for imx8mm based platforms with TF-A:
+See the following diagrams describing the secure boot sequence and succintly the Yocto Project meta layer's configuration for imx8mm based platforms with TF-A:
 
 
    .. figure:: /_static/imx8-secure-boot.png
