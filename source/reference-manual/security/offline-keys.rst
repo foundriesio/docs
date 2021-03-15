@@ -9,7 +9,7 @@ Even so, if a key were compromised, TUF provides a mechanism for reliably revoki
 
 To increase a root key's security further, it is encouraged that the Factory owner rotates it. Rotation will convert the root role's online-key, generated during the bootstrap of a Factory, to an offline key.
 
-.. note:: By rotating the root key, the Factory owner also switches the Factory from a key produced and owned by Foundries to one where the Factory owner retains complete control of the root role and key.
+.. note:: By rotating the root key, the Factory owner also switches the Factory from a key produced and owned by Foundries.io to one where the Factory owner retains complete control of the root role and key.
 
 Rotation
 --------

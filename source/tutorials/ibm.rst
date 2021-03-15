@@ -132,7 +132,7 @@ Cloning your repository
 
 To interact with your FoundriesFactory you'll first need to download the necessary repositories, change the code and send it back to the server.
 
-First, navigate to `Foundries App`_, find your Factory and the source code.
+First, navigate to `Foundries.io App`_, find your Factory and the source code.
 
    .. figure:: /_static/tutorials/ibm/gitfoundries.png
       :alt: Device activation page
@@ -392,7 +392,7 @@ Now you can see your device CPU usage live in the chart.
 .. _IBM Dashboard:
    https://cloud.ibm.com/
 
-.. _Foundries App:
+.. _Foundries.io App:
    https://app.foundries.io/
 
 .. _fioctl:
