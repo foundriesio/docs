@@ -11,7 +11,7 @@ select set of board support package layers to enable popular
 development boards.
 
 Though the `Linux kernel`_ and software used for
-any on of the microPlatform builds may contain out-of-tree patches or
+any of the microPlatform builds may contain out-of-tree patches or
 features, a fundamental goal is to run as close to the tip, or latest
 software, as possible so that users of the Linux microPlatform can
 benefit from the latest changes.
