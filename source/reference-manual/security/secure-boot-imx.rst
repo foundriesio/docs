@@ -10,7 +10,7 @@ HAB also provides a mechanism to establish a root of trust for the remaining sof
 
 Our implementation
 ------------------
-Foundries.io LMP uses U-Boot as the bootloader with SPL being its first stage loader. Our secure boot implementation will put the IC in a secure state accepting only signed SPL firmware.
+Foundries.io LmP uses U-Boot as the bootloader with SPL being its first stage loader. Our secure boot implementation will put the IC in a secure state accepting only signed SPL firmware.
 
 SPL then boots the trusted execution environment - OP-TEE - where we run an 'early' trusted application, fiovb - Foundries.io verified Boot. This trusted application provides secure access to the Replay Protected Memory Block partition in MMC which is used to store keys, firmware and rollback information.
 
@@ -34,7 +34,7 @@ See the following diagrams describing the secure boot sequence and succintly the
    .. figure:: /_static/imx8-secure-boot.png
       :align: left
       :width: 8in
-	      
+
 The communication path to gain access from userland via the pseudo trusted application (PTA) to RPMB follows the OP-TEE standard convention for PTAs as the image below describes: userland uses libteec to issue an ioctl to the linux tee driver which in turn transitions the processor to its secure state and calls the application entrypoint.
 
 Notice the distinction had we decided to implement FIOVB as a secured user application instead of a PTA.
@@ -44,7 +44,7 @@ Notice the distinction had we decided to implement FIOVB as a secured user appli
       :align: center
       :width: 6in
 
-      
+
 HAB Architecture Overview
 -------------------------
 HAB authentication is based on public key cryptography using the RSA algorithm in which image data is signed offline using a series of private keys. The resulting signed image data is then verified on the i.MX processor using the corresponding public keys.
@@ -252,7 +252,7 @@ To comply with these requirements we need to sign the image adding the ``--fix-s
 .. note::
 	Which SoCs fall in which category can be identified by inspecting the `Universal Update Utility`_  g_RomInfo: if the option ROM_INFO_HID_SKIP_DCD is configured, then the DCD does **not** need to be fixed for that SoC.
 
-   
+
 Booting signed images with the `Universal Update Utility`_
 -----------------------------------------------------------
 
@@ -279,7 +279,7 @@ So a typical UUU boot script would be as (replace ``@@MACHINE@@`` with your mach
 
    SDPU: delay 1000
    SDPU: write -f u-boot-@@MACHINE@@.itb
-   
+
 On both cases, if the device has been closed and it is only accepting signed images, **it is recommended that UUU is started before powering the board and before connecting it to the host PC so that UUU polls for the connection and responds to it as soon as possible**. To that effect we need to make sure of UUU's polling period flag::
 
 	$ uuu -pp 1 file.uuu
@@ -348,4 +348,3 @@ Our u-boot-spl-sign.csf-template takes care of supporting CAAM on closed platfor
 
 .. _-pp:
    https://github.com/NXPmicro/mfgtools/commit/5a790eae0a0f424e145171681e1a3a4f3fa47904
-

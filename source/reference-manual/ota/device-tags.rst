@@ -69,7 +69,7 @@ for this device, version **143**.
 Managing Tags
 -------------
 
-By default LMP builds triggered in your factory after code has been merged to
+By default LmP builds triggered in your factory after code has been merged to
 master will be tagged with "postmerge". After doing QA on this build, it can
 be "promoted" using the fioctl_ tool::
 

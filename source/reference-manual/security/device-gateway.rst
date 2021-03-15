@@ -3,7 +3,7 @@
 Managing Your Device Gateway
 ============================
 
-LMP devices connect to OTA services via a
+LmP devices connect to OTA services via a
 :ref:`device gateway <ref-ota-architecture>` configured with
 mutual TLS. Each factory uses a default device gateway with
 certificates owned by Foundries.io. We allow and **encourage**

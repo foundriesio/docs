@@ -57,7 +57,7 @@ Linux microPlatform with Linux upstream
 
 The recipe ``meta-lmp/meta-lmp-base/recipes-kernel/linux/linux-lmp-dev.bb``
 can be used to build the Linux microPlatform with the upstream kernel tree
-instead of the LMP unified tree. ``linux-lmp-dev`` also uses the Linux
+instead of the LmP unified tree. ``linux-lmp-dev`` also uses the Linux
 microPlatform Kernel Configuration Fragments repository for a compatible
 configuration.
 

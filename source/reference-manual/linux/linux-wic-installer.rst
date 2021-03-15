@@ -32,7 +32,7 @@ Testing WIC Image Installer with Qemu (x86)
 
 It is possible to test the WIC image installer with Qemu, all that is
 required is an additional block device with enough disk space for the
-LMP rootfs image.
+LmP rootfs image.
 
 If running Qemu without graphics support, make sure that the default console
 is set to ``ttyS0,115200``, which can be done manually in grub (by editing
@@ -60,7 +60,7 @@ from your own Factory CI run, then run Qemu with the following arguments::
       -nographic -cpu kvm64 -enable-kvm -m 1024 -serial mon:stdio -serial null
 
 Now just follow the instructions provided by the installer in order to
-install the actual LMP image into ``disk.img``.
+install the actual LmP image into ``disk.img``.
 
 After completed, hit enter to stop the current Qemu execution and start it
 up again, but using ``disk.img`` as the primary block device::

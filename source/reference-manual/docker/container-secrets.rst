@@ -27,7 +27,7 @@ Quick Background On CI Secrets
 ------------------------------
 
 The Factory's CI System, JobServ, has a mechanism to configure secrets for
-a Project (the factory's LMP build in this case). These secrets are placed
+a Project (the factory's LmP build in this case). These secrets are placed
 under ``/secrets/`` when a CI Run is executed. For example a Factory might
 have secrets:
 

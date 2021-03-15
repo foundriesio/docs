@@ -94,7 +94,7 @@ fragments, WIC files, manufacturing tools scripts and so on.
 This layer is meant to be used as an extension of the vendor BSP
 layers (e.g. meta-freescale), but it can also handle board configuration
 files for cases where the vendor layer can't be easily compatible with
-LMP (e.g. layer based on an older Yocto release).
+LmP (e.g. layer based on an older Yocto release).
 
 The main configuration file provided by this layer can be found at
 ``conf/machine/include/lmp-machine-custom.inc``, which gets included
@@ -116,12 +116,12 @@ vendor BSP layer::
   KERNEL_IMAGETYPE_beaglebone-yocto = "fitImage"
   KERNEL_CLASSES_beaglebone-yocto = " kernel-lmp-fitimage "
 
-When adding or changing the LMP BSP configuration values, please use
+When adding or changing the LmP BSP configuration values, please use
 ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
 instead, which gets parsed after ``lmp-machine-custom.inc`` and is
 factory specific.
 
-``lmp-machine-custom.inc`` should be used for LMP upstream BSP support
+``lmp-machine-custom.inc`` should be used for LmP upstream BSP support
 only.
 
 
