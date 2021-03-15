@@ -22,7 +22,7 @@ for your product. When you create a Factory, we immediately bootstrap the CI
 build process for a vanilla, unmodified :ref:`ref-linux` OS Image, which is from
 this point onward, **owned by you**.
 
-.. tip:: 
+.. tip::
 
    To learn more about the daemon that we run on devices, as well as our API and
    OTA update mechanisms, read :ref:`ref-ota-architecture` and
@@ -32,7 +32,7 @@ When your account is created, it is not associated with any factories.
 
 Create one by clicking :guilabel:`Create Factory`
 
-.. warning:: 
+.. warning::
 
    Once a Factory is created, the chosen platform/machine and Factory name
    cannot be changed. Create a new Factory or contact support if a mistake is
@@ -89,7 +89,8 @@ includes QEMU_ images for ARM_ and RISC-V_ architectures.
 Watch Your Build
 ################
 
-Once you have created your Factory, an initial build of the LmP will be
+Once you have created your Factory, an initial build of the
+Foundries.io Linux microPlatform (LmP) will be
 generated for you to build your product on top of. You can monitor the progress
 of this initial build in the :guilabel:`Targets` tab of your Factory after a few
 minutes. Additionally, you will receive an Email once this initial build is
