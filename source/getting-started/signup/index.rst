@@ -111,10 +111,8 @@ to build your application and produce new Targets for the Factory to build.
 
 .. warning::
 
-   Bootstrapping your Factory securely takes some time. We do not reuse customer
-   cache between Factories. Secure caching isn't simple. so your first build
-   will take up to 3 hours to complete. **Subsequent builds will be much
-   faster.**
+   Bootstrapping your Factory securely takes some time. Your first build
+   will take up to 30 minutes to complete.
 
    Read through the rest of this section and set up your development environment
    while you wait for us to build your Factory from scratch.
