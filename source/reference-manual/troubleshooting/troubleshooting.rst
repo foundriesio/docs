@@ -55,3 +55,22 @@ You can individually prune/delete targets by their Target number::
 Or, you can prune by tag, such as ``devel`` or ``experimental``::
 
   fioctl targets prune --by-tag <tag>
+
+
+.. _ref-aktualizr-lite-pruning:
+
+Aktualizr-Lite Pruning Containers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, :ref:`ref-aktualizr-lite` will prune Docker containers periodically.
+If this behavior is undesirable, it can be worked around by adding
+``aktualizr-lite-no-prune`` as a label to Docker containers, or by adding
+``docker_prune = "0"`` to the ``[pacman]`` section of ``/var/sota/sota.toml`` on
+a given device.
+
+.. code-block::
+
+   LABEL aktualizr-lite-no-prune
+
+.. note:: https://docs.docker.com/engine/reference/builder/#label
+
