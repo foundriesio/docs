@@ -8,6 +8,12 @@ auth token, meaning you can clone your Factory repositories from
 ``https://source.foundries.io/factories/<factory>/`` and begin creating new
 Targets for your devices to update to.
 
+.. tip:: To help illustrate the update process, you can compare the output of
+   some commands like ``fioctl devices list`` (on host machine) and ``docker ps``
+   (on device) running before and after enabling an example app or demo. You can
+   also check the :guilabel:`Devices` tab at https://app.foundries.io for the
+   current target your device is running.
+
 .. _gs-example-apps:
 
 Example Apps
