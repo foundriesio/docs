@@ -11,6 +11,13 @@ register your device(s) via the Foundries.io REST API.
 
      sudo lmp-device-register -n <device-name>
 
+   .. note:: 
+
+	**By default** devices will run **all** applications that are defined in
+	the :term:`containers.git` repository and therefore available in the
+	latest Target. This behavior can be changed by enabling only specific
+	applications. Read :ref:`ug-fioctl-enable-apps` to learn how.
+
 2. You will be prompted by ``lmp-device-register`` to complete a challenge with
    our API
 
