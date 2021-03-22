@@ -110,8 +110,12 @@ credentials for interacting with Factory APIs::
 
   fioctl login
 
-:ref:`ref-fioctl` will now ask for your API token and walk you through the
-authentication process.
+:ref:`ref-fioctl` will now ask for your application credentials and walk you
+through the authentication process.
+
+For this credential, check the :guilabel:`Use for tools like fioctl` box. Remember
+that you can revoke this access and set up a new credential later once you are
+familiar with the :ref:`ref-api-access`.
 
 .. note:: Tokens can be generated at https://app.foundries.io/settings/tokens
 

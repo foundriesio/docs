@@ -11,6 +11,9 @@ you with our Git server.
 
 .. note:: Tokens can be generated at https://app.foundries.io/settings/tokens
 
+For this tutorial, check the :guilabel:`Use for source code access` box. You can later
+revoke this access and set up a new token once you are familiar with the :ref:`ref-api-access`.
+
 Replace ``YOUR_TOKEN`` in the following command with your access token. An
 example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
 
