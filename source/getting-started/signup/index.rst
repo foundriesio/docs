@@ -96,6 +96,10 @@ of this initial build in the :guilabel:`Targets` tab of your Factory after a few
 minutes. Additionally, you will receive an Email once this initial build is
 complete.
 
+Targets are a reference to a platform image and docker applications. When
+developers push code, the FoundriesFactory produces a new target. Registered
+devices update and install targets.
+
 The :guilabel:`Targets` tab of the Factory will become more useful as you begin
 to build your application and produce new Targets for the Factory to build.
 

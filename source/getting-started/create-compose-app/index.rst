@@ -138,6 +138,25 @@ Example Apps
 About Targets
 -------------
 
+:guilabel:`Targets` are a reference to a platform image and docker applications.
+
+There are four git repositories provided by the factory in
+``https://source.foundries.io/factories/<factory>/``:
+
+* :guilabel:`ci-scripts.git` Configures your factory branches - ``factory-config.yml``
+* :guilabel:`containers.git` Contains the source code for your Docker-Compose Apps
+* :guilabel:`lmp-manifest.git` Open Embedded/Yocto Project manifest for your platform build
+* :guilabel:`meta-subscriber-overrides.git` Open Embedded/Yocto Project layer which overrides the Foundries.io Linux microPlatform
+
+When developers push code, the FoundriesFactory produces a new target and adds a
+tag to that target based on the logic in ``factory-config.yml`` in the
+``ci-scripts.git`` repo. In most cases this tag relates to the branch of
+``meta-subscriber-overrides.git`` or ``containers.git`` where the change
+originated. Examples would be :guilabel:`master` or :guilabel:`devel`. Any
+registered devices following the same tag will update and install this
+new target. At a later point, a target's tags can be added or removed manually
+by using the ``fioctl targets tag`` command.
+
 You can see the available Targets your Factory has produced::
 
   fioctl targets list
