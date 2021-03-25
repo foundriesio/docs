@@ -10,7 +10,10 @@ Terminology
      Hash and Docker-Compose App URIs, but is arbitrary.
 
    targets.json
-     The output of ``fioctl targets list -r``
+     Part of `TUF Metadata <https://theupdateframework.com/metadata/>`_ that
+     specifies what Targets are valid to install. It can be summarized with
+     ``fioctl targets list`` or viewed in full with ``fioctl targets list
+     --raw``
 
    Docker-Compose App
      Also referred to as 'app'. A folder in :term:`containers.git`, containing a
@@ -20,7 +23,8 @@ Terminology
      :ref:`gs-create-a-docker-compose-app` for more detail.
 
    MACHINE
-     The Yocto Project machine name. Only supported if listed in :ref:`ref-linux-supported`
+     The Yocto machine name. Officially supported by Foundries if listed
+     in :ref:`ref-linux-supported`
 
    system image
      The OS image produced by the Factory that is flashed to all devices. The
@@ -31,3 +35,4 @@ Terminology
      controls all configurable aspects of a Factory. Such as
      :ref:`ref-advanced-tagging`, :ref:`ug-configure-lmp_container-preloading`
      and email alerts.
+
