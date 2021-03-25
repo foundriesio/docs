@@ -7,7 +7,7 @@ arm64
 QEMU CLI
 ^^^^^^^^
 
-.. code-block:: 
+.. code-block::
 
     qemu-system-aarch64 -m 1024 -cpu cortex-a57 -no-acpi -bios flash.bin \
        -device virtio-net-device,netdev=net0,mac=52:54:00:12:35:02 -device virtio-serial-device \
@@ -20,3 +20,8 @@ Demo
 ^^^^
 
 .. asciinema:: ./demo/arm64.cast
+
+.. tip::
+    You can register your device
+    following the steps from
+    :ref:`gs-register`.

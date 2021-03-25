@@ -7,7 +7,7 @@ x86_64
 QEMU CLI
 ^^^^^^^^
 
-.. code-block:: 
+.. code-block::
 
      qemu-system-x86_64 -m 1024 -cpu kvm64 -enable-kvm -serial mon:stdio -serial null \
        -drive file=lmp-factory-image-intel-corei7-64.wic,format=raw,if=none,id=hd \
@@ -19,3 +19,8 @@ Demo
 ^^^^
 
 .. asciinema:: ./demo/x86_64.cast
+
+.. tip::
+    You can register your device
+    following the steps from
+    :ref:`gs-register`.

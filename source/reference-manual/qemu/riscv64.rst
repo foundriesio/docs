@@ -13,7 +13,7 @@ riscv64
 QEMU CLI
 ^^^^^^^^
 
-.. code-block:: 
+.. code-block::
 
      qemu-system-riscv64 -machine virt -m 1024 \
          -device virtio-serial-device -chardev null,id=virtcon -device virtconsole,chardev=virtcon \
@@ -30,3 +30,7 @@ Demo
 
 .. asciinema:: ./demo/x86_64.cast
 
+.. tip::
+    You can register your device
+    following the steps from
+    :ref:`gs-register`.
