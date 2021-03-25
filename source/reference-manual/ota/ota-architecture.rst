@@ -38,15 +38,15 @@ Aktualizr-lite uses `TUF`_ to find and validate available Targets that
 a device may install. Aktualizr-lite will periodically check-in using
 this high level logic:
 
- * Ask if a new root.json exists. This is allows a device to know about
+ * Ask if a new root.json exists. This allows a device to know about
    key rotations before going further. This call is almost always going
    to result in an HTTP 404 response.
 
  * Ask for the timestamp.json metadata. If this file hasn't changed,
-   there's no need to ask for more metadata. E.G - nothing has changed.
+   there's no need to ask for more metadata - nothing has changed.
 
  * Ask for the snapshot.json metadata. If this file hasn't changed,
-   there's no need to ask for more metadata. E.G - the targets have
+   there's no need to ask for more metadata - the targets have
    not changed.
 
  * Ask for the targets.json metadata. At this point the device can
