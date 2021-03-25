@@ -5,7 +5,7 @@
 Building from Source
 ====================
 
-This is a guide for building the base Linux microPlatform from source
+This is a guide for building the base Linux microPlatform (LmP) from source
 for Raspberry Pi 3 (64-bit). Additional information specific to other
 targets is provided in :ref:`ref-linux-supported`.
 
@@ -64,6 +64,9 @@ Start Guide`_ for additional guidance.
 Install the Linux microPlatform
 -------------------------------
 
+Download the meta layers
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 The Linux microPlatform sources can be placed in any directory on your
 workstation, as long it provides enough disk space for the complete
 build. This uses the `Google Repo`_ tool to fetch a variety of Git repositories
@@ -85,7 +88,7 @@ at known-good revisions, and keep them in sync as time goes on.
       repo sync
 
 Set up Work Environment
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Next, set up your work environment for building the source.
 
@@ -107,7 +110,7 @@ and force one to be selected.  ``BUILDDIR`` is optional; if it is not
 specified, the script will default to ``build-lmp``.
 
 Build the lmp-base-console Image
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can build the Linux microPlatform base-console image by running::
 
@@ -126,13 +129,84 @@ use to flash your board is
 ``lmp-base-console-image-raspberrypi3-64.wic.gz``.
 
 Install the lmp-base-console Image
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're using a Raspberry Pi 3, you can use the same procedure outlined in
 :ref:`gs-flash-image`. See :ref:`ref-linux-supported` for additional information
 on other targets.
 
 .. _ref-linux-building-ref:
+
+Install the LmP for your FoundriesFactory
+-----------------------------------------
+
+In case you are already working with a FoundriesFactory,
+you can instead download the source code for that factory
+with the following steps.
+
+1. Make an installation directory for the LmP for that ``<factory-name>``,
+   and change into its directory::
+
+     mkdir <factory-name> && cd <factory-name>
+
+2.  Install the ``<factory-name>`` meta layers using repo:
+
+   .. parsed-literal::
+
+      repo init -u https://source.foundries.io/factories/<factory-name>/lmp-manifest.git -b devel -m <factory-name>.xml
+      repo sync
+
+   The manifest ``<factory-name>.xml`` refers to all the LmP meta layers
+   and also to the ``<factory-name>`` specific repositories
+   as described :ref:`ref-factory-sources`.
+
+3.  Build the image for ``<factory-name>``:
+
+   .. parsed-literal::
+
+      MACHINE=<machine-name> source setup-environment [BUILDDIR]
+      bitbake lmp-factory-image
+
+   The variable ``MACHINE`` should
+   be set to a supported machine.
+   see the current available option
+   in :ref:`ref-linux-supported`.)
+
+   ``BUILDDIR`` is optional;
+   in case it is not provided,
+   script default is ``build-lmp``.
+
+   ``lmp-factory-image`` is the suggested default image,
+   and can be customized with the steps from :ref:`ref-adding-packages-image`.
+
+   It is worth remembering that the ``bitbake`` step can take a while.
+
+   At the end of the build,
+   your build artifacts is found under
+   ``deploy/images/<machine-name>``.
+   The artifact you use to
+   flash your board is
+   ``lmp-base-console-image-<machine-name>.wic.gz``.
+
+.. warning::
+
+   The local build of your FoundriesFactory is great for
+   developing and debugging
+   and the results can be used on the host machine
+   or deployed to a hardware board.
+
+   However, the image created locally is
+   not yet visible for the OTA system,
+   and is only available for local use.
+
+   When you push the changes to the
+   FoundriesFactory git repositories
+   and trigger a new build
+   you can flash and register your device
+   following the instructions of
+   :ref:`gs-flash-device`
+   and :ref:`gs-register`.
+   This way you can take full advantage of OTA system.
 
 References
 ----------
