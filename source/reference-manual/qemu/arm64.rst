@@ -19,4 +19,4 @@ QEMU CLI
 Demo
 ^^^^
 
-.. asciinema:: ./demo/x86_64.cast
+.. asciinema:: ./demo/arm64.cast
