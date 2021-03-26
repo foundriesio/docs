@@ -32,7 +32,7 @@ Key rotation updates the keys that a FoundriesFactory fleet will trust.  It's re
 
 Provide fioctl with the path to the root key tar archive::
 
-    fioctl keys rotate /absolute/path/to/example.tgz
+    fioctl keys rotate-root /absolute/path/to/example.tgz
 
 .. note:: Key rotation requires the host have Docker installed and have access to the internet.
 .. note:: Hardware security modules are not yet supported.
