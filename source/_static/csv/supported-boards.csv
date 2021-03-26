@@ -19,5 +19,6 @@ Raspberry Pi3 (32 bit and CM),raspberrypi3
 Raspberry Pi3/3B (64 bit),raspberrypi3-64
 Raspberry Pi4,raspberrypi4-64
 SiFive HiFive Unleashed,freedom-u540
+TI AM64x SKEVM,am64xx-sk
 TI Beaglebone Black,beaglebone-yocto
 TI Beaglebone Black Wireless,beaglebone-yocto
