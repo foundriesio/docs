@@ -28,7 +28,7 @@ Therefore a system like the one described which boots without TF-A would look as
 .. note::
     Systems using TF-A (ie, imx8m) would be slightly different.
 
-See the following diagrams describing the secure boot sequence and succintly the Yocto Project meta layer's configuration for imx8mm based platforms with TF-A:
+See the following diagrams describing the secure boot sequence and succinctly the Yocto Project meta layer's configuration for imx8mm based platforms with TF-A:
 
 
    .. figure:: /_static/imx8-secure-boot.png
@@ -76,7 +76,12 @@ For development purposes, we keep iMX HAB4 sample keys and certificates at ``lmp
 	0xA71BBE78
 	0xA3AD024A
 
-The Security Reference Manual for your specific SoC will indicate which fuses need to be programed with the SRK fuse information. On the i.MX7ULP the A7 fuses are stored in the fuse bank 5, words 0 to 7 and the M4 fuses are stored in the fuse bank 6, words 0 to 7.
+The Security Reference Manual for your specific SoC will indicate which fuses need to be programed with the SRK fuse information.
+
+
+i.MX7ULP fusing
+--------------------------
+On the i.MX7ULP the A7 fuses are stored in the fuse bank 5, words 0 to 7 and the M4 fuses are stored in the fuse bank 6, words 0 to 7.
 
 To program the A7 fuses you could use U-Boot's fuse command as follows::
 
@@ -142,6 +147,41 @@ And the following script would work for setting the M4 fuses::
 
 	FBK: DONE
 
+i.MX8MM fusing
+--------------------------
+On the i.MX8MM the A-core are stored in fuse banks 6-7, words 0 to 3::
+
+        => fuse prog -y 6 0 0xEA2F0B50
+        => fuse prog -y 6 1 0x871167F7
+        => fuse prog -y 6 2 0xF5CECF5D
+        => fuse prog -y 6 3 0x364727C3
+        => fuse prog -y 7 0 0x8DD52832
+        => fuse prog -y 7 1 0xF158F65F
+        => fuse prog -y 7 2 0xA71BBE78
+        => fuse prog -y 7 3 0xA3AD024A
+
+Alternatively, use the kernel to program the A-core fuses using SDP via NXP's Universal Update Utility with a script as follows::
+
+        uuu_version 1.2.39
+
+        SDP: boot -f imx-boot-mfgtool
+        # These commands will be run when use SPL and will be skipped if no spl
+        # SDPU will be deprecated. please use SDPV instead of SDPU
+        SDPU: delay 1000
+        SDPV: write -f u-boot-mfgtool.itb
+        SDPV: jump
+
+        FB: ucmd fuse prog -y 6 0 0xEA2F0B50
+        FB: ucmd fuse prog -y 6 1 0x871167F7
+        FB: ucmd fuse prog -y 6 2 0xF5CECF5D
+        FB: ucmd fuse prog -y 6 3 0x364727C3
+        FB: ucmd fuse prog -y 7 0 0x8DD52832
+        FB: ucmd fuse prog -y 7 1 0xF158F65F
+        FB: ucmd fuse prog -y 7 2 0xA71BBE78
+        FB: ucmd fuse prog -y 7 3 0xA3AD024A
+        FB: done
+
+
 Upon reboot, if **CONFIG_IMX_HAB** was enabled in U-boot, HAB will raise events to indicate that an **unsigned SPL image** has been executed. Those events can be inspected by running U-Boot's command ``hab_status``.
 
 .. note::
@@ -200,6 +240,10 @@ Booting this signed SPL image and inspecting the HAB status should give no HAB e
 Now we can close the device meaning that from thereon only signed images can be booted on this platform. For that, on the i.MX7ULP we need to fuse bit31 of word 6 from bank 29 (SEC_CONFIG[1] in the documentation)::
 
 	=> fuse prog 29 6 0x80000000
+
+For i.MX8MM you have to fuse bit25 of word 3 from bank 1 (SEC_CONFIG[1] in the documentation)::
+
+        => fuse prog 1 3 0x2000000
 
 
 Rebooting the board and checking the HAB status should give::
