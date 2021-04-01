@@ -1,6 +1,6 @@
 .. _ug-configure-lmp:
 
-LmP Configuration 
+LmP Configuration
 =================
 
 .. _ug-configure-lmp_container-preloading:
@@ -8,11 +8,11 @@ LmP Configuration
 Container Preloading
 --------------------
 
-.. note:: 
+.. note::
 
     Preloading container images will increase the size of the system image
     considerably, especially if the containers have not been optimally
-    constructed. 
+    constructed.
 
     Refer to the official Docker documentation for best practices
     on writing Dockerfiles:
@@ -76,21 +76,21 @@ How to Enable
    repository directory.
 
    #. Populate the recipe variables in:
-   
+
       **conf/machine/include/lmp-factory-custom.inc**
-   
+
       .. code-block::
-   
+
          LMP_HOSTNAME_MODE = "mac"
          LMP_HOSTNAME_NETDEVICE = "eth0"
 
    #. Add ``lmp-auto-hostname`` to the list of recipes/packages in:
-   
+
       **recipes-samples/images/lmp-factory-image.bb**
-   
+
       .. code-block::
          :emphasize-lines: 9
-   
+
          CORE_IMAGE_BASE_INSTALL += " \
              lmp-auto-hostname \
              kernel-modules \
@@ -104,9 +104,9 @@ How to Enable
 
     .. toggle-header::
        :header: **Show git diff**
-    
-       .. code-block:: 
- 
+
+       .. code-block::
+
           diff --git a/conf/machine/include/lmp-factory-custom.inc b/conf/machine/include/lmp-factory-custom.inc
           index b6344ef..028b76a 100644
           --- a/conf/machine/include/lmp-factory-custom.inc
@@ -124,7 +124,7 @@ How to Enable
           +++ b/recipes-samples/images/lmp-factory-image.bb
           @@ -14,6 +14,7 @@ require recipes-samples/images/lmp-feature-sbin-path-helper.inc
            IMAGE_FEATURES += "ssh-server-openssh"
-           
+
            CORE_IMAGE_BASE_INSTALL += " \
           +    lmp-auto-hostname \
                kernel-modules \
@@ -149,13 +149,13 @@ Variables
     .. option:: serial
 
        appends the serial number of the device.
- 
+
        **Example Result:** ``raspberrypi4-64-100000008305bbc3``
 
     .. option:: mac
 
        appends the mac address of a chosen network interface.
- 
+
        **Example Result:** ``raspberrypi4-64-dca6321669ea``
 
 .. confval:: LMP_HOSTNAME_NETDEVICE=<interface>
@@ -171,7 +171,7 @@ Variables
 lmp-device-auto-register
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. warning:: 
+.. warning::
    Do not use this recipe in production. This recipe is only intended for
    usage in a development environment, such as the ``devel`` branch of the
    Factory, or another branch you have created for development purposes.
@@ -185,7 +185,7 @@ How to Enable
 
 .. toggle-header::
    :header: **Show details**
- 
+
    Ensure you are inside of the :term:`meta-subscriber-overrides.git`
    repository directory.
 
@@ -194,12 +194,12 @@ How to Enable
         mkdir -p recipes-support/lmp-device-auto-register/lmp-device-auto-register
 
    #. Add ``lmp-device-auto-register`` to the list of recipes/packages in:
-   
+
       **recipes-samples/images/lmp-factory-image.bb**
-   
+
       .. code-block::
          :emphasize-lines: 9
-   
+
          CORE_IMAGE_BASE_INSTALL += " \
              lmp-device-auto-register \
              kernel-modules \
@@ -210,37 +210,37 @@ How to Enable
              packagegroup-core-full-cmdline-extended \
              packagegroup-core-full-cmdline-multiuser \
          "
- 
+
    #. Create your **api-token** file. Replace ``<YOUR_API_TOKEN>`` with a
       **devices:create** scoped token:
-   
+
       **recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token**
-   
+
       .. code-block::
-   
+
          <YOUR_API_TOKEN>
- 
+
    #. Give the recipe access to the **api-token** file via
       by adding to:
-   
+
       **recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend**
-   
+
       .. code-block::
-   
+
          FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
- 
+
     .. toggle-header::
        :header: **Show git diff**
-    
-       .. code-block:: 
-    
+
+       .. code-block::
+
           diff --git a/recipes-samples/images/lmp-factory-image.bb b/recipes-samples/images/lmp-factory-image.bb
           index 0c46cef..491c71b 100644
           --- a/recipes-samples/images/lmp-factory-image.bb
           +++ b/recipes-samples/images/lmp-factory-image.bb
           @@ -14,6 +14,7 @@ require recipes-samples/images/lmp-feature-sbin-path-helper.inc
            IMAGE_FEATURES += "ssh-server-openssh"
-          
+
            CORE_IMAGE_BASE_INSTALL += " \
           +    lmp-device-auto-register \
                kernel-modules \
@@ -269,7 +269,7 @@ How to Enable
           +<YOUR_API_TOKEN>
 
 |
- 
+
 Variables
 """""""""
 

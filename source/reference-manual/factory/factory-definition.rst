@@ -28,7 +28,7 @@ notify:
 
   failures_only: ``<true|false>``
       **Optional:** If set to ``true`` users will only be notified of CI failures.
-      
+
       **Default:** ``false``
 
 .. _def-lmp:
@@ -53,7 +53,7 @@ lmp
                 - raspberrypi3-64
               params:
                 IMAGE: lmp-mini
-                EXAMPLE_VARIABLE_1: foo 
+                EXAMPLE_VARIABLE_1: foo
            tagging:
              refs/heads/master:
                - tag: postmerge
@@ -69,10 +69,10 @@ lmp
 lmp:
  container_preload: ``<true|false>``
       **Optional:** Whether to preload docker images into the system-image as
-      part of a platform build via the archive built by ``containers.preload``. 
-    
+      part of a platform build via the archive built by ``containers.preload``.
+
       **Default:** ``false``
-    
+
       **Inherits:** ``containers.preload``
 
  params:
@@ -88,7 +88,7 @@ lmp:
       <ref-linux-supported>` to build for by their ``MACHINE`` name. A Factory's
       subscription is generally only good for a single machine.
 
-      **Default:** Set by user during :ref:`gs-signup` 
+      **Default:** Set by user during :ref:`gs-signup`
 
  image_type:``<lmp_image_type>``
       **Optional:** Set the LmP image type to produce by recipe name. For
@@ -110,7 +110,7 @@ lmp:
 	   # CI system, it will have its option values for "machine" and
 	   # "params" overriden by what is specified after "refs/heads/devel:".
 	   # In the "devel" build, IMAGE will now equal "lmp-mini" rather than
-	   # "lmp-factory-image" as initially defined. 
+	   # "lmp-factory-image" as initially defined.
 
            lmp:
              params:
@@ -134,11 +134,11 @@ lmp:
       secure boot on devices. Currently only NXP tools are supported.**
 
       **Default:** None
- 
+
   image_type: ``<mfg_image_type>``
       **Optional:** Sets the name of the recipe to use to build mfg_tools.
 
-      **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_) 
+      **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_)
 
 .. _def-containers:
 
@@ -197,7 +197,7 @@ containers:
       **Default:** This variable does not exist unless instantiated.
 
 .. todo:: provide a list of supported architectures for containers:
-.. todo:: document DOCKER_SECRETS 
+.. todo:: document DOCKER_SECRETS
 
 .. # define a hard line break for HTML
 .. |br| raw:: html

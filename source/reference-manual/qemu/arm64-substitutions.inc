@@ -1,7 +1,7 @@
 .. |ARCH| replace:: arm64
 .. |MACHINE| replace:: qemuarm64
 .. |FIRMWARE_BLOB| replace:: flash.bin
-.. |QEMU_GUI_FLAGS| replace:: 
+.. |QEMU_GUI_FLAGS| replace::
 
      -display gtk,gl=on -device virtio-gpu-pci
 

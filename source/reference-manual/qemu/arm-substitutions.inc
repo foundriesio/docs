@@ -1,7 +1,7 @@
 .. |ARCH| replace:: arm
 .. |MACHINE| replace:: qemuarm
 .. |FIRMWARE_BLOB| replace:: u-boot-qemuarm.bin
-.. |QEMU_GUI_FLAGS| replace:: 
+.. |QEMU_GUI_FLAGS| replace::
 
      -display gtk,gl=on -device virtio-gpu-pci
 

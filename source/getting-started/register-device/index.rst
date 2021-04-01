@@ -11,7 +11,7 @@ register your device(s) via the Foundries.io REST API.
 
      sudo lmp-device-register -n <device-name>
 
-   .. note:: 
+   .. note::
 
 	**By default** devices will run **all** applications that are defined in
 	the :term:`containers.git` repository and therefore available in the

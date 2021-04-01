@@ -250,7 +250,7 @@ Open the container repository and clone it on your host machine::
  $ cd getstartevideo
  $ git clone https://source.foundries.io/factories/getstartedvideo/containers.git/
  $ cd containers
- 
+
 In order to enable Google IoT app we will need to clone some files from our reference repository::
 
  # Ubuntu Host Machine

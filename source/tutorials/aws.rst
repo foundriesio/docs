@@ -105,7 +105,7 @@ Select: "Next".
 
       Attached permission policies
 
-Select: "Next" a final time. 
+Select: "Next" a final time.
 Complete "Role Name": IoTProvisioning
 Now select: "Create Role".
 
@@ -119,7 +119,7 @@ Now select: "Create Role".
 Select the Role that we just created by clicking on the role name:
 
 IoTProvisioning
-                                
+
 Copy the "Role ARN": arn:aws:iam::xxxxxxxxxxxx:role/IoTProvisioning
 
    .. figure:: /_static/tutorials/aws/role5.png
@@ -171,7 +171,7 @@ Copy the policy below to "Advanced mode"::
 
 Create
 
-In this step we are adding a very open policy - feel free to explore policy customization to better understand how policies work. Always try what is best for you and your unique use case. 
+In this step we are adding a very open policy - feel free to explore policy customization to better understand how policies work. Always try what is best for you and your unique use case.
 
 - EndPoint
 
@@ -180,7 +180,7 @@ Next we’ll need to find the endpoint URL. This is the address used by all your
 Go to: "`AWS Management Console`_" > "Services" > "`IoT Core`_".
 
 Select: "Settings" > "Endpoint"::
-      
+
       xxxxxxxxxxxxxx-ats.iot.us-east-1.amazonaws.com
 
 .. figure:: /_static/tutorials/aws/endpoint1.png
@@ -288,7 +288,7 @@ Register the CA certificate with AWS IoT
 ----------------------------------------
 
 Before we register the certificate on AWS we have to create a provisioning template.
-To do so, create the file: provisioning-templete.json 
+To do so, create the file: provisioning-templete.json
 Make sure your roleArn and the PolicyName match::
 
       # Ubuntu Host Machine
@@ -356,7 +356,7 @@ Open the container repository and clone it on your host machine::
  $ cd getstartevideo
  $ git clone https://source.foundries.io/factories/getstartedvideo/containers.git/
  $ cd containers
- 
+
 In order to enable AWS IoT app we will need to clone some files from our reference repository::
 
  # Ubuntu Host Machine
@@ -375,11 +375,11 @@ aws-iotsdk.dockerapp::
  version: 0.1.0
  name: aws-iotsdk_test
  description: AWS IoT SDK software stack
- 
+
  ---
- 
+
  version: '3.7'
- 
+
  services:
    awsiotsdk:
      image: hub.foundries.io/getstartedvideo/aws-iotsdk_test:latest
@@ -401,12 +401,12 @@ aws-iotsdk.dockerapp::
      network_mode: "host"
      privileged: true
      restart: always
- 
+
  volumes:
    provdata:
- 
+
  ---
- 
+
  AWS_ENDPOINT: a1t4x7prc2fq29-ats.iot.us-east-1.amazonaws.com
  AWS_PROV_LOC: /prov
 

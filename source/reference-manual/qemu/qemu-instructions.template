@@ -17,7 +17,7 @@ Booting in QEMU
 
 .. note::
 	Make sure to set the FIOCTL_FACTORY environment variable:
-	
+
 	export FIOCTL_FACTORY=<factory>
 
 #. Make a directory to store the artifacts and ``cd`` into it.

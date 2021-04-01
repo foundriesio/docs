@@ -111,8 +111,8 @@ Flash LmP system image
          | Replace ``<system-image>``
          | Replace ``/dev/disk<X>`` with your chosen disk path.
 
-        .. warning:: 
-     
+        .. warning::
+
 	   It may be necessary to unmount the disk if macOS has auto-mounted it
 	   like so:
 
@@ -128,7 +128,7 @@ Flash LmP system image
       your image to disk. In this case, we recommend you download and use either
       **Win32 Disk Imager** or **Rufus**.
 
-      .. note:: 
+      .. note::
 
            Your system image is in a compressed wic.gz format. To follow these next
            steps, you must extract it using a tool like 7zip_ which will leave you with a
@@ -143,13 +143,13 @@ Flash LmP system image
 
       **Using Win32 Disk Imager**
 
-      #. Download and run `Win32 Disk Imager`_ as **Administrator**. 
+      #. Download and run `Win32 Disk Imager`_ as **Administrator**.
       #. Click the blue folder icon.
       #. Select your ``<system-image>``
       #. Select your disk via the :guilabel:`Device` dropdown.
       #. Click :guilabel:`Write`
       #. Wait for the image to finish writing, and a **Write Successful** dialog will appear.
-      
+
 
 .. _gs-boot:
 

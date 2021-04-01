@@ -24,7 +24,7 @@ Installation
 Manual Installation
 ^^^^^^^^^^^^^^^^^^^
 
-We use `Github Releases`_ to distribute static X86_64 golang binaries. 
+We use `Github Releases`_ to distribute static X86_64 golang binaries.
 
 .. tabs::
 
@@ -88,7 +88,7 @@ We use `Github Releases`_ to distribute static X86_64 golang binaries.
 Install From Source
 ^^^^^^^^^^^^^^^^^^^
 
-.. note:: 
+.. note::
 
     This requires that you have Golang installed. See
     https://golang.org/doc/install for instructions.
