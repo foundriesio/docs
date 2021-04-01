@@ -18,10 +18,14 @@ Download necessary files from ``https://app.foundries.io/factories/<factory/targ
 
    | E.g: ``lmp-factory-image-<machine_name>.wic.gz``
    | and: ``imx-boot-<machine_name>``
+   |
+   | For i.MX 8M Mini EVK you'll also these two additional files:
+   | ``u-boot-<machine-name>.itb`` and ``sit-<machine-name>.bin``
 
    .. figure:: /_static/boards/imx-steps-2.png
       :align: center
       :width: 300
+
 #. Extract the file ``lmp-factory-image-<machine_name>.wic.gz``::
 
       gunzip lmp-factory-image-<machine_name>.wic.gz
@@ -40,6 +44,8 @@ Download necessary files from ``https://app.foundries.io/factories/<factory/targ
 #. Organize all the files like the tree below::
 
       ├── imx-boot-<machine_name>
+      ├── u-boot-<machine.name>.itb             # imx8mm only
+      ├── sit-<machine-name>.bin                # imx8mm only
       ├── lmp-factory-image-<machine_name>.wic
       └── mfgtool-files-<machine_name>
             ├── bootloader.uuu
