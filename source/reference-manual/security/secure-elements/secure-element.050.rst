@@ -197,7 +197,7 @@ The *keys* however are retrieved via a pkcs#11 key generation request to the cry
    https://www.nxp.com/docs/en/user-guide/AN12514.pdf
 
 .. _SE050 APDU Specification:
-   https://www.nxp.com/docs/en/application-note/AN12413-SE050_APDU_specification.pdf
+   https://www.nxp.com/docs/en/application-note/AN12413.pdf
 
 .. _Ease ISA/IEC 62443 compliance with EdgeLock:
    https://www.nxp.com.cn/docs/en/application-note/AN12660.pdf
