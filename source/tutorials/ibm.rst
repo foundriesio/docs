@@ -67,7 +67,7 @@ Create Device
 
 Now we are ready to create our first device. We are using the Raspberry Pi 3B for our demonstration but you may use any LmP device for the rest of this tutorial.
 
-On the Browse Devices window click on the "Create a device" button. 
+On the Browse Devices window click on the "Create a device" button.
 
    .. figure:: /_static/tutorials/ibm/create_device.png
       :alt: Create a device
@@ -100,7 +100,7 @@ In the "Device Information", all fields are optional. In my case, I will complet
 
       Device Information
 
-In the "Security", we will use "Auto-Generated authentication token". 
+In the "Security", we will use "Auto-Generated authentication token".
 
 Click on "Next"
 
@@ -148,7 +148,7 @@ Open the container repository and clone it on your host machine::
  $ cd getstartevideo
  $ git clone https://source.foundries.io/factories/getstartedvideo/containers.git/
  $ cd containers
- 
+
 In order to enable IBM IoT app we will need to clone some files from our reference repository::
 
  # Ubuntu Host Machine

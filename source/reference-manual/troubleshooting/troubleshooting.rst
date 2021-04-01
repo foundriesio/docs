@@ -42,11 +42,11 @@ must consider when creating Targets over time.
 Fioctl. This removes these targets from the :term:`targets.json` associated with
 your Factory, allowing the production of new Targets.
 
-.. warning:: 
-   
+.. warning::
+
    Ensure there are no important devices running on a Target that is about to be
    pruned. If you are intending on pruning ``master``, be careful and make sure
-   you know what you are doing. 
+   you know what you are doing.
 
 You can individually prune/delete targets by their Target number::
 

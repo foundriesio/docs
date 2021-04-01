@@ -32,7 +32,7 @@ Via lmp-device-register
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 When registering a device, ``lmp-device-register`` can set a list of apps to
-enable. 
+enable.
 
 ``lmp-device-register --api-token=<token> --apps <app_name1>,<app_name2>``
   Set the app(s) a device will run, during registration.
@@ -53,7 +53,7 @@ This metadata is recorded upon Target creation, making the Target an
 :ref:`ref-fioctl` provides many methods of viewing Target metadata, which can
 reveal:
 
-* What **apps** are available inside the Target. 
+* What **apps** are available inside the Target.
 * What **tag** a Target has.
 * What **MACHINE** a Target has been produced for **(HARDWARE ID).**
 * What **git commits** caused the Target to be produced.
@@ -66,8 +66,8 @@ Target metadata can be inspected by using 3 primary commands
       .. toggle-header::
          :header: **Click to show command output**
 
-         .. code-block:: 
-         
+         .. code-block::
+
            $ fioctl targets list
            VERSION  TAGS    APPS                             HARDWARE IDs
            -------  ----    ----                             ------------
@@ -75,7 +75,7 @@ Target metadata can be inspected by using 3 primary commands
            2        devel   mosquitto,simple-app,netdata     raspberrypi3-64
            3        devel   simple-app,netdata,mosquitto     raspberrypi3-64
 
-``fioctl targets list -r`` 
+``fioctl targets list -r``
     Lists the Targets a Factory has produced in ``-r`` (raw) json format.
     This is often piped into ``jq`` in order to format the json neatly.
 
@@ -87,11 +87,11 @@ Target metadata can be inspected by using 3 primary commands
 
       .. toggle-header::
          :header: **Click to show command output**
-      
+
          .. code-block::
             :linenos:
             :emphasize-lines: 16,37-45
-         
+
               $ fioctl targets list -r | jq
               {
                 "signatures": [
@@ -147,7 +147,7 @@ Target metadata can be inspected by using 3 primary commands
     Prints detail about a specific Target, (e.g ``fioctl targets show 58``).
 
     These details include:
-    
+
     * A web link to the CI build produced for this Target where to view
       the **console.log** or **download artifacts**.
     * The **hashes for each repo** in the :ref:`ref-factory-sources` at the time
@@ -160,7 +160,7 @@ Target metadata can be inspected by using 3 primary commands
          :header: **Click to show command output**
 
          .. code-block::
-         
+
            $ fioctl targets show 58
            Tags:	devel
            CI:	https://ci.foundries.io/projects/cowboy/lmp/builds/58/
@@ -168,11 +168,11 @@ Target metadata can be inspected by using 3 primary commands
            	https://source.foundries.io/factories/cowboy/lmp-manifest.git/commit/?id=f39a2e1d1f81523ce222270ed9ddb3a87ff3ca09
            	https://source.foundries.io/factories/cowboy/meta-subscriber-overrides.git/commit/?id=2cd6253273fc7de5ece8a45b9ec4247bcdd0556e
            	https://source.foundries.io/factories/cowboy/containers.git/commit/?id=16ac8d1e169d07bd44ff7b01de72783a0c05d6e2
-           
+
            TARGET NAME             OSTREE HASH - SHA256
            -----------             --------------------
            raspberrypi3-64-lmp-58  2d1655fb1e04e2ed39536dd96485687945ac87d6f9e7d79a01f06ec6e5d161b1
-           
+
            COMPOSE APP   VERSION
            -----------   -------
            netdata       hub.foundries.io/cowboy/netdata@sha256:9fe7b87ed796025a3398e40bae4d9e3d2eef84414d9e5f4487f33e7dcb611ec7

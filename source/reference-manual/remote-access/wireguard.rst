@@ -21,8 +21,8 @@ a Factory VPN server to a customer managed server.
 Actions on VPN Server
 ---------------------
 
-.. note:: 
-   
+.. note::
+
    Make sure to replace the ``<api token>`` and ``<factory>`` (name of your Factory)
    placeholders with your own information in the following commands.
 
@@ -33,7 +33,7 @@ Install dependencies::
 
 Create an API token for this service at https://app.foundries.io/settings/tokens/
 
-.. note:: 
+.. note::
 
    Your API token needs to have at least ``devices:read`` scope for this
    guide. Read :ref:`ref-api-access` for more details.
@@ -79,7 +79,7 @@ Troubleshooting
 Wireguard uses UDP. This can be difficult to troubleshoot. A very common problem
 is when the VPN server has a firewall blocking traffic to the Wireguard port.
 
-Method 1 
+Method 1
 ~~~~~~~~
 
 One way to debug this situation is by running ``wg show`` on both the server and
@@ -121,7 +121,7 @@ attempting to send text via UDP to the specified port, which in this example is
 ``12345``. This port can be replaced in order to test another.
 
 Netcat should be available by default on any Unix system (Linux,
-macOS, WSL_, BSD). 
+macOS, WSL_, BSD).
 
 Any machine can be used as the client in this example. It is
 often helpful to try this with multiple clients on multiple networks and
@@ -136,13 +136,13 @@ On any client::
   echo "UDP is not blocked on this port!" | nc -u <server address> 12345
 
 Watch the terminal of the server where you ran ``nc -lup 12345``, you will see
-the text appear if UDP is not blocked on the port ``12345``. 
+the text appear if UDP is not blocked on the port ``12345``.
 
 If something is preventing traffic reaching the destination then you will not
 see a message appear. After trying one client, try another to confirm your
 results.
 
-.. note:: 
+.. note::
 
    Since UDP is stateless, each successful connection means you need to restart
    the ``nc`` session on the server. For each debug attempt, rinse and repeat

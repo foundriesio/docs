@@ -26,36 +26,36 @@ Example Apps
       This default example shows how apps are enabled. You should read the contents of
       the ``shellhttpd`` folder to see how this application has been defined, or read
       the other examples to learn how you can define an app from scratch.
-      
+
       #. Clone your containers.git repo and enter it::
-      
+
            git clone https://source.foundries.io/factories/<factory>/containers.git
            cd containers.git
-      
+
          We initialise your ``containers.git`` repository with a simple compose app
          example in ``shellhttpd.disabled/``
-      
+
          .. tip:: Directory names ending with ``.disabled`` in containers.git are
             ignored by our CI system.
-      
+
       #. Enable the ``shellhttpd`` example app::
-      
+
            mv shellhttpd.disabled shellhttpd
-      
+
       #. Add, commit and push::
-      
+
            git add .
            git commit -m "shellhttpd: enable shellhttpd app"
            git push
-      
+
       #. :ref:`gs-watch-build`
-      
+
          When changes are made to ``containers.git`` in your Factory sources, a new Target is
          built by our CI system. Devices that are registered to your Factory will be
          able to see this Target and conditionally update to it, depending on their
          :ref:`device configuration <ref-configuring-devices>`.
-      
-      **Device Configuration** 
+
+      **Device Configuration**
 
       Once the Target is built successfully, any devices that are registered to
       the Factory will begin updating to this new Target. The app ``shellhttpd``
@@ -73,18 +73,18 @@ Example Apps
 
       This example describes how to create a docker-compose app for the
       `Mosquitto MQTT Broker <https://mosquitto.org/>`_ from scratch.
-      
+
       #. Clone your containers.git repo and enter it. Make sure to replace
          ``<factory>`` in the example with the name of your Factory::
-      
+
            git clone https://source.foundries.io/factories/<factory>/containers.git
            cd containers.git
-      
+
       #. Create a directory named ``mosquitto`` and ``cd`` into it. This folder
          name defines the name of the
          container image that will be pulled on your device from
          ``hub.foundries.io``::
-      
+
            mkdir mosquitto
            cd mosquitto
 
@@ -105,21 +105,21 @@ Example Apps
                image: hub.foundries.io/<factory>/mosquitto:latest
                ports:
                  - "1883:1883"
- 
+
       #. Add, commit and push::
-      
+
            git add .
            git commit -m "mosquitto: create mosquitto container"
            git push
-      
+
       #. :ref:`gs-watch-build`
-      
+
          When changes are made to ``containers.git`` in your Factory sources, a new Target is
          built by our CI system. Devices that are registered to your Factory will be
          able to see this Target and conditionally update to it, depending on their
          :ref:`device configuration <ref-configuring-devices>`.
-      
-      **Device Configuration** 
+
+      **Device Configuration**
 
       Once the Target is built successfully, any devices that are registered to
       the Factory will begin updating to this new Target. The app ``mosquitto``
