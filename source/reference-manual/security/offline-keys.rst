@@ -9,12 +9,16 @@ Even so, if a key were compromised, TUF provides a mechanism for reliably revoki
 
 To increase a root key's security further, it is encouraged that the Factory owner rotates it. Rotation will convert the root role's online-key, generated during the bootstrap of a Factory, to an offline key.
 
-.. note:: By rotating the root key, the Factory owner also switches the Factory from a key produced and owned by Foundries.io to one where the Factory owner retains complete control of the root role and key.
-
 Rotation
 --------
 
-Key rotation updates the keys that a FoundriesFactory fleet will trust.  It's recommended that every new Factory have its keys rotated for offline storage, but key rotation is also necessary in the event that keys have been compromised.  To do a rotation, the current root keys may be supplied to `fioctl`_ - a tool for managing a FoundriesFactory. When a Factory is created, Foundries.io sends a notification with the root keys of that Factory, like so::
+Key rotation updates the keys that a FoundriesFactory fleet will trust.
+Every new Factory should have its keys rotated for offline storage.
+Key rotation is also necessary in the event of a key compromise.
+`fioctl`_ includes commands for managing TUF keys.
+
+When a Factory is created, Foundries.io sends a notification with
+a link to its TUF keys like::
 
     Your FoundriesFactory has been created and is ready for use.
 
@@ -29,17 +33,133 @@ Key rotation updates the keys that a FoundriesFactory fleet will trust.  It's re
 
     Once downloaded, this file will be deleted from our system.
 
+Establishing a root key
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Provide fioctl with the path to the root key tar archive::
+The TUF root key is the most important key in TUF. The owner of this
+key can sign the TUF ``root.json`` that defines what keys and roles
+devices can trust. A new root key can be defined by doing a
+"key rotation". A key rotation sets the new root key for the factory,
+but it also signs the new root.json with the previous root key to
+demonstrate proper ownership. This can be done in fioctl with::
 
     fioctl keys rotate-root /absolute/path/to/example.tgz
 
-.. note:: Key rotation requires the host have Docker installed and have access to the internet.
-.. note:: Hardware security modules are not yet supported.
+At this point the only copy of the Factory's root private key is in
+this file. This file **cannot be lost** or it will be impossible
+to make future key updates to the Factory.
 
-Fioctl will update the fleet's root of trust with newly RSA signed offline root keys.  In this way trust of a Factory's keys may be restored, ensuring secure updates keep flowing.
+.. note:: At this point, the tarball should be backed up as described
+   below.
 
-.. note:: Fioctl will update the offline keys at the path provided, ensure the necessary steps are taken to keep them stored securely.
+Establishing an offline target key
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TUF has the notion of a ``targets.json`` file which specifies what
+updates(Targets) are available to a device. This file must be signed
+with a target signing key and pushed to Foundries.io. Normal CI
+builds sign the targets with a Foundries.io owned target signing
+key trusted by the Factory.
+
+In order to ensure customer control of updates, production devices
+require their ``targets.json`` file to be signed by two parties:
+
+ * The Foundries.io online target signing key
+ * The customer's offline target signing key
+
+A Factory can create its target signing key in fioctl with::
+
+    fioctl keys rotate-targets /absolute/path/to/example.tgz
+
+This will send 2 versions of ``root.json`` to Foundries.io. Both
+versions will be identical except the one for production devices
+will specify a targets signing threshold of 2 rather than 1.
+
+The Factory's TUF metadata can be viewed with::
+
+ # The normal "CI" root:
+ fioctl get https://api.foundries.io/ota/repo/<FACTORY>/api/v1/user_repo/root.json
+
+ # The production root. Note the target key role has:
+ #   "threshold" : 2
+ fioctl get https://api.foundries.io/ota/repo/<FACTORY>/api/v1/user_repo/root.json?production=1
+
+Given the importance of the offline credentials file, it is recommended
+to create a second file that can sign production targets for Waves but
+lacks the root keys required to alter Factory root metadata::
+
+    fioctl keys copy-targets /absolute/path/to/example.tgz /path/to/target-only.tgz
+
+How to backup offline keys
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are 3 recommend types of backups:
+
+ * The actual tarball - Basically ``cp <tarball> <path to backup storage media>``
+ * A plain text file of the Factory's active root private key
+ * A print out of the Factory's active root private key
+
+2-3 copies of these backups should be placed in safes in different
+geographical locations. Finding the root private key requires
+understanding the offline keys file format. The initial copy of the
+offline keys will look like::
+
+    # Most of the files aren't critical. They are used in the Factory's initial
+    # CI run to setup credentials. They are kept around to help with debug.
+    tufrepo
+    |-- config.json
+    |-- credentials.zip
+    |-- keys
+    |   |-- offline-root.pub     # Public root shown in root.json
+    |   |-- offline-root.sec     # The Factory's first root private
+    |   |-- offline-targets.pub  # The Foundries.io public target in root.json.
+    |   |-- offline-targets.sec  # The Foundries.io target key used in CI.
+    |   |-- root.pub
+    |   |-- root.sec
+    |   |-- targets.pub
+    |   |-- targets.sec
+    `-- roles |
+        |-- root.json
+        |-- targets.json
+        |-- targets.json.checksum
+        `-- unsigned
+            `-- targets.json
+
+The critical file to keep from this tarball is ``offline-root.sec``.
+After the first root key rotation the offline keys will include 2 new
+files similar to::
+
+    tufrepo
+    `-- keys
+        |-- fioctl-root-5d7397a7a9d62d4f89a39b77903831af12172abb8b9f483e7ad9638bacbc93b1.pub
+        `-- fioctl-root-5d7397a7a9d62d4f89a39b77903831af12172abb8b9f483e7ad9638bacbc93b1.sec
+
+The new root private key is named with the pattern
+``fioctl-root-<keyid>.sec``. The key ID can be verified with::
+
+  $ fioctl get https://api.foundries.io/ota/repo/<FACTORY>/api/v1/user_repo/root.json \
+    | jq '.signed.roles["root"]["keyids"][0]'
+  "5d7397a7a9d62d4f89a39b77903831af12172abb8b9f483e7ad9638bacbc93b1"
+
+Every root key rotation will generate a new ``.sec`` file and **must**
+be backed up.
+
+It is recommended to back up the Factory offline target signing key.
+However, losing this file isn't catastrophic - it's just inconvenient.
+After doing a target key rotation the offline keys file will have two
+new files like::
+
+    tufrepo
+    `-- keys
+        |-- fioctl-targets-cb58f6b83e1e16276c64b19aef7fb07afe3227818f8511ac3ceb288965afdb65.pub
+        `-- fioctl-targets-cb58f6b83e1e16276c64b19aef7fb07afe3227818f8511ac3ceb288965afdb65.sec
+
+The new target signing key is named similar to the root key as:
+``fioctl-targets-<keyid>.sec``. The key ID can be verified with::
+
+  $ fioctl get https://api.foundries.io/ota/repo/<FACTORY>/api/v1/user_repo/root.json \
+    | jq '.signed.roles["targets"]["keyids"][1]'
+  "cb58f6b83e1e16276c64b19aef7fb07afe3227818f8511ac3ceb288965afdb65"
 
 .. _fioctl:
    https://github.com/foundriesio/fioctl
