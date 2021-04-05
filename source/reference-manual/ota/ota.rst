@@ -12,3 +12,4 @@ Over the Air Updates
    device-tags
    advanced-tagging
    configuring
+   production-targets
