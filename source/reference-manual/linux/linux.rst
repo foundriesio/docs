@@ -34,6 +34,7 @@ and maintained by Foundries.io on `GitHub`_.
    linux-net-debug
    linux-update
    linux-extending
+   preloaded-images
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto: https://www.yoctoproject.org

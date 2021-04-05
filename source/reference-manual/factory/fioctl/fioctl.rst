@@ -1,6 +1,7 @@
 :orphan:
 
 .. _fioctl:
+.. _fioctl_targets_image:
 
 fioctl
 ------
