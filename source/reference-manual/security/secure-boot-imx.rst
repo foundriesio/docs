@@ -379,7 +379,7 @@ Our u-boot-spl-sign.csf-template takes care of supporting CAAM on closed platfor
 
 
 .. _Secure Boot Using HABv4 Guide:
-   https://www.nxp.com/docs/en/application-note/AN4581.pdf
+   https://www.nxp.com/webapp/Download?colCode=AN4581&location=null
 
 .. _Universal Update Utility:
    https://github.com/NXPmicro/mfgtools
