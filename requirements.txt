@@ -6,3 +6,4 @@ sphinxemoji==0.1.6
 sphinx_copybutton==0.3.0
 sphinxcontrib.asciinema==0.2.0
 sphinx_toolbox==1.7.5
+sphinx-prompt==1.4.0
