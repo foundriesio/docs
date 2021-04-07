@@ -110,6 +110,7 @@ extensions = [
     'sphinx_copybutton',
     'sphinxcontrib.asciinema',
     'sphinx_toolbox.confval',
+    'sphinx-prompt',
 ]
 
 copybutton_prompt_text = "$ "

@@ -20,6 +20,7 @@ The following is the list of packages needed (can be incomplete):
 | sphinxcontrib.asciinema |
 | sphinxcontrib-contentui |
 | sphinx_toolbox          |
+| sphinx-prompt           |
 
 ### Using `virtualenv` to provide requirements
 
