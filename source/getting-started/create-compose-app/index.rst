@@ -27,26 +27,32 @@ Example Apps
       the ``shellhttpd`` folder to see how this application has been defined, or read
       the other examples to learn how you can define an app from scratch.
 
-      #. Clone your containers.git repo and enter it::
+      #. Clone your containers.git repo and enter it:
 
-           git clone https://source.foundries.io/factories/<factory>/containers.git
-           cd containers.git
+        .. prompt:: bash host:~$, auto
 
-         We initialise your ``containers.git`` repository with a simple compose app
-         example in ``shellhttpd.disabled/``
+            host:~$ git clone https://source.foundries.io/factories/<factory>/containers.git
+            host:~$ cd containers.git
 
-         .. tip:: Directory names ending with ``.disabled`` in containers.git are
+        We initialise your ``containers.git`` repository with a simple compose app
+        example in ``shellhttpd.disabled/``
+
+        .. tip:: Directory names ending with ``.disabled`` in containers.git are
             ignored by our CI system.
 
-      #. Enable the ``shellhttpd`` example app::
+      #. Enable the ``shellhttpd`` example app:
 
-           mv shellhttpd.disabled shellhttpd
+        .. prompt:: bash host:~$, auto
+        
+            host:~$ mv shellhttpd.disabled shellhttpd
 
-      #. Add, commit and push::
+      #. Add, commit and push:
 
-           git add .
-           git commit -m "shellhttpd: enable shellhttpd app"
-           git push
+        .. prompt:: bash host:~$, auto
+
+            host:~$ git add .
+            host:~$ git commit -m "shellhttpd: enable shellhttpd app"
+            host:~$ git push
 
       #. :ref:`gs-watch-build`
 
@@ -60,9 +66,11 @@ Example Apps
       Once the Target is built successfully, any devices that are registered to
       the Factory will begin updating to this new Target. The app ``shellhttpd``
       that has been defined will be available for usage in this Target. This can
-      be verified by running::
+      be verified by running:
 
-        fioctl targets list
+      .. prompt:: bash host:~$, auto
+      
+          host:~$ fioctl targets list
 
       **By default** devices will run **all** applications that are defined in
       the :term:`containers.git` repository and therefore available in the
@@ -75,42 +83,52 @@ Example Apps
       `Mosquitto MQTT Broker <https://mosquitto.org/>`_ from scratch.
 
       #. Clone your containers.git repo and enter it. Make sure to replace
-         ``<factory>`` in the example with the name of your Factory::
+         ``<factory>`` in the example with the name of your Factory:
 
-           git clone https://source.foundries.io/factories/<factory>/containers.git
-           cd containers.git
+        .. prompt:: bash host:~$, auto
+           
+            host:~$ git clone https://source.foundries.io/factories/<factory>/containers.git
+            host:~$ cd containers.git
 
       #. Create a directory named ``mosquitto`` and ``cd`` into it. This folder
          name defines the name of the
          container image that will be pulled on your device from
-         ``hub.foundries.io``::
+         ``hub.foundries.io``:
 
-           mkdir mosquitto
-           cd mosquitto
+        .. prompt:: bash host:~$, auto
+
+            host:~$ mkdir mosquitto
+            host:~$ cd mosquitto
 
       #. Create a file named ``Dockerfile`` to describe your
-         container, with the following contents::
+         container, with the following contents:
 
-           FROM eclipse-mosquitto:latest
+        .. prompt:: text
+
+             FROM eclipse-mosquitto:latest
 
       #. Create a file named ``docker-compose.yml`` to describe how you want
          this container to run, with the following contents. Make sure to
-         replace ``<factory>`` in the example below with the name of your Factory::
+         replace ``<factory>`` in the example below with the name of your Factory:
 
-           version: "3.2"
+        .. prompt:: text
 
-           services:
-             mosquitto:
-               restart: always
-               image: hub.foundries.io/<factory>/mosquitto:latest
-               ports:
-                 - "1883:1883"
+             version: "3.2"
+             
+             services:
+               mosquitto:
+                 restart: always
+                 image: hub.foundries.io/<factory>/mosquitto:latest
+                 ports:
+                   - "1883:1883"
 
-      #. Add, commit and push::
+      #. Add, commit and push:
 
-           git add .
-           git commit -m "mosquitto: create mosquitto container"
-           git push
+        .. prompt:: bash host:~$, auto
+
+            host:~$ git add .
+            host:~$ git commit -m "mosquitto: create mosquitto container"
+            host:~$ git push
 
       #. :ref:`gs-watch-build`
 
@@ -124,9 +142,11 @@ Example Apps
       Once the Target is built successfully, any devices that are registered to
       the Factory will begin updating to this new Target. The app ``mosquitto``
       that has been defined will be available for usage in this Target. This can
-      be verified by running::
+      be verified by running:
 
-        fioctl targets list
+        .. prompt:: bash host:~$, auto
+
+            host:~$ fioctl targets list
 
       **By default** devices will run **all** applications that are defined in
       the :term:`containers.git` repository and therefore available in the
@@ -157,39 +177,47 @@ registered devices following the same tag will update and install this
 new target. At a later point, a target's tags can be added or removed manually
 by using the ``fioctl targets tag`` command.
 
-You can see the available Targets your Factory has produced::
+You can see the available Targets your Factory has produced:
 
-  fioctl targets list
+.. prompt:: bash host:~$, auto
 
-**CLI Output**::
+    host:~$ fioctl targets list
 
-  VERSION  TAGS    APPS        HARDWARE IDs
-  -------  ----    ----        ------------
-  2        devel               raspberrypi3-64
-  3        master              raspberrypi3-64
-  4        master  shellhttpd  raspberrypi3-64
+**CLI Output**:
+
+.. prompt:: text
+
+   VERSION  TAGS    APPS        HARDWARE IDs
+   -------  ----    ----        ------------
+   2        devel               raspberrypi3-64
+   3        master              raspberrypi3-64
+   4        master  shellhttpd  raspberrypi3-64
 
 details about Target can be printed by passing its version number to the
-``show`` subcommand::
+``show`` subcommand:
 
-  fioctl targets show 4
+.. prompt:: bash host:~$, auto
 
-**CLI Output**::
+    host:~$ fioctl targets show 4
 
-  Tags:   master
-  CI:     https://ci.foundries.io/projects/gavin/lmp/builds/4/
-  Source:
-          https://source.foundries.io/factories/gavin/lmp-manifest.git/commit/?id=2aaebc4b16c1027c9aae167d6178a8f248027a73
-          https://source.foundries.io/factories/gavin/meta-subscriber-overrides.git/commit/?id=19cbbe7b890eafed4d88e1fb13d2d61ecef8f3e5
-          https://source.foundries.io/factories/gavin/containers.git/commit/?id=6a2ef8d1dbab0db634c52950ae4a7c18494021b2
+**CLI Output**:
 
-  TARGET NAME            OSTREE HASH - SHA256
-  -----------            --------------------
-  raspberrypi3-64-lmp-4  1b0df36794efc32f1c569c8d61f115b04c4d51caa2fa99c17ec85384ae06518d
+.. prompt:: text
 
-  DOCKER APP  VERSION
-  ----------  -------
-  shellhttpd  shellhttpd.dockerapp-4
+   Tags:   master
+   CI:     https://ci.foundries.io/projects/gavin/lmp/builds/4/
+   Source:
+           https://source.foundries.io/factories/gavin/lmp-manifest.git/commit/?id=2aaebc4b16c1027c9aae167d6178a8f248027a73
+           https://source.foundries.io/factories/gavin/meta-subscriber-overrides.git/commit/?id=19cbbe7b890eafed4d88e1fb13d2d61ecef8f3e5
+           https://source.foundries.io/factories/gavin/containers.git/commit/?id=6a2ef8d1dbab0db634c52950ae4a7c18494021b2
+
+   TARGET NAME            OSTREE HASH - SHA256
+   -----------            --------------------
+   raspberrypi3-64-lmp-4  1b0df36794efc32f1c569c8d61f115b04c4d51caa2fa99c17ec85384ae06518d
+ 
+   DOCKER APP  VERSION
+   ----------  -------
+   shellhttpd  shellhttpd.dockerapp-4
 
 .. _gs-completion:
 

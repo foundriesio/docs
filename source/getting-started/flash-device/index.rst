@@ -60,30 +60,34 @@ Flash LmP system image
       1. Determine the disk you want to flash by finding the device with the
          ``SIZE`` that matches your SD card in the list below.  Be sure to ignore
          partitions (where ``TYPE`` is ``part``).  Save the ``NAME`` for your SD card device to
-         be used in a later step as the disk path. e.g: ``/dev/mmcblk0``::
+         be used in a later step as the disk path. e.g: ``/dev/mmcblk0``:
 
-           lsblk -po +MODEL
+         .. prompt:: bash host:~$, auto
+
+             host:~$ lsblk -po +MODEL
 
          .. highlight:: none
 
-         **Example Output**::
+         **Example Output**:
 
-           $ lsblk -po +MODEL
-           NAME             MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT                 MODEL
-           /dev/mmcblk0     179:0    0  29.8G  0 disk
-           ├─/dev/mmcblk0p1 179:1    0  41.6M  0 part /mnt/boot
-           └─/dev/mmcblk0p2 179:2    0  29.8G  0 part /mnt/otaroot
-           /dev/zram0       254:0    0    26G  0 disk /out
-           /dev/nvme0n1     259:0    0 953.9G  0 disk                            SSDPEKKF010T8 NVMe INTEL 1024GB
+         .. prompt:: bash host:~$, auto
+
+             host:~$ lsblk -po +MODEL
+              NAME               MAJ:MIN  RM    SIZE  RO  TYPE MOUNTPOINT    MODEL
+              /dev/mmcblk0       179:0     0   29.8G   0  disk
+              ├─/dev/mmcblk0p1   179:1     0   41.6M   0  part /mnt/boot
+              └─/dev/mmcblk0p2   179:2     0   29.8G   0  part /mnt/otaroot
+              /dev/zram0         254:0     0     26G   0  disk /out
+              /dev/nvme0n1       259:0     0  953.9G   0  disk               SSDPEKKF010T8 NVMe INTEL 1024GB
 
       2. Flash the disk.
 
          | Replace ``<system-image>``
          | Replace ``/dev/mmcblk<X>`` with your chosen disk path.
 
-       .. code-block:: shell
+       .. prompt:: bash host:~$, auto
 
-          gunzip -c <system-image> | sudo dd of=/dev/mmcblk<X> bs=4096k iflag=fullblock oflag=direct status=progress
+           host:~$ gunzip -c <system-image> | sudo dd of=/dev/mmcblk<X> bs=4096k iflag=fullblock oflag=direct status=progress
 
    .. group-tab:: macOS
 
@@ -91,20 +95,24 @@ Flash LmP system image
          ``SIZE`` that matches your SD card in the list below.  Be sure to ignore
          partitions (lines without the * in the ``SIZE``).  Save the ``IDENTIFIER`` for your
          SD card device to be used in a later step as the disk path. e.g:
-         ``/dev/disk3``::
+         ``/dev/disk3``:
 
-           diskutil list
+         .. prompt:: bash host:~$, auto
+
+           host:~$ diskutil list
 
          .. highlight:: none
 
-         **Example Output**::
+         **Example Output**:
 
-           $ diskutil list
-           /dev/disk3 (internal, physical):
-              #:                       TYPE NAME                    SIZE       IDENTIFIER
-              0:     FDisk_partition_scheme                        *15.5 GB    disk3
-              1:             Windows_FAT_32 boot                    45.7 MB    disk3s1
-              2:                      Linux                         15.5 GB    disk3s2
+         .. prompt:: bash host:~$, auto
+
+           host:~$ diskutil list
+            /dev/disk3 (internal, physical):
+               #:     TYPE NAME                  SIZE        IDENTIFIER
+               0:     FDisk_partition_scheme     *15.5 GB    disk3
+               1:     Windows_FAT_32 boot         45.7 MB    disk3s1
+               2:     Linux                       15.5 GB    disk3s2
 
       2. Flash the disk.
 
@@ -115,12 +123,11 @@ Flash LmP system image
 
 	   It may be necessary to unmount the disk if macOS has auto-mounted it
 	   like so:
-
            ``sudo diskutil unmount /dev/disk<X>``
 
-        .. code-block:: shell
+        .. prompt:: bash host:~$, auto
 
-           gunzip -c <system-image> | sudo dd of=/dev/disk<X> bs=4096k
+           host:~$ gunzip -c <system-image> | sudo dd of=/dev/disk<X> bs=4096k
 
    .. group-tab:: Windows
 
@@ -269,9 +276,11 @@ Log in via SSH
 .. highlight:: none
 
 Use ``fio`` as the username and ``machine-name.local`` as the
-hostname::
+hostname:
 
-  ssh fio@<machine-name>.local
+.. prompt:: bash host:~$, auto
+
+   host:~$ ssh fio@<machine-name>.local
 
 The default password is ``fio``; we recommend changing it once logged in.
 
@@ -301,17 +310,25 @@ If the above methods to connect your device to the network don't work, try one
 of the following.
 
 - Temporarily enable and connect to the UART (see directions above in
-  the WiFi section) and determine available IP addresses with::
+  the WiFi section) and determine available IP addresses with:
 
-    # Ethernet
-    ip addr show eth0 scope global
+Ethernet:
 
-    # WiFi
-    ip addr show wlan0 scope global
+ .. prompt:: bash host:~$, auto
+   
+   host:~$ ip addr show eth0 scope global
+     
+WiFi:
 
-  Then connect by IP address::
+ .. prompt:: bash host:~$, auto
 
-    ssh fio@<ip-address>
+   host:~$ ip addr show wlan0 scope global
+
+- Then connect by IP address:
+
+ .. prompt:: bash host:~$, auto
+
+    host:~$ ssh fio@<ip-address>
 
 - List connected devices and their local IP addresses on your network
   router's administrative interface, and log in by IP address as

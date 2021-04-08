@@ -33,15 +33,24 @@ We use `Github Releases`_ to distribute static X86_64 golang binaries.
       1. Download a Linux binary from the `Github Releases`_ page to a directory
          on your ``PATH``, make sure you have Curl installed
 
-         For example, to download version |fioctl_version| on Linux, do:
+         For example, to download version |fioctl_version| on Linux, define the 
+         version:
 
          .. parsed-literal::
 
-              sudo curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/|fioctl_version|/fioctl-linux-amd64
+              FIOCTL_VERSION="|fioctl_version|"
 
-      2. Make the :ref:`ref-fioctl` binary executable::
+         Download the binary with curl:
 
-           sudo chmod +x /usr/local/bin/fioctl
+         .. prompt:: bash host:~$, auto
+
+            host:~$ sudo curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-linux-amd64
+
+      2. Make the :ref:`ref-fioctl` binary executable:
+
+         .. prompt:: bash host:~$, auto
+
+            host:~$ sudo chmod +x /usr/local/bin/fioctl
 
       You can execute this again in future to overwrite your binary, therefore
       updating or changing your version.
@@ -51,15 +60,24 @@ We use `Github Releases`_ to distribute static X86_64 golang binaries.
       1. Download a Darwin binary from the `Github Releases`_ page to a directory
          on your ``PATH``, make sure you have Curl installed
 
-         For example, to download version |fioctl_version| on macOS, do:
+         For example, to download version |fioctl_version| on macOS, define the 
+         version:
 
          .. parsed-literal::
 
-              curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/|fioctl_version|/fioctl-darwin-amd64
+              FIOCTL_VERSION="|fioctl_version|"
 
-      2. Make the :ref:`ref-fioctl` binary executable::
+         Download the binary with curl:
 
-           chmod +x /usr/local/bin/fioctl
+         .. prompt:: bash host:~$, auto
+
+            host:~$ curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64
+
+      2. Make the :ref:`ref-fioctl` binary executable:
+
+         .. prompt:: bash host:~$, auto
+
+            host:~$ sudo chmod +x /usr/local/bin/fioctl
 
       You can execute this again in future to overwrite your binary, therefore
       updating or changing your version.
@@ -96,9 +114,11 @@ Install From Source
 If you intend to use Fioctl on a non X86_64 platform (like a Raspberry
 Pi/Pinebook/Smartphone) such as ARM, RISC-V, PPC, etc. Fioctl can be compiled
 and installed from the latest sources and installed via Golang's own package
-manager; ``go get``::
+manager; ``go get``:
 
-  go get github.com/foundriesio/fioctl
+.. prompt:: bash host:~$, auto
+
+   host:~$ go get github.com/foundriesio/fioctl
 
 .. _gs-fioctl-post-install:
 
@@ -106,9 +126,11 @@ Post-Install
 ^^^^^^^^^^^^
 Now that :ref:`ref-fioctl` is installed, you must authenticate with our backend
 before you're able to use it. This requires you to generate OAuth2 application
-credentials for interacting with Factory APIs::
+credentials for interacting with Factory APIs:
 
-  fioctl login
+.. prompt:: bash host:~$, auto
+
+   host:~$ fioctl login
 
 :ref:`ref-fioctl` will now ask for your application credentials and walk you
 through the authentication process.
@@ -137,23 +159,23 @@ It can be set using 3 different methods:
 
    * --factory/-f argument
 
-     .. code-block:: shell
+     .. prompt:: bash host:~$, auto
 
-        fioctl targets list --factory <factory>
+        host:~$ fioctl targets list --factory <factory>
 
    *  environment variable FIOCTL_FACTORY
 
-     .. code-block:: shell
+     .. prompt:: bash host:~$, auto
 
-        export FIOCTL_FACTORY=<factory>
-        fioctl targets list
+        host:~$ export FIOCTL_FACTORY=<factory>
+        host:~$ fioctl targets list
 
    *  config file's factory option
 
-     .. code-block:: shell
+     .. prompt:: bash host:~$, auto
 
-        echo "factory: <factory>" >> $HOME/.config/fioctl.yaml
-        fioctl targets list
+        host:~$ echo "factory: <factory>" >> $HOME/.config/fioctl.yaml
+        host:~$ fioctl targets list
 
 .. note::
    Refer to the :ref:`ref-fioctl` section of the documentation to learn more
