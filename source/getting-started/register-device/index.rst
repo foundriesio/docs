@@ -7,11 +7,13 @@ Your Linux microPlatform image includes a tool, ``lmp-device-register`` that wil
 register your device(s) via the Foundries.io REST API.
 
 1. From a console on the device run this command to register the device to your
-   factory::
+   factory:
 
-     sudo lmp-device-register -n <device-name>
+ .. prompt:: bash device:~$, auto
 
-   .. note::
+      device:~$ sudo lmp-device-register -n <device-name>
+
+.. note::
 
 	**By default** devices will run **all** applications that are defined in
 	the :term:`containers.git` repository and therefore available in the
@@ -23,7 +25,9 @@ register your device(s) via the Foundries.io REST API.
 
    .. highlight:: none
 
-   **Example Output**::
+   **Example Output**:
+
+   .. prompt:: text
 
      Registering device, test, to factory gavin.
      Device UUID: df1295df-ba58-40a0-9239-542ded5ab934
@@ -40,6 +44,8 @@ register your device(s) via the Foundries.io REST API.
    https://app.foundries.io/factories/, clicking your **Factory** and selecting
    the **Devices** tab.
 
-   Or by using :ref:`ref-fioctl`::
+   Or by using :ref:`ref-fioctl`:
 
-     fioctl devices list
+ .. prompt:: bash host:~$, auto
+
+      host:~$ fioctl devices list
