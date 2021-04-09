@@ -17,7 +17,7 @@ for managing a Factory. It is based on the `ota-lite API
 .. _gs-fioctl-installation:
 
 Installation
-------------
+############
 
 .. _gs-fioctl-manual-install:
 
@@ -120,10 +120,10 @@ manager; ``go get``:
 
    host:~$ go get github.com/foundriesio/fioctl
 
-.. _gs-fioctl-post-install:
+.. _gs-fioctl-authenticate-fioctl:
 
-Post-Install
-^^^^^^^^^^^^
+Authenticate fioctl
+###################
 Now that :ref:`ref-fioctl` is installed, you must authenticate with our backend
 before you're able to use it. This requires you to generate OAuth2 application
 credentials for interacting with Factory APIs:
@@ -135,11 +135,22 @@ credentials for interacting with Factory APIs:
 :ref:`ref-fioctl` will now ask for your application credentials and walk you
 through the authentication process.
 
-For this credential, check the :guilabel:`Use for tools like fioctl` box. Remember
-that you can revoke this access and set up a new credential later once you are
+fioctl Token
+^^^^^^^^^^^^
+
+Go to `Token <https://app.foundries.io/settings/tokens/>`_ and create a new **Api Token** by clicking on 
+the :guilabel:`+ New Token`. Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
+
+For fioctl, check the :guilabel:`Use for tools like fioctl` box and 
+select your **Factory**. Remember that you can revoke this access and set up a new credential later once you are
 familiar with the :ref:`ref-api-access`.
 
-.. note:: Tokens can be generated at https://app.foundries.io/settings/tokens
+.. figure:: /_static/install-fioctl/fioctl_token.png
+   :width: 500
+   :align: center
+
+   Token for fioctl
+
 
 .. tip::
 
@@ -152,25 +163,25 @@ familiar with the :ref:`ref-api-access`.
 .. _gs-fioctl-configuration:
 
 Configuration
--------------
+#############
 
 When working with multiple factories, specifying a factory name is mandatory.
 It can be set using 3 different methods:
 
-   * --factory/-f argument
+   * Argument:
 
      .. prompt:: bash host:~$, auto
 
         host:~$ fioctl targets list --factory <factory>
 
-   *  environment variable FIOCTL_FACTORY
+   *  Environment Variable:
 
      .. prompt:: bash host:~$, auto
 
         host:~$ export FIOCTL_FACTORY=<factory>
         host:~$ fioctl targets list
 
-   *  config file's factory option
+   *  Configuration File:
 
      .. prompt:: bash host:~$, auto
 
