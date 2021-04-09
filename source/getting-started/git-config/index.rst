@@ -9,10 +9,35 @@ as part of your :ref:`account creation <gs-signup>`. Once configured, ``git`` wi
 connecting to ``source.foundries.io`` and will use this token to authenticate
 you with our Git server.
 
-.. note:: Tokens can be generated at https://app.foundries.io/settings/tokens
+Source Code Access Token
+########################
 
-For this tutorial, check the :guilabel:`Use for source code access` box. You can later
-revoke this access and set up a new token once you are familiar with the :ref:`ref-api-access`.
+In the right top corner, click on the avatar and select :guilabel:`Settings` in the 
+drop-down list.
+
+.. figure:: /_static/git-config/settings.png
+   :width: 900
+   :align: center
+
+   FoundriesFactory Settings
+
+Select the tab :guilabel:`Tokens` and create a new **Api Token** by clicking on 
+the :guilabel:`+ New Token`.
+Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
+
+For this tutorial, check the :guilabel:`Use for source code access` box and 
+select your **Factory**. You can later revoke this access and set up a new 
+token once you are familiar with the :ref:`ref-api-access`.
+
+.. figure:: /_static/git-config/token.png
+   :width: 500
+   :align: center
+
+   Token for source code access
+
+
+Git Setup
+#########
 
 Replace ``YOUR_TOKEN`` in the following command with your access token. An
 example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
