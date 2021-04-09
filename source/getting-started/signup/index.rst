@@ -6,7 +6,7 @@ Sign Up
 To create a FoundriesFactory, you first need to `create an account <signup_>`_ with us.
 
 .. figure:: /_static/signup/login.png
-   :width: 400
+   :width: 380
    :align: center
    :target: signup_
 
@@ -22,24 +22,18 @@ for your product. When you create a Factory, we immediately bootstrap the CI
 build process for a vanilla, unmodified :ref:`ref-linux` OS Image, which is from
 this point onward, **owned by you**.
 
-.. tip::
-
-   To learn more about the daemon that we run on devices, as well as our API and
-   OTA update mechanisms, read :ref:`ref-ota-architecture` and
-   :ref:`ref-aktualizr-lite`
-
 When your account is created, it is not associated with any factories.
 
-Create one by clicking :guilabel:`Create Factory`
+Create one by clicking :guilabel:`Create Factory`.
 
 .. warning::
 
    Once a Factory is created, the chosen platform/machine and Factory name
    cannot be changed. Create a new Factory or contact support if a mistake is
-   made. https://support.foundries.io/
+   made. https://support.foundries.io/.
 
 .. figure:: /_static/signup/no-factories.png
-   :width: 400
+   :width: 900
    :align: center
 
    Your journey begins empty handed
@@ -71,8 +65,10 @@ The :ref:`ref-linux` supports a wide range of platforms out of the box. This
 includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
 .. figure:: /_static/signup/create.png
-   :width: 400
+   :width: 450
    :align: center
+
+   Create Factory
 
 .. tip::
 
@@ -112,6 +108,8 @@ to build your application and produce new Targets for the Factory to build.
 .. figure:: /_static/signup/build.png
    :width: 900
    :align: center
+
+   FoundriesFactory Targets
 
 .. warning::
 
