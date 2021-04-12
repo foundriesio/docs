@@ -10,7 +10,7 @@ the basic commands and concepts to help you to create your application.
 
 .. note::
 
-  Estimated Time: 3 minutes
+  Tutorial Estimated Time: 20 minutes
 
 .. _tutorial-gs-with-docker-prerequisite:
 
@@ -34,9 +34,9 @@ Prerequisites and Prework
 .. tip::
 
    In case you just created your FoundriesFactory and your first build is still 
-   running, it is not a problem, this tutorial doesn’t require a device. By the 
+   running, it is not a problem, this tutorial **doesn’t require a device**. By the 
    end of this tutorial, your build is probably already finished and you can 
-   follow the instructions to flash your device and move to the next tutorials.
+   follow the instructions to flash and register your device and move to the next tutorials.
 
 
 Instructions
@@ -45,14 +45,14 @@ Instructions
 .. tip::
 
    When your Factory is first created, 2 branches are established: ``master`` and ``devel``.
-   We suggest using the ``devel`` branch for development
+   We suggest using the ``devel`` branch for development.
 
-Clone your ``containers.git`` repo and enter it:
+Clone your ``containers.git`` repo and enter its directory:
 
 .. prompt:: bash host:~$
 
     git clone -b devel https://source.foundries.io/factories/<factory>/containers.git
-    cd containers.git
+    cd containers
 
 Your ``containers.git`` repository is initialized with a simple compose app example in 
 ``shellhttpd.disabled``
@@ -70,7 +70,7 @@ For a better understanding, it is better to consume the files from
 
     mkdir shellhttpd
 
-Your container repository should look like this:
+Your ``containers.git`` repository should look like this:
 
 .. prompt::
 
@@ -86,24 +86,24 @@ Your container repository should look like this:
 Dockerfile
 ^^^^^^^^^^
 
-The first file you will use is the Dockerfile. Enter the ``shellhttpd`` folder and move the 
-Dockerfile from ``shellhttpd.disabled`` to ``shellhttpd``:
+The first file you will use is the ``Dockerfile``. Enter the ``shellhttpd`` folder and move the 
+``Dockerfile`` from ``shellhttpd.disabled`` to ``shellhttpd``:
 
 .. prompt:: bash host:~$
 
     cd shellhttpd
     mv ../shellhttpd.disabled/Dockerfile .
 
-The Dockerfile contains all the commands a user would call on the command line to assemble 
+The ``Dockerfile`` contains all the commands a user would call on the command line to assemble 
 a container image.
 
-A Dockerfile usually starts from a base image. The base image could be a distribution like 
+A ``Dockerfile`` usually starts from a base image. The base image could be a distribution such as 
 Alpine, Debian, or Ubuntu or it could be a distribution already prepared for a specific 
 application like Python, NGINX.
 
-By having your Dockerfile you will be able to customize the base image.
+By having your ``Dockerfile`` you will be able to customize the base image.
 
-Check the content of your Dockerfile:
+Check the content of your ``Dockerfile``:
 
 .. prompt:: bash host:~$, auto
 
@@ -118,7 +118,7 @@ Check the content of your Dockerfile:
       COPY httpd.sh /usr/local/bin/
       CMD ["/usr/local/bin/httpd.sh"]
 
-This Dockerfile is very simple and a great way to get started. 
+This ``Dockerfile`` is very simple and a great way to get started. 
 
 The first line creates a layer from the latest 
 `Alpine Docker image <https://hub.docker.com/_/alpine>`_. 
@@ -139,7 +139,7 @@ when you run the container.
 httpd.sh
 ^^^^^^^^
 
-As mentioned above, Dockerfile will copy the ``httpd.sh`` file to your Docker image. 
+As mentioned above, ``Dockerfile`` will copy the ``httpd.sh`` file to your Docker image. 
 Move the file from ``shellhttpd.disabled`` to the ``shellhttpd`` folder:
 
 .. prompt:: bash host:~$
@@ -175,9 +175,9 @@ environment variable (defaults to ``OK``).
 Building your Container
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that you have a Dockerfile, you can build it locally to make sure it is working properly.
+Now that you have a ``Dockerfile``, you can build it locally to make sure it is working properly.
 
-From the same folder containing the Dockerfile, run the command below:
+From the same folder containing the ``Dockerfile``, run the command below:
 
 .. prompt:: bash host:~$, auto
 
@@ -466,7 +466,7 @@ docker-compose.yml
 
 This is a YAML file defining services, networks, and volumes for multi-container 
 Docker applications. In other words, all the parameters you have used with 
-``docker run`` you could specify in a docker-compose.yml file. Then, with a 
+``docker run`` you could specify in a ``docker-compose.yml`` file. Then, with a 
 single command, create and start all the services with your configurations.
 
 In this example, we will launch just one image, but keep in mind that 
@@ -508,11 +508,11 @@ FoundriesFactory and there the image with ``hub.foundries.io`` will be necessary
 For now, because you are still developing locally, you need to 
 edit the image parameter to use the image you have built in the preview steps.
 
-Change the image parameter to the name and tag we built locally (shellhttpd:1.0):
+Change the image parameter to the name and tag we built locally ``shellhttpd:1.0``:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ cat docker-compose.yml
+    host:~$ gedit docker-compose.yml
 
 **docker-compose.yml**:
 
@@ -532,13 +532,14 @@ Change the image parameter to the name and tag we built locally (shellhttpd:1.0)
 
 Notice that the MSG variable is now configured to use ``Hello world`` as default.
 
-To run your docker-compose app, execute the ``docker-compose up`` command. 
-This command will hold your terminal and log all the container messages 
-on it. In case you want to run it in the background you should use ``-d``.
+To run your docker-compose app, execute the ``docker-compose up -d`` command. 
 
 .. prompt:: bash host:~$, auto
 
     host:~$ docker-compose up -d
+
+Where: 
+ - ``-d`` - Run containers in the background.
 
 To verify the running containers:
 
@@ -575,7 +576,7 @@ build and will deploy this application on your device.
 
 .. warning::
 
-  If you follow this tutorial before flashing and registering your device, 
+  If you followed this tutorial before flashing and registering your device, 
   return to the Getting Started and complete the section below:
 
    - :ref:`gs-flash-device`.
