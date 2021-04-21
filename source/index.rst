@@ -20,6 +20,15 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
 
 .. toctree::
    :maxdepth: 1
+   :caption: Tutorials
+   :name: sec-tutorials
+
+   tutorials/getting-started-with-docker/index
+   tutorials/deploy-first-app/index
+   tutorials/cloud
+
+.. toctree::
+   :maxdepth: 1
    :caption: Reference Manual
    :name: sec-manual
 
@@ -41,14 +50,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-user-guide
 
    user-guide/*/*
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Tutorials
-   :name: sec-tutorials
-
-   tutorials/cloud
-   tutorials/mosquitto
 
 .. toctree::
    :maxdepth: 2
