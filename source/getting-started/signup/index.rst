@@ -114,9 +114,13 @@ to build your application and produce new Targets for the Factory to build.
 .. warning::
 
    Bootstrapping your Factory securely takes some time. Your first build
-   will take up to 30 minutes to complete.
+   will take up to **30 minute** to complete.
 
-   Read through the rest of this section and set up your development environment
-   while you wait for us to build your Factory from scratch.
+   If that is your case, use this time to set up your development environment 
+   and get started with docker commands. The documents below do not require the hardware.
+
+   - :ref:`gs-git-config`.
+   - :ref:`gs-install-fioctl`.
+   - :ref:`tutorial-gs-with-docker`.
 
 .. _cgit: https://git.zx2c4.com/cgit/

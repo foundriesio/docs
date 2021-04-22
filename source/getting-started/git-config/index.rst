@@ -25,7 +25,7 @@ Select the tab :guilabel:`Tokens` and create a new **Api Token** by clicking on
 the :guilabel:`+ New Token`.
 Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
 
-For this tutorial, check the :guilabel:`Use for source code access` box and 
+Check the :guilabel:`Use for source code access` box and 
 select your **Factory**. You can later revoke this access and set up a new 
 token once you are familiar with the :ref:`ref-api-access`.
 
