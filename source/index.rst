@@ -16,7 +16,16 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    getting-started/install-fioctl/index
    getting-started/flash-device/index
    getting-started/register-device/index
-   getting-started/create-compose-app/index
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorials
+   :name: sec-tutorials
+
+   tutorials/getting-started-with-docker/getting-started-with-docker
+   tutorials/creating-first-target/creating-first-target
+   tutorials/deploying-first-app/deploying-first-app
+   tutorials/cloud
 
 .. toctree::
    :maxdepth: 1
@@ -41,14 +50,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-user-guide
 
    user-guide/*/*
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Tutorials
-   :name: sec-tutorials
-
-   tutorials/cloud
-   tutorials/mosquitto
 
 .. toctree::
    :maxdepth: 2
