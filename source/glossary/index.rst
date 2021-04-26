@@ -19,8 +19,7 @@ Terminology
      Also referred to as 'app'. A folder in :term:`containers.git`, containing a
      `docker-compose.yml`. The name of this folder is the name of your
      **Docker-Compose App**. Appending ``.disabled`` to the name of the folder will
-     prevent it from being built by the Foundries.io CI/CD. Read
-     :ref:`gs-create-a-docker-compose-app` for more detail.
+     prevent it from being built by the Foundries.io CI/CD.
 
    MACHINE
      The Yocto machine name. Officially supported by Foundries if listed

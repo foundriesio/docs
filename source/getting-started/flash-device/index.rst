@@ -4,13 +4,22 @@ Flash your Device
 =================
 
 .. note::
-   To follow this section, you will need:
-    - A :ref:`supported board <ref-linux-supported>`.
+
+  The initial FoundriesFactory set up and build can take more than 30 minutes 
+  to complete. The current status can be found at the :ref:`gs-watch-build` page.
+  While you wait, please take this time to follow this introductory tutorial.
+
+   - :ref:`tutorial-gs-with-docker`.
+
+Prerequisites and Prework
+-------------------------
+
+   - A :ref:`supported board <ref-linux-supported>`.
 
       - Capable of booting from eMMC **(recommended if available)**
       - **Or** capable of booting from a suitable `microSD Card <https://elinux.org/RPi_SD_cards>`_
 
-    - Wired or WiFi network with internet access.
+   - Wired or WiFi network with internet access.
 
       - Ethernet cable (if choosing Wired)
       - Console access to your hardware via display/keyboard **or** serial (if choosing WiFi)
