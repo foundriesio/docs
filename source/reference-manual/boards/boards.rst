@@ -13,3 +13,4 @@ Boards
    se050_imx8mq
    se050_imx8mm
    imx6ull
+   apalis-imx6
