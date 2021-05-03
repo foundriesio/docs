@@ -9,3 +9,4 @@ Secure Boot
    :maxdepth: 1
 
    secure-boot-imx
+   secure-boot-imx6ullevk-sec
