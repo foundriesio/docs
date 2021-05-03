@@ -1,3 +1,5 @@
+.. _ref-rm_board_imx6ullevk:
+
 i.MX 6ULL Evaluation Kit
 ========================
 
