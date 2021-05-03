@@ -6,6 +6,7 @@ Arm Neoverse N1 System Development Platform (N1SDP),n1sdp
 Intel NUC8,intel-corei7-64
 Intel x86-64 UEFI,intel-corei7-64
 NXP iMX6ULL-EVK,imx6ullevk
+NXP iMX6ULL-EVK with secure boot enabled,imx6ullevk-sec
 EA iMX7ULP-UCOM,imx7ulpea-ucom
 NXP iMX8M-MINILPD4 EVK,imx8mmevk
 NXP iMX8MQuad EVK,imx8mqevk
