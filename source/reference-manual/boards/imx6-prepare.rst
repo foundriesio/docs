@@ -4,7 +4,7 @@ Preparation
 Ensure you replace the ``<factory>`` placeholder below with the name of your
 Factory.
 
-Download necessary files from ``https://app.foundries.io/factories/<factory/targets``
+Download necessary files from ``https://app.foundries.io/factories/<factory>/targets``
 
 #. Click the latest Target with the :guilabel:`platform-devel` trigger.
 
