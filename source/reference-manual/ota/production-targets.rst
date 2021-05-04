@@ -59,7 +59,7 @@ operator can roll out to more devices. For example a device-group named
 
   fioctl waves rollout v2.0-update us-east-1
 
-Eventually the operator can update the primary ``targets.json file`` for all
+Eventually the operator can update the primary ``targets.json`` file for all
 devices on the ``production`` tag with::
 
   fioctl waves complete v2.0-update
