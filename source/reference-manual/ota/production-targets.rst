@@ -37,6 +37,12 @@ production. A wave can be initialized with::
 
   fioctl wave init -k <path to offline-target-creds>.tgz v2.0-update 42 production
 
+.. note::
+
+   Operators will want to generate
+   :ref:`OSTree static deltas<ref-static-deltas>` before rolling
+   out waves to devices.
+
 A new wave is ready to share with device groups. A Factory might have a
 device group called "canary". Those devices can be moved to this new
 update with::

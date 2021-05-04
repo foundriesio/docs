@@ -13,3 +13,4 @@ Over the Air Updates
    advanced-tagging
    configuring
    production-targets
+   static-deltas
