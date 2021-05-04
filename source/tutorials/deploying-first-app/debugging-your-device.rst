@@ -29,7 +29,7 @@ You can also use ``fioctl`` to read information about your device.
 
      UUID:		a06b0bab-38be-409b-b7f8-f1125231a91e
      Owner:		6025791fd93b37d33e03b349
-     Factory:	cavel
+     Factory:	<factory>
      Up to date:	true
      Target:		raspberrypi3-64-lmp-4 / sha256(3abd308ea6d4caffcdf250c7170e0dc9c8ff9082c64538bf14ca07c2df1beeff)
      Ostree Hash:	3abd308ea6d4caffcdf250c7170e0dc9c8ff9082c64538bf14ca07c2df1beeff
@@ -74,4 +74,4 @@ Another way to verify applications running on the device is with the ``docker ps
 .. prompt:: text
 
      CONTAINER ID   IMAGE                                  COMMAND                  CREATED       STATUS       PORTS                    NAMES
-     48f467ea2461   hub.foundries.io/tutorial/shellhttpd   "/usr/local/bin/http…"   6 hours ago   Up 6 hours   0.0.0.0:8080->8080/tcp   shellhttpd_httpd_1
+     48f467ea2461   hub.foundries.io/<factory>/shellhttpd   "/usr/local/bin/http…"   6 hours ago   Up 6 hours   0.0.0.0:8080->8080/tcp   shellhttpd_httpd_1

@@ -31,7 +31,7 @@ to hub.foundries.io.
      
      services:
        httpd:
-         image: hub.foundries.io/unique-name/shellhttpd:latest
+         image: hub.foundries.io/<factory>/shellhttpd:latest
      #    image: shellhttpd:1.0
          restart: always
          ports:
@@ -156,8 +156,8 @@ Push all committed modifications to the remote repository:
      Writing objects: 100% (5/5), 795 bytes | 795.00 KiB/s, done.
      Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
      remote: Trigger CI job...
-     remote: CI job started: https://ci.foundries.io/projects/unique-name/lmp/builds/4/
-     To https://source.foundries.io/factories/unique-name/containers.git
+     remote: CI job started: https://ci.foundries.io/projects/<factory>/lmp/builds/4/
+     To https://source.foundries.io/factories/<factory>/containers.git
         daaca9c..d7bc382  devel -> devel
 
 .. note::

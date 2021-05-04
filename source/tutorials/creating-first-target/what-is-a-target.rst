@@ -101,11 +101,11 @@ Use this command to see a better overview of **Target 4**:
 .. prompt:: text
 
      Tags:	devel
-     CI:	https://ci.foundries.io/projects/cavel/lmp/builds/4/
+     CI:	https://ci.foundries.io/projects/<factory>/lmp/builds/4/
      Source:
-	     https://source.foundries.io/factories/cavel/lmp-manifest.git/commit/?id=fb119f5
-	     https://source.foundries.io/factories/cavel/meta-subscriber-overrides.git/commit/?id=d89efb2
-	     https://source.foundries.io/factories/cavel/containers.git/commit/?id=0bec425
+	     https://source.foundries.io/factories/<factory>/lmp-manifest.git/commit/?id=fb119f5
+	     https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git/commit/?id=d89efb2
+	     https://source.foundries.io/factories/<factory>/containers.git/commit/?id=0bec425
      
      TARGET NAME            OSTREE HASH - SHA256
      -----------            --------------------
@@ -113,7 +113,7 @@ Use this command to see a better overview of **Target 4**:
      
      COMPOSE APP  VERSION
      -----------  -------
-     shellhttpd   hub.foundries.io/cavel/shellhttpd@sha256:3ce57a22faa2484ce602c86f522b72b1b105ce85a14fc5b2a9a12eb12de4ec7f
+     shellhttpd   hub.foundries.io/<factory>/shellhttpd@sha256:3ce57a22faa2484ce602c86f522b72b1b105ce85a14fc5b2a9a12eb12de4ec7f
 
 The example above, shows a **Target Name** named ``raspberrypi3-64-lmp-4`` that:
 

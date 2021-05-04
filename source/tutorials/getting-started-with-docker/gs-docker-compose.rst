@@ -33,7 +33,7 @@ Read the ``docker-compose.yml`` file:
      
      services:
        httpd:
-         image: hub.foundries.io/unique-name/shellhttpd:latest
+         image: hub.foundries.io/<factory>/shellhttpd:latest
          restart: always
          ports:
            - 8080:${PORT-8080}
@@ -63,7 +63,7 @@ Change the image parameter to the name and tag we built locally ``shellhttpd:1.0
      
      services:
        httpd:
-     #    image: hub.foundries.io/unique-name/shellhttpd:latest
+     #    image: hub.foundries.io/<factory>/shellhttpd:latest
          image: shellhttpd:1.0
          restart: always
          ports:
