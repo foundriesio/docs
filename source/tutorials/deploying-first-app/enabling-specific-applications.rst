@@ -85,5 +85,5 @@ Check the running containers:
 .. prompt:: text
 
      CONTAINER ID   IMAGE                               COMMAND                  CREATED       STATUS       PORTS                    NAMES
-     72a3d00dbc1c   hub.foundries.io/cavel/shellhttpd   "/usr/local/bin/http…"   2 hours ago   Up 2 hours   0.0.0.0:8080->8080/tcp   shellhttpd_httpd_1
+     72a3d00dbc1c   hub.foundries.io/<factory>/shellhttpd   "/usr/local/bin/http…"   2 hours ago   Up 2 hours   0.0.0.0:8080->8080/tcp   shellhttpd_httpd_1
 

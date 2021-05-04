@@ -17,7 +17,7 @@ commands and concepts to help you to create your own application.
 Learning Objectives
 -------------------
 
-- Download your containers.git repository.
+- Download your ``containers.git`` repository.
 - Build your container on your host machine.
 - Run your container on your host machine.
 - Inspect running containers.
