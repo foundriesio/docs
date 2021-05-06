@@ -22,6 +22,16 @@ subcommands::
   # Add a config file to the entire fleet
   fioctl config set --reason "for docs" AWS_REGION="us-east-2"
 
+The reason specified via ``--reason`` will be visible in the output of ``fioctl
+config log``::
+
+  Created At:    2021-03-06T00:46:02
+  Applied At:    2021-03-06T00:49:24
+  Change Reason: for docs
+  Files:
+          z-50-fioctl.toml - [/usr/share/fioconfig/handlers/aktualizr-toml-update]
+  ...
+
 Device Specific Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
