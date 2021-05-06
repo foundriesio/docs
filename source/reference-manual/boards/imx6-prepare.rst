@@ -17,7 +17,7 @@ Download necessary files from ``https://app.foundries.io/factories/<factory>/tar
    machine.**
 
    | E.g: ``lmp-factory-image-imx6ullevk.wic.gz``
-   |      ``SPL-imx6ullevkevk``
+   |      ``SPL-imx6ullevk``
    |      ``u-boot-imx6ullevk.itb``
 
    .. figure:: /_static/boards/imx6-steps-2.png
