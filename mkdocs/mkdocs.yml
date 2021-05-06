@@ -1,0 +1,37 @@
+site_name: Foundries.io
+
+theme:
+  name: material
+  favicon: _static/logo.png
+  logo: _static/logo.png
+
+docs_dir: 'docs'
+
+markdown_extensions:
+  - abbr
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.details
+  - def_list
+  - admonition
+#  - pymdownx.superfences:
+#      # make exceptions to highlighting of code:
+#      custom_fences:
+#        - name: mermaid
+#          class: mermaid
+#          format: !!python/name:mermaid2.fence_mermaid
+
+
+#extra_javascript:
+#    - https://unpkg.com/mermaid@8.7.0/dist/mermaid.min.js
+
+plugins:
+  - search
+  - macros
+  - awesome-pages
+#  - mermaid2
+
+extra_css:
+  - _static/extra.css
+

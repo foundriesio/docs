@@ -5,6 +5,10 @@ build/
 extensions/__pycache__/
 source/_build/
 venv/
+result
+result-*
+site
+__pycache__
 
 ### IDE
 .idea
