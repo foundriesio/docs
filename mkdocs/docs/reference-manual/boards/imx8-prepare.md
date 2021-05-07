@@ -1,0 +1,54 @@
+# Preparation
+
+Ensure you replace the `<factory>` placeholder below with the name of
+your Factory.
+
+Download necessary files from
+`https://app.foundries.io/factories/<factory/targets`
+
+1.  Click the latest Target with the `platform-devel` trigger.
+
+    <figure>
+    <img src="/_static/boards/generic-steps-1.png" class="align-center" width="300" />
+    </figure>
+
+2.  Expand the **run** in the `Runs` section (by clicking on the `+`
+    sign) which corresponds with the name of the board and **download
+    the Factory image for that machine.**
+
+    E.g: `lmp-factory-image-<machine_name>.wic.gz`  
+    and: `imx-boot-<machine_name>`  
+      
+    For i.MX 8M Mini EVK you'll also these two additional files:  
+    `u-boot-<machine-name>.itb` and `sit-<machine-name>.bin`
+
+    <figure>
+    <img src="/_static/boards/imx-steps-2.png" class="align-center" width="300" />
+    </figure>
+
+3.  Extract the file `lmp-factory-image-<machine_name>.wic.gz`:
+
+        gunzip lmp-factory-image-<machine_name>.wic.gz
+
+4.  Expand the **run** in the `Runs` section which corresponds with the
+    name of the board mfgtool-files and **download the tools for that
+    machine.**
+
+    E.g: `<machine_name>-mfgtools`
+
+5.  Download and extract the file `mfgtool-files-<machine_name>.tar.gz`:
+
+        tar -zxvf mfgtool-files-<machine_name>.tar.gz
+
+6.  Organize all the files like the tree below:
+
+        ├── imx-boot-<machine_name>
+        ├── u-boot-<machine.name>.itb             # imx8mm only
+        ├── sit-<machine-name>.bin                # imx8mm only
+        ├── lmp-factory-image-<machine_name>.wic
+        └── mfgtool-files-<machine_name>
+              ├── bootloader.uuu
+              ├── full_image.uuu
+              ├── imx-boot-mfgtool
+              ├── uuu
+              └── uuu.exe

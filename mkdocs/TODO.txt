@@ -1,0 +1,58 @@
+# This is the warning output from:
+# find . -name '*.rst' -exec ^Cndoc {} -f rst -t markdown_strict -o {}.md \;
+
+File ../../_static/csv/supported-boards.csv not found in resource path
+[WARNING] Reference not found for 'Key "version"' at  chunk line 1 column 21
+[WARNING] Reference not found for 'Key "docker_tag"' at  chunk line 3 column 196
+[WARNING] Reference not found for 'Key "version"' at  chunk line 1 column 25
+[WARNING] Reference not found for 'Key "manifest_tag"' at  chunk line 3 column
+75
+[WARNING] Reference not found for 'insecure ways' at  chunk line 3 column 35
+[WARNING] Reference not found for 'universal update utility' at line 300 column
+59
+[WARNING] Reference not found for 'Key "br"' at  chunk line 17 column 14
+[WARNING] Reference not found for 'Key "br"' at  chunk line 17 column 37
+[WARNING] Reference not found for 'Key "br"' at  chunk line 4 column 40
+[WARNING] Reference not found for 'Key "br"' at  chunk line 1 column 29
+[WARNING] Reference not found for 'Key "br"' at  chunk line 62 column 15
+[WARNING] Reference not found for 'Key "br"' at  chunk line 10 column 36
+[WARNING] Reference not found for 'Key "br"' at  chunk line 18 column 15
+[WARNING] Reference not found for 'Key "br"' at  chunk line 18 column 30
+[WARNING] Reference not found for 'Key "br"' at  chunk line 18 column 47
+[WARNING] Reference not found for 'Key "br"' at  chunk line 1 column 29
+[WARNING] Could not load include file 'riscv64-substitutions.inc' at line 5
+column 1
+[WARNING] Could not load include file 'qemu-instructions.template' at line 7
+column 1
+[WARNING] Could not load include file 'arm64-substitutions.inc' at line 5 column
+1
+[WARNING] Could not load include file 'qemu-instructions.template' at line 7
+column 1
+[WARNING] Could not load include file 'x86_64-substitutions.inc' at line 5
+column 1
+[WARNING] Could not load include file 'qemu-instructions.template' at line 7
+column 1
+[WARNING] Could not load include file 'arm-substitutions.inc' at line 5 column 1
+[WARNING] Could not load include file 'qemu-instructions.template' at line 7
+column 1
+[WARNING] Could not load include file 'generic-prepare.rst' at line 6 column 1
+[WARNING] Could not load include file 'generic-flashing.rst' at line 25 column 1
+[WARNING] Could not load include file 'apalis-imx6-prepare.rst' at line 6 column
+1
+[WARNING] Could not load include file 'imx6-flashing.rst' at line 57 column 1
+[WARNING] Could not load include file 'generic-prepare.rst' at line 6 column 1
+[WARNING] Could not load include file 'generic-flashing.rst' at line 15 column 1
+[WARNING] Could not load include file 'imx6-prepare.rst' at line 6 column 1
+[WARNING] Could not load include file 'imx6-flashing.rst' at line 93 column 1
+[WARNING] Could not load include file 'imx8-prepare.rst' at line 6 column 1
+[WARNING] Could not load include file 'imx8-flashing.rst' at line 79 column 1
+[WARNING] Could not load include file 'imx8-prepare.rst' at line 6 column 1
+[WARNING] Could not load include file 'imx8-flashing.rst' at line 64 column 1
+[WARNING] Reference not found for 'Key "fioctl_version"' at  chunk line 4 column
+50
+[WARNING] Reference not found for 'Key "fioctl_version"' at  chunk line 3 column
+33
+[WARNING] Reference not found for 'Key "fioctl_version"' at  chunk line 4 column
+50
+[WARNING] Reference not found for 'Key "fioctl_version"' at  chunk line 3 column
+33
