@@ -14,3 +14,4 @@ Boards
    se050_imx8mm
    imx6ull
    apalis-imx6
+   am64xx-sk
