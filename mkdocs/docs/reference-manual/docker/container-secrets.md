@@ -3,21 +3,19 @@
 There are many cases when building a container that sensitive
 credentials may be required. Examples include:
 
-> -   Downloading a package from a private NPM registry
-> -   Grabbing a file via scp
->
-> Each scenario requires a slightly different approach in the
-> Dockerfile. However, the general approach to getting these secrets
-> securely into your container's build context is the same.
->
-> Note
->
-> There are several [insecure ways]() that should be avoid in order to
-> do this correctly. The proper approach is what's described here based
-> on new functionality in Docker's BuildKit.
->
-> > <https://pythonspeed.com/articles/docker-build-secrets/>
+ -   Downloading a package from a private NPM registry
+ -   Grabbing a file via scp
 
+ Each scenario requires a slightly different approach in the
+ Dockerfile. However, the general approach to getting these secrets
+ securely into your container's build context is the same.
+
+!!! Note
+
+    There are several [insecure ways](https://pythonspeed.com/articles/docker-build-secrets/) that should be avoid in order to
+    do this correctly. The proper approach is what's described here based
+    on new functionality in Docker's BuildKit.
+   
 ## Quick Background On CI Secrets
 
 The Factory's CI System, JobServ, has a mechanism to configure secrets
@@ -25,13 +23,13 @@ for a Project (the factory's LmP build in this case). These secrets are
 placed under `/secrets/` when a CI Run is executed. For example a
 Factory might have secrets:
 
-> -   secret\_1=A Secret Value
-> -   secret\_2=Could even\\nbe multi-line
+  - secret_1=A Secret Value
+  - secret_2=Could even be multi-line
 
 Each Run performed during a Build will have the files:
 
-> -   /secrets/secret\_1
-> -   /secrets/secret\_2
+  - /secrets/secret_1
+  - /secrets/secret_2
 
 So the magic required here is getting these accessible to the
 Dockerfile's build context.

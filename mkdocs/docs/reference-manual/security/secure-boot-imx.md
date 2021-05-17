@@ -36,9 +36,9 @@ look as follows:
 > <img src="/_static/imx-secure-boot.png" class="align-center" style="width:6in" />
 > </figure>
 
-Note
+!!! Note
 
-Systems using TF-A (ie, imx8m) would be slightly different.
+    Systems using TF-A (ie, imx8m) would be slightly different.
 
 See the following diagrams describing the secure boot sequence and
 succinctly the Yocto Project meta layer's configuration for imx8mm based
@@ -84,9 +84,9 @@ remainder of the signature can be processed to authenticate the image.
 The first step is to generate the PKI tree and commit the fuse table to
 the hardware.
 
-> Warning
->
-> Once the fuses have been programmed they can't be modified.
+!!! Warning
+
+    Once the fuses have been programmed they can't be modified.
 
 Please refer to NXP's [Secure Boot Using HABv4
 Guide](https://www.nxp.com/webapp/Download?colCode=AN4581&location=null)
@@ -220,11 +220,11 @@ raise events to indicate that an **unsigned SPL image** has been
 executed. Those events can be inspected by running U-Boot's command
 `hab_status`.
 
-Note
+!!! Note
 
-Once the security fuses have been programmed, we recommend that all your
-UUU scripts are modified to use only **signed SPL** images since some of
-those scripts might depend on the occurance - or not - of HAB events.
+    Once the security fuses have been programmed, we recommend that all your
+    UUU scripts are modified to use only **signed SPL** images since some of
+    those scripts might depend on the occurance - or not - of HAB events.
 
 To secure the platform, there is an extra fuse that needs to be
 programmed: we will only take that step once we are sure that we can
@@ -296,10 +296,10 @@ no HAB events therefore indicating that the image was correctly signed:
     HAB Configuration: 0xf0, HAB State: 0x66
     No HAB Events Found!
 
-Warning
+!!! Warning
 
-The next fuse instruction will close the board for unsigned images: make
-sure you can rebuild the signed images before programing that fuse.
+    The next fuse instruction will close the board for unsigned images: make
+    sure you can rebuild the signed images before programing that fuse.
 
 Now we can close the device meaning that from thereon only signed images
 can be booted on this platform. For that, on the i.MX7ULP we need to
@@ -320,11 +320,11 @@ Rebooting the board and checking the HAB status should give:
     HAB Configuration: 0xcc, HAB State: 0x99
     No HAB Events Found!
 
-Warning
+!!! Warning
 
-A production device should also "lock" the SRK values to prevent
-bricking a closed device. Refer to the Security Reference Manual for the
-location and values of these fuses.
+    A production device should also "lock" the SRK values to prevent
+    bricking a closed device. Refer to the Security Reference Manual for the
+    location and values of these fuses.
 
 ## How to sign an SPL image for SDP (II)
 
@@ -366,12 +366,12 @@ To comply with these requirements we need to sign the image adding the
 1.  **On newer SoCs** (ie imx7ulp), using the `--fix-sdp-dcd` parameter
     is not required.
 
-Note
+!!! Note
 
-Which SoCs fall in which category can be identified by inspecting the
-[Universal Update Utility](https://github.com/NXPmicro/mfgtools)
-g\_RomInfo: if the option ROM\_INFO\_HID\_SKIP\_DCD is configured, then
-the DCD does **not** need to be fixed for that SoC.
+    Which SoCs fall in which category can be identified by inspecting the
+    [Universal Update Utility](https://github.com/NXPmicro/mfgtools)
+    g\_RomInfo: if the option ROM\_INFO\_HID\_SKIP\_DCD is configured, then
+    the DCD does **not** need to be fixed for that SoC.
 
 ## Booting signed images with the [Universal Update Utility](https://github.com/NXPmicro/mfgtools)
 
@@ -406,16 +406,16 @@ we need to make sure of UUU's polling period flag:
 
     $ uuu -pp 1 file.uuu
 
-Note
+!!! Note
 
-These flags
-[-dcdaddr](https://github.com/NXPmicro/mfgtools/commit/003b6cb7a98ba36d78d591b5c1ef8e42423f1b90),
-[-cleardcd](https://github.com/NXPmicro/mfgtools/commit/a3e9f5b84d28666d53f565abecf59996b7810aca)
-and
-[-pp](https://github.com/NXPmicro/mfgtools/commit/5a790eae0a0f424e145171681e1a3a4f3fa47904)
-required for SDP on older SoCs have been contributed to the Universal
-Update Utility by Foundries.io. Make sure your UUU release is up-to-date
-with these changes.
+    These flags
+    [-dcdaddr](https://github.com/NXPmicro/mfgtools/commit/003b6cb7a98ba36d78d591b5c1ef8e42423f1b90),
+    [-cleardcd](https://github.com/NXPmicro/mfgtools/commit/a3e9f5b84d28666d53f565abecf59996b7810aca)
+    and
+    [-pp](https://github.com/NXPmicro/mfgtools/commit/5a790eae0a0f424e145171681e1a3a4f3fa47904)
+    required for SDP on older SoCs have been contributed to the Universal
+    Update Utility by Foundries.io. Make sure your UUU release is up-to-date
+    with these changes.
 
 ## How to sign an M4 binary for HAB validation
 
@@ -465,12 +465,12 @@ proper MIDs, leaves some of the CAAM registers not accessible for
 writing and any attempt to write to them will cause system **core
 aborts**.
 
-Note
+!!! Note
 
-The current NXP BSP implementation expects the CAAM registers to be
-unlocked when configuring the CAAM to operate in the non-secure
-TrustZone world. This applies when OP-TEE is enabled on the i.MX 6, i.MX
-7, and i.MX 7ULP processors.
+    The current NXP BSP implementation expects the CAAM registers to be
+    unlocked when configuring the CAAM to operate in the non-secure
+    TrustZone world. This applies when OP-TEE is enabled on the i.MX 6, i.MX
+    7, and i.MX 7ULP processors.
 
 Our u-boot-spl-sign.csf-template takes care of supporting CAAM on closed
 platforms by adding the following section:

@@ -12,26 +12,26 @@ Navigate to <https://source.foundries.io/factories/>&lt;factory&gt;/
 You will find four git repositories, below is a brief description of
 each one.
 
-meta-subscriber-overrides.git  
-This OE layer defines what is included into your factory image. You can
+`meta-subscriber-overrides.git`
+: This OE layer defines what is included into your factory image. You can
 add board specific customizations and override, add and remove packages
 provided in the default Linux microPlatform base.
 
-lmp-manifest.git  
-The repo manifest for the platform build. It defines which layer
+`lmp-manifest.git`
+: The repo manifest for the platform build. It defines which layer
 versions are included in your platform image. The `default.xml` file is
 the latest released manifest of our Linux microPlatform, and the
 `<factory>.xml` includes your factory changes which allows you to
 customize your image against our common base.
 
-containers.git  
-This is where containers and docker-compose apps are defined. It allows
+`containers.git`
+: This is where containers and docker-compose apps are defined. It allows
 you to define what containers to build, and how to orchestrate them on
 the platform. By default it will build containers for amd64, aarch64,
 and armhf architectures.
 
-ci-scripts.git  
-Defines your platform and container build job to our continuous
+`ci-scripts.git`
+: Defines your platform and container build job to our continuous
 integration system.
 
 ## Triggering Builds
@@ -44,9 +44,9 @@ Any changes pushed to `containers.git` will trigger a container build
 job, and any containers defined will be pushed to your factory’s private
 Docker registry at:
 
-> <https://hub.foundries.io/>&lt;factory&gt;/&lt;container&gt;:latest
+`https://hub.foundries.io/<factory>/<container>:latest`
 
-Note
+!!! Note
 
-Commit messages that include `[skip ci]` or `[ci skip]` will not trigger
-CI builds.
+    Commit messages that include `[skip ci]` or `[ci skip]` will not trigger
+    CI builds.

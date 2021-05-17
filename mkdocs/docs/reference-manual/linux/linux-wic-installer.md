@@ -1,9 +1,9 @@
 # WIC Image Installer
 
-> Note
->
-> Only EFI compatible systems are currently supported by the image
-> installer (e.g. intel-corei7-64, n1sdp).
+!!! Note
+
+    Only EFI compatible systems are currently supported by the image
+    installer (e.g. intel-corei7-64, n1sdp).
 
 To generate a WIC based image installer, switch the default
 `WKS_FILE_sota` definition for your target machine to

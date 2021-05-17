@@ -10,13 +10,11 @@ for building Linux microPlatform images on macOS and Windows.
 2.  Create local folders for `sstate-cache`, `downloads` and `build`, as
     a way to save the build environment outside the container:
 
-    mkdir -p ~/lmp/sstate-cache ~/lmp/downloads ~/lmp/build
+        mkdir -p ~/lmp/sstate-cache ~/lmp/downloads ~/lmp/build
 
 3.  Run update of the container as the `builder` user:
 
-    docker run --rm -u builder --name lmp-sdk -v ~/lmp/build:/build/lmp
-    -v ~/lmp/sstate-cache:/build/lmp/sstate-cache -v
-    ~/lmp/downloads:/build/lmp/downloads -it hub.foundries.io/lmp-sdk:
+        docker run --rm -u builder --name lmp-sdk -v ~/lmp/build:/build/lmp -v ~/lmp/sstate-cache:/build/lmp/sstate-cache -v ~/lmp/downloads:/build/lmp/downloads -it hub.foundries.io/lmp-sdk:81
 
 4.  Set up Git inside the container (required by `repo`):
 

@@ -20,25 +20,25 @@ Personal or Enterprise factory after `lmp-device-register` has
 sucessfully registered your device. The daemon will periodically check
 for new updates, and apply them when found.
 
-To disable daemon mode:
+Disable daemon mode:
 
-`sudo systemctl disable aktualizr-lite`
+    sudo systemctl disable aktualizr-lite
 
-To enable daemon mode:
+Enable daemon mode:
 
-`sudo systemctl enable aktualizr-lite`
+    sudo systemctl enable aktualizr-lite
 
-To restart the daemon:
+Restart the daemon:
 
-`sudo systemctl restart aktualizr-lite`
+    sudo systemctl restart aktualizr-lite
 
-To stop the daemon:
+Stop the daemon:
 
-`sudo systemctl stop aktualizr-lite`
+    sudo systemctl stop aktualizr-lite
 
-To view the daemon logs:
+View the daemon logs:
 
-`sudo journalctl -f -u aktualizr-lite`
+    sudo journalctl -f -u aktualizr-lite
 
 ## Manual Mode
 
@@ -46,9 +46,9 @@ If you have disabled daemon mode, you can use `aktualizr-lite` manually
 from the command line to fetch updates and apply them. Manual mode can
 be useful for debugging, testing, or demoing a device.
 
-Note
+!!! Note
 
-Manual mode will require you to reboot your device to apply an update.
+    Manual mode will require you to reboot your device to apply an update.
 
 ### View Current Status
 
@@ -80,15 +80,15 @@ following command.
 
 ### Configuration update methods
 
--   Editing `/var/sota/sota.toml` on a device
--   Adding or editing an existing configuration snippet e.g.
-    `/etc/sota/conf.d/zz-50-fioctl-01.toml` on a device
--   Running *fioctl* from any host `fioctl devices config <device>`, see
-    `ref-configuring-devices` for more details
+- Editing `/var/sota/sota.toml` on a device
+- Adding or editing an existing configuration snippet e.g.
+  `/etc/sota/conf.d/zz-50-fioctl-01.toml` on a device
+- Running `fioctl` from any host via `fioctl devices config <device>`, see
+  `ref-configuring-devices` for more details
 
 ### Parameters
 
-The following are aktualizr-repo's configuration parameters that can be
+The following are aktualizr-lite's configuration parameters that can be
 useful to play with, the presented values are the default one.
 
     [uptane]

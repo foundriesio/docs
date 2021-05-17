@@ -34,9 +34,7 @@ Go and get a coffee - your Factory is generating a new image with this
 package. This will take at least half an hour (and maybe longer
 depending on current Factory capacity).
 
-You can check the status at:
-
-> <https://ci.foundries.io/projects/>&lt;myfactory&gt;/lmp/
+You can check the status at `https://ci.foundries.io/projects/<myfactory>/lmp/`
 
 Once completed, the device will reboot after the update is applied. This
 behavior is customizable so that you can apply rules to determine when
@@ -58,9 +56,9 @@ to add a new package from PyPi.
 Create a recipe in the **meta-subscriber-overrides.git** repository
 using the following naming scheme:
 
-> `recipes-devtools/python/python3-<package name>_<version>.bb`
->
-> (E.g.: recipes-devtools/python/python3-virtualenv\_16.4.3.bb)
+ `recipes-devtools/python/python3-<package name>_<version>.bb`
+
+ (E.g.: `recipes-devtools/python/python3-virtualenv_16.4.3.bb`)
 
 Example file contents:
 

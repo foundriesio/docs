@@ -57,9 +57,9 @@ At this point the only copy of the Factory's root private key is in this
 file. This file **cannot be lost** or it will be impossible to make
 future key updates to the Factory.
 
-Note
+!!! Note
 
-At this point, the tarball should be backed up as described below.
+    At this point, the tarball should be backed up as described below.
 
 ### Establishing an offline target key
 
@@ -72,8 +72,8 @@ the Factory.
 In order to ensure customer control of updates, production devices
 require their `targets.json` file to be signed by two parties:
 
-> -   The Foundries.io online target signing key
-> -   The customer's offline target signing key
+- The Foundries.io online target signing key
+- The customer's offline target signing key
 
 A Factory can create its target signing key in fioctl with:
 
@@ -102,10 +102,10 @@ lacks the root keys required to alter Factory root metadata:
 
 There are 3 recommend types of backups:
 
-> -   The actual tarball - Basically
->     `cp <tarball> <path to backup storage media>`
-> -   A plain text file of the Factory's active root private key
-> -   A print out of the Factory's active root private key
+- The actual tarball - Basically
+  `cp <tarball> <path to backup storage media>`
+- A plain text file of the Factory's active root private key
+- A print out of the Factory's active root private key
 
 2-3 copies of these backups should be placed in safes in different
 geographical locations. Finding the root private key requires

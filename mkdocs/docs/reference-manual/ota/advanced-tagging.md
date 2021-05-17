@@ -6,17 +6,21 @@ tagging techniques. These workflows can be handled in the
 
 ## Terminology
 
-**Platform Build** - A build created by a change to the LmP
+**Platform Build**
+: A build created by a change to the LmP
 (lmp-manifest.git or meta-subscriber-overrides.git). This is the base OS
 image.
 
-**Container Build** - A build created by a change to containers.git.
+**Container Build**
+: A build created by a change to containers.git.
 
-**Target** - This an entry in a factory's TUF targets.json file. It
+**Target**
+: This an entry in a factory's TUF targets.json file. It
 represents what should be thought of as an immutable combination of the
 Platform build's OSTree hash + the output of a Container build.
 
-**Tag** - A Target has a "custom" section where with a list of Tags. The
+**Tag**
+: A Target has a "custom" section where with a list of Tags. The
 tags can be used to say things like "this is a development build" or
 this is a "production" build.
 

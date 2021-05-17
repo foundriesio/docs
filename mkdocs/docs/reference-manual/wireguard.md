@@ -14,11 +14,11 @@ managed server.
 
 ## Actions on VPN Server
 
-Note
+!!! Note
 
-Make sure to replace the `<api token>` and `<factory>` (name of your
-Factory) placeholders with your own information in the following
-commands.
+    Make sure to replace the `<api token>` and `<factory>` (name of your
+    Factory) placeholders with your own information in the following
+    commands.
 
 Install dependencies:
 
@@ -27,10 +27,10 @@ Install dependencies:
 Create an API token for this service at
 <https://app.foundries.io/settings/tokens/>
 
-Note
+!!! Note
 
-Your API token needs to have at least `devices:read` scope for this
-guide. Read `ref-api-access` for more details.
+    Your API token needs to have at least `devices:read` scope for this
+    guide. Read `ref-api-access` for more details.
 
 Clone VPN server code:
 
@@ -134,8 +134,8 @@ If something is preventing traffic reaching the destination then you
 will not see a message appear. After trying one client, try another to
 confirm your results.
 
-Note
+!!! Note
 
-Since UDP is stateless, each successful connection means you need to
-restart the `nc` session on the server. For each debug attempt, rinse
-and repeat this process by killing and restarting the `nc -lup` command.
+    Since UDP is stateless, each successful connection means you need to
+    restart the `nc` session on the server. For each debug attempt, rinse
+    and repeat this process by killing and restarting the `nc -lup` command.

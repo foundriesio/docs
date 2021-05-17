@@ -36,42 +36,32 @@ checks in with the server every 5 minutes. The HTTP request includes a
 timestamp of its current configuration. The server will send back one of
 two responses:
 
-> -   **304** - This means nothing has changed since the last request.
->     There will be an empty response body.
-> -   **200** - Something has changed since the last request. The
->     response body will be the updated configuration.
+- **304** - This means nothing has changed since the last request.
+  There will be an empty response body.
+- **200** - Something has changed since the last request. The
+  response body will be the updated configuration.
 
 Fioconfig’s logic for a configuration change is:
 
-> -   Save "encrypted" file to /var/sota (fleet-wide and "unencrypted"
->     values aren't encrypted).
-> -   For each file in the new configuration:
->     -   Decrypt if needed
->     -   If different from `/var/run/secrets/<file>`
->         -   Write new file
->         -   Call the the on-changed handler (if provided)
+-   Save "encrypted" file to /var/sota (fleet-wide and "unencrypted"
+    values aren't encrypted).
+-   For each file in the new configuration:
+    -   Decrypt if needed
+    -   If different from `/var/run/secrets/<file>`
+        -   Write new file
+        -   Call the the on-changed handler (if provided)
 
 Since `/var/run/secrets` is lost between boots, a systemd oneshot job is
 invoked during the boot process to extract the "encrypted" persistent
 configuration. It will call "onchanged" handlers.
 
+
 ## Diagram
 
-    fioctl
-      +
-      |
-      |
-    +--------v---------+
-    |                  |
-    | api.foundries.io |
-    |                  |
-    +-^------------^---+
-    |            |
-    |            |
-    |            |
-    |            |
-    +---------+----+    +--+-----------+
-    |              |    |              |
-    | LmP Device   |    | LmP Device   |    . . .
-    |              |    |              |
-    +--------------+    +--------------+
+```mermaid
+graph TD
+A[fioctl] --> B[api.foundries.io]
+B --> C[LmP Device]
+B --> D[LmP Device]
+```
+

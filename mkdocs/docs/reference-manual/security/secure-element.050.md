@@ -100,12 +100,12 @@ iMX platform the Hardware Unique Key could be retrieved from the CAAM,
 AES ECB and HASH operations implemented in libtomcrypt, and RNG, ECC and
 RSA in the SE050.
 
-Note
+!!! Note
 
-As a typical scenario, choosing to run AES ECB and HASH on the SE050
-might be a bad idea due to its performance implications as those
-operations are heavily used to verify the trusted filesystem in OP-TEE
-and would dramatically slow down the opening of trusted applications.
+    As a typical scenario, choosing to run AES ECB and HASH on the SE050
+    might be a bad idea due to its performance implications as those
+    operations are heavily used to verify the trusted filesystem in OP-TEE
+    and would dramatically slow down the opening of trusted applications.
 
 ## Serial Communications to the SE050
 
@@ -117,12 +117,12 @@ the REE - we needed a second driver: a sort of i2c trampoline service
 capable to routing I2C read and write operations from OP-TEE to the REE
 driver (Linux in particular).
 
-Note
+!!! Note
 
-These drivers are configurable using the following build options:
-
-CFG\_CORE\_SE05X\_I2C\_BUS=: the I2C bus where the SE050 sits
-CFG\_CORE\_SE05X\_BAUDRATE=: the SE050 baud-rate in mbps
+    These drivers are configurable using the following build options:
+    
+    CFG\_CORE\_SE05X\_I2C\_BUS=: the I2C bus where the SE050 sits
+    CFG\_CORE\_SE05X\_BAUDRATE=: the SE050 baud-rate in mbps
 
 ## Secure Communication Protocol 03
 
@@ -135,29 +135,29 @@ using a set of predefined keys shipped with the devices.
 These keys can be securely rotated. Once rotated, they are stored in the
 TEE secure file system.
 
-Note
+!!! Note
 
-We can choose whether to enable SCP03 right after boot with its default
-set of keys or at a later time once the RPMB-FS (or REE-FS) are
-available so the keys can be read from secure storage:
-
-CFG\_CORE\_SE05X\_SCP03\_EARLY=y : enables SCP03 with its default keys
-set CFG\_CORE\_SE05X\_SCP03\_PROVISION=y: allows SCP03 rotation set
+    We can choose whether to enable SCP03 right after boot with its default
+    set of keys or at a later time once the RPMB-FS (or REE-FS) are
+    available so the keys can be read from secure storage:
+    
+        CFG_CORE_SE05X_SCP03_EARLY=y : enables SCP03 with its default keys set
+        CFG_CORE_SE05X_SCP03_PROVISION=y: allows SCP03 rotation set
 
 Provisioning of new SCP03 keys is only available if
-*CFG\_CORE\_SE05X\_SCP03\_EARLY* is not set as we would not be able to
+*`CFG_CORE_SE05X_SCP03_EARLY`* is not set as we would not be able to
 write back the new keys to secure storage.
 
 To trigger SCP03 key rotation you need to execute the host side of the
 following Pseudo Trusted Application from the REE:
 [scp03](https://github.com/foundriesio/optee-scp03)
 
-Warning
+!!! Warning
 
-If the secure database storing the SCP03 keys gets corrupted, the
-processor will no longer be able to access the SE050 over an encrypted
-connection. Moreover there is no protocol defined to recover from that
-situation.
+    If the secure database storing the SCP03 keys gets corrupted, the
+    processor will no longer be able to access the SE050 over an encrypted
+    connection. Moreover there is no protocol defined to recover from that
+    situation.
 
 ## SE050 Non Volatile Memory
 
@@ -167,12 +167,12 @@ using the cryptoki API implementing the pkcs\#11 standard. External keys
 used by the SE050 to perform other cryptographic operations are not
 stored in the SE050 NVM.
 
-Note
+!!! Note
 
-The SE050 NVM can be cleared by setting the following configuration
-option:
-
-CFG\_CORE\_SE05X\_INIT\_NVM=y
+    The SE050 NVM can be cleared by setting the following configuration
+    option:
+    
+        CFG_CORE_SE05X_INIT_NVM=y
 
 Be aware that initializing the NVM would cause all keys and objects to
 be deleted from permanent storage. This however has no impact on the
@@ -206,8 +206,8 @@ the key identifier which the driver will query from the SE050. If
 successfull, the keypair is returned to pkcs\#11 and commited to secure
 storage.
 
-Note
+!!! Note
 
-The private key will just be a handle to the actual key stored in Non
-Volatile Memory: private keys are **never** exposed outside the NXP
-SE050.
+    The private key will just be a handle to the actual key stored in Non
+    Volatile Memory: private keys are **never** exposed outside the NXP
+    SE050.

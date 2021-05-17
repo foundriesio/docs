@@ -14,8 +14,8 @@ configuring a Factory for "preloaded images".
 
 There are two ways to create these images:
 
-> -   `fioctl targets image<fioctl_targets_image>`
-> -   configuring ci-scripts.git to preload each build
+- `fioctl targets image<fioctl_targets_image>`FIXME
+- configuring ci-scripts.git to preload each build
 
 The easiest way to configure this is updating a Factory's
 `factory-config.yml <def-containers>` in ci-scripts.git with:
@@ -47,8 +47,8 @@ have their containers.git set up like:
 
 In this scenario "devel" images should be preloaded with:
 
-> -   money-making-app
-> -   debug-tools
+- money-making-app
+- debug-tools
 
 "master" images and "production" should only include the
 "money-making-app".

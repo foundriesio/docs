@@ -20,6 +20,3 @@ stack which is meant to be extended by the user. It is open source
 software, and maintained by Foundries.io on
 [GitHub](https://github.com/foundriesio).
 
-linux-supported linux-repo linux-dev-container linux-building
-linux-kernel linux-layers linux-wic-installer linux-persistent-log
-linux-net-debug linux-update linux-extending preloaded-images

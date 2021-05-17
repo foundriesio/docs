@@ -4,10 +4,10 @@ Device configuration can be managed with the [fioctl command line
 tool](https://github.com/foundriesio/fioctl/releases). There are two
 types of configuration supported:
 
-> 1.  Fleet-wide - Configuration set here gets sent to all devices in a
->     Factory.
-> 2.  Device specific - This overrides fleet-wide configuration in the
->     event they collide.
+1.  Fleet-wide - Configuration set here gets sent to all devices in a
+    Factory.
+2.  Device specific - This overrides fleet-wide configuration in the
+    event they collide.
 
 ## Fleet Wide Configuration
 
@@ -19,6 +19,16 @@ Configuration common to all factory devices can be done with
 
     # Add a config file to the entire fleet
     fioctl config set --reason "for docs" AWS_REGION="us-east-2"
+
+The reason specified via `--reason` will be visible in the output of `fioctl
+config log`:
+
+    Created At:    2021-03-06T00:46:02
+    Applied At:    2021-03-06T00:49:24
+    Change Reason: for docs
+    Files:
+            z-50-fioctl.toml - [/usr/share/fioconfig/handlers/aktualizr-toml-update]
+    ...
 
 ## Device Specific Configuration
 

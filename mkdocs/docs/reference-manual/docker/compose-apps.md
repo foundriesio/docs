@@ -16,7 +16,7 @@ is distributed as compose apps. Here is a simplistic source layout:
     httpd/
           docker-compose.yml
           nginx.conf
-
+    
     # httpd/docker-compose.yml
     version: "3"
     services:
@@ -24,7 +24,7 @@ is distributed as compose apps. Here is a simplistic source layout:
         image: nginx:alpine
         volumes:
           - ./nginx.conf:/etc/nginx/conf.d/default.conf
-
+    
     # httpd/nginx.conf
     server {
       location / {

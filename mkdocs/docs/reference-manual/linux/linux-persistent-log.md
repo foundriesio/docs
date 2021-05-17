@@ -45,12 +45,12 @@ described at `ref-adding-packages-image`.
 
 ## Optional: customize systemd-journald options
 
-> Note
->
-> Special attention is required when defining your own
-> **systemd-journald** configuration file, as a high **SystemMaxUse**
-> value might cause the logging to consume a substantial amount of disk
-> space.
+!!! Note
+
+    Special attention is required when defining your own
+    **systemd-journald** configuration file, as a high **SystemMaxUse**
+    value might cause the logging to consume a substantial amount of disk
+    space.
 
 Create your own **systemd-journald** configuration file by overriding
 the `10-persistent-journal.conf` file used by the

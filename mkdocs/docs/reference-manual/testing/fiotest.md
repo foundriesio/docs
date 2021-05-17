@@ -34,41 +34,41 @@ The API is built around a generic model for recording test results:
 
 ### POST /tests/
 
-> Create a new test (`status=RUNNING`):
->
->     # Content-type: application/json
->     {
->       "name": "test-name",
->       "target": "raspberrypi3-64-lmp-8"
->     }
->     # The CreatedOn value will be auto-populated by the server.
->
-> **RETURNS**: A location to the new Test object:
->
->     HTTP 201
->     LOCATION: /tests/12345
+Create a new test (`status=RUNNING`):
+
+    # Content-type: application/json
+    {
+      "name": "test-name",
+      "target": "raspberrypi3-64-lmp-8"
+    }
+    # The CreatedOn value will be auto-populated by the server.
+
+**RETURNS**: A location to the new Test object:
+
+    HTTP 201
+    LOCATION: /tests/12345
 
 ### PUT /tests/&lt;test id&gt;
 
-> Complete a test with data:
->
->     # Content-type: application/json
->     {
->       "status": PASS/FAIL
->     }
->
->     or
->
->     {
->       "results": [
->         {"name": "test-1", "status": "PASS"},
->         {"name": "test-2", "status": "SKIPPED"}
->       ]
->     }
->     # The CompletedOn value will be auto-populated by the server. If results
->     # are provided PASS/FAIL will be based on their values.
->
-> **RETURNS**: `HTTP 200`
+Complete a test with data:
+
+    # Content-type: application/json
+    {
+      "status": PASS/FAIL
+    }
+
+    or
+
+    {
+      "results": [
+        {"name": "test-1", "status": "PASS"},
+        {"name": "test-2", "status": "SKIPPED"}
+      ]
+    }
+    # The CompletedOn value will be auto-populated by the server. If results
+    # are provided PASS/FAIL will be based on their values.
+
+**RETURNS**: `HTTP 200`
 
 ## Creating Custom Tests
 

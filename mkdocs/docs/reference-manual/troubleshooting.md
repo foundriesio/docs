@@ -35,11 +35,11 @@ consider when creating Targets over time.
 Fioctl. This removes these targets from the `targets.json` associated
 with your Factory, allowing the production of new Targets.
 
-Warning
+!!! Warning
 
-Ensure there are no important devices running on a Target that is about
-to be pruned. If you are intending on pruning `master`, be careful and
-make sure you know what you are doing.
+    Ensure there are no important devices running on a Target that is about
+    to be pruned. If you are intending on pruning `master`, be careful and
+    make sure you know what you are doing.
 
 You can individually prune/delete targets by their Target number:
 
@@ -59,6 +59,6 @@ by adding `docker_prune = "0"` to the `[pacman]` section of
 
     LABEL aktualizr-lite-no-prune
 
-Note
+!!! Note
 
-<https://docs.docker.com/engine/reference/builder/#label>
+    <https://docs.docker.com/engine/reference/builder/#label>

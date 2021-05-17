@@ -26,10 +26,28 @@ the reference server. Each device will be created via api.foundries.io
 This scenario is handy for certain security constrained setups. However,
 it does have a couple of potential drawbacks:
 
-> -   Devices don't show up on Foundries.io until the first time they
->     connect.
-> -   Devices won't have Foundries.io managed configuration data
->     available until this first connection.
+- Devices don't show up on Foundries.io until the first time they
+  connect.
+- Devices won't have Foundries.io managed configuration data
+  available until this first connection.
+
+## Registering Production Device by Default
+
+After the development cycle is over, and it is expected that every new
+device to be registered is a production device, it might be good to
+enable this by default in LmP.
+
+Create or modify the `lmp-device-register_%.bbappend` file in the
+factory's `meta-subscriber-overrides`:
+
+    host:~$ mkdir -p meta-subscriber-overrides/recipes-sota/lmp-device-register/
+    host:~$ echo "PACKAGECONFIG += \"production\"" >> meta-subscriber-overrides/recipes-sota/lmp-device-register/lmp-device-register_%.bbappend
+
+The images created with this configuration includes `PRODUCTION=on` by
+default on the command `lmp-device-register`.
+
+This is very usefully when the update plan is to use
+`ref-production-targets`.
 
 ### lmp-device-auto-register configuration
 

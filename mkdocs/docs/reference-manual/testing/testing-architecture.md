@@ -25,13 +25,13 @@ be extended/customized for your specific needs.
 
 The way testing typically flows:
 
-> -   Customer pushes code (`git push`)
-> -   CI builds a new Target
-> -   aktualizr-lite will see this new Target and:
->     -   Installs Target
->     -   Notifies fiotest once the Target becomes active
->         -   Tests are run and results are reported via the device
->             gateway for the Target.
+-   Customer pushes code (`git push`)
+-   CI builds a new Target
+-   aktualizr-lite will see this new Target and:
+    -   Installs Target
+    -   Notifies fiotest once the Target becomes active
+        -   Tests are run and results are reported via the device
+            gateway for the Target.
 
 <figure>
 <img src="/_static/testing-arch.png" class="align-center" />
