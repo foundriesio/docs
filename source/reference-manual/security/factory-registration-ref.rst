@@ -40,18 +40,13 @@ After the development cycle is over, and it is expected that every new
 device to be registered is a production device, it might be good to enable this
 by default in LmP.
 
-Create or modify the bbappend file in the factory's ``meta-subscriber-overrides``:
+Create or modify the ``lmp-device-register_%.bbappend`` file in the factory's
+``meta-subscriber-overrides``:
 
 .. prompt:: bash host:~$
 
    mkdir -p meta-subscriber-overrides/recipes-sota/lmp-device-register/
-   gedit lmp-device-register_%.bbappend
-
-Add the following line to the ``lmp-device-register_%.bbappend`` file:
-
-.. prompt:: text
-
-   PACKAGECONFIG += "production"
+   echo "PACKAGECONFIG += \"production\"" >> meta-subscriber-overrides/recipes-sota/lmp-device-register/lmp-device-register_%.bbappend
 
 The images created with this configuration includes ``PRODUCTION=on`` by default
 on the command ``lmp-device-register``.
