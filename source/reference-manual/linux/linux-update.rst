@@ -1,3 +1,5 @@
+.. _ref-linux-update:
+
 Updating the Linux microPlatform Core
 =====================================
 
