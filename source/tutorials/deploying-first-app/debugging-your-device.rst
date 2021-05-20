@@ -67,7 +67,7 @@ Another way to verify applications running on the device is with the ``docker ps
 
 .. prompt:: bash device:~$, auto
 
-    device:~$ docker ps -a
+    device:~$ docker ps
 
 **Example Output**:
 

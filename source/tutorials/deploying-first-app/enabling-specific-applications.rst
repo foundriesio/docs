@@ -33,7 +33,7 @@ are any containers running on the device:
 
 .. prompt:: bash device:~$, auto
 
-    device:~$ docker ps -a
+    device:~$ docker ps
 
 **Example Output**:
 
@@ -78,7 +78,7 @@ Check the running containers:
 
 .. prompt:: bash device:~$, auto
 
-    device:~$ docker ps -a
+    device:~$ docker ps
 
 **Example Output**:
 
