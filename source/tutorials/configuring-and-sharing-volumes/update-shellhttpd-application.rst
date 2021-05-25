@@ -96,7 +96,7 @@ Update the configuration file using ``fioctl`` in your host machine:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl devices config set raspberrypi3-64 shellhttpd.conf="MSG=\"New config file updated over-the-air\""
+    host:~$ fioctl devices config set <device-name> shellhttpd.conf="MSG=\"New config file updated over-the-air\""
 
 Wait and test your application again:
 
