@@ -22,7 +22,7 @@ Use ``fioctl`` on your host machine to remember your device name:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl devices list -f tutorial
+    host:~$ fioctl devices list -f <factory>
 
 **Example Output**:
 
@@ -30,13 +30,13 @@ Use ``fioctl`` on your host machine to remember your device name:
 
      NAME             FACTORY   TARGET                 STATUS   APPS        UP-TO-DATE
      ----             -------   ------                 ------   ----        ----------
-     raspberrypi3-64  tutorial  raspberrypi3-64-lmp-8  ONLINE   shellhttpd  true
+     <device-name>  <factory>  raspberrypi3-64-lmp-8  ONLINE   shellhttpd  true
 
 Run ``fioctl`` to set a configuration file:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl devices config set raspberrypi3-64 shellhttpd.conf="MSG=\"Hello from fioctl\""
+    host:~$ fioctl devices config set <device-name> shellhttpd.conf="MSG=\"Hello from fioctl\""
 
 On your device, check the folder ``/var/run/secrets``. It could take up to 
 5 minute to receive the configuration file. If you changed the ``fioconfig`` 
