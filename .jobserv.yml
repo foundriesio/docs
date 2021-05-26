@@ -3,6 +3,11 @@ triggers:
   - name: Code Review
     type: github_pr
     runs:
+      - name: mkdocs
+        container: python:3.8
+        host-tag: amd64
+        script: make-mkdocs
+
       - name: docs
         container: python:3.6
         host-tag: amd64
@@ -14,6 +19,21 @@ triggers:
         script: link-check
 
 scripts:
+  make-mkdocs: |
+    #!/bin/sh -ex
+    ARCHIVE=/archive ./mkdocs/gen-docs
+
+    urlbase="https://ci.foundries.io/projects/${H_PROJECT}/builds/${H_BUILD}/${H_RUN}/"
+    set +x   # cleaner output and don't leak the secret token below
+    echo == $(date "+%F %T") HTML browseable at: ${urlbase}artifacts/index.html
+
+    tok=$(cat /secrets/githubtok)
+    curl -X POST \
+        -H "Content-Type: application/json" \
+        -H "Authorization: token $tok" \
+        -d "{\"body\": \"Docs for ${GIT_SHA} are browesable at: ${urlbase}artifacts/index.html\"}" \
+        "https://api.github.com/repos/foundriesio/docs/issues/${GH_PRNUM}/comments"
+
   make-docs: |
     #!/bin/sh -ex
     pip install -r ./requirements.txt

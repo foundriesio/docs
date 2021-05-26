@@ -1,0 +1,26 @@
+#!/bin/sh -e
+
+here=$(readlink -f $(dirname $0))
+cd $here
+
+ARCHIVE=${ARCHIVE-./site}
+
+if [ -z "$VENV" ] ; then
+	echo "= $(date "+%F %T") Creating temporary venv"
+	VENV=$(mktemp -d /tmp/ota-lite.XXXXXX)
+	trap "rm -rf $VENV" EXIT
+
+	python3 -m venv $VENV
+	$VENV/bin/pip3 install -r ./requirements.txt
+fi
+PATH=$PATH:$VENV/bin
+
+if ! which fioctl ; then
+	echo == $(date "+%F %T") Setting up fioctl docs
+	export FIOCTL_VERSION=$(wget -q -O-  https://api.github.com/repos/foundriesio/fioctl/releases/latest | grep tag_name | sed -E 's/.*"([^"]+)".*/\1/')
+	wget -O $VENV/bin/fioctl https://github.com/foundriesio/fioctl/releases/download/${FIOCTL_VERSION}/fioctl-linux-amd64
+	chmod +x $VENV/bin/fioctl
+fi
+echo "TODO fioctl gen"
+
+mkdocs build -s -d $ARCHIVE
