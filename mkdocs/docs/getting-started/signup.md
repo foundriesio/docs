@@ -18,27 +18,24 @@ When your account is created, it is not associated with any factories.
 
 Create one by clicking `Create Factory`.
 
-Warning
+!!! Warning
 
-Once a Factory is created, the chosen platform/machine and Factory name
-cannot be changed. Create a new Factory or contact support if a mistake
-is made. <https://support.foundries.io/>.
+    Once a Factory is created, the chosen platform/machine and Factory name
+    cannot be changed. Create a new Factory or contact support if a mistake
+    is made. <https://support.foundries.io/>.
 
 <figure>
 <img src="/_static/signup/no-factories.png" class="align-center" width="900" alt="Your journey begins empty handed" /><figcaption aria-hidden="true">Your journey begins empty handed</figcaption>
 </figure>
 
-Note
+!!! Note
 
-Upon Factory creation you will be sent an email with instructions to
-securely download your `ref-offline-keys`. Read
-`this documentation<ref-offline-keys>` for information on key rotation.
-
-It is incredibly important that your keys are kept **safe and private**.
-Please store these keys securely.
-
-Suggest methods of storing TuF keys securely, such as by USB in a safety
-deposit box, or yubikey.
+    Upon Factory creation you will be sent an email with instructions to
+    securely download your `ref-offline-keys`. Read
+    `this documentation<ref-offline-keys>` for information on key rotation.
+    
+    It is incredibly important that your keys are kept **safe and private**.
+    Please store these keys securely.
 
 ## Select Your Platform
 
@@ -55,12 +52,12 @@ architectures.
 <img src="/_static/signup/create.png" class="align-center" width="450" alt="Create Factory" /><figcaption aria-hidden="true">Create Factory</figcaption>
 </figure>
 
-Tip
+!!! Tip
 
-Your chosen platform determines what the initial value for the
-`machines:` key will be for your first build. This key and its value can
-later be changed via `factory-config.yml` in the
-`ref-Factory-definition`
+    Your chosen platform determines what the initial value for the
+    `machines:` key will be for your first build. This key and its value can
+    later be changed via `factory-config.yml` in the
+    `ref-Factory-definition`
 
 ## Watch Your Build
 
@@ -77,20 +74,25 @@ Registered devices update and install targets.
 The `Targets` tab of the Factory will become more useful as you begin to
 build your application and produce new Targets for the Factory to build.
 
-Note
+!!! Note
 
-If you'd like to learn more, [we wrote a
-blog](https://foundries.io/insights/blog/2020/05/14/whats-a-target/)
-about what Targets are and why we made them the way they are.
+    If you'd like to learn more, [we wrote a
+    blog](https://foundries.io/insights/blog/2020/05/14/whats-a-target/)
+    about what Targets are and why we made them the way they are.
 
 <figure>
 <img src="/_static/signup/build.png" class="align-center" width="900" alt="FoundriesFactory Targets" /><figcaption aria-hidden="true">FoundriesFactory Targets</figcaption>
 </figure>
 
-Warning
+!!! Warning
 
-Bootstrapping your Factory securely takes some time. Your first build
-will take up to 30 minutes to complete.
-
-Read through the rest of this section and set up your development
-environment while you wait for us to build your Factory from scratch.
+    Bootstrapping your Factory securely takes some time. Your first build
+    will take **30 minutes** or more to complete.
+    
+    If that is your case, use this time to set up your development
+    environment and get started with docker commands. The documents below do
+    not require any hardware.
+    
+    -   `gs-git-config`
+    -   `gs-install-fioctl`
+    -   `tutorial-gs-with-docker`

@@ -1,0 +1,7 @@
+nav:
+  - signup.md
+  - git-config.md
+  - install-fioctl.md
+  - flash-device.md
+  - register-device.md
+

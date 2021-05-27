@@ -19,9 +19,9 @@ Select the tab `Tokens` and create a new **Api Token** by clicking on
 the `+ New Token`. Complete with a **Description** and the **Expiration
 date** and select `next`.
 
-For this tutorial, check the `Use for source code access` box and select
-your **Factory**. You can later revoke this access and set up a new
-token once you are familiar with the `ref-api-access`.
+Check the `Use for source code access` box and select your **Factory**.
+You can later revoke this access and set up a new token once you are
+familiar with the `ref-api-access`.
 
 <figure>
 <img src="/_static/git-config/token.png" class="align-center" width="500" alt="Token for source code access" /><figcaption aria-hidden="true">Token for source code access</figcaption>
@@ -33,11 +33,7 @@ Replace `YOUR_TOKEN` in the following command with your access token. An
 example token looks like this:
 `ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z`
 
-bash host:~$, auto
-
-host:~$ git config --global
-http.<https://source.foundries.io.extraheader> "Authorization: basic
-$(echo -n YOUR\_TOKEN | openssl base64)"
+    host:~$ git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n YOUR_TOKEN | openssl base64)"
 
 You can verify that this has been successful by attempting to clone a
 repository from your FoundriesFactory. As an example, you can clone your
@@ -45,16 +41,11 @@ repository from your FoundriesFactory. As an example, you can clone your
 
 Replace `<factory>` with your FoundriesFactory name.
 
-bash host:~$, auto
+    host:~$ git clone https://source.foundries.io/factories/<factory>/containers.git
 
-host:~$ git clone
-<https://source.foundries.io/factories/>&lt;factory&gt;/containers.git
+!!! Tip
 
-Tip
+    You can also use `git config --list` to show you the current state of
+    the global Git configuration, in which `source.foundries.io` should be
+    referenced along with your access token, represented as a base64 string.
 
-You can also use `git config --list` to show you the current state of
-the global Git configuration, in which `source.foundries.io` should be
-referenced along with your access token, represented as a base64 string.
-
-**git-config** add :ref: to 'FoundriesFactory', 'access token', 'account
-creation', 'ci scripts' when pages are available
