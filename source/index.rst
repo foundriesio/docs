@@ -28,6 +28,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    tutorials/configuring-and-sharing-volumes/configuring-and-sharing-volumes
    tutorials/compose-app/compose-app
    tutorials/customizing-the-platform/customizing-the-platform
+   tutorials/working-with-tags/working-with-tags
 
 .. toctree::
    :maxdepth: 1
