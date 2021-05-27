@@ -35,3 +35,5 @@ plugins:
 extra_css:
   - _static/extra.css
 
+use_directory_urls: false
+
