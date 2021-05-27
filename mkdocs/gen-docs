@@ -21,6 +21,9 @@ if ! which fioctl ; then
 	wget -O $VENV/bin/fioctl https://github.com/foundriesio/fioctl/releases/download/${FIOCTL_VERSION}/fioctl-linux-amd64
 	chmod +x $VENV/bin/fioctl
 fi
-echo "TODO fioctl gen"
 
-mkdocs build -s -d $ARCHIVE
+rm ./docs/reference-manual/factory/fioctl.md
+mkdir -p ./docs/reference-manual/factory/fioctl
+fioctl gen-md ./docs/reference-manual/factory/fioctl/
+
+mkdocs build --strict --no-directory-urls -d $ARCHIVE
