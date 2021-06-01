@@ -203,7 +203,7 @@ With `fioctl`_, we will enable the application "ibm-iotsdk" on your device regis
 
  # Ubuntu Host Machine
  # Configure the device to run the "ibm-iotsdk" app
- $ fioctl devices config updates raspberrypi3 --apps ibm-iotsdk --tags master
+ $ fioctl devices config updates raspberrypi3 --apps ibm-iotsdk
 
 On your Raspberry Pi, you should receive the update soon. You can watch the logs by running the following commands::
 

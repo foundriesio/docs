@@ -103,7 +103,7 @@ With `fioctl`_, we will enable the application "mosquitto" on your device regist
 
  # Ubuntu Host Machine
  # Configure the device to run the "mosquitto" app
- $ fioctl devices config updates raspberrypi3 --apps mosquitto --tags master
+ $ fioctl devices config updates raspberrypi3 --apps mosquitto
 
 It may take a while for the application to be installed on the device. By default, it can take 5 to 10 minutes.
 

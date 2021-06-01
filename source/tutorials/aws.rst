@@ -440,7 +440,7 @@ With `fioctl`_, we will enable the application "aws-iotsdk" on your device regis
 
  # Ubuntu Host Machine
  # Configure the device to run the "aws-iotsdk" app
- $ fioctl devices config updates raspberrypi3 --apps aws-iotsdk --tags master
+ $ fioctl devices config updates raspberrypi3 --apps aws-iotsdk
 
 On your Raspberry Pi, you should receive the update soon. You can watch the logs by running the following commands::
 
