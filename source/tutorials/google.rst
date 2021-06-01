@@ -306,7 +306,7 @@ With `fioctl`_, we will enable the application "google-iotsdk" on your device re
 
  # Ubuntu Host Machine
  # Configure the device to run the "google-iotsdk" app
- $ fioctl devices config updates raspberrypi3 --apps google-iotsdk --tags master
+ $ fioctl devices config updates raspberrypi3 --apps google-iotsdk
 
 On your Raspberry Pi, you should receive the update soon. You can watch the logs by running the following commands::
 
