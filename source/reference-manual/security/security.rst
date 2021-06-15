@@ -7,5 +7,6 @@ Security
    :maxdepth: 2
 
    secure-boot
+   boot-software-updates
    ota-security
    secure-elements/index
