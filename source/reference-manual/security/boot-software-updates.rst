@@ -2,8 +2,8 @@
 
 .. _ref-boot-software-updates:
 
-Boot Software Updates
-=====================
+Boot Software Updates on iMX
+============================
 
 Boot artifacts
 --------------
@@ -24,10 +24,10 @@ U-Boot FIT image
 ~~~~~~~~~~~~~~~~
 
 U-boot FIT-image is a generic name for the signed FIT-image that
-contains u-boot.bin and a host of other firmware. This file is verified
-by SPL via a public key stored in SPL’s dtb. This artifact is signed as
-a part of CI and CAN be included automatically in a boot software OTA
-package.
+contains U-Boot proper (u-boot.bin) and a host of other firmware.
+This file is verified by SPL via a public key stored in SPL’s dtb.
+This artifact may be signed (on closed boards) as a part of CI and
+CAN be included automatically in a boot software OTA package.
 
 -  U-boot-nodtb.bin
 -  U-boot.dtb
@@ -45,7 +45,7 @@ MMC boot image layout
 |image of iMX6 layout| |image of iMX8M layout|
 
 Secondary Image Table (SIT) is a 20 byte long structure containing of 5
-32-bit words.Those encode bootloader B-copy area offset (called
+32-bit words. Those encode bootloader B-copy area offset (called
 **firstSectorNumber**), magic value (called **tag**) that is always
 **0x00112233**, and three unused words set to 0. Example SIT are below:
 
@@ -65,17 +65,17 @@ SPL
 ~~~
 
 -  Initialize DDR
--  Load U-Boot FIT-image: Failure point
--  Perform verification: Failure point
--  Extract components: Failure point
--  Jump to ATF / OP-TEE: Watchdog timeout point
+-  Load U-Boot FIT-image
+-  Perform verification
+-  Extract components
+-  Jump to ATF / OP-TEE
 
 ATF (ARMv8)
 ~~~~~~~~~~~
 
 -  Perform memory permission setup
 -  Drop to EL-2 non-secure
--  Jump to OP-TEE: Watchdog timeout point
+-  Jump to OP-TEE
 
 OP-TEE
 ~~~~~~
@@ -84,17 +84,17 @@ OP-TEE
 -  Driver init
 -  Load TAs
 -  Drop to EL-2 secure world
--  Jump to u-boot.bin: Watchdog timeout point
+-  Jump to u-boot.bin
 
 U-Boot
 ~~~~~~
 
 -  Driver init
 -  Boot script
--  Load kernel FIT-image: Failure point
--  Perform verification: Failure point
--  Extract components: Failure point
--  Jump to Linux kernel: Watchdog timeout point
+-  Load kernel FIT-image
+-  Perform verification
+-  Extract components
+-  Jump to Linux kernel
 
 Update procedure
 ----------------
@@ -102,7 +102,7 @@ Update procedure
 Primary vs Secondary boot paths
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since **iMX53** until **iMX8MM**, it is possible to have two copies of
+There are some i.MX SoC which could be configured to have two copies of
 bootloader in SD/eMMC and switch between them. The switch can be
 triggered either by the BootROM in case the bootloader image is faulty
 OR can be enforced by the user.
@@ -116,20 +116,20 @@ To enforce BootROM to boot secondary boot image,
 **PERSIST\_SECONDARY\_BOOT** must be set in **SRC\_GPR10** register and
 warm reset has to be performed. After reboot BootROM will boot the image
 using offset specified in SIT table. For additional details about SIT
-format and SIT offsets please refer to your SoC RM, section *Redundant
-boot support for expansion device*.
+format and SIT offsets please refer to your the SoC Reference Manual,
+section *Redundant boot support for expansion device*.
 
-libaktualizr and ak-lite
-~~~~~~~~~~~~~~~~~~~~~~~~
+libaktualizr and aktualizr-lite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. ak-lite makes decision if boot firmware needs to be updated based on
-   the contents of **${ostree\_root}/usr/lib/firmware/version.txt**,
+1. aktualizr-lite makes decision if boot firmware needs to be updated based
+   on the contents of **${ostree\_root}/usr/lib/firmware/version.txt**,
    where ostree\_root is root of newly deployed ostree sysroot. Example
    of contents: **bootfirmware\_version=10**
 2. After parsing bootfirmware\_version, it compares version number with
    the existing one, which is obtained via **fiovb** or **ubootenv**.
 3. If bootfirmware\_version from version.txt is higher than existing
-   one, ak-lite sets **bootupgrade\_available** via **fiovb** or
+   one, aktualizr-lite sets **bootupgrade\_available** via **fiovb** or
    **ubootenv**.
 4. Reboot should be performed.
 
@@ -142,18 +142,19 @@ U-Boot boot.cmd script
    Boot firmware upgrade flow
 
 1. Actual update is done via U-Boot **boot.cmd** (boot.scr) script.
-2. **boot.cmd** script checks if we’re booting secondary path
-3. In case **upgrade\_available** is set we also check if boot firmware
-   upgrade is needed by checking **bootupgrade\_available** flag. If
-   both are true, we obtain boot firmware images from newly deployed
-   ostree sysroot and write them to secondary boot path offsets. After
-   that secondary boot bit it set and then warm reset is performed to
+2. **boot.cmd** script checks if booting secondary path is booted
+3. In case **upgrade\_available** is set check if boot firmware
+   upgrade is needed is done by looking into **bootupgrade\_available** flag.
+   If both are true, obtain boot firmware images are obtained from newly
+   deployed ostree sysroot and write them to secondary boot path offsets.
+   After that secondary boot bit is set and then warm reset is performed to
    enforce BootROM to boot secondary boot path
-4. After reboot we boot secondary boot path, so condition from step 2 is
-   not satisfied and we just perform regular boot of Linux.
-5. After Linux is booted ak-lite confirms successful update by clearing
-   **upgrade\_available** flag. At this points we’ve validated our new
-   boot firmware images and now we have to flash them to the stable
+4. After reboot secondary boot path is booted, condition verification from
+   step 2 is being git again, which this time is not true so just
+   regular boot of Linux is done.
+5. After Linux is booted aktualizr-lite confirms successful update by clearing
+   **upgrade\_available** flag. At this points new boot firmware images are
+   already validated and now they have to be flashed to the stable
    primary path. Additional reboot is needed after this step.
 6. Regular POR cold reset is performed
 
@@ -210,9 +211,9 @@ calculated on iMX SoCs (extract from *./arch/arm/mach-imx/spl.c*):
 Fastboot: support of secondary boot image offsets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Currently FSL fastboot driver is aware about offsets where to flash
-secondary boot images (**SPL**, **U-Boot.itb** and **SIT**) for iMX6,
-iMX6ULL, iMX7 and iMX8M SoCs. If you need to change SIT offset used for
+The required offsets for the secondary boot images (**SPL**, **U-Boot.itb**
+and **SIT**) for iMX6, iMX6ULL, iMX7 and iMX8M SoCs, are defined at FSL
+fastboot driver. If you need to change SIT offset used for
 your SoC, adjust **secondary\_image\_table\_mmc\_offset()** and
 **bootloader\_mmc\_offset()** functions U-Boot fastboot driver sources
 (*drivers/fastboot/fb\_fsl/fb\_fsl\_partitions.c*).
@@ -220,7 +221,7 @@ your SoC, adjust **secondary\_image\_table\_mmc\_offset()** and
 Secondary Image Table generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Currently SIT image binary is generated automatically if U-Boot is being
+SIT image binary is generated automatically if U-Boot is being
 built with correct value of **CONFIG\_SECONDARY\_BOOT\_SECTOR\_OFFSET**
 config option.
 
@@ -249,7 +250,7 @@ mfgtool scripts
 To deploy boot images to the destination board mfgtools package is used.
 It uses special configuration file with uuu extensions, that contains
 all needed instructions for correct deployment of boot images. Current
-uuu files doesn't support flashing images for secondary boot path, so
+uuu files don't support flashing images for secondary boot path, so
 appropriate adjustments should be made, adding SIT image, secondary SPL
 and U-Boot FIT deployment steps:
 
@@ -287,9 +288,9 @@ lmp.cfg files
 ^^^^^^^^^^^^^
 
 So to enable support for flashing/booting secondary boot images, just
-adjust regular lmp.cfg and the one for mfgtools for your board enabling
+adjust regular **lmp.cfg** and the one for mfgtools for your board enabling
 support of secondary boot path. These config options should be added to
-regular *lmp.cfg*:
+regular **lmp.cfg**:
 
 ::
 
@@ -307,12 +308,13 @@ And to mfgtool **lmp.cfg**:
 Pre-load boot.cmd by SPL
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-As boot.cmd script depends on U-Boot cmds for booting Linux, it align
-with particular U-Boot. By default boot.cmd is stored in first FAT
-partition in eMMC/SD. So to get boot.cmd updates together with other
-boot software images, it should be moved from FAT partition to U-Boot
-FIT image. To do that edit **lmp-machine-custom.inc** adding this line
-for your board (imx8mqevk as an example):
+As boot.cmd script depends on U-Boot cmds for booting Linux, it should be
+aligned with U-Boot version. By default in regular setups without boot firmware
+update support boot.cmd is stored in first FAT partition in eMMC/SD.
+So to get boot.cmd updates together with other boot software images,
+it should be moved from FAT partition to U-Boot FIT image. To do that edit
+**lmp-machine-custom.inc** adding this line for your board (imx8mqevk as
+an example):
 
 ::
 
@@ -320,7 +322,7 @@ for your board (imx8mqevk as an example):
 
 This change will include Linux **boot.cmd** into U-Boot FIT image
 alongside with TF-A/OP-TEE/U-Boot proper/U-Boot dtb images. When SPL
-when parsing U-Boot FIT image (u-boot.itb) will pre-load **boot.itb**
+parses U-Boot FIT image (u-boot.itb) will pre-load **boot.itb**
 (compiled and wrapped **boot.cmd**) to the address specified in
 **BOOTSCR\_LOAD\_ADDR** variable.
 
@@ -336,9 +338,10 @@ Test basic API
 ~~~~~~~~~~~~~~
 
 After applying all updates from previous steps, we should validate that
-everything is in place. Basically this consists of two basic steps \*
-Cold/Warm resets from U-Boot are functional \* Obtain board security
-state (open/closed states)
+everything is in place. Basically this consists of two basic steps:
+
+- Cold/Warm resets from U-Boot are functional
+- Obtain board security state (open/closed states)
 
 So to test cold/warm resets and booting primary/secondary boot path use
 these two U-Boot commands **imx\_secondary\_boot** and **reset** (for
@@ -381,8 +384,8 @@ boot.cmd
 Currently LmP uses template-based way of generation of final boot.cmd.
 It's constructed from common boot files
 (*./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit/boot-common.cmd.in*),
-which contains all SoC agnostic defines and functionality and board
-specific boot.cmd, that included boot-common.cmd.in
+which contains all SoC agnostic DEFINEs and common functionality, and board
+specific boot.cmd, which is included boot-common.cmd.in
 
 Example of board boot.cmd
 (*./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8mmevk/boot.cmd*):
@@ -416,9 +419,46 @@ Example of board boot.cmd
     @@INCLUDE_COMMON@@
 
 From the list above you can find that the only needed variables that
-should be defined is the num of boot/root partitions, mmc id and
+should be defined are: boot/root partition indexes, mmc device index and
 **fdt\_file**. For boot firmware updates functionality also bootloader
 image offsets and names should be provided.
+
+sysroot and signed boot artifacts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All boot artifacts (SPL/imx-boot and U-Boot FIT) are automatically deployed
+to sysroot during build time, however on closed boards, where initial boot
+image has to be signed in advance by a subscriber private key, there is way to
+add signed binary instead of automatic inclusion of unsigned boot artifacts.
+
+To do that just **lmp-boot-firmware.bbappend** to your *meta-subscriber*
+layer, adding proper value of PV (boot firmware version, which will be
+automatically added to ${osroot}/usr/lib/firmware/version.txt file),
+path to signed binary and signed binary itself.
+
+Example:
+::
+
+    diff --git a/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend
+    new file mode 100644
+    index 0000000..6c11380
+    --- /dev/null
+    +++ b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend
+    @@ -0,0 +1,7 @@
+    +FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    +
+    +PV = "1"
+    +
+    +SRC_URI = " \
+    +       file://SPL \
+    +"
+    diff --git a/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware/SPL b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware/SPL
+    new file mode 100644
+    index 0000000..50f5013
+    Binary files /dev/null and b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware/SPL differ
+
+
+
 
 .. |image of iMX6 layout| image:: boot-software-updates/imx6-layout.png
 .. |image of iMX8M layout| image:: boot-software-updates/imx8m-layout.png
