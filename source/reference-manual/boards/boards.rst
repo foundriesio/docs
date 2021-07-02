@@ -15,3 +15,6 @@ Boards
    imx6ull
    apalis-imx6
    am64xx-sk
+   stm32mp1
+   intel-corei7-external
+   intel-corei7-intaller
