@@ -21,3 +21,7 @@ avoid this:
    * Erase eMMC or disable 'bootable' flag on eMMC boot partition
 
 .. include:: generic-flashing.rst
+
+1. Remove the micro SDCard from the host and insert it into the socket of the board.
+
+2. Power on the board to boot the new image.

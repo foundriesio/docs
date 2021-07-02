@@ -8,6 +8,10 @@ Flashing
 
 Now, flash the ``lmp-factory-image-raspberrypi4-64.wic.gz`` or
 ``lmp-factory-image-raspberrypi3-64.wic.gz`` retrieved from the previous section
-to an SD Card. This contains the :term:`system image` that the device will boot
+to an SD Card. This contains the :term:`system image` that the device will boot.
 
 .. include:: generic-flashing.rst
+
+1. Remove the micro SDCard from the host and insert it into the socket of the board.
+
+2. Power on the board to boot the new image.
