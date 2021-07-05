@@ -28,14 +28,14 @@ Set up the board for booting from MMC1 - SDCard:
 Flashing
 --------
 
-.. include:: generic-flashing.rst
+Now, flash the ``lmp-factory-image-am64xx-sk.wic.gz`` retrieved from the 
+previous section to an SD Card. This contains the :term:`system image` that the
+device will boot.
 
-1. Remove the micro SDCard from the host and insert it into the socket on the bottom of the board.
+.. include:: generic-flashing.rst
 
 .. figure:: /_static/boards/am64xx-sk-bottom.png
      :width: 600
      :align: center
 
      SDCard location
-
-2. Power on the board to boot the new image.

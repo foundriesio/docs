@@ -3,9 +3,9 @@
    .. group-tab:: Linux
 
       1. Determine the disk you want to flash by finding the device with the
-         ``SIZE`` that matches your SD card in the list below.  Be sure to ignore
-         partitions (where ``TYPE`` is ``part``).  Save the ``NAME`` for your SD card device to
-         be used in a later step as the disk path. e.g: ``/dev/mmcblk0``::
+         ``SIZE`` that matches your flash drive in the list below.  Be sure to ignore
+         partitions (where ``TYPE`` is ``part``).  Save the ``NAME`` for your flash drive to
+         be used in a later step as the disk path. e.g: ``/dev/mmcblk0``, ``/dev/sdb``::
 
            lsblk -po +MODEL
 
@@ -33,9 +33,9 @@
    .. group-tab:: macOS
 
       1. Determine the disk you want to flash by finding the device with the
-         ``SIZE`` that matches your SD card in the list below.  Be sure to ignore
+         ``SIZE`` that matches your flash drive in the list below.  Be sure to ignore
          partitions (lines without the * in the ``SIZE``).  Save the ``IDENTIFIER`` for your
-         SD card device to be used in a later step as the disk path. e.g:
+         flash drive to be used in a later step as the disk path. e.g:
          ``/dev/disk3``::
 
            diskutil list
@@ -87,6 +87,10 @@
       #. Select your disk via the :guilabel:`Device` dropdown.
       #. Click :guilabel:`Write`
       #. Wait for the image to finish writing, and a **Write Successful** dialog will appear.
+
+1. Remove the flash drive from the host and insert/connect it into the board.
+
+2. Power on the board to boot the new image.
 
 
 .. _Win32 Disk Imager: https://sourceforge.net/projects/win32diskimager/files/Archive/
