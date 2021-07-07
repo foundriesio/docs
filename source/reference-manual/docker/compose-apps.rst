@@ -131,6 +131,12 @@ this scenario containers.git layout might look like::
   Dockerfile
   app.py
 
+Non-comment lines of ``.composeappignores`` will match files
+according to Golang's `filepath.Match`_
+
+.. _filepath.Match:
+   https://golang.org/pkg/path/filepath/#Match
+
 Each change to containers.git will produce a new compose app with contents::
 
   # simple-app.tgz
