@@ -36,7 +36,7 @@ in the Factory to include and enable **all** Compose Apps. However, its
 quite common to have more complex workflows. For example a Factory may
 have their containers.git set up like::
 
-  # devel branch
+  # experimental and devel branches:
   fiotest          - A compose-app that some devices run for QA.
   money-making-app - The "product"
   debug-tools      - A compose-app with some tooling used for devel
@@ -56,6 +56,9 @@ In this scenario "devel" images should be preloaded with:
 "master" images and "production" should only include the
 "money-making-app".
 
+Finally, the "experimental" branch doesn't need to include preloaded
+images.
+
 This can be configured in `factory-config.yml` with::
 
  lmp:
@@ -72,6 +75,10 @@ This can be configured in `factory-config.yml` with::
   preload: true
   assemble_system_image: true
 
+  params:
+    # default to just preloading the money-making-app
+    APP_SHORTLIST: "money-making-app"
+
   tagging:
     # Changes to containers master create both "master" and "production" tagged targets
     refs/heads/master:
@@ -84,12 +91,10 @@ This can be configured in `factory-config.yml` with::
     refs/heads/devel:
       params:
         APP_SHORTLIST: "money-making-app,debug-tools"
-    refs/heads/master:
+    refs/heads/experimental:
       params:
-        APP_SHORTLIST: "money-making-app"
-    refs/heads/production:
-      params:
-        APP_SHORTLIST: "money-making-app"
+        # Don't produce a preloaded system image
+        ASSEMBLE_SYSTEM_IMAGE: "0"
 
 With this configuration in place the factory will produce Targets with
 the correct apps preloaded and enabled by default.
