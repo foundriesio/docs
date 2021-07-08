@@ -32,9 +32,12 @@ The easiest way to configure this is updating a Factory's
   #   APP_SHORTLIST: "money-making-app,debug-tools"
 
 For simple workflows this may suffice. It will cause every Target built
-in the Factory to include and enable **all** Compose Apps. However, its
-quite common to have more complex workflows. For example a Factory may
-have their containers.git set up like::
+in the Factory to include and enable **all** Compose Apps.
+
+Common Advanced Scenario
+------------------------
+It's quite common to have more complex workflows. For example,
+a Factory may have their containers.git set up like::
 
   # experimental and devel branches:
   fiotest          - A compose-app that some devices run for QA.
@@ -98,3 +101,39 @@ This can be configured in `factory-config.yml` with::
 
 With this configuration in place the factory will produce Targets with
 the correct apps preloaded and enabled by default.
+
+Really Advanced Scenario
+------------------------
+
+User occasionally combine preloaded images with a certain kind of
+:ref:`ref-advanced-tagging` that can be difficult to understand::
+
+ lmp:
+   tagging:
+    refs/heads/sec-fix
+      # produce a target with containers from master
+      - tag: sec-fix
+        inherit: master
+      # produce a target with containers from devel
+      - tag: sec-fix
+        inherit: devel
+    ...
+
+In this scenario the devel and master container branches may not even
+have the same set of apps/containers. It's generally recommended
+to not produce a preloaded image. However, a ``ref_option`` could
+be added to set ``ASSEMBLE_SYSTEM_IMAGE: "0"`` for that branch.
+
+``APP_SHORTLIST`` will pick up its override value from the
+"refs/heads/sec-fix" ``ref_option``. If devel and master had
+different apps such as::
+
+  devel: fiotest,moneymaking-app,debug-tools
+  master: moneymaking-app
+
+Preloading could be set by doing a union of these two sets of apps,
+``APP_SHORTLIST: "money-making-app,debug-tools"``. In this case the
+"master" Target will have money-making-app preloaded from the
+container's master branch and the "devel" Target will have both
+money-making-app and debug-tools preloaded from the container's
+devel branch.
