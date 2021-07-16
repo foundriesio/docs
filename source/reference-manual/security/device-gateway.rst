@@ -18,21 +18,23 @@ Terminology
 Root of trust - factory_ca.key / factory_ca.pem
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The PKI root of trust for your factory. You own the
-EC prime256v1 private key. The corresponding x509 certificate is shared
+The PKI root of trust for your factory. You own the private key
+(EC prime256v1 by default). The corresponding x509 certificate is shared
 with Foundries.io to define your root of trust.
 
-All mutual TLS certificates configured in your factory  must be signed
-by this keypair.
+All intermediate CA and mutual TLS certificates configured in your factory  must be signed
+by this keypair. In particular, the certificates listed below.
 
 .. _tls-crt:
 
 Server TLS Certificate - tls-crt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The server TLS certificate keypair is used by the server to encrypt
-TLS communication with devices. The private key is owned by
-Foundries.io and the certificate is signed by the root of trust.
+This certificate along with its private key is used by Device Gateway
+during mTLS handshake/session setup.
+Specifically, they are used for Device Gateway identity verification by a device/client
+and a TLS session's symmetric key setup.
+The private key is owned by Foundries.io and the certificate is signed by the root of trust.
 
 .. _online-ca:
 
@@ -41,16 +43,17 @@ Foundries.io and the certificate is signed by the root of trust.
 
 In order for lmp-device-register to work, Foundries.io needs the
 ability to sign client certificates for devices. If enabled, the
-root of trust will sign a certificate that Foundries.io can use
+root of trust will sign an ``online-ca`` certificate that Foundries.io can use
 to sign client authentication certificates.
 
 .. _local-ca:
 
 "local-ca"
 ~~~~~~~~~~
-Optional keypair(s) that can be used by something like your
-manufacturing process sign client certificates for devices without
-needing access to Foundries.io.
+Optional pair(s) of a private key and intermediate CA certificate signed by the root CA that can be used by something like your
+manufacturing process sign client certificates for devices without needing access to Foundries.io.
+
+It is also known and referred as ``offline CA`` since a user owns its private key and keeps it "offline".
 
   .. figure:: /_static/ca_certs.png
      :align: center
@@ -73,10 +76,12 @@ note about this command:
 You can view the configured certificates with
 ``fioctl keys ca show --pretty``.
 
+The Factory PKI is interwoven with Device Manufacturing Process and Device Registration,
+you can find out more details on this topic in this guide :ref:`ref-factory-registration-ref`
+
 Under the hood
 ~~~~~~~~~~~~~~
 
-``fioctl keys ca create`` command does a few things under the hood.
 The PKI for Device Gateway and Factory Devices is highly important in terms of secure communication between them.
 Thus, it's important for users to understand what exactly the given command does underneath.
 
@@ -140,31 +145,36 @@ Specifically, the following files are uploaded:
 2. ``online-crt`` and ``local-ca.pem`` bundled together into the ``ca-crt`` field of the PATCH request;
 3. ``factory_ca.pem`` - root CA certificate created by running ``create_ca`` transferred via ``root-crt`` fields of the PATCH request.
 
+It should be pointed out that the factory root of trust can be set once.
+Thus, the given command ``fioctl keys ca create`` performs work only at the first run, subsequent command calls will fail.
+Device CA bundle (``ca-crt``) can be updated many times, specifically a user may add/remove local/offline CA certs to/from the bundle,
+``fioctl keys ca update`` command is intended for it.
+
 Device key and certificate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Once the PKI is setup you Factory Device Gateway is ready to communicate via mTLS with Factory devices.
-Obviously, Device must have a private key and a x509 certificate to setup mTLS session with Device Gateway
+Once the PKI is setup, your Factory Device Gateway is ready to communicate via mTLS with Factory devices.
+Obviously, the devices must have a private key and a x509 certificate to setup mTLS session with Device Gateway
 as well as the Root CA certificate to verify Device Gateway certificate during mTLS handshake.
 
-As it's been explained above the fioctl command generates two types of Device CA, online and local/offline CAs.
+As explained above the fioctl command generates two types of Device CA, online and local/offline CAs.
 Both of these CAs can be used to sign Device CSR.
 
 Online Device certificate
 *************************
-In the case of online CA, a private key is owned by the backend hence
-only backend can signed Device CSR. The utility called ``lmp-device-register`` can be used for this purpose,
+In the case of online CA, a private key is owned by the backend. Hence, only the backend can sign a Device CSR with the online CA.
+The utility called ``lmp-device-register`` can be used for this purpose,
 and this is the default device registration mechanism. The tool generates a device private key,
-creates corresponding device CSR and makes a request to the backend to signe it with the online CA.
+creates corresponding device CSR and makes a request to the backend to sign it with the online CA.
 As a response, the backend returns a signed device certificate as well as a default configuration for the device (aka ``sota.toml``).
-More details on lmp-device-register usage can be found here :ref:`gs-register`.
+More details on lmp-device-register usage can be found in the :ref:`getting started guide <gs-register>`.
 
 Local/Offline Device certificate
 ********************************
 
 We advise users to use the Factory registration `reference implementation`_ as a mechanism for
 offline device key and certificate generation as well as device registration.
-The following is a guide on creation of Local/Offline Device key and certificate manually
-what can be useful for understanding low-level details of the overall process.
+The following is a guide on the manual creation of Local/Offline Device keys and certificates.
+This can be useful for understanding low-level details of the overall process.
 
 
 Create a directory for offline device key and certificate.
@@ -189,6 +199,7 @@ Set offline Device certificate config
    distinguished_name = req_dn
 
    [req_dn]
+   # Uuids can be generated by running `uuidgen`
    commonName="<device-UUID>"
    organizationalUnitName="${FACTORY}"
    EOF
