@@ -17,7 +17,7 @@ On your host machine, disable ``shellhttpd`` by replacing the list of apps with 
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl devices config updates --compose-apps --apps , <device-name>
+    host:~$ fioctl devices config updates --apps , <device-name>
 
 **Example Output**:
 
@@ -51,7 +51,7 @@ Enable the ``shellhttpd`` application on your device:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl devices config updates --compose-apps --apps shellhttpd <device-name>
+    host:~$ fioctl devices config updates --apps shellhttpd <device-name>
 
 **Example Output**:
 
