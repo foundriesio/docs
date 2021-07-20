@@ -8,5 +8,7 @@ Secure Boot
 .. toctree::
    :maxdepth: 1
 
+   authentication-xilinx
    secure-boot-imx
    secure-boot-imx6ullevk-sec
+
