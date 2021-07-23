@@ -269,11 +269,6 @@ Boot Device and Connect to the Network
               #. Unmount the SD card from your workstation, insert it
                  into the Raspberry Pi, and reboot it.
 
-              .. warning::
-
-                 Do not skip the final steps. Functionality with the
-                 serial console enabled is severely degraded.
-
               Your board will connect to the network you've saved after
               rebooting. You can now log in using SSH.
 
