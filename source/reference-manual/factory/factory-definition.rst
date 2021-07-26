@@ -4,7 +4,7 @@ Factory Definition
 ==================
 
 Each Factory can be customized to control how CI handles it. This is managed in
-the “Factory Definition” which is located in a factory’s **ci-scripts.git**
+the "Factory Definition" which is located in a factory's **ci-scripts.git**
 repository in the  **factory-config.yml** file.
 
 .. _def-notify:
@@ -30,6 +30,20 @@ notify:
       **Optional:** If set to ``true`` users will only be notified of CI failures.
 
       **Default:** ``false``
+
+ webhooks:
+     **Optional:**
+
+     **Default:** ``Disabled``
+
+  - url: ``https://example.com/customer-webhook-endpoint``
+      **Required:** Customer owned HTTP(s) endpoint to send webhooks
+    secret_name: ``my-secret-name``
+        **Required:**  See :ref:`ref-ci-webhooks` for details.
+    failures_only: ``<true|false>``
+        **Optional:** If set to ``true`` users will only be notified of CI failures.
+
+        **Default:** ``false``
 
 .. _def-lmp:
 

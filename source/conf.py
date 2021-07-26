@@ -150,6 +150,7 @@ linkcheck_ignore = [
     r'https://github.com/foundriesio/fioctl/releases/download/.*',  # ditto
     'https://mgmt.foundries.io/leshan/#/security',
     'https://github.com/foundriesio/fiotest#testing-specification',
+    'https://github.com/foundriesio/jobserv/blob/72935348e902cdf318cfee6ab00acccee1438a7c/jobserv/notify.py#L141-L146',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -342,7 +343,7 @@ htmlhelp_basename = 'fiodoc'
 intersphinx_mapping = {'https://docs.python.org/': None}
 
 # Make external links open in a new tab.
-# https://stackoverflow.com/questions/25583581/add-open-in-new-tab-links-in-sphinx-restructuredtext 
+# https://stackoverflow.com/questions/25583581/add-open-in-new-tab-links-in-sphinx-restructuredtext
 
 from sphinx.writers.html import HTMLTranslator
 from docutils import nodes
