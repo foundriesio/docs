@@ -29,6 +29,8 @@ Some common scopes users may find handy include:
  * ``containers:read`` - Useful for running docker commands on
    factory containers.
 
+.. _ref-scopes:
+
 Token Scopes
 ------------
 

@@ -10,5 +10,6 @@ FoundriesFactory
    Fioctl <fioctl/index.rst>
    Factory Sources <factory-sources.rst>
    api-access
+   team-based-access
    ../linux/linux-layers
    ci-webhooks
