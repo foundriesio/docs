@@ -33,18 +33,23 @@ When you trigger a build, it produces build artifacts as an output which can be
 downloaded from the :guilabel:`Targets` tab of your factory, as described in
 :ref:`gs-watch-build`.
 
-1. Navigate to the :guilabel:`Targets` section of your Factory.
+#. Navigate to the :guilabel:`Targets` section of your Factory.
 
-2. Find your LmP platform build, denoted by the :guilabel:`Trigger` name:
-   ``platform-<tag>``.
+     a. Click the latest :guilabel:`Targets` with the ``platform-devel`` :guilabel:`Trigger`.
 
-   e.g: ``lmp-factory-image-machine-name.wic.gz``
+          .. figure:: /_static/flash-device/devel.png
+            :width: 769
+            :align: center
+     
+     #. Expand the **run** in the :guilabel:`Runs` section which corresponds
+        with the name of the board and **download the Factory image for that
+        machine.**
 
-3. Download it by clicking on its name in the list of artifacts.
+        | E.g: ``lmp-factory-image-<machine_name>.wic.gz``
 
-.. figure:: /_static/flash-device/artifacts.png
-   :width: 769
-   :align: center
+          .. figure:: /_static/flash-device/artifacts.png
+            :width: 769
+            :align: center
 
 .. _gs-flash-image:
 
