@@ -13,7 +13,7 @@
 
       #. Run the command below to program the LmP to the EMMC::
 
-           $ sudo mfgtool-files-<machine_name>/uuu -pp 1 mfgtool-files-<machine_name>/full_image.uuu
+           $ sudo mfgtool-files-<machine-name>/uuu -pp 1 mfgtool-files-<machine-name>/full_image.uuu
            uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.43-0-ga9c099a
 
            Success 1    Failure 0
@@ -38,7 +38,7 @@
 
       #. Run the command below to program the LmP to the EMMC::
 
-           C:\Users\Someone> mfgtool-files-<machine_name>\uuu.exe -pp 1 mfgtool-files-<machine_name>\full_image.uuu
+           C:\Users\Someone> mfgtool-files-<machine-name>\uuu.exe -pp 1 mfgtool-files-<machine-name>\full_image.uuu
            uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.43-0-ga9c099a
 
            Success 1    Failure 0
