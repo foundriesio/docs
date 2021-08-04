@@ -1,3 +1,5 @@
+.. _ref-rm_board_am64xx-sk:
+
 Texas Instruments AM64x SKEVM
 =============================
 

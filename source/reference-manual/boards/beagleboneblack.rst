@@ -1,5 +1,9 @@
+.. _ref-rm_board_beaglebone-yocto:
+
 Beaglebone Black
 ================
+
+This tutorial covers both Beaglebone Black and Beaglebone Black Wireless.
 
 .. include:: generic-prepare.rst
 

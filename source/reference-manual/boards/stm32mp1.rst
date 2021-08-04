@@ -1,3 +1,5 @@
+.. _ref-rm_board_stm32mp1-disco:
+
 STM32MP157 Discovery Kit
 ========================
 
