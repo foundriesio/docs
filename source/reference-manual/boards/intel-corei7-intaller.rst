@@ -1,3 +1,5 @@
+.. _ref-rm_board_intel-corei7-64:
+
 Intel Core i7 CPU (and later) - Installing into Internal Flash
 ==============================================================
 

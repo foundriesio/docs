@@ -1,3 +1,5 @@
+.. _ref-rm_board_imx8mmevk:
+
 i.MX 8M Mini Evaluation Kit
 ===========================
 

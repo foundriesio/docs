@@ -1,3 +1,5 @@
+.. _ref-rm_board_rasbperrypi:
+
 Raspberry Pi 3/4
 ================
 

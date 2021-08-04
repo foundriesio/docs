@@ -1,3 +1,5 @@
+.. _ref-rm_board_imx8mqevk:
+
 i.MX 8MQuad Evaluation Kit
 ==========================
 
