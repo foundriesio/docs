@@ -13,3 +13,4 @@ FoundriesFactory
    team-based-access
    ../linux/linux-layers
    ci-webhooks
+   factory-keys
