@@ -12,3 +12,4 @@ Docker
    private-registries
    compose-apps
    restorable-apps
+   caching
