@@ -26,7 +26,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    tutorials/creating-first-target/creating-first-target
    tutorials/deploying-first-app/deploying-first-app
    tutorials/configuring-and-sharing-volumes/configuring-and-sharing-volumes
-   tutorials/cloud
 
 .. toctree::
    :maxdepth: 1
