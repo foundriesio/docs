@@ -13,8 +13,9 @@ In addition, the U-Boot project also includes a documentation on `Generating a
 fast authentication PKI tree`_.
 
 .. warning:: It is critical that the keys created in this process must be stored
-  in a secure and safe place. When the keys are fused to the board, that board
-  will only boot signed images. So the keys are required in future steps.
+  in a secure and safe place. Once the keys are fused to the board and it is
+  closed, that board will only boot signed images. So the keys are required in
+  future steps.
 
 Generate the MfgTools scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -33,23 +34,19 @@ configures the board to only boot signed images.
 
 .. prompt:: bash host:~$
 
-    export KEY_PATH=/path-to-key-files
+    export KEY_FILE=/path-to-key-files/<efusefile>
 
 3. Generate the script to fuse the board
 
 .. prompt:: bash host:~$
 
-      cd lmp-tools/
-      cd security/imx6ull
-      ./gen_fuse.sh -s $KEY_PATH
+      ./lmp-tools/security/<soc>/gen_fuse.sh -s $KEY_FILE -d ./fuse.uuu
 
 4. Generate the script to close the board
 
 .. prompt:: bash host:~$
 
-      cd lmp-tools/
-      cd security/imx6ull
-      ./gen_close.sh -s $KEY_PATH
+      ./lmp-tools/security/<soc>/gen_close.sh -s $KEY_FILE -d ./close.uuu
 
 5. Install the scripts to the ``meta-subscriber-overrides``:
 
