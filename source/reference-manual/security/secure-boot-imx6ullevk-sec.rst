@@ -6,7 +6,7 @@ NXP iMX6ULL-EVK with secure boot enabled by FoundriesFactory
 ============================================================
 
 The machine ``imx6ullevk-sec`` is the ``imx6ullevk`` machine configured to have
-segure boot enabled by default.
+secure boot enabled by default.
 
 The purpose of this machine is to gather the needed configuration to enable
 secure boot and provide a set of artifacts to help in the process needed to have
