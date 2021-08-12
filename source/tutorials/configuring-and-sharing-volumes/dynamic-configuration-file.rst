@@ -22,7 +22,7 @@ Use ``fioctl`` on your host machine to remember your device name:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl devices list -f <factory>
+    host:~$ fioctl devices list
 
 **Example Output**:
 

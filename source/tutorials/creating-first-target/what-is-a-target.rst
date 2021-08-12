@@ -45,7 +45,7 @@ It also lists what **Target** is installed in each device.
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl status -f <factory>
+    host:~$ fioctl status
 
 **Example Output**:
 
@@ -66,7 +66,7 @@ Before you inspect **Target 4**, list all your targets available with the comman
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl targets list -f <factory>
+    host:~$ fioctl targets list
 
 **Example Output**:
 
@@ -94,7 +94,7 @@ Use this command to see a better overview of **Target 4**:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl targets show 4 -f <factory>
+    host:~$ fioctl targets show 4
 
 **Example Output**:
 
