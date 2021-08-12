@@ -203,7 +203,7 @@ The *keys* however are retrieved via a pkcs#11 key generation request to the cry
    https://www.nxp.com.cn/docs/en/application-note/AN12660.pdf
 
 .. _NXP SE05x T=1 Over I2C Specification:
-   https://www.nxp.com/webapp/Download?colCode=UM11225&location=null
+   https://www.nxp.com/docs/en/user-guide/UM11225.pdf
 
 .. _Card Specification 2.3.1:
    https://globalplatform.org/specs-library/card-specification-v2-3-1/
