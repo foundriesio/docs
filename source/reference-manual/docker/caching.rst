@@ -20,9 +20,14 @@ While cache is very helpful, there are a few things to note:
 Cache Invalidation
 ------------------
 
-When trying to understand why the cache has been invalidated, there reall aren't any 
+When trying to understand why the cache has been invalidated, there really aren't any 
 tools to assist in this process. That said, in a factory each container build 
 automatically will use the docker build context to create a list of md5sums of all 
-the files used in the build. These lists are published as build artifacts, which 
-then can be used to ``diff`` from build to build to assist in understanding what 
-files may have changed, and how that affects the caching. 
+the source files used in the build. Each :doc:`compose-apps` will generate an artifact 
+named ``<compose-app-name>-md5sum.txt`` in your factory, which then can be used to 
+generate a ``diff`` from build to build to assist in understanding what files may 
+have changed, and how that affects the caching. Generally, each line in your ``Dockerfile``
+creates it's own image layer, and also a corresponding cache layer. If source files change, 
+or any direct modification to the ``Dockerfile`` occurs it will invalidate the cache from 
+that point forward. It is important to understand these concepts as you build your :doc:`compose-apps` 
+therefore we recommend reading the documentation related to `Dockerfile best practices. <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_
