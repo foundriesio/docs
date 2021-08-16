@@ -47,6 +47,7 @@ The list of artifacts downloaded should be:
 * ``mfgtool-files-imx6ullevk-sec.tar.gz``
 * ``lmp-factory-image-imx6ullevk-sec.wic.gz``
 * ``SPL-imx6ullevk-sec``
+* ``sit-imx6ullevk-sec.bin``
 * ``u-boot-imx6ullevk-sec.itb``
 
 Expand the tarballs:
@@ -71,6 +72,7 @@ The resultant directory tree should look like the following::
     │   └── uuu.exe
     ├── mfgtool-files-imx6ullevk-sec.tar.gz
     ├── SPL-imx6ullevk-sec
+    ├── sit-imx6ullevk-sec.bin
     └── u-boot-imx6ullevk-sec.itb
 
 
