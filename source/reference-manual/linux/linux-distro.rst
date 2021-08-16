@@ -12,6 +12,8 @@ LmP
 
 The ``lmp`` is the default distro for a FoundriesFactory. The main point of this distro is to configure the packages for working with OTA, and to organize the boot sequence, including the image architecture using OSTree and installing the needed artifacts.
 
+This is the default distro used when a FoundriesFactory is created.
+
 LmP Base
 ********
 
@@ -30,6 +32,14 @@ It overrides some configurations from ``lmp`` to generate a friendly system for 
 * The U-Boot scripts are provided as a package and can be easily changed.
 
 * The Linux Kernel binary, along with the required DTB files, are provided as separate files, instead of inside a boot image. This way the binaries can be replaced for testing purposes.
+
+To change the distro on a FoundriesFactory, from the ``ci-scripts`` git repository , update the ``factory-config.yml`` to include the ``DISTRO`` parameter under ``lmp:params``, which result in the following::
+
+    lmp:
+      params:
+        IMAGE: lmp-factory-image
+        DOCKER_COMPOSE_APP: "1"
+        DISTRO: lmp-base
 
 LmP MFGTools
 ************
