@@ -25,6 +25,7 @@ and maintained by Foundries.io on `GitHub`_.
 
    linux-supported
    linux-repo
+   development-tags
    linux-dev-container
    linux-building
    linux-kernel
