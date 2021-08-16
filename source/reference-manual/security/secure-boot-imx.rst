@@ -165,8 +165,7 @@ Alternatively, use the kernel to program the A-core fuses using SDP via NXP's Un
         uuu_version 1.2.39
 
         SDP: boot -f imx-boot-mfgtool
-        # These commands will be run when use SPL and will be skipped if no spl
-        # SDPU will be deprecated. please use SDPV instead of SDPU
+
         SDPU: delay 1000
         SDPV: write -f u-boot-mfgtool.itb
         SDPV: jump
@@ -179,7 +178,10 @@ Alternatively, use the kernel to program the A-core fuses using SDP via NXP's Un
         FB: ucmd fuse prog -y 7 1 0xF158F65F
         FB: ucmd fuse prog -y 7 2 0xA71BBE78
         FB: ucmd fuse prog -y 7 3 0xA3AD024A
-        FB: done
+
+        FB: acmd reset
+
+        FB: DONE
 
 
 Upon reboot, if **CONFIG_IMX_HAB** was enabled in U-boot, HAB will raise events to indicate that an **unsigned SPL image** has been executed. Those events can be inspected by running U-Boot's command ``hab_status``.
