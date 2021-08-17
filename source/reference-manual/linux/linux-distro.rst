@@ -33,7 +33,7 @@ It overrides some configurations from ``lmp`` to generate a friendly system for 
 
 * The Linux Kernel binary, along with the required DTB files, are provided as separate files, instead of inside a boot image. This way the binaries can be replaced for testing purposes.
 
-To change the distro on a FoundriesFactory, from the ``ci-scripts`` git repository , update the ``factory-config.yml`` to include the ``DISTRO`` parameter under ``lmp:params``, which result in the following::
+To change the distro on a FoundriesFactory, from the ``ci-scripts`` git repository , update the ``factory-config.yml`` to include the ``DISTRO`` parameter under ``lmp:params``, which results in the following:
 
     lmp:
       params:
