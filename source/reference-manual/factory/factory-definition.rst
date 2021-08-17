@@ -104,6 +104,12 @@ lmp:
 
       **Default:** Set by user during :ref:`gs-signup`
 
+ .. note::
+
+     The CI is configured to decline changes in the ``machines:`` parameter.
+     If needed, ask a support engineer to update the machine definition for your
+     FoundriesFactory.
+
  image_type:``<lmp_image_type>``
       **Optional:** Set the LmP image type to produce by recipe name. For
       example, ``lmp-mini-image``, ``lmp-base-console-image`` from meta-lmp_.
