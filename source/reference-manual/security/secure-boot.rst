@@ -10,5 +10,4 @@ Secure Boot
 
    authentication-xilinx
    secure-boot-imx
-   secure-boot-imx6ullevk-sec
-
+   secure-machines
