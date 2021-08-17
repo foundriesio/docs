@@ -23,9 +23,6 @@ How to enable
 In the ``ci-scripts`` git repository from the FoundriesFactory, update the
 ``factory-config.yml`` to include the following configuration::
 
-    machines:
-    - imx6ullevk-sec
-
     mfg_tools:
     - machine: imx6ullevk-sec
         params:
