@@ -131,15 +131,29 @@ credentials for interacting with Factory APIs:
 .. prompt:: bash host:~$, auto
 
    host:~$ fioctl login
+     Please visit:
+     
+     https://app.foundries.io/settings/tokens/
+     
+     and create a new "Application Credential" to provide inputs below.
+     
+     Client ID:
 
-:ref:`ref-fioctl` will now ask for your application credentials and walk you
-through the authentication process.
+:ref:`ref-fioctl` will now ask for your Client ID and Secret. Follow the next steps to generate it.
 
-fioctl Token
-^^^^^^^^^^^^
+Application Credentials
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Go to `Token <https://app.foundries.io/settings/tokens/>`_ and create a new **Api Token** by clicking on 
-the :guilabel:`+ New Token`. Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
+Go to `Tokens <https://app.foundries.io/settings/tokens/>`_ and create a new **Application Credentials** by clicking on 
+:guilabel:`+ New Credentials`.
+
+.. figure:: /_static/install-fioctl/application_credentials.png
+   :width: 900
+   :align: center
+
+   Application Credentials
+
+Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
 
 For fioctl, check the :guilabel:`Use for tools like fioctl` box and 
 select your **Factory**. Remember that you can revoke this access and set up a new credential later once you are
@@ -149,8 +163,7 @@ familiar with the :ref:`ref-api-access`.
    :width: 500
    :align: center
 
-   Token for fioctl
-
+   API Token
 
 .. tip::
 
@@ -159,6 +172,27 @@ familiar with the :ref:`ref-api-access`.
    as a laptop and a desktop, you should create a new token for each, just as
    you would with SSH keys. This way you can revoke tokens for individual systems,
    should they be compromised.
+
+Use the Client ID and Secret to finish the fioctl login.
+
+.. figure:: /_static/install-fioctl/token.png
+   :width: 500
+   :align: center
+
+   Client ID and Secret 
+
+.. prompt:: bash host:~$, auto
+
+   host:~$ fioctl login
+     Please visit:
+     
+     https://app.foundries.io/settings/tokens/
+     
+     and create a new "Application Credential" to provide inputs below.
+     
+     Client ID:
+     Client secret:
+     You are now logged in to Foundries.io services.
 
 .. _gs-fioctl-configuration:
 
