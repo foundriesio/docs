@@ -6,12 +6,13 @@ Arm Neoverse N1 System Development Platform (N1SDP),n1sdp
 :ref:`Intel NUC8 <ref-rm_board_intel-corei7-64>`,intel-corei7-64
 :ref:`Intel x86-64 UEFI <ref-rm_board_intel-corei7-64>`,intel-corei7-64
 :ref:`NXP iMX6ULL-EVK <ref-rm_board_imx6ullevk>`,imx6ullevk
-:ref:`NXP iMX6ULL-EVK with secure boot enabled <ref-secure-boot-imx6ullevk-sec>`,imx6ullevk-sec
+:ref:`NXP iMX6ULL-EVK with secure boot enabled <ref-rm_board_imx6ullevk>`,imx6ullevk-sec
 EA iMX7ULP-UCOM,imx7ulpea-ucom
 :ref:`NXP iMX8M-MINILPD4 EVK <ref-rm_board_imx8mmevk>`,imx8mmevk
 :ref:`NXP iMX8MQuad EVK <ref-rm_board_imx8mqevk>`,imx8mqevk
 NXP Solidrun CuBox-i iMX6,cubox-i
-:ref:`NXP Toradex Apalis-iMX6 <ref-rm_boards_imx6ullevk-sec>`,apalis-imx6
+:ref:`NXP Toradex Apalis-iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
+:ref:`NXP Toradex Apalis-iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
 NXP Toradex Apalis-iMX8QM,apalis-imx8
 NXP Toradex Colibri-iMX7 (Aster),colibri-imx7-emmc
 :ref:`QEMU AARCH64 <ref-rm_qemu_arm64>`,qemuarm64

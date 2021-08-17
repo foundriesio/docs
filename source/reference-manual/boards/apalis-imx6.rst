@@ -1,4 +1,4 @@
-.. _ref-rm_boards_imx6ullevk-sec:
+.. _ref-rm_boards_apalis-imx6:
 
 Apalis iMX6 with the Ixora Carrier Board
 ========================================
