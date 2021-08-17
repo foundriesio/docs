@@ -38,8 +38,14 @@ You will find four git repositories, below is a brief description of each one.
      armhf architectures.
 
    ci-scripts.git
-     Defines your platform and container build job to our continuous integration system.
+     Defines your platform and container build job to our continuous integration system
+     which uses the data from ``master`` branch.
 
+     The **ci-scripts.git** repository prevents a commit changing the ``lmp:machines:`` 
+     stanza as well as any changes altering the history (force push is disabled).  
+     Factories are created to support specific machines.
+     If you need to alter this behavior after starting a FoundriesFactory, 
+     please open a support ticket at: http://support.foundries.io/
 
 Triggering Builds
 ~~~~~~~~~~~~~~~~~
