@@ -37,7 +37,7 @@ This tutorial will guide you over examples to help you understand how tags work.
 
 .. note::
 
-  Estimated Time to Complete this Tutorial: 15 minutes
+  Estimated Time to Complete this Tutorial: 20 minutes
 
 Learning Objectives
 -------------------

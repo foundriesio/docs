@@ -11,7 +11,7 @@ implementation to give you more experience to create your own applications.
 
 .. note::
 
-  Estimated Time to Complete this Tutorial: 15 minutes
+  Estimated Time to Complete this Tutorial: 30 minutes
 
 Learning Objectives
 -------------------
