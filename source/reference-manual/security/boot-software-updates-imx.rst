@@ -161,6 +161,8 @@ U-Boot boot.cmd script
 Add a new board
 ---------------
 
+.. _ref-sec-tfa-optee:
+
 TF-A/OP-TEE
 ~~~~~~~~~~~
 
