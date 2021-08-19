@@ -11,6 +11,8 @@ The Linux Kernel recipe can be found in the :ref:`Meta-LMP layer
 <ref-linux-layers-meta-lmp>`, under the
 ``meta-lmp-base/recipes-kernel/linux`` directory.
 
+.. _ref-linux-fragments:
+
 Linux microPlatform Kernel Configuration Fragments
 --------------------------------------------------
 
