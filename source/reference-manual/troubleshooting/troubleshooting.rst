@@ -74,6 +74,97 @@ a given device.
 
 .. note:: https://docs.docker.com/engine/reference/builder/#label
 
+Aktualizr-lite and fioconfig Polling Time
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``fioconfig`` and ``aktualizr-lite`` poll for new configuration and updates
+every 5 minutes by default. It might be helpful to decrease this interval for
+development purposes. Here are some ways to achieve this.
+
+Changing interval in runtime
+""""""""""""""""""""""""""""
+
+1. On your device, create a settings file in the ``/etc/sota/conf.d/`` folder to
+configure ``aktualizr-lite``:
+
+.. prompt:: bash device:~$
+
+    sudo mkdir -p /etc/sota/conf.d/
+    sudo sh -c 'printf "[uptane]\npolling_sec = <time-sec>" > /etc/sota/conf.d/90-sota-fragment.toml'
+
+2. Next, create a settings file in the ``/etc/default/`` folder to configure
+``fioconfig``:
+
+.. prompt:: bash device:~$
+
+    sudo sh -c 'printf "DAEMON_INTERVAL=<time-sec>" > /etc/default/fioconfig'
+
+3. Restart both services:
+
+.. prompt:: bash device:~$
+
+    sudo systemctl restart aktualizr-lite
+    sudo systemctl restart fioconfig
+
+.. note::
+    Make sure to replace ``<time-sec>`` with the expected poll interval in seconds.
+
+Changing interval in the build
+""""""""""""""""""""""""""""""
+
+1. Create the ``sota-fragment`` folder in ``meta-subscriber-overrides`` repo:
+
+.. prompt:: bash host:~$
+
+    cd meta-subscriber-overrides
+    mkdir -p recipes-sota/sota-fragment
+
+2. Add a new file under this directory:
+
+.. prompt:: bash host:~$
+
+     touch recipes-sota/sota-fragment/sota-fragment_0.1.bb
+
+3. Include the content below to the file created in the last step:
+
+.. code-block:: none
+
+    SUMMARY = "SOTA configuration fragment"
+    SECTION = "base"
+    LICENSE = "MIT"
+    LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+
+    inherit allarch
+
+    SRC_URI = " \
+            file://90-sota-fragment.toml \
+    "
+
+    S = "${WORKDIR}"
+
+    do_install() {
+            install -m 0700 -d ${D}${libdir}/sota/conf.d
+            install -m 0644 ${WORKDIR}/90-sota-fragment.toml ${D}${libdir}/sota/conf.d/90-sota-fragment.toml
+    }
+
+    FILES_${PN} += "${libdir}/sota/conf.d/90-sota-fragment.toml"
+
+4. Create another directory under the one we just created so we can supply the
+source file (``90-sota-fragment.toml``) for the recipe above:
+
+.. prompt:: bash host:~$
+
+    cd meta-subscriber-overrides
+    mkdir -p recipes-sota/sota-fragment/sota-fragment
+
+5. Create the ``90-sota-fragment.toml`` file under this new directory::
+
+    [uptane]
+    polling_sec = <time-sec>
+
+.. note::
+    Make sure to replace ``<time-sec>`` with the expected poll interval in seconds.
+
 Platform Customizing
 --------------------
 
