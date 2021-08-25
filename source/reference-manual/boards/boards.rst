@@ -1,7 +1,9 @@
 .. _ref-boards:
 
-Boards
-=======
+Supported Boards
+================
+
+Find below the instructions on how to flash the supported boards.
 
 .. toctree::
    :maxdepth: 1
