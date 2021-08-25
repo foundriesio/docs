@@ -9,6 +9,7 @@ Arm Neoverse N1 System Development Platform (N1SDP),n1sdp
 :ref:`NXP iMX6ULL-EVK with secure boot enabled <ref-rm_board_imx6ullevk>`,imx6ullevk-sec
 EA iMX7ULP-UCOM,imx7ulpea-ucom
 :ref:`NXP iMX8M-MINILPD4 EVK <ref-rm_board_imx8mmevk>`,imx8mmevk
+:ref:`NXP iMX8M-MINILPD4 EVK with secure boot enabled <ref-rm_board_imx8mmevk>`,imx8mm-lpddr4-evk-sec
 :ref:`NXP iMX8MQuad EVK <ref-rm_board_imx8mqevk>`,imx8mqevk
 NXP Solidrun CuBox-i iMX6,cubox-i
 :ref:`NXP Toradex Apalis-iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
