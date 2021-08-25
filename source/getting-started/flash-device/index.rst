@@ -41,7 +41,7 @@ downloaded from the :guilabel:`Targets` tab of your factory, as described in
           .. figure:: /_static/flash-device/devel.png
             :width: 769
             :align: center
-     
+
      #. Expand the **run** in the :guilabel:`Runs` section which corresponds
         with the name of the board and **download the Factory image for that
         machine.**
@@ -325,9 +325,9 @@ of the following.
 Ethernet:
 
  .. prompt:: bash host:~$, auto
-   
+
    host:~$ ip addr show eth0 scope global
-     
+
 WiFi:
 
  .. prompt:: bash host:~$, auto
