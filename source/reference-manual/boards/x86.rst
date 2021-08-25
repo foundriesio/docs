@@ -1,0 +1,12 @@
+.. _ref-boards-x86:
+
+x86
+===
+
+The instructions for any board based on x86 cores.
+
+.. toctree::
+   :maxdepth: 1
+
+   intel-corei7-external
+   intel-corei7-installer

@@ -18,5 +18,4 @@ Find below the instructions on how to flash the supported boards.
    apalis-imx6
    am64xx-sk
    stm32mp1
-   intel-corei7-external
-   intel-corei7-intaller
+   x86
