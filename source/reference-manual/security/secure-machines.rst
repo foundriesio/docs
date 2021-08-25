@@ -21,6 +21,7 @@ Supported machines
 ------------------
 
 * NXP iMX6ULL-EVK Secure: ``imx6ullevk-sec`` is the ``imx6ullevk`` machine configured to have secure boot enabled by default.
+* NXP iMX8M-MINILPD4 EVK Secure: ``imx8mm-lpddr4-evk-sec`` is the ``imx8mmevk`` machine configured to have secure boot and secure storage enabled by default.
 * NXP Toradex Apalis-iMX6 Secure: ``apalis-imx6-sec`` is the ``apalis-imx6`` machine configured to have secure boot and secure storage enabled by default.
 
 How to enable
@@ -72,6 +73,12 @@ The list of artifacts downloaded should be:
 * ``SPL-<machine-sec>``
 * ``sit-<machine-sec>.bin``
 * ``u-boot-<machine-sec>.itb``
+
+
+.. note::
+    For the i.MX8* based machines, the ``SPL`` binary is included in ``imx-boot``
+    and the user should refer to ``imx-boot-<machine-sec>`` through this
+    document.
 
 Expand the tarballs:
 
