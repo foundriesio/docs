@@ -42,15 +42,15 @@ A pair is composed by a certificate (``*.crt``) and a key (``*.key``) file.
 The **dev** pair is a generic RSA 2048 key pair and is not in use.
 
 The **opteedev** pair is a RSA 2048 key pair used for OP-TEE. This is used by
-configuring the  variable ``OPTEE_TA_SIGN_KEY`` in ``conf/local.conf``.
+configuring the variable ``OPTEE_TA_SIGN_KEY``.
 
 The **ubootdev** pair is a RSA 2048 key pair used for U-Boot. This is used by
-configuring the  variable ``UBOOT_SPL_SIGN_KEYNAME`` in ``conf/local.conf``.
+configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
 
 The file ``x509.genkey`` is a configuration file used for creating
 ``privkey_modsign.pem`` and ``x509_modsign.crt`` which is a RSA 2048 pair in PEM
 format, and is used for signing Linux Kernel Modules. This is used by
-configuring the  variable ``MODSIGN_PRIVKEY`` in ``conf/local.conf``.
+configuring the variable ``MODSIGN_PRIVKEY``.
 
 Replacing the initial keys from factory
 ---------------------------------------
@@ -64,29 +64,32 @@ recommended to rotate the keys as needed. The suggestion is to rotate them each
   the used keys. So, it is highly recommended to rotate the keys each 6 to 24
   months.
 
-In the next sections, the command line on how to create the key pair for U-Boot,
-OP-TEE and Linux Kernel Modules.
-
 .. tip::
-  The file name for each key pair can be changed. However, the respective
-  variable in ``conf/local.conf`` must reflect those changes.
+  The file name for each key pair can be changed.
 
-  The variables to configure the key path and filename on ``conf/local.conf``
-  should look like:
+  The variables from ``<factory>/meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
+  can be redefined to change filenames or paths, as needed. Those variables are shown below:
+
 
   .. prompt::
 
-     #path and filename for the key/certificate for kernel modules
-     MODSIGN_KEY_DIR ?= "${TOPDIR}/conf/factory-keys"
+     MODSIGN_KEY_DIR = "${TOPDIR}/conf/factory-keys"
+     UBOOT_SIGN_KEYDIR ?= "${TOPDIR}/conf/factory-keys"
+     OPTEE_TA_SIGN_KEY ?= "${TOPDIR}/conf/factory-keys/opteedev.key"
+
+
+  .. prompt::
+
+
+     #filename for the key/certificate for kernel modules
      MODSIGN_PRIVKEY ?= "${MODSIGN_KEY_DIR}/privkey_modsign.pem"
      MODSIGN_X509 ?= "${MODSIGN_KEY_DIR}/x509_modsign.crt"
 
-     #path and filename for U-Boot key/certificate
-     UBOOT_SIGN_KEYDIR ?= "${TOPDIR}/conf/factory-keys"
+     #filename for U-Boot key/certificate
      UBOOT_SIGN_KEYNAME ?= "ubootdev"
 
-     #path and filename for OP-TEE
-     OPTEE_TA_SIGN_KEY ?= "${TOPDIR}/conf/factory-keys/opteedev.key"
+In the next sections, the command line on how to create the key pair for U-Boot,
+OP-TEE and Linux Kernel Modules.
 
 U-Boot keys
 """""""""""
@@ -120,3 +123,9 @@ Linux Kernel Modules keys
             -config ./x509.genkey -outform PEM \
             -out x509_modsign.crt \
             -keyout privkey_modsign.pem
+
+.. warning::
+
+        Some already created FoundriesFactories does not have the ``factory-keys``
+        directory with the set of keys and certificates. In this case, the commands
+        can be used to create the files.
