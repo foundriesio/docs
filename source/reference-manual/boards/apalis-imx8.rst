@@ -1,9 +1,9 @@
-.. _ref-rm_boards_apalis-imx6:
+.. _ref-rm_boards_apalis-imx8:
 
-Apalis iMX6 with the Ixora Carrier Board
+Apalis iMX8 with the Ixora Carrier Board
 ========================================
 
-.. include:: apalis-imx6-prepare.rst
+.. include:: apalis-imx8-prepare.rst
 
 .. include:: apalis-ixora-recovery.rst
 
