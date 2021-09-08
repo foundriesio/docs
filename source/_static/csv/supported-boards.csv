@@ -15,6 +15,7 @@ EA iMX7ULP-UCOM,imx7ulpea-ucom
 :ref:`NXP Toradex Apalis-iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
 NXP Toradex Apalis-iMX8QM,apalis-imx8
 NXP Toradex Colibri-iMX7 (Aster),colibri-imx7-emmc
+:ref:`QEMU AARCH32 <ref-rm_qemu_arm>`,qemuarm
 :ref:`QEMU AARCH64 <ref-rm_qemu_arm64>`,qemuarm64
 :ref:`QEMU RISCV-64 <ref-rm_qemu_riscv64>`,qemuriscv64
 :ref:`Raspberry Pi3 (32 bit and CM) <ref-rm_board_rasbperrypi>`,raspberrypi3
