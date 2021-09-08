@@ -267,7 +267,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="XsiFb1eVsqeZBjNpEi4x-22" value="&lt;b&gt;libsqulite3-dev&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="1">
+        <mxCell id="XsiFb1eVsqeZBjNpEi4x-22" value="&lt;b&gt;libsqlite3-dev&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;" vertex="1" parent="1">
           <mxGeometry x="316" y="-320" width="164" height="60" as="geometry"/>
         </mxCell>
         <mxCell id="XsiFb1eVsqeZBjNpEi4x-23" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="B4nIjSDg_KCV3Zwea4Wa-24" target="XsiFb1eVsqeZBjNpEi4x-22">
