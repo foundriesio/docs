@@ -7,7 +7,7 @@ On your device, use the following command to list the ``shellhttpd`` service:
 
 .. prompt:: bash device:~$, auto
 
-    device:~$  systemctl list-unit-files | grep enabled | grep shellhttpd
+    device:~$ systemctl list-unit-files | grep enabled | grep shellhttpd
 
 **Example Output**:
 
@@ -19,7 +19,7 @@ Verify the ``shellhttpd`` application status:
 
 .. prompt:: bash device:~$, auto
 
-    device:~$  systemctl status shellhttpd
+    device:~$ systemctl status shellhttpd
 
 **Example Output**:
 
