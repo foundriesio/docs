@@ -1,3 +1,5 @@
+.. _ref-rm_qemu_arm:
+
 arm
 ===
 
