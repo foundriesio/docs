@@ -31,7 +31,7 @@ Add all new files and changes:
 
     host:~$ git add recipes-support/shellhttpd/shellhttpd/httpd.sh
     host:~$ git add recipes-support/shellhttpd/shellhttpd/shellhttpd.service
-    host:~$ git add recipes-support/shellhttpd/shellhttpd/shellhttpd.service
+    host:~$ git add recipes-support/shellhttpd/shellhttpd_0.1.bb
     host:~$ git add recipes-samples/images/lmp-factory-image.bb
 
 Commit your changes with the message:
