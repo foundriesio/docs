@@ -32,6 +32,6 @@ Terminology
    factory-config.yml
      A file in the :term:`ci-scripts.git` repository of the Factory which
      controls all configurable aspects of a Factory. Such as
-     :ref:`ref-advanced-tagging`, :ref:`ug-configure-lmp_container-preloading`
+     :ref:`ref-advanced-tagging`, :ref:`ug-container-preloading`
      and email alerts.
 
