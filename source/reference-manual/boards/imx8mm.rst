@@ -3,6 +3,8 @@
 i.MX 8M Mini Evaluation Kit
 ===========================
 
+.. include:: secure-boot-note.rst
+
 .. include:: imx8-prepare.rst
 
 Hardware Preparation
@@ -28,7 +30,7 @@ Set up the board for updating using the manufacturing tools:
           lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if00-port0 -> ../../ttyUSB0
           lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if01-port0 -> ../../ttyUSB1
 
-     Using a serial terminal program like minicom, connect to the port 
+     Using a serial terminal program like minicom, connect to the port
      with ``if01`` in the name (in this example ttyUSB0) and apply the
      following configuration
 
@@ -60,6 +62,8 @@ Flashing
 --------
 
 Once in serial downloader mode and connected to your PC the evaluation board should show up as an NXP USB device.
+
+.. include:: secure-boot-pre-flash-note.rst
 
 .. include:: imx8-flashing.rst
 

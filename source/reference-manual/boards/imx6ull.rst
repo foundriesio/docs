@@ -3,6 +3,8 @@
 i.MX 6ULL Evaluation Kit
 ========================
 
+.. include:: secure-boot-note.rst
+
 .. include:: imx6-prepare.rst
 
 Hardware Preparation
@@ -27,7 +29,7 @@ Set up the board for updating using the manufacturing tools:
           total 0
           lrwxrwxrwx 1 root root 13 Dec  3 13:09 usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 -> ../../ttyUSB2
 
-     Using a serial terminal program like minicom, connect to the port 
+     Using a serial terminal program like minicom, connect to the port
      with ``if00`` in the name (in this example ttyUSB2) and apply the
      following configuration
 
@@ -89,6 +91,8 @@ Flashing
 --------
 
 Once in serial downloader mode and connected to your PC the evaluation board should show up as a Freescale USB device.
+
+.. include:: secure-boot-pre-flash-note.rst
 
 .. include:: imx6-flashing.rst
 
