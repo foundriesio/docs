@@ -6,7 +6,7 @@ The Foundries.io Linux microPlatform is an extensible
 software and hardware platform that makes it easier to develop,
 secure, and maintain Internet-connected Linux-based embedded devices.
 
-The Linux microPlatform is based on `OpenEmbedded`_ / `Yocto`_, and adds a
+The Linux microPlatform is based on `OpenEmbedded`_ / `Yocto Project`_, and adds a
 select set of board support package layers to enable popular
 development boards.
 
@@ -40,7 +40,7 @@ and maintained by Foundries.io on `GitHub`_.
    preloaded-images
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
-.. _Yocto: https://www.yoctoproject.org
+.. _Yocto Project: https://www.yoctoproject.org
 .. _Linux kernel: https://www.kernel.org
 .. _Docker containers: https://www.docker.com
 .. _GitHub: https://github.com/foundriesio
