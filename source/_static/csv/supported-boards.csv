@@ -5,15 +5,15 @@ Arm Cortex A5 DesignStart,a5ds
 :ref:`Arm Neoverse N1 System Development Platform (N1SDP) <ref-boards-x86>`,n1sdp
 :ref:`Intel NUC8 <ref-rm_board_intel-corei7-64>`,intel-corei7-64
 :ref:`Intel x86-64 UEFI <ref-rm_board_intel-corei7-64>`,intel-corei7-64
-:ref:`NXP iMX6ULL-EVK <ref-rm_board_imx6ullevk>`,imx6ullevk
-:ref:`NXP iMX6ULL-EVK with secure boot enabled <ref-rm_board_imx6ullevk>`,imx6ullevk-sec
+:ref:`NXP i.MX6 ULL EVK <ref-rm_board_imx6ullevk>`,imx6ullevk
+:ref:`NXP i.MX6 ULL EVK with secure boot enabled <ref-rm_board_imx6ullevk>`,imx6ullevk-sec
 EA iMX7ULP-UCOM,imx7ulpea-ucom
-:ref:`NXP iMX8M-MINILPD4 EVK <ref-rm_board_imx8mmevk>`,imx8mmevk
-:ref:`NXP iMX8M-MINILPD4 EVK with secure boot enabled <ref-rm_board_imx8mmevk>`,imx8mm-lpddr4-evk-sec
-:ref:`NXP iMX8MQuad EVK <ref-rm_board_imx8mqevk>`,imx8mqevk
-:ref:`NXP Toradex Apalis-iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
-:ref:`NXP Toradex Apalis-iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
-NXP Toradex Apalis-iMX8QM,apalis-imx8
+:ref:`NXP i.MX 8M Mini EVK <ref-rm_board_imx8mmevk>`,imx8mm-lpddr4-evk
+:ref:`NXP i.MX 8M Mini EVK with secure boot enabled <ref-rm_board_imx8mmevk>`,imx8mm-lpddr4-evk-sec
+:ref:`NXP i.MX 8M Quad EVK <ref-rm_board_imx8mqevk>`,imx8mq-evk
+:ref:`Toradex Apalis iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
+:ref:`Toradex Apalis iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
+Toradex Apalis iMX8QM,apalis-imx8
 :ref:`QEMU AARCH32 <ref-rm_qemu_arm>`,qemuarm
 :ref:`QEMU AARCH64 <ref-rm_qemu_arm64>`,qemuarm64
 :ref:`QEMU RISCV-64 <ref-rm_qemu_riscv64>`,qemuriscv64
