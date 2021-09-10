@@ -52,8 +52,10 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :caption: User Guide
    :name: sec-user-guide
 
-   user-guide/*/*
-
+   user-guide/configure-lmp/index
+   user-guide/lmp-auto-hostname/lmp-auto-hostname
+   user-guide/fioctl/index
+   
 .. toctree::
    :maxdepth: 2
    :caption: Glossary
