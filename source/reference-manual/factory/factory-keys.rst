@@ -77,9 +77,10 @@ recommended to rotate the keys as needed. The suggestion is to rotate them each
      UBOOT_SIGN_KEYDIR ?= "${TOPDIR}/conf/factory-keys"
      OPTEE_TA_SIGN_KEY ?= "${TOPDIR}/conf/factory-keys/opteedev.key"
 
+  Some other variables can be added to that file in order to further customize
+  the file name or path for the used keys:
 
   .. prompt::
-
 
      #filename for the key/certificate for kernel modules
      MODSIGN_PRIVKEY ?= "${MODSIGN_KEY_DIR}/privkey_modsign.pem"
@@ -89,14 +90,15 @@ recommended to rotate the keys as needed. The suggestion is to rotate them each
      UBOOT_SIGN_KEYNAME ?= "ubootdev"
 
 In the next sections, the command line on how to create the key pair for U-Boot,
-OP-TEE and Linux Kernel Modules.
+OP-TEE and Linux Kernel Modules. Assuming the ``lmp-manifest`` repository is
+cloned inside ``<factory>`` directory.
 
 U-Boot keys
 """""""""""
 
 .. prompt:: bash host:~$
 
-    cd <factory>/layers/lmp-manifest/factory-keys
+    cd <factory>/lmp-manifest/factory-keys
     openssl genpkey -algorithm RSA -out ubootdev.key \
             -pkeyopt rsa_keygen_bits:2048 \
             -pkeyopt rsa_keygen_pubexp:65537
@@ -107,7 +109,7 @@ OP-TEE keys
 
 .. prompt:: bash host:~$
 
-    cd <factory>/layers/lmp-manifest/factory-keys
+    cd <factory>/lmp-manifest/factory-keys
     openssl genpkey -algorithm RSA -out opteedev.key \
             -pkeyopt rsa_keygen_bits:2048 \
             -pkeyopt rsa_keygen_pubexp:65537
@@ -116,11 +118,42 @@ OP-TEE keys
 Linux Kernel Modules keys
 """""""""""""""""""""""""
 
+In order to create the key used by Linux Kernel to sign the modules a
+configuration file is needed. The `Linux Kernel documentation`_ states
+the parameters needed for the configuration file.
+
+For example, create a new text file with the following content or customize as
+needed:
+
+.. prompt::
+
+        [ req ]
+        default_bits = 4096
+        distinguished_name = req_distinguished_name
+        prompt = no
+        string_mask = utf8only
+        x509_extensions = myexts
+
+        [ req_distinguished_name ]
+        #O = Unspecified company
+        CN = Default insecure development key
+        #emailAddress = unspecified.user@unspecified.company
+
+        [ myexts ]
+        basicConstraints=critical,CA:FALSE
+        keyUsage=digitalSignature
+        subjectKeyIdentifier=hash
+        authorityKeyIdentifier=keyid
+
+Or use the provided configuration file from
+``<factory>/lmp-manifest/conf/keys/x509.genkey``
+as shown in the following command:
+
 .. prompt:: bash host:~$
 
-    cd <factory>/layers/lmp-manifest/factory-keys
+    cd <factory>/lmp-manifest/factory-keys
     openssl req -new -nodes -utf8 -sha256 -days 36500 -batch -x509 \
-            -config ./x509.genkey -outform PEM \
+            -config ../conf/keys/x509.genkey -outform PEM \
             -out x509_modsign.crt \
             -keyout privkey_modsign.pem
 
@@ -129,3 +162,9 @@ Linux Kernel Modules keys
         Some already created FoundriesFactories does not have the ``factory-keys``
         directory with the set of keys and certificates. In this case, the commands
         can be used to create the files.
+
+.. tip::
+        Don't forget to push the new keys to get it included in the next CI
+        build.
+
+.. _Linux Kernel documentation: https://www.kernel.org/doc/html/v5.0/admin-guide/module-signing.html
