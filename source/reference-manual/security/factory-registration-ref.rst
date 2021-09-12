@@ -3,9 +3,9 @@
 Manufacturing Process for Device Registration
 =============================================
 
-lmp-device-register works great when run manually and can be configured
+lmp-device-auto-register works great when run manually and can be configured
 to auto register devices in **CI**
-:ref:`builds <ug-configure-lmp_lmp-device-auto-register>`. However,
+:ref:`builds <ug-lmp-device-auto-register>`. However,
 a different process is required for provisioning production devices.
 The key to production provisioning lies in owning the
 :ref:`device gateway PKI <ref-device-gateway>`. Once a customer has
