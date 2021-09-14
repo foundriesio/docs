@@ -22,7 +22,6 @@ There are cases where having applications pre-loaded on the image can be useful,
 
     Refer to the official Docker documentation for best practices
     on writing Dockerfiles:
-
     https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
 Prerequisites
@@ -84,8 +83,8 @@ Add the ``factory-config.yml`` file, commit and push:
     host:~$ git commit -m "Configure shellhttpd as pre-load app" factory-config.yml
     host:~$ git push
 
-Getting New Image with Pre-loaded Container
--------------------------------------------
+Getting a New Image with Pre-loaded Containers
+----------------------------------------------
 
 From now on, every time a ``platform`` or ``containers`` build finishes, it will 
 generate a ``.wic.gz`` file with the pre-loaded Docker Image.
@@ -114,7 +113,7 @@ When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guila
 
    FoundriesFactory New Containers Image
 
-Flash the image and boot the device, next log via SSH.
+Flash the image and boot the device, next log in via SSH.
 
 .. note::
 
@@ -193,11 +192,11 @@ Run ``wget`` to test the container:
 Starting Compose Apps Automatically
 -----------------------------------
 
-To start the pre-loaded application automatically after the boot and before 
-the device registration and aktualizr-lite start you have to enable a systemd service 
+To start the pre-loaded application automatically (after the boot and before 
+the device registration when aktualizr-lite starts) you have to enable a systemd service 
 responsible for it.
 
-The meta-lmp_ has already a recipe that launches preloaded apps on boot.
+meta-lmp_ already has a recipe that launches pre-loaded apps after the device boots.
 
 Clone your ``meta-subscriber-overrides.git`` repo and enter its directory:
 
@@ -206,7 +205,7 @@ Clone your ``meta-subscriber-overrides.git`` repo and enter its directory:
     git clone -b devel https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
     cd meta-subscriber-overrides
 
-Edit the ``recipes-samples/images/lmp-factory-image.bb`` file and add the recipe on the ``CORE_IMAGE_BASE_INSTALL`` list:
+Edit the ``recipes-samples/images/lmp-factory-image.bb`` file and add the recipe to the ``CORE_IMAGE_BASE_INSTALL`` list:
 
 .. prompt:: bash host:~$, auto
 
@@ -256,7 +255,7 @@ Flash the image and boot the device, next log via SSH.
 Testing Auto Start
 ------------------
 
-Using a second terminal, test your application using ``curl`` in any external 
+Using a second terminal, test your application using ``curl`` from any external 
 device connected to the same network (e.g. your host machine: the same computer 
 you use to access your device with ssh).
 
