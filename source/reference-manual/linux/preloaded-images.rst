@@ -24,12 +24,13 @@ The easiest way to configure this is updating a Factory's
 :ref:`factory-config.yml <def-containers>` in ci-scripts.git with::
 
  containers:
-  preload: true
-  assemble_system_image: true
+   preloaded_images:
+     enabled: true
 
-  # Optional: The list of apps to preload can be set globally with:
-  # params:
-  #   APP_SHORTLIST: "money-making-app,debug-tools"
+  # Optional: The list of apps to preload can be with:
+  # containers:
+  #   preloaded_images:
+  #     shortlist: "money-making-app,debug-tools" "money-making-app,debug-tools"
 
 For simple workflows this may suffice. It will cause every Target built
 in the Factory to include and enable **all** Compose Apps.
@@ -75,12 +76,9 @@ This can be configured in `factory-config.yml` with::
     ...
 
  containers:
-  preload: true
-  assemble_system_image: true
-
-  params:
-    # default to just preloading the money-making-app
-    APP_SHORTLIST: "money-making-app"
+   preloaded_images:
+     enabled: true
+     shortlist: "money-making-app"
 
   tagging:
     # Changes to containers master create both "master" and "production" tagged targets
@@ -122,7 +120,7 @@ User occasionally combine preloaded images with a certain kind of
 In this scenario the devel and master container branches may not even
 have the same set of apps/containers. It's generally recommended
 to not produce a preloaded image. However, a ``ref_option`` could
-be added to set ``ASSEMBLE_SYSTEM_IMAGE: "0"`` for that branch.
+be added to set ``preloaded_images:`` for that branch.
 
 ``APP_SHORTLIST`` will pick up its override value from the
 "refs/heads/sec-fix" ``ref_option``. If devel and master had
@@ -137,6 +135,29 @@ Preloading could be set by doing a union of these two sets of apps,
 container's master branch and the "devel" Target will have both
 money-making-app and debug-tools preloaded from the container's
 devel branch.
+
+.. code-block::
+
+    lmp:
+      tagging:
+        refs/heads/sec-fix
+        # produce a target with containers from master
+          - tag: sec-fix
+          inherit: master
+        # produce a target with containers from devel
+          - tag: sec-fix
+          inherit: devel
+    ...
+   
+    containers:
+      tagging:
+    ...
+    ref_options:
+      refs/heads/sec-fix:
+        preloaded_images:
+          enabled: true
+          shortlist: "money-making-app,debug-tools"
+    ...
 
 Starting compose apps early
 ---------------------------
