@@ -55,7 +55,9 @@ lmp
     .. code-block:: yaml
 
          lmp:
-           container_preload: true
+           preloaded_images:
+             enabled: true
+             shortlist: "app-09"
            params:
              EXAMPLE_VARIABLE_1: hello_world
            machines:
@@ -81,13 +83,20 @@ lmp
                  EXTRA_ARTIFACTS: "mfgtool-files.tar.gz"
 
 lmp:
- container_preload: ``<true|false>``
+ preloaded_images:
+  enabled: ``<true|false>``
       **Optional:** Whether to preload docker images into the system-image as
-      part of a platform build via the archive built by ``containers.preload``.
+      part of a platform build.
 
       **Default:** ``false``
 
-      **Inherits:** ``containers.preload``
+      **Inherits:** ``containers``
+
+  shortlist: ``<app1>,<app2>,<...>``
+      **Optional:** Comma separated list of apps to preload. If it is not specified 
+      or its value is empty, then all Target’s apps are preloaded.
+
+      **Default:**  None
 
  params:
   EXAMPLE_VARIABLE_1: ``<value>``
@@ -170,8 +179,9 @@ containers
     .. code-block:: yaml
 
          containers:
-           preload: true
-           assemble_system_image: false
+           preloaded_images:
+             enabled: true
+             shortlist: "app-09"
            platforms:
              - arm
              - arm64
@@ -186,22 +196,18 @@ containers
                 inherit: devel
 
 containers:
- preload: ``<true|false>``
-      **Optional:** Whether to produce an archive containing docker images as
-      part of a container build trigger. This archive can then be used to preload
-      docker containers into your system-image by setting ``lmp.preload`` to ``true``.
+ preloaded_images:
+  enabled: ``<true|false>``
+      **Optional:** Whether to preload docker images into the system-image as
+      part of a containers build.
 
       **Default:** ``false``
 
-      **Inherits:** ``lmp.preload``
+  shortlist: ``<app1>,<app2>,<...>``
+      **Optional:** Comma separated list of apps to preload. If it is not specified 
+      or its value is empty, then all Target’s apps are preloaded.
 
- assemble_system_image: ``<true|false>``
-      **Optional:** Whether to produce a system-image as part of container build
-      triggers. The system-image will be available as an artifact in the
-      ``assemble-system-image`` run step of builds produced with this option set to
-      ``true``.
-
-      **Default:** ``false``
+      **Default:**  None
 
  platforms:|br| ``- arm`` |br| ``- arm64`` |br| ``- amd64``
       **Optional:** Specify a list of architectures to build containers for.
