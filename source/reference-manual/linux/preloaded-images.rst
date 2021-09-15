@@ -30,6 +30,7 @@ The easiest way to configure this is updating a Factory's
   # Optional: The list of apps to preload can be with:
   # containers:
   #   preloaded_images:
+  #     enabled: true
   #     shortlist: "money-making-app,debug-tools" "money-making-app,debug-tools"
 
 For simple workflows this may suffice. It will cause every Target built
@@ -38,32 +39,62 @@ in the Factory to include and enable **all** Compose Apps.
 Common Advanced Scenario
 ------------------------
 It's quite common to have more complex workflows. For example,
-a Factory may have their containers.git set up like::
+a Factory may have a different set of application on each ``containers.git`` branch.
 
-  # experimental and devel branches:
-  fiotest          - A compose-app that some devices run for QA.
-  money-making-app - The "product"
-  debug-tools      - A compose app with some tooling used for devel
+Let's assume you have 4 different branches with the following application:
 
-  # master branch
-  fiotest          - A compose app that some devices run for QA.
-  money-making-app - The "product"
+**experimental**:
 
-  # production branch
-  money-making-app - The "product"
+- ``fiotest`` -  A compose-app that some devices run for QA.
+- ``money-making-app`` -  The "product"
+- ``debug-tools`` -  A compose app with some tooling used for devel
 
-In this scenario "devel" images should be preloaded with:
+**devel**:
 
- * money-making-app
- * debug-tools
+- ``fiotest`` -  A compose-app that some devices run for QA.
+- ``money-making-app`` -  The "product"
+- ``debug-tools`` -  A compose app with some tooling used for devel
 
-"master" images and "production" should only include the
-"money-making-app".
+**master**:
 
-Finally, the "experimental" branch doesn't need to include preloaded
+- ``fiotest`` -  A compose-app that some devices run for QA.
+- ``money-making-app`` -  The "product"
+
+**production**:
+
+- ``money-making-app`` -  The "product"
+
+
+In this scenario it is possible to configure each branch to preload different application in its image.
+
+This can be configured by additional variables on ``ref_options``.
+
+.. prompt:: text
+
+     ref_options:
+       refs/heads/devel:
+         params:
+           APP_SHORTLIST: "<app1>,<app2>,<...>"
+           ASSEMBLE_SYSTEM_IMAGE: "<1|0>  "
+
+- ``APP_SHORTLIST`` - Overrides the list of application.
+- ``ASSEMBLE_SYSTEM_IMAGE`` - For enable|disable preloading apps.
+
+Assuming that images from each branches should be preloaded with:
+
+**devel**
+
+ - ``money-making-app``
+ - ``debug-tools``
+
+**master** and **production**
+
+ - ``money-making-app``
+
+Finally, the **experimental** branch doesn't need to include preloaded
 images.
 
-This can be configured in `factory-config.yml` with::
+This can be configured in `factory-config.yml` with:
 
  lmp:
    tagging:
