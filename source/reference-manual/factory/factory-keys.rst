@@ -159,7 +159,7 @@ as shown in the following command:
 
 .. warning::
 
-        Some already created FoundriesFactories does not have the ``factory-keys``
+        FoundriesFactories created prior to **v83** does not have the ``factory-keys``
         directory with the set of keys and certificates. In this case, the commands
         can be used to create the files.
 
