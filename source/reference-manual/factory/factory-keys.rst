@@ -11,8 +11,16 @@ FoundriesFactory build.
 
 When a FoundriesFactory is created, by default two set of keys are created under
 ``lmp-manifest`` repository. The key set under ``conf/keys`` is a copy of the
-default LmP public keys. The set under ``factory-keys`` is unique for that
-FoundriesFactory following the directory structure shown below:
+default LmP public keys. The set under ``factory-keys`` is created during the
+FoundriesFactory creation and is unique for that Factory.
+
+.. warning::
+
+        FoundriesFactories created prior to **v83** do not have the ``factory-keys``
+        directory with the set of keys and certificates. In this case, the commands
+        can be used to create the files.
+
+The directory structure shown below:
 
    .. parsed-literal::
         lmp-manifest/
@@ -35,6 +43,7 @@ FoundriesFactory following the directory structure shown below:
         │   ├── ubootdev.crt
         │   ├── ubootdev.key
         │   └── x509_modsign.crt
+
 
 
 A pair is composed by a certificate (``*.crt``) and a key (``*.key``) file.
@@ -156,12 +165,6 @@ as shown in the following command:
             -config ../conf/keys/x509.genkey -outform PEM \
             -out x509_modsign.crt \
             -keyout privkey_modsign.pem
-
-.. warning::
-
-        FoundriesFactories created prior to **v83** does not have the ``factory-keys``
-        directory with the set of keys and certificates. In this case, the commands
-        can be used to create the files.
 
 .. tip::
         Don't forget to push the new keys to get it included in the next CI
