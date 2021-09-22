@@ -3,7 +3,7 @@
 i.MX 8MQuad Evaluation Kit
 ==========================
 
-.. include:: imx8-prepare.rst
+.. include:: imx8mq-prepare.rst
 
 Hardware Preparation
 --------------------
