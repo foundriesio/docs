@@ -20,9 +20,7 @@ Factory.
         |     ``lmp-factory-image-<machine-name>.wic.gz``
         |     ``u-boot-<machine-name>.itb``
         |     ``sit-<machine-name>.bin``
-        |     ``imx-boot-<machine-name>``
-        | The i.MX 8MQuad requires an addition imx-boot: 
-        |     ``imx-boot-<machine-name>-nohdmi``
+        |     ``imx-boot-<machine-name>`` or ``imx-boot-<machine-name>-nohdmi``
 
           .. figure:: /_static/boards/imx-steps-2.png
             :width: 769
@@ -47,8 +45,7 @@ Factory.
       ├── lmp-factory-image-<machine-name>.wic
       ├── u-boot-<machine-name>.itb
       ├── sit-<machine-name>.bin 
-      ├── imx-boot-<machine-name>
-      ├── imx-boot-<machine-name>-nohdmi (i.MX 8MQuad only)
+      ├── imx-boot-<machine-name> or imx-boot-<machine-name>-nohdmi
       └── mfgtool-files-<machine-name>
             ├── bootloader.uuu
             ├── full_image.uuu

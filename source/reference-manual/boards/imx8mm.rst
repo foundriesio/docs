@@ -5,7 +5,7 @@ i.MX 8M Mini Evaluation Kit
 
 .. include:: secure-boot-note.rst
 
-.. include:: imx8-prepare.rst
+.. include:: imx8mm-prepare.rst
 
 Hardware Preparation
 --------------------
