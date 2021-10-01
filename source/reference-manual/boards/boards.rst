@@ -15,6 +15,7 @@ Find below the instructions on how to flash the supported boards.
    se050_imx8mq
    se050_imx8mm
    imx6ull
+   se050_imx6ull
    apalis-imx6
    apalis-imx8
    am64xx-sk
