@@ -171,7 +171,7 @@ Platform Customizing
 Changing kernel command line args
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The kernel command line can be extended by setting ``OSTREE_KERNEL_ARGS`` in
+For ``DISTRO=lmp``, the kernel command line can be extended by setting ``OSTREE_KERNEL_ARGS`` in
 ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
 
     OSTREE_KERNEL_ARGS_<machine> = "console=${console} <new-args> ${OSTREE_KERNEL_ARGS_COMMON}"
@@ -183,6 +183,25 @@ Make sure you set the correct ``<machine>`` and other variables as needed.
     This variable is responsible for setting a valid ``root`` label for the
     device. It is not necessarily needed on devices specifying the partition
     path directly with ``root=``.
+
+Now, if ``DISTRO=lmp-base`` is set, the kernel command line can be extended by
+appending commands to ``bootcmd_args`` in
+``meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-base-scr/<machine>/uEnv.txt.in``,
+for example::
+
+    bootcmd_args=setenv bootargs console=tty1 console=${console} root=/dev/mmcblk2p2 rootfstype=ext4 rootwait rw <new-args>
+
+Reference for ``bbappend`` for this file:
+
+**meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-base-scr.bbappend:**
+
+.. prompt:: text
+
+    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+.. note::
+    If testing a reference board supported in ``meta-lmp``, the original ``uEnv.txt.in``
+    file can be found in ``meta-lmp/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-base-scr/<machine>/uEnv.txt.in``.
 
 Adding a new systemd startup service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
