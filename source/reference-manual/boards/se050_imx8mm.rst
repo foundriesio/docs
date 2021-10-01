@@ -3,18 +3,17 @@ i.MX 8MMini Evaluation Kit with SE050ARD
 
 This document will walk a developer through the steps of installing a
 FoundriesFactory image with the SE050 hardware enabled onto the NXP
-imx8mmevk that is connected to the NXP OM-SE050ARD development platform.
+``imx8mmevk`` that is connected to the NXP OM-SE050ARD development platform.
 
-An image created in the factory with the SE050 enabled will not boot on boards
-without the SE050 properly attached.
+.. note::
+    An image created in the factory with the SE050 enabled will not boot on
+    boards without the SE050 properly attached.
 
 Attaching the SE050
 -------------------
-Connect the OM-SE050ARD Arduino Compatible Development Kit to the
-imx8mmevk as follows:
 
 Using four male to male jumper wires (Arduino Compatible Pin size)
-connect the two boards.
+connect the two boards as follows:
 
 .. figure:: /_static/boards/imx8mmevk_J1004.png
      :width: 400
@@ -83,4 +82,4 @@ Installing the FoundriesFactory Image
 -------------------------------------
 
 Download the images that have the SE050 enabled from the factory following
-the instructions in the iMX8MMevk board.
+the instructions in :ref:`ref-rm_board_imx8mmevk`.
