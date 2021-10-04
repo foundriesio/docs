@@ -5,7 +5,7 @@ WireGuard VPN
 
 Factory users may need to remotely access devices that are behind firewalled
 private networks. In order to help make remote access easy, the LmP ships
-with WireGuard_ available and integrated into `fioctl` and NetworkManager.
+with WireGuard_ available and integrated into :ref:`fioctl` and NetworkManager.
 
 Every organization has unique remote access requirements. The
 `Factory WireGuard Server`_ has been created as a guide for deploying
@@ -71,6 +71,61 @@ like::
 Remote access can be disabled from fioctl with::
 
   $ fioctl devices config wireguard <device> disable
+
+
+Changing wireguard server address
+---------------------------------
+
+It is sometimes necessary to change the wireguard server address. For example,
+when initial setup is done using developer's laptop, default factory-wireguard.py
+settings can be used. When later on it's required for more developers to have
+remote access to the devices, wireguard server should be moved (for example to
+a cloud hosted VM). When such move happens it might be necessary to change
+wireguard's address (default might already be in use). This is easy on the
+server side as it's just a command line parameter::
+
+   $ sudo ./factory-wireguard.py \
+       --apitoken <api token> \  # https://app.foundries.io/settings/tokens
+       --factory <factory> \
+       --privatekey /root/wgpriv.key \ # where to store generated private key
+       enable
+       --vpnaddr 10.42.44.1
+
+It's a bit more complicated on the device side. Once wireguard configuration is
+initiated, it's not changed when server endpoint moves. This needs to be done
+manually by updating device settings. The settings are stored in
+``wireguard-client`` file. Example *old settings*::
+
+  address=10.42.42.2
+  pubkey=abcdefghijk123456789
+
+The public key corresponds to a private key that is already stored on the device.
+This part should not be changed. It is important to keep this configuration file
+unencrypted. After the change the file should look like this::
+
+  address=10.42.44.2
+  pubkey=abcdefghijk123456789
+
+This change can be done using ``fioct devices config set`` command. More details
+can be found in :ref:`fioctl` section. Currently the only way to update the unencrypted
+settings file is with --raw option::
+
+  $ fioctl devices config set my-device-1 --raw my-device-1.config.json
+
+The contents of the ``my-device.config.json`` below:
+
+.. code:: json
+
+  {
+    "reason": "Update wireguard settings",
+    "files": [
+      {
+        "name": "wireguard-client",
+        "value": "address=10.42.44.2\npubkey=abcdefghijk123456789",
+        "unencrypted": true
+      }
+    ]
+  }
 
 
 Troubleshooting
