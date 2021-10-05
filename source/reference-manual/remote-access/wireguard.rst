@@ -76,13 +76,13 @@ Remote access can be disabled from fioctl with::
 Changing wireguard server address
 ---------------------------------
 
-It is sometimes necessary to change the wireguard server address. For example,
-when initial setup is done using developer's laptop, default factory-wireguard.py
-settings can be used. When later on it's required for more developers to have
-remote access to the devices, wireguard server should be moved (for example to
-a cloud hosted VM). When such move happens it might be necessary to change
-wireguard's address (default might already be in use). This is easy on the
-server side as it's just a command line parameter::
+It is sometimes necessary to change the WireGuard server's private VPN address.
+For example, when the initial setup is done using a developer's laptop, default
+factory-wireguard.py settings are probably used. Later on, when it's required for
+more developers to have remote access to the devices, the server should be moved
+(for example to a cloud hosted VM). When such move happens it might be necessary
+to change WireGuard's address (default might already be in use). This is easy on
+the server side as it's just a command line parameter::
 
    $ sudo ./factory-wireguard.py \
        --apitoken <api token> \  # https://app.foundries.io/settings/tokens
@@ -91,7 +91,7 @@ server side as it's just a command line parameter::
        enable
        --vpnaddr 10.42.44.1
 
-It's a bit more complicated on the device side. Once wireguard configuration is
+It's a bit more complicated on the device side. Once the WireGuard configuration is
 initiated, it's not changed when server endpoint moves. This needs to be done
 manually by updating device settings. The settings are stored in
 ``wireguard-client`` file. Example *old settings*::
@@ -107,8 +107,7 @@ unencrypted. After the change the file should look like this::
   pubkey=abcdefghijk123456789
 
 This change can be done using ``fioct devices config set`` command. More details
-can be found in :ref:`fioctl` section. Currently the only way to update the unencrypted
-settings file is with --raw option::
+can be found in :ref:`fioctl` section. This can be done with::
 
   $ fioctl devices config set my-device-1 --raw my-device-1.config.json
 
