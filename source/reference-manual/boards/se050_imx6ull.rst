@@ -66,3 +66,7 @@ Installing the FoundriesFactory Image
 
 Download the images that have the SE050 enabled from the factory following
 the instructions in :ref:`ref-rm_board_imx6ullevk`.
+
+.. note::
+    A reference on the needed changes to enable the SE050 middleware can be
+    found in :ref:`ref-security_se050_enablement`.
