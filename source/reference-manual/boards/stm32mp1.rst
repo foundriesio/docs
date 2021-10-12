@@ -3,6 +3,21 @@
 STM32MP157 Discovery Kit
 ========================
 
+CI Build
+--------
+
+Including STM OpenEmbedded layer requires accepting EULA. To enable EULA
+acceptance in the CI job, EULA_stm32mp1disco variable needs to be set in the
+factory-config.yml::
+
+    ...
+    lmp:
+      params:
+        ...
+        EULA_stm32mp1disco: "1"
+        ...
+
+
 .. include:: generic-prepare.rst
 
 Flashing
