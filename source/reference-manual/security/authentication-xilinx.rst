@@ -74,6 +74,29 @@ Unless you are booting from SD or eMMC devices, chances are that you will need t
 
 One alternative to a full SDK install is running Vivado in a container on your Linux machine. During this development, we used the following `vivado_docker`_ repository.
 
+Sign the FPGA bitstream
+-----------------------
+When authentication is enabled in the bootable image, the CSU will also authenticate the FPGA bistream before allowing it to load.
+Because of this, the bitstream must also be signed before adding it to the FIT image::
+
+       $ cat fpga.bif
+       the_ROM_image:
+       {
+               [auth_params] ppk_select=0; spk_id=0x00000000
+               [pskfile] PSK.pem
+               [sskfile] SSK.pem
+               [destination_device=pl, authentication=rsa] fpga.bit
+	}
+
+        $ ./bootgen -arch zynqmp -image fpga.bif -w on -o fpga.bit.bin
+
+U-boot also needs to be modified in order to load an authenticated FPGA image from FIT. We have posted an `RFC`_ to address this situation and we will work towards landing it upstream.
+
+However, if your use case allows to load the signed bitstream from the U-Boot shell you could just use the load secured zynqmp command; in the example below we are loading the unencrypted signed bitstream from DDR at address ``0x10000000`` with a size of ``0x70000`` bytes::
+
+       $ fpga loads 0 0x10000000 0x70000 1 2
+
+
 Booting SPL
 -----------
 Applying this `patch`_ to U-boot you should see the following on a successful boot::
@@ -111,7 +134,6 @@ Applying this `patch`_ to U-boot you should see the following on a successful bo
 .. note::
         Booting a secure image disables the JTAG interface even if no JTAG related fuses were written. Use the SPL configuration option `CONFIG_SPL_ZYNQMP_RESTORE_JTAG`_ to re-enable it on boot.
 
-
 .. _vivado_docker:
    https://github.com/ldts/petalinux-docker.git
 
@@ -126,3 +148,6 @@ Applying this `patch`_ to U-boot you should see the following on a successful bo
 
 .. _documentation:
    https://github.com/Xilinx/embeddedsw/blob/master/lib/sw_services/xilskey/doc/xilskey.pdf
+
+.. _RFC:
+   https://lists.denx.de/pipermail/u-boot/2021-October/462571.html
