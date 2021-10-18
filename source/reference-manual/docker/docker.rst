@@ -9,4 +9,5 @@ Docker
    docker-architecture
    containers
    container-secrets
+   private-registries
    compose-apps
