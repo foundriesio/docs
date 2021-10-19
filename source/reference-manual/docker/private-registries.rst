@@ -41,7 +41,7 @@ Then set the factory configuration with something like::
   container_registries:
   - type: aws
     region: us-east-2
-    url: 685467930734.dkr.ecr.us-east-2.amazonaws.com
+    url: XXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com
     aws_creds_secret_name: aws_creds
 
 .. _ECR:
