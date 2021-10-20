@@ -8,7 +8,7 @@ from a private third-party container registry such as AWS's ECR_.
 There are two reasons this would normally happen:
 
  * A container in ``containers.git`` is based on a private container
-   image. e.g. It's Dockerfile has ``FROM <private
+   image. e.g. Its Dockerfile has ``FROM <private
    registry>/<container>``
 
  * A Docker Compose App references a private container image. e.g.
