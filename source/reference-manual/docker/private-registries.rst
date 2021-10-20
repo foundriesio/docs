@@ -12,7 +12,7 @@ There are two reasons this would normally happen:
    registry>/<container>``
 
  * A Docker Compose App references a private container image. e.g.
-   It's ``docker-compose.yml`` has a line like ``image: <private
+   Its ``docker-compose.yml`` has a line like ``image: <private
    registry>/<container>``
 
 In either case, CI will need read access to the private container image
