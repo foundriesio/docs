@@ -53,6 +53,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-user-guide
 
    user-guide/container-preloading/container-preloading
+   user-guide/docker-vscode/docker-vscode
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
    user-guide/mirror-action/mirror-action
