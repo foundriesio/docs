@@ -249,6 +249,7 @@ Follow the steps below to install the Docker extension in VS Code:
 
 Now you have everything to start to build and deploy the Docker Compose Application 
 on the device.
+
 Development Workflow
 --------------------
 
