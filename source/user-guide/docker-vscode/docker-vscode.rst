@@ -25,20 +25,23 @@ It is also assumed that you have the software below installed on your computer:
 - `Visual Studio Code <https://code.visualstudio.com/>`_
 - `Git <https://git-scm.com/downloads>`_
 
-Create an SSH key pair as shown in this `document on gitHub. <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>`_
+1. Create an SSH key pair as shown in this `document on GitHub. <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>`_
 
-After testing different versions of ``docker-compose``, it was noticed that the 
-only version that works correctly was version ``1.27.1``.
-
-Install the ``docker-compose`` version ``1.27.1`` with the command below:
+2. Install the ``docker-compose`` version ``1.27.1`` using the command below:
 
 .. prompt:: bash host:~$
 
     sudo curl -L "https://github.com/docker/compose/releases/download/1.27.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
-Assuming you have a device running the Linux microPlatform with the ``<device-ip>``, 
-use the command to add your ssh public key to the Target:
+
+.. note::
+
+   Several versions of ``docker-compose`` were tested and only version ``1.27.1`` 
+   worked correctly, so make sure to install this version.
+
+3. Assuming you have a device running the Linux microPlatform with the ``<device-ip>``, 
+use the command below to add your ssh public key to the target:
 
 .. prompt:: bash host:~$
 
@@ -52,14 +55,14 @@ use the command to add your ssh public key to the Target:
      
      Number of key(s) added: 1
      
-     Now try logging into the machine, with:   "ssh 'fio@<device-ip>'"
-     and check to make sure that only the key(s) you wanted were added.
+Now try logging into the machine, with: "ssh 'fio@<device-ip>'" and make sure 
+that only the key(s) you wanted were added.
 
 Docker Context Setup
 --------------------
 
 The initial Docker context connects to the Desktop, in other words, if you try 
-``docker run | ps | rm| etc`` it uses your Desktop.
+``docker run | ps | rm | etc`` it runs from your Desktop.
 
 Check the context available with the command:
 
@@ -109,7 +112,7 @@ on the Desktop:
 
 .. prompt:: bash host:~$
 
-    docker docker context use device
+    docker context use device
 
 **Example Output**:
 
@@ -118,7 +121,7 @@ on the Desktop:
      device
      Current context is now "device"
 
-.. warning::
+.. note::
 
    To run Docker commands on your Desktop, you have to switch context back to 
    default: ``docker context use default``
@@ -225,7 +228,7 @@ with your Factory name:
 Visual Studio Code
 ------------------
 
-Start the Visual Studio Code with the command below inside the containers folder.
+Start the Visual Studio Code with the command below inside the ``containers`` folder.
 
 .. prompt:: bash host:~$, auto
 
@@ -239,18 +242,17 @@ Follow the steps below to install the Docker extension in VS Code:
 
    Installing Docker extension on Visual Studio Code
 
-- 1) Click on Extensions
-- 2) Search for docker
+- 1) Click on `Extensions`
+- 2) Search for `docker`
 - 3) Select the Docker extension
 - 4) Install Docker extension
 
+Now you have everything to start to build and deploy the Docker Compose Application 
+on the device.
 Development Workflow
 --------------------
 
-Now you have everything to start to build and deploy the Docker Compose Application 
-on the Target.
-
-Click on explorer to see the file tree you have on the containers folder:
+Click on `EXPLORER` to see the file tree you have on the containers folder:
 
 .. figure:: /_static/userguide/docker-vscode/explorer.png
    :width: 900
@@ -258,7 +260,7 @@ Click on explorer to see the file tree you have on the containers folder:
 
    Visual Studio Code, explorer view
 
-Right-click your mouse on the ``docker-compose.yml`` and select :guilabel:`Compose up`’ 
+Right-click on the ``docker-compose.yml`` and select :guilabel:`Compose up`
 to launch the ``shellhttpd`` example on your device.
 
 .. figure:: /_static/userguide/docker-vscode/dockerup.png
