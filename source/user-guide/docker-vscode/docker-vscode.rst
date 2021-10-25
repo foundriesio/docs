@@ -4,20 +4,20 @@ Working with Docker and VSCode
 ==============================
 
 This section helps you to configure the Docker extension for the Visual Studio Code 
-and use it to develop and deploy Docker Compose Application in the device connected over ssh.
+and use it to develop and deploy a Docker Compose Application to devices connected over ssh.
 
-Creating, configuring and testing the Docker Compose Application is a very important 
-stage and it might require debugging before you make sure it is designed as you like.
+Creating, configuring and testing a Docker Compose Application are very important 
+stages and they might require debugging before you make sure the application is designed as you like.
 The steps below help you during that stage where you are constantly changing your 
 ``Dockerfile``, ``docker-compose.yml`` and application.
 
 Prerequisites
 -------------
 
-In this guide, it is assumed you have already an idea about Docker Compose Application 
+In this guide, it is assumed you are familiar with Docker Compose Application 
 and its structures.
 In case you want to learn more about Docker and Docker Compose Apps, take a look 
-at the tutorials starting from ":ref:`tutorial-gs-with-docker`".
+at the **Tutorials** starting from :ref:`tutorial-gs-with-docker`.
 
 It is also assumed that you have the software below installed on your computer:
 
@@ -297,7 +297,7 @@ look like this in the VSCode terminal:
 
      Terminal will be reused by tasks, press any key to close it.
 
-Swtich to the Docker Extension view to explore the extension funcionalities:
+Switch to the Docker Extension view to explore the extension functionalities:
 
 .. figure:: /_static/userguide/docker-vscode/docker.png
    :width: 900
@@ -308,8 +308,8 @@ Swtich to the Docker Extension view to explore the extension funcionalities:
 As you can see in the image above, the extension allows you to see many pieces 
 of information about Docker in the device.
 
-The first tab :guilabel:`CONTAINERS`’ will display all the images running on your 
-device. Note that is also possible to see the Container Image file system.
+The first tab :guilabel:`CONTAINERS` will display all the images running on your 
+device. Note that it is also possible to see the Container Image file system.
 
 .. figure:: /_static/userguide/docker-vscode/runningimage.png
    :width: 200
@@ -317,7 +317,7 @@ device. Note that is also possible to see the Container Image file system.
 
    Docker Image running on the Device
 
-By right clicking in the image, is posible to attach a terminal to the running container:
+Right-click on the image to attach a terminal to the running container:
 
 .. figure:: /_static/userguide/docker-vscode/terminal.png
    :width: 900
@@ -325,7 +325,11 @@ By right clicking in the image, is posible to attach a terminal to the running c
 
    Attach Terminal
 
-Finally stop de application by right click in the App and Compose Down:
+.. note::
+     You can proceed to test your container as described in the ``shellhttpd`` 
+     tutorial: :ref:`tutorial-deploying-first-app-testing`.
+
+Finally, to stop the application, right-click in the App and select :guilabel:`Compose Down`’:
 
 .. figure:: /_static/userguide/docker-vscode/downapp.png
    :width: 300
