@@ -56,6 +56,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
    user-guide/mirror-action/mirror-action
+   user-guide/submodule/submodule
    user-guide/custom-sota-client
    user-guide/fioctl/index
 

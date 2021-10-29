@@ -1,3 +1,5 @@
+.. _tutorial-compose-app-file-structure:
+
 File Structure
 ^^^^^^^^^^^^^^
 
