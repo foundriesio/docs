@@ -27,7 +27,10 @@ and move it to the folder created in the last step.
 
 .. note::
     This tutorial was tested using
-    ``EdgeLock SE05x Plug & Trust Middleware version (03.03.00)``.
+    ``EdgeLock SE05x Plug & Trust Middleware version (02.14.00)``.
+    It is recommended to contact Foundries.io support when doing the SE050
+    integration as NXP only provides the latest package for download, which
+    might not be tested in a FoundriesFactory.
 
 3. Create the .bbappend file for the ``optee-os-fio`` recipe to include the
 middleware and needed configurations to enable SE050.
@@ -42,8 +45,8 @@ middleware and needed configurations to enable SE050.
         file://SE-PLUG-TRUST-MW.zip;name=se050-mw \
     "
 
-    SRC_URI[se050-mw.md5sum] = "9f34b2bf2e4fcf6f576c078df5dd98f8"
-    SRC_URI[se050-mw.sha256sum] = "f8d1b355f21f3fd380087efc0517a9df06e3dd387744ede99f0542642b4b7aab"
+    SRC_URI[se050-mw.md5sum] = "d1f0553ec6e3a9a70d7be9d3183921f9"
+    SRC_URI[se050-mw.sha256sum] = "6d0c2799475dfb304d159909cdcf8c7e2a38d6596c3e3205224da685b4b204f6"
 
     do_compile_prepend() {
         # Link SE050 MW in order for it to available to OP-TEE
