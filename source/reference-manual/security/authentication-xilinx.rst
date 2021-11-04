@@ -7,13 +7,17 @@ Secure Boot on Zynq UltraScale+ MPSoC
 =====================================
 This is a simple guide on how to provision a device enabling the bootloader hardware authentication.
 
+.. note::
+
+   Helper scripts are also available at the `lmp-tools`_ repository.
+
 Get the PMU firmware
 --------------------
-Get a valid version of the PMU firmware for the hardware ``pmu.bin``
+Get a valid version of the PMU firmware for the hardware ``pmu.bin`` (also available at the deploy folder if built with LmP).
 
 Build the bootloader
 --------------------
-Build U-boot for the ZynqMP SoC platform including SPL support ``u-boot-spl.bin``
+Build U-boot for the ZynqMP SoC platform including SPL support ``u-boot-spl.bin`` (also available at the deploy folder if built with LmP).
 
 Create the Primary and Secondary keys
 -------------------------------------
@@ -61,8 +65,9 @@ The layout of the bootable image can be read as follows::
 
 Fuse the Primary Public Key SHA-384
 -----------------------------------
-At the time of writing, there is not an open source solution that allows the user to read/write to the ZynqMP SoC eFUSEs. A good alternative to other GUI based tools from Xilinx is to use the Xilinx Lightweight Provisioning Tool, since it allows requests to be scripted: use this tool to write the content of ``fuse-ppk.txt`` to the PPK eFUSE.
-Notice that this tool is only shared on demand from your Xilinx support representative.
+At the time of writing, there is not an open source solution that allows the user to read/write to the ZynqMP SoC eFUSEs. A good alternative to other GUI based tools from Xilinx is to use the Xilinx Lightweight Provisioning Tool, since it allows requests to be scripted: use this tool to write the content of ``fuse-ppk.txt`` to the PPK eFUSE. Notice that this tool is only shared on demand from your Xilinx support representative.
+
+For more information on how to program the eFUSEs, please have a look at `XAPP1319`_.
 
 If you want to roll-out your own solution to read or write to the eFUSES, please have a look at the `Xilskey service`_ and the relevant `documentation`_; be aware however that these registers are only accessible from exception level 3 (EL3).
 
@@ -70,7 +75,7 @@ A simple solution if you wanted to pass some of those eFUSE values to TF-A or OP
 
 Program the bootable image
 --------------------------
-Unless you are booting from SD or eMMC devices, chances are that you will need to use the JTAG interface for that first write to QSPI. JTAG accessibility however seems to be only viable using the Xilinx VIVADO SDK which is  big commitment in terms of storage.
+Unless you are booting from SD or eMMC devices, chances are that you will need to use the JTAG interface for that first write to QSPI. JTAG accessibility however seems to be only viable using the Xilinx VIVADO SDK which is big commitment in terms of storage.
 
 One alternative to a full SDK install is running Vivado in a container on your Linux machine. During this development, we used the following `vivado_docker`_ repository.
 
@@ -90,12 +95,14 @@ Because of this, the bitstream must also be signed before adding it to the FIT i
 
         $ ./bootgen -arch zynqmp -image fpga.bif -w on -o fpga.bit.bin
 
-U-boot also needs to be modified in order to load an authenticated FPGA image from FIT. We have posted an `RFC`_ to address this situation and we will work towards landing it upstream.
+Now extend the `bitstream-signed`_ recipe including your signed bitstream, then select it as the preferred provider for ``virtual/bitstream`` and specify the right binary and compatible string, such as::
 
-However, if your use case allows to load the signed bitstream from the U-Boot shell you could just use the load secured zynqmp command; in the example below we are loading the unencrypted signed bitstream from DDR at address ``0x10000000`` with a size of ``0x70000`` bytes::
+       $ cat meta-lmp-bsp/conf/machine/uz3eg-iocc-sec.conf
 
-       $ fpga loads 0 0x10000000 0x70000 1 2
-
+       # Signed FPGA bitstream is needed on secure/closed targets
+       PREFERRED_PROVIDER_virtual/bitstream = "bitstream-signed"
+       SPL_FPGA_BINARY = "bitstream-signed.bit.bin"
+       SPL_FPGA_COMPATIBLE = "u-boot,zynqmp-fpga-ddrauth"
 
 Booting SPL
 -----------
@@ -148,6 +155,15 @@ Applying this `patch`_ to U-boot you should see the following on a successful bo
 
 .. _documentation:
    https://github.com/Xilinx/embeddedsw/blob/master/lib/sw_services/xilskey/doc/xilskey.pdf
+
+.. _XAPP1319:
+   https://www.xilinx.com/support/documentation/application_notes/xapp1319-zynq-usp-prog-nvm.pdf
+
+.. _bitstream-signed:
+   https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-bsp/dynamic-layers/xilinx-tools/recipes-bsp/bitstream/bitstream-signed_git.bb
+
+.. _lmp-tools:
+   https://github.com/foundriesio/lmp-tools/tree/master/security/zynqmp
 
 .. _RFC:
    https://lists.denx.de/pipermail/u-boot/2021-October/462571.html
