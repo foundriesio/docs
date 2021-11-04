@@ -58,6 +58,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/mirror-action/mirror-action
    user-guide/submodule/submodule
    user-guide/custom-sota-client
+   user-guide/multi-stage-container/multi-stage-container
    user-guide/fioctl/index
 
 .. toctree::
