@@ -1,7 +1,7 @@
 .. _ug-lmp-device-auto-register:
 
-Auto Register
-=============
+LmP Auto Register
+=================
 
 This section shows how to enable the ``lmp-device-auto-register`` recipe. This 
 recipe creates a systemd oneshot service that will automatically register the 

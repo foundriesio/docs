@@ -1,7 +1,7 @@
 .. _ug-submodule:
 
-Working with Git Submodules
-===========================
+Git Submodule
+=============
 
 This section shows how to add a git submodule to your FoundriesFactory repository.
 

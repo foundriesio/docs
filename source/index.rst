@@ -53,13 +53,13 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-user-guide
 
    user-guide/container-preloading/container-preloading
+   user-guide/custom-sota-client/custom-sota-client
+   user-guide/fioctl/fioctl
+   user-guide/git-mirror-action/git-mirror-action
+   user-guide/git-submodule/git-submodule
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
-   user-guide/mirror-action/mirror-action
-   user-guide/submodule/submodule
-   user-guide/custom-sota-client
    user-guide/multi-stage-container/multi-stage-container
-   user-guide/fioctl/index
 
 .. toctree::
    :maxdepth: 2
