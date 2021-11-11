@@ -213,7 +213,7 @@ containers:
       **Optional:** Specify a list of architectures to build containers for.
       Containers are only built for the specified list.
 
-      **Default:** ``amd64``
+      **Default:** ``arm,arm64,amd64``
 
  tagging:
   refs/heads/``<branch>``:|br| ``-tag: <tag>``
