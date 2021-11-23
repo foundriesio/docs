@@ -141,6 +141,92 @@ Applying this `patch`_ to U-boot you should see the following on a successful bo
 .. note::
         Booting a secure image disables the JTAG interface even if no JTAG related fuses were written. Use the SPL configuration option `CONFIG_SPL_ZYNQMP_RESTORE_JTAG`_ to re-enable it on boot.
 
+Secure Storage (RPMB) using the PUF
+===================================
+
+The PUF can be used to generate a hardware unique key (HUK) at OP-TEE for secure storage via the eMMC RPMB partition.
+
+For PUF to be functional you will need to fuse PPK and RSA_EN (for secure boot), register the PUF and program the syndrome data (via Red AES key).
+
+We recommend using the XLWPT tool (as described at `XAPP1319`_) for registering PUF::
+
+          ___  ___ _ __        _ ____
+         /   /\  /| |\ \      / /  _ \
+        /___/  \/ | | \ \ /\ / /| |_) |
+        \   \     | |__\ |  | / |  __/
+         \   \    \_____\_/\_/  |_|
+         /   /     Zynq UltraScale+ MPSoC: ZU3EG
+        /__ /      Lightweight Provisioning Tool
+        \   \  /\  XLWP Tool Version: 1.9
+         \___\/__\ ::: PUF Menu :::
+        _________________________________________
+
+         1. Register the PUF
+         2. Encrypt Red AES Key w/ PUF Key
+         3. Display Bootheader Mode PUF Data
+         4. Program PUF-related eFUSEs
+         5. Read & Display PUF-related eFUSEs
+
+         x. Exit sub-menu
+
+         Please make a selection -> 1 (registering the PUF)
+
+         Please make a selection -> 2 (encrypting red AES key w/ PUF key)
+
+         > Enter the 256-bit Red AES key (64 hex characters):
+         ----------------------------------------------------------------
+         0123456789012345678901234567890123456789012345678901234567890123
+         Is the key correct?! (y/[n]) -> y
+
+         > Enter the 96-bit AES IV (24 hex characters):
+         ------------------------
+         012345678901234567890123
+         Is the IV correct?! (y/[n]) -> y
+
+         *** Red AES Key and IV for Black Key Captured OK! ***
+         *** Black Key Created OK! ***
+
+         Press any key to continue...
+
+         Please make a selection -> 4 (program PUF-related eFUSEs)
+
+         1. Syndrome, AUX, CHASH & Black Key eFUSEs
+         2. SYN_INVLD eFUSE
+         3. SYN_WR_LOCK eFUSE
+         4. REG_DIS eFUSE
+
+         Please make a selection -> 1
+
+         Program Syndrome, AUX, CHASH & Black Key eFUSEs...are you sure?! (y/[n]) -> y
+
+         *** Syndrome, AUX, CHASH & Black Key eFUSEs programmed OK! ***
+
+         Press any key to continue...
+
+         PUF syndrome (helper data) read from eFUSEs:
+         ----------------------------------------------------------------
+         C6F960D575ACB5E2BCDDFF4BEE586E8F35EB2231BA7F9A55263431BF382673AE
+         0E774B4FA35165166025228F8F6A699D469AF76409D789A0C35F7D12B74A9AB8
+         2CCD677BF770DBA0522431806955EE7614E5795FACB28F4CAED5B27206737968
+         45F367953804F46626D6D69003F68EAFA0653E79FBAEAD854369F7959858117A
+         169D11305DEF45F54056F2C39714FEB36364E1F9C82C6861ADB0B83FE59F0585
+         C69E4CE96DB4328FA98E9CB0CAF9DCE50F793582160AD6E6CB9A9E54D24F82D8
+         30A22ECEE5AA24AF4B689D53F76D89B1ADA695FC5AA722967F20B6D827F5E18C
+         13D76F08D34EFC7E2C0FFB261E0AC2A310B4E88BFACAED6C2E964EFF2701ED15
+         2825CA046B159FA63470166DF82912A7F983733AA73C03A6ED6F63CB70CC9761
+         791B5BD5BE7EB2681C95F447C707B416F688DA5C34C627113F8DABB0AA2A6424
+         72F57E9CF797574402BFFDBFBCC947BD9EACC18BB0A55CF0B2D024BE25B81022
+         69CDD2EAE3BACF415B28AA310AA9941ACCA5E7C64BBAA1878D55FB7666B93B46
+         BFDA36E8E8B49DF5243F6B217970408ED101DD6977933474AD5178B41517D825
+         868A5DB679E66752AA7CBA300B700C0BD1DDE6A7E3528BD2FBFA24031D971CCE
+         0BA2944FA09AD655204068744F3D401033BACBE849A69360A4077F5DB230E01D
+         9278AF71941D711215FFA89CD3F73DC976EC2DC8D5B6BB1AD0618B3F
+
+         PUF AUX value read from eFUSEs   : 0x0062C179
+         PUF CHASH value read from eFUSEs : 0x8D22500B
+
+For more information on registering the PUF and how it is used by OP-TEE for generating a hardware unique key, please have a look at `XAPP1333`_ and https://github.com/OP-TEE/optee_os/pull/4874.
+
 .. _vivado_docker:
    https://github.com/ldts/petalinux-docker.git
 
@@ -158,6 +244,9 @@ Applying this `patch`_ to U-boot you should see the following on a successful bo
 
 .. _XAPP1319:
    https://www.xilinx.com/support/documentation/application_notes/xapp1319-zynq-usp-prog-nvm.pdf
+
+.. _XAPP1333:
+   https://www.xilinx.com/support/documentation/application_notes/xapp1333-external-storage-puf.pdf
 
 .. _bitstream-signed:
    https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-bsp/dynamic-layers/xilinx-tools/recipes-bsp/bitstream/bitstream-signed_git.bb
