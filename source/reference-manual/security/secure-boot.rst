@@ -10,4 +10,5 @@ Secure Boot
 
    authentication-xilinx
    secure-boot-imx-habv4
+   secure-boot-imx-ahab
    secure-machines
