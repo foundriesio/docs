@@ -14,7 +14,7 @@ in the process needed to have the hardware board set to secure boot.
 
 .. warning::
 
-    It is recommended to read :ref:`ref-secure-boot-imx` before proceeding with
+    It is recommended to read :ref:`ref-secure-boot-imx-habv4` before proceeding with
     the following steps.
 
 Supported machines

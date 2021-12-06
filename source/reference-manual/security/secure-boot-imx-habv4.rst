@@ -1,9 +1,9 @@
 .. highlight:: sh
 
-.. _ref-secure-boot-imx:
+.. _ref-secure-boot-imx-habv4:
 
-Secure Boot on IMX
-==================
+i.MX Secure Boot on HABv4 Supported Devices
+=============================================
 On the IMX platforms, secure boot is implemented via the High Availability Boot component of the on-chip ROM. The ROM is responsible for loading the initial program image, the bootloader; HAB then enables the ROM to authenticate it using digital signatures.
 
 HAB also provides a mechanism to establish a root of trust for the remaining software components and establishes a secure state - the close state - on the IMX IC secure state machine in hardware.
