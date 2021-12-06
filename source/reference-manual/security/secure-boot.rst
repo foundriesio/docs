@@ -9,5 +9,5 @@ Secure Boot
    :maxdepth: 1
 
    authentication-xilinx
-   secure-boot-imx
+   secure-boot-imx-habv4
    secure-machines
