@@ -12,7 +12,7 @@ Our implementation
 ------------------
 Foundries.io LmP uses U-Boot as the bootloader with SPL being its first stage loader. Our secure boot implementation will put the IC in a secure state accepting only signed SPL firmware.
 
-SPL then boots the trusted execution environment - OP-TEE - where we run an 'early' trusted application, fiovb - Foundries.io verified Boot. This trusted application provides secure access to the Replay Protected Memory Block partition in MMC which is used to store keys, firmware and rollback information.
+SPL then boots the trusted execution environment - OP-TEE - where we run an 'early' trusted application, fiovb - Foundries.io Verified Boot. This trusted application provides secure access to the Replay Protected Memory Block partition in eMMC which is used to store keys, firmware and rollback information.
 
 OP-TEE also prepares the next stage bootloader - U-Boot - and generates an overlay DTS for the Linux kernel consumption. Then it jumps to U-Boot which controls the M4 firmware upgrade process using the fiovb trusted application. U-boot also implements the fiovb command to validate the trusted application functionality.
 
@@ -76,7 +76,7 @@ For development purposes, we keep iMX HAB4 sample keys and certificates at ``lmp
 	0xA71BBE78
 	0xA3AD024A
 
-The Security Reference Manual for your specific SoC will indicate which fuses need to be programed with the SRK fuse information.
+The Security Reference Manual for your specific SoC will indicate which fuses need to be programmed with the SRK fuse information.
 
 
 i.MX7ULP fusing
@@ -187,7 +187,7 @@ Alternatively, use the kernel to program the A-core fuses using SDP via NXP's Un
 Upon reboot, if **CONFIG_IMX_HAB** was enabled in U-boot, HAB will raise events to indicate that an **unsigned SPL image** has been executed. Those events can be inspected by running U-Boot's command ``hab_status``.
 
 .. note::
-    Once the security fuses have been programmed, we recommend that all your UUU scripts are modified to use only **signed SPL** images since some of those scripts might depend on the occurance - or not - of HAB events.
+    Once the security fuses have been programmed, we recommend that all your UUU scripts are modified to use only **signed SPL** images since some of those scripts might depend on the occurrence - or not - of HAB events.
 
 To secure the platform, there is an extra fuse that needs to be programmed: we will only take that step once we are sure that we can successfully sign and boot a signed SPL image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
 
@@ -236,7 +236,7 @@ Booting this signed SPL image and inspecting the HAB status should give no HAB e
 	No HAB Events Found!
 
 .. warning::
-    The next fuse instruction will close the board for unsigned images: make sure you can rebuild the signed images before programing that fuse.
+    The next fuse instruction will close the board for unsigned images: make sure you can rebuild the signed images before programming that fuse.
 
 
 Now we can close the device meaning that from thereon only signed images can be booted on this platform. For that, on the i.MX7ULP we need to fuse bit31 of word 6 from bank 29 (SEC_CONFIG[1] in the documentation)::
