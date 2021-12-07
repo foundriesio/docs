@@ -96,13 +96,13 @@ Using the information and packages at the PyPi website, you can fill in the deta
 
 Update the following variables to reflect the details from the package you wish to create a recipe for.
 
-#. DESCRIPTION
-#. HOMEPAGE
-#. LICENSE
-#. LIC_FILES_CHKSUM
-#. SRC_URI[md5sum] (md5sum of the download artifact from pypi)
-#. SRC_URI[sha256sum] (sha256sum of the download artifact from pypi)
-#. DEPENDS
-   Dependencies resolved at do_configure
-#. RDEPENDS
-   Dependencies resolved at do_build
+#. ``DESCRIPTION``
+#. ``HOMEPAGE``
+#. ``LICENSE``
+#. ``LIC_FILES_CHKSUM``
+#. ``SRC_URI[md5sum]`` (md5sum of the download artifact from pypi)
+#. ``SRC_URI[sha256sum]`` (sha256sum of the download artifact from pypi)
+#. ``DEPENDS`` Dependencies resolved at do_configure
+#. ``RDEPENDS`` Dependencies resolved at do_build
+
+
