@@ -44,7 +44,7 @@ behavior is customizable so that you can apply rules to determine when
 devices should be re-started.  Once restarted the stress-ng command will
 be available.
 
-List of available recipes
+List of Available Recipes
 -------------------------
 OE provides a tool_ to search layers and recipes.
 
@@ -105,4 +105,27 @@ Update the following variables to reflect the details from the package you wish 
 #. ``DEPENDS`` Dependencies resolved at do_configure
 #. ``RDEPENDS`` Dependencies resolved at do_build
 
+Including Private Git+ssh Repositories
+--------------------------------------
 
+Sometimes custom recipes need access to private Git repositories that
+are only available via SSH. The ci-scripts_ repository has logic to
+handle this when a Factory has secrets created using a simple naming
+convention.
+
+.. _ci-scripts:
+   https://github.com/foundriesio/ci-scripts/blob/master/lmp/bb-build.sh
+
+Every secret matching the pattern ``ssh-*.key`` will be loaded into an
+ssh-agent and ``ssh-known_hosts`` will be used to set the trusted
+host keys for the Git server(s).
+
+For example, a private GitHub repository could be accessed with::
+
+  $ fioctl secrets update ssh-github.key==/tmp/ssh-github.key
+  $ fioctl secrets update ssh-known_hosts==/tmp/ssh-known_hosts
+
+At that point new CI jobs will be able to access recipes that have
+``SRC_URI`` items like::
+
+  SRC_URI = "git://git@github.com/<repo>;protocol=ssh;branch=main"
