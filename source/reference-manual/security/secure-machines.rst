@@ -14,7 +14,8 @@ in the process needed to have the hardware board set to secure boot.
 
 .. warning::
 
-    It is recommended to read :ref:`ref-secure-boot-imx-habv4` before proceeding with
+    It is recommended to read :ref:`ref-secure-boot-imx-habv4`
+    (for i.MX8 :ref:`ref-secure-boot-imx-ahab`) before proceeding with
     the following steps.
 
 Supported machines
@@ -23,6 +24,7 @@ Supported machines
 * NXP iMX6ULL-EVK Secure: ``imx6ullevk-sec`` is the ``imx6ullevk`` machine configured to have secure boot enabled by default.
 * NXP iMX8M-MINILPD4 EVK Secure: ``imx8mm-lpddr4-evk-sec`` is the ``imx8mmevk`` machine configured to have secure boot and secure storage enabled by default.
 * NXP Toradex Apalis-iMX6 Secure: ``apalis-imx6-sec`` is the ``apalis-imx6`` machine configured to have secure boot and secure storage enabled by default.
+* NXP Toradex Apalis-iMX8 Secure: ``apalis-imx8-sec`` is the ``apalis-imx8`` machine configured to have secure boot and secure storage enabled by default.
 
 How to enable
 -------------
