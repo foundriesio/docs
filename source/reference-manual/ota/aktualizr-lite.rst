@@ -105,9 +105,6 @@ The following are aktualizr-repo's configuration parameters that can be useful t
     # A comma separated list of Tags to look for in Targets that should be applied to a given device
     tags = "master"
 
-    # Check if Compose App is installed and running on each update check
-    full_status_check = "0"
-
     [logger]
     # Set log level 0-5 (trace, debug, info, warning, error, fatal)
     loglevel = 2
