@@ -105,6 +105,10 @@ The following are aktualizr-repo's configuration parameters that can be useful t
     # A comma separated list of Tags to look for in Targets that should be applied to a given device
     tags = "master"
 
+    # The param instructs aktualizr-lite to (re-)create App containers of a new Target just before reboot if set to "1" (default).
+    # If the param is set to "0" then the App containers are (re-)created just after a successful boot on a new ostree version during aklite startup.
+    create_containers_before_reboot = "0"
+
     [logger]
     # Set log level 0-5 (trace, debug, info, warning, error, fatal)
     loglevel = 2
