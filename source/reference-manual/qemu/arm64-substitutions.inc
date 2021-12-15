@@ -1,5 +1,5 @@
 .. |ARCH| replace:: arm64
-.. |MACHINE| replace:: qemuarm64
+.. |MACHINE| replace:: qemuarm64-secureboot
 .. |FIRMWARE_BLOB| replace:: flash.bin
 .. |QEMU_GUI_FLAGS| replace::
 
