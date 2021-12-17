@@ -46,6 +46,11 @@ Booting in QEMU
    ``lmp-qemu/``. You may want to save this as ``run.sh`` inside the
    directory for convenience
 
+.. note::
+    The QEMU CLI passes the necessary flags and parameters to the
+    appropriate qemu-system command, such as image, CPU, network, and other device
+    information. For specifics, consult `QEMU's Documentation. <https://www.qemu.org/docs/master/index.html>`_
+
 Booting Graphically
 -------------------
 
@@ -57,4 +62,5 @@ Wayland/Weston), the following flags need to be added to the QEMU CLI:
      |QEMU_GUI_FLAGS|
 
 The ``-nographic`` flag must also be removed from the QEMU CLI.
+
 
