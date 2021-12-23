@@ -72,6 +72,12 @@ We use `Github Releases`_ to distribute static X86_64 golang binaries.
          .. prompt:: bash host:~$, auto
 
             host:~$ curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64
+        
+         .. note::
+        
+            For MacOS running on a Apple M1 processor, replace
+            ``fioctl-darwin-amd64`` with ``fioctl-darwin-arm64``, and set
+            ``FIOCTL_VERSION`` to v0.21 or newer.
 
       2. Make the :ref:`ref-fioctl` binary executable:
 
