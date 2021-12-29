@@ -33,6 +33,11 @@ Booting in QEMU
 
         |ARTIFACT_COMMANDS|
 
+.. tip::
+    When using ``>`` (redirect) to save the firmware blob, any error message
+    will be written to a text file with the same name. You can run the ``file``
+    utility to print whether it is an executable, as desired, or a txt/xml file.
+    
 #. The directory tree should now look like this
 
    .. parsed-literal::
