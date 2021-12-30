@@ -106,8 +106,11 @@ Set up your work environment using the ``setup-environment`` script::
 
 If ``MACHINE`` is not provided, the script will list all possible
 machines found in every enabled OpenEmbedded / Yocto Project layer,
-and force one to be selected.  ``BUILDDIR`` is optional; if it is not
-specified, the script will default to ``build-lmp``.
+and force one to be selected.
+
+``BUILDDIR`` is optional; if it is not specified, the script will default to
+``build-lmp``. Keep in mind that ``BUILDDIR`` must be within the ``lmp``
+directory, otherwise your build will fail.
 
 Build the lmp-base-console Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
