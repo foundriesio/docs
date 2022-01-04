@@ -5,7 +5,7 @@ Multiple Compose Files
 
 Docker Compose has the ability to merge multiple `Compose files`_.
 This feature can come in handy when managing a Compose file across
-different ``containers.git`` branch. Each branch may have merge
+different ``containers.git`` branches. Each branch may have merge
 conflicts around adding a test container or settings that could be
 eliminated with multiple compose files.
 
@@ -13,7 +13,7 @@ eliminated with multiple compose files.
    https://docs.docker.com/compose/extends/#multiple-compose-files
 
 The trick to making this work is informing the factory about the order
-that Compose files should be evaluated. This is managed by via the
+that Compose files should be evaluated. This is managed via the
 ``factory-config.yml`` file in the ``ci-scripts.git`` repository.
 Here's an example of enabling an overrides file for the ``devel``
 branch::
