@@ -6,7 +6,7 @@ Container Preloading
 This section guides you to configure your ``platform`` images to preload Docker Compose Apps.
 
 By default, the ``platform`` build creates an image to be flashed to a device that
-doesn't include Docker Compose Apps. After installing the image and registering 
+doesn't include Docker Compose Apps. After installing the image and registering
 the device, ``aktualizr-lite`` downloads and runs the configured apps.
 
 There are cases where having applications pre-loaded on the image can be useful, such as:
@@ -37,7 +37,7 @@ In this guide, it is assumed you already have a ``container`` build with the ``s
 
 Click on the latest ``container`` build to see more details.
 
-This tutorial uses ``shellhttpd`` as a reference. Check the Apps available in 
+This tutorial uses ``shellhttpd`` as a reference. Check the Apps available in
 your latest Containers build:
 
 .. figure:: /_static/userguide/container-preloading/container-preloading-apps.png
@@ -86,7 +86,7 @@ Add the ``factory-config.yml`` file, commit and push:
 Getting a New Image with Pre-loaded Containers
 ----------------------------------------------
 
-From now on, every time a ``platform`` or ``containers`` build finishes, it will 
+From now on, every time a ``platform`` or ``containers`` build finishes, it will
 generate a ``.wic.gz`` file with the pre-loaded Docker Image.
 
 Find your ``containers`` folder and trigger a new build.
@@ -117,14 +117,14 @@ Flash the image and boot the device, next log in via SSH.
 
 .. note::
 
-    Some devices require additional artifacts to be flashed. In this case, download 
-    the files from the latest ``platform`` build. For more information about how to 
+    Some devices require additional artifacts to be flashed. In this case, download
+    the files from the latest ``platform`` build. For more information about how to
     flash your device, read :ref:`ref-boards`.
 
 Testing pre-loaded Image
 ------------------------
 
-On your device, switch to root and list the files in the folder 
+On your device, switch to root and list the files in the folder
 ``/var/sota/compose-apps/<app>``.
 
 .. prompt:: bash device:~$
@@ -142,7 +142,7 @@ You can also use Docker to list all images available on the device:
 
 .. prompt:: bash device:~$
 
-    docker images --digests           
+    docker images --digests
 
 **Example Output**:
 
@@ -192,8 +192,8 @@ Run ``wget`` to test the container:
 Starting Compose Apps Automatically
 -----------------------------------
 
-To start the pre-loaded application automatically (after the boot and before 
-the device registration when aktualizr-lite starts) you have to enable a systemd service 
+To start the pre-loaded application automatically (after the boot and before
+the device registration when aktualizr-lite starts) you have to enable a systemd service
 responsible for it.
 
 meta-lmp_ already has a recipe that launches pre-loaded apps after the device boots.
@@ -255,8 +255,8 @@ Flash the image and boot the device, next log via SSH.
 Testing Auto Start
 ------------------
 
-Using a second terminal, test your application using ``curl`` from any external 
-device connected to the same network (e.g. your host machine: the same computer 
+Using a second terminal, test your application using ``curl`` from any external
+device connected to the same network (e.g. your host machine: the same computer
 you use to access your device with ssh).
 
 .. prompt:: bash host:~$, auto
@@ -270,7 +270,7 @@ you use to access your device with ssh).
 
      Hello world
 
-On your device, use the following command to list the ``compose-apps-early-start`` 
+On your device, use the following command to list the ``compose-apps-early-start``
 service:
 
 .. prompt:: bash device:~$
