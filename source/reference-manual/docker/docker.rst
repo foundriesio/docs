@@ -11,3 +11,4 @@ Docker
    container-secrets
    private-registries
    compose-apps
+   restorable-apps
