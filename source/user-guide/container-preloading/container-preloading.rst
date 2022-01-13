@@ -71,10 +71,15 @@ Edit the ``factory-config.yml`` file and add the configuration below:
       containers:
         preloaded_images:
          enabled: true
+         app_type: <restorable|compose>
          shortlist: "shellhttpd"
 
 - ``enabled`` -  Whether to produce an archive containing docker images as part of a container build trigger.
 - ``shortlist`` - Defines the list of apps to preload. If it is not specified or its value is empty, then all Target's apps are preloaded.
+- ``app_type`` - Defines a type of Apps to preload.
+  If an option is not defined or set to an empty value then, an App type to preload depends on a LmP version. If a LmP version is equal or higher than v85 then `restorable` type is preloaded, otherwise `compose` type.
+  See :ref:`ug-restorable-apps` for more details on Restorable Apps.
+
 
 Add the ``factory-config.yml`` file, commit and push:
 
