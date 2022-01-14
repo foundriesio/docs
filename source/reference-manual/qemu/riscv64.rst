@@ -27,6 +27,8 @@ QEMU CLI
          -drive file=lmp-factory-image-qemuriscv64.wic,format=raw,id=hd0 -device virtio-blk-device,drive=hd0 \
          -nographic
 
+.. include:: qemu-ssh.template
+
 Demo
 ^^^^
 

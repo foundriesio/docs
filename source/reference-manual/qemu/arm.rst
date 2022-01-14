@@ -20,6 +20,8 @@ QEMU CLI
        -netdev user,id=usernet,hostfwd=tcp::22222-:22 \
        -no-acpi -d unimp -nographic
 
+.. include:: qemu-ssh.template
+
 Demo
 ^^^^
 
