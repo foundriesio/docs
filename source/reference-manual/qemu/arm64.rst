@@ -18,6 +18,8 @@ QEMU CLI
        -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
        -chardev null,id=virtcon -machine virt,secure=on -nographic
 
+.. include:: qemu-ssh.template
+
 Demo
 ^^^^
 
