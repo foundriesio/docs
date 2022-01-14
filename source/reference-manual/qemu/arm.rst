@@ -26,3 +26,6 @@ Demo
 ^^^^
 
 .. asciinema:: ./demo/arm.cast
+
+.. tip::
+    You can register your device following the steps from :ref:`gs-register`.
