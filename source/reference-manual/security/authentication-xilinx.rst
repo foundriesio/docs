@@ -249,7 +249,7 @@ For more information on registering the PUF and how it is used by OP-TEE for gen
    https://www.xilinx.com/support/documentation/application_notes/xapp1333-external-storage-puf.pdf
 
 .. _bitstream-signed:
-   https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-bsp/dynamic-layers/xilinx-tools/recipes-bsp/bitstream/bitstream-signed_git.bb
+   https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-bsp/dynamic-layers/xilinx-tools/recipes-bsp/bitstream/bitstream-signed.bb
 
 .. _lmp-tools:
    https://github.com/foundriesio/lmp-tools/tree/master/security/zynqmp
