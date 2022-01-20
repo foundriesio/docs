@@ -17,37 +17,40 @@ Every new Factory should have its keys rotated for offline storage.
 Key rotation is also necessary in the event of a key compromise.
 `fioctl`_ includes commands for managing TUF keys.
 
-When a Factory is created, Foundries.io sends a notification with
-a link to its TUF keys like::
-
-    Your FoundriesFactory has been created and is ready for use.
-
-    ...
-
-    TUF key management requires that you keep a securely stored offline copy of
-    your root credentials. In the event of an online key compromise, these offline
-    keys will be used to securely rotate/replace the compromised key(s). You can
-    download your keys *one time* from this URL:
-
-       https://factory-keys.foundries.io/example/example.tgz
-
-    Once downloaded, this file will be deleted from our system.
 
 Establishing a root key
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 The TUF root key is the most important key in TUF. The owner of this
 key can sign the TUF ``root.json`` that defines what keys and roles
-devices can trust. A new root key can be defined by doing a
-"key rotation". A key rotation sets the new root key for the factory,
-but it also signs the new root.json with the previous root key to
-demonstrate proper ownership. This can be done in fioctl with::
+devices can trust. When a Factory is created, Foundries.io will create
+the first root key automatically.
 
-    fioctl keys rotate-root /absolute/path/to/example.tgz
+A new root key can be defined by doing a "key rotation".
+A key rotation sets the new root key for the factory,
+but it also signs the new root.json with the previous root key to
+demonstrate proper ownership. The first time one does this it will
+download the relevant content from a remote server into a file specified.
+This only needs to be done **once** to gather the root keys offline. It
+will gather the keys offline and make a singular, first, rotation at
+the same time.
+
+This can be done in fioctl with::
+
+   fioctl keys rotate-root --initial /absolute/path/to/root.keys.tgz
+
+
+.. note:: At this point, the contents of the tarball are as described
+   below.
 
 At this point the only copy of the Factory's root private key is in
 this file. This file **cannot be lost** or it will be impossible
 to make future key updates to the Factory.
+
+Any further root key rotations can be done with the following command::
+
+  fioctl keys rotate-root /absolute/path/to/root.keys.tgz
+
 
 .. note:: At this point, the tarball should be backed up as described
    below.
@@ -69,7 +72,7 @@ require their ``targets.json`` file to be signed by two parties:
 
 A Factory can create its target signing key in fioctl with::
 
-    fioctl keys rotate-targets /absolute/path/to/example.tgz
+    fioctl keys rotate-targets /absolute/path/to/root.keys.tgz
 
 This will send 2 versions of ``root.json`` to Foundries.io. Both
 versions will be identical except the one for production devices
@@ -88,7 +91,7 @@ Given the importance of the offline credentials file, it is recommended
 to create a second file that can sign production targets for Waves but
 lacks the root keys required to alter Factory root metadata::
 
-    fioctl keys copy-targets /absolute/path/to/example.tgz /path/to/target-only.tgz
+    fioctl keys copy-targets /absolute/path/to/root.keys.tgz /path/to/target.only.key.tgz
 
 How to backup offline keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -101,31 +104,19 @@ There are 3 recommend types of backups:
 
 2-3 copies of these backups should be placed in safes in different
 geographical locations. Finding the root private key requires
-understanding the offline keys file format. The initial copy of the
-offline keys will look like::
+understanding the offline keys file format. The initial contents of the
+offline key file, ``/absolute/path/to/root.keys.tgz``, will look like::
 
     # Most of the files aren't critical. They are used in the Factory's initial
     # CI run to setup credentials. They are kept around to help with debug.
     tufrepo
-    |-- config.json
-    |-- credentials.zip
-    |-- keys
-    |   |-- offline-root.pub     # Public root shown in root.json
-    |   |-- offline-root.sec     # The Factory's first root private
-    |   |-- offline-targets.pub  # The Foundries.io public target in root.json.
-    |   |-- offline-targets.sec  # The Foundries.io target key used in CI.
-    |   |-- root.pub
-    |   |-- root.sec
-    |   |-- targets.pub
-    |   |-- targets.sec
-    `-- roles |
-        |-- root.json
-        |-- targets.json
-        |-- targets.json.checksum
-        `-- unsigned
-            `-- targets.json
+    `-- keys
+        |-- first-root.pub     # Public root shown in root.json
+        |-- first-root.sec     # The Factory's first root private
+        |-- fioctl-root-<keyid>.sec  # Your offline key(s)
+        `-- fioctl-root-<keyid>.pub
 
-The critical file to keep from this tarball is ``offline-root.sec``.
+The critical file to keep from this tarball is ``first-root.sec``.
 After the first root key rotation the offline keys will include 2 new
 files similar to::
 
