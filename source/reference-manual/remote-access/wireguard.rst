@@ -35,7 +35,7 @@ Create an API token for this service at https://app.foundries.io/settings/tokens
 
 .. note::
 
-   Your API token needs to have at least ``devices:read`` scope for this
+   Your API token needs to have at least ``devices:read-update`` scope for this
    guide. Read :ref:`ref-api-access` for more details.
 
 Clone VPN server code::
