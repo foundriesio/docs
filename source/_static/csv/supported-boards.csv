@@ -11,6 +11,7 @@ EA iMX7ULP-UCOM,imx7ulpea-ucom
 :ref:`NXP i.MX 8M Mini EVK <ref-rm_board_imx8mmevk>`,imx8mm-lpddr4-evk
 :ref:`NXP i.MX 8M Mini EVK with secure boot enabled <ref-rm_board_imx8mmevk>`,imx8mm-lpddr4-evk-sec
 :ref:`NXP i.MX 8M Quad EVK <ref-rm_board_imx8mqevk>`,imx8mq-evk
+:ref:`NXP i.MX 8M Plus EVK <ref-rm_board_imx8mp-lpddr4-evk>`,imx8mp-lpddr4-evk
 :ref:`Toradex Apalis iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
 :ref:`Toradex Apalis iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
 Toradex Apalis iMX8QM,apalis-imx8
