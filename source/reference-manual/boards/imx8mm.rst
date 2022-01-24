@@ -18,7 +18,7 @@ Set up the board for updating using the manufacturing tools:
 
      imx8mmevk
 
-#. **OPTIONAL** - Only required if you have a problems and/or want to see the boot console output.
+#. **OPTIONAL** - Only required if you have problems and/or want to see the boot console output.
 
      Connect the micro-B end of the USB cable into debug port J901.
      Connect the other end of the cable to a PC acting as a host
@@ -31,7 +31,7 @@ Set up the board for updating using the manufacturing tools:
           lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if01-port0 -> ../../ttyUSB1
 
      Using a serial terminal program like minicom, connect to the port
-     with ``if01`` in the name (in this example ttyUSB0) and apply the
+     with ``if01`` in the name (in this example ttyUSB1) and apply the
      following configuration
 
           - Baud rate: 115200
