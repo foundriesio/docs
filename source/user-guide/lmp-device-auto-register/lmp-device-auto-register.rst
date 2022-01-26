@@ -97,6 +97,13 @@ created in the previous steps:
  
     <YOUR_API_TOKEN>
 
+
+.. note::
+
+   If the process of auto registration is following the fully detached mode, then API
+   token filled here can be a bogus value. It only needs this because otherwise the
+   ``lmp-device-register`` will try to do the OAuth flow still.
+
 Create the file ``lmp-device-auto-register.bbappend`` in order to give the recipe 
 access to the ``api-token`` file.
 
@@ -123,6 +130,12 @@ Add the changed files, commit and push:
 The latest **Target** named ``platform-devel`` should be the CI job you just created.
 
 When FoundriesFactory CI finishes all jobs, download and flash the image.
+
+.. note::
+
+  To get a better understanding of what is going on, one can look at the repository
+  lmp-device-auto-register_. In there is the Systemd Service file and the corresponding
+  shell script that all can be customised just like the API token file is being overwritten.
 
 Testing Auto Register
 ---------------------
