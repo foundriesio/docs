@@ -64,7 +64,7 @@ Setting up your PKI
 -------------------
 
 :ref:`ref-fioctl` includes a sub-command to set this up:
-``fioctl keys ca create``. There are a couple of important things to
+``fioctl keys ca create /absolute/path/to/certs/``. There are a couple of important things to
 note about this command:
 
  * It's highly recommend that you use a PKCS#11 compatible HSM. This
