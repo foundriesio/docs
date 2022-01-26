@@ -20,7 +20,7 @@ Targets file must be created. This can be done by creating a dummy wave
 like::
 
   # fioctl wave init <wave-name> <target number> <tag>
-  fioctl wave init -k <path to offline-target-creds>.tgz populate-targets 12 production
+  fioctl wave init -k /absolute/path/to/targets.only.key.tgz populate-targets 12 production
   fioctl wave  complete populate-targets
 
 This creates a new ``targets.json`` file for production devices subscribing
@@ -35,7 +35,7 @@ Continuing from the example above. A Factory may go through some
 development work and have a new CI build #42 that's ready to be run in
 production. A wave can be initialized with::
 
-  fioctl wave init -k <path to offline-target-creds>.tgz v2.0-update 42 production
+  fioctl wave init -k /absolute/path/to/targets.only.key.tgz v2.0-update 42 production
 
 .. note::
 
