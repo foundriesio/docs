@@ -46,7 +46,7 @@ Create or modify the ``lmp-device-register_%.bbappend`` file in the factory's
 .. prompt:: bash host:~$
 
    mkdir -p meta-subscriber-overrides/recipes-sota/lmp-device-register/
-   echo "PACKAGECONFIG += \"production\"" >> meta-subscriber-overrides/recipes-sota/lmp-device-register/lmp-device-register_%.bbappend
+   echo 'PACKAGECONFIG += "production"' >> meta-subscriber-overrides/recipes-sota/lmp-device-register/lmp-device-register_%.bbappend
 
 The images created with this configuration includes ``PRODUCTION=on`` by default
 on the command ``lmp-device-register``.
@@ -56,26 +56,33 @@ This is very usefully when the update plan is to use
 
 lmp-device-auto-register configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-lmp-device-register must be called with two environment variables
-set to work with the reference server::
+Devices can also have :ref:`ug-lmp-device-auto-register` enabled. 
+In order to have the device run ``lmp-device-register`` automatically
+on boot.
 
- DEVICE_API="http://<registration reference uri>/sign"
- PRODUCTION=1
-
-A factory can copy `lmp-device-auto-register`_ into their
+After following those steps a FoundriesFactory can copy `lmp-device-auto-register`_ into their
 meta-subscriber-overrides.git production branch as
 ``recipes-support/lmp-device-auto-register/lmp-device-auto-register/lmp-device-auto-register``
-with ``DEVICE_API`` and ``PRODUCTION`` exported.
+and add the following two environment variables to that specific file at
+the top for example::
 
-The factory should also make sure the
-``recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token``
-has been removed to prevent leaking a CI credential.
+  #!/bin/sh -e
+
+  TOKEN_FILE=${TOKEN_FILE-/etc/lmp-device-register-token}
+
+  DEVICE_API=http://<IP of reference server>/sign
+  PRODUCTION=1
+
+  ... 
+
+Then it will use the reference server as the one where to register instead
+of using https://api.foundries.io. 
 
 Registration reference configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The registration reference should work out-of-the box for this scenario.
 The operator simply needs to copy their PKI keys as described in the
-reference server's README.md.
+reference server's `README.md`_.
 
 Partially detached
 ------------------
@@ -89,9 +96,9 @@ they can download their initial fioconfig configuration data.
 
 lmp-device-auto-register configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A factory can create a customized lmp-device-auto-register in their
-meta-subscriber-overrides.git production branch as
-``recipes-support/lmp-device-auto-register/lmp-device-auto-register/lmp-device-auto-register``.
+A factory can also customize the ``lmp-device-auto-register`` as is
+explained in :ref:`ug-lmp-device-auto-register`.
+
 For example::
 
  #!/bin/sh -e
@@ -133,6 +140,7 @@ reference server as per the README.md.
 
 .. _reference implementation:
    https://github.com/foundriesio/factory-registration-ref
-
+.. _README.md:
+   https://github.com/foundriesio/factory-registration-ref/blob/main/README.md
 .. _lmp-device-auto-register:
    https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/recipes-support/lmp-device-auto-register/lmp-device-auto-register/lmp-device-auto-register
