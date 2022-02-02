@@ -1,6 +1,6 @@
 .. highlight:: sh
 
-.. _ref-boot-software-updates:
+.. _ref-boot-software-updates-imx:
 
 Boot Software Updates on iMX
 ============================
