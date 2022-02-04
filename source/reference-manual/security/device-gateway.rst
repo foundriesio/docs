@@ -186,7 +186,7 @@ Create a directory for offline device key and certificate.
 Generate a private key
 ::
 
-    openssl ecparam -genkey -name secp521r1 -noout -out devices/offline-device/pkey.pem
+    openssl ecparam -genkey -name prime256v1 -out devices/offline-device/pkey.pem
 
 
 Set offline Device certificate config
