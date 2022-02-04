@@ -9,4 +9,5 @@ Boot software updates
    :maxdepth: 1
 
    boot-software-updates-imx
+   boot-software-updates-imx8qm
    boot-software-updates-zynqmp
