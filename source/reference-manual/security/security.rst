@@ -17,7 +17,7 @@ Overview
 
 Security has multiple layers and dimensions. Such as:
 
- * How the operator manages keys for signing things. This includes
+ * How the operator manages keys for signing. This includes
    TUF key management for signing what can be installed. It also
    includes how firmware is signed so that bootloaders will trust it.
 
