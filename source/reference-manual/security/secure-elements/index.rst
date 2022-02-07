@@ -1,3 +1,5 @@
+.. _ref-secure-elements:
+
 Secure Elements
 ===============
 

@@ -33,20 +33,14 @@ TUF_ is the mechanism by which the Foundries.io backend informs
 devices what software they can run. The TUF targets.json_ includes
 a software description that's pinned to secure hashes of all
 components so that a device can know that it is running the correct
-payload. TUF keys need to be managed by a customer offline_ in order
-to generate `production targets`_.
+payload. TUF keys need to be managed by a customer :ref:`offline <ref-offline-keys>`
+in order to generate :ref:`production targets <ref-production-targets>`.
 
 .. _TUF:
    https://theupdateframework.com/
 
 .. _targets.json:
    https://theupdateframework.com/metadata/
-
-.. _offline:
-   https://docs.foundries.io/latest/reference-manual/security/offline-keys.html
-
-.. _production targets:
-   https://docs.foundries.io/latest/reference-manual/ota/production-targets.html
 
 Secure Boot
 -----------
@@ -57,29 +51,18 @@ Device Security
 ---------------
 
 Devices employ multiple mechanisms to achieve security. First, they
-can take advantage of a `Hardware Security Element(HSM)`_ to ensure
-secrets are store securely.
+can take advantage of a :ref:`Hardware Security Element(HSM) <ref-secure-elements>`
+to ensure secrets are store securely.
 
-These secrets are then generated/used by a secure `provisioning
-process`_ that allows devices a safe way to self-register with
-our cloud service.
-
-.. _Hardware Security Element(HSM):
-   https://docs.foundries.io/latest/reference-manual/security/secure-elements/index.html
-
-.. _provisioning process:
-   https://docs.foundries.io/latest/reference-manual/security/factory-registration-ref.html
+These secrets are then generated/used by a secure :ref:`provisioning
+process <ref-factory-registration-ref>` that allows devices a safe way
+to self-register with our cloud service.
 
 Connection Security
 -------------------
 
-Connection security ties everything together. Devices and the `device
-gateway`_ use mutual TLS to establish trust. We include a
-streamlined way to establish PKI_ for each factory that works with the
-secure provisioning process outlined above.
-
-.. _device gateway:
-   https://docs.foundries.io/latest/reference-manual/ota/ota-architecture.html
-
-.. _PKI:
-   https://docs.foundries.io/latest/reference-manual/security/device-gateway.html
+Connection security ties everything together. Devices and the
+:ref:`device gateway <ref-ota-architecture>` use mutual TLS to establish
+trust. We include a streamlined way to establish :ref:`PKI <ref-device-gateway>`
+for each factory that works with the secure provisioning process
+outlined above.
