@@ -19,7 +19,8 @@ Security has multiple layers and dimensions. Such as:
 
  * How the operator manages keys for signing. This includes
    TUF key management for signing what can be installed. It also
-   includes how firmware is signed so that bootloaders will trust it.
+   includes how boot firmware is signed so that the hardware boot ROM
+   will trust it.
 
  * Device security - how devices store secure artifacts.
 
@@ -42,10 +43,18 @@ in order to generate :ref:`production targets <ref-production-targets>`.
 .. _targets.json:
    https://theupdateframework.com/metadata/
 
-Secure Boot
------------
+Secure Boot (Hardware Root of Trust)
+------------------------------------
 
-TODO
+:ref:`Secure Boot <ref-secure-boot>` is the mechanism used to force a device to
+only execute boot software that is signed by a certain set of keys. The
+verification process and respective security functions are performed by the SoC
+boot ROM, and these are the starting points for building a hardware root of
+trust.
+
+The SoC hardware security manual should be consulted for identifying the
+supported key types and the signing process required for establishing the
+hardware root of trust.
 
 Device Security
 ---------------
