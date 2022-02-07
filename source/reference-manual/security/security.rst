@@ -32,7 +32,7 @@ TUF Security
 TUF is the mechanism by which the Foundries.io backend informs
 devices what software they can run. The TUF targets.json includes
 a software description that's pinned to secure hashes of all
-components so that a device can know that it's running the correct
+components so that a device can know that it is running the correct
 payload. TUF keys need to be managed by a customer offline_ in order
 to generate `production targets`_.
 
