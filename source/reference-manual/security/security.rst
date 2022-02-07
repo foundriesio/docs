@@ -29,12 +29,18 @@ Security has multiple layers and dimensions. Such as:
 TUF Security
 ------------
 
-TUF is the mechanism by which the Foundries.io backend informs
-devices what software they can run. The TUF targets.json includes
+TUF_ is the mechanism by which the Foundries.io backend informs
+devices what software they can run. The TUF targets.json_ includes
 a software description that's pinned to secure hashes of all
 components so that a device can know that it is running the correct
 payload. TUF keys need to be managed by a customer offline_ in order
 to generate `production targets`_.
+
+.. _TUF:
+   https://theupdateframework.com/
+
+.. _targets.json:
+   https://theupdateframework.com/metadata/
 
 .. _offline:
    https://docs.foundries.io/latest/reference-manual/security/offline-keys.html
