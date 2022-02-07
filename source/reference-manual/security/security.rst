@@ -68,8 +68,8 @@ Connection Security
 -------------------
 
 Connection security ties everything together. Devices and the `device
-gateway`_ use mutual TLS to establish trust. We include a stream
-lined way to establish PKI_ for each factory that works with the
+gateway`_ use mutual TLS to establish trust. We include a
+streamlined way to establish PKI_ for each factory that works with the
 secure provisioning process outlined above.
 
 .. _device gateway:
