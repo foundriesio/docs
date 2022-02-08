@@ -1,0 +1,5 @@
+SRK key,Source index,`SRK_REVOKE[3:0]`,`SRK_REVOKE[hex]`,`srk-index`
+SRK0,0,0001,0x1,1
+SRK1,1,0010,0x2,2
+SRK2,2,0100,0x4,3
+SRK3,3,1000,0x8,4
