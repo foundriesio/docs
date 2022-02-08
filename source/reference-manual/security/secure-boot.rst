@@ -12,3 +12,4 @@ Secure Boot
    secure-boot-imx-habv4
    secure-boot-imx-ahab
    secure-machines
+   revoke-imx-keys
