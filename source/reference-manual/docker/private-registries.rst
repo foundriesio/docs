@@ -35,7 +35,8 @@ credentials file to CI::
    admin should create an IAM account that can only **pull** from
    the container registry.
 
-Then set the factory configuration with something like::
+Next the factory :ref:`configuration <ref-factory-definition>`
+needs to be set. Example configuration::
 
   # factory-config.yml
   container_registries:
@@ -49,3 +50,25 @@ Then set the factory configuration with something like::
 
 .. _aws ecr get-login-password:
    https://docs.aws.amazon.com/cli/latest/reference/ecr/get-login-password.html
+
+
+Configuring for Azure Container Registry(ACR)
+---------------------------------------------
+
+CI can be configured to use an ACR `service principal`_ with read-only
+access to a private ACR instance. First, CI must be configured with
+the service principal's ID and password::
+
+ $ fioctl secrets update azprincipal='<ID>:<PASSWORD>'
+
+The factory :ref:`configuration <ref-factory-definition>` is then
+updated accordingly::
+
+  # factory-config.yml
+  container_registries:
+  - type: azure
+    url: fiotesting1.azurecr.io
+    azure_principal_secret_name: azprincipal
+
+.. _service principal:
+   https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#authenticate-with-the-service-principal
