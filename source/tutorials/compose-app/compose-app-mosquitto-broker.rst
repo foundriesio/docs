@@ -44,7 +44,7 @@ Example output:
          ├── httpd.sh
          └── shellhttpd.conf
 
-Check the content of your ``mosquitto/docker-build.conf`` file:
+Check the content of your ``mosquitto/docker-compose.yml`` file:
 
 .. prompt:: bash host:~$, auto
 
