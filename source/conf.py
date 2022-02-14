@@ -51,14 +51,8 @@ if mp_version is None:
         sys.exit(1)
 
 if lmp_build is None:
-    with urlopen('https://api.foundries.io/updates/') as resp:
-        latest = json.loads(resp.read().decode())['data'][0]
-        for product in latest['products']:
-            if product['name'] == 'lmp':
-                lmp_build = product['build']
-                break
-        else:
-            sys.exit('Unable to find latest ZMP and LMP builds')
+    with urlopen('https://api.foundries.io/projects/lmp/builds/latest/?promoted=1') as resp:
+        lmp_build = json.loads(resp.read().decode())['data']['build']['build_id']
 
 print('LMP build number is %s' % lmp_build)
 
