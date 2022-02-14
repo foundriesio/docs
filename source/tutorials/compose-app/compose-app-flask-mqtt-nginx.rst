@@ -4,7 +4,7 @@ Flask-MQTT-nginx
 The ``flask-mqtt-nginx`` is a multiple containers application where more than one container is 
 specified in the same ``docker-compose.yml`` file. There are innumerable reasons why to 
 specify two or more containers in the same Docker Compose App, one of the reasons 
-is dependences. 
+is dependencies. 
 
 If one container depends on another to start-up, you have to use the same 
 ``docker-compose.yml`` file to specify and launch both containers.
