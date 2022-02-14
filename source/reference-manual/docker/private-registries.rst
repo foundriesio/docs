@@ -20,8 +20,8 @@ in order to construct a Target. The :ref:`ref-factory-definition`
 (``ci-scripts.git``) provides a way to configure this.
 
 
-Configuring for AWS ECR
------------------------
+Configuring CI for AWS ECR
+--------------------------
 
 CI uses the `aws ecr get-login-password`_ command to authenticate. A
 factory can be configured to use this by first providing an AWS
@@ -51,9 +51,24 @@ needs to be set. Example configuration::
 .. _aws ecr get-login-password:
    https://docs.aws.amazon.com/cli/latest/reference/ecr/get-login-password.html
 
+Configuring Devices for AWS ECR
+-------------------------------
 
-Configuring for Azure Container Registry(ACR)
----------------------------------------------
+Devices may need access to private ECR container images. While
+bootstrapping a project, it's often easiest to simply copy AWS
+credentials to each device. However, before going to production, it's
+highly recommend to use an approach that can be backed by x509
+certificates such as the ones used for the :ref:`device gateway <ref-device-gateway>`.
+`AWS IoT`_ includes a mechanism for eliminating hard-coded
+credentials_.
+
+.. _AWS IoT:
+   https://aws.amazon.com/iot/
+.. _credentials:
+   https://aws.amazon.com/blogs/security/how-to-eliminate-the-need-for-hardcoded-aws-credentials-in-devices-by-using-the-aws-iot-credentials-provider/
+
+Configuring for CI Azure Container Registry(ACR)
+------------------------------------------------
 
 CI can be configured to use an ACR `service principal`_ with read-only
 access to a private ACR instance. First, CI must be configured with
