@@ -55,8 +55,8 @@ Configuring Devices for AWS ECR
 -------------------------------
 
 Devices may need access to private ECR container images. While
-bootstrapping a project, it's often easiest to simply copy AWS
-credentials to each device. However, before going to production, it's
+bootstrapping a project, it is often easiest to simply copy AWS
+credentials to each device. However, before going to production, it is
 highly recommend to use an approach that can be backed by x509
 certificates such as the ones used for the :ref:`device gateway <ref-device-gateway>`.
 `AWS IoT`_ includes a mechanism for eliminating hard-coded
