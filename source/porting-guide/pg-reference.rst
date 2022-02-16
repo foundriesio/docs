@@ -5,12 +5,12 @@ Finding a similar reference board already supported
 
 For some projects, it is easy to understand which reference board is
 closest to the one being included. It is common that in early stages,
-the project starts using a reference board, and when it is the case, the
-reference board is obvious. It is only a matter of searching
+the project starts using a reference board, and when that is the case, the
+reference board is obvious; is only a matter of searching
 :ref:`ref-linux-supported` to check if this is supported.
 
-In the other case when it is not an obvious answer, the task for
-searching the closest reference board is basically looking for what
+In the other case when it is not an obvious answer, the task of
+searching for the closest reference board is looking for what
 reference board shares the same SoC which is usually described in the
 machine configuration file by the tag ``@SOC``.
 

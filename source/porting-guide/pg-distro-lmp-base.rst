@@ -12,7 +12,7 @@ environment as it has a boot directory which includes the Linux Kernel
 image and the DTB file, and a read-writable rootfs. See detailed
 information on how lmp and lmp-base differ :ref:`ref-linux-distro`.
 
-In the next sections, the focus is on the boot flow (1) show
+In the following sections, the focus is on the boot flow (1) show
 on :numref:`ref-pg-boot-flow-diagram`.
 This boot flow is common on the i.MX8 and i.MX8M SoC families. It is
 also common for i.MX6 and i.MX7 SoC families, however TF-A is not

@@ -1,15 +1,15 @@
 Creating the U-Boot configuration fragments (``lmp-base.cfg``, ``lmp.cfg``)
 ===========================================================================
 
-``meta-lmp`` uses ``.cfg`` configuration fragments to append and override
+The ``meta-lmp`` layer uses ``.cfg`` configuration fragments to append and override
 configurations in the board ``defconfig`` file.
 
 ``lmp-base.cfg`` is the configuration used for ``DISTRO=lmp-base`` and ``lmp.cfg``
 is the one for ``DISTRO=lmp``.
 
-The ``.cfg`` file enables the needed features for SPL and U-Boot proper to
+The ``.cfg`` file enables the features required for SPL and U-Boot proper to
 support LmP, such as booting SPL, verifying the signature of the
-consequent loaded images, enabling eMMC secure storage and custom boot
+consequent loaded images, enabling eMMC secure storage, and custom boot
 command.
 
 To create this file use the reference board support in LmP and modify
