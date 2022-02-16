@@ -10,8 +10,8 @@ provides two scripts to deploy the build artifacts using this tool:
 -  ``full_image.uuu``: used to deploy the entire image, from SPL to rootfs
 
 This support can be extended to support other features, such as fusing
-and closing a board for secure boot. This case is not covered in this
-document at the moment.
+and closing a board for secure boot. (This case is not covered in this
+document at the moment.)
 
 The ``mfgtool-files`` package is built by the CI when the ``mfg_tools`` node is
 included in ``factory-config.yml`` :ref:`ref-factory-definition`

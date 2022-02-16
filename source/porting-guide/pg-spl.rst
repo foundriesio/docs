@@ -18,14 +18,14 @@ The U-Boot should support SPL so meta-lmp handles the SPL and FIT image
 generation and signing of the FIT image components. If SPL is not yet
 supported, the user can enable it following `U-Boot documentation and
 guidelines <https://github.com/ARM-software/u-boot/blob/master/doc/README.SPL>`_
-and append it to their U-Boot porting or contact Foundries.io support for
+and append it to their U-Boot porting, or contact Foundries.io support for
 guidance.
 
 Next, review the board-specific U-Boot patches and align them with the
 respective u-boot-fio version. Commits can be applied with git rebase or
 git cherry-pick on top of the ``u-boot-fio`` branch. The patches can be
-copied to appropriate directory under ``meta-subscriber-overrides`` and
-included in a u-boot-fio bbappend file. Devtool can be used during the
+copied to the appropriate directory under ``meta-subscriber-overrides`` and
+included in a u-boot-fio .bbappend file. Devtool can be used during the
 process, as described in the Yocto Project documentation:
 
 .. prompt:: bash host:~$

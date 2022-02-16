@@ -49,7 +49,7 @@ For the ``lmp-base`` distro, these files live in ``u-boot-base-scr``:
     │     └── uEnv.txt.in
     └── u-boot-base-scr.bbappend
 
-For the ``lmp`` distro, the only file that needs to be provided is ``boot.cmd``
+Also for the ``lmp`` distro, the only file that needs to be provided is ``boot.cmd``,
 but in this case it handles both the environment as well as the boot
 command:
 
@@ -90,7 +90,7 @@ file.
 
 .. note::
 
-    If porting to a new SoC still not supported in LmP, the boot
+    If porting to a new SoC not supported in LmP, the boot
     firmware offsets also need to be calculated and adjusted as the
     procedure described here :ref:`ref-sec-tfa-optee`.
 

@@ -6,7 +6,7 @@ OP-TEE (when applicable)
 OP-TEE is deployed as part of the FIT image. Foundries.io has its own
 OP-TEE recipes and the user needs to provide machine-specific
 configuration in ``meta-subscriber-overrides`` for the OP-TEE build, e.g.
-OP-TEE machine name, UART address, overlay address. The suggestion is to
+OP-TEE machine name, UART address, overlay address. The recommendation is to
 use the reference board OP-TEE support for the OPTEEMACHINE.
 
 ``recipes-security/optee/optee-os-fio_3.10.0.bbappend``:

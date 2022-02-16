@@ -28,7 +28,7 @@ terms of variables such as:
      State the target name to be used with imx-boot, a
      critical package to the bring up of i.MX8 SoC family boards
 
-The machine configuration file from a reference board can guide as a
+The machine configuration file from a reference board can serve as a
 reminder on what variable set is important to define.
 
 It is possible that the porting task targets a new machine configuration file.
