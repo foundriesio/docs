@@ -14,7 +14,7 @@ either instance, the branch name should be descriptive and in the imperative.
 
 ## Working on Documentation
 
-While working on documentation, Try to use spelling and grammar checks when
+While working on documentation, try to use spelling and grammar checks when
 possible and ask a technical writer if you have questions. You should
 consult the [style guide](https://foundriesio.atlassian.net/wiki/spaces/ID/pages/2392067/Foundries.io+Style+and+Communication+Guide)
 for guidelines and suggestions. As the style guide is a "living document",
