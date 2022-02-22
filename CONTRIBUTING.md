@@ -1,36 +1,31 @@
-# Contributing
+# Contributing 
 
-When contributing, consider the following properties and whether the submitted
-documentation has them:
+## Before Working on Documentation
 
-- Expanded acronyms
+While optional, the following steps are encouraged before you begin working:
 
-  If an acronym is used, it should be expanded, at least during its first
-  occurrence on a page. 
-  
-  ###### Example
-  
-  ```diff
-  < we chose to integrate the NXP middleware with our ROT by bringing it under the
-  < umbrella of our Trusted Execution Environment: OP-TEE.
-  ---
-  > we chose to integrate the NXP middleware with our ROT (root of trust) by bringing
-  > it under the umbrella of our Trusted Execution Environment: OP-TEE.
-  ```
+- [ ] Is there a Jira issue?
+- [ ] Did you check against the default ("master") branch to see if work still
+needs to get done?
+- [ ] Have you filled out a [Change to Documentation Form](https://forms.gle/RoxtTQEvh72fFKeD8)?
 
-- Export variables instead of using `<placeholders>` 
+It is recommended that you create a fork rather than working on a branch. In
+either instance, the branch name should be descriptive and in the imperative.
 
-  If telling the user to run a command which requires modification by the user,
-  tell them to export variables instead of using a `<placeholder>`.
+## Working on Documentation
 
-  ###### Example
+While working on documentation, Try to use spelling and grammar checks when
+possible and ask a technical writer if you have questions. You should
+consult the [style guide](https://foundriesio.atlassian.net/wiki/spaces/ID/pages/2392067/Foundries.io+Style+and+Communication+Guide)
+for guidelines and suggestions. As the style guide is a "living document",
+checking for changes is a good idea.
 
-  ```diff
-  < git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n <GIT_TOKEN> | openssl base64)"
-  ---
-  > set the ``GIT_TOKEN`` variable. Replace ``<token>`` with your application/oauth token.
-  >
-  > ``export GIT_TOKEN=<token>``
-  >
-  > git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n $GIT_TOKEN | openssl base64)"
-  ```
+Before committing run a language linter. Currently the documentation is written
+in rst, and can be checked with
+[restructuredtext-lint](https://github.com/twolfson/restructuredtext-lint).
+
+Also prior to committing, render and check locally.
+
+When opening a Pull Request, please tag a technical writer who will merge into
+the default branch once reviews have been finished.
+
