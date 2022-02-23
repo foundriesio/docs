@@ -9,8 +9,18 @@ While optional, the following steps are encouraged before you begin working:
 needs to get done?
 - [ ] Have you filled out a [Change to Documentation Form](https://forms.gle/RoxtTQEvh72fFKeD8)?
 
-It is recommended that you create a fork rather than working on a branch. In
-either instance, the branch name should be descriptive and in the imperative.
+It is recommended that you create a fork rather than working on a
+foundriesio/docs branch. If on a direct branch, include your username.
+In either instance, the branch name should be descriptive and in the
+imperative (what you *will* do):
+
+```bash
+# If working on a branch of foundriesio/docs:
+`git checkout -b kprosise/update-contributing-doc
+
+# or for a fork:
+git checkout -b spell-check-everything
+```
 
 ## Working on Documentation
 
