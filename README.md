@@ -1,12 +1,20 @@
-# docs
-microPlatform documentation source for https://docs.foundries.io
+# Docs
+
+This repo contains the documentation source for: <https://docs.foundries.io>
+
+## About
+
+Currently the docs are written in
+[reStucturedText](https://docutils.sourceforge.io/rst.html) with
+[Sphinx](https://www.sphinx-doc.org/en/master/) serving as the site generator.
 
 ## Requirements
 
-In order to build documentation at a minimum we require that both python3 and
-pip for python3 are installed.  All of the required python modules are
-described in the requirements.txt file in this directory and can be installed
-with the command ```pip install -r requirements.txt```.
+Before beginning any work, be sure to review [CONTRIBUTING.md](CONTRIBUTING.md).
+
+In order to build documentation, at minimum both python3 and pip for python3 are
+required. All required python modules are described in requirements.txt in this
+directory and can be installed with```pip install -r requirements.txt```.
 
 The following is the list of packages needed (can be incomplete):
 
@@ -22,25 +30,30 @@ The following is the list of packages needed (can be incomplete):
 | sphinx_toolbox          |
 | sphinx-prompt           |
 
-### Using `virtualenv` to provide requirements
+### Using virtualenv to Provide Requirements
 
-The recommended way to build documentation, in order to avoid messing with
-the global system-wide package storage, is to use `virtualenv` to set up 
-the necessary environment for sphinx packages:
+The recommended way to build documentation (in order to avoid messing with
+global system-wide package storage) is to use `virtualenv` to set up the
+necessary environment for sphinx packages:
 
 ```bash
+
 $ sudo apt-get install python3 python3-virtualenv
 $ virtualenv -p /usr/bin/python3 venv
 $ . ./venv/bin/activate
 $ pip install -r requirements.txt
+
 ```
 
-## Build the docs
+## Building the Docs Locally
 
-To build html docs from rst files just run:
+To build html from rst files run from the top directory:
 
 ```bash
+
 $ make html
+
 ```
 
-And open with `build/html/index.html` in your browser.
+you can then open `build/html/index.html` in your browser to view the
+documentation.
