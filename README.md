@@ -13,7 +13,7 @@ Currently the docs are written in
 Before beginning any work, be sure to review [CONTRIBUTING.md](CONTRIBUTING.md).
 
 In order to build documentation, at minimum both python3 and pip for python3 are
-required. All required python modules are described in requirements.txt in this
+required. All required python modules are described in ```requirements.txt``` in this
 directory and can be installed with```pip install -r requirements.txt```.
 
 The following is the list of packages needed (can be incomplete):
