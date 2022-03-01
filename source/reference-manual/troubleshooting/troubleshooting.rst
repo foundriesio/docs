@@ -6,6 +6,17 @@ Troubleshooting and FAQ
 General
 -------
 
+.. _ref-troubleshooting_network-connectivity:
+
+Network Connectivity
+^^^^^^^^^^^^^^^^^^^^
+
+When debugging network connectivity and access issues, it can be helpful to
+use ``curl``. However, LmP does not ship with the command.
+
+Rather than including ``curl`` on the host device, a simple approach is to run
+it via a Alpine Linux container.
+
 .. _ref-troubleshooting_request-entity-too-large:
 
 Request Entity Too Large
