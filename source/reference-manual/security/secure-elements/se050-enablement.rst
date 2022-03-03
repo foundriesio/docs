@@ -7,67 +7,70 @@ This section demonstrates how to enable the SE050 middleware in
 ``meta-subscriber-overrides``.
 
 .. note::
-    This procedure refers to the steps to enable SE050 with the
-    :ref:`ref-rm_board_imx6ullevk` board. Similar procedures can be applied for
-    different boards. Please be aware that at this moment only ``imx6ullevk``,
-    ``imx8mm-lpddr4-evk`` and ``imx8mqevk`` support SE050 integration.
+    Please be aware that at this moment only ``imx6ullevk`` and
+    ``imx8mm-lpddr4-evk`` support SE050 integration without extra changes in
+    LmP.
 
 .. note::
-    This procedure is valid for boards running OP-TEE 3.10.
+    This procedure is valid for boards running OP-TEE 3.15.0.
 
-1. Create the path to extend the ``optee-os-fio`` recipe in
-``meta-subscriber-overrides`` (if not already created):
+Enable the `se05x` MACHINE_FEATURES for the target machine and provide the
+correct OEFID for the `se05x` device in **lmp-factory-custom**. The OEFID value
+can be found in `SE050 configurations`_.
 
-.. prompt:: bash host:~$, auto
+**conf/machine/include/lmp-factory-custom.inc:**
 
-    host:~$ mkdir -p recipes-security/optee/optee-os-fio
+.. prompt:: text
 
-2. Get the ``EdgeLock SE05x Plug & Trust Middleware`` from the `NXP sources <https://www.nxp.com/products/security-and-authentication/authentication/edgelock-se050-plug-trust-secure-element-family-enhanced-iot-security-with-maximum-flexibility:SE050?tab=Design_Tools_Tab>`_
-and move it to the folder created in the last step.
+    SE05X_OEFID_<machine> = "0xA1F4"
+    MACHINE_FEATURES_append_<machine> = " se05x"
 
 .. note::
-    This tutorial was tested using
-    ``EdgeLock SE05x Plug & Trust Middleware version (02.14.00)``.
-    It is recommended to contact Foundries.io support when doing the SE050
-    integration as NXP only provides the latest package for download, which
-    might not be tested in a FoundriesFactory.
+    If set incorrectly, the correct OEFID value can be checked in the boot log:
 
-3. Create the .bbappend file for the ``optee-os-fio`` recipe to include the
-middleware and needed configurations to enable SE050.
+    .. code-block:: none
+
+        I/TC: OP-TEE version: 3.15.0-84-gf0446cdb3 (gcc version 10.2.0 (GCC)) #1 Sat 11 Dec 2021 02:11:09 AM UTC aarch64
+        I/TC: Primary CPU initializing
+        I/TC: se050: Info: Applet ID
+        ...
+        I/TC: se050: Info: OEF ID
+        I/TC: se050: Info: 	a1.f4
+
+This step is enough to enable SE05X for the supported machines for factories
+created since v85.
+
+Push the changes to the ``meta-subscriber-overrides`` repository to trigger a
+new build with SE05X support enabled. Be aware that an image created with SE05X
+enabled does not boot on boards without the SE05X properly attached.
+
+Special cases
+-------------
+
+1. For older factories created **before v85**, it is also needed to add the `se05x`
+features to the **lmp-factory-image** build:
+
+**recipes-samples/images/lmp-factory-image.bb:**
+
+.. prompt:: text
+
+    # Support for SE05X
+    require ${@bb.utils.contains('MACHINE_FEATURES', 'se05x', 'recipes-samples/images/lmp-feature-se05x.inc', '', d)}
+
+2. If working with a different i.MX machine without SE05X LmP default support
+(``imx6ullevk`` and ``imx8mm-lpddr4-evk``), also provide which SoC I2C bus
+connects to the SE05X device:
 
 **recipes-security/optee/optee-os-fio_%.bbappend:**
 
 .. prompt:: text
 
-    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-    SRC_URI_append = " \
-        file://SE-PLUG-TRUST-MW.zip;name=se050-mw \
+    EXTRA_OEMAKE_append_<machine> = " \
+        ${@bb.utils.contains('MACHINE_FEATURES', 'se05x', 'CFG_IMX_I2C=y CFG_CORE_SE05X_I2C_BUS=<i2c_bus>', '', d)} \
     "
 
-    SRC_URI[se050-mw.md5sum] = "d1f0553ec6e3a9a70d7be9d3183921f9"
-    SRC_URI[se050-mw.sha256sum] = "6d0c2799475dfb304d159909cdcf8c7e2a38d6596c3e3205224da685b4b204f6"
+Make sure to push the changes to the ``meta-subscriber-overrides`` repository
+to trigger a build with the new configurations.
 
-    do_compile_prepend() {
-        # Link SE050 MW in order for it to available to OP-TEE
-        ln -sf ${WORKDIR}/simw-top ${S}/lib/libnxpse050/se050/simw-top
-    }
-
-    EXTRA_OEMAKE_append = " \
-        CFG_IMX_I2C=y CFG_CORE_SE05X=y CFG_NXP_SE05X_RNG_DRV=n \
-        CFG_NXP_CAAM_RSA_DRV=n CFG_NUM_THREADS=1 CFG_CORE_SE05X_DISPLAY_INFO=1 \
-        CFG_CORE_SE05X_SCP03_EARLY=1 \
-        CFG_CORE_SE05X_OEFID=0xA1F4 CFG_CORE_SE05X_I2C_BUS=1 \
-    "
-
-.. note::
-    You might need to adapt some parameters in this file, especially if building
-    for a different board than ``imx6ullevk`` or if building different versions
-    of the SE050 middleware. In those cases, double check the ``md5sum`` and
-    ``sha256sum`` for the middleware file as well as ``CFG_CORE_SE05X_I2C_BUS``,
-    which should refer to the correct I2C bus on the target board. For other
-    references on the used parameters, please check :ref:`ref-secure-element`.
-
-Push the changes to the ``meta-subscriber-overrides`` repository to trigger a
-new build with SE050 support enabled. Be aware that an image created with SE050
-enabled does not boot on boards without the SE050 properly attached.
+.. _SE050 configurations:
+   https://www.nxp.com/docs/en/application-note/AN12436.pdf
