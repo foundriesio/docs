@@ -1,14 +1,14 @@
-.. _ref-security_se050_enablement:
+.. _ref-security_se05x_enablement:
 
-Enabling SE050
+Enabling SE05X
 ==============
 
-This section demonstrates how to enable the SE050 middleware in
+This section demonstrates how to enable the SE05X middleware in
 ``meta-subscriber-overrides``.
 
 .. note::
     Please be aware that at this moment only ``imx6ullevk`` and
-    ``imx8mm-lpddr4-evk`` support SE050 integration without extra changes in
+    ``imx8mm-lpddr4-evk`` support SE05X integration without extra changes in
     LmP.
 
 .. note::
