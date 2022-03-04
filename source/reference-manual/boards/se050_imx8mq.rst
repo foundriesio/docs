@@ -72,4 +72,4 @@ the instructions in :ref:`ref-rm_board_imx8mqevk`.
 
 .. note::
     A reference on the needed changes to enable the SE050 middleware can be
-    found in :ref:`ref-security_se050_enablement`.
+    found in :ref:`ref-security_se05x_enablement`.
