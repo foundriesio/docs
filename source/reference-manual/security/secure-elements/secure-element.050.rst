@@ -194,7 +194,7 @@ The *keys* however are retrieved via a pkcs#11 key generation request to the cry
    https://www.nxp.com/docs/en/data-sheet/SE050-DATASHEET.pdf
 
 .. _User Guidelines:
-   https://www.nxp.com/docs/en/user-guide/AN12514.pdf
+   https://www.nxp.com/webapp/Download?colCode=AN12514
 
 .. _SE050 APDU Specification:
    https://www.nxp.com/docs/en/application-note/AN12413.pdf
