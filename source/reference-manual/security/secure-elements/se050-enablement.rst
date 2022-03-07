@@ -7,11 +7,6 @@ This section demonstrates how to enable the SE05X middleware in
 ``meta-subscriber-overrides``.
 
 .. note::
-    Please be aware that at this moment only ``imx6ullevk`` and
-    ``imx8mm-lpddr4-evk`` support SE05X integration without extra changes in
-    LmP.
-
-.. note::
     This procedure is valid for boards running OP-TEE 3.15.0.
 
 Enable the `se05x` MACHINE_FEATURES for the target machine and provide the
@@ -43,6 +38,11 @@ created since v85.
 Push the changes to the ``meta-subscriber-overrides`` repository to trigger a
 new build with SE05X support enabled. Be aware that an image created with SE05X
 enabled does not boot on boards without the SE05X properly attached.
+
+.. note::
+    Please be aware that at this moment only ``imx6ullevk`` and
+    ``imx8mm-lpddr4-evk`` support SE05X integration without extra changes in
+    LmP.
 
 Special cases
 -------------
