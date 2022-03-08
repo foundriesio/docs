@@ -303,3 +303,47 @@ source files for the recipe above::
 
 From here you can customize the startup script as needed.
 
+Setting a static IP to the device
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This example shows how to configure the `eth1` interface, but the steps can be
+extended for the other net interfaces.
+
+1. Create the .bbappend file as:
+
+**recipes-connectivity/networkmanager/networkmanager_%.bbappend**
+
+.. code-block:: none
+
+    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+    SRC_URI_append = " \
+        file://eth1.nmconnection \
+    "
+
+    do_install_append () {
+        install -d ${D}${sysconfdir}/NetworkManager/system-connections
+        install -m 0600 ${WORKDIR}/eth1.nmconnection ${D}${sysconfdir}/NetworkManager/system-connections
+
+2. Create the configuration fragment as:
+
+**recipes-connectivity/networkmanager/networkmanager/eth1.nmconnection**
+
+.. code-block:: none
+
+    [connection]
+    id=Wired connection 1
+    uuid=7a0a09e1-6a0e-449f-9d51-9f48ba411edf
+    type=ethernet
+    autoconnect-priority=-999
+    interface-name=eth1
+
+    [ipv4]
+    address1=<static-ip>/24,<gateway-address>
+    method=manual
+
+    [ipv6]
+    addr-gen-mode=stable-privacy
+    method=auto
+
+Remember to adjust the `address1` parameter as needed.
