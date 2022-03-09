@@ -4,7 +4,7 @@ Caching
 =======
 
 Each container built in a factory will publish the build cache layers 
-to the private image repository used for the final container image. All
+to our private registry, hub.foundries.io. All
 subsequent builds will pull this build cache and import it for use in 
 the current build. This provides very efficient incremental container 
 builds for our factory users. Exporting and importing these build cache
