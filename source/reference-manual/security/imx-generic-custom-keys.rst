@@ -59,14 +59,14 @@ configures the board to only boot signed images.
 
 The content of ``mfgtool-files_%.bbappend`` should be::
 
-    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-    SRC_URI_append_<machine> = " \
+    SRC_URI:append:<machine> = " \
         file://fuse.uuu \
         file://close.uuu \
     "
 
-    do_deploy_prepend_<machine>() {
+    do_deploy:prepend:<machine>() {
         install -d ${DEPLOYDIR}/${PN}
         install -m 0644 ${WORKDIR}/fuse.uuu ${DEPLOYDIR}/${PN}/fuse.uuu
         install -m 0644 ${WORKDIR}/close.uuu ${DEPLOYDIR}/${PN}/close.uuu

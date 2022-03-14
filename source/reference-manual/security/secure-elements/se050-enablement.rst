@@ -17,8 +17,8 @@ can be found in `SE050 configurations`_.
 
 .. prompt:: text
 
-    SE05X_OEFID_<machine> = "0xA1F4"
-    MACHINE_FEATURES_append_<machine> = " se05x"
+    SE05X_OEFID:<machine> = "0xA1F4"
+    MACHINE_FEATURES:append:<machine> = " se05x"
 
 .. note::
     If set incorrectly, the correct OEFID value can be checked in the boot log:
@@ -65,7 +65,7 @@ connects to the SE05X device:
 
 .. prompt:: text
 
-    EXTRA_OEMAKE_append_<machine> = " \
+    EXTRA_OEMAKE:append:<machine> = " \
         ${@bb.utils.contains('MACHINE_FEATURES', 'se05x', 'CFG_IMX_I2C=y CFG_CORE_SE05X_I2C_BUS=<i2c_bus>', '', d)} \
     "
 

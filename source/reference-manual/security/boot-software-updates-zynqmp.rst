@@ -326,7 +326,7 @@ it should be moved from FAT partition to U-Boot FIT image. To do that edit
 
 ::
 
-    BOOTSCR_LOAD_ADDR_sota = "0x21000000"
+    BOOTSCR_LOAD_ADDR:sota = "0x21000000"
 
 This change will include Linux **boot.cmd** into U-Boot FIT image
 alongside with TF-A/OP-TEE/U-Boot proper/U-Boot dtb images. When SPL
@@ -471,7 +471,7 @@ Example:
     --- /dev/null
     +++ b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend
     @@ -0,0 +1,7 @@
-    +FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    +FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
     +
     +PV = "1"
     +
@@ -507,4 +507,3 @@ shell for image provisioning to corresponding offsets on QSPI:
     0 bytes written, 7179209 bytes skipped in 7.433s, speed 1025601 B/s
     device 0 offset 0xaa0000, size 0x6d8bc9
     0 bytes written, 7179209 bytes skipped in 7.433s, speed 1025601 B/s
-

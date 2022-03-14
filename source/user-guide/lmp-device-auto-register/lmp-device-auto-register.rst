@@ -3,19 +3,19 @@
 Auto Register
 =============
 
-This section shows how to enable the ``lmp-device-auto-register`` recipe. This 
-recipe creates a systemd oneshot service that will automatically register the 
+This section shows how to enable the ``lmp-device-auto-register`` recipe. This
+recipe creates a systemd oneshot service that will automatically register the
 device on first boot once it has internet connectivity.
 This is done by providing an API Token that has **devices:create** scope.
 
 .. warning::
    Do not use the API Token in production. The use of an API Token is only intended for
-   usage in a development environment. For more information, read 
+   usage in a development environment. For more information, read
    :ref:`ref-factory-registration-ref`.
-   As customers move closer to production, do not hesitate to contact Foundries.io 
+   As customers move closer to production, do not hesitate to contact Foundries.io
    to discuss the best practices to automatically register devices.
 
-The recipe lmp-device-auto-register_ is provided by meta-lmp_ and can be added by 
+The recipe lmp-device-auto-register_ is provided by meta-lmp_ and can be added by
 customizing your ``meta-subscriber-overrides.git``.
 
 Prerequisites
@@ -28,13 +28,13 @@ To follow this section, it is important to have:
 Creating Token
 --------------
 
-Go to `Tokens <https://app.foundries.io/settings/tokens/>`_ and create a new **Api Token** by clicking on 
+Go to `Tokens <https://app.foundries.io/settings/tokens/>`_ and create a new **Api Token** by clicking on
 :guilabel:`+ New Token`.
 
 Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
 
-Select the :guilabel:`device:create` token and 
-select your **Factory**. You can later revoke this access and set up a new 
+Select the :guilabel:`device:create` token and
+select your **Factory**. You can later revoke this access and set up a new
 token once you are familiar with the :ref:`ref-api-access`.
 
 .. figure:: /_static/userguide/lmp-device-auto-register/lmp-device-auto-register-token.png
@@ -84,17 +84,17 @@ Create the required directory structure for this recipe:
 
     host:~$ mkdir -p recipes-support/lmp-device-auto-register/lmp-device-auto-register
 
-Create the ``api-token`` file and replace ``<YOUR_API_TOKEN>`` with the scoped token 
+Create the ``api-token`` file and replace ``<YOUR_API_TOKEN>`` with the scoped token
 created in the previous steps:
 
 .. prompt:: bash host:~$, auto
-      
+
     host:~$ gedit recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token
 
 **recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token**:
-      
+
 .. prompt:: text
- 
+
     <YOUR_API_TOKEN>
 
 
@@ -104,18 +104,18 @@ created in the previous steps:
    token filled here can be a bogus value. It only needs this because otherwise the
    ``lmp-device-register`` will try to do the OAuth flow still.
 
-Create the file ``lmp-device-auto-register.bbappend`` in order to give the recipe 
+Create the file ``lmp-device-auto-register.bbappend`` in order to give the recipe
 access to the ``api-token`` file.
 
 .. prompt:: bash host:~$, auto
-      
+
     host:~$ gedit recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend
 
 **recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend**:
-      
+
 .. prompt:: text
- 
-    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 Add the changed files, commit and push:
 
@@ -140,9 +140,9 @@ When FoundriesFactory CI finishes all jobs, download and flash the image.
 Testing Auto Register
 ---------------------
 
-After booting the new image, if your device is connected to the internet, the device 
-will automatically register to your Factory and should be visible by navigating to the web 
-interface at https://app.foundries.io/factories/, clicking your **Factory** and 
+After booting the new image, if your device is connected to the internet, the device
+will automatically register to your Factory and should be visible by navigating to the web
+interface at https://app.foundries.io/factories/, clicking your **Factory** and
 selecting the **Devices** tab.
 
 .. figure:: /_static/userguide/lmp-device-auto-register/lmp-device-auto-register-device.png
@@ -151,7 +151,7 @@ selecting the **Devices** tab.
 
    FoundriesFactory Device Auto Registered
 
-On your device, use the following command to list the ``lmp-device-auto-register`` 
+On your device, use the following command to list the ``lmp-device-auto-register``
 service:
 
 .. prompt:: bash device:~$
