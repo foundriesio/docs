@@ -386,7 +386,7 @@ Example:
     --- /dev/null
     +++ b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend
     @@ -0,0 +1,7 @@
-    +FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    +FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
     +
     +PV = "1"
     +

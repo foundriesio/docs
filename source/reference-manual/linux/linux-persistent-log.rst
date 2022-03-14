@@ -66,7 +66,7 @@ the ``10-persistent-journal.conf`` file used by the
 At your meta-subscriber-overrides layer::
 
   $ cat recipes-support/systemd-journald-persistent/systemd-journald-persistent.bbappend
-  FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+  FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 And::
 

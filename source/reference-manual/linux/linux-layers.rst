@@ -105,16 +105,16 @@ Here is an example of how a BSP configuration gets extended from the
 vendor BSP layer::
 
   # Beaglebone
-  PREFERRED_PROVIDER_virtual/bootloader_beaglebone-yocto = "u-boot-fio"
-  PREFERRED_PROVIDER_u-boot_beaglebone-yocto = "u-boot-fio"
-  WKS_FILE_DEPENDS_append_beaglebone-yocto = " u-boot-default-script"
-  PREFERRED_PROVIDER_u-boot-default-script_beaglebone-yocto = "u-boot-ostree-scr-fit"
-  SOTA_CLIENT_FEATURES_append_beaglebone-yocto = " ubootenv"
-  OSTREE_KERNEL_ARGS_beaglebone-yocto ?= "console=ttyS0,115200n8 ${OSTREE_KERNEL_ARGS_COMMON}"
-  KERNEL_DEVICETREE_append_beaglebone-yocto = " am335x-boneblack-wireless.dtb"
-  IMAGE_BOOT_FILES_beaglebone-yocto = "u-boot.img MLO boot.itb"
-  KERNEL_IMAGETYPE_beaglebone-yocto = "fitImage"
-  KERNEL_CLASSES_beaglebone-yocto = " kernel-lmp-fitimage "
+  PREFERRED_PROVIDER_virtual/bootloader:beaglebone-yocto = "u-boot-fio"
+  PREFERRED_PROVIDER_u-boot:beaglebone-yocto = "u-boot-fio"
+  WKS_FILE_DEPENDS:append:beaglebone-yocto = " u-boot-default-script"
+  PREFERRED_PROVIDER_u-boot-default-script:beaglebone-yocto = "u-boot-ostree-scr-fit"
+  SOTA_CLIENT_FEATURES:append:beaglebone-yocto = " ubootenv"
+  OSTREE_KERNEL_ARGS:beaglebone-yocto ?= "console=ttyS0,115200n8 ${OSTREE_KERNEL_ARGS_COMMON}"
+  KERNEL_DEVICETREE:append:beaglebone-yocto = " am335x-boneblack-wireless.dtb"
+  IMAGE_BOOT_FILES:beaglebone-yocto = "u-boot.img MLO boot.itb"
+  KERNEL_IMAGETYPE:beaglebone-yocto = "fitImage"
+  KERNEL_CLASSES:beaglebone-yocto = " kernel-lmp-fitimage "
 
 When adding or changing the LmP BSP configuration values, please use
 ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``

@@ -158,7 +158,7 @@ Changing interval in the build
             install -m 0644 ${WORKDIR}/90-sota-fragment.toml ${D}${libdir}/sota/conf.d/90-sota-fragment.toml
     }
 
-    FILES_${PN} += "${libdir}/sota/conf.d/90-sota-fragment.toml"
+    FILES:${PN} += "${libdir}/sota/conf.d/90-sota-fragment.toml"
 
 4. Create another directory under the one we just created so we can supply the
 source file (``90-sota-fragment.toml``) for the recipe above:
@@ -185,7 +185,7 @@ Changing kernel command line args
 For ``DISTRO=lmp``, the kernel command line can be extended by setting ``OSTREE_KERNEL_ARGS`` in
 ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
 
-    OSTREE_KERNEL_ARGS_<machine> = "console=${console} <new-args> ${OSTREE_KERNEL_ARGS_COMMON}"
+    OSTREE_KERNEL_ARGS:<machine> = "console=${console} <new-args> ${OSTREE_KERNEL_ARGS_COMMON}"
 
 Make sure you set the correct ``<machine>`` and other variables as needed.
 
@@ -208,7 +208,7 @@ Reference for ``bbappend`` for this file:
 
 .. prompt:: text
 
-    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 .. note::
     If testing a reference board supported in ``meta-lmp``, the original ``uEnv.txt.in``
@@ -263,8 +263,8 @@ add your changes if you are already familiar with Yocto Project.
 	    install -m 0644 ${WORKDIR}/<service-name>.service ${D}${systemd_system_unitdir}
     }
 
-    FILES_${PN} += "${systemd_system_unitdir}/<service-name>.service"
-    FILES_${PN} += "${systemd_unitdir}/system-preset"
+    FILES:${PN} += "${systemd_system_unitdir}/<service-name>.service"
+    FILES:${PN} += "${systemd_unitdir}/system-preset"
 
 4. Create another directory under the one we just created so we can supply the
 source files for the recipe above::
@@ -315,13 +315,13 @@ extended for the other net interfaces.
 
 .. code-block:: none
 
-    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-    SRC_URI_append = " \
+    SRC_URI:append = " \
         file://eth1.nmconnection \
     "
 
-    do_install_append () {
+    do_install:append () {
         install -d ${D}${sysconfdir}/NetworkManager/system-connections
         install -m 0600 ${WORKDIR}/eth1.nmconnection ${D}${sysconfdir}/NetworkManager/system-connections
 
