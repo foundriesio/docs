@@ -38,7 +38,9 @@ To change the distro on a FoundriesFactory, from the ``ci-scripts`` git reposito
     lmp:
       params:
         IMAGE: lmp-factory-image
+
         DOCKER_COMPOSE_APP: "1"
+        
         DISTRO: lmp-base
 
 LmP MFGTools
