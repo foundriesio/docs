@@ -66,7 +66,7 @@ This command will apply the latest available update to the device. This includes
 Apply Specific Update
 ~~~~~~~~~~~~~~~~~~~~~
 
-If you would like to update to a specifc build number, you can use the following command.
+If you would like to update to a specific build number, you can use the following command.
 
 ``sudo aktualizr-lite update --update-name <build_number>``
 
@@ -77,7 +77,7 @@ Configuration update methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Editing ``/var/sota/sota.toml`` on a device
-* Adding or editing an existing configuration snippet e.g. ``/etc/sota/conf.d/zz-50-fioctl-01.toml`` on a device
+* Adding or editing an existing configuration snippet e.g. ``/etc/sota/conf.d/z-50-fioctl-01.toml`` on a device
 * Running *fioctl* from any host ``fioctl devices config <device>``, see :ref:`ref-configuring-devices` for more details
 
 
