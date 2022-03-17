@@ -140,8 +140,8 @@ When FoundriesFactory CI finishes all jobs, download and flash the image.
 Testing Auto Register
 ---------------------
 
-After booting the new image, if your device is connected to the internet, the device
-will automatically register to your Factory and should be visible by navigating to the web
+After booting the new image, if connected to the internet, the device
+will automatically register to your FoundriesFactory. It should be visible by navigating to the web
 interface at https://app.foundries.io/factories/, clicking your **Factory** and
 selecting the **Devices** tab.
 
