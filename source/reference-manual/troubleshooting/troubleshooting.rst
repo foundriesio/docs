@@ -214,28 +214,24 @@ Reference for ``bbappend`` for this file:
     If testing a reference board supported in ``meta-lmp``, the original ``uEnv.txt.in``
     file can be found in ``meta-lmp/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-base-scr/<machine>/uEnv.txt.in``.
 
-Adding a new systemd startup service
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How do I add a new startup service?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The LmP uses systemd for service management. Here are some basic instructions
-for adding a shell script startup systemd service.
+LmP uses `systemd <https://systemd.io/>`_ for service management. Our tutorial on
+:ref:`tutorial-customizing-the-platform` provides a detailed walk-through of
+the steps required for adding a systemd service. A summarized example for adding
+a shell script to run at startup is provided here for quick reference. You
+should first be familiar with editing the ``meta-subscribers-overrides`` layer.
 
 .. note::
-    Make sure to replace ``<service-name>`` accordingly through the instructions
-    below.
+    Make sure to replace ``<service-name>`` accordingly throughout the instructions below.
 
-1. Create a directory for your service in ``meta-subscriber-overrides`` repo::
+#. Create a directory for your service in ``meta-subscriber-overrides`` repo::
 
-    recipes-support/<service-name>
+    mkdir -p recipes-support/<service-name>
 
-2. Add a new file under this directory::
-
-    <service-name>_0.1.bb
-
-3. Include the content below to the file created in the last step. Feel free to
-add your changes if you are already familiar with Yocto Project.
-
-.. code-block:: none
+#. Add a new file named ``<service-name>.bb`` under this directory, with the
+   following content::
 
     SUMMARY = "Description of your service"
     LICENSE = "MIT"
@@ -266,12 +262,13 @@ add your changes if you are already familiar with Yocto Project.
     FILES_${PN} += "${systemd_system_unitdir}/<service-name>.service"
     FILES_${PN} += "${systemd_unitdir}/system-preset"
 
-4. Create another directory under the one we just created so we can supply the
-source files for the recipe above::
+#. Create another directory with the same name as the one we just created to
+   place the source file(s) for the recipe::
 
     recipes-support/<service-name>/<service-name>
 
-5. Create the ``<service-name>.service`` service file under this new directory::
+#. Create the systemd service file ``<service-name>.service`` under this new
+   directory::
 
     [Unit]
     Description=A description of your service
@@ -284,7 +281,8 @@ source files for the recipe above::
     RemainAfterExit=true
     Environment=HOME=/home/root
 
-6. Create the ``<service-name>.sh`` script under this new directory::
+#. Also add the ``<service-name>.sh`` script to run at startup under this new
+   directory::
 
     #!/bin/sh
     #
@@ -301,7 +299,19 @@ source files for the recipe above::
     echo "Hello World"
     exit 0
 
-From here you can customize the startup script as needed.
+.. note::
+    If testing script locally, remember to make executable.
+
+#. Extend the image recipe with the package by appending ``CORE_IMAGE_BASE_INSTALL``
+   variable in ``lmp-factory-image.bb``::
+
+    CORE_IMAGE_BASE_INSTALL += " \
+    <service-name> \
+    "
+
+#. Lastly, check that the service is starting. From the device:
+
+   ``systemctl status <service-name>.service``
 
 Setting a static IP to the device
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
