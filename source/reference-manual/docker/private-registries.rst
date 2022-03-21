@@ -82,7 +82,7 @@ updated accordingly::
   # factory-config.yml
   container_registries:
   - type: azure
-    url: fiotesting1.azurecr.io
+    url: <YOUR REGISTRY>.azurecr.io
     azure_principal_secret_name: azprincipal
 
 .. _service principal:
