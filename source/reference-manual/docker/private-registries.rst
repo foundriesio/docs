@@ -87,3 +87,21 @@ updated accordingly::
 
 .. _service principal:
    https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#authenticate-with-the-service-principal
+
+
+Configuring Devices for ACR
+---------------------------
+
+Azure does not include a built-in way for devices to `securely access`_
+a container registry like AWS IoT does. The recommended approach for
+this scenario is pushing container images from ACR into
+hub.foundries.io or having a Foundries container image built with
+something like::
+
+ # containers.git <CONTAINER>/Dockerfile
+ FROM <YOUR REGISTRY>.azurecr.io
+
+Then compose apps can reference this hub.foundries.io container image.
+
+.. _securely access:
+   https://docs.microsoft.com/en-us/answers/questions/734990/iot-device-authentication-with-acr.html
