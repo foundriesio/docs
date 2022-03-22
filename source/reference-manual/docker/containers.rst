@@ -123,10 +123,29 @@ In rare occasions a Factory may need some custom code to run *before* the
 docker build logic is called on each container. This can be done with a file
 in the top-level directory of containers.git, ``pre-build.conf``.
 
-Example
-~~~~~~~
+Examples
+~~~~~~~~
+
+Here are some examples of things that can be done inside
+``pre-build.conf``.
+
 ::
 
- # pre-build.conf
- # Create a file with build environment for container "shellhttpd":
+ # Create a file with build environment for container "shellhttpd"
  env > shellhttpd/envvars
+
+::
+
+ # Allow containers in factory to use a common base image
+
+ # First: Make our images build in a predictable order.
+ # This ensures 0base is built first so other containers can inherit it:
+ export IMAGES=$(find ./ -mindepth 2 -maxdepth 2 -name Dockerfile | cut -d / -f2 | sort)
+
+  # Second: Modify each container to use the locally build arch-specific base image:
+  _base_img="hub.foundries.io/${FACTORY}/0base:$(git log -1 --format=%h)-$ARCH"
+  for x in $IMAGES ; do
+      echo "Prebuild checking $x for FROM override"
+      sed -i "s|hub.foundries.io/${FACTORY}/0base|${_base_img}|" $x/Dockerfile
+  done
+
