@@ -215,7 +215,7 @@ Reference for ``bbappend`` for this file:
     file can be found in ``meta-lmp/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-base-scr/<machine>/uEnv.txt.in``.
 
 Adding a new systemd startup service
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 LmP uses `systemd <https://systemd.io/>`_ for service management. Our tutorial on
 :ref:`tutorial-customizing-the-platform` provides a detailed walk-through of
@@ -226,11 +226,11 @@ should first be familiar with editing the ``meta-subscribers-overrides`` layer.
 .. note::
     Make sure to replace ``<service-name>`` accordingly throughout the instructions below.
 
-#. Create a directory for your service in ``meta-subscriber-overrides`` repo::
+1. Create a directory for your service in ``meta-subscriber-overrides`` repo::
 
     mkdir -p recipes-support/<service-name>
 
-#. Add a new file named ``<service-name>.bb`` under this directory, with the
+2. Add a new file named ``<service-name>.bb`` under this directory, with the
    following content::
 
     SUMMARY = "Description of your service"
@@ -262,12 +262,12 @@ should first be familiar with editing the ``meta-subscribers-overrides`` layer.
     FILES_${PN} += "${systemd_system_unitdir}/<service-name>.service"
     FILES_${PN} += "${systemd_unitdir}/system-preset"
 
-#. Create another directory with the same name as the one we just created to
+3. Create another directory with the same name as the one we just created to
    place the source file(s) for the recipe::
 
     recipes-support/<service-name>/<service-name>
 
-#. Create the systemd service file ``<service-name>.service`` under this new
+4. Create the systemd service file ``<service-name>.service`` under this new
    directory::
 
     [Unit]
@@ -281,7 +281,7 @@ should first be familiar with editing the ``meta-subscribers-overrides`` layer.
     RemainAfterExit=true
     Environment=HOME=/home/root
 
-#. Also add the ``<service-name>.sh`` script to run at startup under this new
+5. Also add the ``<service-name>.sh`` script to run at startup under this new
    directory::
 
     #!/bin/sh
@@ -302,14 +302,14 @@ should first be familiar with editing the ``meta-subscribers-overrides`` layer.
 .. note::
     If testing script locally, remember to make it executable.
 
-#. Remember to install the new service by appending the ``CORE_IMAGE_BASE_INSTALL``
+6. Remember to install the new service by appending the ``CORE_IMAGE_BASE_INSTALL``
    variable in ``lmp-factory-image.bb``::
 
     CORE_IMAGE_BASE_INSTALL += " \
     <service-name> \
     "
 
-#. Lastly, check that the service is starting. From the device:
+7. Lastly, check that the service is starting. From the device:
 
    ``systemctl status <service-name>.service``
 
