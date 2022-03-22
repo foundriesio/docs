@@ -214,8 +214,8 @@ Reference for ``bbappend`` for this file:
     If testing a reference board supported in ``meta-lmp``, the original ``uEnv.txt.in``
     file can be found in ``meta-lmp/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-base-scr/<machine>/uEnv.txt.in``.
 
-How do I add a new startup service?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adding a new systemd startup service
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 LmP uses `systemd <https://systemd.io/>`_ for service management. Our tutorial on
 :ref:`tutorial-customizing-the-platform` provides a detailed walk-through of
@@ -302,7 +302,7 @@ should first be familiar with editing the ``meta-subscribers-overrides`` layer.
 .. note::
     If testing script locally, remember to make it executable.
 
-#. Extend the image recipe with the package by appending ``CORE_IMAGE_BASE_INSTALL``
+#. Remember to install the new service by appending the ``CORE_IMAGE_BASE_INSTALL``
    variable in ``lmp-factory-image.bb``::
 
     CORE_IMAGE_BASE_INSTALL += " \
