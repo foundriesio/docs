@@ -38,7 +38,7 @@ it does have a couple of potential drawbacks:
    Because devices are created on-the-fly, the backend maintains a
    deny-list for device UUIDs that get deleted. This can lead to
    confusion when trying to re-use a denied UUID for Factories using
-   HSMs.  The standard lmp-device-register flow with Foundries backend
+   HSMs.  The standard ``lmp-device-register`` flow with the Foundries.io backend
    will remove the denied device. However, in the "fully detached"
    scenario, a user will need to manage the deny list themselves. The
    deny list can be managed with:
