@@ -300,7 +300,7 @@ should first be familiar with editing the ``meta-subscribers-overrides`` layer.
     exit 0
 
 .. note::
-    If testing script locally, remember to make executable.
+    If testing script locally, remember to make it executable.
 
 #. Extend the image recipe with the package by appending ``CORE_IMAGE_BASE_INSTALL``
    variable in ``lmp-factory-image.bb``::
