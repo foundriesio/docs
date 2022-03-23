@@ -29,14 +29,14 @@ scripts:
     urlbase="https://ci.foundries.io/projects/${H_PROJECT}/builds/${H_BUILD}/${H_RUN}/"
 
     set +x   # cleaner output and don't leak the secret token below
-    echo == $(date "+%F %T") HTML browseable at: ${urlbase}artifacts/html/index.html
-    echo == $(date "+%F %T") Single HTML browseable at: ${urlbase}artifacts/singlehtml/index.html
+    echo == $(date "+%F %T") HTML browsable at: ${urlbase}artifacts/html/index.html
+    echo == $(date "+%F %T") Single HTML browsable at: ${urlbase}artifacts/singlehtml/index.html
 
     tok=$(cat /secrets/githubtok)
     curl -X POST \
         -H "Content-Type: application/json" \
         -H "Authorization: token $tok" \
-        -d "{\"body\": \"Docs for ${GIT_SHA} are browesable at: ${urlbase}artifacts/html/index.html\"}" \
+        -d "{\"body\": \"Docs for ${GIT_SHA} are browsable at: ${urlbase}artifacts/html/index.html\"}" \
         "https://api.github.com/repos/foundriesio/docs/issues/${GH_PRNUM}/comments"
 
   link-check: |

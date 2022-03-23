@@ -73,7 +73,7 @@ The ``linux-<name>_%.bbappend`` looks like:
 
 .. prompt:: text
 
-    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
     SRC_URI += " \
        file://kernel-meta/bsp/<sub-group>/<machine>.cfg \
        file://kernel-meta/bsp/<sub-group>/<machine>.scc \

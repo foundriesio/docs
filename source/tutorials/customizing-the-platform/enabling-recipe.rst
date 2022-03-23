@@ -1,3 +1,5 @@
+.. _tutorial-enabling-application:
+
 Enabling Application
 ^^^^^^^^^^^^^^^^^^^^
 

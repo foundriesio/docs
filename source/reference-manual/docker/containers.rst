@@ -38,9 +38,9 @@ can set a few special variables to influence what's done at build time:
    this multi-arch container is being published for. Following the example
    above its possible to do: ``MANIFEST_PLATFORMS=linux/amd64,linux/arm``
 
- * **EXTRA_TAGS_$ARCH** - This can work with ``SKIP_ARCHS``. If builds are
+ * **EXTRA_TAGS:$ARCH** - This can work with ``SKIP_ARCHS``. If builds are
    skipped for arm64, the arm container could be tagged for it with:
-   ``EXTRA_TAGS_arm=arm64``.
+   ``EXTRA_TAGS:arm=arm64``.
 
  * **DOCKER_BUILD_CONTEXT** - Use an alternative directory for the docker
    build context.
@@ -57,7 +57,7 @@ Examples
 
   # Use a 32-bit arm container for a 64-bit host:
   SKIP_ARCHS="arm64"
-  EXTRA_TAGS_arm="arm64"
+  EXTRA_TAGS:arm="arm64"
 
 ::
 

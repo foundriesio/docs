@@ -158,7 +158,7 @@ Changing interval in the build
             install -m 0644 ${WORKDIR}/90-sota-fragment.toml ${D}${libdir}/sota/conf.d/90-sota-fragment.toml
     }
 
-    FILES_${PN} += "${libdir}/sota/conf.d/90-sota-fragment.toml"
+    FILES:${PN} += "${libdir}/sota/conf.d/90-sota-fragment.toml"
 
 4. Create another directory under the one we just created so we can supply the
 source file (``90-sota-fragment.toml``) for the recipe above:
@@ -185,7 +185,7 @@ Changing kernel command line args
 For ``DISTRO=lmp``, the kernel command line can be extended by setting ``OSTREE_KERNEL_ARGS`` in
 ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
 
-    OSTREE_KERNEL_ARGS_<machine> = "console=${console} <new-args> ${OSTREE_KERNEL_ARGS_COMMON}"
+    OSTREE_KERNEL_ARGS:<machine> = "console=${console} <new-args> ${OSTREE_KERNEL_ARGS_COMMON}"
 
 Make sure you set the correct ``<machine>`` and other variables as needed.
 
@@ -208,7 +208,7 @@ Reference for ``bbappend`` for this file:
 
 .. prompt:: text
 
-    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 .. note::
     If testing a reference board supported in ``meta-lmp``, the original ``uEnv.txt.in``
@@ -217,25 +217,21 @@ Reference for ``bbappend`` for this file:
 Adding a new systemd startup service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The LmP uses systemd for service management. Here are some basic instructions
-for adding a shell script startup systemd service.
+LmP uses `systemd <https://systemd.io/>`_ for service management. Our tutorial on
+:ref:`tutorial-customizing-the-platform` provides a detailed walk-through of
+the steps required for adding a systemd service. A summarized example for adding
+a shell script to run at startup is provided here for quick reference. You
+should first be familiar with editing the ``meta-subscribers-overrides`` layer.
 
 .. note::
-    Make sure to replace ``<service-name>`` accordingly through the instructions
-    below.
+    Make sure to replace ``<service-name>`` accordingly throughout the instructions below.
 
 1. Create a directory for your service in ``meta-subscriber-overrides`` repo::
 
-    recipes-support/<service-name>
+    mkdir -p recipes-support/<service-name>
 
-2. Add a new file under this directory::
-
-    <service-name>_0.1.bb
-
-3. Include the content below to the file created in the last step. Feel free to
-add your changes if you are already familiar with Yocto Project.
-
-.. code-block:: none
+2. Add a new file named ``<service-name>.bb`` under this directory, with the
+   following content::
 
     SUMMARY = "Description of your service"
     LICENSE = "MIT"
@@ -263,15 +259,16 @@ add your changes if you are already familiar with Yocto Project.
 	    install -m 0644 ${WORKDIR}/<service-name>.service ${D}${systemd_system_unitdir}
     }
 
-    FILES_${PN} += "${systemd_system_unitdir}/<service-name>.service"
-    FILES_${PN} += "${systemd_unitdir}/system-preset"
+    FILES:${PN} += "${systemd_system_unitdir}/<service-name>.service"
+    FILES:${PN} += "${systemd_unitdir}/system-preset"
 
-4. Create another directory under the one we just created so we can supply the
-source files for the recipe above::
+3. Create another directory with the same name as the one we just created to
+   place the source file(s) for the recipe::
 
     recipes-support/<service-name>/<service-name>
 
-5. Create the ``<service-name>.service`` service file under this new directory::
+4. Create the systemd service file ``<service-name>.service`` under this new
+   directory::
 
     [Unit]
     Description=A description of your service
@@ -284,7 +281,8 @@ source files for the recipe above::
     RemainAfterExit=true
     Environment=HOME=/home/root
 
-6. Create the ``<service-name>.sh`` script under this new directory::
+5. Also add the ``<service-name>.sh`` script to run at startup under this new
+   directory::
 
     #!/bin/sh
     #
@@ -301,7 +299,19 @@ source files for the recipe above::
     echo "Hello World"
     exit 0
 
-From here you can customize the startup script as needed.
+.. note::
+    If testing script locally, remember to make it executable.
+
+6. Remember to install the new service by appending the ``CORE_IMAGE_BASE_INSTALL``
+   variable in ``lmp-factory-image.bb``::
+
+    CORE_IMAGE_BASE_INSTALL += " \
+    <service-name> \
+    "
+
+7. Lastly, check that the service is starting. From the device:
+
+   ``systemctl status <service-name>.service``
 
 Setting a static IP to the device
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -315,13 +325,13 @@ extended for the other net interfaces.
 
 .. code-block:: none
 
-    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-    SRC_URI_append = " \
+    SRC_URI:append = " \
         file://eth1.nmconnection \
     "
 
-    do_install_append () {
+    do_install:append () {
         install -d ${D}${sysconfdir}/NetworkManager/system-connections
         install -m 0600 ${WORKDIR}/eth1.nmconnection ${D}${sysconfdir}/NetworkManager/system-connections
 
