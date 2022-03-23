@@ -129,7 +129,7 @@ Examples
 Here are some examples of things that can be done inside
 ``pre-build.conf``:
 
-::
+.. code-block:: bash
 
  # Create a file with build environment for container "shellhttpd"
  env > shellhttpd/envvars
