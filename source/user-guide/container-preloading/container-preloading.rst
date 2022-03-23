@@ -9,7 +9,7 @@ By default, the ``platform`` build creates an image to be flashed to a device th
 doesn't include Docker Compose Apps. After installing the image and registering
 the device, ``aktualizr-lite`` downloads and runs the configured apps.
 
-There are cases where having applications pre-loaded on the image can be useful, such as:
+There are cases where having applications preloaded on the image can be helpful, such as:
 
 - Executing a Docker Compose App right after the first boot, even without internet or registering the device.
 - Reducing network data usage during the Docker Image download.
@@ -75,9 +75,9 @@ Edit the ``factory-config.yml`` file and add the configuration below:
          shortlist: "shellhttpd"
 
 - ``enabled`` -  Whether to produce an archive containing docker images as part of a container build trigger.
-- ``shortlist`` - Defines the list of apps to preload. If it is not specified or its value is empty, then all Target's apps are preloaded.
+- ``shortlist`` - Defines the list of apps to preload. All Target's apps are preloaded if it is not specified or its value is empty.
 - ``app_type`` - Defines a type of Apps to preload.
-  If an option is not defined or set to an empty value then, an App type to preload depends on a LmP version. If a LmP version is equal or higher than v85 then `restorable` type is preloaded, otherwise `compose` type.
+  If an option is not defined or set to an empty value, the ``app_type``  preload will depend on the LmP version. If the LmP version is equal to or higher than **v85**, then `restorable` type is preloaded, otherwise `compose` type.
   See :ref:`ug-restorable-apps` for more details on Restorable Apps.
 
 
@@ -85,14 +85,14 @@ Add the ``factory-config.yml`` file, commit and push:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ git commit -m "Configure shellhttpd as pre-load app" factory-config.yml
+    host:~$ git commit -m "Configure shellhttpd as preload app" factory-config.yml
     host:~$ git push
 
-Getting a New Image with Pre-loaded Containers
+Getting a New Image with Preloaded Containers
 ----------------------------------------------
 
-From now on, every time a ``platform`` or ``containers`` build finishes, it will
-generate a ``.wic.gz`` file with the pre-loaded Docker Image.
+After these steps, when a ``platform`` or ``containers`` build finishes, it will
+generate a ``.wic.gz`` file in :guilabel:`Runs`, :guilabel:`assembly-system-image` with the preloaded Docker Image.
 
 Find your ``containers`` folder and trigger a new build.
 
@@ -110,7 +110,7 @@ The latest **Target** named ``containers-devel`` should be the CI job you just c
 
    FoundriesFactory New Target
 
-When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guilabel:`Runs` and download the image:
+When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guilabel:`Runs` , **assembly-system-image**, **devel** folder and download the image:
 
 .. figure:: /_static/userguide/container-preloading/container-preloading-image.png
    :width: 900
@@ -126,7 +126,7 @@ Flash the image and boot the device, next log in via SSH.
     the files from the latest ``platform`` build. For more information about how to
     flash your device, read :ref:`ref-boards`.
 
-Testing pre-loaded Image
+Testing preloaded Image
 ------------------------
 
 On your device, switch to root and list the files in the folder
@@ -197,11 +197,11 @@ Run ``wget`` to test the container:
 Starting Compose Apps Automatically
 -----------------------------------
 
-To start the pre-loaded application automatically (after the boot and before
+To start the preloaded application automatically (after the boot and before
 the device registration when aktualizr-lite starts) you have to enable a systemd service
 responsible for it.
 
-meta-lmp_ already has a recipe that launches pre-loaded apps after the device boots.
+meta-lmp_ already has a recipe that launches preloaded apps after the device boots.
 
 Clone your ``meta-subscriber-overrides.git`` repo and enter its directory:
 
