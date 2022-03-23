@@ -127,7 +127,7 @@ Examples
 ~~~~~~~~
 
 Here are some examples of things that can be done inside
-``pre-build.conf``.
+``pre-build.conf``:
 
 ::
 
