@@ -109,6 +109,12 @@ The following are aktualizr-repo's configuration parameters that can be useful t
     # If the param is set to "0" then the App containers are (re-)created just after a successful boot on a new ostree version during aklite startup.
     create_containers_before_reboot = "0"
 
+    # A percentage of an available storage that can be used by Compose Apps.
+    # aktualizr-lite checks whether there is enough storage available before performing OTA update of Compose Apps.
+    # min(sizeof(AppsV_N+1) - sizeof(AppsV_N), 0)  <  <available_storage> * <storage_watermark>/100
+    # By default, if the configuration param is not specified, it is set to "80".
+    storage_watermark = "60" (set to "80" if not specified)
+
     [logger]
     # Set log level 0-5 (trace, debug, info, warning, error, fatal)
     loglevel = 2
