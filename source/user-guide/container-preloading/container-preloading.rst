@@ -92,7 +92,7 @@ Getting a New Image with Preloaded Containers
 ----------------------------------------------
 
 After these steps, when a ``platform`` or ``containers`` build finishes, it will
-generate a ``.wic.gz`` file in :guilabel:`Runs`, :guilabel:`assembly-system-image` with the preloaded Docker Image.
+generate a ``.wic.gz`` file in :guilabel:`Runs`, ``assembly-system-image`` , ``tag`` folder, with the preloaded Docker Image.
 
 Find your ``containers`` folder and trigger a new build.
 
@@ -110,7 +110,7 @@ The latest **Target** named ``containers-devel`` should be the CI job you just c
 
    FoundriesFactory New Target
 
-When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guilabel:`Runs` , **assembly-system-image**, **devel** folder and download the image:
+When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guilabel:`Runs` and download the image from ``assemble-system-image``:
 
 .. figure:: /_static/userguide/container-preloading/container-preloading-image.png
    :width: 900
@@ -122,9 +122,9 @@ Flash the image and boot the device, next log in via SSH.
 
 .. note::
 
-    Some devices require additional artifacts to be flashed. In this case, download
-    the files from the latest ``platform`` build. For more information about how to
-    flash your device, read :ref:`ref-boards`.
+    Some devices require additional artifacts to be flashed.
+    In this case, download the files from the latest ``platform`` build and only use the ``image`` from ``assembly-system-image``. 
+    For more information about how to flash your device, read :ref:`ref-boards`.
 
 Testing preloaded Image
 ------------------------
