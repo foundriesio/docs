@@ -12,5 +12,7 @@ Over the Air Updates
    device-tags
    advanced-tagging
    configuring
+   targets
+   ci-targets
    production-targets
    static-deltas
