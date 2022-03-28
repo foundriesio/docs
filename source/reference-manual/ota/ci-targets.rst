@@ -12,7 +12,7 @@ originally created by CI when:
 
  * A change is pushed to source.foundries.io
  * A CI job is triggered in ci.foundries.io
- * The CI job signs the resulting TUF targets.json with the Factory's
+ * The CI job signs the resulting TUF ``targets.json`` with the Factory's
    "online" targets signing key.
 
 The online targets signing key ID can be seen in the TUF root
