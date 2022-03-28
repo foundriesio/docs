@@ -80,6 +80,7 @@ Configuration update methods
 * Adding or editing an existing configuration snippet e.g. ``/etc/sota/conf.d/z-50-fioctl-01.toml`` on a device
 * Running *fioctl* from any host ``fioctl devices config <device>``, see :ref:`ref-configuring-devices` for more details
 
+.. _ref-aktualizr-lite-params:
 
 Parameters
 ~~~~~~~~~~

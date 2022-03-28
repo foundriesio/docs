@@ -16,3 +16,4 @@ Over the Air Updates
    ci-targets
    production-targets
    static-deltas
+   update-rollback
