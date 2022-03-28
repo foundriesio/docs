@@ -4,7 +4,7 @@ CI Targets
 ==========
 
 The point of the Factory is to create Targets. The magic of the
-Factory is how a simple ``git push`` can make this all happen. Because
+Factory is how a ``git push`` can make this all happen. Because
 of how easy these are to create, there is another type of Target,
 :ref:`Production Targets <ref-production-targets>`, that are intended
 to be used for production devices. However, it's almost always
