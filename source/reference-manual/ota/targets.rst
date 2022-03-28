@@ -42,7 +42,7 @@ is where you can start to visualize a Factory. The
 CI what it's supposed to build when changes hit source.foundries.io.
 The default factory-definition.yml tell CI:
 
- * If an LMP change (lmp-manifest.git or meta-subscriber-overrides.git)
+ * If an LmP change (lmp-manifest.git or meta-subscriber-overrides.git)
    comes in on the master branch, do a Yocto build and tag it with
    "master".
 
