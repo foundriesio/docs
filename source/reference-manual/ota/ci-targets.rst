@@ -35,7 +35,7 @@ Condensed Targets
 
 Each device is configured to take updates for Targets that include
 a specific tag. Because of this, the most of the Targets in the
-CI targets.json are aren't relevant and can be ignored by the device.
+CI ``targets.json`` aren't relevant and can be ignored by the device.
 In order to provide smaller TUF metadata payloads, the Foundries
 back-end employs a trick referred to as "condensed targets".
 
