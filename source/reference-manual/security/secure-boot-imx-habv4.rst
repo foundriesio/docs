@@ -164,7 +164,7 @@ Alternatively, use the kernel to program the A-core fuses using SDP via NXP's Un
 
         uuu_version 1.2.39
 
-        SDP: boot -f imx-boot-mfgtool
+        SDP: boot -f imx-boot-mfgtool.signed
 
         SDPU: delay 1000
         SDPV: write -f u-boot-mfgtool.itb
