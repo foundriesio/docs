@@ -43,7 +43,7 @@ CI what it's supposed to build when changes hit source.foundries.io.
 The default factory-definition.yml tell CI:
 
  * If an LmP change (lmp-manifest.git or meta-subscriber-overrides.git)
-   comes in on the master branch, do a Yocto build and tag it with
+   comes in on the master branch, do a platform build and tag it with
    "master".
 
  * If a container change (containers.git) comes in on master branch,
@@ -54,9 +54,9 @@ However, this can grow much :ref:`more complex <ref-advanced-tagging>`.
 CI must also take into account that Targets require both an OSTree
 image **and** Compose Apps. This turns out to be a fairly simple
 calculation. CI looks at the previous Target for a given tag. In
-the case of Yocto, it will copy the Compose Apps defined for it.
+the case of a platform build, it will copy the Compose Apps defined for it.
 In the case of a container build, it will copy the OSTree hash. In
-this way, there aren't "container targets" and "Yocto targets". There
+this way, there aren't "container targets" and "platform targets". There
 are only Targets.
 
 Visualizing a Factory
