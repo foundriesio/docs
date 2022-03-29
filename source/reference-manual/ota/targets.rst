@@ -62,8 +62,8 @@ are only Targets.
 Visualizing a Factory
 ---------------------
 
-Start with ``factory-config.yml`` to understand the intent. Then take
-a high-level view of the fleet:
+Start with ``factory-config.yml``. The ``tagging`` and ``ref_options``
+stanzas describe the intent. Then take a high-level view of the fleet:
 
 .. code-block:: bash
 
