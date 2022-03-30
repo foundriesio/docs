@@ -40,7 +40,7 @@ Factory is how a simple ``git push`` can make this all happen and
 is where you can start to visualize a Factory. The
 :ref:`Factory Definition <ref-factory-definition>` file instructs
 CI what it's supposed to build when changes hit source.foundries.io.
-The default factory-definition.yml tell CI:
+The default factory-config.yml tells CI:
 
  * If an LmP change (lmp-manifest.git or meta-subscriber-overrides.git)
    comes in on the master branch, do a platform build and tag it with
