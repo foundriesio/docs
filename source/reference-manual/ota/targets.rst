@@ -102,7 +102,7 @@ at a Target:
         ---          ----
         shellhttpd   sha256:e4a7b3a31c0126d28aaf75e1b8b6e83c7afd160b110267530b8572ce192160da
 
-This command gives the exact details of the Target including the CI
+This command gives the exact details of the Target, including the CI
 change that produced it.
 
 .. _The Update Framework:
