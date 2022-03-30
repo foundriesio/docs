@@ -80,8 +80,8 @@ stanzas describe the intent. Then take a high-level view of the fleet:
     46      1        `fioctl targets show 46`
     112     1        `fioctl targets show 112`
 
-This will show what Targets are active in the field. Then take a look
-at a Target:
+This will show all Targets active in the field. Now take a look
+at a specific Target:
 
 .. code-block:: bash
 
