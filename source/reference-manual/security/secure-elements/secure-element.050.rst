@@ -302,7 +302,7 @@ This diagram summarizes the options discussed:
    https://www.nxp.com/products/security-and-authentication/authentication/edgelock-se050-plug-trust-secure-element-family-enhanced-iot-security-with-maximum-flexibility:SE050?tab=Design_Tools_Tab
 
 .. _scp03:
-   https://u-boot.readthedocs.io/en/latest/usage/scp03.html
+   https://u-boot.readthedocs.io/en/latest/usage/cmd/scp03.html
 
 .. _OP-TEE sanity tests:
     https://optee.readthedocs.io/en/latest/building/gits/optee_test.html
