@@ -243,6 +243,58 @@ source file (``fioconfig.conf``) for the recipe above:
 Commit and trigger a new build to include these new changes and have a new
 polling interval.
 
+OTA Update Fails Because of Missing SPL Keys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When updating to a newer base lmp-manifest, some FoundriesFactories
+may face issues with OTA upgrades from v85 to the next release. It manifests
+as a failed boot attempt and error in the u-boot log:
+
+.. code-block::
+
+    U-Boot SPL 2021.04+fio+g38c3083e39 (Feb 16 2022 - 14:50:02 +0000)
+    power_pca9450b_init
+    DDRINFO: start DRAM init
+    DDRINFO: DRAM rate 3000MTS
+    DDRINFO:ddrphy calibration done
+    DDRINFO: ddrmix config done
+    Normal Boot
+    Trying to boot from MMC2
+    SPL: Booting secondary boot path: using 0x1300 offset for next boot image
+    ## Checking hash(es) for config config-1 ... fit_config_verify_required_sigs: No signature node found: FDT_ERR_NOTFOUND
+    SPL_FIT_SIGNATURE_STRICT needs a valid config node in FIT
+    ### ERROR ### Please RESET the board ###
+
+This suggests that the SPL key is missing from the factory. The key is defined
+in the OE recipe and it defaults to ``spldev``.
+
+.. prompt::
+
+    UBOOT_SPL_SIGN_KEYNAME="spldev"
+
+This can be confirmed by checking whether files ``spldev.key`` and ``spldev.crt``
+are missing from the ``lmp-manifest/factory-keys`` directory. If so, the easiest
+fix is to generate the keys and add them to the repository.
+
+.. prompt::
+
+    cd factory-keys
+    openssl genpkey -algorithm RSA -out spldev.key \
+          -pkeyopt rsa_keygen_bits:2048 \
+          -pkeyopt rsa_keygen_pubexp:65537
+    openssl req -batch -new -x509 -key spldev.key -out spldev.crt
+
+Once the ``spldev.key`` and ``spldev.crt`` are created, add them to the repository.
+
+.. prompt::
+
+    git add factory-keys/spldev.key
+    git add factory-keys/spldev.crt
+    git commit
+
+Once the commit is pushed upstream, the Foundries.io CI will generate a build
+that fixes the issue.
+
 Platform Customizing
 --------------------
 
