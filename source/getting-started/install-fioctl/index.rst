@@ -150,7 +150,7 @@ credentials for interacting with Factory APIs:
 Application Credentials
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Go to `Application Credentials <https://app.foundries.io/settings/credentials/>`_ and create a new **Application Credentials** by clicking on
+Go to `Application Credentials <https://app.foundries.io/settings/credentials/>`_ and create a new **Application Credential** by clicking on
 :guilabel:`+ New Credentials`.
 
 .. figure:: /_static/install-fioctl/application_credentials.png
