@@ -138,9 +138,9 @@ credentials for interacting with Factory APIs:
 
    host:~$ fioctl login
      Please visit:
-     
-     https://app.foundries.io/settings/tokens/
-     
+
+     https://app.foundries.io/settings/credentials/
+
      and create a new "Application Credential" to provide inputs below.
      
      Client ID:
@@ -150,7 +150,7 @@ credentials for interacting with Factory APIs:
 Application Credentials
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Go to `Tokens <https://app.foundries.io/settings/tokens/>`_ and create a new **Application Credentials** by clicking on 
+Go to `Application Credentials <https://app.foundries.io/settings/credentials/>`_ and create a new **Application Credentials** by clicking on
 :guilabel:`+ New Credentials`.
 
 .. figure:: /_static/install-fioctl/application_credentials.png
@@ -191,9 +191,9 @@ Use the Client ID and Secret to finish the fioctl login.
 
    host:~$ fioctl login
      Please visit:
-     
-     https://app.foundries.io/settings/tokens/
-     
+
+     https://app.foundries.io/settings/credentials/
+
      and create a new "Application Credential" to provide inputs below.
      
      Client ID:
