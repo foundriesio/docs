@@ -76,6 +76,9 @@ targets:read-update
 .. _User tokens:
    https://app.foundries.io/settings/tokens/
 
+.. _Application credentials:
+   https://app.foundries.io/settings/credentials/
+
 .. _REST APIs:
    https://api.foundries.io/ota/
 
