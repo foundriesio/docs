@@ -357,3 +357,48 @@ extended for the other net interfaces.
     method=auto
 
 Remember to adjust the `address1` parameter as needed.
+
+Automatically loading a kernel module
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There are different options on how to automatically load a kernel module, the
+best way depends on each use case. Here two cases are covered.
+
+1. To load a native supported kernel module, like ``i2c-dev``, just add the
+following change:
+
+**conf/machine/include/lmp-factory-custom.inc:**
+
+.. code-block:: none
+
+    KERNEL_MODULE_AUTOLOAD:<machine> = "i2c-dev"
+
+2. Adding a new driver/module to the Linux kernel source code:
+
+**meta-subscriber-overrides/recipes-kernel/kernel-modules/<module>.bb:**
+
+.. code-block:: none
+
+    SUMMARY = "Module summary"
+    LICENSE = "GPLv2"
+    LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e"
+
+    inherit module
+
+    PR = "r1"
+    PV = "0.1"
+
+    SRC_URI = " \
+      file://Makefile \
+      file://<module>.c \
+      file://<module>.h \
+      file://COPYING \
+    "
+
+    S = "${WORKDIR}"
+
+    KERNEL_MODULE_AUTOLOAD:append = "<module>"
+
+Make sure to provide the source code and header for the new module, as well as
+the license and Makefile. Also make sure to adjust the provided values as
+needed by the recipe (``LICENSE``, ``PR``, ``PV``).
