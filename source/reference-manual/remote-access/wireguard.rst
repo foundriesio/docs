@@ -23,21 +23,13 @@ Actions on VPN Server
 
 .. note::
 
-   Make sure to replace the ``<api token>`` and ``<factory>`` (name of your Factory)
-   placeholders with your own information in the following commands.
+   Make sure to replace the ``<factory>`` (name of your Factory)
+   placeholder with your own information in the following commands.
 
 Install dependencies::
 
    $ sudo apt install git wireguard wireguard-tools python3 python3-requests
 
-
-Create an API token for this service at https://app.foundries.io/settings/tokens/
-
-.. note::
-
-   Your API token needs to have the ``devices:read-update`` scope
-   for the initial ``enable`` command. After that, the token only
-   needs ``devices:read`` scope.
 
 Clone VPN server code::
 
@@ -48,10 +40,24 @@ Clone VPN server code::
 Configure the Factory with this new service and enable the daemon::
 
    $ sudo ./factory-wireguard.py \
-       --apitoken <api token> \  # https://app.foundries.io/settings/tokens
+       --oauthcreds /root/fiocreds.json \ # where to store the oauth2 credentials
        --factory <factory> \
        --privatekey /root/wgpriv.key \ # where to store generated private key
        enable
+
+At this point you'll be prompted to authorize an Oauth2 request. It
+will look something like:::
+
+   External Endpoint: 165.227.222.126:5555
+   VPN Address: 10.42.42.0
+   Registring with foundries.io...
+   Visit this link to authorize this application:
+
+     https://app.foundries.io/authorize?client_id=fioid_B68H03zaynCXzycBX9M3WKL7xLqJYJyf&response_type=code&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&scope=andy-corp%3Adevices%3Aread-update+andy-corp%3Adevices%3Aread
+
+    Enter code:  <copy/paste code from app.foundries.io>
+    Creating systemd service factory-vpn-andy-corp.service
+    Service is running. Logs can be viewed with: journalctl -fu factory-vpn-andy-corp.service
 
 The daemon keeps track of connected devices by putting entries into
 ``/etc/hosts`` so that they can be easily referenced from the server.
