@@ -45,7 +45,7 @@ Configure the Factory with this new service and enable the daemon::
        --privatekey /root/wgpriv.key \ # where to store generated private key
        enable
 
-At this point you'll be prompted to authorize an Oauth2 request. It
+At this point you will be prompted to authorize an Oauth2 request. It
 will look something like:::
 
    External Endpoint: 165.227.222.126:5555
