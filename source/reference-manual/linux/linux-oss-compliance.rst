@@ -67,17 +67,17 @@ and run unmodified software signed with a private key.
   provide the keys when requested.
 
 When using LmP there are two variables that can be used for blocking licenses,
-``INCOMPATIBLE_LICENSE`` and ``IMAGE_LICENSE_CHECKER_ROOTFS_BLACKLIST``. Both
+``INCOMPATIBLE_LICENSE`` and ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST`` [1]_. Both
 of these variables list the licenses by SPDX identifier.
 
 INCOMPATIBLE_LICENSE
 """"""""""""""""""""
 
-Add to the ``build/conf/local.conf`` or to the distro the following line:
+Add to the ``build/conf/local.conf`` or to the distro the following line [2]_:
 
 .. prompt:: text
 
-  INCOMPATIBLE_LICENSE = "GPL-3.0 LGPL-3.0 AGPL-3.0"
+  INCOMPATIBLE_LICENSE = "GPL-3.0* LGPL-3.0* AGPL-3.0*"
 
 Using this configuration to build ``lmp-factory-image`` results in the following
 error:
@@ -99,8 +99,8 @@ any of the incompatible licenses are included in the list.
 This strategy can be used when there is a need to verify build time dependencies
 between packages.
 
-IMAGE_LICENSE_CHECKER_ROOTFS_BLACKLIST
-""""""""""""""""""""""""""""""""""""""
+IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST
+"""""""""""""""""""""""""""""""""""""
 
 This variable is introduced by the ``image-license-checker`` class and, in the
 same way as ``INCOMPATIBLE_LICENSE``, it lists the licenses to be avoided, by
@@ -122,8 +122,8 @@ following lines:
 
 .. prompt:: text
 
-  IMAGE_LICENSE_CHECKER_ROOTFS_BLACKLIST = "GPL-3.0 LGPL-3.0 AGPL-3.0"
-  IMAGE_LICENSE_CHECKER_NON_ROOTFS_BLACKLIST = "GPL-3.0 LGPL-3.0 AGPL-3.0"
+  IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST = "GPL-3.0* LGPL-3.0* AGPL-3.0*"
+  IMAGE_LICENSE_CHECKER_NON_ROOTFS_DENYLIST = "GPL-3.0* LGPL-3.0* AGPL-3.0*"
   inherit image-license-checker
 
 Using this configuration to build ``lmp-factory-image`` results in the following
@@ -131,7 +131,7 @@ error:
 
 .. prompt:: text
 
-  ERROR: lmp-factory-image-1.0-r0 do_rootfs: Packages have blacklisted licenses:
+  ERROR: lmp-factory-image-1.0-r0 do_rootfs: Packages have denylisted licenses:
   libunistring (LGPLv3+ | GPLv2), bash (GPLv3+), time (GPLv3), mc (GPLv3),
   mc-helpers (GPLv3), grep (GPLv3), dosfstools (GPLv3), coreutils (GPLv3+),
   mc-fish (GPLv3), libelf (GPLv2 | LGPLv3+), tar (GPLv3), less (GPLv3+ |
@@ -184,3 +184,14 @@ It is important to note that, when using an image different than
 message guides on which package to target.
 
 .. _image-license-checker: https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/classes/image-license-checker.bbclass
+
+
+.. rubric:: Footnotes
+
+.. [1] Since **v87**,
+       the variable ``IMAGE_LICENSE_CHECKER_ROOTFS_BLACKLIST``
+       is renamed to
+       ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST``.
+.. [2] Since **v87**,
+       the content of ``INCOMPATIBLE_LICENSE`` has changed,
+       as a consequence of Kirkstone SPDX tags change.
