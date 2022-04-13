@@ -23,7 +23,7 @@ Actions on VPN Server
 
 .. note::
 
-   Make sure to replace the ``<factory>`` (name of your Factory)
+   Make sure to replace the ``<factory>`` (name of your FoundriesFactory)
    placeholder with your own information in the following commands.
 
 Install dependencies::
@@ -40,13 +40,13 @@ Clone VPN server code::
 Configure the Factory with this new service and enable the daemon::
 
    $ sudo ./factory-wireguard.py \
-       --oauthcreds /root/fiocreds.json \ # where to store the oauth2 credentials
+       --oauthcreds /root/fiocreds.json \ # oauth2 credentials will be written here
        --factory <factory> \
        --privatekey /root/wgpriv.key \ # where to store generated private key
        enable
 
 At this point you will be prompted to authorize an Oauth2 request. It
-will look something like:::
+will look something like::
 
    External Endpoint: 165.227.222.126:5555
    VPN Address: 10.42.42.0
@@ -55,7 +55,7 @@ will look something like:::
 
      https://app.foundries.io/authorize?client_id=fioid_B68H03zaynCXzycBX9M3WKL7xLqJYJyf&response_type=code&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&scope=andy-corp%3Adevices%3Aread-update+andy-corp%3Adevices%3Aread
 
-    Enter code:  <copy/paste code from app.foundries.io>
+    Enter code:  <copy/paste code from previous link>
     Creating systemd service factory-vpn-andy-corp.service
     Service is running. Logs can be viewed with: journalctl -fu factory-vpn-andy-corp.service
 
