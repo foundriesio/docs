@@ -40,9 +40,9 @@ new build with SE05X support enabled. Be aware that an image created with SE05X
 enabled does not boot on boards without the SE05X properly attached.
 
 .. note::
-    Please be aware that at this moment only ``imx6ullevk`` and
-    ``imx8mm-lpddr4-evk`` support SE05X integration without extra changes in
-    LmP.
+    Please be aware that at this moment only ``imx6ullevk``,
+    ``imx8mm-lpddr4-evk`` and ``imx8mp-lpddr4-evk`` support SE05X integration
+    without extra changes in LmP.
 
 Special cases
 -------------
