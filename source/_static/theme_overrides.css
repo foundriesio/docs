@@ -95,6 +95,10 @@ p {
     font-size: 14px;
 }
 
+li {
+    font-size: 14px;
+}
+
 html.writer-html5 .rst-content dl.field-list>dt:after {
     content: initial;
 }
