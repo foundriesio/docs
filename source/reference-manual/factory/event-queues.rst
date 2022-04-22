@@ -107,7 +107,9 @@ Incoming HTTP requests will look similar to::
 Push Queue Security
 ~~~~~~~~~~~~~~~~~~~
 Incoming requests will include a header, ``Authorization: Bearer <jwt>``.
-This JWT is signed by one of Google's published `public keys`_.
+This JWT is signed with one of Google's own private keys. The
+`public keys`_ are published online so that users can validate the
+signatures.
 The JWT audience header is set to the URL you specified when creating
 the push queue. The `example push queue`_ includes logic for validating
 this header.
