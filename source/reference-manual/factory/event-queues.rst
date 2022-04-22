@@ -16,7 +16,7 @@ like:
 
  * The first time a device connects to the device gateway.
  * When a device applies a configuration change.
- * When an OTA starts and completes.
+ * When an OTA update starts and completes.
 
 Event queues are implemented on Google's PubSub_ to provide customers
 with a well understood and tested framework. There are two types
