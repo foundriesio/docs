@@ -18,12 +18,12 @@ like:
  * When a device applies a configuration change.
  * When an OTA update starts and completes.
 
-Event queues are implemented on Google's PubSub_ to provide customers
+Event queues are implemented using Google PubSub_ to provide customers
 with a well understood and tested framework. There are two types
 of event queues that can be created:
 
- * Push - Works like a traditional webhook service. Events are sent
-   to a URL managed by the customer where they can ingest events.
+ * Push - Works works as a webhook_ service. Events are sent
+   to a URL managed by the customer where they can process events.
 
  * Pull - Works like a tradition message queue system where the
    customer can write their own client to ingest events.
@@ -165,6 +165,9 @@ DEVICE_OTA_COMPLETED
 
 .. _PubSub:
    https://cloud.google.com/pubsub/docs/overview
+
+.. _webhook:
+   https://en.wikipedia.org/wiki/Webhook
 
 .. _guide:
    https://cloud.google.com/pubsub/docs/subscriber
