@@ -14,7 +14,7 @@ Event queues provide a way for customers to receive messages about
 important events that aren't easy to poll for. These include things
 like:
 
- * The first time a device connects to the device gateway.
+ * The first time a device connects to the :ref:`device gateway <ref-ota-architecture>`.
  * When a device applies a configuration change.
  * When an OTA update starts and completes.
 
