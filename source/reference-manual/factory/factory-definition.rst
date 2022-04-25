@@ -227,8 +227,6 @@ containers:
 
       **Default:** false
 
-.. todo:: provide a list of supported architectures for containers:
-
 .. # define a hard line break for HTML
 .. |br| raw:: html
 
