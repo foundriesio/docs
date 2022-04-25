@@ -93,8 +93,8 @@ lmp:
       **Inherits:** ``containers``
 
   shortlist: ``<app1>,<app2>,<...>``
-      **Optional:** Comma separated list of apps to preload. If it is not specified 
-      or its value is empty, then all Target’s apps are preloaded.
+      **Optional:** Comma separated list of apps to preload. If it is not specified
+      or its value is empty, then all Target's apps are preloaded.
 
       **Default:**  None
 
@@ -204,8 +204,8 @@ containers:
       **Default:** ``false``
 
   shortlist: ``<app1>,<app2>,<...>``
-      **Optional:** Comma separated list of apps to preload. If it is not specified 
-      or its value is empty, then all Target’s apps are preloaded.
+      **Optional:** Comma separated list of apps to preload. If it is not specified
+      or its value is empty, then all Target's apps are preloaded.
 
       **Default:**  None
 
