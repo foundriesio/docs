@@ -65,7 +65,7 @@ A push queue requires a little up front work:
 
 Quick Start Example
 ~~~~~~~~~~~~~~~~~~~
-A great way to prototype a push queue by using ngrok_. This tool allows
+A great way to prototype a push queue is by using ngrok_. This tool allows
 a service running on your laptop to be exposed via an ngrok reverse
 proxy. With ngrok installed, you can play with the `example push queue`_
 code from your laptop::
