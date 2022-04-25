@@ -17,8 +17,8 @@ important events that are not easy to poll for. These include:
  * When a device applies a configuration change.
  * When an OTA update starts and completes.
 
-Event queues are implemented using Google PubSub_ to provide customers
-with a well understood and tested framework. There are two types
+Event queues are implemented using Google PubSub_ to provide
+a well understood and tested framework. There are two types
 of event queues that can be created:
 
  * Push - Works as a webhook_ service. Events are sent
