@@ -3,16 +3,22 @@
 API Access
 ==========
 
-`User tokens`_ provide a way to interact with Foundries.io APIs.
-Tokens allow users to access:
+FoundriesFactory APIs can be accessed with two different methods:
 
- * `REST APIs`_. Access is granted by passing the HTTP
-   header ``OSF-TOKEN: <token>``.
- * `Git repositories`_. Access is granted by passing a token as the
+ #. OAuth2_ tokens managed in the `Application Credentials`_ interface.
+ #. API Tokens managed in the `API tokens`_ interface.
+
+These credentials allow users to access:
+
+ * `REST APIs`_
+
+   * Using the HTTP header ``OSF-TOKEN: <token>``.
+   * Using an OAuth2 bearer token ``Authorization: Bearer <access-token>``
+ * `Git repositories`_. Access is granted by passing an API token as the
    password to Git clone and fetch operations.
- * `Factory containers`_. Access is granted by passing a token as the
+ * `Factory containers`_. Access is granted by passing an API token as the
    password to ``docker login hub.foundries.io``.
- * Fioctl uses Application Credentials for OAuth2 access to APIs.
+ * Fioctl uses OAuth2 by default, but can also use API Tokens.
 
 All tokens are created with scopes to help limit what they can do.
 
@@ -73,7 +79,7 @@ targets:read
 targets:read-update
   Can update targets.json `https://api.foundries.io/ota/factories/<factory>/targets/`.
 
-.. _User tokens:
+.. _API Tokens:
    https://app.foundries.io/settings/tokens/
 
 .. _Application credentials:
@@ -87,3 +93,6 @@ targets:read-update
 
 .. _Factory containers:
    https://hub.foundries.io/
+
+.. _OAuth2:
+   https://oauth.net/2/
