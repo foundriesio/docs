@@ -38,7 +38,7 @@ Implementation Details
 
 Each FoundriesFactory is given a single PubSub Topic. Each Push
 and Pull queue created by a customer results in the creation of
-a PubSub Subscription. The FoundriesFactory API just provides a
+a PubSub Subscription. The FoundriesFactory API provides a
 thin, multi-tenant friendly wrapper to manage everything.
 
 Creating a Pull Queue
