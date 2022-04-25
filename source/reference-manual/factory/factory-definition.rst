@@ -234,6 +234,20 @@ containers:
 
       **Default:** none
 
+ci_scripts
+----------
+Optionally use a custom version of ci-scripts_ to perform CI builds.
+
+ ci_scripts:
+  url:
+    **Optional:** Git URL to clone
+
+    **Default:** https://github.com/foundriesio/ci-scripts
+  git_ref:
+    **Optional:** Git tag, branch, or SHA to use
+
+    **Default:** master
+
 
 .. # define a hard line break for HTML
 .. |br| raw:: html
@@ -241,3 +255,4 @@ containers:
    <br />
 
 .. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-samples/images
+.. _ci-scripts: https://github.com/foundriesio/ci-scripts
