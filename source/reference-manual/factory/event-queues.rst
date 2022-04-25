@@ -22,7 +22,7 @@ a well understood and tested framework. There are two types
 of event queues that can be created:
 
  * Push - Works as a webhook_ service. Events are sent
-   to a URL managed by the customer where they can process events.
+   to a managed URL where they can be processed.
 
  * Pull - Works like a typical message queue system where the
    customer can write their own client to receive and process events.
