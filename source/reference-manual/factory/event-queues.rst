@@ -30,7 +30,7 @@ of event queues that can be created:
 PubSub documentation includes a very useful guide_ to help decide
 which approach will work best for you. They also include a wide
 range of `client libraries`_ for consuming the Pull API. PubSub
-Subscriptions are created with default retention, expiration,
+subscriptions are created with default retention, expiration,
 and acknowledgement values_.
 
 Implementation Details
