@@ -22,7 +22,7 @@ Event queues are implemented using Google PubSub_ to provide customers
 with a well understood and tested framework. There are two types
 of event queues that can be created:
 
- * Push - Works works as a webhook_ service. Events are sent
+ * Push - Works as a webhook_ service. Events are sent
    to a URL managed by the customer where they can process events.
 
  * Pull - Works like a typical message queue system where the
