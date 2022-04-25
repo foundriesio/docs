@@ -24,8 +24,8 @@ of event queues that can be created:
  * Push - Works as a webhook_ service. Events are sent
    to a managed URL where they can be processed.
 
- * Pull - Works like a typical message queue system where the
-   customer can write their own client to receive and process events.
+ * Pull - Works like a typical message queue system where one
+   can write their own client to receive and process events.
 
 PubSub documentation includes a very useful guide_ to help decide
 which approach will work best for you. They also include a wide
