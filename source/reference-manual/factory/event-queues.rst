@@ -11,7 +11,7 @@ must constantly poll the API for information. Event queues were
 designed to solve this issue.
 
 Event queues provide a way for customers to receive messages about
-important events that aren't easy to poll for. These include things
+important events that are not easy to poll for. These include:
 like:
 
  * The first time a device connects to the :ref:`device gateway <ref-ota-architecture>`.
