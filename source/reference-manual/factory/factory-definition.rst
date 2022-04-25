@@ -222,8 +222,12 @@ containers:
 
       **Default:** This variable does not exist unless instantiated.
 
+ docker_build_secrets:|br| ``true|false``
+      **Optional:** Enable secrets to be passed to :ref:`container builds <ref-container-secrets>`.
+
+      **Default:** false
+
 .. todo:: provide a list of supported architectures for containers:
-.. todo:: document DOCKER_SECRETS
 
 .. # define a hard line break for HTML
 .. |br| raw:: html

@@ -67,8 +67,7 @@ First update factory-definition.yml file ci-scripts.git to instruct the
 container build scripts to pass the factory secrets to docker with::
 
  containers:
-   params:
-     DOCKER_SECRETS: "1"
+   docker_build_secrets: true
 
 Now that CI system knows the factory wants secrets passed into the build
 context, its time to update the Dockerfile for the container with something
