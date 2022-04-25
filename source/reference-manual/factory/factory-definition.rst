@@ -227,6 +227,14 @@ containers:
 
       **Default:** false
 
+ container_registries:
+  type: |br| ``aws|azure``
+      **Optional:** Authenticate with :ref:`third-party registries
+      <ref-private-registries>` during container builds.
+
+      **Default:** none
+
+
 .. # define a hard line break for HTML
 .. |br| raw:: html
 
