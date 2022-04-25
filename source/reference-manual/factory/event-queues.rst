@@ -30,7 +30,9 @@ of event queues that can be created:
 
 PubSub documentation includes a very useful guide_ to help decide
 which approach will work best for you. They also include a wide
-range of `client libraries`_ for consuming the Pull API.
+range of `client libraries`_ for consuming the Pull API. PubSub
+Subscriptions are created with default retention, expiration,
+and acknowledgement values_.
 
 Implementation Details
 ----------------------
@@ -188,3 +190,6 @@ DEVICE_OTA_COMPLETED
 
 .. _public keys:
    https://www.googleapis.com/oauth2/v1/certs
+
+.. _values:
+   https://cloud.google.com/pubsub/docs/admin#properties_of_a_topic
