@@ -41,6 +41,10 @@ and Pull queue created by a customer results in the creation of
 a PubSub Subscription. The FoundriesFactory API provides a
 thin, multi-tenant friendly wrapper to manage everything.
 
+.. note::
+   For performance reasons, new push queues can take up to five
+   minutes before they start receiving events.
+
 Creating a Pull Queue
 ---------------------
 A pull queue can be created using fioctl::
