@@ -50,7 +50,7 @@ Set the ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-rt`` in
 ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
 
     $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
-    PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-lmp-rt"
+    PREFERRED_PROVIDER_virtual/kernel:intel-corei7-64 = "linux-lmp-rt"
 
 Now just build the Linux microPlatform image as usual.
 

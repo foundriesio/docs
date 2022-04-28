@@ -8,14 +8,14 @@ FoundriesFactory CI Build
 
 Including STM OpenEmbedded layer requires accepting EULA. When building locally
 it is enough to accept EULA using interactive prompt. When building in CI this
-isn't possible. To enable EULA acceptance in the CI job, ``EULA_stm32mp1disco``
+isn't possible. To enable EULA acceptance in the CI job, ``EULA:stm32mp1disco``
 variable needs to be set in the ``factory-config.yml``::
 
     ...
     lmp:
       params:
         ...
-        EULA_stm32mp1disco: "1"
+        EULA:stm32mp1disco: "1"
         ...
 
 ``factory-config.yml`` can be found in ci-scripts.git repository that is
