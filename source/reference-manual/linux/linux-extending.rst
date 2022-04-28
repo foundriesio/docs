@@ -81,7 +81,7 @@ Example file contents::
         python3-pip \
         "
 
-  RDEPENDS_${PN} += " \
+  RDEPENDS:${PN} += " \
         python3-dateutil \
         "
 

@@ -248,8 +248,8 @@ should first be familiar with editing the ``meta-subscribers-overrides`` layer.
 
     PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-    SYSTEMD_SERVICE_${PN} = "<service-name>.service"
-    SYSTEMD_AUTO_ENABLE_${PN} = "enable"
+    SYSTEMD_SERVICE:${PN} = "<service-name>.service"
+    SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
     do_install () {
 	    install -d ${D}${bindir}
