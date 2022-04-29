@@ -70,6 +70,10 @@ If you would like to update to a specific build number, you can use the followin
 
 ``sudo aktualizr-lite update --update-name <build_number>``
 
+.. note::
+
+    This can only be performed when the original and update targets are under the same tag. In case the update is tagged differently, it is required to switch tags before running this command.
+
 Configuration
 -------------
 
