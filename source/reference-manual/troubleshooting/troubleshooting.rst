@@ -399,3 +399,45 @@ following change:
 Make sure to provide the source code and header for the new module, as well as
 the license and Makefile. Also make sure to adjust the provided values as
 needed by the recipe (``LICENSE``, ``PV``).
+
+Extending User Groups
+^^^^^^^^^^^^^^^^^^^^^
+
+The default LmP group and password tables can be found at ``meta-lmp/meta-lmp-base/files``.
+To define a new user group in a factory, follow these steps:
+
+1. Define a custom group table in ``meta-subscriber-overrides/files/custom-group-table``
+with the wanted user groups:
+
+.. code-block:: none
+
+    <username>:x:<user-id>:
+
+For example:
+
+.. code-block:: none
+
+    systemd-coredump:x:998:
+
+2. Define a custom passwd table in ``meta-subscriber-overrides/files/custom-passwd-table``
+for the new user groups:
+
+.. code-block:: none
+
+    <username>:x:<user-id>:<group-id>::<home-dir>:<command>
+
+For example:
+
+.. code-block:: none
+
+    systemd-coredump:x:998:998::/:/sbin/nologin
+
+.. note::
+    This example works for system groups and system users (``user-id`` < 1000).
+
+3. Add these files to the build in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``:
+
+.. code-block:: none
+
+    USERADD_GID_TABLES += "files/custom-group-table"
+    USERADD_UID_TABLES += "files/custom-passwd-table"
