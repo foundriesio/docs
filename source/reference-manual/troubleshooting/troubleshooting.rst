@@ -400,6 +400,8 @@ Make sure to provide the source code and header for the new module, as well as
 the license and Makefile. Also make sure to adjust the provided values as
 needed by the recipe (``LICENSE``, ``PV``).
 
+.. _ref-troubleshooting_user-groups:
+
 Extending User Groups
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -433,7 +435,8 @@ For example:
     systemd-coredump:x:998:998::/:/sbin/nologin
 
 .. note::
-    This example works for system groups and system users (``user-id`` < 1000).
+    This example works for system groups and system users (``user-id`` less than
+    ``1000``). For normal users, check :ref:`ref-troubleshooting_lmp-user`.
 
 3. Add these files to the build in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``:
 
@@ -441,3 +444,62 @@ For example:
 
     USERADD_GID_TABLES += "files/custom-group-table"
     USERADD_UID_TABLES += "files/custom-passwd-table"
+
+.. _ref-troubleshooting_lmp-user:
+
+Adding LmP Users
+^^^^^^^^^^^^^^^^
+
+1. To create a new LmP user, first add this user to the system. The steps are
+similar to the ones described in :ref:`ref-troubleshooting_user-groups`, but
+normal users need a valid shell and ``user-id`` higher than ``1000``, for
+example:
+
+**group-table:**
+
+.. code-block:: none
+
+    test-user:x:1001
+
+**passwd-table:**
+
+.. code-block:: none
+
+    test-user:x:1001:1001::/home/test-user:/bin/sh
+
+2. To create the password for this new user, run on a host computer:
+
+.. prompt:: bash host:~$
+
+    mkpasswd -m sha512crypt
+
+When prompted for password, enter the wanted password for the user. This returns
+the hashed password. For example:
+
+.. prompt:: bash host:~$
+
+    mkpasswd -m sha512crypt
+    Password:
+    $6$OJHEGl4Dk5nEwG6k$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E.
+
+3. Edit the result from the previous command to escape any ``$`` characters, for example:
+
+.. code-block:: none
+
+    \$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E.
+
+This is the ``USER_PASSWD`` to be added to the build as the new user password.
+
+4. Add the following block to ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb``:
+
+.. code-block:: none
+
+    USER_PASSWD = "\$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E."
+
+    EXTRA_USERS_PARAMS = "\
+    groupadd <user>; \
+    useradd -p '${USER_PASSWD}' <user>; \
+    usermod -a -G sudo,users,plugdev <user>; \
+    "
+
+Remember to replace ``USER_PASSWD`` accordingly.
