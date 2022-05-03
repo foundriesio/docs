@@ -16,9 +16,9 @@ To do this, run:
    sudo fioctl configure-docker
 
 This creates a symlink named ``docker-credential-fio`` in the directory of the docker client binary, pointing to ``fioctl``.
-Because the docker client is usually somewhere under ``/usr``, you will likely want to run it with root permission. The helper will then updates your Docker config file.
+Because the docker client is usually somewhere under ``/usr``, you will likely want to run it with root permission. The helper then updates your Docker config file.
 
-Now, docker commands will just work.
+Now, Docker commands will just work.
 
 Example:
 
