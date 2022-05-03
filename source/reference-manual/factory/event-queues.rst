@@ -71,7 +71,8 @@ Quick Start Example
 ~~~~~~~~~~~~~~~~~~~
 A great way to prototype a push queue is by using ngrok_. This tool allows
 a service running on your laptop to be exposed via an ngrok reverse
-proxy. With ngrok installed, you can play with the `example push queue`_
+proxy. With ngrok installed, you can play with the
+:download:`example push queue<../../_static/push_queue_example.py>`
 code from your laptop::
 
  # Start ngrok
@@ -116,8 +117,8 @@ This JWT is signed with one of Google's own private keys. The
 `public keys`_ are published online so that users can validate the
 signatures.
 The JWT audience header is set to the URL you specified when creating
-the push queue. The `example push queue`_ includes logic for validating
-this header.
+the push queue. The :download:`example push queue<../../_static/push_queue_example.py>`
+includes logic for validating this header.
 
 Event Types
 -----------
@@ -187,9 +188,6 @@ DEVICE_OTA_COMPLETED
 
 .. _ngrok:
    https://ngrok.com/
-
-.. _example push queue:
-   ../../_static/push_queue_example.py
 
 .. _public keys:
    https://www.googleapis.com/oauth2/v1/certs
