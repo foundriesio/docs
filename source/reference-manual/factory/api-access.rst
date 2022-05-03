@@ -22,6 +22,10 @@ These credentials allow users to access:
 
 All tokens are created with scopes to help limit what they can do.
 
+.. note::
+   Fioctl has a :ref:`docker-credential-helper` which simplifies access to
+   hub.foundries.io.
+
 Common scopes
 -------------
 

@@ -9,6 +9,7 @@ Docker
    docker-architecture
    containers
    container-secrets
+   configure-docker-helper
    private-registries
    compose-apps
    restorable-apps
