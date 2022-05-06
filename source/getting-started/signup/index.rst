@@ -5,7 +5,7 @@ Sign Up
 
 To create a FoundriesFactory, you first need to `create an account <signup_>`_ with us.
 
-.. figure:: /_static/signup/login.png
+.. figure:: /_static/signup/signup.png
    :width: 380
    :align: center
    :target: signup_
@@ -38,12 +38,11 @@ Create one by clicking :guilabel:`Create Factory`.
 
    Your journey begins empty handed
 
-.. note::
+.. important::
 
    Upon Factory creation you will be sent an email
    with instructions to securely download your
-   :ref:`ref-offline-keys`. Read :ref:`this documentation<ref-offline-keys>` for information on key
-   rotation.
+   :ref:`ref-offline-keys`.
 
    It is incredibly important that your keys are kept **safe and
    private**. Please store these keys securely.
@@ -89,11 +88,11 @@ Once you have created your Factory, an initial build of the
 Foundries.io Linux microPlatform (LmP) will be
 generated for you to build your product on top of. You can monitor the progress
 of this initial build in the :guilabel:`Targets` tab of your Factory after a few
-minutes. Additionally, you will receive an Email once this initial build is
+minutes. Additionally, you will receive an email once this initial build is
 complete.
 
 Targets are a reference to a platform image and docker applications. When
-developers push code, the FoundriesFactory produces a new target. Registered
+developers push code, FoundriesFactory produces a new target. Registered
 devices update and install targets.
 
 The :guilabel:`Targets` tab of the Factory will become more useful as you begin
@@ -101,7 +100,7 @@ to build your application and produce new Targets for the Factory to build.
 
 .. note::
 
-   If you'd like to learn more, `we wrote a blog
+   If you would like to learn more, `we wrote a blog
    <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ about what Targets
    are and why we made them the way they are.
 
@@ -111,13 +110,13 @@ to build your application and produce new Targets for the Factory to build.
 
    FoundriesFactory Targets
 
-.. warning::
+.. hint::
 
    Bootstrapping your Factory securely takes some time. Your first build
-   will take **30 minutes** or more to complete.
+   will likely take **30 minutes** or more to complete.
 
-   If that is your case, use this time to set up your development environment 
-   and get started with docker commands. The documents below do not require any hardware.
+   Use this time to set up your development environment 
+   and get started with docker commands. These guides do not require any hardware:
 
    - :ref:`gs-git-config`
    - :ref:`gs-install-fioctl`
