@@ -61,19 +61,6 @@ The content of ``mfgtool-files_%.bbappend`` should be::
 
     FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-    SRC_URI:append:<machine> = " \
-        file://fuse.uuu \
-        file://close.uuu \
-    "
-
-    do_deploy:prepend:<machine>() {
-        install -d ${DEPLOYDIR}/${PN}
-        install -m 0644 ${WORKDIR}/fuse.uuu ${DEPLOYDIR}/${PN}/fuse.uuu
-        install -m 0644 ${WORKDIR}/close.uuu ${DEPLOYDIR}/${PN}/close.uuu
-    }
-
-.. tip:: Replace the machine name in case the factory is using a custom machine name.
-
 6. Inspect the changes and push it accordingly
 
 .. prompt:: bash host:~$
