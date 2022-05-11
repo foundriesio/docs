@@ -227,8 +227,10 @@ containers:
 
       **Default:** false
 
+container_registries:
+---------------------
  container_registries:
-  type: |br| ``aws|azure``
+  type: |br| ``aws|azure|gar``
       **Optional:** Authenticate with :ref:`third-party registries
       <ref-private-registries>` during container builds.
 
