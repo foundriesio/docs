@@ -105,3 +105,52 @@ Then compose apps can reference this hub.foundries.io container image.
 
 .. _securely access:
    https://docs.microsoft.com/en-us/answers/questions/734990/iot-device-authentication-with-acr.html
+
+Configuring for CI Google Artifact Registry(GAR)
+------------------------------------------------
+
+CI can be configured to use a Google Compute Platform(GCP)
+`service account`_ with read-only access to a private GAR instance. A
+service account can be created that may only do Docker pull operations
+with::
+
+ # Create the service account
+ $ NAME=<user name, eg "fio-ci">
+ $ gcloud iam service-accounts create ${NAME}
+
+ # Grant it minimal access to your GCP account:
+ $ GAR_NAME=<Registry name, eg "fio-containers">
+ $ LOCATION=<GCP region, eg "us-central-1">
+ $ PROJ_ID=<GCP project ID>
+ $ gcloud artifacts repositories add-iam-policy-binding \
+     ${GAR_NAME} --location=us-central1 \
+     --member=serviceAccount:${NAME}@${PROJ_ID}.iam.gserviceaccount.com \
+     --role=roles/artifactregistry.reader
+
+ # Create the service account key file required by CI:
+ $ gcloud iam service-accounts keys create \
+   application_default_credentials.json \
+   --iam-account=${NAME}@${PROJ_ID}.iam.gserviceaccount.com
+
+The service account key file created above then needs to be configured
+for CI with::
+
+ $ fioctl secrets update gcp_creds==application_default_credentials.json
+
+The factory :ref:`configuration <ref-factory-definition>` is then
+updated accordingly::
+
+  # factory-config.yml
+  container_registries:
+  - type: gar
+    gar_creds_secret_name: gcp_creds
+
+.. _service account:
+   https://cloud.google.com/iam/docs/service-accounts
+
+Configuring Devices for GAR
+---------------------------
+
+Google does not have a way to authenticate it's IoT core devices with
+the Artifact Registry. We recommend following the same approach as
+outlined for devices accessing the Azure Container Registry.
