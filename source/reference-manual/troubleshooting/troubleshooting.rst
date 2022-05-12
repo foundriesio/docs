@@ -459,7 +459,7 @@ example:
 
 .. code-block:: none
 
-    test-user:x:1001
+    test-user:x:1001:
 
 **passwd-table:**
 
@@ -496,7 +496,7 @@ This is the ``USER_PASSWD`` to be added to the build as the new user password.
 
     USER_PASSWD = "\$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E."
 
-    EXTRA_USERS_PARAMS = "\
+    EXTRA_USERS_PARAMS += "\
     groupadd <user>; \
     useradd -p '${USER_PASSWD}' <user>; \
     usermod -a -G sudo,users,plugdev <user>; \
