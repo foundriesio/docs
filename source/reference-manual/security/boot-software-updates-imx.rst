@@ -437,6 +437,10 @@ layer, adding proper value of PV (boot firmware version, which will be
 automatically added to ${osroot}/usr/lib/firmware/version.txt file),
 path to signed binary and signed binary itself.
 
+.. note::
+
+    The signed binary is called ``SPL`` for i.MX 6/7 and ``imx-boot`` for i.MX 8* platforms. No need to append ``.signed`` to the binary name.
+
 Example:
 ::
 
