@@ -29,6 +29,8 @@ The following is the list of packages needed (can be incomplete):
 | sphinxcontrib-contentui |
 | sphinx_toolbox          |
 | sphinx-prompt           |
+| myst-parser             |
+
 
 ### Using virtualenv to Provide Requirements
 
