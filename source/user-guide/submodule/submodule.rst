@@ -195,7 +195,7 @@ Clone your ``containers.git`` repo and enter its directory:
 
 .. tip::
 
-   If you followed the Tutorials, your ``containers.git`` might have the ``shellhtppd`` 
+   If you followed the Tutorials, your ``containers.git`` might have the ``shellhttpd`` 
    app already. If that is the case, to avoid conflict with the submodule example remove 
    or move it to ``shellhttpd.disabled``
 
