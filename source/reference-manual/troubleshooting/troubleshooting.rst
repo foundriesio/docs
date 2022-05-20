@@ -511,3 +511,6 @@ This is the ``USER_PASSWD`` to be added to the build as the new user password.
     "
 
 Remember to replace ``USER_PASSWD`` accordingly.
+
+After these changes, the files ``/usr/lib/passwd`` and ``/usr/lib/group`` should
+include the configuration for the new user.
