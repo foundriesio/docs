@@ -31,7 +31,6 @@ The following is the list of packages needed (can be incomplete):
 | sphinx-prompt           |
 | myst-parser             |
 
-
 ### Using virtualenv to Provide Requirements
 
 The recommended way to build documentation (in order to avoid messing with
