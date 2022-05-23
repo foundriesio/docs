@@ -5,7 +5,7 @@ Configuring Git
 
 Pushing to your repositories with :ref:`FoundriesFactory <ref-factory-definition>`
 is as simple as configuring Git on your computer to use the :ref:`api token <ref-api-access>`
-generated automatically during :ref:`account creation <gs-signup>`.
+you generated during :ref:`account creation <gs-signup>`.
 Afterwards, Git will know when you are connecting to ``source.foundries.io`` and
 will use this token to authenticate you with our Git server.
 
