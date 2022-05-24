@@ -5,6 +5,10 @@ When you share a folder the base operating system and the
 running containers will be able to see and consume 
 the files inside it. This is one option for the host machine and the container to interact.
 
+.. caution::
+   When you go to bind mount a file into a container, you will usually want to bind mount the parent directory/folder.
+   This prevents Docker from creating the folder and causing issues for the container.
+
 In the section, ":ref:`tutorial-configuring-and-sharing-volumes-using-docker`", you created and copied the configuration file to
 the ``/home/shellhttpd/`` folder. Purposefully leave the changes you just did because 
 you will share the same folder to see what happens.
