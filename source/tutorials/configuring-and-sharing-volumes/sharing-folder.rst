@@ -7,7 +7,7 @@ the files inside it. This is one option for the host machine and the container t
 
 .. caution::
    When you go to bind mount a file into a container, you will usually want to bind mount the parent directory/folder.
-   This prevents Docker from creating the folder and causing issues for the container.
+   If a bind mount destination does not exist, Docker will create the endpoint as an empty directory rather than a file.
 
 In the section, ":ref:`tutorial-configuring-and-sharing-volumes-using-docker`", you created and copied the configuration file to
 the ``/home/shellhttpd/`` folder. Purposefully leave the changes you just did because 
