@@ -217,8 +217,8 @@ Reference for ``bbappend`` for this file:
 Bind mounting a file into a container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When bind mounting a file into a container, the parent directory needs to be bind mounted as well.
-Otherwise, Docker will create the parent directory in the container when it starts, causing issues.
+When bind mounting a file into a container, the parent directory needs to be bind mounted.
+If a bind mount destination does not exist, Docker will create the endpoint as an empty directory rather than a file.
 
 The Docker documentation on `containers and bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ is a good place to start if you wish to learn more about this.
 
