@@ -214,6 +214,14 @@ Reference for ``bbappend`` for this file:
     If testing a reference board supported in ``meta-lmp``, the original ``uEnv.txt.in``
     file can be found in ``meta-lmp/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-base-scr/<machine>/uEnv.txt.in``.
 
+Bind mounting a file into a container
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When bind mounting a file into a container, the parent directory needs to be bind mounted as well.
+Otherwise, Docker will create the parent directory in the container when it starts, causing issues.
+
+The Docker documentation on `containers and bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ is a good place to start if you wish to learn more about this.
+
 Adding a new systemd startup service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
