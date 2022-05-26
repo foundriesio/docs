@@ -1,4 +1,4 @@
-**Necessary artifacts**
+**Artifacts:**
 
 .. parsed-literal::
 
@@ -9,31 +9,33 @@
 Booting in QEMU
 ---------------
 
-.. warning:: These instructions require QEMU 5.2 or later.
+.. important:: These instructions require QEMU 5.2 or later.
+
+.. note::
+	Make sure to set the FIOCTL_FACTORY environment variable:
+
+    .. parsed-literal::
+
+        export FIOCTL_FACTORY=<factory>
 
 #. List available Targets and decide on which to boot::
 
      fioctl targets list
 
-.. note::
-	Make sure to set the FIOCTL_FACTORY environment variable:
-
-	export FIOCTL_FACTORY=<factory>
-
-#. Make a directory to store the artifacts and ``cd`` into it.
+#. Make a directory the artifacts and ``cd`` into it:
 
    .. parsed-literal::
 
           mkdir -p lmp-qemu/|ARCH|
           cd lmp-qemu/|ARCH|
 
-#. Download the **necessary artifacts** for |ARCH|, replace ``<target_number>`` with the target you would like to boot
+#. Download the **necessary artifacts** for |ARCH|, replacing ``<target_number>`` with the target you would like to boot:
 
    .. parsed-literal::
 
         |ARTIFACT_COMMANDS|
 
-#. The directory tree should now look like this
+#. The directory tree should now look like this:
 
    .. parsed-literal::
 
@@ -42,25 +44,22 @@ Booting in QEMU
             ├── lmp-factory-image-|MACHINE|.wic
             └── |FIRMWARE_BLOB|
 
-#. Run the QEMU script below against the artifacts inside of
-   ``lmp-qemu/``. You may want to save this as ``run.sh`` inside the
-   directory for convenience
+#. Run the QEMU script below against the artifacts inside of ``lmp-qemu/``.
+   You can save this as ``run.sh`` inside the directory for convenience.
 
 .. note::
-    The QEMU CLI passes the necessary flags and parameters to the
-    appropriate qemu-system command, such as image, CPU, network, and other device
-    information. For specifics, consult `QEMU's Documentation. <https://www.qemu.org/docs/master/index.html>`_
+    The QEMU CLI passes the necessary flags and parameters to the appropriate qemu-system command, such as image, CPU, network, and other device information.
+    For specifics, consult `QEMU's Documentation. <https://www.qemu.org/docs/master/index.html>`_
 
 Booting Graphically
 -------------------
 
-In order to boot QEMU with an OpenGL capable virtual GPU inside (required for
-Wayland/Weston), the following flags need to be added to the QEMU CLI:
+In order to boot QEMU with an OpenGL capable virtual GPU (required for Wayland/Weston), add the following flags to the QEMU CLI:
 
 .. parsed-literal::
 
      |QEMU_GUI_FLAGS|
 
-The ``-nographic`` flag must also be removed from the QEMU CLI.
+Do not copy the ``-nographic`` flag at the end of the QEMU CLI below.
 
 
