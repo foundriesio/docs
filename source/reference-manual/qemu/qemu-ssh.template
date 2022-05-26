@@ -1,8 +1,7 @@
 .. _ref-rm_qemu_ssh:
 
-.. tip::
-    It is possible to access QEMU via SSH by appending these parameters to the
-    QEMU CLI command above:
+.. hint::
+    To access QEMU via SSH, append these parameters to the QEMU CLI command above:
 
     .. code-block::
 
