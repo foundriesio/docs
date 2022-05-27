@@ -22,7 +22,7 @@ Booting in QEMU
 
      fioctl targets list
 
-#. Make a directory the artifacts and ``cd`` into it:
+#. Make a directory for the artifacts and ``cd`` into it:
 
    .. parsed-literal::
 
