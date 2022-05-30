@@ -12,8 +12,8 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-learn
 
    getting-started/signup/index
-   getting-started/git-config/index
    getting-started/install-fioctl/index
+   getting-started/git-config/index
    getting-started/flash-device/index
    getting-started/register-device/index
 
