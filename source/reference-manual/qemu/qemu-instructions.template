@@ -29,7 +29,7 @@ Booting in QEMU
           mkdir -p lmp-qemu/|ARCH|
           cd lmp-qemu/|ARCH|
 
-#. Download the **necessary artifacts** for |ARCH|, replacing ``<target_number>`` with the target you would like to boot:
+#. Download the artifacts needed for |ARCH|, replacing ``<target_number>`` with the target you would like to boot:
 
    .. parsed-literal::
 
@@ -48,7 +48,8 @@ Booting in QEMU
    You can save this as ``run.sh`` inside the directory for convenience.
 
 .. note::
-    The QEMU CLI passes the necessary flags and parameters to the appropriate qemu-system command, such as image, CPU, network, and other device information.
+    The QEMU CLI passes the necessary flags and parameters to the appropriate qemu-system command.
+    This includes path to the image, CPU, network, and other device information.
     For specifics, consult `QEMU's Documentation. <https://www.qemu.org/docs/master/index.html>`_
 
 Booting Graphically
