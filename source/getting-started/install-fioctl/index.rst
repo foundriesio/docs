@@ -21,7 +21,7 @@ Installation
 ############
 
 .. note::
-   For installing on platforms outside of x86-64 and Apple's M1, you will need to :ref:`install from source <gs-fioctl-package-install>`.
+   For installing on platforms outside of x86-64, Apple's M1, and linux-arm64, you will need to :ref:`install from source <gs-fioctl-package-install>`.
 
 .. _gs-fioctl-manual-install:
 
