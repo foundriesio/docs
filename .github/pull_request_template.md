@@ -7,7 +7,7 @@ _Why merge this PR? What does it solve?_
 _Optional. Add a 'x' to steps taken._
 _You can fill this out after opening the PR. "Did I..."_
 
- * [ ] Run spelling and grammar check, preferably with linter.
+* [ ] Run spelling and grammar check, preferably with linter.
 * [ ] Avoid changing any header associated with a link/reference.
 * [ ] Step through instructions (or ask someone to do so).
 * [ ] Review for [wordiness](https://languagetool.org/insights/post/wordiness/)
