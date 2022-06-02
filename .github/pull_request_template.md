@@ -7,14 +7,14 @@ _Why merge this PR? What does it solve?_
 _Optional. Add a 'x' to steps taken._
 _You can fill this out after opening the PR. "Did I..."_
 
+ * [ ] Run spelling and grammar check, preferably with linter.
 * [ ] Avoid changing any header associated with a link/reference.
 * [ ] Step through instructions (or ask someone to do so).
-* [ ] Remove words that do not effect the meaning.
+* [ ] Review for [wordiness](https://languagetool.org/insights/post/wordiness/)
 * [ ] Match tone and style of page/section.
-* [ ] Run spelling and Grammar check, preferably with linter.
 * [ ] Run `make linkcheck`.
 * [ ] View HTML in a browser to check rendering.
-* [ ] Consider using [semantic newlines](https://bobheadxi.dev/semantic-line-breaks/).
+* [ ] Use [semantic newlines](https://bobheadxi.dev/semantic-line-breaks/).
 * [ ] follow best practices for commits.
   * [ ] Descriptive title written in the imperative.
   * [ ] Include brief overview of QA steps taken.
