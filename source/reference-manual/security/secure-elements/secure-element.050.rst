@@ -66,7 +66,7 @@ provided by the SE05x; in particular all cryptographic operations have a softwar
 mirror implementation in OP-TEE: ECC, RSA, MAC, HASH, AES, 3DES and so forth.
 
 This meant that we could validate our integration using the OP-TEE crypto regression
-test suite from the `OP-TEE sanity tests`_
+test suite from the `OP-TEE tests`_
 
 The main advantage of using the SE05x in a product design which already runs a TEE
 is that all private keys programmed in the device's non volatile memory will never
@@ -82,7 +82,7 @@ session can access its objects for creation or deletion.
 OP-TEE Integration
 -------------------
 
-The SE05x standard physical interface is I2C typically configured as a slave running
+The SE05x standard physical interface is I2C typically configured as a target running
 in high speed mode (3.4Mbps). Since the SE05x could replace the OP-TEE default crypto
 operations (software), we chose to implement a native I2C driver so the SE05x
 could be accessed as early as possible.
@@ -304,7 +304,7 @@ This diagram summarizes the options discussed:
 .. _scp03:
    https://u-boot.readthedocs.io/en/latest/usage/cmd/scp03.html
 
-.. _OP-TEE sanity tests:
+.. _OP-TEE tests:
     https://optee.readthedocs.io/en/latest/building/gits/optee_test.html
 
 .. _mini package:

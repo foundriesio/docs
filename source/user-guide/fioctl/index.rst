@@ -13,7 +13,7 @@ Enabling/Disabling Apps
 -----------------------
 
 By default all apps defined in :term:`containers.git` for any given tag are
-enabled. To change this behaviour, a whitelist of apps can be given **per
+enabled. To change this behaviour, a list of allowed apps can be given **per
 device**, enabling only those apps that are in a comma separated list.
 
 Via Fioctl
