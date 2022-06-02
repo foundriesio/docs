@@ -1,3 +1,9 @@
+## Readiness
+
+* [ ] Merge (pending reviews)
+* [ ] Merge after _date or event_
+* [ ] Draft
+
 ## Overview
 
 _Why merge this PR? What does it solve?_
@@ -27,4 +33,4 @@ _You can fill this out after opening the PR. "Did I..."_
 ## Comments
 
 _Any thing else that a maintainer/reviewer should know._
-_This could include a request to delay merge, issues, rational for approach, etc._
+_This could include potential issues, rational for approach, etc._
