@@ -189,9 +189,9 @@ message guides on which package to target.
 .. rubric:: Footnotes
 
 .. [1] Since **v87**,
-       the variable ``IMAGE_LICENSE_CHECKER_ROOTFS_BLACKLIST``
-       is renamed to
-       ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST``.
+       the variable ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST``
+       replaces
+       ``IMAGE_LICENSE_CHECKER_ROOTFS_BLACKLIST``.
 .. [2] Since **v87**,
-       the content of ``INCOMPATIBLE_LICENSE`` has changed,
-       as a consequence of Kirkstone SPDX tags change.
+     the contents of ``INCOMPATIBLE_LICENSE`` has changed,
+     as a consequence of the Kirkstone SPDX tags change.
