@@ -45,6 +45,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    reference-manual/security/security
    reference-manual/testing/testing
    reference-manual/troubleshooting/troubleshooting
+   reference-manual/dashboard-and-account-management/dashboard-and-account-management
 
 .. toctree::
    :maxdepth: 1
