@@ -4,7 +4,7 @@ Security
 ========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    secure-boot
    boot-software-updates
@@ -13,7 +13,7 @@ Security
 
 
 Overview
-========
+--------
 
 Security has multiple layers and dimensions. Such as:
 
