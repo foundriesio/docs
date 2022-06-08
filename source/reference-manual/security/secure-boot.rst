@@ -11,5 +11,6 @@ Secure Boot
    authentication-xilinx
    secure-boot-imx-habv4
    secure-boot-imx-ahab
+   secure-boot-stm32mp1
    secure-machines
    revoke-imx-keys
