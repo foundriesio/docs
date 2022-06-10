@@ -3,80 +3,80 @@
 OpenEmbedded / Yocto Project Layers
 ===================================
 
-The Linux microPlatform is composed of several OpenEmbedded and Yocto
-Project layers, including the core build system, distribution, images
-and BSPs.
+The Linux microPlatform (LmP) is composed of several OpenEmbedded and Yocto
+Project layers, including the core build system, distribution, images,
+and Board Support Packages (BSPs).
 
 .. _ref-linux-layers-meta-lmp-base-layers:
 
-Linux microPlatform Base Layers
+LmP Base Layers
 -------------------------------
 
 ==================================    ============================================================
 Layer                                 Description
 ==================================    ============================================================
-`OpenEmbedded-Core`_ (Base)           This is the main collaboration point when working on
-                                      OpenEmbedded projects and is part of the core recipes. It is
+`openembedded-core`_ (Base)           Main collaboration point when working on
+                                      OpenEmbedded projects, and part of the core recipes. It is
                                       distro-less and contains only emulated machine support.
-                                      It also provides the default toolchain used by the Linux
-                                      microPlatform (lmp) distribution.
-`Meta-OpenEmbedded`_                  This layer houses a collection of layers and recipes for the
+                                      Provides the default toolchain used by the LmP
+                                      distribution.
+`meta-openembedded`_                  A collection of layers and recipes for the
                                       OE-core universe. Since the reduction in recipes to the core,
                                       meta-openembedded was created for everything else. There are
                                       currently approximately 650 recipes in this layer. It is used by
-                                      the Linux microPlatform for additional utilities and network
+                                      the LmP for additional utilities and network
                                       support.
-`Meta-Virtualization`_                This layer provides support for building Docker, LXC, Xen, KVM,
+`meta-virtualization`_                Provides support for building Docker, LXC, Xen, KVM,
                                       Libvirt, and associated packages necessary for constructing
                                       OE-based virtualized / container solutions. It is used by the
-                                      Linux microPlatform for Docker container runtime support.
-`Meta-Clang`_                         This layer provides clang/llvm as alternative to system C/C++
+                                      LmP for Docker container runtime support.
+`meta-clang`_                         Provides clang/llvm as alternative to system C/C++
                                       compiler for OpenEmbedded/Yocto Project based distributions.
-`Meta-Updater`_                       This layer provides support for OTA Software Updates using
+`meta-updater`_                       Provides support for OTA Software Updates using
                                       OSTree and TUF / Uptane.
-`Meta-Security`_                      This layer provides security tools, hardening tools for Linux
+`meta-security`_                      Provides security tools, hardening tools for Linux
                                       kernels and libraries for implementing security mechanisms.
-`Meta-LMP`_ (Base)                    This layer provides the Linux microPlatform distribution
-                                      configuration, unified Kernel and images.
+`meta-lmp`_ (Base)                    This layer provides the LmP distribution
+                                      configuration, unified kernel, and images.
 ==================================    ============================================================
 
 .. _ref-linux-layers-meta-lmp-bsp-layers:
 
-Linux microPlatform BSP Layers
+LmP BSP Layers
 ------------------------------
 
 ==================================    ============================================================
 Layer                                 Description
 ==================================    ============================================================
-`Meta-LMP`_ (BSP)                     This layer provides the Linux microPlatform BSP definitions and
-                                      configurations for the officially supported targets.
-`Meta-ARM`_                           This layer provides support for general recipes for the ARM
+`meta-lmp`_ (BSP)                     LmP BSP definitions and
+                                      configurations for officially supported targets.
+`meta-arm`_                           Provides support for general recipes for the ARM
                                       architecture and BSP support for ARM reference platforms.
-`Meta-Intel`_                         This is the board support layer for Intel based devices.
-`Meta-RaspberryPi`_                   This is the board support layer for the Raspberry Pi boards.
-`Meta-RISC-V`_                        This is the general hardware specific BSP overlay for RISC-V
+`meta-intel`_                         Board support layer for Intel based devices.
+`meta-raspberrypi`_                   Board support layer for the Raspberry Pi boards.
+`meta-risc-v`_                        General hardware specific BSP overlay for RISC-V
                                       based devices.
-`Meta-Yocto`_                         This is the board support layer for the Yocto Project hardware
+`meta-yocto`_                         Board support layer for the Yocto Project hardware
                                       references, such as BeagleBone Black.
-`Meta-Freescale`_                     This is the board support layer for the Freescale platforms.
-`Meta-Freescale-3rdparty`_            This is an additional board support layer for Freescale platforms
-                                      (not officially supported by Meta-Freescale maintainers).
-`Meta-Xilinx`_                        This layer provides support for Xilinx BSPs (e.g. ZynqMP).
-`Meta-Xilinx-Tools`_                  This layer provides support for using Xilinx tools on supported
+`meta-freescale`_                     Board support layer for the Freescale platforms.
+`meta-freescale-3rdparty`_            Additional board support layer for Freescale platforms
+                                      (not officially supported by meta-Freescale maintainers).
+`meta-xilinx`_                        Provides support for Xilinx BSPs (e.g. ZynqMP).
+`meta-xilinx-tools`_                  Provides support for using Xilinx tools on supported
                                       architectures (e.g. ZynqMP).
 ==================================    ============================================================
 
 
 .. _ref-linux-layers-meta-lmp:
 
-Linux microPlatform Meta-LMP Base Layer
+The meta-lmp Base Layer
 ---------------------------------------
 
-The Meta-LMP-Base layer provides the Linux microPlatform distribution
-configuration and a base set of recipes and configs, such as a unified
+The ``meta-lmp-base`` layer provides the LmP distribution
+configuration and a base set of recipes and config files, such as a unified
 Linux kernel and a set of standard images.
 
-The Linux microPlatform distribution configuration can be found at
+Configuration for the LmP distro can be found at
 ``conf/distro/lmp.conf`` and ``conf/distro/include/lmp.inc``.
 
 The ``lmp-base-console-image`` recipe can be found at
@@ -84,22 +84,19 @@ The ``lmp-base-console-image`` recipe can be found at
 default set of packages used by the image via the
 ``CORE_IMAGE_BASE_INSTALL`` variable.
 
-Linux microPlatform Meta-LMP BSP Layer
+The meta-lmp-bsp Layer
 --------------------------------------
 
-The Meta-LMP-BSP layer provides the Linux microPlatform BSP support for
-the supported targets, by providing kernel recipes, u-boot configuration
-fragments, WIC files, manufacturing tools scripts and so on.
+``meta-lmp-bsp`` provides the kernel recipes, u-boot configuration
+fragments, WIC files, and so on for supported targets.
 
-This layer is meant to be used as an extension of the vendor BSP
-layers (e.g. meta-freescale), but it can also handle board configuration
-files for cases where the vendor layer can't be easily compatible with
-LmP (e.g. layer based on an older Yocto Project release).
+While primarily used as an extension of the vendor BSP layers (e.g. meta-freescale),
+it can also handle board configuration for cases where the vendor layer
+is not easily compatible with LmP (e.g. a layer based on an older Yocto Project release).
 
-The main configuration file provided by this layer can be found at
-``conf/machine/include/lmp-machine-custom.inc``, which gets included
-by ``meta-lmp-base/classes/lmp.bbclass`` if available (users can decide
-to use meta-lmp-base only).
+The main configuration can be found at ``conf/machine/include/lmp-machine-custom.inc``.
+This gets included by ``meta-lmp-base/classes/lmp.bbclass`` if available (users can decide
+to use ``meta-lmp-base`` only).
 
 Here is an example of how a BSP configuration gets extended from the
 vendor BSP layer::
@@ -125,21 +122,21 @@ factory specific.
 only.
 
 
-Customizing Linux microPlatform BSP layers list
+Customizing the LmP BSP Layers List
 -----------------------------------------------
 
-The Linux microPlatform is composed by a set of base layers plus an extensive
+LmP is composed of a set of base layers plus an extensive
 list of BSP layers that are all enabled by default
 (see :ref:`ref-linux-layers-meta-lmp-bsp-layers`).
 
-As this might not necessarily be desired by everyone, LmP also allows any
-Factory user to easily customize the default BSP layers enabled and used
+As this is not desired by everyone, any
+FoundriesFactory user can easily customize the BSP layers enabled and used
 by a Factory.
 
 To define your own set of BSP layers (used by Bitbake), modify (or
 create if your Factory was created before LmP v76) the
 ``lmp-manifest/conf/bblayers-factory.inc`` bblayers include fragment,
-replacing the BSPLAYERS variable with your own list of BSP layers.
+replacing the ``BSPLAYERS`` variable with your own list of BSP layers.
 Make sure ``meta-lmp-bsp`` is also included by default, unless you
 want to completely define your own BSP configuration.
 
@@ -148,7 +145,7 @@ An example for enabling only the ``meta-intel`` BSP layer::
   $ cat conf/bblayers-factory.inc
   # This is a FoundriesFactory bblayers include file
 
-  # Meta-subscriber-overrides is the main FoundriesFactory layer
+  # meta-subscriber-overrides is the main FoundriesFactory layer
   # Do not remove unless you really know what you are doing.
   BASELAYERS += "${OEROOT}/layers/meta-subscriber-overrides"
 
@@ -164,33 +161,33 @@ An example for enabling only the ``meta-intel`` BSP layer::
 
 .. _OpenEmbedded-Core:
    https://github.com/openembedded/openembedded-core
-.. _Meta-OpenEmbedded:
+.. _meta-OpenEmbedded:
    https://github.com/openembedded/meta-openembedded
-.. _Meta-Clang:
+.. _meta-Clang:
    https://github.com/kraj/meta-clang
-.. _Meta-Virtualization:
+.. _meta-Virtualization:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/
-.. _Meta-Updater:
+.. _meta-Updater:
    https://github.com/advancedtelematic/meta-updater
-.. _Meta-Security:
+.. _meta-Security:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-security
-.. _Meta-LMP:
+.. _meta-LMP:
    https://github.com/foundriesio/meta-lmp/
-.. _Meta-ARM:
+.. _meta-ARM:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-arm/
-.. _Meta-Intel:
+.. _meta-Intel:
    https://git.yoctoproject.org/cgit.cgi/meta-intel/
-.. _Meta-RaspberryPi:
+.. _meta-RaspberryPi:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/
-.. _Meta-RISC-V:
+.. _meta-RISC-V:
    https://github.com/riscv/meta-riscv
-.. _Meta-Yocto:
+.. _meta-Yocto:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-yocto/
-.. _Meta-Freescale:
+.. _meta-Freescale:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-freescale/
-.. _Meta-Freescale-3rdparty:
+.. _meta-Freescale-3rdparty:
    https://github.com/Freescale/meta-freescale-3rdparty
-.. _Meta-Xilinx:
+.. _meta-Xilinx:
    https://github.com/Xilinx/meta-xilinx
-.. _Meta-Xilinx-Tools:
+.. _meta-Xilinx-Tools:
    https://github.com/Xilinx/meta-xilinx-tools
