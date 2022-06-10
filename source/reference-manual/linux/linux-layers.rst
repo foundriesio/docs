@@ -54,7 +54,6 @@ Layer                                 Description
                                       architecture and BSP support for ARM reference platforms.
 `meta-intel`_                         Board support layer for Intel based devices.
 `meta-raspberrypi`_                   Board support layer for the Raspberry Pi boards.
-`meta-risc-v`_                        General hardware specific BSP overlay for RISC-V
                                       based devices.
 `meta-yocto`_                         Board support layer for the Yocto Project hardware
                                       references, such as BeagleBone Black.
