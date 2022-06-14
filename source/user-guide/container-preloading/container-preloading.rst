@@ -73,12 +73,19 @@ Edit the ``factory-config.yml`` file and add the configuration below:
          enabled: true
          app_type: <restorable|compose>
          shortlist: "shellhttpd"
+         oe_builtin: <true|false>
 
 - ``enabled`` -  Whether to produce an archive containing docker images as part of a container build trigger.
 - ``shortlist`` - Defines the list of apps to preload. All Target's apps are preloaded if it is not specified or its value is empty.
 - ``app_type`` - Defines a type of Apps to preload.
   If an option is not defined or set to an empty value, the ``app_type``  preload will depend on the LmP version. If the LmP version is equal to or higher than **v85**, then `restorable` type is preloaded, otherwise `compose` type.
   See :ref:`ug-restorable-apps` for more details on Restorable Apps.
+- ``oe_builtin`` - Defines a way to accomplish preloading Apps. If the option is not defined or set to `false` (by default),
+  then Apps are preloaded by the `assemble` run of a LmP CI build. Otherwise, Apps are preloaded during an OE build CI run.
+  In this case, rootfs as well as a system image produced by the run includes preloaded Apps.
+  Only `Restorable` type of Apps (default) are supported by the OE builtin preloader.
+  This option does not work with some of the advanced tagging cases,
+  e.g. in the case of multiple container builds using the same platform (see :ref:`ref-advanced-tagging` for more details).
 
 
 Add the ``factory-config.yml`` file, commit and push:
@@ -193,6 +200,49 @@ Run ``wget`` to test the container:
 .. prompt:: text
 
      Hello world
+
+
+Testing Preloaded Restorable Apps
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On your device, switch to root and list the files in the folder
+``/var/sota/reset-apps``.
+
+.. prompt:: bash device:~$
+
+    sudo su
+    ls /var/sota/reset-apps/apps
+
+Preloaded Restorable Apps should be listed in the output, provided that the preloading was successful.
+
+**Example Output**:
+
+.. prompt:: text
+
+     app-05 app-07 app-08
+
+Another option to verify whether Restorable Apps are preloaded is to use `aklite-apps` utility.
+
+.. prompt:: bash device:~$
+
+    sudo su
+    aklite-apps ls
+
+**Example Output**:
+
+.. prompt:: text
+
+     app-05
+     app-07
+     app-08
+
+A user can try to start preloaded Restorable Apps manually by using `aklite-apps` utility.
+
+.. prompt:: bash device:~$
+
+    sudo su
+    aklite-apps run [--apps <a comma separated list of Apps>]
+
 
 Starting Compose Apps Automatically
 -----------------------------------
