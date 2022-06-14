@@ -12,5 +12,6 @@ Secure Boot
    secure-boot-imx-habv4
    secure-boot-imx-ahab
    secure-boot-stm32mp1
+   secure-boot-uefi
    secure-machines
    revoke-imx-keys
