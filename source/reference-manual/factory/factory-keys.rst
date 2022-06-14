@@ -31,6 +31,8 @@ The directory structure shown below:
         │   │   ├── opteedev.crt
         │   │   ├── opteedev.key
         │   │   ├── privkey_modsign.pem
+        │   │   ├── spldev.crt
+        │   │   ├── spldev.key
         │   │   ├── ubootdev.crt
         │   │   ├── ubootdev.key
         │   │   ├── x509.genkey
@@ -40,6 +42,8 @@ The directory structure shown below:
         │   ├── opteedev.crt
         │   ├── opteedev.key
         │   ├── privkey_modsign.pem
+        │   ├── spldev.crt
+        │   ├── spldev.key
         │   ├── ubootdev.crt
         │   ├── ubootdev.key
         │   └── x509_modsign.crt
@@ -55,6 +59,9 @@ configuring the variable ``OPTEE_TA_SIGN_KEY``.
 
 The **ubootdev** pair is a RSA 2048 key pair used for U-Boot. This is used by
 configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
+
+The **spldev** key pair is a RSA 2048 key pair used for U-Boot proper. This is
+used by configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
 
 The file ``x509.genkey`` is a configuration file used for creating
 ``privkey_modsign.pem`` and ``x509_modsign.crt`` which is a RSA 2048 pair in PEM
@@ -96,7 +103,7 @@ recommended to rotate the keys as needed. The suggestion is to rotate them each
      MODSIGN_X509 ?= "${MODSIGN_KEY_DIR}/x509_modsign.crt"
 
      #filename for U-Boot key/certificate
-     UBOOT_SIGN_KEYNAME ?= "ubootdev"
+     UBOOT_SIGN_KEYNAME ?= "ubootdev" 
 
 In the next sections, the command line on how to create the key pair for U-Boot,
 OP-TEE and Linux Kernel Modules. Assuming the ``lmp-manifest`` repository is
@@ -105,6 +112,8 @@ cloned inside ``<factory>`` directory.
 U-Boot keys
 """""""""""
 
+For ``ubootdev``:
+
 .. prompt:: bash host:~$
 
     cd <factory>/lmp-manifest/factory-keys
@@ -112,6 +121,17 @@ U-Boot keys
             -pkeyopt rsa_keygen_bits:2048 \
             -pkeyopt rsa_keygen_pubexp:65537
     openssl req -batch -new -x509 -key ubootdev.key -out ubootdev.crt
+
+For ``spldev``:
+
+.. prompt:: bash host:~$
+
+    cd <factory>/lmp-manifest/factory-keys
+    openssl genpkey -algorithm RSA -out spldev.key \
+           -pkeyopt rsa_keygen_bits:2048 \
+           -pkeyopt rsa_keygen_pubexp:65537
+    openssl req -batch -new -x509 -key spldev.key -out spldev.crt
+
 
 OP-TEE keys
 """""""""""
