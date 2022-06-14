@@ -47,7 +47,7 @@ Create the virtual disk device that will be used as target with ``qemu-img``::
 
   $ qemu-img create -f raw disk.img 4G
 
-Download ``lmp-factory-image-intel-corei7-64.wic`` and ``ovmf.qcow2``
+Download ``lmp-factory-image-intel-corei7-64.wic`` and ``ovmf.secboot.qcow2``
 from your own Factory CI run, then run Qemu with the following arguments::
 
   $ qemu-system-x86_64 -device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
@@ -56,7 +56,7 @@ from your own Factory CI run, then run Qemu with the following arguments::
       -drive if=none,id=hd,file=lmp-factory-image-intel-corei7-64.wic,format=raw \
       -device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd \
       -drive if=none,id=hd2,file=disk.img,format=raw -device scsi-hd,drive=hd2 \
-      -drive if=pflash,format=qcow2,file=ovmf.qcow2 -no-reboot \
+      -drive if=pflash,format=qcow2,file=ovmf.secboot.qcow2 -no-reboot \
       -nographic -cpu kvm64 -enable-kvm -m 1024 -serial mon:stdio -serial null
 
 Now just follow the instructions provided by the installer in order to
@@ -70,5 +70,5 @@ up again, but using ``disk.img`` as the primary block device::
       -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
       -drive if=none,id=hd,file=disk.img,format=raw \
       -device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd \
-      -drive if=pflash,format=qcow2,file=ovmf.qcow2 \
+      -drive if=pflash,format=qcow2,file=ovmf.secboot.qcow2 \
       -nographic -cpu kvm64 -enable-kvm -m 1024 -serial mon:stdio -serial null
