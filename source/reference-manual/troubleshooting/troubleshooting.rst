@@ -446,6 +446,10 @@ For example:
     This example works for system groups and system users (``user-id`` less than
     ``1000``). For normal users, check :ref:`ref-troubleshooting_lmp-user`.
 
+.. note::
+    Platform build errors like below are fixed after extending the user group:
+    ``normal groupname `<group>` does not have a static ID defined.``
+
 3. Add these files to the build in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``:
 
 .. code-block:: none
