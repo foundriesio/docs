@@ -57,10 +57,10 @@ The **dev** pair is a generic RSA 2048 key pair and is not in use.
 The **opteedev** pair is a RSA 2048 key pair used for OP-TEE. This is used by
 configuring the variable ``OPTEE_TA_SIGN_KEY``.
 
-The **ubootdev** pair is a RSA 2048 key pair used for U-Boot. This is used by
+The **ubootdev** pair is a RSA 2048 key pair used for U-Boot proper. This is used by
 configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
 
-The **spldev** key pair is a RSA 2048 key pair used for U-Boot proper. This is
+The **spldev** key pair is a RSA 2048 key pair used for U-Boot SPL. This is
 used by configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
 
 The file ``x509.genkey`` is a configuration file used for creating
@@ -103,7 +103,7 @@ recommended to rotate the keys as needed. The suggestion is to rotate them each
      MODSIGN_X509 ?= "${MODSIGN_KEY_DIR}/x509_modsign.crt"
 
      #filename for U-Boot key/certificate
-     UBOOT_SIGN_KEYNAME ?= "ubootdev" 
+     UBOOT_SIGN_KEYNAME ?= "ubootdev"
 
 In the next sections, the command line on how to create the key pair for U-Boot,
 OP-TEE and Linux Kernel Modules. Assuming the ``lmp-manifest`` repository is
