@@ -65,3 +65,84 @@ registry at:
 
    Commit messages that include ``[skip ci]`` or ``[ci skip]`` will not
    trigger CI builds.
+
+Configuring CI to Build New Branches
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, ``meta-subscriber-overrides``, ``lmp-manifest`` and ``containers``
+have ``master`` and ``devel`` branches. ``ci-scripts`` only has the ``master``
+branch.
+
+Platform Branches
+^^^^^^^^^^^^^^^^^
+
+To create new buildable platform branches, first enable the new branch in
+``ci-scripts``, for example:
+
+.. code-block::
+
+    lmp:
+      tagging:
+        refs/heads/master:
+          - tag: master
+        refs/heads/devel:
+          - tag: devel
+        refs/heads/new_branch:
+          - tag: new_branch
+
+Then branch out from the wanted branches in ``meta-subscriber-overrides`` and
+``lmp-manifest``. For example, using ``devel`` as a base for the new branch:
+
+.. prompt:: bash host:~$
+
+    cd meta-subscriber-overrides
+    git checkout devel
+    git checkout -b new_branch
+    git commit -m "[skip ci] create new branch" --allow-empty
+    git push --set-upstream origin new_branch
+
+The ``lmp-manifest`` repo change is similar as above, but includes an additional
+change to point to the correct ``meta-subscriber-overrides`` branch:
+
+.. prompt:: bash host:~$
+
+    cd lmp-manifest
+    git checkout devel
+    git checkout -b new_branch
+    sed -i 's/devel/new_branch/' <factory_name>.xml
+    git add <factory_name>.xml
+    git commit -m "point meta-subscriber-overrides to correct branch"
+    git push --set-upstream origin new_branch
+
+After the last step, a platform build for the ``new_branch`` is triggered in the
+factory.
+
+Container Branches
+^^^^^^^^^^^^^^^^^^
+
+To create new buildable container branches, first enable the new branch in
+``ci-scripts``, for example:
+
+.. code-block::
+
+    containers:
+      tagging:
+        refs/heads/master:
+          - tag: master
+        refs/heads/devel:
+          - tag: devel
+        refs/heads/new_branch:
+          - tag: new_branch
+
+Then branch out from the wanted branch in ``containers``, for example using
+``devel``:
+
+.. prompt:: bash host:~$
+
+    cd containers
+    git checkout devel
+    git checkout -b new_branch
+    git push --set-upstream origin new_branch
+
+After the last step, a container build for the ``new_branch`` is triggered in
+the factory.
