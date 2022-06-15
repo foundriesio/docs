@@ -123,6 +123,8 @@ configure ``aktualizr-lite``:
 Changing interval in the build
 """"""""""""""""""""""""""""""
 
+First, configure the **aktualizr-lite** polling interval:
+
 1. Create the ``sota-fragment`` folder in ``meta-subscriber-overrides`` repo:
 
 .. prompt:: bash host:~$
@@ -168,13 +170,78 @@ source file (``90-sota-fragment.toml``) for the recipe above:
     cd meta-subscriber-overrides
     mkdir -p recipes-sota/sota-fragment/sota-fragment
 
-5. Create the ``90-sota-fragment.toml`` file under this new directory::
+5. Create the ``90-sota-fragment.toml`` file under this new directory:
+
+.. code-block::
 
     [uptane]
     polling_sec = <time-sec>
 
 .. note::
     Make sure to replace ``<time-sec>`` with the expected poll interval in seconds.
+
+6. In the **recipes-samples/images/lmp-factory-image.bb** file, include this new
+package under ``CORE_IMAGE_BASE_INSTALL``, for example:
+
+.. code-block::
+
+    --- a/recipes-samples/images/lmp-factory-image.bb
+    +++ b/recipes-samples/images/lmp-factory-image.bb
+    @@ -24,9 +24,10 @@ CORE_IMAGE_BASE_INSTALL += " \
+         networkmanager-nmcli \
+         git \
+         vim \
+    +    sota-fragment \
+    ...
+
+Then, configure the **fioconfig** daemon interval:
+
+8. Create the ``fioconfig`` folder in ``meta-subscriber-overrides`` repo:
+
+.. prompt:: bash host:~$
+
+    cd meta-subscriber-overrides
+    mkdir -p recipes-support/fioconfig
+
+9. Add a new file under this directory:
+
+.. prompt:: bash host:~$
+
+     touch recipes-support/fioconfig/fioconfig_git.bbappend
+
+10. Include the content below to the file created in the last step:
+
+.. code-block:: none
+
+    FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+    SRC_URI:append = " \
+        file://fioconfig.conf \
+    "
+
+    do_install:append() {
+        install -Dm 0644 ${WORKDIR}/fioconfig.conf ${D}${sysconfdir}/default/fioconfig
+    }
+
+11. Create another directory under the one we just created so we can supply the
+source file (``fioconfig.conf``) for the recipe above:
+
+.. prompt:: bash host:~$
+
+    cd meta-subscriber-overrides
+    mkdir -p recipes-support/fioconfig/fioconfig
+
+12. Create the ``fioconfig.conf`` file under this new directory:
+
+.. code-block::
+
+    DAEMON_INTERVAL=<time-sec>
+
+.. note::
+    Make sure to replace ``<time-sec>`` with the expected poll interval in seconds.
+
+Commit and trigger a new build to include these new changes and have a new
+polling interval.
 
 Platform Customizing
 --------------------
