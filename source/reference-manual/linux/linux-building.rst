@@ -228,11 +228,11 @@ recommended for those new to either project.
 .. _Yocto Project main page:
    https://www.yoctoproject.org/
 .. _Yocto Project Quick Start Guide:
-   https://www.yoctoproject.org/docs/current/brief-yoctoprojectqs/brief-yoctoprojectqs.html
+   https://www.yoctoproject.org/docs/current/brief-yoctoprojectqs/
 .. _Yocto Project Reference Manual:
-   https://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html
+   https://www.yoctoproject.org/docs/current/ref-manual/
 .. _BitBake Manual:
-   https://www.yoctoproject.org/docs/current/bitbake-user-manual/bitbake-user-manual.html
+   https://www.yoctoproject.org/docs/bitbake/
 
 .. _Google Repo:
    https://source.android.com/setup/develop/repo
