@@ -105,7 +105,10 @@ The suggested way to create a custom set of UEFI Secure Boot keys and certificat
 
 The generated certificates must be enrolled into your target UEFI implementation.
 The DB private key must be made available to LmP during build time, for signing the required bootloader and kernel boot images.
+
 Store the generated keys and certificates securely.
+
+Custom keys can be added to the lmp-manifest repository directory ``factory-keys/uefi``.
 
 Enabling UEFI Secure Boot Usage in LmP
 -------------------------------------------
@@ -113,8 +116,8 @@ Enabling UEFI Secure Boot Usage in LmP
 The signing process in LmP is controlled by the following Yocto Project variables:
 
 * ``UEFI_SIGN_KEYDIR``
-    * Path for the directory containing the DB private key (``DB.key`` and ``DB.crt``)
-      and required certificates (``PK.cer``, ``KEK.cer``, ``DB.cer`` and ``DBX.cer``) files
+    * Path for the directory containing the DB private key (``DB.key`` and ``DB.crt``),
+     and required certificates files (``PK.cer``, ``KEK.cer``, ``DB.cer`` and ``DBX.cer``),
       and auth files (``PK.auth``, ``KEK.auth``, ``DB.auth``, and ``DBX.auth``)
 * ``UEFI_SIGN_ENABLE``
     * If set to ``1`` the systemd-boot bootloader and Linux kernel binaries will be signed by with the DB key (``DB.key`` at ``UEFI_SIGN_KEYDIR``)
