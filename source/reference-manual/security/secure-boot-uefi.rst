@@ -117,8 +117,8 @@ The signing process in LmP is controlled by the following Yocto Project variable
 
 * ``UEFI_SIGN_KEYDIR``
     * Path for the directory containing the DB private key (``DB.key`` and ``DB.crt``),
-     and required certificates files (``PK.cer``, ``KEK.cer``, ``DB.cer`` and ``DBX.cer``),
-     and auth files (``PK.auth``, ``KEK.auth``, ``DB.auth``, and ``DBX.auth``)
+      required certificates files (``PK.cer``, ``KEK.cer``, ``DB.cer`` and ``DBX.cer``),
+      and auth files (``PK.auth``, ``KEK.auth``, ``DB.auth``, and ``DBX.auth``)
 * ``UEFI_SIGN_ENABLE``
     * If set to ``1`` the systemd-boot bootloader and Linux kernel binaries will be signed by with the DB key (``DB.key`` at ``UEFI_SIGN_KEYDIR``)
 
