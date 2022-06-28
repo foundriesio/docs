@@ -63,7 +63,7 @@ The `fioctl`_ tool includes support for managing secrets for a factory::
 Passing Secrets to Docker's Build Context
 -----------------------------------------
 
-First update factory-definition.yml file ci-scripts.git to instruct the
+First update factory-config.yml file ci-scripts.git to instruct the
 container build scripts to pass the factory secrets to docker with::
 
  containers:
