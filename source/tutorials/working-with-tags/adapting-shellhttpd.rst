@@ -68,7 +68,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
        httpd:
          image: hub.foundries.io/cavel/shellhttpd:latest
          restart: always
-              ports:
+         ports:
            - 8080:${PORT-8080}
          environment:
            MSG: "Tag devel, test:01"

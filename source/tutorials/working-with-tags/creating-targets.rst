@@ -28,7 +28,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
        httpd:
          image: hub.foundries.io/cavel/shellhttpd:latest
          restart: always
-              ports:
+         ports:
            - 8080:${PORT-8080}
          environment:
            MSG: "This is the TEST 02"
@@ -66,7 +66,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
        httpd:
          image: hub.foundries.io/cavel/shellhttpd:latest
          restart: always
-              ports:
+         ports:
            - 8080:${PORT-8080}
          environment:
            MSG: "This is the TEST 03"
@@ -101,7 +101,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
        httpd:
          image: hub.foundries.io/cavel/shellhttpd:latest
          restart: always
-              ports:
+         ports:
            - 8080:${PORT-8080}
          environment:
            MSG: "This is the TEST 04"
@@ -121,4 +121,4 @@ Finally, you should have three new versions in the **Targets** version list.
 
 .. note::
 
-  Because your device is now following ``tutorial``, it shouldn't receive updates.
+  Because your device is now following ``tutorial``, it should not receive updates.
