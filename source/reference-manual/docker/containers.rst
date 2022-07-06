@@ -33,14 +33,9 @@ can set a few special variables to influence what's done at build time:
    If a container won't build for a certain architecture, it can be skipped.
    For example ``SKIP_ARCHS=arm64``.
 
- * **MANIFEST_PLATFORMS** - If ``SKIP_ARCHS`` is used, then
-   ``MANIFEST_PLATFORMS`` will need to be updated to reflect what platforms
-   this multi-arch container is being published for. Following the example
-   above its possible to do: ``MANIFEST_PLATFORMS=linux/amd64,linux/arm``
-
- * **EXTRA_TAGS:$ARCH** - This can work with ``SKIP_ARCHS``. If builds are
+ * **EXTRA_TAGS_$ARCH** - This can work with ``SKIP_ARCHS``. If builds are
    skipped for arm64, the arm container could be tagged for it with:
-   ``EXTRA_TAGS:arm=arm64``.
+   ``EXTRA_TAGS_arm=arm64``.
 
  * **DOCKER_BUILD_CONTEXT** - Use an alternative directory for the docker
    build context.
@@ -51,13 +46,12 @@ Examples
 
   # Only build for amd64 and arm
   SKIP_ARCHS="arm64"
-  MANIFEST_PLATFORMS="linux/arm,linux/amd64"
 
 ::
 
   # Use a 32-bit arm container for a 64-bit host:
   SKIP_ARCHS="arm64"
-  EXTRA_TAGS:arm="arm64"
+  EXTRA_TAGS_arm="arm64"
 
 ::
 
