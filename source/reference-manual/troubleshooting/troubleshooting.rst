@@ -637,3 +637,31 @@ Remember to replace ``USER_PASSWD`` accordingly.
 
 After these changes, the files ``/usr/lib/passwd`` and ``/usr/lib/group`` should
 include the configuration for the new user.
+
+Re-register a Device
+^^^^^^^^^^^^^^^^^^^^
+
+You may need to re-register the same device during development. In this case,
+follow these steps:
+
+1. Delete the device from the UI ``Devices`` tab or with:
+
+.. prompt:: bash host:~$
+
+    fioctl device delete <device-name>
+
+2. Stop ``aktualizr-lite`` and ``fioconfig`` on the device:
+
+.. prompt:: bash device:~#
+
+    systemctl stop aktualizr-lite
+    systemctl stop fioconfig.path
+    systemctl stop fioconfig.service
+
+3. Delete ``sql.db`` on the device:
+
+.. prompt:: bash device:~#
+
+    rm /var/sota/sql.db
+
+4. Then perform the registration again.
