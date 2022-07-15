@@ -25,7 +25,7 @@ These DNS names can be found by running ``fioctl keys ca show --pretty | grep DN
 Customers may do other customizations to a device that require it to access additional services not mentioned here. Common ones include:
 
  * A :ref:`WireGuard VPN <ref-wireguard>` server
- * Third-party container registries like Docker(registry-1.docker.io, auth.docker.io, index.docker.io, etc)
+ * Third-party container registries like Docker (registry-1.docker.io, auth.docker.io, index.docker.io, etc)
 
 .. _NTP servers:
    https://developers.google.com/time
