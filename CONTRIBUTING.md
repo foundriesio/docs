@@ -29,11 +29,25 @@ git checkout -b spell-check-everything
 
 ## Working on Documentation
 
-Use spelling and grammar checks and ask a technical writer
-if you have questions.
+Use spelling and grammar checks and ask a technical writer if you have questions.
 Consult the [style guide](https://foundriesio.atlassian.net/wiki/spaces/ID/pages/2392067/Foundries.io+Style+and+Communication+Guide).
 
-Before pushing, check locally with `make linkcheck` and `make html`.
+You can also "lint" the document. [Install vale](https://vale.sh/docs/vale-cli/installation/), and from this directory run:
+
+```bash
+vale sync
+vale <PATH/FILE>
+```
+
+Alternatively, after installing vale, you can use make.
+To check all docs, run `make lint-all`.
+To check files changed since the last commit, use `make lint-diff`.
+
+Before pushing, check locally:
+
+* links; `make linkcheck` 
+* html; `make html`
+* style; `make lint-diff`
 
 When opening a PR, tag a technical writer.
 They will merge it once reviews are in and suggestions considered.

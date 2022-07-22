@@ -5,7 +5,7 @@ build/
 extensions/__pycache__/
 source/_build/
 venv/
-
+styles/
 ### IDE
 .idea
 .vscode
