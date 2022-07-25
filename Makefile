@@ -21,7 +21,7 @@ help:
 	@echo "  dirhtml    to make HTML files named index.html in directories"
 	@echo "  singlehtml to make a single large HTML file"
 	@echo "  linkcheck  to check all external links for integrity"
-	@echo "	 lint-all	to lint markup files under source"
+	@echo "  lint-all       to lint markup files under source"
 	@echo "  lint-diff  to lint files changed since last commit"
 
 .PHONY: clean
