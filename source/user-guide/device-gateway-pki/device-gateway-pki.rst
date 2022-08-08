@@ -3,7 +3,7 @@
 Details Of Device Gateway PKI Settings
 ======================================
 
-The :ref:`Device Gateway <ref-device-gateway>` reference manual describes core concepts of Device Gateway PKI and
+The :ref:`Factory PKI <ref-device-gateway>` reference manual describes core concepts of Device Gateway PKI and
 how it can be configured by using the ``fioctl keys ca`` command.
 The following describes low-level details that are happening behind the scenes during running that ``fioctl`` command.
 Also, it provides an instruction to create, sign, and use an *offline* (aka *local*) device certificate.
