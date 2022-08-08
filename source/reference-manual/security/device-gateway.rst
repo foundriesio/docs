@@ -1,7 +1,7 @@
 .. _ref-device-gateway:
 
-Managing Your Device Gateway
-============================
+Managing Factory PKI
+====================
 
 LmP devices connect to OTA services via a
 :ref:`device gateway <ref-ota-architecture>` configured with
@@ -79,4 +79,4 @@ You can view the configured certificates with
 The Factory PKI is interwoven with Device Manufacturing Process and Device Registration,
 you can find out more details on this topic in this guide :ref:`ref-factory-registration-ref`.
 
-More details on Device Gateway PKI can be found in this :ref:`guide <ref-device-gateway-pki-details>`.
+More details on Factory PKI can be found in this :ref:`guide <ref-device-gateway-pki-details>`.
