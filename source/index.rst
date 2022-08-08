@@ -61,6 +61,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/custom-sota-client
    user-guide/multi-stage-container/multi-stage-container
    user-guide/fioctl/index
+   user-guide/device-gateway-pki/device-gateway-pki
 
 .. toctree::
    :maxdepth: 1
