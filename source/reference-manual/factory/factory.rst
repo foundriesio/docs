@@ -15,3 +15,4 @@ FoundriesFactory
    ci-webhooks
    event-queues
    factory-keys
+   data-retention
