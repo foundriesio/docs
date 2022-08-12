@@ -27,10 +27,9 @@ Customer Data
 
 source.foundries.io
 ~~~~~~~~~~~~~~~~~~~
-User source code like ``containers.git`` lives in Digital Ocean's SFO2 data center.
-This data is periodically backed up within this data center.
-Backups over 6 months old are pruned.
-All customer source code is deleted when a Factory is deleted.
+Source code like ``containers.git`` lives in Digital Ocean's SFO2 data center where it is periodically backed up.
+Backups —but not the source itself— older than 6 months get pruned.
+Source code gets deleted when a Factory is deleted.
 
 ci.foundries.io
 ~~~~~~~~~~~~~~~
@@ -56,7 +55,7 @@ This is kept on an NFS drive in the customer's CI region.
 
 api.foundries.io
 ~~~~~~~~~~~~~~~~
-This service is a reverse proxy to other services and stores no data.
+A reverse proxy to other services, and stores no data.
 
 app.foundries.io
 ~~~~~~~~~~~~~~~~
@@ -65,7 +64,7 @@ This service has two components:
  * A web view to ``api.foundries.io``
  * Factory user and subscription management
 
-The service runs inside Google's GCP us-central1-a region.
+Both run inside Google's GCP us-central1-a region.
 The user and subscription database is backed up nightly to Google Storage.
 Backups over 6 months old get pruned.
 
@@ -75,7 +74,7 @@ Foundries.io does not store any other device application data beyond what is lis
 
 hub.foundries.io
 ~~~~~~~~~~~~~~~~
-User container images are managed by this service.
+Container images are managed by this service.
 Devices pull container updates from this service.
 Data gets stored in a multi-regional Google Storage Bucket within the United States and gets deleted when a Factory gets deleted.
 
