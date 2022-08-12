@@ -41,15 +41,15 @@ It stores data in two places:
  * Google Storage Bucket
 
 The storage bucket is multi-regional and is within the United States.
-The database is periodically backed up to Google Storage.
-Backups over 6 months old are pruned.
+The database gets periodically backed up to Google Storage.
+Backups over 6 months old get pruned.
 
 CI Workers
 ~~~~~~~~~~
 CI work takes place in ephemeral instances (Docker containers) that are removed upon the completion of a CI Run.
-The exception to this is the `sstate cache`_ for LmP builds.
+The exception being `sstate cache`_ for LmP builds.
 This is kept on an NFS drive in the customer's CI region.
-This data is periodically pruned to remove old data and completely deleted when a Factory is deleted.
+``This data get pruned periodically, and gets deleted when a Factory is deleted.
 
 .. _sstate cache:
    https://wiki.yoctoproject.org/wiki/Enable_sstate_cache
@@ -62,12 +62,12 @@ app.foundries.io
 ~~~~~~~~~~~~~~~~
 This service has two components:
 
- * A web view to api.foundries.io
+ * A web view to ``api.foundries.io``
  * Factory user and subscription management
 
 The service runs inside Google's GCP us-central1-a region.
 The user and subscription database is backed up nightly to Google Storage.
-Backups over 6 months old are pruned.
+Backups over 6 months old get pruned.
 
 Device Data
 -----------
@@ -77,28 +77,31 @@ hub.foundries.io
 ~~~~~~~~~~~~~~~~
 User container images are managed by this service.
 Devices pull container updates from this service.
-All data is stored in a multi-regional Google Storage Bucket in the United States.
-It is deleted when a Factory is deleted.
+Data gets stored in a multi-regional Google Storage Bucket within the United States and gets deleted when a Factory gets deleted.
 
 ota-lite.foundries.io
 ~~~~~~~~~~~~~~~~~~~~~
 This service manages two pieces of data:
 
- * The Factory's TUF Metadata
+ * A Factory's TUF Metadata
  * Device data
 
-Device data includes things such as:
+Device data covers:
 
  * Hardware information from the lshw_ tool.
  * Details of the last 10 OTAs (``fioctl updates show``)
- * When the device was created
- * The Factory user that created the device
- * The device's local IPv4 address. *Depends on deployment details, this is normally a class C IP Address and not the public IPv4 address it accesses the Internet from*
+ * The date when device was added
+ * The Factory member that added the device
+ * The device's local IPv4 address.
+ .. note::
+ The  device's address depends on deployment details.
+ This normally a class C IP Address, not the public IPv4 address it accesses the Internet from
+ 
  * The device's MAC address
 
-The service and data is inside Google's GCP us-central1-a region.
+Both service and data gets kept inside Google's GCP us-central1-a region.
 The data is periodically backed up to Google Storage.
-Backups over 6 months old are pruned.
+Backups over 6 months old get pruned.
 
 .. _lshw:
    https://ezix.org/project/wiki/HardwareLiSter
