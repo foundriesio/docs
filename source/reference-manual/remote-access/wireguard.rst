@@ -140,6 +140,20 @@ Troubleshooting
 Wireguard uses UDP. This can be difficult to troubleshoot. A very common problem
 is when the VPN server has a firewall blocking traffic to the Wireguard port.
 
+.. note::
+
+  When configuring a server behind a firewall, make sure the desired port
+  is passed through to the host running the server.
+
+When activating the wireguard server, you may get::
+
+  ERROR: A UDP socket is already opened on 165.227.222.126:5555
+
+Make sure no other service is using the port.
+
+If no other service is using that port, add ``--no-check-ip``
+after the ``enable`` to activate the wireguard server.
+
 Method 1
 ~~~~~~~~
 
