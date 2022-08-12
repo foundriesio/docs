@@ -165,6 +165,33 @@ DEVICE_OTA_COMPLETED
    "Success": <boolean>
  }
 
+DEVICE_OTA_APPS_STATE_CHANGED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+
+ {
+   "Uuid": <string: DEVICE_UUID>,
+   "Time": <integer: unix seconds>,
+   "Ostree": <string: the device's OSTree commit hash>,
+   "DeviceTime": <string: timestamp when an Apps state was captured on device, in RFC3339 format>,
+   "Apps": {
+        <app-name>: {
+            "health": <string: `healthy` || `unhealthy`>,
+            "uri": <string: a pinned App URI, optional>
+            "services": [
+                "name": <string: a service name as it is defined in an App's compose file>,
+                "hash": <string: a service hash>,
+                "state": <string: a service container state reported by Docker Engine>,
+                "status": <string: a service container status reported by Docker Engine>,
+                "health": <string: a service container health reported by Docker Engine or deduced from its state>,
+                "image": <string: a pinned service image URI>,
+                "logs": <string: last 5 lines of logs yielded by a service container, optional, present only if a container is unhealthy>
+            ],
+        }
+        ...
+   }
+ }
+
 .. _API:
    https://api.foundries.io/ota/
 
