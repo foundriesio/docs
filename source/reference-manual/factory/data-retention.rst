@@ -40,7 +40,7 @@ It stores data in two places:
  * Galera Cluster Database
  * Google Storage Bucket
 
-The storage bucket is multi-regional in the United States.
+The storage bucket is multi-regional and is within the United States.
 The database is periodically backed up to Google Storage.
 Backups over 6 months old are pruned.
 
