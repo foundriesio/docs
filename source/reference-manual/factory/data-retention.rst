@@ -48,7 +48,7 @@ CI Workers
 CI work takes place in ephemeral instances (Docker containers) that are removed upon the completion of a CI Run.
 The exception being `sstate cache`_ for LmP builds.
 This is kept on an NFS drive in the customer's CI region.
-``This data get pruned periodically, and gets deleted when a Factory is deleted.
+This data get pruned periodically, and gets deleted when a Factory is deleted.
 
 .. _sstate cache:
    https://wiki.yoctoproject.org/wiki/Enable_sstate_cache
@@ -91,12 +91,12 @@ Device data covers:
  * Details of the last 10 OTAs (``fioctl updates show``)
  * The date when device was added
  * The Factory member that added the device
+ * The device's MAC address
  * The device's local IPv4 address.
- .. note::
+
+.. note::
  The  device's address depends on deployment details.
  This normally a class C IP Address, not the public IPv4 address it accesses the Internet from
- 
- * The device's MAC address
 
 Both service and data gets kept inside Google's GCP us-central1-a region.
 The data is periodically backed up to Google Storage.
