@@ -20,7 +20,7 @@ ota-lite.foundries.io    Device gateway      GCP - us-central1-a
 ostree.foundries.io      OSTree for devices  GCP - us-central1-a
 ======================   ================== =================================
 
-These services can be grouped into two areas of concern: customer data and device data.
+These services fall under two areas of concern: customer data and device data.
 
 Customer Data
 -------------
