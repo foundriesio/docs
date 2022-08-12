@@ -34,7 +34,7 @@ All customer source code is deleted when a Factory is deleted.
 
 ci.foundries.io
 ~~~~~~~~~~~~~~~
-ci.foundries.io runs inside Google's GCP us-central1-a region.
+``ci.foundries.io`` runs inside Google's GCP us-central1-a region.
 It stores data in two places:
 
  * Galera Cluster Database
