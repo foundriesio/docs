@@ -43,4 +43,5 @@ Instructions
    compose-app-flask-mqtt-nginx
    compose-app-commit-push-all-new-apps
    compose-app-testing-applications
+   compose-app-checking-app-state
    compose-app-summary
