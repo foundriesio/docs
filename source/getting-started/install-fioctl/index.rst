@@ -20,9 +20,6 @@ Fioctl CLI Installation
 Installation
 ############
 
-.. note::
-   For installing on platforms outside of x86-64, Apple's M1, and linux-arm64, you will need to :ref:`install from source <gs-fioctl-package-install>`.
-
 .. _gs-fioctl-manual-install:
 
 Manual Installation
@@ -108,22 +105,6 @@ We use `Github Releases`_ to distribute static golang binaries.
       You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
       ``fioctl``.
 
-.. _gs-fioctl-package-install:
-
-Install From Source
-^^^^^^^^^^^^^^^^^^^
-
-.. attention::
-
-    This requires that you have `Golang installed <https://golang.org/doc/install>`_.
-
-Fioctl can be compiled and installed from the latest source via Golang's own package manager; ``go get``:
-
-.. prompt:: bash host:~$, auto
-
-   host:~$ go get github.com/foundriesio/fioctl
-
-.. _gs-fioctl-authenticate-fioctl:
 
 Authenticate fioctl
 ###################
