@@ -20,7 +20,12 @@ This creates a symlink named ``docker-credential-fio`` in the directory of the d
 .. important::
     Because the Docker client is usually somewhere under ``/usr``, you will want to run ``fioctl configure-docker`` with root permission.
 
-The helper then updates your Docker config file.
+The helper then updates `your` Docker config file, which is located under ``$HOME/.docker``.
+
+.. note::
+    The helper configures for the current `user` and not the entire `system`.
+    If you are logged in as root, then it would be in the root home directory, which you should generally avoid doing.
+
 Now, Docker commands will just work.
 
 Example:
