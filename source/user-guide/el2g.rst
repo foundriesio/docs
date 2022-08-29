@@ -65,6 +65,14 @@ IoT.
 AWS IoT can verify the registration code was signed properly and
 complete the process.
 
+.. note::
+
+  If this command is run **after** a device has been initially provisioned, you will have to perform a manual step on the device to pick up the change:
+
+  .. prompt:: bash device:~$, auto
+
+     device:~$ sudo REPOID=$(cat /etc/default/lmp-el2go-auto-register) lmp-el2go-auto-register
+
 At this point you have two options: Manual device registration or Just-In-Time-Provisioning (JITP).
 
 Manual Registration
