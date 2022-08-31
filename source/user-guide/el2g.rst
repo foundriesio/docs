@@ -163,6 +163,17 @@ The status of the device will look similar to::
    -----             --                                          ---------------
    fio-935389312472  348555492004256518532939906410866457667712
 
+.. note::
+
+   Device IDs can be found on the device by running:
+
+   .. prompt:: bash device:~$, auto
+
+      device:~$ ssscli se05x uid | grep "Unique ID:" | cut -d: -f2
+
+   This will produce a value like ``04005001eee3ba1ee96e60047e57da0f6880``.
+   EdgeLock2GO expects this in a hexadecimal format with an ``0x`` like: ``0x04005001eee3ba1ee96e60047e57da0f6880``.
+
 Once enlisted, a device's ``lmp-el2go-auto-register`` service will get its new key pair(s) and start the aktualizr-lite daemon.
 You should now see the device is provisioned with::
 
