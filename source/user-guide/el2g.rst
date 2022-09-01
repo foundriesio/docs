@@ -80,7 +80,7 @@ Manual Registration
 Manual registration is the easier path, but not as scalable.
 You add devices one-by-one via the AWS WebUI.
 Here you will need you to provide the client certificate of the device.
-This can be done by looking for the ``aws-iot-ca`` in the output of the device's ``fioctl el2g devices <device>`` output.
+This can be done by looking for the ``aws-iot-ca`` in the output of the device's ``fioctl el2g devices show <device-id>`` output.
 
 JITP
 ~~~~
@@ -154,7 +154,7 @@ A device with an SE05X, product ID ``935389312472``, can be added with:
 
 .. prompt:: bash host:~$, auto
 
-   host:~$ fioctl el2g devices --add 935389312472 <device id>
+   host:~$ fioctl el2g devices add 935389312472 <device id>
 
 The status of the device will look similar to::
 
@@ -177,7 +177,7 @@ The status of the device will look similar to::
 Once enlisted, a device's ``lmp-el2go-auto-register`` service will get its new key pair(s) and start the aktualizr-lite daemon.
 You should now see the device is provisioned with::
 
-   host:~$ fioctl el2g devices <device id>
+   host:~$ fioctl el2g devices show <device id>
    Hardware Type: SE050C2HQ1/Z01V3
    Hardware 12NC: 935389312472
    Secure Objects:
