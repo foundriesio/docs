@@ -58,7 +58,7 @@ Configure the integration by running:
 
 This command uses your local AWS credentials and awscli to get a Certificate Authority (CA) registration code: ``aws iot get-registration-code``.
 The registration code is a randomly generated number by AWS.
-A new intermediate CA will be created in Edgelock2Go and will be used to sign this code.
+A new intermediate CA will be created in Edgelock 2Go and will be used to sign this code.
 New secure objects will then be created and assigned to your device group(s).
 The signed verification code and CA certificate are uploaded to AWS
 IoT.
@@ -172,7 +172,7 @@ The status of the device will look similar to::
       device:~$ ssscli se05x uid | grep "Unique ID:" | cut -d: -f2
 
    This will produce a value like ``04005001eee3ba1ee96e60047e57da0f6880``.
-   EdgeLock2GO expects this in a hexadecimal format with an ``0x`` like: ``0x04005001eee3ba1ee96e60047e57da0f6880``.
+   EdgeLock 2GO expects this in a hexadecimal format with an ``0x`` like: ``0x04005001eee3ba1ee96e60047e57da0f6880``.
 
 Once enlisted, a device's ``lmp-el2go-auto-register`` service will get its new key pair(s) and start the aktualizr-lite daemon.
 You should now see the device is provisioned with::
