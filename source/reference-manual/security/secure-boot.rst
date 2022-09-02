@@ -15,3 +15,4 @@ Secure Boot
    secure-boot-uefi
    secure-machines
    revoke-imx-keys
+   tee-on-versal-acap
