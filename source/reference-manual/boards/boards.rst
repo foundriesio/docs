@@ -23,3 +23,4 @@ Find below the instructions on how to flash the supported boards.
    am64xx-sk
    stm32mp1
    x86
+   versal
