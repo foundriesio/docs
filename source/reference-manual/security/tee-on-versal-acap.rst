@@ -28,7 +28,7 @@ As an example, if OP-TEE is configured to generate a hardware unique key, it wil
 As described in the documentation for the Versal ACAP `boot-flow`_, the BootROM handles loading the PLM, while the PLM will handle loading the rest of the images, including OP-TEE.
 
 A reference BIF file supporting an OP-TEE instance capable of loading the FPGA pdi can be seen below. In this example OP-TEE should be configured with ``CFG_DT=y`` and ``CFG_DT_ADDR=0x00001000``.
-If enabled the platform expects the FPGA bitstream at 0x40000000; the location is configurable using ``CFG_VERSAL_FPGA_DDR_ADDR``.
+If enabled, the platform expects the FPGA bitstream at 0x40000000; the location is configurable using ``CFG_VERSAL_FPGA_DDR_ADDR``.
 
 .. code-block:: none
 
