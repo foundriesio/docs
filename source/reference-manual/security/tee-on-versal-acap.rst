@@ -122,7 +122,7 @@ Without having to rebuild the complete WIC image, a developer can update and reb
         $ xsct load_boot_bin.tcl
 
 
-Te xsct script would look like follows:
+The xsct script would look like follows:
 
 .. code-block:: none
 
