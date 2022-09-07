@@ -10,7 +10,7 @@ A Trusted Execution Environment (TEE) is the security architecture cornerstone f
 
 Among the many features included (TRNG, eFUSE access, GPIO controls, secure storage, etc), Versal ACAP users are able to use hardware supported cryptographic operations from the ARM Trusted Zone.
 
-.. _overview :
+.. _overview:
 
 Overview
 ********
@@ -93,7 +93,7 @@ Hardware Unique Key
 *******************
 
 The calculation of the Hardware Unique Key —used to derive the RPMB secret— is similar to the Zynqmp platform: a digest is generated from the DNA eFUSE identifier and then GCM-AES encrypted.
- However, the symmetric key for the AES-GCM encryption engine can be selected at build time using the configuration option ``CFG_VERSAL_HUK_KEY``.
+However, the symmetric key for the AES-GCM encryption engine can be selected at build time using the configuration option ``CFG_VERSAL_HUK_KEY``.
 
 Contrary to the Zynqmp platform, the PUF KEK is available on non-secured boards (i.e: boards not booting signed images).
 
