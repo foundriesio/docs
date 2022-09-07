@@ -1,8 +1,8 @@
 Preparation
 -----------
 
-Ensure you replace the ``<factory>`` placeholder below with the name of your
-Factory.
+.. attention::
+   Replace the ``<factory>`` placeholder below with the name of your Factory.
 
 #. Download necessary files from ``https://app.foundries.io/factories/<factory>/targets``
 
