@@ -95,7 +95,7 @@ Hardware Unique Key
 The calculation of the Hardware Unique Key —used to derive the RPMB secret— is similar to the Zynqmp platform: a digest is generated from the DNA eFUSE identifier and then GCM-AES encrypted.
 The symmetric key for the AES-GCM encryption engine can however be selected at build time using the configuration option ``CFG_VERSAL_HUK_KEY``.
 
-Contrary to what happens in the Zynqmp platform, the PUF KEK is available also on non-secured boards (i.e: boards not booting signed images).
+Contrary to the Zynqmp platform, the PUF KEK is available on non-secured boards (i.e: boards not booting signed images).
 
 This means that the driver has no mechanism for restricting the generation of the HUK to using data based on information ``only available`` to secured systems.
 
