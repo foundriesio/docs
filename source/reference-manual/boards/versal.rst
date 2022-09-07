@@ -51,7 +51,7 @@ Set up the board for accessing the console or using the JTAG interface
 Console Hardware Configuration
 ------------------------------
 
-#. Make sure the board is powered off.
+#. Power off the board.
 
 #. Using a serial terminal program like minicom, connect to the port
    with ``usb-Xilinx_VCK190_532143136405-if01-port0`` in the name
