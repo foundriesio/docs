@@ -79,7 +79,7 @@ The ``Versal ACAP eFUSE`` driver uses the PLM `xilnvm`_ service.
 Access to certain eFuses require specific PLM configuration flags not selectable at run-time.
 
 .. note::
-   It is therefore left down to the user to make sure that the PLM has been configured as expected.
+   It is left to the user to ensure that the PLM has been configured as expected.
 
 The ``Versal ACAP PUF`` driver uses the PLM `xilpuf`_ service.
 
