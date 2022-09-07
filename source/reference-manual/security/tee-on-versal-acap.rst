@@ -97,7 +97,7 @@ The calculation of the Hardware Unique Key —used to derive the RPMB secret— 
 
 Contrary to the Zynqmp platform, the PUF KEK is available on non-secured boards (i.e: boards not booting signed images).
 
-This means that the driver has no mechanism for restricting the generation of the HUK to using data based on information ``only available`` to secured systems.
+This means that the driver has no mechanism for restricting the generation of the HUK from using data based on information ``only available`` to secured systems.
 
 .. note::
    The security of the platform will depend on the process used to generate and lock the keys.
