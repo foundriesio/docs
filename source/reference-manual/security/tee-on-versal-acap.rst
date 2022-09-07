@@ -8,7 +8,7 @@ OP-TEE on the Versal Adaptive Compute Acceleration Platform
 
 A Trusted Execution Environment (TEE) is the security architecture cornerstone for the ARM® platforms that we support at Foundries.io; this is the reason why as part of the partnership agreements between Foundries.io and AMD/Xilinx, we brought `OP-TEE support`_ to the Versal™  Adaptive Compute Acceleration Platform (ACAP) platform.
 
-Among the many features included (TRNG, eFUSE access, GPIO controls, secure storage, etc), Versal ACAP users will be able to use hardware supported cryptographic operations from the ARM Trusted Zone.
+Among the many features included (TRNG, eFUSE access, GPIO controls, secure storage, etc), Versal ACAP users are able to use hardware supported cryptographic operations from the ARM Trusted Zone.
 
 .. _overview :
 
