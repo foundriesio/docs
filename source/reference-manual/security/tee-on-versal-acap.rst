@@ -50,7 +50,8 @@ If enabled, the platform expects the FPGA bitstream at 0x40000000; the location 
          }
 
 
-To build the boot-able image AMD/Xilinx uses the `bootgen tool`_; this tool aggregates all the different images in a single binary.
+To build the boot-able image, AMD/Xilinx uses the `bootgen tool`_.
+This tool aggregates all the images into a single binary.
 
 The available configuration options depend on the architecture.
 
