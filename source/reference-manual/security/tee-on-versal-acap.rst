@@ -115,7 +115,7 @@ More so, we deliver all the individual components that form the binaries along w
 
 Imagine that Xilinx/AMD releases a new version of the PLM firmware, the firmware controls the actual cryptographic operations requested by OP-TEE.
 
-Without having to rebuild the complete WIC image, the developer could just update and rebuild OP-TEE and PLM and include these new binaries in the BOOT.BIN image using the BIF file previously mentioned; then it would use the Xilinx Software Command Line Tool (xsct) to boot it.
+Without having to rebuild the complete WIC image, a developer can update and rebuild OP-TEE and PLM, including these new binaries in the BOOT.BIN image using the BIF file previously mentioned. Then the Xilinx Software Command Line Tool (xsct) can be used to boot it:
 
 .. code-block:: none
 
