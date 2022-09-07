@@ -16,7 +16,7 @@ Overview
 ********
 
 The OP-TEE support for the `Versal ACAP`_ delegates most of its functionality to the `PLM firmware`_ executing in the MicroBlaze™ processor.
-In the case of cryptographic operations, those operations or ciphers or keys not supported by the hardware will be routed to the `Libtomcrypt`_ software based implementation.
+In the case of cryptographic operations, ciphers, and keys not supported by the hardware will be routed to the `Libtomcrypt`_ software based implementation.
 
 The services offered by PLM firmware are decided at build time: it is therefore important that the PLM firmware build configuration enables the services that OP-TEE will require.
 
