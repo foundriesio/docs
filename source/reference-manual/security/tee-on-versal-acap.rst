@@ -83,7 +83,7 @@ Access to certain eFuses require specific PLM configuration flags not selectable
 
 The ``Versal ACAP PUF`` driver uses the PLM `xilpuf`_ service.
 
-At the time of this writing, the platform support includes three native drivers:
+At the time of  v88, the platform support includes three native drivers:
 
     1. ``Mailbox driver``
     2. ``TRNG driver``
