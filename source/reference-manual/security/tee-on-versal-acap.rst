@@ -137,7 +137,7 @@ The xsct script would look like follows:
 
 
 Execution of that command would boot to the U-boot shell.
-The beauty of it is that we didnt need to modify U-boot. And so, if the uSD card was plugged with a FoundriesFactory LmP image, the Linux kernel would continue booting to the final shell from which the developer could validate the new PLM/OP-TEE features.
+Note we did not need to modify U-boot. This means if the uSD card with a FoundriesFactory LmP image was plugged into a device, the Linux kernel would continue booting to the final shell from which the developer could validate the new PLM/OP-TEE features.
 
 .. code-block:: none
 
