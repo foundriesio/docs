@@ -63,7 +63,7 @@ Console Hardware Configuration
           - Parity: None
           - Flow control: None
 
-#. Power the board on.
+#. Power on the board.
 
 #. You should see the Versal console printing out the boot sequence.
 
