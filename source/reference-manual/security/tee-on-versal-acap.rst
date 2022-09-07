@@ -89,7 +89,6 @@ At the time of  v88, the platform support includes three native drivers:
     2. ``TRNG driver``
     3. ``GPIO driver``
 
-
 Hardware Unique Key
 *******************
 
