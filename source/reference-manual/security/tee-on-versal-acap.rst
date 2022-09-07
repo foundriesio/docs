@@ -102,7 +102,7 @@ This means that the driver has no mechanism for restricting the generation of th
 .. note::
    The security of the platform will depend on the process used to generate and lock the keys.
 
-Effectively Working with the boot firmware
+Working Effectively With the Boot Firmware
 ******************************************
 
 One of the features that make the `Versal AI Core Series VCK190 Evaluation Kit`_ a friendly platform to develop on is its integrated JTAG support: a single USB cable provides the different consoles as well as the JTAG port
