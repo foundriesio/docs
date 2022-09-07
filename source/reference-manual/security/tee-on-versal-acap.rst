@@ -54,7 +54,6 @@ To build the boot-able image, AMD/Xilinx uses the `bootgen tool`_.
 This tool aggregates all the images into a single binary.
 
 The available configuration options depend on the architecture.
-
 In the case of Versal ACAP using the previously mentioned BIF file, the BOOT.BIN generation would be as follows:
 
 .. code-block:: none
