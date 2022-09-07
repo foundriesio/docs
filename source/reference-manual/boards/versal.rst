@@ -70,7 +70,8 @@ Console Hardware Configuration
 JTAG Hardware Preparation
 ----------------------------
 
-The following steps assume that `Xilinx Serial Software Comamnd-Line Tool`_ has been installed in the system.
+.. important::
+   The following steps assume that the `Xilinx Serial Software Comamnd-Line Tool`_ is installed on the system.
 
 #. Configure the boot switches in the VCK190 for JTAG mode:
 
