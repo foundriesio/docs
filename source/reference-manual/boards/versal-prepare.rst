@@ -15,7 +15,6 @@ Preparation
      #. Expand the :guilabel:`Runs` section corresponding with the name of the board and **download the Factory image**.
         For reference on how to boot using the JTAG port, download ``boot.bin`` from the **other** folder:
 
-        | E.g: 
         |     ``lmp-factory-image-<machine-name>.wic.gz``
 	|     ``boot.bin``
 
