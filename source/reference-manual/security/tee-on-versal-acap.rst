@@ -109,7 +109,7 @@ Effectively Working with the boot firmware
 One of the features that make the `Versal AI Core Series VCK190 Evaluation Kit`_ a friendly platform to develop on is its integrated JTAG support: a single USB cable provides the different consoles as well as the JTAG port
 
 At Foundries.io and via the FoundriesFactory CI, we build and deliver a WIC image that allows Versal ACAP platforms to boot securely.
-This way an average user could just flash the WIC image on a uSD card, plug it in the corresponding slot and boot to a secured functional system.
+This way an a user can just flash the WIC image on a uSD card, plug it in the corresponding slot, and boot to a secured and functional system.
 
 More so, we deliver all the individual components that form the binaries along with the pointers to the corresponding git trees and versions.
 
