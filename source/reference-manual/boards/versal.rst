@@ -14,9 +14,7 @@ Set up the board for accessing the console or using the JTAG interface
      :width: 800
      :align: center
 
-#. Connect the device end of a USB Type-C cable to the board.
-
-#. Connect the other end of the cable to the PC host controlling the device.
+#. Using a USB Type-C cable, connect the board to the PC host.
 
 #. Four UART connections will appear on the PC: one of them will be the JTAG interface, another one the console.
 
