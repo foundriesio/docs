@@ -12,9 +12,7 @@ Preparation
             :width: 769
             :align: center
 
-     #. Expand the **run** in the :guilabel:`Runs` section which corresponds
-        with the name of the board and **download the Factory image for that
-        machine.**.
+     #. Expand the :guilabel:`Runs` section corresponding with the name of the board and **download the Factory image**.
 	For reference on how to use the JTAG port to boot download the image boot.bin
 	from the **other** folder
 
