@@ -111,7 +111,7 @@ One of the features that make the `Versal AI Core Series VCK190 Evaluation Kit`_
 At Foundries.io and via the FoundriesFactory CI, we build and deliver a WIC image that allows Versal ACAP platforms to boot securely.
 This way an average user could just flash the WIC image on a uSD card, plug it in the corresponding slot and boot to a secured functional system.
 
-But we also deliver all the individual components that form the different binaries as well as the pointers to the corresponding git trees and versions.
+More so, we deliver all the individual components that form the binaries along with the pointers to the corresponding git trees and versions.
 
 Now lets imagine that Xilinx/AMD releases a new version of the PLM firmware; this firmware controls the actual cryptographic operations requested by OP-TEE.
 
