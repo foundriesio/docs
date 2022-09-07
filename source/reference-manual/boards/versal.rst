@@ -5,7 +5,7 @@ Versal AI Core Series VCK190 Evaluation Kit
 
 .. include:: versal-prepare.rst
 
-Console/JTAG Common Hardware Preparation
+Hardware Preparation: Console/JTAG
 ----------------------------------------
 
 Set up the board for accessing the console or using the JTAG interface
