@@ -97,7 +97,8 @@ JTAG Hardware Preparation
 
 This will boot the system up to the U-boot shell.
 
-If an LmP ready SD card was inserted in the Versal SD slot, at this point you can continue booting the Linux kernel from it.
+.. tip::
+   If an LmP ready SD card is already in the Versal SD slot, you can continue booting the Linux kernel from it.
 
 .. _Xilinx Serial Software Comamnd-Line Tool:
     https://docs.xilinx.com/v/u/en-US/ug1208-xsct-reference-guide
