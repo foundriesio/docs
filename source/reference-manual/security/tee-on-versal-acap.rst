@@ -23,7 +23,7 @@ The services offered by the PLM firmware are decided at build time: it is theref
 As an example, if OP-TEE is configured to generate a hardware unique key, it will need access to the PLM Physical Unclonable Function and NVM services.
 
 .. note::
-   Communication between OP-TEE and the PLM uses the IPI mailbox controller being the IPI used selectable via ``CFG_VERSAL_MBOX_IPI_ID``.
+   Communication between OP-TEE and the PLM uses the IPI mailbox controller. The IPI used is selectable via the ``CFG_VERSAL_MBOX_IPI_ID`` variable.
 
 As described in the documentation for the Versal ACAP `boot-flow`_, the BootROM handles loading the PLM, while the PLM will handle loading the rest of the images, including OP-TEE.
 
