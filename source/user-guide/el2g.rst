@@ -5,10 +5,13 @@ Integrating EdgeLock 2GO
 
 EdgeLock® 2GO is an optional add-on FoundriesFactory service that simplifies the securing of devices during manufacturing.
 The service enables the automated installation and secure storage of required keys, certificates, and credentials when the end device first connects to the internet.
-.. admonition::  Key Benefits
-- enablement of manufacturing in an untrusted facility
-- reducing complexity and time required to secure devices on the manufacturing line
-- simplified management of keys and certificates for devices and fleets in the field.
+
+.. tip::
+   Key Benefits:
+   - enablement of manufacturing in an untrusted facility
+   - reducing complexity and time required to secure devices on the manufacturing line
+   - simplified management of keys and certificates for devices and fleets in the field.
+   
 A pre-requisite of the service is that the device hardware includes an NXP SE05x hardware security element, or uses an i.MX 8ULP or 9 series SoC.
 We offer a free evaluation of the service on the `i.MX 8M Plus EVK <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/evaluation-kit-for-the-i-mx-8m-plus-applications-processor:8MPLUSLPD4-EVK>`_ with a connected SE050 evaluation, or on the Arduino Portenta X8 (early Q4 2022).
 
