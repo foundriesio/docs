@@ -235,5 +235,3 @@ You may also access the full EdgeLock 2GO API via a reverse proxy:
  ``https://api.foundries.io/ota/factories/<factory>/el2g-proxy/``
 
 The default FoundriesFactory EdgeLock 2GO implementation provides a free of charge evaluation for 30 days. Once enabled for commercial use the standard package limits usage to 50,000 devices per subscription year and 2x key pairs and 2x X.509 certificates per device - i.e. the FoundriesFactory key pair and certificate, and one additional set for authentication to a third party service such as AWS. If you require additional devices, or more key pairs per device, please contact us.
-
-TODO provide link to el2g API documentation
