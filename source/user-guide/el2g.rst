@@ -16,11 +16,10 @@ Prerequisites
 -------------
 
  * An :ref:`NXP SE05X secure element <ref-secure-elements>`
- * A FoundriesFactory that has been registered with EdgeLock® 2GO. Please contact our support team or use Slack to arrange this.
-   TODO: We don't have a process for this.
+ * A FoundriesFactory that has been registered with EdgeLock 2GO. Please `contact our support team <https://foundriesio.atlassian.net/servicedesk/customer/portal/1/group/1/create/3>`_ or use Slack to arrange this.
  * Access to your Factory PKI :ref:`root of trust <Root-of-trust>`.
 
-Enabling Devices to Auto-connect to Foundries.io
+Enabling Auto-connect to Foundries.io
 --------------------------------------------------
 
 Fioctl includes commands that will configure EdgeLock 2GO to give out credentials that automatically connect aktualizr-lite to the device gateway, removing the need to run ``lmp-device-register``:
