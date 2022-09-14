@@ -1,4 +1,4 @@
-.. _ref-rm_board_stm32mp1-disco:
+.. _ref-rm_board_stm32mp15-disco:
 
 STM32MP157 Discovery Kit
 ========================
@@ -8,14 +8,14 @@ FoundriesFactory CI Build
 
 Including STM OpenEmbedded layer requires accepting EULA. When building locally
 it is enough to accept EULA using interactive prompt. When building in CI this
-isn't possible. To enable EULA acceptance in the CI job, ``EULA_stm32mp1disco``
+isn't possible. To enable EULA acceptance in the CI job, ``EULA_stm32mp15disco``
 variable needs to be set in the ``factory-config.yml``::
 
     ...
     lmp:
       params:
         ...
-        EULA_stm32mp1disco: "1"
+        EULA_stm32mp15disco: "1"
         ...
 
 ``factory-config.yml`` can be found in ci-scripts.git repository that is
@@ -26,7 +26,7 @@ created for each factory.
 Flashing
 --------
 
-Now, flash the ``lmp-factory-image-stm32mp1-disco.wic.gz`` retrieved from the
+Now, flash the ``lmp-factory-image-stm32mp15-disco.wic.gz`` retrieved from the
 previous section to an SD Card. This contains the :term:`system image` that the
 device will boot.
 
