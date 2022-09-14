@@ -20,7 +20,7 @@ Toradex Apalis iMX8QM,apalis-imx8
 :ref:`Raspberry Pi3/3B (64 bit) <ref-rm_board_rasbperrypi>`,raspberrypi3-64
 :ref:`Raspberry Pi4 (and CM) <ref-rm_board_rasbperrypi>`,raspberrypi4-64
 SiFive HiFive Unleashed,freedom-u540
-:ref:`STM32MP157 Discovery Kit <ref-rm_board_stm32mp1-disco>`,stm32mp1-disco
+:ref:`STM32MP157 Discovery Kit <ref-rm_board_stm32mp15-disco>`,stm32mp15-disco
 :ref:`TI AM64x SKEVM <ref-rm_board_am64xx-sk>`,am64xx-sk
 :ref:`TI Beaglebone Black <ref-rm_board_beaglebone-yocto>`,beaglebone-yocto
 :ref:`TI Beaglebone Black Wireless <ref-rm_board_beaglebone-yocto>`,beaglebone-yocto

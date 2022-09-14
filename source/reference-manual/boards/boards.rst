@@ -21,6 +21,6 @@ Find below the instructions on how to flash the supported boards.
    apalis-imx6
    apalis-imx8
    am64xx-sk
-   stm32mp1
+   stm32mp15-disco
    x86
    versal
