@@ -7,7 +7,7 @@ This section demonstrates how to enable the SE05X middleware in
 ``meta-subscriber-overrides``.
 
 .. note::
-    This procedure is valid for boards running OP-TEE 3.15.0.
+    This procedure is valid for boards running OP-TEE 3.15.0 or newer.
 
 Enable the `se05x` MACHINE_FEATURES for the target machine and provide the
 correct OEFID for the `se05x` device in **lmp-factory-custom**. The OEFID value
