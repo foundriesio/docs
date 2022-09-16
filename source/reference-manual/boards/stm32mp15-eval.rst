@@ -13,34 +13,50 @@ This section shows how to properly download and setup this tool on a Linux
 machine. Please skip to the next section if **STM32CubeProgrammer** is
 already installed on your machine.
 
-1. Download the `STM32CubeProgrammer`_ software for Linux.
 
-2. Unzip it to a known location:
+.. tabs::
 
-.. prompt:: bash host:~$, auto
+    .. group-tab:: Linux
 
-	host:~$ mkdir <STM32CubeProgrammer_path>
-	host:~$ unzip en.stm32cubeprg-lin_v*.zip -d <STM32CubeProgrammer_path>
+	1. Download the `STM32CubeProgrammer`_ software for Linux.
 
-3. Run the installer and follow the instructions on screen:
+	2. Unzip it to a known location:
 
-.. prompt:: bash host:~$, auto
+	.. prompt:: bash host:~$, auto
 
-	host:~$ ./SetupSTM32CubeProgrammer*.linux
+		host:~$ mkdir <STM32CubeProgrammer_path>
+		host:~$ unzip en.stm32cubeprg-lin_v*.zip -d <STM32CubeProgrammer_path>
 
-4. Export the ``STM32CubeProgrammer_path`` to the system path:
+	3. Run the installer and follow the instructions on screen:
 
-.. prompt:: bash host:~$, auto
+	.. prompt:: bash host:~$, auto
 
-	host:~$ export PATH=<STM32CubeProgrammer_path>/bin:$PATH
+		host:~$ ./SetupSTM32CubeProgrammer*.linux
 
-5. To allow **STM32CubeProgrammer** to access the USB port through low-level
-commands, proceed as follows:
+	4. Export the ``STM32CubeProgrammer_path`` to the system path:
 
-.. prompt:: bash host:~$, auto
+	.. prompt:: bash host:~$, auto
 
-	host:~$ cd <STM32CubeProgrammer_path>/Drivers/rules
-	host:~$ sudo cp *.* /etc/udev/rules.d/
+		host:~$ export PATH=<STM32CubeProgrammer_path>/bin:$PATH
+
+	5. To allow **STM32CubeProgrammer** to access the USB port through low-level commands, proceed as follows:
+
+	.. prompt:: bash host:~$, auto
+
+		host:~$ cd <STM32CubeProgrammer_path>/Drivers/rules
+		host:~$ sudo cp *.* /etc/udev/rules.d/
+
+    .. group-tab:: Windows
+
+	1. Download the `STM32CubeProgrammer`_ software for Windows.
+
+	2. Unzip it to a known location.
+
+	3. Execute the Windows installer and follow the instructions on screen.
+
+	4. Run ``STM32 Bootloader.bat`` to install the required DFU drivers and	activate the STM32 device in USB DFU mode.
+
+	For more information, check the `STM32CubeProgrammer Installation page`_.
 
 Preparation
 -----------
@@ -138,3 +154,4 @@ host console, UART output, or board display.
 4. Reset the board to boot the installed LmP image.
 
 .. _STM32CubeProgrammer: https://www.st.com/en/development-tools/stm32cubeprog.html
+.. _STM32CubeProgrammer Installation page: https://wiki.st.com/stm32mpu/wiki/STM32CubeProgrammer#STM32CubeProgrammer_installation
