@@ -86,7 +86,7 @@ commands::
         OTP value 30: 38841b57
         OTP value 31: b7a16954
 
- .. warning::
+.. warning::
 
    Once the fuses have been programmed they can't be modified.
 
