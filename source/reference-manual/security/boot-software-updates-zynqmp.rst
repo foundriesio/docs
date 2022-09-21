@@ -62,7 +62,9 @@ Based on boot media used, **CSU_MULTI_BOOT** value indicates different things:
 * In **QSPI** boot case multi_boot value represents multiple of 32 KB (as
   boot image should be placed on 32 KB boundary), so to force BootROM to
   boot image from **0x60000** offset on QSPI, **CSU_MULTI_BOOT** register
-  value have to be set to **0xC** (`0x60000 = 0x8000 * 0xC`).
+  value needs to be set to **0xC** (or **12** in dec) because
+  `0x60000 = 0x8000 * 0xC`, where **0x8000** is the 32KB boundary and
+  **0xC** is the multiboot value.
 * In **MMC** boot case, BootROM requires boot images to be stored on
   the first FAT partition with a specific naming convention. The filenames
   of the boot images should contain multiboot offset, represented by 4 figures,
@@ -365,8 +367,9 @@ Example of test:
     Trying to boot from SPI
     SPL: Booting next image from 0x100000 SPI offset
     .....
-    ZynqMP> multi_boot 12 && reset
-    Set multiboot offset to: 	12
+    ZynqMP> multi_boot 0xc && reset
+    Set multiboot register to: 	0xc (dec: 12)
+    QSPI boot offset to be used after reboot: 	0x60000
     resetting ...
 
     U-Boot SPL 2022.01+xlnx+g9039256f80 (Jan 24 2022 - 14:57:34 +0000)
@@ -375,7 +378,8 @@ Example of test:
     Trying to boot from SPI
     SPL: Booting next image from 0xaa0000 SPI offset
 
-From output you can see that after setting secondary boot (`multi_boot 12`)
+From the output you can see that after setting the secondary boot (`multi_boot 12` or
+`multi_boot 0xc` as both dec and hex values are supported)
 and performing reset, BootROM boots images from secondary boot path
 (*SPL: Booting next image from 0xaa0000 SPI offset*).
 
