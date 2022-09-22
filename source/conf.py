@@ -240,10 +240,14 @@ html_theme = 'sphinx_rtd_theme'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
+
+# Note that for Sphinx-RTD v0.6.0 or newer, 'html_baseurl' is used rather
+# than canonical_url
 html_theme_options = {
     'logo_only': True,
-    'canonical_url': 'https://docs.foundries.io/'
+    'canonical_url': 'https://docs.foundries.io/latest/'
 }
+
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
