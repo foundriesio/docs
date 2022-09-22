@@ -170,7 +170,7 @@ An example for enabling only the ``meta-intel`` BSP layer::
 .. _meta-Virtualization:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/
 .. _meta-Updater:
-   https://github.com/advancedtelematic/meta-updater
+   https://github.com/uptane/meta-updater
 .. _meta-Security:
    https://git.yoctoproject.org/cgit/cgit.cgi/meta-security
 .. _meta-LMP:
