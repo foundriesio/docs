@@ -67,6 +67,14 @@ Or, you can prune by tag, such as ``devel`` or ``experimental``::
 
   fioctl targets prune --by-tag <tag>
 
+To keep the last targets from a tag::
+
+  fioctl targets prune --by-tag <tag> --keep-last <number>
+
+There is also the ``--dryrun`` option so you can check the pruned targets before
+running the command::
+
+  fioctl targets prune --by-tag <tag> --keep-last <number> --dryrun
 
 .. _ref-aktualizr-lite-pruning:
 
