@@ -69,3 +69,8 @@ Eventually the operator can update the primary ``targets.json`` file for all
 devices on the ``production`` tag with::
 
   fioctl waves complete v2.0-update
+
+.. note::
+
+   When flashing new production devices, it is recommended to only use promoted
+   production targets.
