@@ -40,7 +40,7 @@ in order to disable ``VOLATILE_LOG_DIR``::
 Add systemd-journald-persistent to your image
 ---------------------------------------------
 
-The recipe ``systemd-journald-persistent`` (in meta-lmp) provides a default
+The recipe ``systemd-journald-persistent`` (in meta-updater) provides a default
 configuration file for **systemd-journald** that enables persistent logging
 support. The default configuration sets a limit to **64M**, which is safe for
 most deployments.
