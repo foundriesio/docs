@@ -64,7 +64,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/offline-update/offline-update
    user-guide/el2g
-
+   user-guide/account-management/account-management
 .. toctree::
    :maxdepth: 1
    :caption: Porting Guide

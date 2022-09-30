@@ -8,3 +8,4 @@ sphinxcontrib.asciinema==0.2.0
 sphinx_toolbox==2.12.1
 sphinx-prompt==1.4.0
 myst-parser
+sphinx-reredirects

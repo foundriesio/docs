@@ -105,7 +105,8 @@ extensions = [
     'sphinxcontrib.asciinema',
     'sphinx_toolbox.confval',
     'sphinx-prompt',
-    'myst_parser'
+    'myst_parser',
+    'sphinx_reredirects'
 ]
 
 copybutton_prompt_text = "$ "
@@ -343,6 +344,10 @@ htmlhelp_basename = 'fiodoc'
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
+
+# Config for sphinx-reredirects, maps source: target, target path is relative to source.
+redirects = {
+     "reference-manual/factory/team-based-access": "../../user-guide/account-management/team-based-access.html"}
 
 # Make external links open in a new tab.
 # https://stackoverflow.com/questions/25583581/add-open-in-new-tab-links-in-sphinx-restructuredtext

@@ -1,6 +1,6 @@
 .. _ref-team-based-access:
 
-Team based factory access
+Team Based Factory Access
 =========================
 
 Larger organizations often need to restrict what kind of access a
