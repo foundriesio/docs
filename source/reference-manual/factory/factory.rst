@@ -9,6 +9,7 @@ FoundriesFactory
    factory-definition
    Fioctl <fioctl/index.rst>
    Factory Sources <factory-sources.rst>
+   sboms
    api-access
    team-based-access
    ../linux/linux-layers
