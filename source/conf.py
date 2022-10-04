@@ -106,7 +106,7 @@ extensions = [
     'sphinx_toolbox.confval',
     'sphinx-prompt',
     'myst_parser',
-    'sphinx_reredirects'
+    'sphinx_reredirects',
 ]
 
 copybutton_prompt_text = "$ "
