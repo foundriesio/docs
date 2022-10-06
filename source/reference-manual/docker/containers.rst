@@ -137,7 +137,7 @@ Here are some examples of things that can be done inside
  export IMAGES=$(find ./ -mindepth 2 -maxdepth 2 -name Dockerfile | cut -d / -f2 | sort)
 
  # Second: Modify each container to use the locally build arch-specific base image:
- _base_img="hub.foundries.io/${FACTORY}/0base:$(git log -1 --format=%h)-$ARCH"
+ _base_img="hub.foundries.io/${FACTORY}/0base:$LATEST-$ARCH"
  for x in $IMAGES ; do
      echo "Prebuild checking $x for FROM override"
      sed -i "s|hub.foundries.io/${FACTORY}/0base|${_base_img}|" $x/Dockerfile
