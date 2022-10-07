@@ -305,6 +305,17 @@ Once the ``spldev.key`` and ``spldev.crt`` are created, add them to the reposito
 Once the commit is pushed upstream, the Foundries.io CI will generate a build
 that fixes the issue.
 
+Handling updates in /etc
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Files created or modified in ``/etc`` during runtime are not handled by OSTree
+during an OTA. For this reason, we suggest setting system-wide configs in
+``/usr`` whenever possible so that these changes are covered by OTA updates.
+
+We suggest managing files that live in ``/usr`` with a systemd service
+(:ref:`ref-troubleshooting_systemd-service`). The runtime service should handle
+the needed updates to the ``/etc`` files.
+
 Platform Customizing
 --------------------
 
@@ -350,6 +361,8 @@ When bind mounting a file into a container, the parent directory needs to be bin
 If a bind mount destination does not exist, Docker will create the endpoint as an empty directory rather than a file.
 
 The Docker documentation on `containers and bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ is a good place to start if you wish to learn more about this.
+
+.. _ref-troubleshooting_systemd-service:
 
 Adding a new systemd startup service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
