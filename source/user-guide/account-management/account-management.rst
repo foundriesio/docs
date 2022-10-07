@@ -7,4 +7,6 @@ or setting who can interact with devices and access source code.
 .. toctree::
    :maxdepth: 1
 
+   account-roles
+   subscription-and-billing
    team-based-access

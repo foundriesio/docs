@@ -52,6 +52,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :caption: User Guide
    :name: sec-user-guide
 
+   user-guide/account-management/account-management
    user-guide/container-preloading/container-preloading
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
@@ -64,7 +65,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/offline-update/offline-update
    user-guide/el2g
-   user-guide/account-management/account-management
 .. toctree::
    :maxdepth: 1
    :caption: Porting Guide
