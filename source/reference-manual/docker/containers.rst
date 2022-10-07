@@ -143,3 +143,7 @@ Here are some examples of things that can be done inside
      sed -i "s|hub.foundries.io/${FACTORY}/0base|${_base_img}|" $x/Dockerfile
  done
 
+.. note::
+    If there is shared code or files between the containers, the recommendation
+    is to put the common folder in the base image, then have the other
+    containers inheriting the needed files using :ref:`ug-multi-stage-container`.
