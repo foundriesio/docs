@@ -67,7 +67,9 @@ Or, you can prune by tag, such as ``devel`` or ``experimental``::
 
   fioctl targets prune --by-tag <tag>
 
-To keep the last targets from a tag::
+We highly recommend not pruning all Targets from a tag to avoid container
+builds failing from the lack of platform builds for this tag. To keep the last
+``<number>`` targets from a tag use::
 
   fioctl targets prune --by-tag <tag> --keep-last <number>
 
