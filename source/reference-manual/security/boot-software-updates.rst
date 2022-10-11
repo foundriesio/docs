@@ -11,3 +11,4 @@ Boot software updates
    boot-software-updates-imx
    boot-software-updates-imx8qm
    boot-software-updates-zynqmp
+   boot-software-updates-stm32mp1
