@@ -3,6 +3,8 @@
 i.MX 8M Plus Evaluation Kit
 ===========================
 
+.. include:: secure-boot-note.rst
+
 .. include:: imx8mm-prepare.rst
 
 Hardware Preparation
