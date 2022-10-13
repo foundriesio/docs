@@ -1,7 +1,7 @@
 .. _ref-rm_board_imx8mqevk:
 
-i.MX 8MQuad Evaluation Kit
-==========================
+i.MX 8M Quad Evaluation Kit
+===========================
 
 .. include:: imx8mq-prepare.rst
 

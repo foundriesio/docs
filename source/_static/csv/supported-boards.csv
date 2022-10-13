@@ -5,7 +5,7 @@ Arm Cortex A5 DesignStart,a5ds
 :ref:`Intel x86-64 UEFI <ref-rm_board_intel-corei7-64>`,intel-corei7-64
 :ref:`NXP i.MX6 ULL EVK <ref-rm_board_imx6ullevk>`,imx6ullevk
 :ref:`NXP i.MX6 ULL EVK with secure boot enabled <ref-rm_board_imx6ullevk>`,imx6ullevk-sec
-EA iMX7ULP-UCOM,imx7ulpea-ucom
+Embedded Artists i.MX 7ULP uCOM,imx7ulpea-ucom
 :ref:`NXP i.MX 8M Mini EVK <ref-rm_board_imx8mmevk>`,imx8mm-lpddr4-evk
 :ref:`NXP i.MX 8M Mini EVK with secure boot enabled <ref-rm_board_imx8mmevk>`,imx8mm-lpddr4-evk-sec
 :ref:`NXP i.MX 8M Quad EVK <ref-rm_board_imx8mqevk>`,imx8mq-evk
