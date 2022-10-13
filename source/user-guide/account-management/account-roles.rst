@@ -3,6 +3,8 @@
 Factory Account Roles
 =====================
 
+A role consists of set permission levels for **account management** that a *member* of a FoundriesFactory gets assigned.
+
  .. csv-table:: Roles and Permission Summary
    :header: "Role", "Edit Members", "Manage Teams", "Subscription/Billing", "Manage PKI", "Create Waves"
 
@@ -11,10 +13,6 @@ Factory Account Roles
    "Accounting", , "X", , ,
    "Member", , , , ,
    
-Managing and utilizing a Factory various *roles*, regardless of the number of members;
-
-
-A role consists of set permission levels for **account management** that a *member* of a FoundriesFactory gets assigned.
 There are four roles available. The two core roles being:
 
 * **Member**: Default when adding new users, with no permissions.
