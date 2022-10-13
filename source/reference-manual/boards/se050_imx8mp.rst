@@ -1,5 +1,5 @@
-i.MX 8MPlus Evaluation Kit with SE050ARD
-========================================
+i.MX 8M Plus Evaluation Kit with SE050ARD
+=========================================
 
 This document walks a developer through the steps of installing a
 FoundriesFactory image with the SE050 hardware enabled onto the NXP
