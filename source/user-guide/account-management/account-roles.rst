@@ -3,36 +3,37 @@
 Factory Account Roles
 =====================
 
- 
-Managing and utilizing a Factory  various *roles*, regardless the number of members;
+ .. csv-table:: Roles and Permission Summary
+   :header: "Role", "Edit Members", "Manage Teams", "Subscription/Billing", "Manage PKI", "Create Waves"
+
+   "Owner", "X", "X", "X", "X", "X"
+   "Admin", "X", "X", ,"X", "X"
+   "Accounting", , "X", , ,
+   "Member", , , , ,
+   
+Managing and utilizing a Factory various *roles*, regardless of the number of members;
 
 
 A role consists of set permission levels for **account management** that a *member* of a FoundriesFactory gets assigned.
+There are four roles available. The two core roles being:
 
 * **Member**: Default when adding new users, with no permissions.
 * **Owner**: The user account that created the factory has the initial "Owner" role, with full permission to:
   
   - add and update members
   - manage teams
-  - manage the Factory subscription plan.
+  - manage the Factory subscription plan
+  - manage the Factory's Public Key Infrastructure (PKI) and create Waves.
+  
+The remaining two each get a subset of the **Owner** permissions.
 
-The remaining two each get a subset of the Owner permissions.
-
-* **Admin**: Add and update members, and :ref:`manage teams <ref-team-based-access>`.
+* **Admin**: Add and update members, :ref:`manage teams <ref-team-based-access>`, manage PKI, and create Waves.
 * **Accounting** limited to managing the :ref:`Factory plan <ref-subscription-and-billing>`.
 
 .. tip::
     No limits exist on how many members can share a role.
-    For example, more than one member can have the owner role.
-    However,a single member has only one role at a time.
-
-.. csv-table:: Roles and Permission Summary
-   :header: "Role", "Edit Members", "Manage Teams", "Subscription/Billing", 
-
-   "Owner", "X", "X", "X"
-   "Admin", "X", "X",
-   "Accounting", , "X"
-   "Member", , ,
+    For example, more than one member can have the **Owner** role.
+    However, a single member has only one role at a time.
 
 
 How it Works: Walk Through
@@ -50,7 +51,7 @@ The owner then sends invites via the :guilabel:`Member` tab on their Factory pag
 
 On creating an account and accepting the invitation, members have no account management permissions.
 
-From the :guilabel:`Member` tab, the owner selects members from the table, and clicks on :guilabel:`role...`,
+From the :guilabel:`Member` tab, the owner selects members from the table, and clicks on :guilabel:`Role...`,
 and assigns the desired role:
 
 .. figure:: /_static/userguide/account-management/member-list.png
