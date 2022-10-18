@@ -8,7 +8,7 @@ WIC Image Installer
  .. note::
 
   Only EFI compatible systems are currently supported by the image
-  installer (e.g. intel-corei7-64, n1sdp).
+  installer (e.g. intel-corei7-64, generic-arm64).
 
 To generate a WIC based image installer, switch the default ``WKS_FILE:sota``
 definition for your target machine to ``image-efi-installer.wks``::
@@ -17,8 +17,8 @@ definition for your target machine to ``image-efi-installer.wks``::
   # WIC-based installer for the intel-corei7-64 target
   WKS_FILE:intel-corei7-64:sota = "image-efi-installer.wks.in"
 
-  # WIC-based installer for the n1sdp target
-  WKS_FILE:n1sdp:sota = "image-efi-installer.wks.in"
+  # WIC-based installer for the generic-arm64 target
+  WKS_FILE:generic-arm64:sota = "image-efi-installer.wks.in"
 
 As WIC is only capable of consuming one single WKS file (even if multiple are
 defined via WKS_FILES), this will force the build system to only generate
