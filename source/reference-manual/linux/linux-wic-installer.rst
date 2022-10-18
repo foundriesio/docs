@@ -57,7 +57,7 @@ from your own Factory CI run, then run Qemu with the following arguments::
       -device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd \
       -drive if=none,id=hd2,file=disk.img,format=raw -device scsi-hd,drive=hd2 \
       -drive if=pflash,format=qcow2,file=ovmf.secboot.qcow2 -no-reboot \
-      -nographic -cpu kvm64 -enable-kvm -m 1024 -serial mon:stdio -serial null
+      -nographic -m 1024 -serial mon:stdio -serial null -cpu host -enable-kvm
 
 Now just follow the instructions provided by the installer in order to
 install the actual LmP image into ``disk.img``.
@@ -71,4 +71,7 @@ up again, but using ``disk.img`` as the primary block device::
       -drive if=none,id=hd,file=disk.img,format=raw \
       -device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd \
       -drive if=pflash,format=qcow2,file=ovmf.secboot.qcow2 \
-      -nographic -cpu kvm64 -enable-kvm -m 1024 -serial mon:stdio -serial null
+      -nographic -m 1024 -serial mon:stdio -serial null -cpu host -enable-kvm
+
+.. note::
+   If running qemu on a macOS (x86) host, replace ``-enable-kvm`` with ``-M accel=hvf``.
