@@ -7,13 +7,14 @@ EdgeLock® 2GO is an add-on service from NXP® that is integrated into Foundries
 The service enables the automated installation and secure storage of required keys, certificates, and credentials when the end device first connects to the internet.
 
 .. admonition:: Key Benefits
-   
+
    - enablement of manufacturing in an untrusted facility
    - reducing complexity and time required to secure devices on the manufacturing line
    - simplified management of keys and certificates for devices and fleets in the field.
-   
+
 EdgeLock 2GO requires that the device hardware includes an NXP SE05x hardware security element, or uses an i.MX 8ULP or 9 series SoC.
 We offer a free evaluation of the service on the `i.MX 8M Plus EVK <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/evaluation-kit-for-the-i-mx-8m-plus-applications-processor:8MPLUSLPD4-EVK>`_ with a connected SE050 evaluation, or on the Arduino Portenta X8 (early Q4 2022).
+
 
 Prerequisites
 -------------
@@ -238,5 +239,10 @@ https://api.foundries.io/ota/
 You may also access the full EdgeLock 2GO API via a reverse proxy:
 
  ``https://api.foundries.io/ota/factories/<factory>/el2g-proxy/``
+
+API documentation links:
+
+ * `Developer Guide <https://cdn.foundries.io/el2go/AN12642_EdgeLock_2GO_Developer_Guide_for_Foundries.io_users.pdf>`_
+ * `OpenAPI Swagger <https://cdn.foundries.io/el2go/el2go-managed-api-gateway-api-58.45.0.yaml>`_
 
 The default FoundriesFactory EdgeLock 2GO implementation provides a free of charge evaluation for 30 days. Once enabled for commercial use the standard package limits usage to 50,000 devices per subscription year and 2x key pairs and 2x X.509 certificates per device - i.e. the FoundriesFactory key pair and certificate, and one additional set for authentication to a third party service such as AWS. If you require additional devices, or more key pairs per device, please contact us.
