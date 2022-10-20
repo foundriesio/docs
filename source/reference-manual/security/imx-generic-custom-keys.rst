@@ -36,19 +36,33 @@ configures the board to only boot signed images.
 
     export KEY_FILE=/path-to-key-files/<efusefile>
 
-3. Generate the script to fuse the board
+3. Generate the scripts to fuse and close the board
 
 .. prompt:: bash host:~$
 
       ./lmp-tools/security/<soc>/gen_fuse.sh -s $KEY_FILE -d ./fuse.uuu
-
-4. Generate the script to close the board
-
-.. prompt:: bash host:~$
-
       ./lmp-tools/security/<soc>/gen_close.sh -s $KEY_FILE -d ./close.uuu
 
-5. Install the scripts to the ``meta-subscriber-overrides``:
+Where ``<soc>`` can be found in the table below:
+
+.. list-table:: SoCs covered by each ``<soc>`` folder
+   :header-rows: 1
+   :align: center
+
+   * - SoC
+     - <soc> folder
+   * - imx6qdl and variants
+     - imx6
+   * - imx6ul, imx6ull
+     - imx6ul
+   * - imx7ulp
+     - imx7ulp
+   * - imx8mq, imx8mm
+     - imx8m
+   * - imx8mn, imx8mp
+     - imx8mn_imx8mp
+
+4. Install the scripts to the ``meta-subscriber-overrides``:
 
 .. prompt:: bash host:~$
 
@@ -61,7 +75,7 @@ The content of ``mfgtool-files_%.bbappend`` should be::
 
     FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-6. Inspect the changes and push it accordingly
+5. Inspect the changes and push it accordingly
 
 .. prompt:: bash host:~$
 
