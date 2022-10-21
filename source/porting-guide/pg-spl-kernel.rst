@@ -84,3 +84,46 @@ Start from the BSP kernel fragment from a close reference board, copy
 over those files relevant to the reference board, change the file name,
 and review the content configurations while reviewing the schematics or
 a list of needed configurations.
+
+Adding a New Kernel Driver
+--------------------------
+
+The recommended way to add a new driver or module to the Linux kernel source
+code is by creating a recipe file for this module under
+``recipes-kernel/kernel-modules/``:
+
+.. prompt:: text
+
+    recipes-kernel/kernel-modules/
+    └── <module>
+        ├── <module>
+        │   ├── COPYING
+        │   ├── Makefile
+        │   ├── <module>.c
+        │   └── <module>.h
+        └── <module>_<pv>.bb
+
+Where ``<module>_<pv>.bb`` is:
+
+.. prompt:: text
+
+    SUMMARY = "Module summary"
+    LICENSE = "GPLv2"
+    LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e"
+
+    inherit module
+
+    SRC_URI = " \
+      file://Makefile \
+      file://<module>.c \
+      file://<module>.h \
+      file://COPYING \
+    "
+
+    S = "${WORKDIR}"
+
+    KERNEL_MODULE_AUTOLOAD:append = "<module>"
+
+Make sure to provide the source code and header for the new module, as well as
+the license and Makefile. Also make sure to adjust the provided values as needed
+by the recipe (``LICENSE``, ``PV``).
