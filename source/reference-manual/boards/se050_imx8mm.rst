@@ -1,9 +1,10 @@
-i.MX 8M Mini Evaluation Kit with SE050ARD
-=========================================
+i.MX 8M Mini/Nano Evaluation Kit with SE050ARD
+==============================================
 
 This document will walk a developer through the steps of installing a
 FoundriesFactory image with the SE050 hardware enabled onto the NXP
-``imx8mmevk`` that is connected to the NXP OM-SE050ARD development platform.
+``imx8mm-lpddr4-evk`` or ``imx8mn-ddr4-evk`` that is connected to the NXP
+OM-SE050ARD development platform.
 
 .. note::
     An image created in the factory with the SE050 enabled will not boot on
@@ -19,13 +20,13 @@ connect the two boards as follows:
      :width: 400
      :align: center
 
-     imx8mmevk
+     8MMINI-BB
 
 .. figure:: /_static/boards/imx8mmevk_J1004_pinout.png
      :width: 400
      :align: center
 
-     imx8mmevk i2c pinout
+     8MMINI-BB I2C pinout
 
 .. figure:: /_static/boards/se050ard.png
      :width: 400
@@ -36,7 +37,7 @@ connect the two boards as follows:
 Connect the signals as follows:
 
 +----------+--------------+-------------+
-|  Signal  |  imx8mmevk   | OM-SE050ARD |
+|  Signal  |  8MMINI-BB   | OM-SE050ARD |
 +==========+==============+=============+
 | SCL      | J1004 pin 3  | J2 pin 10   |
 +----------+--------------+-------------+
@@ -50,7 +51,7 @@ Connect the signals as follows:
 Alternatively use J22 on OM-SE050ARD and connect as follows
 
 +---------+-------------+-------------+
-| Signal  | imx8mmevk   | OM-SE050ARD |
+| Signal  | 8MMINI-BB   | OM-SE050ARD |
 +=========+=============+=============+
 | SCL     | J1004 pin 3 | J22 pin 4   |
 +---------+-------------+-------------+
@@ -82,7 +83,8 @@ Installing the FoundriesFactory Image
 -------------------------------------
 
 Download the images that have the SE050 enabled from the factory following
-the instructions in :ref:`ref-rm_board_imx8mmevk`.
+the instructions in :ref:`ref-rm_board_imx8mmevk` or
+:ref:`ref-rm_board_imx8mn-ddr4-evk` depending on the hardware used.
 
 .. note::
     A reference on the needed changes to enable the SE050 middleware can be

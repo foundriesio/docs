@@ -43,6 +43,7 @@ enabled does not boot on boards without the SE05X properly attached.
     Please be aware that at this moment only:
 
     * ``imx6ullevk``
+    * ``imx8mn-ddr4-evk``
     * ``imx8mm-lpddr4-evk``
     * ``imx8mp-lpddr4-evk``
     * ``stm32mp15-disco``
