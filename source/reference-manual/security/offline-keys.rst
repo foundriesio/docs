@@ -35,10 +35,15 @@ This only needs to be done **once** to gather the root keys offline. It
 will gather the keys offline and make a singular, first, rotation at
 the same time.
 
-This can be done in fioctl with::
+.. note:: Factory owners that received the TUF keys tarball via email at
+    Factory creation (former way) and have not downloaded/rotated the initial
+    keys can proceed with the initial rotation as described below. The email can
+    be ignored. Further rotations can also follow the steps described in this
+    section.
+
+The initial rotation can be done in ``fioctl`` with::
 
    fioctl keys rotate-root --initial /absolute/path/to/root.keys.tgz
-
 
 .. note:: At this point, the contents of the tarball are as described
    below.
@@ -47,10 +52,10 @@ At this point the only copy of the Factory's root private key is in
 this file. This file **cannot be lost** or it will be impossible
 to make future key updates to the Factory.
 
-Any further root key rotations can be done with the following command::
+Any further root key rotations, including cases where the root key has been
+compromised, can be done with the following command::
 
   fioctl keys rotate-root /absolute/path/to/root.keys.tgz
-
 
 .. note:: At this point, the tarball should be backed up as described
    below.
