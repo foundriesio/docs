@@ -9,6 +9,7 @@ FoundriesFactory
    factory-definition
    Fioctl <fioctl/index.rst>
    Factory Sources <factory-sources.rst>
+   sboms
    api-access
    ../linux/linux-layers
    ci-webhooks
