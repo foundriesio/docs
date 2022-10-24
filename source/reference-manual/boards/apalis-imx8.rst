@@ -3,7 +3,7 @@
 Apalis iMX8 with the Ixora Carrier Board
 ========================================
 
-.. include:: apalis-imx8-prepare.rst
+.. include:: imx8-prepare.rst
 
 .. include:: apalis-ixora-recovery.rst
 
