@@ -26,3 +26,4 @@ Find below the instructions on how to flash the supported boards.
    stm32mp15-eval
    x86
    versal
+   uz3eg-iocc
