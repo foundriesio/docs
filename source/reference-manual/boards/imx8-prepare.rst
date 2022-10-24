@@ -25,9 +25,9 @@ Factory.
             :width: 769
             :align: center
 
-#. Extract the file ``lmp-factory-image-apalis-imx8.wic.gz``::
+#. Extract the file ``lmp-factory-image-<machine-name>.wic.gz``::
 
-      gunzip lmp-factory-image-apalis-imx8.wic.gz
+      gunzip lmp-factory-image-<machine-name>.wic.gz
 
 #. Expand the **run** in the :guilabel:`Runs` section which corresponds
    with the name of the board mfgtool-files and **download the tools for that
@@ -35,9 +35,9 @@ Factory.
 
    E.g: ``mfgtool-files-<machine-name>.tar.gz``
 
-#. Download and extract the file ``mfgtool-files-apalis-imx8.tar.gz``::
+#. Download and extract the file ``mfgtool-files-<machine-name>.tar.gz``::
 
-      tar -zxvf mfgtool-files-apalis-imx8.tar.gz
+      tar -zxvf mfgtool-files-<machine-name>.tar.gz
 
 #. Organize all the files like the tree below::
 
