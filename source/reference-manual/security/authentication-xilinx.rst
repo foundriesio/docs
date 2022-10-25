@@ -240,8 +240,7 @@ For more information on registering the PUF and how it is used by OP-TEE for gen
    https://github.com/Xilinx/embeddedsw/tree/master/lib/sw_services/xilskey
 
 .. _documentation:
-   https://github.com/Xilinx/embeddedsw/blob/master/lib/sw_services/xilskey/doc/xilskey.pdf
-
+   https://docs.xilinx.com/r/en-US/oslib_rm/Xilinx-BSP-and-Libraries-Overview
 .. _XAPP1319:
    https://www.xilinx.com/support/documentation/application_notes/xapp1319-zynq-usp-prog-nvm.pdf
 
