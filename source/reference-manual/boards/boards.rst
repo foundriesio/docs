@@ -28,3 +28,4 @@ Find below the instructions on how to flash the supported boards.
    x86
    versal
    uz3eg-iocc
+   kv260
