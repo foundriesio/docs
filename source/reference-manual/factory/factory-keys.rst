@@ -10,45 +10,17 @@ listed here as it is not an online key and is not used during the
 FoundriesFactory build.
 
 When a FoundriesFactory is created, by default two set of keys are created under
-``lmp-manifest`` repository. The key set under ``conf/keys`` is a copy of the
-default LmP public keys. The set under ``factory-keys`` is created during the
-FoundriesFactory creation and is unique for that Factory.
+``lmp-manifest`` repository:
+
+* ``conf/keys``: The key set is a copy of the default LmP public keys.
+* ``factory-keys``: The key set is created during the FoundriesFactory creation
+  and is unique for that Factory.
 
 .. warning::
 
         FoundriesFactories created prior to **v83** do not have the ``factory-keys``
         directory with the set of keys and certificates. In this case, the commands
         can be used to create the files.
-
-The directory structure shown below:
-
-   .. parsed-literal::
-        lmp-manifest/
-        ├── conf
-        │   ├── keys
-        │   │   ├── dev.crt
-        │   │   ├── dev.key
-        │   │   ├── opteedev.crt
-        │   │   ├── opteedev.key
-        │   │   ├── privkey_modsign.pem
-        │   │   ├── spldev.crt
-        │   │   ├── spldev.key
-        │   │   ├── ubootdev.crt
-        │   │   ├── ubootdev.key
-        │   │   ├── x509.genkey
-        │   │   └── x509_modsign.crt
-        │   └── local.conf
-        ├── factory-keys
-        │   ├── opteedev.crt
-        │   ├── opteedev.key
-        │   ├── privkey_modsign.pem
-        │   ├── spldev.crt
-        │   ├── spldev.key
-        │   ├── ubootdev.crt
-        │   ├── ubootdev.key
-        │   └── x509_modsign.crt
-
-
 
 A pair is composed by a certificate (``*.crt``) and a key (``*.key``) file.
 
@@ -68,7 +40,35 @@ The file ``x509.genkey`` is a configuration file used for creating
 format, and is used for signing Linux Kernel Modules. This is used by
 configuring the variable ``MODSIGN_PRIVKEY``.
 
-Replacing the initial keys from factory
+The directory structure shown below:
+
+   .. parsed-literal::
+        lmp-manifest/
+        ├── conf
+        │   ├── keys
+        │   │   ├── dev.crt
+        │   │   ├── dev.key
+        │   │   ├── opteedev.crt
+        │   │   ├── opteedev.key
+        │   │   ├── privkey_modsign.pem
+        │   │   ├── spldev.crt
+        │   │   ├── spldev.key
+        │   │   ├── ubootdev.crt
+        │   │   ├── ubootdev.key
+        │   │   ├── x509.genkey
+        │   │   └── x509_modsign.crt
+        │   └── local.conf
+        ├── factory-keys
+        │   ├── opteedev.crt
+        │   ├── opteedev.key
+        │   ├── privkey_modsign.pem
+        │   ├── spldev.crt
+        │   ├── spldev.key
+        │   ├── ubootdev.crt
+        │   ├── ubootdev.key
+        │   └── x509_modsign.crt
+
+How to rotate the FoundriesFactory keys
 ---------------------------------------
 
 Each FoundriesFactory is created with a unique key set, however it is highly
@@ -79,31 +79,6 @@ recommended to rotate the keys as needed. The suggestion is to rotate them each
   One of the aspects that can contribute to a secure system is to often rotate
   the used keys. So, it is highly recommended to rotate the keys each 6 to 24
   months.
-
-.. tip::
-  The file name for each key pair can be changed.
-
-  The variables from ``<factory>/meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
-  can be redefined to change filenames or paths, as needed. Those variables are shown below:
-
-
-  .. prompt::
-
-     MODSIGN_KEY_DIR = "${TOPDIR}/conf/factory-keys"
-     UBOOT_SIGN_KEYDIR ?= "${TOPDIR}/conf/factory-keys"
-     OPTEE_TA_SIGN_KEY ?= "${TOPDIR}/conf/factory-keys/opteedev.key"
-
-  Some other variables can be added to that file in order to further customize
-  the file name or path for the used keys:
-
-  .. prompt::
-
-     #filename for the key/certificate for kernel modules
-     MODSIGN_PRIVKEY ?= "${MODSIGN_KEY_DIR}/privkey_modsign.pem"
-     MODSIGN_X509 ?= "${MODSIGN_KEY_DIR}/x509_modsign.crt"
-
-     #filename for U-Boot key/certificate
-     UBOOT_SIGN_KEYNAME ?= "ubootdev"
 
 In the next sections, the command line on how to create the key pair for U-Boot,
 OP-TEE and Linux Kernel Modules. Assuming the ``lmp-manifest`` repository is
@@ -189,5 +164,19 @@ as shown in the following command:
 .. tip::
         Don't forget to push the new keys to get it included in the next CI
         build.
+
+.. tip::
+  The file name for each key pair can be changed by changing variables from
+  ``<factory>/meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
+  as shown below:
+
+  .. prompt::
+
+     #filename for the key/certificate for kernel modules
+     MODSIGN_PRIVKEY ?= "${MODSIGN_KEY_DIR}/privkey_modsign.pem"
+     MODSIGN_X509 ?= "${MODSIGN_KEY_DIR}/x509_modsign.crt"
+
+     #filename for U-Boot key/certificate
+     UBOOT_SIGN_KEYNAME ?= "ubootdev"
 
 .. _Linux Kernel documentation: https://www.kernel.org/doc/html/v5.0/admin-guide/module-signing.html
