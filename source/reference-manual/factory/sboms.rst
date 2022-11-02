@@ -10,6 +10,9 @@ SBOMs are foundational to understanding:
 
 The FoundriesFactory SBOM feature extracts the SBOM data and analyzes it according to your needs.
 
+.. important::
+   `Per our terms and conditions <https://foundries.io/company/terms/>`_: FoundriesFactory build SBOMs (“the SBOM data”) are provided for your use and are generated from SPDX metadata in all project source code files. Responsibility for open source license compliance rests with you. In no event shall Foundries.io Limited be liable for any claim, damages or other liability, whether in an action of contract, tort or other legal theory, arising from, out of, or in connection with the use of the SBOM data.
+
 SBOMs and Builds
 ----------------
 
