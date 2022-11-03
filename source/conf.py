@@ -347,7 +347,9 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 # Config for sphinx-reredirects, maps source: target, target path is relative to source.
 redirects = {
-     "reference-manual/factory/team-based-access": "../../user-guide/account-management/team-based-access.html"}
+     "reference-manual/factory/team-based-access": "../../user-guide/account-management/team-based-access.html",
+     "reference-manual/factory/factory-keys": "../../reference-manual/security/factory-keys.html"
+     }
 
 # Make external links open in a new tab.
 # https://stackoverflow.com/questions/25583581/add-open-in-new-tab-links-in-sphinx-restructuredtext

@@ -14,5 +14,4 @@ FoundriesFactory
    ../linux/linux-layers
    ci-webhooks
    event-queues
-   factory-keys
    data-retention
