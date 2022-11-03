@@ -10,6 +10,7 @@ Security
    boot-software-updates
    ota-security
    secure-elements/index
+   factory-keys
 
 
 Overview
