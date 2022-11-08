@@ -3,7 +3,7 @@
 Factory Account Roles
 =====================
 
-A role consists of set permission levels for **account management** that a *member* of a FoundriesFactory gets assigned.
+A role consists of permission levels for **account management** you assign to a *member* of your Factory.
 
  .. csv-table:: Roles and Permission Summary
    :header: "Role", "Edit Members", "Manage Teams", "Subscription/Billing", "Manage PKI", "Create Waves"
@@ -60,4 +60,3 @@ From here roles can be changed anytime.
 
 .. seealso::
    :ref:`Team Based Factory Access <ref-team-based-access>` for permissions related to development and device management.
-  
