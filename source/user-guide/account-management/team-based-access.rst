@@ -13,12 +13,12 @@ Factory **Teams** is how FoundriesFactory enables you to control access.
 
 A Team is comprised of:
 
- * **Access control** - What :ref:`scope <ref-scopes>` is granted to
+ * **Access control** - What :ref:`scopes <ref-scopes>` are granted to
    the team, e.g. ``source:read``.
 
  * **Members** - What users belong to the team.
 
-Once a user is assigned a team, their access will be limited to the scope granted to that team. 
+Once a user is assigned a team, their access will be limited to the scopes granted to that team. 
 
 .. important::
    It may take a moment for changes to scope/teams to take effect.
