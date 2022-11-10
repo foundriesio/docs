@@ -2,8 +2,8 @@
 
 .. _ref-secure-boot-imx-ahab:
 
-Secure Boot on i.MX 8 and i.MX 8X Families using AHAB
-=====================================================
+Secure Boot on i.MX 8/8X Families using AHAB including 8QM
+==========================================================
 
 The i.MX8 and i.MX8x family of applications processors introduce a secure boot concept  which differs
 from HABv4.  Due to the multi-core architecture the Security Controller (SECO) and System Control Unit (SCU)
