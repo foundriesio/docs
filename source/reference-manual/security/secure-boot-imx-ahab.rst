@@ -5,8 +5,8 @@
 Secure Boot on i.MX 8/8X Families using AHAB including 8QM
 ==========================================================
 
-The i.MX8 and i.MX8x family of applications processors introduce a secure boot concept  which differs
-from HABv4.  Due to the multi-core architecture the Security Controller (SECO) and System Control Unit (SCU)
+The i.MX 8 and i.MX 8X families of applications processors introduce a secure boot concept which differs
+from HABv4 used on i.MX 6/7/8M families. Due to the multi-core architecture the Security Controller (SECO) and System Control Unit (SCU)
 are heavily involved in the secure boot process, comparing to HABv4, where BootROM (running on A-core) is fully
 responsible for that.
 
@@ -16,12 +16,15 @@ AHAB Architecture Overview
 The Advanced High Assurance Boot (AHAB) feature as well as HABv4 relies on digital signatures to prevent
 unauthorized software execution during the device boot sequence.
 
-In i.MX8 and i.MX8x families the System Control Unit (SCU) is responsible to interface with the boot media, managing
+In i.MX 8 and i.MX 8X families the System Control Unit (SCU) is responsible to interface with the boot media, managing
 the process of loading the firmware and software images in different partitions of the SoC. The Security Controller (SECO)
 is responsible to authenticate the images and authorize the execution of them.
 
 How to Secure the Platform
 --------------------------
+
+.. note::
+    This page illustrates how the AHAB Secure Boot process works, and provides background information for our :ref:`ref-secure-machines` implementation for better understanding. We recommend fusing and closing a board following our :ref:`ref-secure-machines` guide, where some steps described here are omitted and handled in our code for simpler and safer operations.
 
 The first step is to generate the PKI tree and commit the fuse table to the hardware.
 
@@ -54,10 +57,12 @@ can be inspected by executing the ``print_fuses`` script in that same directory.
 
 The Security Reference Manual for your specific SoC indicates which fuses need to be programed with the SRK fuse information.
 
-i.MX8QM fusing
+i.MX 8QM fusing
 --------------------------
 
-On the i.MX8QM SoC fuses are stored in fuse bank 0, words 722 to 737::
+.. note:: The values shown in this section are just examples of our standard LmP AHAB keys and are not meant for production. Fuses cannot be changed after the first write.
+
+On the i.MX 8QM SoC fuses are stored in fuse bank 0, words 722 to 737::
 
         => fuse prog -y 0 722 0x7E90F8D6
         => fuse prog -y 0 723 0xE1020512
@@ -76,7 +81,7 @@ On the i.MX8QM SoC fuses are stored in fuse bank 0, words 722 to 737::
         => fuse prog -y 0 736 0x6E0B791C
         => fuse prog -y 0 737 0x6A558134
 
-Alternatively, use the kernel to program SoC fuses using SDP via NXP's Universal Update Utility with a script as follows::
+Alternatively, you can program SoC fuses via SDP by using NXP's Universal Update Utility. This is shown in the following script::
 
         uuu_version 1.3.102
 
