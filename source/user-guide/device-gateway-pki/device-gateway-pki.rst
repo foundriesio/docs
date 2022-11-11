@@ -165,7 +165,7 @@ it can be extracted from the Device Gateway certificate (``tls-crt``)
 
 ::
 
-    curl --cacert factory_ca.pem --cert devices/offline-device/client.pem --key devices/offline-device/pkey.pem https://<device-gateway-ID>.ota-lite.foundries.io:8443/repo/targets.json | jq
+    curl --cacert factory_ca.pem --cert devices/offline-device/client.pem --key devices/offline-device/pkey.pem https://<device-gateway-ID>.ota-lite.foundries.io:8443/repo/1.root.json | jq
 
 It is worth noticing that the device is registered at the backend on the first request to Device Gateway in this case.
 
