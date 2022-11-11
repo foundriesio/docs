@@ -122,32 +122,38 @@ Secure Communication Protocol 03
 The SE05x has native support for Global Platform Secure Communication Protocol 03 which
 allows us to protect the integrity of end to end communications between the
 processor and the SE05x. All data sent to the SE05x is software encrypted and all
-data received decrypted in the TEE using a set of predefined keys shipped with
-the devices.
-
-These keys can be securely rotated. Once rotated, they are stored in the TEE secure
-file system.
+data received decrypted in the TEE using a set of session specific keys derived
+from predefined keys shipped with the devices.
 
 .. note::
-      We can choose whether to enable SCP03 right after boot with its default set of
-      keys or at a later time once the RPMB-FS (or REE-FS) are available so the
-      keys can be read from secure storage::
+       The user can select whether to enable SCP03 during secure world initialization
+       or at a later time from the normal world using the `scp03`_ command::
 
-	CFG_CORE_SE05X_SCP03_EARLY=y     : enables SCP03 with its default keys.
-	CFG_CORE_SE05X_SCP03_PROVISION=y : allows SCP03 rotation.
+	CFG_CORE_SE05X_SCP03_EARLY=y : enables SCP03 before the Normal World has booted.
+	CFG_SCP03_PTA=y              : allows SCP03 to be enabled from from the Normal World
 
+The predefined factory keys stored on the SE05X NVM (**static keys** from here
+on) are public and should therefore be rotated to a secret set of values from
+which session keys can be derived. 
 
-To trigger SCP03 key rotation, execute the following Pseudo Trusted
-Application from the REE: the `scp03 PTA`_. This is generally accessible via
-`libseteec`_ and from the u-boot `scp03`_ command.
+To avoid having to store new static keys - to reduce the surface attack and
+simplify the firmware upgrade process - the new set of keys will be derived in
+OP-TEE from its core secret: the Hardware Unique Key (HUK)
 
 .. warning::
-     If the secure database storing the SCP03 keys gets corrupted, the processor will
-     no longer be able to access the SE05x over an encrypted connection. Moreover, there is
-     no protocol defined to recover from this situation. This is why
-     we chose to derive the SCP03 static keys from the platform's Hardware Unique
-     Key so that they can be recreated in the Trust Zone on every boot.
+     Once the static SCP03 keys have been derived from the HUK and programmed
+     into the device's NVM the **HUK MUST NOT CHANGE**.
+     
+     It is equally critical that the HUK remains a **secret.**
 
+There are two different ways of rotating the SCP03 key: with and without user
+intervention from the Normal World.
+
+To rotate the static SCP03 keys from the Trust Zone before the Normal World is
+executing, the user should enable **CFG_CORE_SE05X_SCP03_PROVISION_ON_INIT=y**.
+
+To rotate the static SCP03 keys from the Normal World, the user should enable
+**CFG_CORE_SE05X_SCP03_PROVISION=y** and then use the `scp03`_ command.
 
 SE05x Non Volatile Memory
 -------------------------
@@ -204,18 +210,40 @@ database does not impose restrictions to the user.
           $ pkcs11-tool --module /usr/lib/libckteec.so.0.1 --keypairgen --key-type RSA:4096 --id 01 --token-label fio --pin 87654321 --label SE_7F000001 
 
 
-We developed a very simple PTA `SE05x Object Import Application`_ to interface
-to the TEE and gain access to the SE05x to obtain certificates. This application
-also includes a wrapper to import the keys using the mechanism described
-earlier.
+We have also developed a simple tool, the `SE05x Object Import Application`_,
+that interfaces to the TEE and gains access to the SE05x to import not only keys
+but also certificates.
 
-The *certificates* are retrieved in DER format using the import PTA and then
-written to the pkcs#11 token.
+The *certificates* are retrieved in DER format using the APDU interface
+presented by the driver and then written to the pkcs#11 token.
 
-.. code-block:: none
+The application uses the `libseteec`_ to send the APDUs to the secure element
+and `libckteec`_ to interface to the PKCS#11 implementation.
 
-      $ pkcs11-se05x-import --cert 0xf0000123 --id 45 --pin 87654321
+Find some usage examples in the note below. Be aware that in OP-TEE's PKCS#11
+implementation **each** PKCS#11 slot is indeed a token.
 
+.. note::
+      Import NXP SE051 Certficate with the id 0xf0000123 into OP-TEE
+      pkcs#11'aktualizr' token storage:
+      
+      .. code-block:: none
+		      
+          $ fio-se05x-cli --token-label aktualizr --import-cert 0xf0000123 --id 45 --label fio
+
+      Show NXP SE050 Certficate with the id 0xf0000123 on the console:
+      
+      .. code-block:: none
+		      
+          $ fio-se05x-cli --show-cert 0xf0000123 --se050
+      
+      Import NXP SE051 RSA:2048 bits key with the id 0xf0000123 into OP-TEE
+      pkcs#11 'aktualizr' token storage:
+      
+      .. code-block:: none
+		      
+          $ fio-se05x-cli --token-label aktualizr --import-key 0xf0000123 --id 45 --key-type RSA:2048 --pin 87654321
+      
 
 The following diagram succintly details the overall design:
 
@@ -225,12 +253,12 @@ The following diagram succintly details the overall design:
 
 
 
-To offer universal access to Secure Element we also
-developed and up-streamed an `apdu`_ based interface accessible via libseteec. This
-interface allows the normal world to send APDU frames to the SE05x using
+To offer universal access to Secure Element we developed and up-streamed this
+`apdu`_ based interface accessible via libseteec.
+This interface allows the normal world to send APDU frames to the SE05x using
 OP-TEE's SCP03 secure session.
 
-A python application that uses this interface is `ssscli`_, a tool developed by
+A python application that also uses this interface is `ssscli`_, a tool developed by
 NXP to provide direct access to its secure element:
 
 .. code-block:: none
@@ -263,19 +291,8 @@ NXP to provide direct access to its secure element:
       verify      verify Operation
 
 
-This diagram summarizes the options discussed:
-
-   .. figure:: /_static/se050-pks11-import-options.png
-      :align: center
-      :width: 7in
-
-
-
 .. _TEE pkcs#11 implementation:
    https://github.com/OP-TEE/optee_os/tree/master/ta/pkcs11
-
-.. _SE05x Object Import Application:
-    https://github.com/foundriesio/optee-se050-pkcs11-import
 
 .. _SE05x Plug & Trust Secure Element:
    https://www.nxp.com/docs/en/data-sheet/SE050-DATASHEET.pdf
@@ -316,11 +333,14 @@ This diagram summarizes the options discussed:
 .. _libseteec:
    https://github.com/OP-TEE/optee_client/commit/f4f54e5a76641fda22a49f00294771f948cd4c92
 
+.. _libckteec:
+   https://github.com/OP-TEE/optee_client/tree/master/libckteec
+   
 .. _ssscli:
    https://github.com/foundriesio/plug-and-trust-ssscli
 
 .. _SE05x Object Import Application:
-   https://github.com/foundriesio/optee-se050-pkcs11-import
+   https://github.com/foundriesio/fio-se05x-cli
 
 .. _apdu:
    https://github.com/OP-TEE/optee_client/blob/master/libseteec/src/pta_apdu.h
