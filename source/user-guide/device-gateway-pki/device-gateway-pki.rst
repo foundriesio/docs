@@ -152,7 +152,7 @@ Sign CSR and produce offline Device certificate
 
 ::
 
-    openssl x509 -req -in devices/offline-device/device-cert.csr -CAcreateserial -extfile devices/offline-device/device-cert.ext -CAkey local-ca.key -CA local-ca.pem -out devices/offline-device/client.pem
+    openssl x509 -req -in devices/offline-device/device-cert.csr -CAcreateserial -extfile devices/offline-device/device-cert.ext -CAkey local-ca.key -CA local-ca.pem -sha256 -out devices/offline-device/client.pem
 
 
 Check the generate offline Device key and certificate.
