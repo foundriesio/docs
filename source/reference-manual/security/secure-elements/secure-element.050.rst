@@ -144,7 +144,7 @@ OP-TEE from its core secret: the Hardware Unique Key (HUK)
      Once the static SCP03 keys have been derived from the HUK and programmed
      into the device's NVM the **HUK MUST NOT CHANGE**.
      
-     It is equally critical that the HUK remains a **secret.**
+     It is equally critical that the HUK remains a **secret**.
 
 There are two different ways of rotating the SCP03 key: with and without user
 intervention from the Normal World.
