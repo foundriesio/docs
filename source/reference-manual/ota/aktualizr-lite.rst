@@ -40,9 +40,11 @@ To view the daemon logs:
 Manual Mode
 -----------
 
-If you have disabled daemon mode, you can use ``aktualizr-lite`` manually from the command line to fetch updates and apply them. Manual mode can be useful for debugging, testing, or demoing a device.
+Disabling daemon mode is not recommended, but running ``aktualizr-lite`` manually can be useful for debugging, testing, or demoing a device.
 
 .. note:: Manual mode will require you to reboot your device to apply an update.
+
+.. note:: If ``aktualizr-lite`` default daemon mode does not fit your needs, the alternative is to create a :ref:`ug-custom-sota-client`.
 
 View Current Status
 ~~~~~~~~~~~~~~~~~~~
