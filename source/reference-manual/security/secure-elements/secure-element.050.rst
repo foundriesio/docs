@@ -212,7 +212,7 @@ database does not impose restrictions to the user.
 
 We have also developed a tool, the `SE05x Object Import Application`_.
 This tool interfaces with the TEE and gains access to the SE05x to import keys
- *and* certificates.
+*and* certificates.
 
 The *certificates* are retrieved in DER format using the APDU interface
 presented by the driver, and are then written to the pkcs#11 token.
