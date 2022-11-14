@@ -126,8 +126,8 @@ data received is then decrypted in the TEE using a set of session specific keys.
 These keys are derived from predefined keys which are shipped with the devices.
 
 .. note::
-       The user can select whether to enable SCP03 during secure world initialization
-       or at a later time from the normal world using the `scp03`_ command::
+       The user can select whether to enable SCP03 during the secure world initialization
+       or at a later time from the normal world by using the `scp03`_ command::
 
 	CFG_CORE_SE05X_SCP03_EARLY=y : enables SCP03 before the Normal World has booted
 	CFG_SCP03_PTA=y              : allows SCP03 to be enabled from the Normal World.
