@@ -218,7 +218,7 @@ The *certificates* are retrieved in DER format using the APDU interface
 presented by the driver, and are then written to the pkcs#11 token.
 
 The tool uses `libseteec`_ to send the APDUs to the secure element.
-and `libckteec`_ to interface to the PKCS#11 implementation.
+and `libckteec`_ to interface with the PKCS#11 implementation.
 
 Find some usage examples in the note below. Be aware that in OP-TEE's PKCS#11
 implementation **each** PKCS#11 slot is indeed a token.
