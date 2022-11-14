@@ -129,8 +129,8 @@ These keys are derived from predefined keys which are shipped with the devices.
        The user can select whether to enable SCP03 during secure world initialization
        or at a later time from the normal world using the `scp03`_ command::
 
-	CFG_CORE_SE05X_SCP03_EARLY=y : enables SCP03 before the Normal World has booted.
-	CFG_SCP03_PTA=y              : allows SCP03 to be enabled from from the Normal World
+	CFG_CORE_SE05X_SCP03_EARLY=y : enables SCP03 before the Normal World has booted
+	CFG_SCP03_PTA=y              : allows SCP03 to be enabled from the Normal World.
 
 The predefined factory keys stored on the SE05X NVM (**static keys** from here
 on) are public and should therefore be rotated to a secret set of values from
