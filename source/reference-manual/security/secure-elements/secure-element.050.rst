@@ -210,9 +210,9 @@ database does not impose restrictions to the user.
           $ pkcs11-tool --module /usr/lib/libckteec.so.0.1 --keypairgen --key-type RSA:4096 --id 01 --token-label fio --pin 87654321 --label SE_7F000001 
 
 
-We have also developed a simple tool, the `SE05x Object Import Application`_,
-that interfaces to the TEE and gains access to the SE05x to import not only keys
-but also certificates.
+We have also developed a tool, the `SE05x Object Import Application`_.
+This tool interfaces with the TEE and gains access to the SE05x to import keys
+ *and* certificates.
 
 The *certificates* are retrieved in DER format using the APDU interface
 presented by the driver and then written to the pkcs#11 token.
