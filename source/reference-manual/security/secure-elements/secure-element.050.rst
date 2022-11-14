@@ -133,7 +133,7 @@ These keys are derived from predefined keys which are shipped with the devices.
 	CFG_SCP03_PTA=y              : allows SCP03 to be enabled from the Normal World.
 
 The predefined factory keys stored on the SE05X NVM (**static keys** from here
-on) are public and should therefore be rotated to a secret set of values from
+on) are public and should therefore be rotated to a secret set from
 which session keys can be derived. 
 
 To avoid having to store new static keys - to reduce the surface attack and
