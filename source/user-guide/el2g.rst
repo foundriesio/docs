@@ -20,7 +20,7 @@ Prerequisites
 -------------
 
  * An :ref:`NXP SE05X secure element <ref-secure-elements>`
- * A FoundriesFactory that has been registered with EdgeLock 2GO. Please `contact our support team <https://foundriesio.atlassian.net/servicedesk/customer/portal/1/group/1/create/3>`_ or use Slack to arrange this.
+ * A FoundriesFactory that has been registered with EdgeLock 2GO. Please `contact our support team <https://foundriesio.atlassian.net/servicedesk/customer/portal/1/group/1/create/3>`_.
  * Access to your Factory PKI :ref:`root of trust <Root-of-trust>`.
 
 Enabling Auto-connect to Foundries.io
