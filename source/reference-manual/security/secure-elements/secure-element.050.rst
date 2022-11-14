@@ -122,8 +122,8 @@ Secure Communication Protocol 03
 The SE05x has native support for Global Platform Secure Communication Protocol 03 which
 allows us to protect the integrity of end to end communications between the
 processor and the SE05x. All data sent to the SE05x is software encrypted and all
-data received decrypted in the TEE using a set of session specific keys derived
-from predefined keys shipped with the devices.
+data received is then decrypted in the TEE using a set of session specific keys. 
+These keys are derived from predefined keys which are shipped with the devices.
 
 .. note::
        The user can select whether to enable SCP03 during secure world initialization
