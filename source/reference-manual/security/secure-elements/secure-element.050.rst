@@ -136,8 +136,8 @@ The predefined factory keys stored on the SE05X NVM (**static keys** from here
 on) are public and should therefore be rotated to a secret set from
 which session keys can be derived. 
 
-To avoid having to store new static keys - to reduce the surface attack and
-simplify the firmware upgrade process - the new set of keys will be derived in
+To avoid having to store new static keys — reducing the surface attack and
+simplifying the firmware upgrade process — the new set of keys will be derived in
 OP-TEE from its core secret: the Hardware Unique Key (HUK)
 
 .. warning::
