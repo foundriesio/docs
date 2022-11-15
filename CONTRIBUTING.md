@@ -29,6 +29,8 @@ git checkout -b spell-check-everything
 
 ## Working on Documentation
 
+For new pages, templates for tutorials, user guides, and reference manual pages are in `templates/`
+
 Use spelling and grammar checks and ask a technical writer if you have questions.
 Consult the [style guide](https://foundriesio.atlassian.net/wiki/spaces/ID/pages/2392067/Foundries.io+Style+and+Communication+Guide).
 
