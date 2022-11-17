@@ -100,7 +100,7 @@ created in the previous steps:
 
 .. note::
 
-   If the process of auto registration is following the fully detached mode, then API
+   If the process of auto registration is following the :ref:`ref-fully-detached` mode, then API
    token filled here can be a bogus value. It only needs this because otherwise the
    ``lmp-device-register`` will try to do the OAuth flow still.
 
