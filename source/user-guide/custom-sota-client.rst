@@ -14,13 +14,13 @@ can be written in C++ using the aktualizr-lite API_.
    https://github.com/foundriesio/aktualizr-lite/blob/master/include/aktualizr-lite/api.h
 
 
-Using the custom-sota-client
-----------------------------
+Using the custom-sota-client Example
+------------------------------------
 
-The meta-lmp layer includes a recipe_ that will run aktualizr-lite's
-example `SOTA client`_. This serves as a great starting place to
-experiment. Later, it can serve as an example to copy/paste into
-Factory specific recipe.
+We provide a `SOTA client`_ example in aktualizr-lite that serves as a great
+starting place to experiment. The **meta-lmp** layer includes a recipe_ that
+runs this example as the default SOTA client. Later, this serves as an example
+to copy/paste into a Factory specific recipe.
 
 .. _recipe:
    https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-sota/custom-sota-client
@@ -28,11 +28,8 @@ Factory specific recipe.
 .. _SOTA client:
    https://github.com/foundriesio/aktualizr-lite/tree/master/examples/custom-client-cxx
 
-Setting up the files
---------------------
-
-Users can build the custom client into their LmP image with a simple
-change to ``meta-subscriber-overrides.git``:
+Users can build this custom client into their LmP image with a small addition
+to ``meta-subscriber-overrides.git``:
 
 .. prompt:: bash host:~$
 
@@ -41,17 +38,21 @@ change to ``meta-subscriber-overrides.git``:
     echo 'SOTA_CLIENT = "custom-sota-client"' >> conf/machine/include/lmp-factory-custom.inc
 
 Forking the custom-sota-client
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The procedure for producing a factory-specific SOTA client can
-be by:
+Producing a factory-specific SOTA client can be done by:
 
- #. Create a Git repository with custom code. Copying the
-    ``examples/custom-client-cxx`` directory is a good place to start.
+ #. Creating a Git repository for your custom code. Copying the
+    `examples/custom-client-cxx`_ directory is a good place to start.
 
- #. Copy the ``custom-sota-client`` recipe from meta-lmp into the
-    factory's meta-subscriber-overrides.git's ``recipes-sota`` directory.
+ #. Copying the `custom-sota-client`_ recipe from **meta-lmp** into
+    ``meta-subscriber-overrides/recipes-sota``.
 
- #. Custom the ``custom-sota-client_git.bb`` Git references to point
-    at the new repository.
+ #. Changing the ``custom-sota-client_git.bb`` Git references (``SRC_URI``,
+    ``BRANCH``, ``SRCREV``) to point at your new sources.
 
+.. _examples/custom-client-cxx:
+   https://github.com/foundriesio/aktualizr-lite/tree/master/examples/custom-client-cxx
+
+.. _custom-sota-client:
+   https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-sota/custom-sota-client
