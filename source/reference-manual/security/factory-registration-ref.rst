@@ -16,6 +16,8 @@ Customers all have unique requirements, so Foundries.io created a
 `reference implementation`_ that customers can fork and modify to
 their liking. Here are some common ways to use this reference.
 
+.. _ref-fully-detached:
+
 Fully detached
 --------------
 In this scenario devices connect to a reference server instance on
