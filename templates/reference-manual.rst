@@ -51,6 +51,8 @@ You can have a sentence or two of what the example achieves.
 For example, a fully configured ``local.conf``,
 or a CLI tool showing  a common use-case of the tool.
 A walk-through/tutorial/how-to belongs in the user-guide.
+"A Reference Manual describes the tools from a toolbox,
+a User Guide describes how to use one tool from the toolbox."
 
 .. seealso::
    :ref: `related page <ref-page-lable>
