@@ -212,13 +212,19 @@ database does not impose restrictions to the user.
 
 We have also developed a tool, the `SE05x Object Import Application`_.
 This tool interfaces with the TEE and gains access to the SE05x to import keys
-*and* certificates.
+*and* certificates as well as listing and removing objects from the secure
+element non-volatile memory.
 
 The *certificates* are retrieved in DER format using the APDU interface
 presented by the driver, and are then written to the pkcs#11 token.
 
 The tool uses `libseteec`_ to send the APDUs to the secure element.
 and `libckteec`_ to interface with the PKCS#11 implementation.
+
+The `apdu`_ based interface in fact enables privileged user applications to
+access the Secure Element; it does so by allowing the normal world to send
+APDU frames that encode data and operations to the SE05x using OP-TEE's SCP03
+enabled secure session.
 
 Find some usage examples in the note below. Be aware that in OP-TEE's PKCS#11
 implementation **each** PKCS#11 slot is indeed a token.
@@ -243,7 +249,20 @@ implementation **each** PKCS#11 slot is indeed a token.
       .. code-block:: none
 		      
           $ fio-se05x-cli --token-label aktualizr --import-key 0xf0000123 --id 45 --key-type RSA:2048 --pin 87654321
+
+      List all objects in the device's Non Volatile Memory:
       
+      .. code-block:: none
+
+          $ fio-se05x-cli --list-objects
+
+      Delete OP-TEE created objects from the device's Non Volatile Memory (one specific object or all):
+
+      .. code-block:: none
+
+          $ fio-se05x-cli --delete-object 0x123456a1
+          $ fio-se05x-cli --delete-object all
+
 
 The following diagram succintly details the overall design:
 
@@ -252,14 +271,11 @@ The following diagram succintly details the overall design:
       :width: 6in
 
 
+A python application that also uses the APDU interface is `ssscli`_, a tool developed by
+NXP to provide direct access to its secure element. This tool might serve some
+purpose during development but it is not required on a deployed product (we
+advise users to deploy **fio-se05x-cli** and standard pkcs#11 tools instead).
 
-To offer universal access to Secure Element we developed and up-streamed this
-`apdu`_ based interface accessible via libseteec.
-This interface allows the normal world to send APDU frames to the SE05x using
-OP-TEE's SCP03 secure session.
-
-A python application that also uses this interface is `ssscli`_, a tool developed by
-NXP to provide direct access to its secure element:
 
 .. code-block:: none
 
