@@ -688,3 +688,33 @@ follow these steps:
     rm /var/sota/sql.db
 
 4. Then perform the registration again.
+
+
+NXP SE05X Secure Element and PKCS#11 Trusted Application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There are two memory limits to be aware of: the Secure Element's non-volatile
+memory and the built-time configurable PKCS#11 Trusted Application (TA) heap
+size.
+
+When RSA and EC keys are created using the TA, a request is sent to the Secure
+Element for the creation of those keys. On success, a key has been created in the
+Secure Element non volatile memory; the public key is then read back from the
+SE to the TA persistent storage while only a handle to the private key in the
+Secure Element is provided and stored by the TA.
+
+During that creation process the TA also keeps a copy of the key on its heap.
+
+This means that a system that chooses to create all of its keys during boot
+might run out of heap before running out of storage in the secure element.
+
+To avoid this issue, OP-TEE should be configured with a CFG_PKCS11_TA_HEAP_SIZE
+large enough that it allows the client to fill the SE NVM before an out of
+memory condition is raised by the TA (which would cause a secure world panic).
+
+An experimental way to validate the thresholds is simply to loop on RSA or EC
+key creation until it fails: if there is a panic or a PKCS#11 OOM fault,
+CFG_PKCS11_TA_HEAP_SIZE can be increased as there is still room in the SE NVM
+to store more of those keys.
+
+
