@@ -1,3 +1,5 @@
+.. _account-management:
+
 Factory & Account Management
 ============================
 This section covers topics related to using the FoundriesFactory UI.
