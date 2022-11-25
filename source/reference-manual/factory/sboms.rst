@@ -1,3 +1,5 @@
+.. _sbom:
+
 Software Bill of Materials
 ==========================
 
