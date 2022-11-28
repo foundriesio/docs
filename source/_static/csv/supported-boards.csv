@@ -1,6 +1,7 @@
 Device Name,MACHINE
 :ref:`Intel NUC8 <ref-rm_board_intel-corei7-64>`,intel-corei7-64
 :ref:`Intel x86-64 UEFI <ref-rm_board_intel-corei7-64>`,intel-corei7-64
+:ref:`NXP i.MX6 UL EVK <ref-rm_board_imx6ulevk>`,imx6ulevk
 :ref:`NXP i.MX6 ULL EVK <ref-rm_board_imx6ullevk>`,imx6ullevk
 :ref:`NXP i.MX6 ULL EVK with secure boot enabled <ref-rm_board_imx6ullevk>`,imx6ullevk-sec
 Embedded Artists i.MX 7ULP uCOM,imx7ulpea-ucom
