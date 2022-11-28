@@ -37,22 +37,36 @@ Linux microPlatform with Real-Time Linux Kernel
 -----------------------------------------------
 
 The recipe ``meta-lmp/meta-lmp-base/recipes-kernel/linux/linux-lmp-rt_git.bb``
-can be used for real-time linux, which is based on the ``linux-lmp`` recipe,
-but extended to include the PREEMPT_RT patch-set (updated along with stable
-kernel updates).
+or ``meta-lmp/meta-lmp-base/recipes-kernel/linux/linux-lmp-fslc-imx-rt_git.bb``
+can be used for real-time Linux.
+This is based on the ``linux-lmp`` recipe,
+but extended to include the ``PREEMPT_RT`` patch-set
+(updated along with stable kernel updates).
 
-At this moment only the ``intel-corei7-64`` machine configuration is supported.
+The instructions to change the default Linux kernel to real-time are
+described in the following sections.
+After the changes,
+build the Linux microPlatform image as usual.
 
 Building Linux microPlatform with linux-lmp-rt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Set the ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-rt`` in
-``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
+Set  ``PREFERRED_PROVIDER_virtual/kernel``
+to ``linux-lmp-rt``
+in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
 
     $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
     PREFERRED_PROVIDER_virtual/kernel:intel-corei7-64 = "linux-lmp-rt"
 
-Now just build the Linux microPlatform image as usual.
+Building Linux microPlatform with linux-lmp-fslc-imx-rt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Set ``PREFERRED_PROVIDER_virtual/kernel``
+to ``linux-lmp-fslc-imx-rt``
+in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
+
+    $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
+    PREFERRED_PROVIDER_virtual/kernel:mx6ull-nxp-bsp = "linux-lmp-fslc-imx-rt"
 
 Linux microPlatform with Linux upstream
 ---------------------------------------
