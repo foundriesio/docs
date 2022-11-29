@@ -222,7 +222,7 @@ The tool uses `libseteec`_ to send the APDUs to the secure element.
 and `libckteec`_ to interface with the PKCS#11 implementation.
 
 The `apdu`_ based interface in fact enables privileged user applications to
-access the Secure Element; it does so by allowing the normal world to send
+access the Secure Element. It does this by allowing the normal world to send
 APDU frames that encode data and operations to the SE05x using OP-TEE's SCP03
 enabled secure session.
 
