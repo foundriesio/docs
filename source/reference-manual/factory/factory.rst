@@ -6,6 +6,8 @@ FoundriesFactory
 **FoundriesFactory**: The set of tools, services, and support that enable a Factory and assist it
 throughout the device lifecycle.
 
+This section provides support for working with and customizing FoundriesFactory and the LmP.
+
 Topics that deal with how CI functions include :ref:`ref-factory-definition` and :ref:`ref-ci-webhooks`.
 
 :ref:`ref-fioctl` provides a helpful CLI tool for :ref:`ref-api-access`,
