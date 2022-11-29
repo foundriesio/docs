@@ -272,9 +272,9 @@ The following diagram succintly details the overall design:
 
 
 A python application that also uses the APDU interface is `ssscli`_, a tool developed by
-NXP to provide direct access to its secure element. This tool might serve some
-purpose during development but it is not required on a deployed product (we
-advise users to deploy **fio-se05x-cli** and standard pkcs#11 tools instead).
+NXP to provide direct access to its secure element. While it can serve a
+purpose during development, it is not required on a deployed product. We
+advise deploying with **fio-se05x-cli** and the standard pkcs#11 tools instead.
 
 
 .. code-block:: none
