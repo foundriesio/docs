@@ -700,7 +700,7 @@ size.
 When RSA and EC keys are created using the TA, a request is sent to the Secure
 Element for the creation of those keys. On success, a key is created in the
 Secure Element non volatile memory; the public key is then read back from the
-SE to the TA persistent storage while only a handle to the private key in the
+SE to the TA persistent storage —only a handle to the private key in the
 Secure Element is provided and stored by the TA.
 
 During that creation process the TA also keeps a copy of the key on its heap.
