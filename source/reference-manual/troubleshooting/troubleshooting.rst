@@ -694,7 +694,7 @@ NXP SE05X Secure Element and PKCS#11 Trusted Application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are two memory limits to be aware of: the Secure Element's non-volatile
-memory and the built-time configurable PKCS#11 Trusted Application (TA) heap
+memory, and the built-time configurable PKCS#11 Trusted Application (TA) heap
 size.
 
 When RSA and EC keys are created using the TA, a request is sent to the Secure
