@@ -708,7 +708,7 @@ During that creation process the TA also keeps a copy of the key on its heap.
 This means that a system that chooses to create all of its keys during boot
 might run out of heap before running out of storage in the secure element.
 
-To avoid this issue, OP-TEE should be configured with a CFG_PKCS11_TA_HEAP_SIZE
+To avoid this issue, OP-TEE should be configured with ``CFG_PKCS11_TA_HEAP_SIZE``
 large enough that it allows the client to fill the SE NVM before an out of
 memory condition is raised by the TA (which would cause a secure world panic).
 
