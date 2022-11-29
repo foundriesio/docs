@@ -12,6 +12,7 @@ However, they do need to connect to external services for device management:
 ota-lite.foundries.io*   TCP           8443          :ref:`Device gateway <ref-device-gateway>`
 ostree.foundries.io*     TCP           8443          OSTree server for updates
 hub.foundries.io         TCP           443           Docker container registry
+hub-auth.foundries.io    TCP           443           Docker registry authentication service
 storage.googleapis.com   TCP           443           OSTree and Docker redirects
 time[1234].google.com    UDP           123           Primary `NTP servers`_
 time.cloudflare.com      UDP           123           Last fallback NTP server
