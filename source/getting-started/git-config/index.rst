@@ -4,10 +4,9 @@ Configuring Git
 ===============
 
 Pushing to your repositories with :ref:`FoundriesFactory <ref-factory-definition>`
-is as simple as configuring Git on your computer to use the :ref:`api token <ref-api-access>`
-you generated during :ref:`account creation <gs-signup>`.
-Afterwards, Git will know when you are connecting to ``source.foundries.io`` and
-will use this token to authenticate you with our Git server.
+is as simple as configuring Git on your computer to use :ref:`ref-fioctl` as a credential helper.
+Afterwards, Git will know when you are connecting to ``source.foundries.io`` and it
+will use :ref:`ref-fioctl` as the helper to authenticate you when utilizing ``git`` commands.
 
 Source Code Access Token
 ########################
@@ -21,29 +20,35 @@ in the drop-down list.
 
    FoundriesFactory Settings
 
-Select the tab :guilabel:`Tokens` and create a new **Api Token** by clicking on 
-:guilabel:`+ New Token`. Complete by adding a **Description** and an
+Select the tab :guilabel:`Application Credentials` and create a new **Application Credential** by clicking 
+on :guilabel:`+ New Credentials`. Complete by adding a **Description** and an
 **Expiration date** and select :guilabel:`next`.
 
-Check the :guilabel:`Use for source code access` box and select your
-**Factory**. You can later revoke this access and set up a new  token once you
+Check the :guilabel:`Use for tools like fioctl` box and select your
+**Factory**. You can later revoke this access and set up a new application credential once you
 are familiar with the :ref:`ref-api-access`.
 
-.. figure:: /_static/git-config/token.png
+.. figure:: /_static/git-config/fioctl_token.png
    :width: 500
    :align: center
 
-   Token for source code access
+   Application credential for source code access
+
+.. important::
+   One can also add the ``source:read-update`` scope to any existing Application Credential being used already.
 
 Git Setup
 #########
 
-In the following command, replace ``YOUR_TOKEN`` with your access token. An
-example token looks like this: ``ebAYLaManEgNdRnWKfnwNDJjU45c5LJPmWsYw78z``
+Run the following command to add the relevant entries to the Git configuration:
 
 .. prompt:: bash host:~$, auto
 
-   host:~$ git config --global http.https://source.foundries.io.extraheader "Authorization: basic $(echo -n YOUR_TOKEN | openssl base64)"
+   host:~$ sudo fioctl configure-git
+
+.. important::
+   The reason it needs to be run as ``sudo`` instead of directly as the ``root`` user is
+   because it needs to have privileges to create a symlink in the same directory as where ``git`` is located.
 
 Verify that this has been successful by cloning a repository from your Factory,
 such as your ``containers.git`` repo. Replace ``<factory>`` with your
@@ -55,6 +60,6 @@ FoundriesFactory name:
 
 .. tip::
 
-   You can also use ``git config --list`` to show you the current state of the
-   global Git configuration, Here, ``source.foundries.io`` should be referenced
-   along with your access token, represented as a base64 string.
+   You can also use ``git config --global --list`` to show the current state of the
+   global Git configuration, where ``source.foundries.io`` should be referenced
+   along with a username and a helper.
