@@ -5,7 +5,7 @@ i.MX 6ULL Evaluation Kit
 
 .. include:: secure-boot-note.rst
 
-.. include:: imx6-prepare.rst
+.. include:: imx6ull-prepare.rst
 
 Hardware Preparation
 --------------------
