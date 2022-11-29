@@ -3,7 +3,7 @@
 i.MX 6UL Evaluation Kit
 ========================
 
-.. include:: imx6-prepare.rst
+.. include:: imx6ul-prepare.rst
 
 Hardware Preparation
 --------------------
