@@ -212,7 +212,7 @@ database does not impose restrictions to the user.
 
 We have also developed a tool, the `SE05x Object Import Application`_.
 This tool interfaces with the TEE and gains access to the SE05x to import keys
-*and* certificates as well as listing and removing objects from the secure
+*and* certificates, as well as listing and removing objects from the secure
 element non-volatile memory.
 
 The *certificates* are retrieved in DER format using the APDU interface
