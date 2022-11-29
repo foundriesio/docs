@@ -712,7 +712,7 @@ To avoid this issue, OP-TEE should be configured with ``CFG_PKCS11_TA_HEAP_SIZE`
 large enough that it allows the client to fill the SE NVM before an out of
 memory condition is raised by the TA (which would cause a secure world panic).
 
-An experimental way to validate the thresholds is simply to loop on RSA or EC
+An experimental way to validate the thresholds is to loop on RSA or EC
 key creation until it fails: if there is a panic or a PKCS#11 OOM fault,
 CFG_PKCS11_TA_HEAP_SIZE can be increased as there is still room in the SE NVM
 to store more of those keys.
