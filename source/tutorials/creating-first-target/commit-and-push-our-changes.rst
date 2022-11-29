@@ -7,7 +7,7 @@ version of the container.
 
 In this chapter, you will work on final adjustments before sending your changes to 
 the remote repository. This triggers FoundriesFactory CI to start a new build, which 
-compiles and publishes your application to `Foundries.io hub <https://hub.foundries.io/>`_.
+compiles and publishes your application to `Foundries.io hub <https://hub-ui.foundries.io/>`_.
 
 Open a new terminal on your host machine and find the container folder used in 
 the previous tutorial.
@@ -17,7 +17,7 @@ the previous tutorial.
      cd containers/
 
 Edit the ``shellhttpd/docker-compose.yml`` file and change the image back 
-to hub.foundries.io.
+to **hub.foundries.io**.
 
 .. prompt:: bash host:~$, auto
 
