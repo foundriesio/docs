@@ -39,6 +39,7 @@ and maintained by Foundries.io on `GitHub`_.
    linux-oss-compliance
    preloaded-images
    factory-device-reset
+   building-sdk
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto Project: https://www.yoctoproject.org
