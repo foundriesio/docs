@@ -21,7 +21,7 @@ in the drop-down list.
    FoundriesFactory Settings
 
 Select the tab :guilabel:`Application Credentials` and create a new **Application Credential** by clicking 
-on :guilabel:`+ New Credentials`. Complete by adding a **Description** and an
+on :guilabel:`+ New Credentials`. Complete by adding a **Description** and an
 **Expiration date** and select :guilabel:`next`.
 
 Check the :guilabel:`Use for tools like fioctl` box and select your
