@@ -40,6 +40,7 @@ and maintained by Foundries.io on `GitHub`_.
    preloaded-images
    factory-device-reset
    building-sdk
+   toolchain
 
 .. _OpenEmbedded: https://www.openembedded.org/wiki/Main_Page
 .. _Yocto Project: https://www.yoctoproject.org
