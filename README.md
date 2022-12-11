@@ -39,8 +39,8 @@ necessary environment for sphinx packages:
 
 ```bash
 
-$ sudo apt-get install python3 python3-virtualenv
-$ virtualenv -p /usr/bin/python3 venv
+$ sudo apt-get install python3
+$ python -m venv venv
 $ . ./venv/bin/activate
 $ pip install -r requirements.txt
 
