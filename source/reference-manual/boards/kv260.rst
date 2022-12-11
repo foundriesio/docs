@@ -45,6 +45,7 @@ will be automatically booted on the first boot:
 ::
 
     > sf probe; setenv bootseq 1; mmc dev ${bootseq};
+    > setenv loadaddr 0x8000000;
     > fatload mmc ${bootseq}:1 ${loadaddr} boot0001.bin;
     > sf update ${loadaddr} 0x200000 ${filesize};
     > sf update ${loadaddr} 0xF80000 ${filesize};
