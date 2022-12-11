@@ -26,6 +26,7 @@ Find below the instructions on how to flash the supported boards.
    am64xx-sk
    stm32mp15-disco
    stm32mp15-eval
+   jetson-agx-xavier-devkit
    x86
    versal
    uz3eg-iocc
