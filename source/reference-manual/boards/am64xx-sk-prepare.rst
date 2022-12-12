@@ -16,11 +16,11 @@ Download necessary files from ``https://app.foundries.io/factories/<factory>/tar
    with the name of the board and **download the Factory image for that
    machine.**
 
-   | E.g: ``lmp-factory-image-am64xx-sk.wic.gz``
+   | E.g: ``lmp-factory-image-am64xx-evm.wic.gz``
    
    .. figure:: /_static/boards/am64xx-sk-steps-2.png
       :align: center
-      :width: 400
-#. Extract the file ``lmp-factory-image-am64xx-sk.wic.gz``::
+      :width: 600
+#. Extract the file ``lmp-factory-image-am64xx-evm.wic.gz``::
 
-      gunzip lmp-factory-image-am64xx-sk.wic.gz
+      gunzip lmp-factory-image-am64xx-evm.wic.gz
