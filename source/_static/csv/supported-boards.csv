@@ -24,6 +24,6 @@ Toradex Apalis iMX8QM,apalis-imx8
 :ref:`STM32MP15 EV1 Evaluation Board <ref-rm_board_stm32mp15-eval>`,stm32mp15-eval
 :ref:`Jetson AGX Orin Developer Kit <ref-rm_board_jetson-agx-orin-devkit>`,jetson-agx-orin-devkit
 :ref:`Jetson AGX Xavier Developer Kit <ref-rm_board_jetson-agx-xavier-devkit>`,jetson-agx-xavier-devkit
-:ref:`TI AM64x SKEVM <ref-rm_board_am64xx-sk>`,am64xx-sk
+:ref:`TI AM64x SKEVM <ref-rm_board_am64xx-sk>`,am64xx-evm
 :ref:`TI Beaglebone Black <ref-rm_board_beaglebone-yocto>`,beaglebone-yocto
 :ref:`TI Beaglebone Black Wireless <ref-rm_board_beaglebone-yocto>`,beaglebone-yocto

@@ -30,7 +30,7 @@ Set up the board for booting from MMC1 - SDCard:
 Flashing
 --------
 
-Now, flash the ``lmp-factory-image-am64xx-sk.wic.gz`` retrieved from the 
+Now, flash the ``lmp-factory-image-am64xx-evm.wic.gz`` retrieved from the
 previous section to an SD Card. This contains the :term:`system image` that the
 device will boot.
 
