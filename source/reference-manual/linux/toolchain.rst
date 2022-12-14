@@ -14,7 +14,7 @@ Since version **v89**, LmP uses ``clang`` as the default compiler and ``llvm`` a
 
 However, some issues exist when using clang/llvm as the default,
 as some recipes are not prepared to be built with this toolchain.
-To address these issues is recomendend to add a new file where these 
+To address these issues is recomendend to add a new file where these
 tweeks will be made to build sucessfully.
 
 In the public LmP layer ``meta-lmp`` we use the
@@ -54,7 +54,7 @@ This can also be done in the factory, changing the file
 
 
 Customizing the Default Toolchain
--------------------------------
+---------------------------------
 
 When using the clang toolchain we have the ``toolchain-clang`` override that can be used
 to do the customization and this will only take effect when clang is in use.
