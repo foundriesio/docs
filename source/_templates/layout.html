@@ -2,14 +2,12 @@
 
 {%- block extrahead %}
 {{ super() }}
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQKGR35S47"></script>
-  <script>
-    if (navigator.doNotTrack === '1') {
-      function gtag() { };
-    } else {
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-    }
+  <link rel="stylesheet" href="https://cdn.foundries.io/cookie-consent/2.0.1/cookie-consent.css">
+
+  <script data-analytics="1" data-cookie-consent="analytics" type="text/plain" async src="https://www.googletagmanager.com/gtag/js?id=G-RQKGR35S47"></script>
+  <script data-analytics="1" data-cookie-consent="analytics" type="text/plain">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
 
     gtag('js', new Date());
     gtag('config', 'G-RQKGR35S47');
@@ -18,5 +16,66 @@
 
 {% block footer %}
 {{ super() }}
-</div>
+  <script data-cookies="1" type="text/javascript" src="https://cdn.foundries.io/cookie-consent/2.0.1/cookie-consent.iife.js"></script>
+  <script data-cookies="1" type="text/javascript">
+    const FIO_COOKIE_NAME = 'fio_consent';
+    const COOKIE_CONSENT_NAME = 'cookie-consent-preferences';
+
+    const fioCookie = document.cookie.split('; ').find(row => row.startsWith(`${FIO_COOKIE_NAME}=`));
+
+    if (!fioCookie) {
+      if (window.localStorage && window.localStorage.getItem(COOKIE_CONSENT_NAME)) {
+        window.localStorage.removeItem(COOKIE_CONSENT_NAME);
+      }
+    }
+    const cookieConsent = window.CookieConsent({
+      acceptAllButton: false,
+      labels: {
+        description: `<p>This site makes use of third-party cookies as explained in our <a href="/company/cookie-policy/">Cookie Policy</a>, <a href="/company/privacy/">Privacy Policy</a> and <a href="/company/terms/">Terms and Conditions</a>.</p>`
+      },
+      cookies: [
+        {
+          id: 'essential',
+          label: 'Essential',
+          required: true,
+          checked: true,
+          description: 'Technical cookies to enable a seamless experience while using Foundries.io websites and resources.',
+        },
+        {
+          id: 'analytics',
+          label: 'Analytics (non-essential)',
+          required: false,
+          checked: false,
+          description: 'Cookies needed to understand how users interact with Foundries.io websites and resources.',
+        }
+      ],
+      dialogTemplate: function (templateVars) {
+        const { PREFIX, config } = templateVars;
+        return `
+        <aside id="${PREFIX}" class="${PREFIX} js-cookie-bar" role="dialog" aria-live="polite" aria-describedby="${PREFIX}-description" aria-hidden="true" tabindex="0">
+          <div data-nosnippet>
+            <!--googleoff: all-->
+            <header class="${PREFIX}__header" id="${PREFIX}-description">
+              <p class="title is-4">${config.get('labels.title')}</p>
+              ${config.get('labels.description')}
+            </header>
+            <form>
+              <button class="${PREFIX}__button" aria-label="${config.get('labels.aria.button')}">
+                <span>${config.get('labels.button.default')}</span>
+              </button>
+            </form>
+            <!--googleon: all-->
+          </div>
+        </aside>
+      `.trim();
+      }
+    });
+
+    cookieConsent.on('update', (cookies) => {
+      const cookieStr = cookies.filter(cookie => cookie.accepted).map(cookie => `${cookie.id}:${cookie.accepted ? '1' : '0'}`).join(',');
+      document.cookie = `${FIO_COOKIE_NAME}=${cookieStr}; path=/; secure; max-age=31536000;`;
+    });
+
+    window.CookieConsent = cookieConsent;
+  </script>
 {% endblock %}
