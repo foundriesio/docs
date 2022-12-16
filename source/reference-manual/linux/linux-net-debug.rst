@@ -1,3 +1,7 @@
+.. title:: Linux microPlatform Network Debugging
+.. meta::
+   :description: Learn how to debug network related issues on the Linux microPlatform using tcpdump in this guide for FoundriesFactory.
+
 .. _howto-linux-net-debug:
 
 Network Debugging
