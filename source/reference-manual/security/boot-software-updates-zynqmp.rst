@@ -1,4 +1,7 @@
 .. highlight:: sh
+.. title:: U-Boot Linux Software Updates on Zynq UltraScale+ MPSoC
+.. meta::
+   :description: U-Boot Linux software updates on Zynq UltraScale+ MPSoC step by step instruction guide for FoundriesFactory. Learn more.
 
 .. _ref-boot-software-updates-zynqmp:
 
