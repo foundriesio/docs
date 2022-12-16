@@ -34,6 +34,7 @@ and maintained by Foundries.io on `GitHub`_.
    linux-wic-installer
    linux-persistent-log
    linux-net-debug
+   linux-disk-encryption
    linux-update
    linux-extending
    linux-oss-compliance
