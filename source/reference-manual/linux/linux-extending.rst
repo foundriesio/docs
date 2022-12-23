@@ -120,6 +120,10 @@ Every secret matching the pattern ``ssh-*.key`` will be loaded into an
 ssh-agent and ``ssh-known_hosts`` will be used to set the trusted
 host keys for the Git server(s).
 
+For the ``ssh-known_host`` it can be generated like this::
+
+  $ ssh-keyscan github.com > /tmp/ssh-known_hosts
+
 For example, a private GitHub repository could be accessed with::
 
   $ fioctl secrets update ssh-github.key==/tmp/ssh-github.key
