@@ -26,21 +26,32 @@ The easiest way to configure this is by updating a Factory's
   lmp:
   ...
 
-  containers:
-    preloaded_images:
-      enabled: true
+      containers:
+        preloaded_images:
+         enabled: true
+         app_type: <restorable|compose>
+         shortlist: "money-making-app,debug-tools"
+         oe_builtin: <true|false>
 
-  #  Optional: The list of apps to preload can be with:
-  #  containers:
-  #    preloaded_images:
-  #      enabled: true
-  #      shortlist: "money-making-app,debug-tools"
+Where:
+
+- ``enabled`` -  Whether to produce an archive containing docker images as part of a container build trigger.
+- ``shortlist`` - Defines the list of apps to preload. All Target's apps are preloaded if it is not specified or its value is empty.
+- ``app_type`` - *Optional*: Defines a type of Apps to preload.
+  If an option is not defined or set to an empty value, the ``app_type``  preload will depend on the LmP version. If the LmP version is equal to or higher than **v85**, then `restorable` type is preloaded, otherwise `compose` type.
+  See :ref:`ug-restorable-apps` for more details on Restorable Apps.
+- ``oe_builtin`` - *Optional*: Defines a way to accomplish preloading Apps. If the option is not defined or set to `false` (by default),
+  then Apps are preloaded by the `assemble` run of a LmP CI build. Otherwise, Apps are preloaded during an OE build CI run.
+  In this case, rootfs as well as a system image produced by the run includes preloaded Apps.
+  Only `Restorable` type of Apps (default) are supported by the OE builtin preloader.
+  This option does not work with some of the advanced tagging cases,
+  e.g. in the case of multiple container builds using the same platform (see :ref:`ref-advanced-tagging` for more details).
 
 For simple workflows, this may suffice. Because ``lmp`` configuration inherits from 
 ``containers``, it will cause every **Target** built in the Factory to include and 
 enable **all** Docker Compose Apps.
 
-The ``lmp`` can specify a different configuration or disable preload_images::
+The ``lmp`` can specify a different configuration or disable preloaded images::
 
   lmp:
     preloaded_images:
@@ -52,12 +63,7 @@ The ``lmp`` can specify a different configuration or disable preload_images::
   containers:
     preloaded_images:
       enabled: true
-
-  #  Optional: The list of apps to preload can be with:
-  #  containers:
-  #    preloaded_images:
-  #      enabled: true
-  #      shortlist: "money-making-app,debug-tools"
+      shortlist: "money-making-app,debug-tools"
 
 And finally, it is possible to configure just ``lmp`` builds to preload containers.
 In this case, because ``containers`` configuration **doesn't** inherits from 
@@ -66,12 +72,8 @@ In this case, because ``containers`` configuration **doesn't** inherits from
   lmp:
     preloaded_images:
       enabled: true
-
-  #  Optional: The list of apps to preload can be with:
-  #  lmp:
-  #    preloaded_images:
-  #      enabled: true
-  #      shortlist: "money-making-app,debug-tools"
+      shortlist: "money-making-app,debug-tools"
+  
   ...
 
   containers:
@@ -79,6 +81,7 @@ In this case, because ``containers`` configuration **doesn't** inherits from
 
 Common Advanced Scenario
 ------------------------
+
 It’s quite common to have more complex workflows. For example, 
 a Factory may have their ``containers.git`` set up with multiple branches and 
 each branch could specify a different set of applications.
@@ -159,6 +162,7 @@ the correct apps preloaded and enabled by default.
 
 Starting compose apps early
 ---------------------------
+
 Preloading docker images doesn't mean the compose apps start automatically.
 Usually compose apps are started by aktualizr-lite after device registration.
 However, aktualizr-lite first checks for available updates. If there is a new
