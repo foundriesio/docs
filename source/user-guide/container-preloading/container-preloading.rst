@@ -24,32 +24,15 @@ There are cases where having applications preloaded on the image can be helpful,
     on writing Dockerfiles:
     https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
-Prerequisites
--------------
+There are two ways to create these images:
 
-In this guide, it is assumed you already have a ``container`` build with the ``shellhttpd`` enabled:
+ * :ref:`fioctl targets image<fioctl_targets_image>`
+ * configuring ``ci-scripts`` to preload each build
 
-.. figure:: /_static/userguide/container-preloading/container-preloading-target.png
-   :width: 900
-   :align: center
-
-   FoundriesFactory Containers Targets
-
-Click on the latest ``container`` build to see more details.
-
-This tutorial uses ``shellhttpd`` as a reference. Check the Apps available in
-your latest Containers build:
-
-.. figure:: /_static/userguide/container-preloading/container-preloading-apps.png
-   :width: 900
-   :align: center
-
-   Containers Target Apps
+Here we focus on the second approach so every Target includes a flashable image with preloaded containers.
 
 Configure the CI
 ----------------
-
-Cloning CI Scripts Repository
 
 Clone your ``ci-scripts`` repo and enter its directory:
 
@@ -59,10 +42,6 @@ Clone your ``ci-scripts`` repo and enter its directory:
     cd ci-scripts
 
 Edit the ``factory-config.yml`` file and add the configuration below:
-
-.. prompt:: bash host:~$, auto
-
-    host:~$ gedit factory-config.yml
 
 **factory-config.yml**:
 
@@ -76,7 +55,7 @@ Edit the ``factory-config.yml`` file and add the configuration below:
          oe_builtin: <true|false>
 
 - ``enabled`` -  Whether to produce an archive containing docker images as part of a container build trigger.
-- ``shortlist`` - Defines the list of apps to preload. All Target's apps are preloaded if it is not specified or its value is empty.
+- ``shortlist`` - Defines the list of apps to preload. All Target's apps are preloaded if it is not specified or its value is empty. Here, it is set to preload the ``shellhttpd`` app.
 - ``app_type`` - Defines a type of Apps to preload.
   If an option is not defined or set to an empty value, the ``app_type``  preload will depend on the LmP version. If the LmP version is equal to or higher than **v85**, then `restorable` type is preloaded, otherwise `compose` type.
   See :ref:`ug-restorable-apps` for more details on Restorable Apps.
@@ -99,17 +78,9 @@ Getting a New Image with Preloaded Containers
 ----------------------------------------------
 
 After these steps, when a ``platform`` or ``containers`` build finishes, it will
-generate a ``.wic.gz`` file in :guilabel:`Runs`, ``assembly-system-image`` , ``tag`` folder, with the preloaded Docker Image.
+generate a ``.wic.gz`` file in :guilabel:`Runs`, ``assemble-system-image`` , ``<tag>`` folder, with the preloaded Docker Images.
 
-Find your ``containers`` folder and trigger a new build.
-
-.. prompt:: bash host:~$, auto
-
-    host:~$ cd containers/
-    host:~$ git commit --allow-empty  -m "Trigger new build"
-    host:~$ git push
-
-The latest **Target** named ``containers-devel`` should be the CI job you just created.
+For example, pushing to ``containers-devel`` after this change triggers the usual build and an additional run called ``assemble-system-image``. Check the latest **Target** named ``containers-devel`` you just created:
 
 .. figure:: /_static/userguide/container-preloading/container-preloading-new-target.png
    :width: 900
@@ -125,7 +96,7 @@ When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guila
 
    FoundriesFactory New Containers Image
 
-Flash the image and boot the device, next log in via SSH.
+Flash the image and boot the device.
 
 .. note::
 
@@ -133,77 +104,28 @@ Flash the image and boot the device, next log in via SSH.
     In this case, download the files from the latest ``platform`` build and only use the ``image`` from ``assembly-system-image``. 
     For more information about how to flash your device, read :ref:`ref-boards`.
 
-Testing preloaded Image
-------------------------
+Checking the Preloaded Image
+----------------------------
+
+app_type: compose
+~~~~~~~~~~~~~~~~~
 
 On your device, switch to root and list the files in the folder
-``/var/sota/compose-apps/<app>``.
+``/var/sota/compose-apps/<app>``. In this case the preloaded app is ``shellhttpd``.
 
 .. prompt:: bash device:~$
 
     sudo su
     ls /var/sota/compose-apps/shellhttpd
 
-**Example Output**:
-
 .. prompt:: text
 
-     Dockerfile  docker-build.conf  docker-compose.yml  httpd.sh
+    Dockerfile  docker-build.conf  docker-compose.yml  httpd.sh
 
-You can also use Docker to list all images available on the device:
+app_type: restorable
+~~~~~~~~~~~~~~~~~~~~
 
-.. prompt:: bash device:~$
-
-    docker images --digests
-
-**Example Output**:
-
-.. prompt:: text
-
-     REPOSITORY                              TAG       DIGEST                                                                    IMAGE ID       CREATED        SIZE
-     hub.foundries.io/userguide/shellhttpd   <none>    sha256:956f4247799317bc03c382fbf939c6ada64cd6df95dc438883724740a46b0577   89afcf805196   22 hours ago   5.34MB
-
-For test purposes, it is possible to run the Docker Compose App using the command:
-
-.. prompt:: bash device:~$
-
-    cd /var/sota/compose-apps/shellhttpd
-    docker-compose up -d
-
-**Example Output**:
-
-.. prompt:: text
-
-     Starting shellhttpd_httpd_1 ... done
-
-Verify the applications running on the device with the ``docker ps`` command:
-
-.. prompt:: bash device:~$, auto
-
-    device:~$ docker ps
-
-**Example Output**:
-
-.. prompt:: text
-
-     CONTAINER ID   IMAGE                                   COMMAND                  CREATED              STATUS          PORTS                                       NAMES
-     ccfda617194e   hub.foundries.io/userguide/shellhttpd   "/usr/local/bin/http…"   About a minute ago   Up 35 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   shellhttpd_httpd_1
-
-Run ``wget`` to test the container:
-
-.. prompt:: bash device:~$, auto
-
-    device:~$ wget -qO- 127.0.0.1:8080
-
-**Example Output**:
-
-.. prompt:: text
-
-     Hello world
-
-
-Testing Preloaded Restorable Apps
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Restorable apps are enabled by default on LmP v85+.
 
 On your device, switch to root and list the files in the folder
 ``/var/sota/reset-apps``.
@@ -213,13 +135,11 @@ On your device, switch to root and list the files in the folder
     sudo su
     ls /var/sota/reset-apps/apps
 
-Preloaded Restorable Apps should be listed in the output, provided that the preloading was successful.
-
-**Example Output**:
-
 .. prompt:: text
 
      app-05 app-07 app-08
+
+Preloaded Restorable Apps should be listed in the output, provided that the preloading was successful. In this case, the preloaded apps are ``app-05``, ``app-07`` and ``app-08``.
 
 Another option to verify whether Restorable Apps are preloaded is to use `aklite-apps` utility.
 
@@ -227,8 +147,6 @@ Another option to verify whether Restorable Apps are preloaded is to use `aklite
 
     sudo su
     aklite-apps ls
-
-**Example Output**:
 
 .. prompt:: text
 
@@ -247,11 +165,11 @@ A user can try to start preloaded Restorable Apps manually by using `aklite-apps
 Starting Compose Apps Automatically
 -----------------------------------
 
-To start the preloaded application automatically (after the boot and before
-the device registration when aktualizr-lite starts) you have to enable a systemd service
+To start the preloaded application automatically after the boot and before
+the device registration when aktualizr-lite starts, you have to enable a systemd service
 responsible for it.
 
-meta-lmp_ already has a recipe that launches preloaded apps after the device boots.
+meta-lmp_ provides a recipe that launches preloaded apps after the device boots.
 
 Clone your ``meta-subscriber-overrides.git`` repo and enter its directory:
 
@@ -261,10 +179,6 @@ Clone your ``meta-subscriber-overrides.git`` repo and enter its directory:
     cd meta-subscriber-overrides
 
 Edit the ``recipes-samples/images/lmp-factory-image.bb`` file and add the recipe to the ``CORE_IMAGE_BASE_INSTALL`` list:
-
-.. prompt:: bash host:~$, auto
-
-    host:~$ gedit recipes-samples/images/lmp-factory-image.bb
 
 **recipes-samples/images/lmp-factory-image.bb**:
 
@@ -297,7 +211,7 @@ The latest **Target** named ``platform-devel`` should be the CI job you just cre
 
    FoundriesFactory New Platform Target
 
-When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guilabel:`Runs` and download the image:
+When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guilabel:`Runs` and download the image from the ``assemble-system-image`` run:
 
 .. figure:: /_static/userguide/container-preloading/container-preloading-platform-image.png
    :width: 900
@@ -305,25 +219,10 @@ When FoundriesFactory CI finishes all jobs, click in the **Target**, find :guila
 
    FoundriesFactory Platform Image
 
-Flash the image and boot the device, next log via SSH.
+Flash the image and boot the device.
 
 Testing Auto Start
 ------------------
-
-Using a second terminal, test your application using ``curl`` from any external
-device connected to the same network (e.g. your host machine: the same computer
-you use to access your device with ssh).
-
-.. prompt:: bash host:~$, auto
-
-    host:~$ #Example curl 192.168.15.11:8080
-    host:~$ curl <device IP>:8080
-
-**Example Output**:
-
-.. prompt:: text
-
-     Hello world
 
 On your device, use the following command to list the ``compose-apps-early-start``
 service:
@@ -331,8 +230,6 @@ service:
 .. prompt:: bash device:~$
 
     systemctl list-unit-files | grep enabled | grep compose-apps-early-start
-
-**Example Output**:
 
 .. prompt:: text
 
@@ -344,8 +241,6 @@ Verify the ``compose-apps-early-start`` application status:
 
     device:~$  systemctl status compose-apps-early-start
 
-**Example Output**:
-
 .. prompt:: text
 
      compose-apps-early-start.service - Ensure apps are configured and running as early>
@@ -354,6 +249,7 @@ Verify the ``compose-apps-early-start`` application status:
          Process: 750 ExecStart=/usr/bin/compose-apps-early-start (code=exited, status=0/>
         Main PID: 750 (code=exited, status=0/SUCCESS)
 
-For more information, read :ref:`ref-preloaded-images`.
+After the ``compose-apps-early-start`` service has been successfully run, ``docker ps`` will show that the preloaded apps are running.
+
 
 .. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/master
