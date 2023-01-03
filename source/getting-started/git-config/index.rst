@@ -50,6 +50,14 @@ Run the following command to add the relevant entries to the Git configuration:
    The reason it needs to be run as ``sudo`` instead of directly as the ``root`` user is
    because it needs to have privileges to create a symlink in the same directory as where ``git`` is located.
 
+.. warning::
+   If for some reason the command fails with an error, the following manual steps can be taken to get the exact same result.
+   ``git config --global credential.https://source.foundries.io.username fio-oauth2``
+   ``git config --global credential.https://source.foundries.io.helper fio``
+
+   ``ln -s /usr/bin/fioctl /usr/bin/git-credential-fio``
+
+
 Verify that this has been successful by cloning a repository from your Factory,
 such as your ``containers.git`` repo. Replace ``<factory>`` with your
 FoundriesFactory name:
