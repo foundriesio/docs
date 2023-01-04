@@ -6,7 +6,7 @@ Factory Account Roles
 A role consists of permission levels for **account management** you assign to a *member* of your Factory.
 
  .. csv-table:: Roles and Permission Summary
-   :header: "Role", "Edit Members", "Manage Teams", "Subscription/Billing", "Manage PKI", "Create Waves"
+   :header: "Role", "Edit Members", "Edit Teams", "Subscription", "PKI", "Waves"
 
    "Owner", "X", "X", "X", "X", "X"
    "Admin", "X", "X", ,"X", "X"
