@@ -42,6 +42,9 @@ Use the command ``fioctl targets offline-update <target-name> <dst> --tag <tag> 
 
     Ensure that the target device is a *Production* device, see :ref:`Manufacturing Process for Device Registration <ref-factory-registration-ref>` for more details.
 
+.. note::
+    In order to download all artifacts, ``fioctl`` requires token with scopes: ``targets:read``, ``ci:read``.
+
 Performing the Offline Update
 -----------------------------
 Before doing the offline update, make the offline update content accessible on a device, e.g., attach and mount the USB drive.
