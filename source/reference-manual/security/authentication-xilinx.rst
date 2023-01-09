@@ -13,11 +13,19 @@ This is a simple guide on how to provision a device enabling the bootloader hard
 
 Get the PMU firmware
 --------------------
-Get a valid version of the PMU firmware for the hardware ``pmu.bin`` (also available at the deploy folder if built with LmP).
+Get a valid version of the PMU firmware for the hardware ``pmu-firmware-MACHINE.bin``, which can be found at the deploy folder when built with LmP.
+
+Replace MACHINE with the target machine name (e.g. ``pmu-firmware-uz3eg-iocc-sec.bin``).
 
 Build the bootloader
 --------------------
-Build U-boot for the ZynqMP SoC platform including SPL support ``u-boot-spl.bin`` (also available at the deploy folder if built with LmP).
+Build U-boot for the ZynqMP SoC platform with Secondary Program Loader (SPL) support, which will produce a file called ``u-boot-spl.bin``.
+
+This file can also be found in the deploy folder when building LmP for secure targets.
+ This is because with secure targets the variable ``SPL_BINARY`` is set to ``spl/u-boot-spl.bin``, causing it to assume that the final ``boot.bin`` will be manually generated and signed by the user.
+
+On normal (open) targets, the LmP build process only publishes the final ``boot.bin`` binary.
+Without any signing requirements, the image can be created and published as part of the build process.
 
 Create the Primary and Secondary keys
 -------------------------------------
@@ -82,7 +90,7 @@ One alternative to a full SDK install is running Vivado in a container on your L
 Sign the FPGA bitstream
 -----------------------
 When authentication is enabled in the bootable image, the CSU will also authenticate the FPGA bistream before allowing it to load.
-Because of this, the bitstream must also be signed before adding it to the FIT image::
+Because of this, the bitstream must also be signed before adding it to the FIT image, and it can be found inside target ``xsa`` file (e.g. ``uz3eg_iocc_base.bit``)::
 
        $ cat fpga.bif
        the_ROM_image:
@@ -90,10 +98,10 @@ Because of this, the bitstream must also be signed before adding it to the FIT i
                [auth_params] ppk_select=0; spk_id=0x00000000
                [pskfile] PSK.pem
                [sskfile] SSK.pem
-               [destination_device=pl, authentication=rsa] fpga.bit
+               [destination_device=pl, authentication=rsa] uz3eg_iocc_base.bit
 	}
 
-        $ ./bootgen -arch zynqmp -image fpga.bif -w on -o fpga.bit.bin
+        $ ./bootgen -arch zynqmp -image fpga.bif -w on -o uz3eg_iocc_base.bit.bin
 
 Now extend the `bitstream-signed`_ recipe including your signed bitstream, then select it as the preferred provider for ``virtual/bitstream`` and specify the right binary and compatible string, such as::
 
@@ -140,6 +148,25 @@ Applying this `patch`_ to U-boot you should see the following on a successful bo
 
 .. note::
         Booting a secure image disables the JTAG interface even if no JTAG related fuses were written. Use the SPL configuration option `CONFIG_SPL_ZYNQMP_RESTORE_JTAG`_ to re-enable it on boot.
+
+Integrating the Signed boot.bin in LmP
+--------------------------------------
+
+Now that you validated the signed ``boot.bin`` file, make sure to integrate it as part of the LmP publishing process in order to support boot firmware updates::
+
+       meta-lmp-bsp/conf/machine/uz3eg-iocc-sec.conf:PREFERRED_PROVIDER_virtual/boot-bin = "lmp-boot-firmware"
+
+       meta-lmp-bsp/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware/uz3eg-iocc-sec/boot.bin
+
+       $ cat meta-lmp-bsp/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend
+       FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+       PROVIDES:uz3eg-iocc-sec = "virtual/boot-bin"
+       PV:uz3eg-iocc-sec = "1"
+       SRC_URI:uz3eg-iocc-sec = "file://boot.bin"
+
+With ``lmp-boot-firmware`` integration the signed ``boot.bin`` file will be deployed under the deploy/lmp-boot-firmware folder.
+
+For more information about boot firmware updates on Xilinx-based targets see :ref:`Boot Software Updates on Zynq UltraScale+ MPSoC <ref-boot-software-updates-zynqmp>`.
 
 Secure Storage (RPMB) using the PUF
 ===================================
