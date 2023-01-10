@@ -3,7 +3,7 @@
 Sign Up
 =======
 
-To create a FoundriesFactory, you first need to `create an account <signup_>`_ with us.
+To create your Factory, you first need to `create an account <signup_>`_ with us.
 
 .. figure:: /_static/signup/signup.png
    :width: 380
