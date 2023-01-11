@@ -32,22 +32,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Reference Manual
-   :name: sec-manual
-
-   reference-manual/docker/docker
-   reference-manual/boards/boards
-   reference-manual/qemu/qemu
-   reference-manual/factory/factory
-   reference-manual/linux/linux
-   reference-manual/ota/ota
-   reference-manual/remote-access/remote-access
-   reference-manual/security/security
-   reference-manual/testing/testing
-   reference-manual/troubleshooting/troubleshooting
-
-.. toctree::
-   :maxdepth: 1
    :glob:
    :caption: User Guide
    :name: sec-user-guide
@@ -66,6 +50,23 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/offline-update/offline-update
    user-guide/el2g
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Reference Manual
+   :name: sec-manual
+
+   reference-manual/docker/docker
+   reference-manual/boards/boards
+   reference-manual/qemu/qemu
+   reference-manual/factory/factory
+   reference-manual/linux/linux
+   reference-manual/ota/ota
+   reference-manual/remote-access/remote-access
+   reference-manual/security/security
+   reference-manual/testing/testing
+   reference-manual/troubleshooting/troubleshooting
+
 .. toctree::
    :maxdepth: 1
    :caption: Porting Guide
