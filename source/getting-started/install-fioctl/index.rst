@@ -3,7 +3,7 @@
 Fioctl CLI Installation
 =======================
 
-:ref:`ref-fioctl` is a simple tool for interacting with the Foundries.io REST API.
+:ref:`Fioctl™ <ref-fioctl>` is a simple tool for interacting with the Foundries.io REST API.
 
 .. seealso::
    Fioctl is based on Foundries.io's  `ota-lite API <https://api.foundries.io/ota/>`_.
@@ -106,8 +106,8 @@ We use `Github Releases`_ to distribute static golang binaries.
       ``fioctl``.
 
 
-Authenticate fioctl
-###################
+Authenticating Fioctl
+#####################
 
 With :ref:`ref-fioctl` installed, authenticate it with our backend.
 For this, you will generate OAuth2 application credentials for interacting with the FoundriesFactory API:
@@ -125,8 +125,8 @@ For this, you will generate OAuth2 application credentials for interacting with 
 
 :ref:`ref-fioctl` will now ask for your Client ID and Secret. Follow the next steps to generate it.
 
-Application Credentials
-^^^^^^^^^^^^^^^^^^^^^^^
+Adding Application Credentials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Go to `Application Credentials <https://app.foundries.io/settings/credentials/>`_ and click on :guilabel:`+ New Credentials`.
 
@@ -138,7 +138,7 @@ Go to `Application Credentials <https://app.foundries.io/settings/credentials/>`
 
 Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
 
-For fioctl, check the :guilabel:`Use for tools like fioctl` box and select your **Factory**.
+For Fioctl, check the :guilabel:`Use for tools like fioctl` box and select your **Factory**.
 You can revoke this access and set up a new credential later once you are familiar with the :ref:`ref-api-access`.
 
 .. figure:: /_static/install-fioctl/fioctl_token.png
@@ -153,7 +153,7 @@ You can revoke this access and set up a new credential later once you are famili
    For example, if you intend to develop on both a laptop and a desktop, create a new token for each, as you would with SSH keys.
    This way you can revoke tokens for individual systems, should they be compromised.
 
-Use the Client ID and Secret to finish the fioctl login.
+Use the Client ID and Secret to finish the Fioctl login.
 
 .. figure:: /_static/install-fioctl/token.png
    :width: 500
@@ -205,9 +205,4 @@ It can be set using 3 different methods:
 .. seealso::
    :ref:`ref-fioctl` documentation.
 
-.. _AUR Package: https://aur.archlinux.org/packages/fioctl-bin
-.. _Scoop: https://scoop.sh/
-.. _WSL: https://docs.microsoft.com/en-us/windows/wsl/install-win10
-.. _launchpad: https://launchpad.net/~fio-maintainers/+archive/ubuntu/ppa
 .. _Github Releases: https://github.com/foundriesio/fioctl/releases
-.. _Formula: https://github.com/foundriesio/homebrew-fioctl
