@@ -1,9 +1,9 @@
 .. _gs-signup:
 
-Sign Up
-=======
+Signing Up
+==========
 
-To create a FoundriesFactory, you first need to `create an account <signup_>`_ with us.
+To begin using FoundriesFactory®, start with `creating an account <signup_>`_ with us.
 
 .. figure:: /_static/signup/signup.png
    :width: 380
@@ -14,23 +14,20 @@ To create a FoundriesFactory, you first need to `create an account <signup_>`_ w
 
 .. _signup: https://app.foundries.io/signup
 
-Create a Factory
-================
+Creating Your Factory
+=====================
 
-:ref:`ref-factory` is the start of your embedded OS, tailored specifically
-for your product. When you create a Factory, we immediately bootstrap the CI
-build process for a vanilla, unmodified :ref:`ref-linux` OS Image, which is from
-this point onward, **owned by you**.
+:ref:`ref-factory` is the start of your embedded OS, tailored specifically for your product.
+When you create a Factory, we immediately bootstrap the CI build process.
+This generates a vanilla, unmodified :ref:`ref-linux` OS Image, which is from this point onward, **owned by you**.
 
 When your account is created, it is not associated with any factories.
-
 Create one by clicking :guilabel:`Create Factory`.
 
 .. warning::
 
-   Once a Factory is created, the chosen platform/machine and Factory name
-   cannot be changed. Create a new Factory or contact support if a mistake is
-   made. https://support.foundries.io/.
+   Once a Factory is created, the chosen platform/machine and Factory name cannot be changed.
+   Create a new Factory or contact support if a mistake is made: https://support.foundries.io/.
 
 .. figure:: /_static/signup/no-factories.png
    :width: 900
@@ -40,28 +37,21 @@ Create one by clicking :guilabel:`Create Factory`.
 
 .. important::
 
-   Upon Factory creation you will be sent an email
-   with instructions to securely download your
-   :ref:`ref-offline-keys`.
+   Upon Factory creation you will be sent an email with instructions to securely download your :ref:`ref-offline-keys`.
 
-   It is incredibly important that your keys are kept **safe and
-   private**. Please store these keys securely.
-
-.. todo::
-
-    Suggest methods of storing TuF keys securely, such as by USB in a
-    safety deposit box, or yubikey.
+   It is incredibly important that your keys are kept **safe and private**.
+   Please store these keys securely.
 
 .. _gs-select-platform:
 
-Select Your Platform
-####################
+Selecting Your Platform
+#######################
 
-Choose a hardware platform from the dropdown menu in the  **Create New Factory** wizard
-and continue. Click :guilabel:`Create Factory` once your details are entered.
+Choose a hardware platform from the dropdown menu in the  **Create New Factory** wizard and continue.
+Click :guilabel:`Create Factory` once your details are entered.
 
-The :ref:`ref-linux` supports a wide range of platforms out of the box. This
-includes QEMU_ images for ARM_ and RISC-V_ architectures.
+The :ref:`ref-linux` supports a wide range of platforms out of the box.
+This includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
 .. figure:: /_static/signup/create.png
    :width: 450
@@ -72,8 +62,8 @@ includes QEMU_ images for ARM_ and RISC-V_ architectures.
 .. tip::
 
    Your chosen platform determines what the initial value for the ``machines:``
-   key will be for your first build. This key and its value can later be changed
-   via ``factory-config.yml`` in the :ref:`ref-Factory-definition`
+   key will be for your first build.
+   This key and its value can later be changed via ``factory-config.yml`` in the :ref:`ref-Factory-definition`
 
 .. _QEMU: https://www.qemu.org/
 .. _ARM: https://www.arm.com/
@@ -81,19 +71,17 @@ includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
 .. _gs-watch-build:
 
-Watch Your Build
-################
+Watching Your Build
+###################
 
-Once you have created your Factory, an initial build of the
-Foundries.io Linux microPlatform (LmP) will be
-generated for you to build your product on top of. You can monitor the progress
-of this initial build in the :guilabel:`Targets` tab of your Factory after a few
-minutes. Additionally, you will receive an email once this initial build is
-complete.
+Once you have created your Factory, a build of the Foundries.io™ Linux® microPlatform (LmP) will be generated.
+This is what you will build your product on top of.
+You can monitor the progress of builds in the :guilabel:`Targets` tab of your Factory after a few minutes.
+Additionally, you will receive an email once this initial build is complete.
 
-Targets are a reference to a platform image and docker applications. When
-developers push code, FoundriesFactory produces a new target. Registered
-devices update and install targets.
+Targets are a reference to a platform image and Docker applications.
+When developers push code, FoundriesFactory produces a new target.
+Registered devices then update and install targets.
 
 The :guilabel:`Targets` tab of the Factory will become more useful as you begin
 to build your application and produce new Targets for the Factory to build.
@@ -112,14 +100,13 @@ to build your application and produce new Targets for the Factory to build.
 
 .. hint::
 
-   Bootstrapping your Factory securely takes some time. Your first build
-   will likely take **30 minutes** or more to complete.
+   Bootstrapping your Factory securely takes some time.
+   Your first build will likely take **30 minutes** or more to complete.
 
-   Use this time to set up your development environment 
-   and get started with docker commands. These guides do not require any hardware:
+   Use this time to set up your development environment and get started with Docker commands.
+   These guides do not require any hardware:
 
    - :ref:`gs-git-config`
    - :ref:`gs-install-fioctl`
    - :ref:`tutorial-gs-with-docker`
 
-.. _cgit: https://git.zx2c4.com/cgit/
