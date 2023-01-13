@@ -35,7 +35,6 @@ Create one by clicking :guilabel:`Create Factory`.
 
    Your journey begins empty handed
 
-.. important::
 
 
 
