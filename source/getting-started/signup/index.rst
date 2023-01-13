@@ -37,10 +37,7 @@ Create one by clicking :guilabel:`Create Factory`.
 
 .. important::
 
-   Upon Factory creation you will be sent an email with instructions to securely download your :ref:`ref-offline-keys`.
 
-   It is incredibly important that your keys are kept **safe and private**.
-   Please store these keys securely.
 
 .. _gs-select-platform:
 
@@ -63,7 +60,6 @@ This includes QEMU_ images for ARM_ and RISC-V_ architectures.
 
    Your chosen platform determines what the initial value for the ``machines:``
    key will be for your first build.
-   This key and its value can later be changed via ``factory-config.yml`` in the :ref:`ref-Factory-definition`
 
 .. _QEMU: https://www.qemu.org/
 .. _ARM: https://www.arm.com/
