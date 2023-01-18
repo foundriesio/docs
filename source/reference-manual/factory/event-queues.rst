@@ -192,6 +192,17 @@ DEVICE_OTA_APPS_STATE_CHANGED
    }
  }
 
+DEVICE_PUBKEY_CHANGE
+~~~~~~~~~~~~~~~~~~~~
+::
+
+ {
+   "Uuid": <string: DEVICE_UUID>,
+   "Time": <integer: unix seconds>,
+   "NewPubKey": <string: New PEM encoded public key>,
+   "OldPubKey": <string: Old PEM encoded public key>
+ }
+
 .. _API:
    https://api.foundries.io/ota/
 
