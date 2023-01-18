@@ -47,6 +47,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/custom-sota-client
    user-guide/multi-stage-container/multi-stage-container
    user-guide/fioctl/index
+   user-guide/cert-rotation
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/offline-update/offline-update
    user-guide/el2g
