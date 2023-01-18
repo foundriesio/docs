@@ -1,13 +1,11 @@
 .. _gs-register:
 
-Register your device
-====================
+Registering Your Device
+=======================
 
-Your Linux microPlatform image includes a tool, ``lmp-device-register`` that will
-register your device(s) via the Foundries.io REST API.
+Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool that registers your device via the Foundries.io™ REST API.
 
-1. From a console on the device run this command to register the device to your
-   factory:
+1. Run this command from the device console to register it with your Factory:
 
  .. prompt:: bash device:~$, auto
 
@@ -15,13 +13,11 @@ register your device(s) via the Foundries.io REST API.
 
 .. note::
 
-	**By default** devices will run **all** applications that are defined in
-	the :term:`containers.git` repository and therefore available in the
-	latest Target. This behavior can be changed by enabling only specific
-	applications. Read :ref:`ug-fioctl-enable-apps` to learn how.
+    **By default**, devices will run **all** applications that are defined in the :term:`containers.git` repository,
+    thus available in the latest Target. This behavior can be changed by enabling only specific applications.
+    Read :ref:`ug-fioctl-enable-apps` to learn how.
 
-2. You will be prompted by ``lmp-device-register`` to complete a challenge with
-   our API
+2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API:
 
    .. highlight:: none
 
@@ -39,12 +35,7 @@ register your device(s) via the Foundries.io REST API.
        User code: SQRD-PLBN
        Browser URL: https://app.foundries.io/activate/
 
-3. After completing the previous step, the device is registered and should be
-   visible by navigating to the web interface at
-   https://app.foundries.io/factories/, clicking your **Factory** and selecting
-   the **Devices** tab.
-
-   Or by using :ref:`ref-fioctl`:
+3. Your device is now registered and should be visible by navigating to the `web interface <https://app.foundries.io/factories/>`_ and selecting the **Devices** tab for your Factory. Or you can check by using :ref:`ref-fioctl`:
 
  .. prompt:: bash host:~$, auto
 
