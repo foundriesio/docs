@@ -10,5 +10,6 @@ Over the Air Updates
 
    offline-keys
    device-gateway
+   cert-rotation
    factory-registration-ref
    device-network-access
