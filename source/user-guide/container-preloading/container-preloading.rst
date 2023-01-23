@@ -52,19 +52,29 @@ Edit the ``factory-config.yml`` file and add the configuration below:
          enabled: true
          app_type: <restorable|compose>
          shortlist: "shellhttpd"
-         oe_builtin: <true|false>
 
 - ``enabled`` -  Whether to produce an archive containing docker images as part of a container build trigger.
 - ``shortlist`` - Defines the list of apps to preload. All Target's apps are preloaded if it is not specified or its value is empty. Here, it is set to preload the ``shellhttpd`` app.
 - ``app_type`` - Defines a type of Apps to preload.
   If an option is not defined or set to an empty value, the ``app_type``  preload will depend on the LmP version. If the LmP version is equal to or higher than **v85**, then `restorable` type is preloaded, otherwise `compose` type.
   See :ref:`ug-restorable-apps` for more details on Restorable Apps.
-- ``oe_builtin`` - Defines a way to accomplish preloading Apps. If the option is not defined or set to `false` (by default),
-  then Apps are preloaded by the `assemble` run of a LmP CI build. Otherwise, Apps are preloaded during an OE build CI run.
-  In this case, rootfs as well as a system image produced by the run includes preloaded Apps.
-  Only `Restorable` type of Apps (default) are supported by the OE builtin preloader.
-  This option does not work with some of the advanced tagging cases,
-  e.g. in the case of multiple container builds using the same platform (see :ref:`ref-advanced-tagging` for more details).
+
+.. note::
+
+   There is also one additional parameter ``oe_builtin: <true|false>``:
+
+   - ``oe_builtin`` - Defines a way to accomplish preloading Apps. If the option is not defined or set to `false` (by default), then Apps are preloaded by the `assemble` run of a LmP CI build. Otherwise, Apps are preloaded during an OE build CI run. In this case, rootfs as well as a system image produced by the run includes preloaded Apps. Only `Restorable` type of Apps (default) are supported by the OE builtin preloader. This option does not work with some of the advanced tagging cases, e.g. in the case of multiple container builds using the same platform (see :ref:`ref-advanced-tagging` for more details).
+
+   When setting this option, apps are preloaded during an OE/platform build CI run, so container builds will not provide an image with preloaded apps as they do not rely on OE build steps. So for this setting, the preload configuration should be under ``lmp:``:
+
+   .. prompt:: text
+
+     lmp:
+       preloaded_images:
+         enabled: true
+         app_type: <restorable|compose>
+         shortlist: "shellhttpd"
+         oe_builtin: true
 
 
 Add the ``factory-config.yml`` file, commit and push:
