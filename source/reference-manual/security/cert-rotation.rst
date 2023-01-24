@@ -44,8 +44,13 @@ The certificate renewal logic uses the EST 7030 `simple re-enrollment`_ process 
 
  * EST Server verifies request, creates a new certificate, and returns it to the device
 
+ * The new certificate is valid for `one year`_
+
 .. _simple re-enrollment:
    https://www.rfc-editor.org/rfc/rfc7030.html#section-4.2.2
+
+.. _one year:
+   https://github.com/foundriesio/estserver/blob/1b32b40729c60e8dfa21155dd1d31135244e56c1/service.go#L210
 
 Tracking Progress
 -----------------
