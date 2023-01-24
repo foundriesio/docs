@@ -5,11 +5,13 @@ Device Certificate Rotation
 
 Factory devices communicate with the :ref:`device gateway <ref-device-gateway>` via mutual TLS where both the device and server establish trust with each other.
 A device receives an x509 client certificate during device registration that’s valid for 20 years.
-This validity period is common in IoT, but security bodies like NIST recommend changing keys like this on a yearly basis.
+This validity period is common in IoT, but security bodies like NIST_ recommend changing keys like this on a yearly basis.
 Certificate rotation is the process you can use to do this.
 
 The Foundries process for rotating device certificates is based on the industry standard `RFC 7030`_ Enrollment over Secure Transport(EST).
 
+.. _NIST:
+   https://www.nist.gov/
 .. _RFC 7030:
    https://www.rfc-editor.org/rfc/rfc7030.html
 
@@ -40,7 +42,7 @@ The certificate renewal logic uses the EST 7030 `simple re-enrollment`_ process 
 
  * Device generates a new private key and certificate signing request copying the Subject of its current certificate.
 
- * Device sends CSR to EST server authenticating to it with its current certificate
+ * Device sends Certificate Signing Request(CSR) to EST server authenticating to it with its current certificate
 
  * EST Server verifies request, creates a new certificate, and returns it to the device
 
