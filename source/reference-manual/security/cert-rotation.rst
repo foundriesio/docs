@@ -8,7 +8,7 @@ A device receives an x509 client certificate during device registration that’s
 This validity period is common in IoT, but security bodies like NIST_ recommend changing keys like this on a yearly basis.
 Certificate rotation is the process you can use to do this.
 
-The Foundries process for rotating device certificates is based on the industry standard `RFC 7030`_ Enrollment over Secure Transport(EST).
+The Foundries process for rotating device certificates is based on the industry standard `RFC 7030`_ Enrollment over Secure Transport (EST).
 
 .. _NIST:
    https://www.nist.gov/
@@ -26,7 +26,7 @@ When triggered a device will:
 
  * Inform the device gateway of this new key in order to
 
-   * Provide some 2FA guarantees - device must prove possession of both keys
+   * Provide some 2FA guarantees—device must prove possession of both keys
 
    * Let the backend know that configuration operations for this device should be rejected until this new key is in use
 
@@ -42,7 +42,7 @@ The certificate renewal logic uses the EST 7030 `simple re-enrollment`_ process 
 
  * Device generates a new private key and certificate signing request copying the Subject of its current certificate.
 
- * Device sends Certificate Signing Request(CSR) to EST server authenticating to it with its current certificate
+ * Device sends Certificate Signing Request (CSR) to EST server authenticating to it with its current certificate
 
  * EST Server verifies request, creates a new certificate, and returns it to the device
 
@@ -124,7 +124,7 @@ In both cases fioctl defines a file and change handler like::
      | CERTIDS=03,09
      | ROTATIONID=certs-1669058841
 
-Certificate rotation will be executed when fioconfig processes this new file.
+Certificate rotation will be executed when ``fioconfig`` processes this new file.
 If you are using a factory managed EST server, the command works out of the box.
 However, user managed EST servers will require running ``rotate-certs`` with the ``--server-name`` option to inform devices where the EST server is located.
 
@@ -133,7 +133,7 @@ Parameters
 
 The ``renew-client-cert`` handler requires a few parameters:
 
- * **ESTSERVER** - The base URL to your EST resources.
- * **ROTATIONID** - This unique ID will be used as the correlation ID when the device sends update events to the device-gateway.
+ * **ESTSERVER**: The base URL to your EST resources.
+ * **ROTATIONID**: This unique ID will be used as the correlation ID when the device sends update events to the device-gateway.
  * **PKEYIDS** - Devices configured to use HSMs need to know a list of slot IDs to choose from when generating the next private key. 2 IDs are required so it can swap back and forth.
- * **CERTIDS** - Devices configured to use HSMs need to know a list of slot IDs to choose from when storing the new client certificate. 2 IDs are required so it can swap back and forth.
+ * **CERTIDS**: Devices configured to use HSMs need to know a list of slot IDs to choose from when storing the new client certificate. 2 IDs are required so it can swap back and forth.
