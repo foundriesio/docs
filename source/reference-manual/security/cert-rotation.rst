@@ -102,7 +102,7 @@ User Managed
 ~~~~~~~~~~~~
 
 Users may also run their own EST server.
-The EST server used by the Foundries.io backend is available at:
+The EST server used by the Foundries.io® backend is available at:
 
   https://github.com/foundriesio/estserver
 
@@ -112,12 +112,12 @@ Performing a Certificate Rotation
 ---------------------------------
 
 Certificate rotations are triggered via configuration changes.
-Fioctl includes a helper for doing this either per device or per device group with:
+Fioctl™ includes a helper for doing this either per device or per device group with:
 
  * ``fioctl device config rotate-certs <device>``
  * ``fioctl config rotate-certs --group <group>``
 
-In both cases fioctl defines a file and change handler such as::
+In both cases Fioctl defines a file and change handler such as::
 
   fio-rotate-certs - [/usr/share/fioconfig/handlers/renew-client-cert]
      | ESTSERVER=https://4a53f331-6f01-4694-8a97-af253d4d9b63.est.foundries.io:8443/.well-known/est
@@ -136,5 +136,5 @@ The ``renew-client-cert`` handler requires a few parameters:
 
  * **ESTSERVER**: The base URL to your EST resources.
  * **ROTATIONID**: This unique ID will be used as the correlation ID when the device sends update events to the device-gateway.
- * **PKEYIDS** - Devices configured to use HSMs need to know a list of slot IDs to choose from when generating the next private key. 2 IDs are required so it can swap back and forth.
+ * **PKEYIDS**: Devices configured to use HSMs need to know a list of slot IDs to choose from when generating the next private key. 2 IDs are required so it can swap back and forth.
  * **CERTIDS**: Devices configured to use HSMs need to know a list of slot IDs to choose from when storing the new client certificate. 2 IDs are required so it can swap back and forth.
