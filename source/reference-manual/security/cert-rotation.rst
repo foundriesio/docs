@@ -37,7 +37,7 @@ When triggered a device will:
  * Restarts fioconfig and aktualizr-lite
 
  * The device-gateway will see this new certificate then check that it matches the certificate from step 2.
- Finally it adds the old certificate into a deny-list.
+    Finally it adds the old certificate into a deny-list.
 
 The certificate renewal logic uses the EST 7030 `simple re-enrollment`_ process to obtain a new certificate. The process is roughly:
 
