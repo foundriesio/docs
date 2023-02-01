@@ -87,8 +87,8 @@ Before you can perform certificate rotations, you must ensure you have taken con
 Specifically, you'll need access to your ``factory_ca.key`` in order to complete these steps.
 There are options to choose from.
 
-Foundries Managed
-~~~~~~~~~~~~~~~~~
+FoundriesFactory Managed
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Running ``fioctl keys est authorize`` will allow FoundriesFactory to run an EST server for you at ``<repoid>.est.foundries.io``.
 This command will sign a CSR created in the backend with your Factory's root key.
@@ -102,7 +102,7 @@ User Managed
 ~~~~~~~~~~~~
 
 Users may also run their own EST server.
-The EST server used by the Foundries.io® backend is available at:
+The EST server used by the Foundries.io™ backend is available at:
 
   https://github.com/foundriesio/estserver
 
