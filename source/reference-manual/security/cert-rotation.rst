@@ -22,22 +22,22 @@ The certificate rotation process is handled by :ref:`ref-fioconfig` on devices.
 Fioconfig carefully executes a sequence of atomic operations that can withstand unexpected power failures and reboots.
 When triggered a device will:
 
- * Obtain a new keypair (private key and client certificate) from its configured EST server
+ #. Obtain a new keypair (private key and client certificate) from its configured EST server
 
- * Inform the device gateway of this new key in order to:
+ #. Inform the device gateway of this new key in order to:
 
-   * Provide some 2FA guarantees—device must prove possession of both keys
+    * Provide some 2FA guarantees—device must prove possession of both keys
 
-   * Let the backend know that configuration operations should be rejected until the new key is in use
+    * Let the backend know that configuration operations should be rejected until the new key is in use
 
- * Re-encrypts its configuration values
+ #. Re-encrypts its configuration values
 
- * Reconfigures aktualizr-lite and fioconfig to use the new keypair
+ #. Reconfigures aktualizr-lite and fioconfig to use the new keypair
 
- * Restarts fioconfig and aktualizr-lite
+ #. Restarts fioconfig and aktualizr-lite
 
- * The device-gateway will see this new certificate then check that it matches the certificate from step 2.
-    Finally it adds the old certificate into a deny-list.
+ #. The device-gateway will see this new certificate then check that it matches the certificate from step 2.
+ #. Finally it adds the old certificate into a deny-list.
 
 The certificate renewal logic uses the EST 7030 `simple re-enrollment`_ process to obtain a new certificate. The process is roughly:
 
