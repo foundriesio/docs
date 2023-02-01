@@ -18,7 +18,7 @@ Install them with `pip install -r requirements.txt`.
 
 ### Using Virtualenv to Provide Requirements
 
-To avoid messing with your system-wide package storage, use `virtualenv`. 
+To avoid messing with your system-wide package storage, use `virtualenv`.
 This will set up the necessary environment for sphinx packages and place them here:
 
 ```bash
@@ -74,7 +74,7 @@ git checkout -b spell-check-everything
 
 ### Working on Documentation
 
-For new pages, templates for tutorials, user guides, and reference manual pages are in `templates/`
+For new pages, templates for most sections are in `templates/`
 
 Use spelling and grammar checks and ask a technical writer if you have questions.
 Consult the [style guide](https://foundriesio.atlassian.net/wiki/spaces/ID/pages/2392067/Foundries.io+Style+and+Communication+Guide).
@@ -87,17 +87,14 @@ vale sync
 vale <PATH/FILE>
 ```
 
-Alternatively, after installing vale, you can use make.
-To check all docs, run `make lint-all`.
-To check files changed since the last commit, use `make lint-diff`.
+:exclamation: make sure you are using Vale 2.16.0 or greater
 
 Before pushing, check locally:
 
-* links; `make linkcheck` 
-* html; `make html`
-* style; `make lint-diff`
-
+- links; `make linkcheck`
+- html; `make html`
+- lint: `vale <path_to_file(s)>`
 When opening a PR, tag a technical writer.
 They will merge it once reviews are in and suggestions considered.
-The [PR template](.github/pull_request_template.md) has additional steps. 
+The [PR template](.github/pull_request_template.md) has additional steps.
 
