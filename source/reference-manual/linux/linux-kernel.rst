@@ -29,6 +29,14 @@ repository, so the same development workflow and documentation applies.
 See the `Yocto Project Linux Kernel Development Manual`_ for more information
 on how to work and manage the kernel metadata and configuration fragments.
 
+The Porting Guide includes the section :ref:`ref-pg-how-to-configure-linux` on
+on how to add a custom Linux Kernel configuration which can be used to add:
+
+* the complete machine configuration.
+
+* fragments: a set of ``CONFIG_`` variables working to change
+  a default machine configuration.
+
 .. _github.com/foundriesio/linux: https://github.com/foundriesio/linux
 .. _github.com/foundriesio/lmp-kernel-cache: https://github.com/foundriesio/lmp-kernel-cache
 .. _Yocto Project Linux Kernel Development Manual: https://docs.yoctoproject.org/4.0.6/kernel-dev/advanced.html
