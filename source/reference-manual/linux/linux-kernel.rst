@@ -31,7 +31,7 @@ on how to work and manage the kernel metadata and configuration fragments.
 
 .. _github.com/foundriesio/linux: https://github.com/foundriesio/linux
 .. _github.com/foundriesio/lmp-kernel-cache: https://github.com/foundriesio/lmp-kernel-cache
-.. _Yocto Project Linux Kernel Development Manual: https://www.yoctoproject.org/docs/2.5/kernel-dev/kernel-dev.html#kernel-dev-advanced
+.. _Yocto Project Linux Kernel Development Manual: https://docs.yoctoproject.org/4.0.6/kernel-dev/advanced.html
 
 Linux microPlatform with Real-Time Linux Kernel
 -----------------------------------------------
