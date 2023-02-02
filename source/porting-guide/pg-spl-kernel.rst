@@ -26,7 +26,7 @@ dtb, so LmP relies on ``lmp-device-tree`` which is based on the Yocto Project
 device-tree class.
 
 For the kernel configuration, LmP makes use of the kernel fragments,
-using the Yocto Project mechanism also present on linux-yocto. This is
+using the Yocto Project mechanism also present on ``linux-yocto``. This is
 different from the also common “in-tree” configuration, which uses the
 file ``defconfig`` to configure the kernel.
 
@@ -34,7 +34,7 @@ Creating the Kernel fragments
 -----------------------------
 
 The kernel configuration files are part of the ``lmp-kernel-cache``
-repository which have a helpful README file, and is also described in
+repository which have a helpful ``README`` file, and is also described in
 the :ref:`ref-linux-fragments`.
 
 In short, there are several well known kernel features defined in
@@ -42,7 +42,7 @@ fragment files (such as the bluetooth feature) alongside other
 configurations. The ``bsp`` directory is where fragments related
 to the BSP are stored.
 
-The goal is to create a .bbappend to include the fragments which define
+The goal is to create a ``.bbappend`` to include the fragments which define
 the target machine. The set of files should look like the following:
 
 .. prompt:: text
@@ -59,7 +59,7 @@ the target machine. The set of files should look like the following:
     └── linux-<name>_%.bbappend
 
 Where ``<name>`` is the kernel name for the particular kernel recipe being
-used. The patch files are potential patches applied by the .bbappend
+used. The patch files are potential patches applied by the ``.bbappend``
 file on top of the kernel source code and ``<machine>`` is the machine name.
 The ``<sub-group>`` is a BSP subgroup, following the lmp-kernel-cache
 directory organization. For example, ``imx`` or ``raspberrypi``, depending on
@@ -97,10 +97,10 @@ code is by creating a recipe file for this module under
     recipes-kernel/kernel-modules/
     └── <module>
         ├── <module>
-        │   ├── COPYING
-        │   ├── Makefile
-        │   ├── <module>.c
-        │   └── <module>.h
+        │   ├── COPYING
+        │   ├── Makefile
+        │   ├── <module>.c
+        │   └── <module>.h
         └── <module>_<pv>.bb
 
 Where ``<module>_<pv>.bb`` is:
