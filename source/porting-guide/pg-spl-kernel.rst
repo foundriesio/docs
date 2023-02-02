@@ -30,8 +30,10 @@ using the Yocto Project mechanism also present on ``linux-yocto``. This is
 different from the also common “in-tree” configuration, which uses the
 file ``defconfig`` to configure the kernel.
 
-Creating the Kernel fragments
------------------------------
+.. _ref-pg-how-to-configure-linux:
+
+How To Configure the Linux Kernel
+---------------------------------
 
 The kernel configuration files are part of the ``lmp-kernel-cache``
 repository which have a helpful ``README`` file, and is also described in
