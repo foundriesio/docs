@@ -20,7 +20,7 @@ meta-subscriber-overrides so the build generates the output ``.dtb`` file.
     │   └── <board>.dts
     └── lmp-device-tree.bbappend
 
-The strategy of using the dts file separate from the Linux Kernel
+The strategy of using the dts file separate from the Linux® Kernel
 source helps to avoid forking the kernel when including any new
 dtb, so LmP relies on ``lmp-device-tree`` which is based on the Yocto Project
 device-tree class.
