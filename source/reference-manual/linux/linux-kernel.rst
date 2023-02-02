@@ -3,7 +3,7 @@
 Linux Kernel
 ============
 
-A common and unified Linux Kernel source tree is provided and used by
+A common and unified Linux® Kernel source tree is provided and used by
 the Linux microPlatform. The latest continuous release is available
 at `github.com/foundriesio/linux`_.
 
@@ -96,12 +96,12 @@ Set the ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-dev`` in
 
 Now just build any of the supported Linux microPlatform images.
 
-Specifying Linux git tree, branch and commit revision
+Specifying Linux Git Tree, Branch and Commit Revision
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following variables can be also set in
 ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
-in order to build ``linux-lmp-dev`` using a specific linux tree, branch or
+in order to build ``linux-lmp-dev`` using a specific Linux tree, branch or
 commit revision::
 
     KERNEL_REPO = "git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git" # Kernel git repository
