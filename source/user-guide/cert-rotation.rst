@@ -4,12 +4,12 @@ Device Certificate Rotation
 ===========================
 
 The :ref:`Device Certificate Rotation <ref-cert-rotation>` reference manual describes core concepts and functions of certificate rotation.
-This page explains how to configure your factory for this functionality.
+This page explains how to configure your Factory for this functionality.
 
 Choosing an EST Server
 ----------------------
 
-Before you can perform certificate rotations, you must ensure you have taken control of your factory's :ref:`PKI <ref-device-gateway>`.
+Before you can perform certificate rotations, you must ensure you have taken control of your Factory's :ref:`PKI <ref-device-gateway>`.
 Specifically, you'll need access to your ``factory_ca.key`` in order to complete these steps.
 There are two ways to then run an EST server.
 
@@ -21,7 +21,7 @@ This command will sign a CSR created in the backend with your Factory's root key
 The resulting TLS certificate will be used by the FoundriesFactory EST server.
 
 .. note::
-   This option requires the FoundriesFactory backend to have a certificate authority to sign renewal requests.
+   This option requires the FoundriesFactory® backend to have a certificate authority to sign renewal requests.
    This "online-ca" is configured when running ``fioctl keys ca create``.
 
 User Managed
