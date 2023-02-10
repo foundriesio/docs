@@ -1,19 +1,20 @@
 .. _gs-install-fioctl:
 
-Fioctl CLI Installation
-=======================
+Installing Fioctl
+=================
 
 :ref:`Fioctl™ <ref-fioctl>` is a simple tool for interacting with the Foundries.io REST API.
 
 .. seealso::
    Fioctl is based on Foundries.io's  `ota-lite API <https://api.foundries.io/ota/>`_.
 
-:ref:`ref-fioctl`, is used to manage:
+:ref:`ref-fioctl` is used to manage:
 
-- :ref:`Tags (per device, and per Factory) <ref-advanced-tagging>`
-- :ref:`Device configuration <ref-fioconfig>`
-- :ref:`OTA updates <ref-aktualizr-lite>`
+- :ref:`Tags (per device, per device group and per Factory) <ref-advanced-tagging>`
+- :ref:`Device Configuration <ref-fioconfig>`
+- :ref:`OTA Updates <ref-aktualizr-lite>`
 - :ref:`CI Secrets <ref-container-secrets>`
+- :ref:`Offline TUF Keys <ref-offline-keys>`
 
 .. _gs-fioctl-installation:
 
@@ -35,7 +36,7 @@ We use `Github Releases`_ to distribute static golang binaries.
    .. group-tab:: Linux
       
       .. attention::
-        Make sure you have Curl installed.
+        Make sure you have ``curl`` installed.
 
       1. Download a Linux binary to a directory on your ``PATH``.
 
@@ -60,7 +61,7 @@ We use `Github Releases`_ to distribute static golang binaries.
    .. group-tab:: macOS
       
       .. attention::
-        Make sure you have Curl installed.
+        Make sure you have ``curl`` installed.
 
       1. Download a Darwin binary from the `Github Releases`_ page to a directory on your ``PATH``.
 
@@ -123,7 +124,7 @@ For this, you will generate OAuth2 application credentials for interacting with 
      
      Client ID:
 
-:ref:`ref-fioctl` will now ask for your Client ID and Secret. Follow the next steps to generate it.
+:ref:`ref-fioctl` will now ask for your Client ID and Secret. Follow the next steps to generate them.
 
 Adding Application Credentials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

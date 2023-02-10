@@ -11,13 +11,7 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 
       device:~$ sudo lmp-device-register -n <device-name>
 
-.. note::
-
-    **By default**, devices will run **all** applications that are defined in the :term:`containers.git` repository,
-    thus available in the latest Target. This behavior can be changed by enabling only specific applications.
-    Read :ref:`ug-fioctl-enable-apps` to learn how.
-
-2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API:
+2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API. Follow the instructions on the promped message:
 
    .. highlight:: none
 
@@ -40,3 +34,8 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
  .. prompt:: bash host:~$, auto
 
       host:~$ fioctl devices list
+
+.. note::
+
+    **By default**, after registration devices will run **all** applications that are available in the latest Target. This behavior can be changed by enabling only specific applications.
+    Read :ref:`ug-fioctl-enable-apps` to learn how.
