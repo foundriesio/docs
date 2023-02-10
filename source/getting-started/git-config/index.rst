@@ -26,7 +26,7 @@ Run the following command to add the relevant entries to the Git configuration:
       git config --global credential.https://source.foundries.io.helper fio
       ln -s /usr/bin/fioctl /usr/bin/git-credential-fio
 
-   * Existing users may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility::
+   * Existing users reconfiguring Git access may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility::
 
       [http "https://source.foundries.io"]
       extraheader = Authorization: basic <TOKEN>
