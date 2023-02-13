@@ -3,40 +3,99 @@
 Security
 ========
 
-.. toctree::
-   :maxdepth: 1
-
-   secure-boot
-   boot-software-updates
-   ota-security
-   secure-elements/index
-   factory-keys
-
-
 Overview
 --------
 
-Security has multiple layers and dimensions. Such as:
+Security has multiple layers and dimensions.
+It starts all the way from booting the device to running software on it and connecting to cloud services.
+FoundriesFactory® provides a set of features to target every aspect of your Factory security.
 
- * How the operator manages keys for signing. This includes
-   TUF key management for signing what can be installed. It also
-   includes how boot firmware is signed so that the hardware boot ROM
-   will trust it.
+Below sections focus on the following aspects:
 
- * Device security - how devices store secure artifacts.
+  - how to securely connect your devices to Foundries.io™ cloud services.
+  - how to securely boot your devices;
+  - how to securely update firmware and software on your devices;
+  - how to securely store secrets on your devices;
 
- * Connection security - how devices and cloud services trust each
-   other.
 
-TUF Security
-------------
+.. _ref-secure-cloud-services:
 
-TUF_ is the mechanism by which the Foundries.io backend informs
-devices what software they can run. The TUF targets.json_ includes
-a software description that's pinned to secure hashes of all
-components so that a device can know that it is running the correct
-payload. TUF keys need to be managed by a customer :ref:`offline <ref-offline-keys>`
-in order to generate :ref:`production targets <ref-production-targets>`.
+Secure Connection to Cloud Services
+-----------------------------------
+
+Your devices communicate with a set of FoundriesFactory cloud services,
+the central of which is the :ref:`Device Gateway <ref-ota-architecture>`.
+The `Device Gateway` enforces Factory devices to establish the `Mutual TLS (mTLS) <mTLS_>`_ connection to it.
+During the `TLS Handshake <TLS_>`_ phase in `Mutual TLS`,
+both the device and the cloud service present and verify their TLS certificates.
+
+The Factory owner must take their :ref:`Factory PKI <ref-device-gateway>` offline before going to production.
+We also recommend to take the :ref:`Device Registration Service <ref-factory-registration-ref>` under full control.
+Finally, the :ref:`Device Networking <ref-device-network-access>` must be configured properly to connect to cloud services.
+
+.. toctree::
+   :maxdepth: 1
+
+   device-gateway
+   factory-registration-ref
+   device-network-access
+   cert-rotation
+
+.. _mTLS:
+  https://en.wikipedia.org/wiki/Mutual_authentication#mTLS
+
+.. _TLS:
+  https://www.rfc-editor.org/rfc/rfc8446
+
+
+.. _ref-secure-boot:
+
+Secure Boot (Hardware Root of Trust)
+------------------------------------
+
+FoundriesFactory `Secure Boot` is the mechanism to force a device to only execute boot software that is signed by a certain set of keys.
+The verification process and corresponding security functions are performed by the SoC boot ROM.
+These are the starting points for building a hardware root of trust.
+
+The SoC hardware security manual should be consulted to identify the supported key types and the signing process.
+Secure Boot specifics of select hardware platforms are described below.
+
+.. toctree::
+   :maxdepth: 1
+
+   secure-boot-imx-habv4
+   secure-boot-imx-ahab
+   secure-boot-stm32mp1
+   authentication-xilinx
+   secure-boot-uefi
+
+More information around Secure Boot aspects supported by LmP can be found in:
+
+.. toctree::
+   :maxdepth: 1
+
+   secure-machines
+   revoke-imx-keys
+   tee-on-versal-acap
+   factory-keys
+
+See how to implement the `Secure Boot Firmware Updates`_ below.
+
+
+.. _ref-ota-security:
+.. _OTA:
+
+Secure Over the Air Updates
+---------------------------
+
+FoundriesFactory `Over the Air Updates (OTA)` is the mechanism to deliver firmware and software updates to your Factory devices securely.
+It leverages `The Update Framework (TUF) <TUF_>`_ underneath which uses a set of keys to sign every software piece.
+These keys should be managed :ref:`offline <ref-offline-keys>` by the Factory owner before going to production.
+
+.. toctree::
+   :maxdepth: 1
+
+   offline-keys
 
 .. _TUF:
    https://theupdateframework.com/
@@ -44,35 +103,35 @@ in order to generate :ref:`production targets <ref-production-targets>`.
 .. _targets.json:
    https://theupdateframework.com/metadata/
 
-Secure Boot (Hardware Root of Trust)
-------------------------------------
 
-:ref:`Secure Boot <ref-secure-boot>` is the mechanism used to force a device to
-only execute boot software that is signed by a certain set of keys. The
-verification process and respective security functions are performed by the SoC
-boot ROM, and these are the starting points for building a hardware root of
-trust.
+.. _ref-boot-software-updates:
 
-The SoC hardware security manual should be consulted for identifying the
-supported key types and the signing process required for establishing the
-hardware root of trust.
+Secure Boot Firmware Updates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FoundriesFactory uses OTA_ to deliver secure boot firmware updates to your devices.
+Secure Boot Firmware Update specifics of select hardware platforms are described below.
 
-Device Security
----------------
+.. toctree::
+   :maxdepth: 1
 
-Devices employ multiple mechanisms to achieve security. First, they
-can take advantage of a :ref:`Hardware Security Element(HSM) <ref-secure-elements>`
-to ensure secrets are store securely.
+   boot-software-updates-imx
+   boot-software-updates-imx8qm
+   boot-software-updates-zynqmp
+   boot-software-updates-stm32mp1
 
-These secrets are then generated/used by a secure :ref:`provisioning
-process <ref-factory-registration-ref>` that allows devices a safe way
-to self-register with our cloud service.
 
-Connection Security
--------------------
+.. _ref-secure-elements:
 
-Connection security ties everything together. Devices and the
-:ref:`device gateway <ref-ota-architecture>` use mutual TLS to establish
-trust. We include a streamlined way to establish :ref:`PKI <ref-device-gateway>`
-for each factory that works with the secure provisioning process
-outlined above.
+Secure Element as Secrets Storage
+---------------------------------
+
+There are different techniques how to securely store secrets on your devices.
+We recommend that you take advantage of the `Hardware Security Module (HSM)` to keep your device secrets sealed.
+
+Hardware Secure Module (Secure Element) specifics of select hardware platforms are described below.
+
+.. toctree::
+   :maxdepth: 1
+
+   secure-elements/secure-element.050
+   secure-elements/se050-enablement
