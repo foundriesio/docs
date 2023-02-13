@@ -348,7 +348,11 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 # Config for sphinx-reredirects, maps source: target, target path is relative to source.
 redirects = {
      "reference-manual/factory/team-based-access": "../../user-guide/account-management/team-based-access.html",
-     "reference-manual/factory/factory-keys": "../../reference-manual/security/factory-keys.html"
+     "reference-manual/factory/factory-keys": "../../reference-manual/security/factory-keys.html",
+     "reference-manual/security/secure-boot": "security.html#secure-boot-hardware-root-of-trust",
+     "reference-manual/security/boot-software-updates": "security.html#secure-boot-firmware-updates",
+     "reference-manual/security/ota-security": "security.html#secure-over-the-air-updates",
+     "reference-manual/security/secure-elements/index": "../security.html#secure-element-as-secrets-storage",
      }
 
 # Make external links open in a new tab.
