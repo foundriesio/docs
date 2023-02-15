@@ -604,10 +604,11 @@ For example:
 Adding LmP Users
 ^^^^^^^^^^^^^^^^
 
-1. To create a new LmP user, first add this user to the system. The steps are
-similar to the ones described in :ref:`ref-troubleshooting_user-groups`, but
-normal users need a valid shell and ``user-id`` higher than ``1000``, for
-example:
+1. To create a new LmP user or replace the default ``fio`` user, first add the new
+user to the system. The steps are similar to the ones described in
+:ref:`ref-troubleshooting_user-groups`, but normal users need a valid shell and
+``user-id`` higher than ``1000`` for adding a new user, or equal to ``1000`` if
+replacing the ``fio`` user, for example:
 
 **group-table:**
 
@@ -642,9 +643,9 @@ the hashed password. For example:
 
     \$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E.
 
-This is the ``USER_PASSWD`` to be added to the build as the new user password.
+This is the ``USER_PASSWD``/``LMP_PASSWORD`` to be added to the build as the new user password.
 
-4. Add the following block to ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb``:
+4. If including a new user, add the following block to ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb``:
 
 .. code-block:: none
 
@@ -656,7 +657,16 @@ This is the ``USER_PASSWD`` to be added to the build as the new user password.
     usermod -a -G sudo,users,plugdev <user>; \
     "
 
-Remember to replace ``USER_PASSWD`` accordingly.
+**Or** if replacing the ``fio`` user, add the following to ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``:
+
+.. code-block:: none
+
+    LMP_USER = "<user>"
+    LMP_PASSWORD = "\$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E."
+
+.. note::
+
+    Remember to replace ``USER_PASSWD``, ``<user>`` and ``LMP_PASSWORD`` accordingly.
 
 After these changes, the files ``/usr/lib/passwd`` and ``/usr/lib/group`` should
 include the configuration for the new user.
