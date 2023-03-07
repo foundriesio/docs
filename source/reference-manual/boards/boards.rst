@@ -23,6 +23,7 @@ Find below the instructions on how to flash the supported boards.
    apalis-imx6
    apalis-imx8
    imx8qm-mek
+   am62xx-sk
    am64xx-sk
    stm32mp15-disco
    stm32mp15-eval
