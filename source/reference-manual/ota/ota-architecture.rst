@@ -9,9 +9,9 @@ At a high level the system consists of three entities:
 
  * LmP Devices
    
-   - Execute lmp-device-register to associate the device with the gateway
+   - Execute ``lmp-device-register`` to associate the device with the gateway
      
-   - Run aktualizr-lite and fioconfig daemons.
+   - Run ``aktualizr-lite`` and ``fioconfig`` daemons.
 
  * The device gateway
 
@@ -37,8 +37,8 @@ tooling like fioctl happen asynchronously.
 How A Device Uses Security Hardware
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An LmP device uses Hardware Security Modules, TPM devices or
-Trusted Execution Environments via the PKCS#11 API.
+An LmP device uses Hardware Security Modules, Trusted Platform Module (TPM) devices or
+Trusted Execution Environments via the Public-Key Cryptography Standards #11 (PKCS#11) API.
 
 They provide the guarantee that secrets will not be leaked and that
 communications will be secure. Certain keys will be provisioned during device
