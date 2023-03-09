@@ -8,7 +8,10 @@ Architecture Overview
 At a high level the system consists of three entities:
 
  * LmP Devices
-   - running aktualizr-lite and fioconfig
+   
+   - Execute lmp-device-register to associate the device with the gateway
+     
+   - Run aktualizr-lite and fioconfig daemons.
 
  * The device gateway
 
@@ -30,6 +33,24 @@ device gateway with HTTP GET requests on configurable intervals.
 
 Due to the fact devices are polling the server, REST API changes requested by
 tooling like fioctl happen asynchronously.
+
+How A Device Uses Security Hardware
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An LmP device uses Hardware Security Modules, TPM devices or
+Trusted Execution Environments via the PKCS#11 API.
+
+They provide the guarantee that secrets will not be leaked and that
+communications will be secure. Certain keys will be provisioned during device
+manufacturing.
+
+
+
+  .. figure:: /_static/lmp-device-arch.png
+     :align: center
+     :alt: LmP Device architecture diagram
+
+
 
 How A Device Finds Updates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
