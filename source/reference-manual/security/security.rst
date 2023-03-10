@@ -77,9 +77,19 @@ More information around Secure Boot aspects supported by LmP can be found in:
    secure-machines
    revoke-imx-keys
    tee-on-versal-acap
-   factory-keys
 
 See how to implement the `Secure Boot Firmware Updates`_ below.
+
+Secure Online Keys for Boot Stack
+---------------------------------
+
+FoundriesFactory uses online keys to sign the components from the boot stack during build time.
+More information on how these keys are used and how to modify them can be found in the page below.
+
+.. toctree::
+   :maxdepth: 1
+
+   factory-keys
 
 
 .. _ref-ota-security:
