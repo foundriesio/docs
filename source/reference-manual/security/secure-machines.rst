@@ -5,7 +5,7 @@
 Machines with secure aspects enabled by FoundriesFactory
 ========================================================
 
-LmP provides machines with secure aspects enabled by default when using
+The Linux microPlatform™ (LmP) provides machines with secure aspects enabled by default when using
 FoundriesFactory.
 
 The purpose of these machines is to gather the needed configuration to enable
@@ -118,3 +118,28 @@ to sign the SPL images, to fuse, and close the board.
   caution and only after understanding the critical implication of those commands.
 
 .. include:: imx-generic-custom-keys.rst
+
+Accessing Secure Storage
+------------------------
+
+.. note::
+   The LmP leverages the eMMC Replay Protected Memory Block (RPMB) as secure storage. This section is only applicable for devices that provide this feature.
+
+Once a device has been successfully fused and closed, the secure storage RPMB becomes available.
+This is accessed through ``fiovb`` (Foundries.io™ Verified Boot) early trusted application from Open Portable-Trusted Execution Environment (OP-TEE).
+
+By default, the secure storage only holds the variables used by ``aktualizr-lite`` to handle the updates, previously stored in ``uboot-env`` for non-fused boards. You can extend this to store custom variables that need to be made secure, like mac addresses, serial numbers and other critical device information.
+
+Writing to Secure Storage
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. prompt:: bash device:~#, auto
+
+   device:~# fiovb_setenv <variable> <value>
+
+Reading From Secure Storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. prompt:: bash device:~#, auto
+
+   device:~# fiovb_printenv <variable>
