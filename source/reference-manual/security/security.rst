@@ -17,6 +17,17 @@ Below sections focus on the following aspects:
   - how to securely update firmware and software on your devices;
   - how to securely store secrets on your devices;
 
+.. _ref-security-summary:
+
+FoundriesFactory Security Summary
+---------------------------------
+
+A brief summary of the crypto keys used in a FoundriesFactory can be found in:
+
+.. toctree::
+   :maxdepth: 1
+
+   ff-security-summary
 
 .. _ref-secure-cloud-services:
 
@@ -84,7 +95,7 @@ Secure Online Keys for Boot Stack
 ---------------------------------
 
 FoundriesFactory uses online keys to sign the components from the boot stack during build time.
-More information on how these keys are used and how to modify them can be found in the page below.
+More information on how these keys are used and how to modify them can be found below.
 
 .. toctree::
    :maxdepth: 1
