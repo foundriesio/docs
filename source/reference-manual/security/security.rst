@@ -135,3 +135,4 @@ Hardware Secure Module (Secure Element) specifics of select hardware platforms a
 
    secure-elements/secure-element.050
    secure-elements/se050-enablement
+   secure-elements/secure-element.tpm
