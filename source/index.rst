@@ -3,7 +3,7 @@ FoundriesFactory_ Documentation
 
 FoundriesFactory is a cloud service to build, test, deploy,
 and maintain secure, updatable IoT and Edge products. It is used to
-customize open source software projects including u-Boot, OP-TEE,
+customize open source software projects including U-Boot, OP-TEE,
 OE/Yocto Project, the Linux microPlatform™ and Docker®.
 
 .. toctree::
@@ -39,6 +39,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/account-management/account-management
    user-guide/container-preloading/container-preloading
    user-guide/custom-ci/custom-ci
+   user-guide/platform-customization/platform-customization
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
    user-guide/foundriesio-rest-api/foundriesio-rest-api
@@ -50,6 +51,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/offline-update/offline-update
    user-guide/el2g
+   user-guide/troubleshooting/troubleshooting
 
 .. toctree::
    :maxdepth: 1
@@ -65,7 +67,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    reference-manual/remote-access/remote-access
    reference-manual/security/security
    reference-manual/testing/testing
-   reference-manual/troubleshooting/troubleshooting
 
 .. toctree::
    :maxdepth: 1
