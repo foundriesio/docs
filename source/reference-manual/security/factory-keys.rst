@@ -1,7 +1,7 @@
 .. _ref-factory-keys:
 
-The LmP keys and certificates used during the build of a FoundriesFactory
-=========================================================================
+Crypto Keys Used by FoundriesFactory at Build Time
+==================================================
 
 LmP build system can use some online keys for signing some boot components of
 the software stack. It can handle the U-Boot, OP-TEE, Linux Kernel image and
