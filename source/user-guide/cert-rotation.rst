@@ -38,7 +38,7 @@ Performing a Certificate Rotation
 ---------------------------------
 
 Certificate rotations are triggered via configuration changes.
-Fioctl™ includes a helper for doing this either per device or per device group with:
+Fioctl® includes a helper for doing this either per device or per device group with:
 
  * ``fioctl device config rotate-certs <device>``
  * ``fioctl config rotate-certs --group <group>``

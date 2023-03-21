@@ -52,7 +52,7 @@ A pull queue can be created using fioctl::
  # fioctl event-queues mk-pull <name> <where to save creds-file>
  $ fioctl event-queues mk-pull docs-example $HOME/.fio-pull-queue.creds
 
-Fioctl can also monitor this queue::
+Fioctl® can also monitor this queue::
 
  $ fioctl event-queues listen docs-example $HOME/.fio-pull-queue.creds
 
