@@ -14,16 +14,16 @@ Secure Connection to Cloud Services
      - Type
      - Owner
    * - Root of Trust key (*factory_ca.key*)
-     - EC prime256v1
+     - NIST P-256
      - Owned and managed by the customer (offline key)
    * - TLS key
-     - EC prime256v1
+     - NIST P-256
      - Owned and managed by Foundries.io (used for mTLS handshake)
    * - Online CA private key (*online-ca.key*)
-     - EC prime256v1
+     - NIST P-256
      - If enabled (required by ``lmp-device-register`` for performing the device CSR), owned and managed by Foundries.io
    * - Local CA private key (*local-ca.key*)
-     - EC prime256v1
+     - NIST P-256
      - If enabled, owned and managed by the customer (used for performing the device CSR)
 
 Secure Boot (Hardware Root of Trust)
@@ -95,7 +95,7 @@ Secure Over the Air Updates
      - Ed25519 (default) or RSA 4096 **(*)**
      - Owned and managed by the customer (offline key)
    * - OTA Client (``aktualizr-lite``/``fioconfig``) mTLS Key
-     - EC prime256v1
+     - NIST P-256
      - Owned by the device (unique per device), created during registration (CSR)
 
 .. note::
