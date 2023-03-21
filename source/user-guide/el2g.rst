@@ -26,7 +26,7 @@ Prerequisites
 Enabling Auto-connect to Foundries.io
 --------------------------------------------------
 
-Fioctl includes commands that will configure EdgeLock 2GO to give out credentials that automatically connect aktualizr-lite to the device gateway, removing the need to run ``lmp-device-register``:
+Fioctl® includes commands that will configure EdgeLock 2GO to give out credentials that automatically connect aktualizr-lite to the device gateway, removing the need to run ``lmp-device-register``:
 
 .. prompt:: bash host:~$, auto
 

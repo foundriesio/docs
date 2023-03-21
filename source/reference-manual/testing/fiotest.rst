@@ -6,7 +6,7 @@ fiotest
 The Factory includes a simple, but effective way to manage automated testing.
 It's managed by a feature called the Device Gateway Testing API. This API
 allows registered devices to report the results of tests. The Factory makes
-the raw results of these tests available through api.foundries.io. Fioctl
+the raw results of these tests available through api.foundries.io. Fioctl®
 also includes the ability to summarize test results.
 
 The Model

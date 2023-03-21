@@ -19,7 +19,7 @@ about 30Mb.
 
 Generating static deltas
 ------------------------
-Fioctl includes a command to help generate static deltas. Since
+Fioctl® includes a command to help generate static deltas. Since
 these deltas can sometimes require a bit of processing power and
 network bandwidth, the actual work is performed as CI Job in
 the Factory.

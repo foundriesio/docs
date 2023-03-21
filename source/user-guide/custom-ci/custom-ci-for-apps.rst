@@ -113,7 +113,7 @@ The utility outputs the built and pushed App image digest to the file specified 
 Then the published App can be referenced with a hashed URI — ``hub.foundries.io/<factory>/<app-name>@sha256:<hash>``.
 
 Once the App is successfully built and pushed to the registry, a new Target referring to it can be created.
-To do so the Fioctl command ``fioctl targets add`` should be used.
+To do so the Fioctl® command ``fioctl targets add`` should be used.
 
 Check The Workflow Result
 -------------------------

@@ -44,7 +44,7 @@ Working With SBOMs
 ------------------
 
 While you can access SBOM information in its raw form by browsing your CI build,
-APIs exist that allow Fioctl to work with Factory SBOMs.
+APIs exist that allow Fioctl® to work with Factory SBOMs.
 
 
 Like other Factory concepts, SBOMs revolve around :ref:`Targets <tutorial-what-is-a-target>`.
