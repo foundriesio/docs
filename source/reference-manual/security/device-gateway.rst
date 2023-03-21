@@ -19,7 +19,7 @@ Root of trust - factory_ca.key / factory_ca.pem
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The PKI root of trust for your factory. You own the private key
-(EC prime256v1 by default). The corresponding x509 certificate is shared
+(NIST P-256 by default). The corresponding x509 certificate is shared
 with Foundries.io to define your root of trust.
 
 All intermediate CA and mutual TLS certificates configured in your factory  must be signed
