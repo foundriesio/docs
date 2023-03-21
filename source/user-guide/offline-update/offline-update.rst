@@ -49,16 +49,20 @@ Performing the Offline Update
 -----------------------------
 Before doing the offline update, make the offline update content accessible on a device, e.g., attach and mount the USB drive.
 
-Use the ``aklite-offline`` CLI utility to perform an offline update:If a device needs
+Use the ``aklite-offline`` CLI utility to perform an offline update.
 
 1. Run ``aklite-offline install [--config <config dir or file>] --src-dir <path to offline update content>``.
 
-2. Run one of the post installation actions depending on the ``aklite-offline`` install result:
+2. Run one of :ref:`the post installation actions <Post Install and Run Actions>` depending on the ``aklite-offline install`` result:
 
-    a. trigger reboot to perform a rollback if the update failed;
-    b. reboot device and invoke ``aklite-offline run [--config <config dir or file>]`` to finalize an ostree installation and start Apps if both ostree/rootfs and Apps are updated;
-    c. restart the Docker Engine (e.g. ``systemctl restart docker``) and invoke ``aklite-offline run [--config <config dir or file>]``  if just Apps are updated.
+    a. code 100: reboot device and invoke ``aklite-offline run [--config <config dir or file>]`` to finalize an ostree installation and start Apps if both ostree/rootfs and Apps are updated;
+    b. code 101: restart the Docker Engine (e.g. ``systemctl restart docker``) and invoke ``aklite-offline run [--config <config dir or file>]``  if just Apps are updated.
+    c. code 90: reboot device to finalize the previous boot firmware update and go to the step #1 to start the update.
 
+3. Reboot a device after running ``aklite-offline run [--config <config dir or file>]`` command if:
+
+    a. code 100: Apps failed to start after update, you must reboot a device to complete the rollback;
+    b. code 90: the update includes a boot firmware, you can optionally reboot a device to finalize the boot firmware upgrade.
 
 Usage Details
 -------------
@@ -78,16 +82,41 @@ The CLI utility supports two commands:
     ``--src-dir`` - Path to a directory that contains update content downloaded by ``fioctl targets offline-update`` command.
 
 
-Post Install Actions
-~~~~~~~~~~~~~~~~~~~~
-The command sets the following exit codes (``echo $?``) that instruct which of the post install actions you should perform:
+.. _Post Install and Run Actions:
 
-- *100* - Reboot is required to complete installation. After reboot ``aklite-offline run`` must be invoked.
-- *101* - Restart of dockerd service is required , e.g. ``systemctl restart docker``. After the restart ``aklite-offline run`` must be invoked.
-- *0* - OSTree/rootfs installation and Apps start was successful, update completed. Only ``aklite-offline run`` can return this code.
+Post Install and Run Actions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The ``install`` and ``run`` commands sets exit codes (``echo $?``) to instruct which of the post install actions you should perform.
 
-If ``aklite-offline run`` returns *100* , then an update has not been successful and rollback has happened. In this case you should trigger reboot followed by another ``aklite-offline run`` to complete the rollback.
+The ``install`` command sets the following exit codes:
 
+- *0*: Installation was not performed.
+    - Device already runs the specified target, no update is needed.
+- *90*: Installation was not performed.
+    - Reboot is required to complete the previous boot firmware update. After reboot a client should repeat the update attempt from the beginning.
+- *100*: Installation succeeded.
+    - Reboot is required to complete installation. After reboot ``aklite-offline run`` must be invoked.
+- *101*: Installation succeeded.
+    - Restart of dockerd service is required to complete installation, e.g. ``systemctl restart docker``. After the restart ``aklite-offline run`` must be invoked.
+
+The ``run`` command sets the following exit codes:
+
+- *0*: Update succeeded.
+    - Device is booted on the updated rootfs and running the updated Apps.
+- *90*: Update succeeded.
+    - Device is booted on the updated rootfs and running the updated Apps.
+    - Bootloader is updated too, optionally, a reboot to confirm its update can be performed.
+- *99*: Update failed.
+    - Device failed to boot on the updated rootfs and rollbacked to the previous version.
+- *100*: Update failed.
+    - Device successfully booted on the updated rootfs but failed to start the updated Apps after the reboot.
+    - Device is rollbacking to the previous version, reboot followed by ``aklite-offline run`` is required to complete the rollback.
+- *110*: Update failed.
+    - Device failed to boot on the updated rootfs and rollbacked to the previous version.
+    - Device failed to start the previous version's Apps since they are unknown.
+- *120*: Update failed.
+    - Device successfully booted on the updated rootfs but failed to start the updated Apps after the reboot.
+    - Device cannot perform rollback because the Target/version to rollback to is unknown.
 
 Configuration Details
 ~~~~~~~~~~~~~~~~~~~~~
