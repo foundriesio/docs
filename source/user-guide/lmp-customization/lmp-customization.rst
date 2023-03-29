@@ -1,16 +1,16 @@
-.. _platform-customizing:
+.. _lmp-customization:
 
-Platform Customization
+LmP Customization
 ======================
 
 This page covers some common ways that the Linux® microPlatform (LmP) can be modified.
-Platform Customization includes kernel options, startup services, user and group configuration, 
+This includes kernel options, startup services, user and group configuration, 
 and other options related to the platform build. 
 
 .. seealso::
 
    The tutorial for :ref:`tutorial-customizing-the-platform` covers adding a Systemd Startup Service.
-   This helps introduces core concepts and steps related to customizing the platform, and is a good place to start.
+   This helps introduces core concepts and steps related to customizing LmP, and is a good place to start.
 
 Kernel Command Line Arguments
 -----------------------------

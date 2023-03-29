@@ -120,21 +120,6 @@ This lets you can check the pruned targets before running the actual command::
 How Tos
 --------
 
-.. _ref-aktualizr-lite-pruning:
-
-Disable Automatic Pruning of Containers With Aktualizr-Lite
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-By default, :ref:`ref-aktualizr-lite` will prune Docker containers periodically.
-If this behavior is undesirable, it can be disabled by adding ``aktualizr-lite-no-prune`` as an argument to Docker containers.
-Another way is by adding ``docker_prune = "0"`` to the ``[pacman]`` section of ``/var/sota/sota.toml`` on a given device.
-
-.. code-block::
-
-   LABEL aktualizr-lite-no-prune
-
-.. note:: https://docs.docker.com/engine/reference/builder/#label
-
 Aktualizr-Lite and Fioconfig Polling Time
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
