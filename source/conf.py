@@ -346,6 +346,7 @@ htmlhelp_basename = 'fiodoc'
 intersphinx_mapping = {'https://docs.python.org/': None}
 
 # Config for sphinx-reredirects, maps source: target, target path is relative to source.
+# TODO: troubleshooting sections redirecting to lmp-customization do not appear to be functional
 redirects = {
      "reference-manual/factory/team-based-access": "../../user-guide/account-management/team-based-access.html",
      "reference-manual/factory/factory-keys": "../../reference-manual/security/factory-keys.html",
@@ -353,7 +354,11 @@ redirects = {
      "reference-manual/security/boot-software-updates": "security.html#secure-boot-firmware-updates",
      "reference-manual/security/ota-security": "security.html#secure-over-the-air-updates",
      "reference-manual/security/secure-elements/index": "../security.html#secure-element-as-secrets-storage",
-     }
+     "reference-manual/troubleshooting/troubleshooting": "../../user-guide/troubleshooting/troubleshooting.html",
+     "reference-manual/troubleshooting/troubleshooting#extending-user-groups": "../../user-guide/lmp-customization/lmp-customization.html#extending-user-groups",
+     "reference-manual/troubleshooting/troubleshooting#adding-a-new-systemd-startup-service": "../../user-guide/lmp-customization/lmp-customization.html#adding-a-new-systemd-startup-service",
+     "reference-manual/troubleshooting/troubleshooting#adding-lmp-users": "../../user-guide/lmp-customization/lmp-customization.html#adding-lmp-users#adding-lmp-users",
+      }
 
 # Make external links open in a new tab.
 # https://stackoverflow.com/questions/25583581/add-open-in-new-tab-links-in-sphinx-restructuredtext
