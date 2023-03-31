@@ -39,6 +39,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/account-management/account-management
    user-guide/container-preloading/container-preloading
    user-guide/custom-ci/custom-ci
+   user-guide/lmp-customization/lmp-customization
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
    user-guide/foundriesio-rest-api/foundriesio-rest-api
@@ -51,6 +52,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/offline-update/offline-update
    user-guide/el2g
+   user-guide/troubleshooting/troubleshooting
 
 .. toctree::
    :maxdepth: 1
@@ -66,7 +68,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    reference-manual/remote-access/remote-access
    reference-manual/security/security
    reference-manual/testing/testing
-   reference-manual/troubleshooting/troubleshooting
 
 .. toctree::
    :maxdepth: 1
