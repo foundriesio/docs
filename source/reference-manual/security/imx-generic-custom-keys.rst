@@ -101,4 +101,4 @@ close the board, respectively.
   after understanding its critical implications.
 
 .. _i.MX Secure Boot on HABv4 Supported Devices: https://www.nxp.com/webapp/Download?colCode=AN4581&location=null
-.. _Generating a fast authentication PKI tree: https://source.codeaurora.org/external/imx/uboot-imx/tree/doc/imx/habv4/introduction_habv4.txt?h=imx_v2020.04_5.4.70_2.3.0#n191
+.. _Generating a fast authentication PKI tree: https://github.com/nxp-imx/uboot-imx/blob/lf_v2022.04/doc/imx/habv4/introduction_habv4.txt#L193
