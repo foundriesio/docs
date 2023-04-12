@@ -52,6 +52,8 @@ will be automatically booted on the first boot:
     > fatload mmc ${bootseq}:1 ${loadaddr} u-boot0001.itb;
     > sf update ${loadaddr} 0x300000 ${filesize};
     > sf update ${loadaddr} 0x1080000 ${filesize};
+    > sf erase 0x2200000 0x20000
+    > sf erase 0x2220000 0x20000
     > reset
 
 After reboot, LmP U-Boot serial output is shown:
