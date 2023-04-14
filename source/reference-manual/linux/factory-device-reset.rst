@@ -27,6 +27,7 @@ Partial factory reset
 ---------------------
 
 There are currently two options in partial reset.
+The main difference with full reset is that the device remains connected to the FoundriesFactory®.
 
 Keep SOTA
 ~~~~~~~~~
@@ -46,3 +47,8 @@ Contents of ``/var/`` are partially removed.
 ``/var/sota/`` contents are kept to allow aktualizr-lite and
 compose-apps to be preserved.
 ``/var/lib/`` is preserved as the docker objects are stored there.
+
+RPMB
+~~~~
+
+Currently ``RPMB`` is not cleared in either reset procedures.
