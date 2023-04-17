@@ -323,3 +323,30 @@ Adding LmP Users
 
 After these changes, the files ``/usr/lib/passwd`` and ``/usr/lib/group`` should include the configuration for the new user.
 
+LmP Time Servers
+----------------
+
+By default, LmP does time synchronization using ``systemd-timesyncd``. It is recommended to use that whenever possible as it is well integrated with ``systemd``. However, a common request is to enable Network Time Protocol (NTP) as a time server instead.
+
+For that, first disable ``systemd-timesyncd`` support in ``meta-subscriber-overrides/recipes-core/systemd/systemd_%.bbappend``:
+
+.. code-block:: none
+
+    PACKAGECONFIG:remove = "timesyncd"
+
+Then, enable ``ntp`` in ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb`` by appending the ``CORE_IMAGE_BASE_INSTALL`` variable:
+
+.. code-block:: none
+
+    CORE_IMAGE_BASE_INSTALL += " \
+        ntp \
+    "
+
+.. note::
+    If ``systemd-timesyncd`` is used, the default ``ntp`` server list is set `in this recipe <https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-core/systemd/systemd_%25.bbappend>`_::
+
+        DEF_FALLBACK_NTP_SERVERS ?= "time1.google.com time2.google.com time3.google.com time4.google.com time.cloudflare.com"
+
+    If needed, this can be customized in ``meta-subscriber-overrides/recipes-core/systemd/systemd_%.bbappend``::
+
+        DEF_FALLBACK_NTP_SERVERS += " <new-server>"
