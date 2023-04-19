@@ -1,9 +1,12 @@
 .. _ref-boards:
 
-Supported Boards
-================
+Flashing Instructions
+=====================
 
-Find below the instructions on how to flash the supported boards.
+.. seealso::
+   The page on :ref:`ref-linux-supported` has details on machine support.
+
+This section contains details on flashing images to the following boards:
 
 .. toctree::
    :maxdepth: 1

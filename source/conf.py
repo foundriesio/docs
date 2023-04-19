@@ -358,6 +358,8 @@ redirects = {
      "reference-manual/troubleshooting/troubleshooting#extending-user-groups": "../../user-guide/lmp-customization/lmp-customization.html#extending-user-groups",
      "reference-manual/troubleshooting/troubleshooting#adding-a-new-systemd-startup-service": "../../user-guide/lmp-customization/lmp-customization.html#adding-a-new-systemd-startup-service",
      "reference-manual/troubleshooting/troubleshooting#adding-lmp-users": "../../user-guide/lmp-customization/lmp-customization.html#adding-lmp-users#adding-lmp-users",
+     "reference-manual/boards/boards": "../../user-guide/flashing/flashing.html",
+     "reference-manual/linux/linux-supported": "../../reference-manual/supported-machines/supported-boards.html",
       }
 
 # Make external links open in a new tab.

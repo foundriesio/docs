@@ -3,6 +3,10 @@
 Supported Machines
 ==================
 
+.. important::
+   Not all boards listed here may have a equal level of support.
+   Please reach out to us if you have any questions or need assistance.
+
 The :ref:`ref-factory-definition` (``ci-scripts.git``) contains a ``machines:``
 key value pair in the ``factory-config.yml`` file. When the value is changed,
 the next build you perform by pushing to the ``lmp-manifest.git`` or
@@ -18,6 +22,6 @@ and begin producing targets for the ``MACHINE`` you have set.
    continue to be built for the previous architecture.
 
 .. csv-table:: **Supported Boards**
-   :file: ../../_static/csv/supported-boards.csv
+   :file: supported-boards.csv
    :widths: 30, 30
    :header-rows: 1

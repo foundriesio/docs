@@ -23,7 +23,6 @@ and maintained by Foundries.io on `GitHub`_.
 .. toctree::
    :maxdepth: 1
 
-   linux-supported
    linux-repo
    development-tags
    linux-dev-container

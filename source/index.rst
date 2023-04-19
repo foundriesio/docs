@@ -37,6 +37,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-user-guide
 
    user-guide/account-management/account-management
+   user-guide/flashing/flashing
    user-guide/container-preloading/container-preloading
    user-guide/custom-ci/custom-ci
    user-guide/lmp-customization/lmp-customization
@@ -60,13 +61,13 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-manual
 
    reference-manual/docker/docker
-   reference-manual/boards/boards
    reference-manual/qemu/qemu
    reference-manual/factory/factory
    reference-manual/linux/linux
    reference-manual/ota/ota
    reference-manual/remote-access/remote-access
    reference-manual/security/security
+   reference-manual/supported-machines/supported-boards
    reference-manual/testing/testing
 
 .. toctree::
