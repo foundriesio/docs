@@ -11,6 +11,7 @@ Embedded Artists i.MX 7ULP uCOM,imx7ulpea-ucom
 :ref:`NXP i.MX 8M Plus EVK <ref-rm_board_imx8mp-lpddr4-evk>`,imx8mp-lpddr4-evk
 :ref:`NXP i.MX 8M Plus EVK with secure boot enabled <ref-rm_board_imx8mp-lpddr4-evk>`,imx8mp-lpddr4-evk-sec
 :ref:`NXP i.MX 8M Nano EVK <ref-rm_board_imx8mn-ddr4-evk>`,imx8mn-ddr4-evk
+:ref:`NXP i.MX 93 EVK <ref-rm_board_imx93evk>`,imx93-11x11-lpddr4x-evk
 :ref:`Toradex Apalis iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
 :ref:`Toradex Apalis iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
 Toradex Apalis iMX8QM,apalis-imx8
