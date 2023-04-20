@@ -24,16 +24,19 @@ When a FoundriesFactory is created, by default two set of keys are created under
 
 A pair is composed by a certificate (``*.crt``) and a key (``*.key``) file.
 
-The **dev** pair is a generic RSA 2048 key pair and is not in use.
+The name of the key indicates by which component the **public** part of the key is used.
 
-The **opteedev** pair is a RSA 2048 key pair used for OP-TEE. This is used by
-configuring the variable ``OPTEE_TA_SIGN_KEY``.
+The **dev** pair is a generic ``RSA`` 2048 key pair and is not in use.
 
-The **ubootdev** pair is a RSA 2048 key pair used for U-Boot proper. This is used by
-configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
+The **opteedev** pair is a ``RSA`` 2048 key pair by ``OP-TEE`` in order to validate trusted
+applications run by ``OP-TEE``. This is used by configuring the variable ``OPTEE_TA_SIGN_KEY``.
 
-The **spldev** key pair is a RSA 2048 key pair used for U-Boot SPL. This is
-used by configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
+The **ubootdev** pair is a ``RSA`` 2048 key pair by U-Boot proper in order to validate the
+Linux® Kernel. This is used by configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
+
+The **spldev** key pair is a ``RSA`` 2048 key pair used by U-Boot ``SPL`` in order to validate
+``FIT`` image containing U-Boot and ``OP-TEE``.
+This is used by configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
 
 The file ``x509.genkey`` is a configuration file used for creating
 ``privkey_modsign.pem`` and ``x509_modsign.crt`` which is a RSA 2048 pair in PEM
