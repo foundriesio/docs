@@ -23,6 +23,7 @@ Find below the instructions on how to flash the supported boards.
    apalis-imx6
    apalis-imx8
    imx8qm-mek
+   imx8ulpevk
    imx93evk
    am62xx-sk
    am64xx-sk
