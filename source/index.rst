@@ -58,7 +58,8 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :maxdepth: 1
    :caption: Reference Manual
    :name: sec-manual
-
+  
+   reference-manual/index
    reference-manual/docker/docker
    reference-manual/boards/boards
    reference-manual/qemu/qemu
