@@ -4,6 +4,7 @@ i.MX 8 ULP Evaluation Kit
 =========================
 
 .. |board_name| replace:: i.MX 8 ULP EVK
+.. |machine_name| replace:: imx8ulp-lpddr4-evk
 .. |debug_port| replace:: **J17**
 .. |download_port| replace:: **J15**
 .. |power_jack| replace:: **SW10**
@@ -12,26 +13,28 @@ i.MX 8 ULP Evaluation Kit
 .. |boot_mode_sdp| replace:: X, X, X, X, X, X, ON, OFF
 .. |boot_mode_emmc| replace:: OFF, OFF, X, X, OFF, OFF, OFF, ON
 .. |boot_mode_bits| replace:: 1-8
+.. |imx_usb_type| replace:: micro-C
+.. |imx_n_consoles| replace:: Three
+.. |imx_tty_device| replace:: ``ttyUSB2``
+.. |imx_tty_port| replace:: ``if02``
+.. |imx_usb_type_debug| replace:: micro-B
+.. |imx_usb_type_sdp| replace:: USB-C
+.. |imx_power_jack_type| replace:: USB-C
 
-.. include:: imx8-prepare.rst
+.. |imx_lsusb| prompt:: bash $, auto
 
-Hardware Preparation
---------------------
+           $ lsusb | grep NXP
+           Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
 
-Set up the board for updating using the manufacturing tools:
-
-.. figure:: /_static/boards/imx8ulp-lpddr4-evk.png
+.. |image_board_top| image:: /_static/boards/imx8ulp-lpddr4-evk.png
      :width: 600
-     :align: center
+     :align: middle
 
-     |board_name|
+.. |image_board_SW| image:: /_static/boards/imx8ulp-lpddr4-evk_SW.png
+     :width: 600
+     :align: middle
 
-#. **OPTIONAL**—Only required if you have problems and/or want to see the boot console output.
-
-     Connect the micro-B end of the USB cable into debug port |debug_port|.
-     Connect the other end of the cable to a PC acting as a host
-     terminal. Three UART connections will appear on the PC.
-     On a Linux host for example::
+.. |imx_tty_list| prompt:: bash $, auto
 
         $ ls -l /dev/serial/by-id/
         total 0
@@ -39,41 +42,26 @@ Set up the board for updating using the manufacturing tools:
         lrwxrwxrwx 1 root root 13 Feb 13 12:59 usb-0403_FT4232H_9266A2-if02-port0 -> ../../ttyUSB2
         lrwxrwxrwx 1 root root 13 Feb 13 12:59 usb-0403_FT4232H_9266A2-if03-port0 -> ../../ttyUSB3
 
-     Using a serial terminal program like `minicom <https://salsa.debian.org/minicom-team/minicom>`_, connect to the port
-     with ``if02`` in the name (in this example ttyUSB2) and apply the
-     following configuration:
-
-          - Baud rate: 115200
-          - Data bits: 8
-          - Stop bit: 1
-          - Parity: None
-          - Flow control: None
-
-#. Ensure that the power is off (|power_switch|)
-
-#. Put the |board_name| into programing mode:
-
-     Switch |boot_mode_switch| to |boot_mode_sdp| (from |boot_mode_bits| bit) to Download Mode.
-
-     .. figure:: /_static/boards/imx8ulp-lpddr4-evk_SW.png
+.. |usb_device_windows| image:: /_static/boards/windows_verify.png
           :width: 600
-          :align: center
+          :align: middle
 
-          |boot_mode_switch| programing settings
+.. |imx_file_list| prompt:: text
 
-#. Connect your computer to the |board_name| board via the USB Type-C port 1 ``Download`` |download_port| jack.
-#. Connect the USB Type-C power plug to the port 2 ``Power`` |power_jack| jack.
+          ├── lmp-factory-image-imx8ulp-lpddr4-evk.wic
+          ├── u-boot-imx8ulp-lpddr4-evk.itb
+          ├── imx-boot-imx8ulp-lpddr4-evk
+          └── mfgtool-files-imx8ulp-lpddr4-evk
+               ├── bootloader.uuu
+               ├── full_image.uuu
+               ├── SPL-mfgtool
+               ├── u-boot-mfgtool.itb
+               ├── uuu
+               └── uuu.exe
 
-#. Power on the |board_name| board by sliding power switch |power_switch| to ON.
+.. |secure_boot_preparation_note| replace:: The instructions in this section
+     show the preparation before the flashing procedure.
 
-Flashing
---------
+.. |secure_boot_pre_flash_note| replace:: Follow the instructios below.
 
-Once in serial downloader mode and connected to your PC the evaluation board should show up as an NXP® USB device.
-
-
-.. include:: imx8-flashing.rst
-
-To put the |board_name| into run mode by switching |boot_mode_switch| to |boot_mode_emmc| to set Cortex-A to boot from eMMC.
-
-Power on the |board_name| board by sliding power switch |power_switch| to ON.
+.. include:: imx-common-board.inc
