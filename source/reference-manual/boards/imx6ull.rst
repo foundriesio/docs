@@ -3,100 +3,81 @@
 i.MX 6ULL Evaluation Kit
 ========================
 
-.. include:: secure-boot-note.rst
+.. |board_name| replace:: imx6ullevk
+.. |machine_name| replace:: imx6ullevk
+.. |debug_port| replace:: **J1901**
+.. |download_port| replace:: **USB OTG**
+.. |power_jack| replace:: **J2001**
+.. |power_switch| replace:: **SW2001**
+.. |boot_mode_switch| replace:: **SW602**
+.. |boot_mode_sdp| replace:: OFF, ON
+.. |boot_mode_emmc| replace:: ON, OFF
+.. |boot_mode_bits| replace:: 1-2
+.. |imx_usb_type| replace:: micro-B
+.. |imx_n_consoles| replace:: One
+.. |imx_tty_device| replace:: ``ttyUSB2``
+.. |imx_tty_port| replace:: ``if00``
+.. |imx_usb_type_debug| replace:: micro-B
+.. |imx_usb_type_sdp| replace:: micro-B
+.. |imx_power_jack_type| replace:: 5V
 
-.. include:: imx6ull-prepare.rst
+.. |imx_lsusb| prompt:: bash $, auto
 
-Hardware Preparation
---------------------
+                $ lsusb | grep NXP
+                  Bus 002 Device 052: ID 15a2:0080 Freescale Semiconductor, Inc.
 
-Set up the board for updating using the manufacturing tools:
+.. |image_board_top| image:: /_static/boards/imx6ullevk.png
+     :width: 600
+     :align: middle
 
-.. figure:: /_static/boards/imx6ullevk.png
-     :width: 400
-     :align: center
+.. |image_board_SW| image:: /_static/boards/imx6ullevk_SW1.png
+     :width: 600
+     :align: middle
 
-     imx6ullevk
+.. |imx_tty_list| prompt:: bash $, auto
 
-#. **OPTIONAL** - Only required if you have a problems and/or want to see the boot console output.
-
-     Connect the micro-B end of the USB cable into debug port J1901.
-     Connect the other end of the cable to a PC acting as a host
-     terminal. One UART connection will appear on the PC.
-     On a Linux host for example::
-
-          $ ls -l /dev/serial/by-id/
+        $ ls -l /dev/serial/by-id/
           total 0
           lrwxrwxrwx 1 root root 13 Dec  3 13:09 usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 -> ../../ttyUSB2
 
-     Using a serial terminal program like minicom, connect to the port
-     with ``if00`` in the name (in this example ttyUSB2) and apply the
-     following configuration
+.. |usb_device_windows| image:: /_static/boards/imx6_windows.png
+          :width: 600
+          :align: middle
 
-          - Baud rate: 115200
-          - Data bits: 8
-          - Stop bit: 1
-          - Parity: None
-          - Flow control: None
+.. |imx_file_list| prompt:: text
 
-#. Ensure that the power is off (SW2001)
+          ├── lmp-factory-image-imx6ullevk.wic
+          ├── u-boot-imx6ullevk.itb
+          ├── sit-imx6ullevk.bin
+          ├── SPL-imx6ullevk
+          └── mfgtool-files-imx6ullevk
+               ├── bootloader.uuu
+               ├── full_image.uuu
+               ├── SPL-mfgtool
+               ├── u-boot-mfgtool.itb
+               ├── uuu
+               └── uuu.exe
 
-#. Put the imx6ullevk into programing mode:
+.. |secure_boot_preparation_note| replace::
+    The instructions in this section also applies to those boards with secure
+    boot enabled. There are references on how to perform common instructions
+    along with the flow. The :ref:`ref-security` Reference Manual details the
+    required background for secure boot.
 
-     Switch SW602 to boot from serial downloader by setting to OFF, ON (from 1-2 bit)
+.. |secure_boot_pre_flash_note| replace:: For instructions on how to sign the
+     required images before flashing them to the board with secure boot enabled,
+     follow the instructions from :ref:`ref-secure-machines`.
 
-     .. figure:: /_static/boards/imx6ullevk_SW1.png
-          :width: 300
-          :align: center
+Pre-preparation
+---------------
 
-          SW602 settings
-
-+----------+-----------+-----------------------+
-| D1/MODE1 | D2/MODE0  |  BOOT MODE            |
-+==========+===========+=======================+
-|  OFF     |  OFF      | Boot From Fuses       |
-+----------+-----------+-----------------------+
-| **OFF**  | **ON**    | **Serial Downloader** |
-+----------+-----------+-----------------------+
-|  ON      |  OFF      | Internal Boot         |
-+----------+-----------+-----------------------+
-|  ON      |  ON       | Reserved              |
-+----------+-----------+-----------------------+
-
-     Switch SW601 to device microSD by setting to OFF, OFF, ON, OFF (from 1-4 bit)
+Before starting to work with |board_name| make sure to switch **SW601** to device
+microSD by setting to OFF, OFF, ON, OFF (from 1-4 bit)
 
      .. figure:: /_static/boards/imx6_sw601.png
           :width: 300
           :align: center
 
-          SW601 settings
+          **SW601** settings
 
-+----------+-----------+----------+-----------+-----------------------+
-| D1       | D2        | D3       | D4        |  BOOT MODE            |
-+==========+===========+==========+===========+=======================+
-| **OFF**  | **OFF**   | **ON**   | **OFF**   | **MicroSD**           |
-+----------+-----------+----------+-----------+-----------------------+
-| OFF      | OFF       | OFF      | OFF       | QSPI                  |
-+----------+-----------+----------+-----------+-----------------------+
-| OFF      | ON        | ON       | OFF       | EMMC                  |
-+----------+-----------+----------+-----------+-----------------------+
-|  ON      |  ON       | OFF      | ON        | NAND                  |
-+----------+-----------+----------+-----------+-----------------------+
-
-#. Connect your computer to the EVK board via the USB OTG jack.
-#. Connect the plug of the 5V power supply to the DC power jack J2001.
-#. Power on the EVK board by sliding power switch SW2001 to ON.
-
-Flashing
---------
-
-Once in serial downloader mode and connected to your PC the evaluation board should show up as a Freescale USB device.
-
-.. include:: secure-boot-pre-flash-note.rst
-
-.. include:: imx6-flashing.rst
-
-To put the EVK into run mode, switch SW602 to ``internal boot`` by setting to
-ON, OFF (from 1-2bit). This is the opposite of programming mode described previously.
-
-Power on the EVK board by sliding power switch SW2001 to ON.
+.. include:: imx-common-board.inc
