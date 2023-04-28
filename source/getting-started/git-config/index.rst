@@ -31,9 +31,9 @@ Run the following command to add the relevant entries to the Git configuration:
       [http "https://source.foundries.io"]
       extraheader = Authorization: basic <TOKEN>
 
-   * If editting scopes on existing tokens, the user should refresh the local ``fioctl`` credentials with::
+   * If editing scopes on existing tokens, the user should refresh the local ``fioctl`` credentials with::
 
-      fioclt login --refresh-access-token
+      fioctl login --refresh-access-token
 
 Verify that this has been successful by cloning a repository from your Factory,
 such as your ``containers.git`` repo.
