@@ -98,6 +98,5 @@ to build your application and produce new Targets for the Factory to build.
    These guides do not require any hardware:
 
    - :ref:`gs-install-fioctl`
-   - :ref:`gs-git-config`
    - :ref:`tutorial-gs-with-docker`
 

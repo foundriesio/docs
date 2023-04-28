@@ -15,6 +15,7 @@ Installing Fioctl
 - :ref:`OTA Updates <ref-aktualizr-lite>`
 - :ref:`CI Secrets <ref-container-secrets>`
 - :ref:`Offline TUF Keys <ref-offline-keys>`
+- :ref:`Git Access <gs-git-config>`
 
 .. _gs-fioctl-installation:
 
@@ -175,35 +176,54 @@ Use the Client ID and Secret to finish the Fioctl login.
      Client secret:
      You are now logged in to Foundries.io services.
 
-.. _gs-fioctl-configuration:
-
-Configuration
-#############
-
-When working with multiple factories, specifying a factory name is mandatory.
-It can be set using 3 different methods:
-
-   * Argument:
-
-     .. prompt:: bash host:~$, auto
-
-        host:~$ fioctl targets list --factory <factory>
-
-   *  Environment Variable:
-
-     .. prompt:: bash host:~$, auto
-
-        host:~$ export FIOCTL_FACTORY=<factory>
-        host:~$ fioctl targets list
-
-   *  Configuration File:
-
-     .. prompt:: bash host:~$, auto
-
-        host:~$ echo "factory: <factory>" >> $HOME/.config/fioctl.yaml
-        host:~$ fioctl targets list
-
 .. seealso::
    :ref:`ref-fioctl` documentation.
 
 .. _Github Releases: https://github.com/foundriesio/fioctl/releases
+
+.. _gs-git-config:
+
+Configuring Git
+###############
+
+After :ref:`Fioctl <ref-fioctl>` is properly setup, it can be leveraged as a Git credential helper to allow pushing to your repositories with :ref:`FoundriesFactory® <ref-factory-definition>`. With this, Git knows when you connect to ``source.foundries.io`` and uses Fioctl for authentication when utilizing ``git`` commands.
+
+Setting Up Git
+^^^^^^^^^^^^^^
+
+Run the following command to add the relevant entries to the Git configuration:
+
+.. prompt:: bash host:~$, auto
+
+   host:~$ sudo fioctl configure-git
+
+.. important::
+   This must run as ``sudo`` instead of directly as the ``root`` user.
+   This is because it needs to have privileges to create a symlink in the same directory as where ``git`` is located.
+
+.. warning::
+   * Existing users reconfiguring Git access may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility::
+
+      [http "https://source.foundries.io"]
+      extraheader = Authorization: basic <TOKEN>
+
+   * If editing scopes on existing tokens, the user should refresh the local ``fioctl`` credentials with::
+
+      fioctl login --refresh-access-token
+
+Verify this has succeeded by cloning a repository from your Factory, such as your ``containers.git`` repo.
+Replace ``<factory>`` with your Factory's name:
+
+.. prompt:: bash host:~$, auto
+
+   host:~$ git clone https://source.foundries.io/factories/<factory>/containers.git
+
+.. tip::
+
+   You can also use ``git config --global --list`` to show the current state of the
+   global Git configuration, where ``source.foundries.io`` should be referenced
+   along with a username and a helper.
+
+.. seealso::
+   * :ref:`Fioctl Reference <ref-fioctl>`
+   * :ref:`ref-api-access`
