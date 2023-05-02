@@ -23,7 +23,7 @@ runs this example as the default SOTA client. Later, this serves as an example
 to copy/paste into a Factory specific recipe.
 
 .. _recipe:
-   https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-sota/custom-sota-client
+   https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-sota/custom-sota-client
 
 .. _SOTA client:
    https://github.com/foundriesio/aktualizr-lite/tree/master/examples/custom-client-cxx
@@ -55,4 +55,4 @@ Producing a factory-specific SOTA client can be done by:
    https://github.com/foundriesio/aktualizr-lite/tree/master/examples/custom-client-cxx
 
 .. _custom-sota-client:
-   https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-sota/custom-sota-client
+   https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-sota/custom-sota-client
