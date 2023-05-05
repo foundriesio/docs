@@ -57,7 +57,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :maxdepth: 1
    :caption: Reference Manual
    :name: sec-manual
-  
+
    reference-manual/index
    reference-manual/docker/docker
    reference-manual/boards/boards
@@ -82,6 +82,10 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-glossary
 
    glossary/index
+
+Downloads
+---------
+`offline-docs.tgz <./offline-docs.tgz>`_
 
 .. ifconfig:: todo_include_todos is True
 
