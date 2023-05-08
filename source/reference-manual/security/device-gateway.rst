@@ -60,6 +60,8 @@ It is also known and referred as ``offline CA`` since a user owns its private ke
      :scale: 90 %
      :alt: PKI hierarchy
 
+.. _ref-rm-pki:
+
 Setting up your PKI
 -------------------
 

@@ -27,6 +27,7 @@ This creates a new ``targets.json`` file for production devices subscribing
 to the ``production`` tag. It will include a single Target from CI
 build. In this example, build 12.
 
+.. _ref-rm-wave:
 
 Performing a production OTA
 ---------------------------

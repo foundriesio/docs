@@ -10,6 +10,145 @@ This page covers a variety of topics falling under addressing specific :ref:`err
 Errors and Solutions
 ---------------------
 
+Aktualizr-Lite Common Reports
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This section shows some common returns from ``aktualizr-lite`` operations.
+
+.. tip::
+   To get the ``aktualizr-lite`` logs, run::
+
+      sudo journalctl -fu aktualizr-lite
+
+* **curl error 3**
+
+.. code-block::
+
+   curl error 3 (http code 0): URL using bad/illegal format or missing URL
+
+This could mean that the device is not properly registered, but there is a faulty ``/var/sota/sql.db`` file available. This file may be created when ``aktualizr-lite`` is manually run before registering the device.
+
+**Solution:** Re-flash or :ref:`ref-ts-re-register`. Make sure the device is properly registered before running ``aktualizr-lite``.
+
+* **curl error 6 or 56**
+
+.. code-block::
+
+   curl error 6 (http code 0): Couldn't resolve host name
+
+Or:
+
+.. code-block::
+
+   curl error 56 (http code 0): Failure when receiving data from the peer
+
+These could mean that there is no networking available and/or the device cannot talk to the device gateway. This could be due to a broken registration or a faulty ``/var/sota/sql.db`` file. These can also mean that the DNS is not working correctly (for instance, IPv6 only).
+
+**Solution:** Re-flash or :ref:`ref-ts-re-register`. If you are :ref:`Setting up your Device Gateway PKI <ref-rm-pki>`, make sure all operations have succeeded.
+
+* **curl error 7 or 28**
+
+.. code-block::
+
+   curl error 7 (http code 0): Couldn't connect to server
+
+Or:
+
+.. code-block::
+
+   curl error 28 (http code 0): Timeout was reached
+
+These could mean that a device cannot reach the server.
+
+**Solution:** Make sure your device has a good connection. Check for proxies or firewalls in the network. If you are :ref:`Setting up your Device Gateway PKI <ref-rm-pki>`, make sure all operations have succeeded.
+
+.. tip::
+   The `openssl s_client <https://www.openssl.org/docs/man1.0.2/man1/openssl-s_client.html>`_ command can be very useful for troubleshooting network issues. For example::
+
+       openssl s_client -connect <dg>:8443 -cert client.pem -key pkey.pem -CAfile root.crt
+
+   Where:
+
+   * ``<dg>``: Device gateway address, defaults to ``ota-lite.foundries.io``. The actual address can be found in ``/var/sota/sota.toml``, ``[tls].server`` field.
+
+
+* **Failed to update Image repo metadata**
+
+.. code-block::
+
+   Failed to update Image repo metadata: The root metadata was expired.
+
+This means your TUF root key has expired.
+
+**Solution:** Rotate your :ref:`ref-offline-keys`.
+
+.. code-block::
+
+   Failed to update Image repo metadata: The timestamp metadata was expired.
+
+This means the Target to update to has expired.
+
+.. tip::
+   The Target metadata freshness can be checked on the host with::
+
+      curl -H "osf-token: <token>" "https://api.foundries.io/ota/repo/<factory>/api/v1/user_repo/timestamp.json?tag=<tag>[&production=1]" | jq ."signed"."expires"
+
+   Where:
+
+   * ``<tag>``: Device tag.
+   * ``<token>``: API Token with ``targets:read`` scope.
+   * ``<factory>``: Factory name.
+
+**Solution:** Create a new Target for the same tag.
+
+.. code-block::
+
+   Failed to update Image repo metadata: Failed to fetch role timestamp in image repository.
+
+This could mean that there is no Target available to update to. If this is a production device, it could mean that there are no :ref:`ref-production-targets`/waves available for that tag.
+
+.. tip::
+   The Target metadata available for the device can be checked with the following commands:
+
+   On the device::
+
+      curl -H "x-ats-tags: <tag>" https://<dg>:8443/repo/targets.json --cert client.pem --key pkey.pem --cacert root.crt
+
+   Or on the host::
+
+      fioctl targets list --by-tag <tag> --production
+
+   Where:
+
+   * ``<tag>``: Device tag.
+   * ``<dg>``: Device gateway address, defaults to ``ota-lite.foundries.io``. The actual address can be found in ``/var/sota/sota.toml``, ``[tls].server`` field.
+   * ``<token>``: API Token with ``targets:read`` scope.
+
+   Check :ref:`ref-troubleshooting_network-connectivity` for a reference on running ``curl`` commands on the device.
+
+**Solution:** :ref:`Create a wave <ref-rm-wave>` for the wanted tag.
+
+* **Configuration file wrong or corrupted**
+
+.. code-block::
+
+   Configuration file wrong or corrupted
+   warning: Failed resetting bootcount
+
+This means that the device cannot access the U-Boot environment.
+
+**Solution:** Check if ``fstab`` is properly set.
+
+* **KeyId is not valid**
+
+.. code-block::
+
+   KeyId xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx is not valid to sign for this role (root).
+
+This is not an actual error. It only indicates that the TUF root key has been rotated. It can be shown more than once in the ``aktualizr-lite`` logs depending on how many times the TUF root key has been rotated.
+
+**Solution:** No fix needed, this log can be ignored as this is expected behavior.
+
 OTA Update Fails Because of Missing SPL Keys
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -265,6 +404,8 @@ First, configure the **aktualizr-lite** polling interval:
 
 Commit and trigger a new build to include these new changes and have a new polling interval.
 
+.. _ref-ts-re-register:
+
 Re-Register a Device
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -340,7 +481,8 @@ Debugging Network Connectivity
 When debugging network connectivity and access issues, it can be helpful to use ``curl``.
 However, LmP does not ship with the command.
 
-Rather than including ``curl`` on the host device, a simple approach is to run it via a Alpine Linux® container.
+Rather than including ``curl`` on the host device, a simple approach is to run it via a Alpine Linux® container::
+
     docker run --rm -it alpine
     / # apk add curl
     / # curl
