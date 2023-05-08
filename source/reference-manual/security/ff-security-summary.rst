@@ -7,22 +7,24 @@ For detailed information on each key, please check the relevant page under :ref:
 Secure Connection to Cloud Services
 -----------------------------------
 
+These certificates are required to access the FoundriesFactory CI servers.
+
 .. list-table:: Device Gateway Certificates Summary
    :header-rows: 1
 
    * - Keys
      - Type
      - Owner
-   * - Root of Trust key (*factory_ca.key*)
+   * - Root of Trust key (``factory_ca.key``)
      - NIST P-256
      - Owned and managed by the customer (offline key)
    * - TLS key
      - NIST P-256
      - Owned and managed by Foundries.io (used for mTLS handshake)
-   * - Online CA private key (*online-ca.key*)
+   * - Online CA private key (``online-ca.key``)
      - NIST P-256
      - If enabled (required by ``lmp-device-register`` for performing the device CSR), owned and managed by Foundries.io
-   * - Local CA private key (*local-ca.key*)
+   * - Local CA private key (``local-ca.key``)
      - NIST P-256
      - If enabled, owned and managed by the customer (used for performing the device CSR)
 
@@ -39,12 +41,16 @@ Secure Boot (Hardware Root of Trust)
      - Depends on the SoC
      - Owned and managed by the customer (offline key)
 
-The Hardware Root of Trust depends on the SoC used. Please refer to :ref:`ref-secure-boot` pages and to the vendor reference manual for more information.
+The Hardware Root of Trust depends on the SoC used.
+Please refer to :ref:`ref-secure-boot` pages and
+to the vendor reference manual for more information.
 
 Secure Online Keys for Boot Stack
 ---------------------------------
 
-The exact list of keys used for the boot stack depends on the hardware used. Some platforms will not make use of all keys. A list of available keys for an LmP build can be found below:
+The exact list of keys used for the boot stack depends on the hardware used.
+Some platforms will not make use of all keys.
+A list of available keys for an LmP build can be found below:
 
 .. list-table:: LmP Build Certificates Summary
    :header-rows: 1
@@ -53,22 +59,33 @@ The exact list of keys used for the boot stack depends on the hardware used. Som
      - Type
      - Owner
      - LmP Variable
-   * - SPL Verification Key
+   * - :ref:`SPL Verification Key <ref-factory-key-spldev>`
      - RSA 2048
      - Owned by the customer, available as an online key for FoundriesFactory CI
      - ``UBOOT_SPL_SIGN_KEYNAME``
-   * - U-Boot Proper Verification Key
+   * - :ref:`U-Boot Proper Verification Key <ref-factory-key-ubootdev>`
      - RSA 2048
      - Owned by the customer, available as an online key for FoundriesFactory CI
      - ``UBOOT_SIGN_KEYNAME``
-   * - OP-TEE Verification Key
+   * - :ref:`OP-TEE Verification Key <ref-factory-key-opteedev>`
      - RSA 2048
      - Owned by the customer, available as an online key for FoundriesFactory CI
      - ``OPTEE_TA_SIGN_KEY``
-   * - Kernel Modules Verification Key
+   * - :ref:`Kernel Modules Verification Key <ref-factory-key-linux-module>`
      - RSA 2048
      - Owned by the customer, available as an online key for FoundriesFactory CI
      - ``MODSIGN_PRIVKEY``
+   * - :ref:`UEFI Verification Key  <ref-secure-boot-uefi>`
+     - RSA 2048
+     - Owned by the customer, available as an online key for FoundriesFactory CI
+     - ``${UEFI_SIGN_KEYDIR}/DB.key``
+   * - :ref:`TF-A Verification Key <ref-factory-key-tfa>`
+     - ECDSA (prime256v1)
+     - Owned by the customer, available as an online key for FoundriesFactory CI
+     - ``TF_A_SIGN_KEY_PATH``
+
+The detailed description for the LmP Build certificates,
+including diagrams for the boot flow, is in :ref:`ref-factory-keys`.
 
 Secure Over the Air Updates
 ---------------------------
