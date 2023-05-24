@@ -33,5 +33,5 @@ The ``meta-subscriber-overrides.git`` repository should look like this:
 
 .. tip::
 
-   This tutorial does not cover in detail the Yocto Projec/OpenEmbedded file structure and 
-   commands. For more information, see the `Yocto Project Documentation <http://docs.yoctoproject.org/>`_
+   This tutorial does not cover in detail the Yocto Project/OpenEmbedded file structure and 
+   commands. For more information, see the `Yocto Project Documentation <https://docs.yoctoproject.org/>`_

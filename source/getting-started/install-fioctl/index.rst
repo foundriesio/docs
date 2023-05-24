@@ -130,7 +130,7 @@ For this, you will generate OAuth2 application credentials for interacting with 
 Adding Application Credentials
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Go to `Application Credentials <https://app.foundries.io/settings/credentials/>`_ and click on :guilabel:`+ New Credentials`.
+Go to `Application Credentials <https://app.foundries.io/settings/credentials>`_ and click on :guilabel:`+ New Credentials`.
 
 .. figure:: /_static/install-fioctl/application_credentials.png
    :width: 900

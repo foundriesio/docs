@@ -41,7 +41,7 @@ Click :guilabel:`Create Factory` once your details are entered.
 .. warning::
 
    Once a Factory is created, the chosen platform/machine and Factory name cannot be changed.
-   Create a new Factory or contact support if a mistake is made: https://support.foundries.io/.
+   Create a new Factory or `contact support <https://foundriesio.atlassian.net/servicedesk/customer/portals>`_ if a mistake is made.
 
 The :ref:`ref-linux` supports a wide range of platforms out of the box.
 This includes QEMU_ images for ARM_ and RISC-V_ architectures.
@@ -83,7 +83,7 @@ Registered devices then update and install Targets.
 .. note::
 
    If you would like to learn more, we wrote a `blog
-   <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ about what Targets
+   <https://foundries.io/insights/blog/whats-a-target/>`_ about what Targets
    are and why we made them the way they are.
 
 The :guilabel:`Targets` tab of the Factory will become more useful as you begin

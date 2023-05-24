@@ -99,7 +99,7 @@ External References
 - `Docker container networking`_
 
 .. _Docker container networking:
-   https://docs.docker.com/engine/userguide/networking/
+   https://docs.docker.com/network/
 
 .. _tcpdump manual page:
    https://www.tcpdump.org/tcpdump_man.html

@@ -8,7 +8,7 @@ to our private registry, hub.foundries.io. Subsequent builds will pull from this
 cache, importing it for the current build. This provides efficient incremental
 container builds for our FoundriesFactory users. Exporting and importing
 these build cache layers uses the built-in features of
-`Docker Buildx. <https://docs.docker.com/buildx/working-with-buildx/>`_
+`Docker Buildx. <https://docs.docker.com/build/>`_
 
 While the cache is very helpful, there are a few things to note:
 

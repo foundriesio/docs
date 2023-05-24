@@ -39,7 +39,7 @@ updated accordingly::
     azure_principal_secret_name: azprincipal
 
 .. _service principal:
-   https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#authenticate-with-the-service-principal
+   https://learn.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#authenticate-with-the-service-principal
 
 .. _ref-acr-devices:
 
@@ -57,7 +57,7 @@ this scenario is pushing container images from ACR into
 Then compose apps can reference this `hub.foundries.io` container image.
 
 .. _securely access:
-   https://docs.microsoft.com/en-us/answers/questions/734990/iot-device-authentication-with-acr.html
+   https://learn.microsoft.com/en-us/answers/questions/734990/iot-device-authentication-with-acr
 
 Configuring CI for AWS ECR
 --------------------------
@@ -151,7 +151,7 @@ updated accordingly::
     gar_creds_secret_name: gcp_creds
 
 .. _service account:
-   https://cloud.google.com/iam/docs/service-accounts
+   https://cloud.google.com/iam/docs/service-account-overview
 
 Configuring Devices for GAR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

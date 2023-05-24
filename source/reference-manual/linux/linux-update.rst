@@ -10,7 +10,7 @@ At Foundries.io™, we often `release`_ Linux® microPlatform (LmP) updates as a
    https://github.com/foundriesio/lmp-manifest/releases
 
 .. note::
-   You can subscribe to `Factory Notifications <https://app.foundries.io/settings/notifications/>`_ to be informed of new LmP releases.
+   You can subscribe to `Factory Notifications <https://app.foundries.io/settings/notifications>`_ to be informed of new LmP releases.
 
 We provide a helper script ``update-factory-manifest`` to update your Factory to a new LmP release.
 This script automatically updates your manifest to the latest LmP version available if no merge conflicts are found.
@@ -38,4 +38,4 @@ If no merge conflicts are found, this script merges your changes and pushes the 
 
       git revert HEAD
 
-   If there are merge conflicts, it is up to you to fix them. Do not hesitate to contact our support at http://support.foundries.io/ if help is needed during your Factory update.
+   If there are merge conflicts, it is up to you to fix them. Do not hesitate to contact `our support at <https://foundriesio.atlassian.net/servicedesk/customer/portals>`_ if help is needed during your Factory update.

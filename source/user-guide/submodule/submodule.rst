@@ -215,7 +215,7 @@ Inside the ``containers`` adapt the command below to your GitHub_ repository:
     host:~$ git commit -m "Adding myapp submodule"
     host:~$ git push
 
-Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targets`:
+Go to the `web app <https://app.foundries.io>`_, select your Factory and click on :guilabel:`Targets`:
 
 The latest **Target** named :guilabel:`containers-devel` should be the CI job you just created.
 
@@ -265,7 +265,7 @@ Updating Submodule Automatically
 To automate the previous steps, you have to allow GitHub_ to access your 
 FoundriesFactory repository. For that, you need to create a token.
 
-Go to `Tokens <https://app.foundries.io/settings/tokens/>`_ and create a new **Api Token** by clicking on 
+Go to `Tokens <https://app.foundries.io/settings/tokens>`_ and create a new **Api Token** by clicking on 
 :guilabel:`+ New Token`.
 
 Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.

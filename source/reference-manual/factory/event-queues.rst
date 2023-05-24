@@ -231,4 +231,4 @@ DEVICE_PUBKEY_CHANGE
    https://www.googleapis.com/oauth2/v1/certs
 
 .. _values:
-   https://cloud.google.com/pubsub/docs/admin#properties_of_a_topic
+   https://cloud.google.com/pubsub/docs/create-topic#properties_of_a_topic

@@ -33,7 +33,7 @@ Roughly speaking, the manifest file contains:
    https://gerrit.googlesource.com/git-repo/
 
 .. _repo init:
-   https://source.android.com/setup/develop/repo#init
+   https://source.android.com/docs/setup/create/repo#init
 
 .. _repo sync:
-   https://source.android.com/setup/develop/repo#sync
+   https://source.android.com/docs/setup/create/repo#sync

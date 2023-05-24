@@ -292,4 +292,4 @@ Note that the ``gcc`` software is not installed in the final stage:
 
      gcc: not found
 
-.. _Use multi-stage builds: https://docs.docker.com/develop/develop-images/multistage-build/
+.. _Use multi-stage builds: https://docs.docker.com/build/building/multi-stage/

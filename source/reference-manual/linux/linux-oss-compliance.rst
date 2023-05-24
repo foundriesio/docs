@@ -31,11 +31,11 @@ code tarball by default.
 
 The license manifest can be found at
 
-https://app.foundries.io/factories/<factory>/targets/<version>/artifacts/<machine>/other/<image>-<machine>.license.manifest
+``https://app.foundries.io/factories/<factory>/targets/<version>/artifacts/<machine>/other/<image>-<machine>.license.manifest``
 
 All the package's source code under GPLv2 or GPLv3 license family can be found at
 
-https://app.foundries.io/factories/<factory>/targets/<version>/artifacts/<machine>/other/<machine>-source-release.tar
+``https://app.foundries.io/factories/<factory>/targets/<version>/artifacts/<machine>/other/<machine>-source-release.tar``
 
 .. todo: * How to get the license text files
 

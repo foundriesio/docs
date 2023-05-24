@@ -35,4 +35,4 @@ build the Linux microPlatform inside the running container, using
 ``/build/lmp`` as your main work folder.
 
 .. _Install Docker:
-   https://docs.docker.com/install/
+   https://docs.docker.com/get-docker/

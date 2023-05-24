@@ -84,10 +84,10 @@ targets:read-update
   Can update targets.json `https://api.foundries.io/ota/factories/<factory>/targets/`.
 
 .. _API Tokens:
-   https://app.foundries.io/settings/tokens/
+   https://app.foundries.io/settings/tokens
 
 .. _Application credentials:
-   https://app.foundries.io/settings/credentials/
+   https://app.foundries.io/settings/credentials
 
 .. _REST APIs:
    https://api.foundries.io/ota/
