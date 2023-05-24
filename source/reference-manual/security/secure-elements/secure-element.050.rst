@@ -332,8 +332,7 @@ advise deploying with **fio-se05x-cli** and the standard pkcs#11 tools instead.
    https://globalplatform.org/wp-content/uploads/2014/07/GPC_2.3_D_SCP03_v1.1.2_PublicRelease.pdf
 
 .. _NXP SE05x Plug & Trust MW:
-   https://www.nxp.com/products/security-and-authentication/authentication/edgelock-se050-plug-trust-secure-element-family-enhanced-iot-security-with-maximum-flexibility:SE050?tab=Design_Tools_Tab
-
+   https://www.nxp.com/products/security-and-authentication/authentication/edgelock-se050-plug-and-trust-secure-element-family-enhanced-iot-security-with-high-flexibility:SE050#design-resources
 .. _scp03:
    https://u-boot.readthedocs.io/en/latest/usage/cmd/scp03.html
 
@@ -342,9 +341,6 @@ advise deploying with **fio-se05x-cli** and the standard pkcs#11 tools instead.
 
 .. _mini package:
    https://github.com/NXP/plug-and-trust
-
-.. _scp03 PTA:
-   https://github.com/OP-TEE/optee_os/blob/master/core/pta/scp03.c
 
 .. _libseteec:
    https://github.com/OP-TEE/optee_client/commit/f4f54e5a76641fda22a49f00294771f948cd4c92

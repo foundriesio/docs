@@ -399,13 +399,12 @@ Our ``u-boot-spl-sign.csf-template`` takes care of supporting CAAM on closed pla
    https://www.nxp.com/webapp/Download?colCode=AN4581&location=null
 
 .. _Universal Update Utility:
-   https://github.com/NXPmicro/mfgtools
+   https://github.com/nxp-imx/mfgtools
 
 .. _-dcdaddr:
-   https://github.com/NXPmicro/mfgtools/commit/003b6cb7a98ba36d78d591b5c1ef8e42423f1b90
-
+   https://github.com/nxp-imx/mfgtools/commit/003b6cb7a98ba36d78d591b5c1ef8e42423f1b90
 .. _-cleardcd:
-   https://github.com/NXPmicro/mfgtools/commit/a3e9f5b84d28666d53f565abecf59996b7810aca
+   https://github.com/nxp-imx/mfgtools/commit/a3e9f5b84d28666d53f565abecf59996b7810aca
 
 .. _-pp:
-   https://github.com/NXPmicro/mfgtools/commit/5a790eae0a0f424e145171681e1a3a4f3fa47904
+   https://github.com/nxp-imx/mfgtools/commit/5a790eae0a0f424e145171681e1a3a4f3fa47904

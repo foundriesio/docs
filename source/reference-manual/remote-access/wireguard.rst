@@ -223,4 +223,4 @@ results.
    the ``nc`` session on the server. For each debug attempt, rinse and repeat
    this process by killing and restarting the ``nc -lup`` command.
 
-.. _WSL: https://docs.microsoft.com/en-us/windows/wsl/about
+.. _WSL: https://learn.microsoft.com/en-us/windows/wsl/about

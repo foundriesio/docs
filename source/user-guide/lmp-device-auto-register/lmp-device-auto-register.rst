@@ -28,7 +28,7 @@ To follow this section, it is important to have:
 Creating Token
 --------------
 
-Go to `Tokens <https://app.foundries.io/settings/tokens/>`_ and create a new **Api Token** by clicking on
+Go to `Tokens <https://app.foundries.io/settings/tokens>`_ and create a new **Api Token** by clicking on
 :guilabel:`+ New Token`.
 
 Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
@@ -141,8 +141,8 @@ Testing Auto Register
 ---------------------
 
 After booting the new image, if connected to the internet, the device
-will automatically register to your FoundriesFactory. It should be visible by navigating to the web
-interface at https://app.foundries.io/factories/, clicking your **Factory** and
+will automatically register to your FoundriesFactory.
+It should be visible by navigating to the `web interface <https://app.foundries.io/factories>`_, clicking your **Factory** and
 selecting the **Devices** tab.
 
 .. figure:: /_static/userguide/lmp-device-auto-register/lmp-device-auto-register-device.png

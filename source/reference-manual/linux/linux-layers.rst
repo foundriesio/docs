@@ -168,25 +168,23 @@ An example for enabling only the ``meta-intel`` BSP layer::
 .. _meta-Clang:
    https://github.com/kraj/meta-clang
 .. _meta-Virtualization:
-   https://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/
+   https://git.yoctoproject.org/meta-virtualization/
 .. _meta-Updater:
    https://github.com/uptane/meta-updater
 .. _meta-Security:
-   https://git.yoctoproject.org/cgit/cgit.cgi/meta-security
+   https://git.yoctoproject.org/meta-security
 .. _meta-LMP:
    https://github.com/foundriesio/meta-lmp/
 .. _meta-ARM:
-   https://git.yoctoproject.org/cgit/cgit.cgi/meta-arm/
+   https://git.yoctoproject.org/meta-arm/
 .. _meta-Intel:
-   https://git.yoctoproject.org/cgit.cgi/meta-intel/
+   https://git.yoctoproject.org/meta-intel/
 .. _meta-RaspberryPi:
-   https://git.yoctoproject.org/cgit/cgit.cgi/meta-raspberrypi/
-.. _meta-RISC-V:
-   https://github.com/riscv/meta-riscv
+   https://git.yoctoproject.org/meta-raspberrypi/
 .. _meta-Yocto:
-   https://git.yoctoproject.org/cgit/cgit.cgi/meta-yocto/
+   https://git.yoctoproject.org/meta-yocto/
 .. _meta-Freescale:
-   https://git.yoctoproject.org/cgit/cgit.cgi/meta-freescale/
+   https://git.yoctoproject.org/meta-freescale/
 .. _meta-Freescale-3rdparty:
    https://github.com/Freescale/meta-freescale-3rdparty
 .. _meta-ST-Stm32mp:

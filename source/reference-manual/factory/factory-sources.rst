@@ -45,7 +45,7 @@ You will find four git repositories, below is a brief description of each one.
      stanza as well as any changes altering the history (force push is disabled).  
      Factories are created to support specific machines.
      If you need to alter this behavior after starting a FoundriesFactory, 
-     please open a support ticket at: http://support.foundries.io/
+     please open a `support ticket <https://foundriesio.atlassian.net/servicedesk/customer/portals>`_.
 
 Triggering Builds
 ~~~~~~~~~~~~~~~~~
@@ -58,7 +58,7 @@ Any changes pushed to ``containers.git`` will trigger a container build job, and
 any containers defined will be pushed to your factory’s private Docker
 registry at:
 
- https://hub.foundries.io/<factory>/<container>:latest
+ ``https://hub.foundries.io/<factory>/<container>:latest``
 
 
 .. note::

@@ -22,7 +22,7 @@ packages and configuration files following the Yocto
 Project concepts which are used in this guide. Some knowledge of the
 Yocto Project and embedded Linux development are required.
 
-A support request can be entered at https://support.foundries.io/ in
+A `support request <https://foundriesio.atlassian.net/servicedesk/customer/portals>`_ can be submitted in
 case help is needed.
 
 In the next section there is a description on how to find a similar

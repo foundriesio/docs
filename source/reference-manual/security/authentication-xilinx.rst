@@ -255,7 +255,7 @@ We recommend using the XLWPT tool (as described at `XAPP1319`_) for registering 
 For more information on registering the PUF and how it is used by OP-TEE for generating a hardware unique key, please have a look at `XAPP1333`_ and https://github.com/OP-TEE/optee_os/pull/4874.
 
 .. _vivado_docker:
-   https://github.com/ldts/petalinux-docker.git
+   https://github.com/ldts/petalinux-docker
 
 .. _CONFIG_SPL_ZYNQMP_RESTORE_JTAG:
    https://lists.denx.de/pipermail/u-boot/2021-July/455132.html
@@ -269,10 +269,10 @@ For more information on registering the PUF and how it is used by OP-TEE for gen
 .. _documentation:
    https://docs.xilinx.com/r/en-US/oslib_rm/Xilinx-BSP-and-Libraries-Overview
 .. _XAPP1319:
-   https://www.xilinx.com/support/documentation/application_notes/xapp1319-zynq-usp-prog-nvm.pdf
+   https://docs.xilinx.com/v/u/oneDJ6tvSJXI~6tBKk1ZxA
 
 .. _XAPP1333:
-   https://www.xilinx.com/support/documentation/application_notes/xapp1333-external-storage-puf.pdf
+   https://docs.xilinx.com/r/aN5KSVyHt9jE~xaIBaKGSg/root
 
 .. _bitstream-signed:
    https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-bsp/dynamic-layers/xilinx-tools/recipes-bsp/bitstream/bitstream-signed.bb
@@ -280,5 +280,3 @@ For more information on registering the PUF and how it is used by OP-TEE for gen
 .. _lmp-tools:
    https://github.com/foundriesio/lmp-tools/tree/master/security/zynqmp
 
-.. _RFC:
-   https://lists.denx.de/pipermail/u-boot/2021-October/462571.html

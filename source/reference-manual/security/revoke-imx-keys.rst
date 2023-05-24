@@ -120,7 +120,7 @@ After the revocation wave, another firmware update wave is required, now with th
 
 This is a two-steps process which is highly dependent on the device configuration and access, and requires caution. The revoke fusing command can make the device unavailable if not executed properly.
 
-To get help with the revocation automatization open a support ticket at: http://support.foundries.io/.
+To get help with the revocation automatization, open a `support ticket <https://foundriesio.atlassian.net/servicedesk/customer/portals>`_.
 
 .. i.MX Secure Boot on HABv4 Supported Devices (Rev. 4 — June 2020)
 .. _Secure Boot Using HABv4 Guide:
