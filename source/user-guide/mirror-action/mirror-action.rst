@@ -3,26 +3,27 @@
 Configuring Automatic Git Mirroring
 ===================================
 
-This section shows how to configure a GitHub_ Action for mirroring your commits 
-to the FoundriesFactory repository.
+This section shows how to configure source code mirroring to FoundriesFactory®
+repositories. This helps to use external private or public ``Git`` repositories,
+hosted on services such as GitHub_ or Bitbucket_.
 
-This is very useful when you want to use an external private or public git repository 
-such as GitHub_.
+This focuses on setting up GitHub_ Actions and Bitbucket_ pipelines for
+mirroring code, but the steps can be adapted for other ``Git`` services.
 
-This section can be adapted for other git repository hosting services.
+.. _ug-mirror-token:
 
 Creating Token
 --------------
 
-To allow GitHub_ to access your FoundriesFactory repository, you need to create a token.
+To allow external hosting services to access your FoundriesFactory repository,
+you need to create a token.
 
-Go to `Tokens <https://app.foundries.io/settings/tokens/>`_ and create a new **Api Token** by clicking on 
-:guilabel:`+ New Token`.
+Create a new `API Token <https://app.foundries.io/settings/tokens/>`_ by
+clicking on :guilabel:`+ New Token`.
 
-Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
+Complete with a **Description** and the **Expiration date** and select :guilabel:`Next`.
 
-For GitHub_, check the :guilabel:`Use for source code access` box and 
-select your **Factory**.
+Check the :guilabel:`Use for source code access` box and select your **Factory**.
 
 .. figure:: /_static/userguide/mirror-action/mirror-action.png
    :width: 500
@@ -30,25 +31,26 @@ select your **Factory**.
 
    Token for source code access
 
-Convert the token value to a base64 string:
+If Bitbucket_ is used, the token generated in the previous step is used as the
+``<GIT_ACCESS_TOKEN>`` value.
+
+If GitHub_ is used, convert the token value to a base64 string and save the
+output of this command. This is your ``<BASE64_FIO_TOKEN>`` value.
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ echo -n <FIO_TOKEN> | base64 -w0
+   host:~$ echo -n <FIO_TOKEN> | base64 -w0
 
 **Example Output**:
 
 .. prompt:: text
 
-     host:~$ echo -n SQMD1Gx860mPI6jZFlLJLwaCXT5CqAaQi6nEfIfH | base64 -w0
-     U1FNRDFHeDg2MG1QSTZqWkZsTEpMd2FDWFQ1Q3FBYVFpNm5FZklmSA==
+   host:~$ echo -n SQMD1Gx860mPI6jZFlLJLwaCXT5CqAaQi6nEfIfH | base64 -w0
+   U1FNRDFHeDg2MG1QSTZqWkZsTEpMd2FDWFQ1Q3FBYVFpNm5FZklmSA==
 
-Save the output of this command to your copy buffer. This is your ``<BASE64_FIO_TOKEN>`` value.
+.. tip::
 
-.. note::
-
-    Your value should end with ``==`` and the output won't have a carriage return added.
-
+   ``<BASE64_FIO_TOKEN>`` should end with ``==`` with no carriage return.
 
 Configuring GitHub Repository
 -----------------------------
@@ -87,7 +89,7 @@ Finally, click on :guilabel:`Add secret`.
    GitHub New Secret
 
 Creating Mirror Action
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 The FoundriesFactory CI only triggers builds for configured branches. This is 
 configured in the ``ci-scripts.git`` repository in the ``factory-config.yml`` file.
@@ -200,7 +202,7 @@ Add the changed files, commit and push to your GitHub_ repository:
           host:~$ git push
 
 Github Action
--------------
+^^^^^^^^^^^^^
 
 Once the ``mirror.yml`` is in place on your GitHub_ repository, every change to 
 the configured branch will start an Action on GitHub_ to mirror your repository 
@@ -230,4 +232,49 @@ Your repositories from FoundriesFactory and GitHub_ should look the same.
 
    FoundriesFactory and GitHub_
 
+Configuring Bitbucket Repository
+--------------------------------
+
+Go to the source repository on Bitbucket_ and click on :guilabel:`Pipelines`:
+
+.. figure:: /_static/userguide/mirror-action/bitbucket-pipelines.png
+   :align: center
+
+   Bitbucket Pipelines
+
+Select the ``Starter pipeline``:
+
+.. figure:: /_static/userguide/mirror-action/bitbucket-pipelines-start.png
+   :align: center
+
+   Bitbucket Starter Pipeline
+
+Erase the default content and provide the following setup:
+
+.. prompt::
+
+   pipelines:
+     default:
+       - step:
+          name: Mirror to source.foundries.io
+          image: alpine/git:latest
+          script:
+            - git push https://$GIT_ACCESS_TOKEN@source.foundries.io/factories/<factory-name>/<repo-name>.git --all
+
+.. note::
+   Make sure to provide the ``GIT_ACCESS_TOKEN`` generated in
+   :ref:`ug-mirror-token` and to replace ``<factory-name>`` and ``<repo-name>``.
+
+Click on :guilabel:`Commit file` to enable this pipeline.
+
+After this, every push to the Bitbucket_ repository mirrors all branches to
+``source.foundries.io`` and triggers builds for the branches enabled in your
+Factory.
+
+.. tip::
+
+   This pipeline can be customized to mirror only specific branches as needed
+   for your development.
+
 .. _GitHub: https://github.com/
+.. _Bitbucket: https://bitbucket.org
