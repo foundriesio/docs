@@ -231,5 +231,5 @@ Replace ``<factory>`` with your Factory's name:
    along with a username and a helper.
 
 .. seealso::
-   * :ref:`Fioctl Reference <ref-fioctl>`
-   * :ref:`ref-api-access`
+   * :ref:`Fioctl Reference Manual <ref-fioctl>`
+   * :ref:`API Access for factory <ref-api-access>`

@@ -19,7 +19,7 @@ Creating Your Factory
 
 :ref:`ref-factory` is the start of your embedded OS, tailored specifically for your product.
 When you create a Factory, we immediately bootstrap the CI build process.
-This generates a vanilla, unmodified :ref:`ref-linux` OS Image, which is from this point onward, **owned by you**.
+This generates unmodified :ref:`ref-linux` OS Image, which is from this point onward, **owned by you**.
 
 When your account is created, it is not associated with any factories.
 Create one by clicking :guilabel:`Create Factory`.
@@ -91,12 +91,6 @@ to build your application and produce new Targets for the Factory to build.
 
 .. hint::
 
-   Bootstrapping your Factory securely takes some time.
-   Your first build will likely take **30 minutes** or more to complete.
+   Bootstrapping your Factory takes less than **20 minutes** to complete.
 
-   Use this time to set up your development environment and get started with Docker commands.
-   These guides do not require any hardware:
-
-   - :ref:`gs-install-fioctl`
-   - :ref:`tutorial-gs-with-docker`
-
+   You can click :guilabel:`Next ->` and this time to set up your development environment.

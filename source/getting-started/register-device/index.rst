@@ -9,7 +9,7 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 
  .. prompt:: bash device:~$, auto
 
-      device:~$ sudo lmp-device-register -n <device-name>
+      device:~$ sudo DEVICE_FACTORY=<factory> lmp-device-register -n <device-name>
 
 2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API. Follow the instructions on the promped message:
 
