@@ -1,10 +1,13 @@
-Following an Specific Tag
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Following a Specific Tag
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Before configuring a device to follow a specific tag, you must have at least one 
 **Target** tagged with the new tag.
 
 Let's start tagging all **Targets** in the latest version with the tag ``devel`` and ``tutorial``.
+
+.. tip::
+   For tags, you may use the following characters: [a–z], [A–Z], [0–9], as well as  `.`, `_`, `+`, and `-`. 
 
 Use ``fioctl`` on your host machine to list all **Target** versions:
 
