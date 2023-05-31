@@ -88,9 +88,3 @@ Registered devices then update and install Targets.
 
 The :guilabel:`Targets` tab of the Factory will become more useful as you begin
 to build your application and produce new Targets for the Factory to build.
-
-.. hint::
-
-   Bootstrapping your Factory takes less than **20 minutes** to complete.
-
-   You can click :guilabel:`Next ->` and this time to set up your development environment.
