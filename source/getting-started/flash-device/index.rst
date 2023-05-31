@@ -5,8 +5,8 @@ Flashing Your Device
 
 .. note::
 
-  The initial FoundriesFactory® set up and build can take up to 20 minutes to complete.
-  The current build status can be followed with steps listed in :ref:`gs-watch-build` page.
+  The initial FoundriesFactory® set up and build is finished very quick. Follow
+  its status with steps listed in :ref:`gs-watch-build` page.
 
 Prerequisites and Pre-Work
 --------------------------
