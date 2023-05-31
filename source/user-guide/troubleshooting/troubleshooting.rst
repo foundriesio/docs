@@ -440,6 +440,12 @@ Follow these steps to do so:
 Tips and Abouts
 ---------------
 
+Allowed Characters for Device Names and Tags
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Along with [a–z], [A–Z], and [0–9], `_`, `-`, and `.` may be used for device names and tags.
+In addition, tags also support `+`.
+
 Bind Mounting a File Into a Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
