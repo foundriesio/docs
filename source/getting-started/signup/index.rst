@@ -19,7 +19,7 @@ Creating Your Factory
 
 :ref:`ref-factory` is the start of your embedded OS, tailored specifically for your product.
 When you create a Factory, we immediately bootstrap the CI build process.
-This generates unmodified :ref:`ref-linux` OS Image, which is from this point onward, **owned by you**.
+This generates an unmodified :ref:`ref-linux` OS Image, which is from this point onward, **owned by you**.
 
 When your account is created, it is not associated with any factories.
 Create one by clicking :guilabel:`Create Factory`.
