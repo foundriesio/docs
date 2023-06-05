@@ -65,10 +65,10 @@ This includes QEMU_ images for ARM_ and RISC-V_ architectures.
 Watching Your Build
 ###################
 
-Once you have created your Factory, the initial builds of the Foundries.io™ Linux® microPlatform (LmP) will be generated.
+Once you have created your Factory, the initial artifacts from the Foundries.io™ Linux® microPlatform (LmP) will be generated.
 This is the base to build your product.
-You can monitor the progress of builds in the :guilabel:`Targets` tab of your Factory after a few minutes.
-Additionally, you will receive an email once the initial builds are complete.
+You can monitor the progress in the :guilabel:`Targets` tab of your Factory.
+Additionally, you will receive an email once the Factory initial setup is complete.
 
 .. figure:: /_static/signup/build.png
    :width: 900
