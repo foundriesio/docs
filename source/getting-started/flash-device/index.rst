@@ -36,7 +36,7 @@ After a successful build, FoundriesFactory produces build artifacts which can be
         :width: 769
         :align: center
 
-#. In the :guilabel:`Runs` section, expand the **run** which corresponds with the name of the board. This shows all published artifacts for this run. Download the Factory image for your machine:
+#. Expand the :guilabel:`Targets` tab clicking on it. This shows a link to the Factory image artifact. Download the Factory image for your machine:
 
     | E.g: ``lmp-factory-image-<machine_name>.wic.gz``
 
