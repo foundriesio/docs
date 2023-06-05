@@ -12,7 +12,7 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
       device:~$ sudo lmp-device-register -n <device-name> -f <factory>
 
 .. note::
-    The parameter ``-f <factory>`` is only needed at the first target.
+    The parameter ``-f <factory>`` is only needed for the first target.
 
 2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API. Follow the instructions on the promped message:
 

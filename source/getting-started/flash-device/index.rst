@@ -30,7 +30,7 @@ After a successful build, FoundriesFactory produces build artifacts which can be
 
 #. Navigate to the :guilabel:`Targets` section of your Factory.
 
-#. Click the latest Target with the ``platform-main`` :guilabel:`Trigger`.
+#. Click the Target with the ``prebuilt-target`` :guilabel:`Trigger`.
 
     .. figure:: /_static/flash-device/devel.png
         :width: 769
