@@ -20,10 +20,5 @@ QEMU CLI
 
 .. include:: qemu-ssh.template
 
-Demo
-^^^^
-
-.. asciinema:: ./demo/arm64.cast
-
 .. tip::
     You can register your device by following the steps from :ref:`gs-register`.

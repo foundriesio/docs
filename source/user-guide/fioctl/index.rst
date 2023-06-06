@@ -22,11 +22,24 @@ Via Fioctl
 ``fioctl devices config updates <device_name> --apps <app_name1>,<app_name2>``
   Set the app(s) a device will run.
 
-**Demonstration**
+**Example**
 
-  .. asciinema:: ./demo/ug-fioctl-enable-apps.cast
-     :cols: 128
-     :speed: 1
+.. code-block:: console
+   
+   # First, list Targets and ensure app(s) are available in the latest Target.
+
+   $ fioctl targets list -f cowboy
+
+   # Find a device to instruct by name.
+
+   $ fioctl devices list -f cowboy
+
+   # Enable only the desired app(s) on the device.
+
+   $ fioctl devices config updates cowboy-device-1 --apps netdata,shellhttpd
+
+   # Now only the app(s) supplied in the list will run on the device.
+
 
 Via lmp-device-register
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -186,16 +199,33 @@ Common Commands
 
 View Targets
   ``fioctl targets list -f <factory>``
-    Lists the Targets a Factory has produced so far.
+    Lists the Targets a Factory has produced so far:
 
-  .. asciinema:: ../../_static/asciinema/view-targets.cast
+    .. code-block:: console
+   
+       $ fioctl targets list -f bebop
+       VERSION  TAGS    APPS        HARDWARE IDs
+       -------  ----    ----        ------------
+       2        devel               raspberrypi3-64
+       3        master              raspberrypi3-64
+       4        master  shellhttpd  raspberrypi3-64
+       5        master  shellhttpd  raspberrypi3-64
+       6        master              raspberrypi3-64
+       7        master              raspberrypi3-64
+       8        master  httpd       raspberrypi3-64
+       11       master  octofio     raspberrypi3-64
 
 List devices
   ``fioctl devices list -f <factory>``
     Lists the devices that have connected to a Factory, along with associated
     metadata, such as device name, status, Target and enabled apps.
 
-  .. asciinema:: ../../_static/asciinema/list-devices.cast
+  .. code-block:: console
+     
+     $ fioctl devices list -f bebop                                                  
+     NAME  FACTORY  OWNER           TARGET                  STATUS  APPS     UP TO DATE                                                                              
+     ----  -------  -----           ------                  ------  ----     ----------                                                                              
+     ein   bebop    <unconfigured>  raspberrypi3-64-lmp-49  OK      netdata  true    
 
 Set device tag
   ``fioctl devices config updates <device_name> --tag <tag>``
@@ -203,13 +233,19 @@ Set device tag
     device from accepting 'devel' builds to 'master' builds. See the
     :ref:`ref-advanced-tagging` section for more examples.
 
-  .. asciinema:: ../../_static/asciinema/set-device-tags.cast
+  .. code-block:: console
+
+     $ fioctl devices config updates ein --tag devel                                 
+     Changing tag from: master -> devel  
 
 Set app(s) to be enabled
   ``fioctl devices config updates <device_name> --apps <app_name1>,<app_name2>``
     Set the app(s) a device will run.
+  
+    .. code-block:: console
 
-  .. asciinema:: ../../_static/asciinema/set-apps.cast
+       $ fioctl devices config updates ein --apps simple-app                           
+       Changing apps from: [netdata] -> [simple-app] 
 
 Enable :ref:`ref-wireguard`
   ``fioctl devices config wireguard <device_name> <enable|disable>``
@@ -218,4 +254,7 @@ Enable :ref:`ref-wireguard`
     have set up on your own server as described in the :ref:`ref-wireguard`
     guide.
 
-  .. asciinema:: ../../_static/asciinema/enable-wireguard.cast
+  .. code-block::
+
+     $ fioctl devices config wireguard ein enable                                    
+     Finding a unique VPN address ... 
