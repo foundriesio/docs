@@ -1,6 +1,6 @@
 .. _ref-rm_board_portenta-x8:
 
-Arduino Portena X8
+Arduino Portenta X8
 ==================
 
 .. include:: secure-boot-note.rst
@@ -31,15 +31,16 @@ Set up the board for updating using the manufacturing tools:
 #. Connect a TTL USB to UART 3v3 adapter to the corresponding UART 2 pins on the breakout board.
 
 #. Connect the other end of the cable to a PC acting as a host terminal. 
-     A UART connection will appear on the PC.
+
+#. A UART connection will appear on the PC.
      On a Linux host for example::
 
           $ ls -l /dev/serial/by-id/
           total 0
-          lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if00-port0 -> ../../ttyUSB0
+          lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_TTL_RS232-if00-port0 -> ../../ttyUSB0
 
      Using a serial terminal program like minicom, connect to the port
-     with ``if00`` in the name (in this example ttyUSB1) and apply the
+     with ``if00`` in the name (in this example ttyUSB0) and apply the
      following configuration
 
           - Baud rate: 115200
