@@ -10,6 +10,7 @@ Find below the instructions on how to flash the supported boards.
 
    beagleboneblack
    raspberrypi
+   portenta-x8
    imx8mn
    imx8mm
    se050_imx8mm
