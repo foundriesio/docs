@@ -52,10 +52,12 @@ After a successful build, FoundriesFactory produces build artifacts which can be
 Flashing the Image
 ------------------
 
-The flashing procedure is board specific and we cover separate steps in :ref:`ref-boards`. Please refer to this section for specifics on flashing your system image using the vendor provided tools.
+The flashing procedure is board specific and we cover separate steps in :ref:`ref-boards`.
+Please refer to this section for specifics on flashing your system image using the vendor provided tools.
+See :ref:`ref-qemu` for booting Qemu images.
 
 .. note::
-    LmP enforces eMMC boot whenever possible as this is the path to enable all security features it provides. So for platforms with available eMMC, such as the NXP® i.MX EVKs, booting from eMMC rather than SD is highly recommended and enabled by default.
+   LmP enforces eMMC boot whenever possible as this is the path to enable all security features it provides. So for platforms with available eMMC, such as the NXP® i.MX EVKs, booting from eMMC rather than SD is highly recommended and enabled by default.
 
 .. _gs-boot:
 
