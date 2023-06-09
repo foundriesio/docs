@@ -76,7 +76,7 @@ We use `Github Releases`_ to distribute static golang binaries.
 
          .. prompt:: bash host:~$, auto
 
-            host:~$ curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64
+            host:~$ sudo curl -o /usr/local/bin/fioctl -L https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64
         
          .. important::
         
