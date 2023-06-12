@@ -1,11 +1,11 @@
 .. _ref-rm_board_portenta-x8:
 
 Arduino Portenta X8
-==================
+===================
 
 .. include:: secure-boot-note.rst
 
-.. include:: imx8mm-prepare.rst
+.. include:: portenta-x8-prepare.rst
 
 Hardware Preparation
 --------------------
