@@ -140,6 +140,13 @@ Secure Boot Firmware Update specifics of select hardware platforms are described
    boot-software-updates-zynqmp
    boot-software-updates-stm32mp1
 
+Anti-rollback protection, which prevents downgrading of boot firmware can be
+enabled by following the guide below.
+
+.. toctree::
+   :maxdepth: 1
+
+   anti-rollback-protection
 
 .. _ref-secure-elements:
 
