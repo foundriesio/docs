@@ -432,10 +432,13 @@ to sysroot during build time, however on closed boards, where initial boot
 image has to be signed in advance by a subscriber private key, there is way to
 add signed binary instead of automatic inclusion of unsigned boot artifacts.
 
-To do that just **lmp-boot-firmware.bbappend** to your *meta-subscriber-overrides*
-layer, adding proper value of PV (boot firmware version, which will be
-automatically added to ${osroot}/usr/lib/firmware/version.txt file),
-path to signed binary and signed binary itself.
+To do that, just add ``lmp-boot-firmware.bbappend`` to your *meta-subscriber-overrides*
+layer, adding the path to the signed binary and the signed binary itself.
+
+Then define boot firmware version number by setting ``LMP_BOOT_FIRMWARE_VERSION``
+global variable in your ``lmp-factory-custom.inc``. Boot firmware version
+information will be automatically added to `${osroot}/usr/lib/firmware/version.txt`
+file and U-Boot Device Tree Blob.
 
 .. note::
 
@@ -452,18 +455,28 @@ Example:
     @@ -0,0 +1,7 @@
     +FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
     +
-    +PV = "1"
-    +
     +SRC_URI = " \
     +       file://SPL \
     +"
+    diff --git a/conf/machine/include/lmp-factory-custom.inc b/conf/machine/include/lmp-factory-custom.inc
+    index 0fe26b8..2a9815d 100644
+    --- a/conf/machine/include/lmp-factory-custom.inc
+    +++ b/conf/machine/include/lmp-factory-custom.inc
+    @@ -22,4 +22,4 @@ UEFI_SIGN_KEYDIR = "${TOPDIR}/conf/factory-keys/uefi"
+     # TF-A Trusted Boot
+     TF_A_SIGN_KEY_PATH = "${TOPDIR}/conf/factory-keys/tf-a/privkey_ec_prime256v1.pem"
+
+    +LMP_BOOT_FIRMWARE_VERSION:imx8mm-lpddr4-evk = "3"
     diff --git a/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware/SPL b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware/SPL
     new file mode 100644
     index 0000000..50f5013
     Binary files /dev/null and b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware/SPL differ
 
+.. note::
 
-
+    As ``LMP_BOOT_FIRMWARE_VERSION`` is now a preferable way to set boot firmware version, defining ``PV`` in ``lmp-boot-firmware.bbappend``
+    is deprecated and should not be used. To switch to a new approach just remove ``PV = "<version>"`` line from
+    ``lmp-boot-firmware.bbappend`` and define ``LMP_BOOT_FIRMWARE_VERSION`` with appropriate version value as shown above in the example.
 
 .. |image of iMX6 layout| image:: boot-software-updates/imx6-layout.png
 .. |image of iMX8M layout| image:: boot-software-updates/imx8m-layout.png
