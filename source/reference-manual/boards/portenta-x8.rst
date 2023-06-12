@@ -34,7 +34,7 @@ Set up the board for updating using the manufacturing tools:
 
 #. A UART connection will appear on the PC.
 
-     On a Linux host for example::
+     On a Linux® host for example::
 
           $ ls -l /dev/serial/by-id/
           total 0
@@ -70,7 +70,7 @@ Set up the board for updating using the manufacturing tools:
 Flashing
 --------
 
-Once in serial downloader mode and connected to your PC the evaluation board should show up as an NXP USB device.
+Once in serial downloader mode and connected to your PC the evaluation board should show up as an NXP® USB device.
 
 .. include:: secure-boot-pre-flash-note.rst
 
