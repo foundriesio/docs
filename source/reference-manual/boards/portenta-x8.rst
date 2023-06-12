@@ -33,6 +33,7 @@ Set up the board for updating using the manufacturing tools:
 #. Connect the other end of the cable to a PC acting as a host terminal. 
 
 #. A UART connection will appear on the PC.
+
      On a Linux host for example::
 
           $ ls -l /dev/serial/by-id/
