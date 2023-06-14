@@ -18,7 +18,7 @@ Set up the board for updating using the manufacturing tools:
 
      portenta-x8
 
-#. **OPTIONAL** — Only required if you have problems and/or want to see the boot console output.
+#. **OPTIONAL** —Only required if you have problems and/or want to see the boot console output.
 
 .. figure:: /_static/boards/portenta-x8-uart.png
      :width: 600
@@ -50,7 +50,7 @@ Set up the board for updating using the manufacturing tools:
           - Parity: None
           - Flow control: None
 
-    A helpful reminder, if your not receiving console output to swap the TX and RX pins as most TTL
+    A helpful reminder, if your not receiving console output to swap the TX and RX pins. Most TTL
     USB to UART adaptors do not provide the cross over function.
 
 #. Ensure that the power is off (no power input connected)
