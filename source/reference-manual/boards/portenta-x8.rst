@@ -18,7 +18,7 @@ Set up the board for updating using the manufacturing tools:
 
      portenta-x8
 
-#. **OPTIONAL** - Only required if you have problems and/or want to see the boot console output.
+#. **OPTIONAL** — Only required if you have problems and/or want to see the boot console output.
 
 .. figure:: /_static/boards/portenta-x8-uart.png
      :width: 600
@@ -50,9 +50,9 @@ Set up the board for updating using the manufacturing tools:
           - Parity: None
           - Flow control: None
 
-#. Ensure that the power is off (No power input connected)
+#. Ensure that the power is off (no power input connected)
 
-#. Put the portenta-x8 into programing mode:
+#. Put the Portenta-x8 into programing mode:
 
      Switch BT_SEL to ON and
      Switch BOOT ON as shown below.
@@ -64,8 +64,7 @@ Set up the board for updating using the manufacturing tools:
           BT_SEL and BOOT programing settings
 
 #. Connect your computer to the Portenta X8 board via either USB-C® to USB-A or USB-C® to USB-C®.
-
-#. This connection will power your board ON.
+    This connection will power your board ON.
 
 Flashing
 --------
