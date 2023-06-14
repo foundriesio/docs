@@ -4,7 +4,14 @@
 
      └── |ARCH|
          ├── lmp-factory-image-|MACHINE|.wic.gz
+         ├── other
+         │   └── lmp-factor-image-|MACHINE|.wic.qcow2 # optional
          └── |FIRMWARE_BLOB|
+
+.. note::
+    You can fetch either the compressed ``.wic.gz`` or the ``.qcow2`` artifact, you do not need both.
+    Use the .qcow2 artifact if you wish to change the QEMU disk size.
+
 
 Booting in QEMU
 ---------------
@@ -35,6 +42,25 @@ Booting in QEMU
 
         |ARTIFACT_COMMANDS|
 
+#. `Optional`. Resize the qcow2 image:
+
+   .. parsed-literal::
+
+        qemu-img resize -f qcow2 lmp-factory-image-|MACHINE|.wic.qcow2 8G
+   
+   The above example resizes to 8G—set to meet your needs.
+
+   .. tip::
+       
+       If you already have the wic file, you can use it to create a qcow image:
+
+       .. parsed-literal::
+            
+            qemu-img create -f qcow2 -F raw -b lmp-factory-image-|MACHINE|.wic lmp-factory-image-|MACHINE|.wic.qcow2
+      
+      You can then use ``qemu-img resize`` as above.
+            
+ 
 #. The directory tree should now look like this:
 
    .. parsed-literal::
@@ -42,10 +68,23 @@ Booting in QEMU
         lmp-qemu/
         └── |ARCH|
             ├── lmp-factory-image-|MACHINE|.wic
+            ├── lmp-factory-image-|MACHINE|.wic.qcow2 # optional, needed if resizing is required
             └── |FIRMWARE_BLOB|
 
 #. Run the QEMU script below against the artifacts inside of ``lmp-qemu/``.
    You can save this as ``run.sh`` inside the directory for convenience.
+
+.. important::
+    If you are using the qcow2 image, change the script so that:
+
+       * ``file=`` is set as the qcow2 image name, i.e., lmp-factory-image-|MACHINE|.wic.qcow2
+       * ``format=raw`` is replaced with ``format=qcow2``.
+    
+    For example:
+       
+       .. parsed-literal::
+
+            |QEMU_COW|
 
 .. note::
     The QEMU CLI passes the necessary flags and parameters to the appropriate qemu-system command.
@@ -62,5 +101,4 @@ In order to boot QEMU with an OpenGL capable virtual GPU (required for Wayland/W
      |QEMU_GUI_FLAGS|
 
 Do not copy the ``-nographic`` flag at the end of the QEMU CLI below.
-
 
