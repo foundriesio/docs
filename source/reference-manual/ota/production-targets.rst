@@ -50,19 +50,53 @@ That TUF targets role only includes a single Target from CI build (in above exam
    We recommend that a user generates :ref:`OSTree static deltas<ref-static-deltas>` before rolling out waves to devices.
 
 Once created, a new wave can be rolled out to Factory production devices, all at once or in phases.
+There are several ways how a wave can be rolled out:
+
+- To a subset of devices in a specific device group.
+- To all devices in a specific device group.
+- To a subset of devices in a Factory (potentially, across several device groups, and including group-less devices).
+- To all devices in a Factory.
+
 We recommend to first roll out a wave to a dedicated device group, which contains a small number of production devices.
+Another good option is to roll out a wave to a small subset of devices in a bigger device group.
 Let's assume a user wants to first roll out a new ``v2.0-update`` wave to a device group called ``canary``.
 This can be done using the below command::
 
   fioctl waves rollout v2.0-update canary
 
-A user can roll out a wave to as many device groups as their workflow requires,
+A user can roll out a wave in as many phases as their workflow requires,
 before making the software update generally available.
-For example, a user may decide to roll out a wave to device group ``us-east-1``,
+For example, a user may decide to roll out a wave to device group ``us-east-1`` in several chunks,
 after enough devices in group ``canary`` were updated successfully.
-To do that, a user would run the below command::
+To do that, a user would run the below command sequence::
 
+  fioctl waves rollout v2.0-update us-east-1 --limit=10
+  fioctl waves rollout v2.0-update us-east-1 --limit=50
   fioctl waves rollout v2.0-update us-east-1
+
+The above command chain rolls out a wave to 10 devices in the ``us-east-1`` group,
+then to 50 more devices (60 total), and finally to all remaining devices in that group.
+
+A user may also want to roll out a wave to a subset of devices in entire fleet, across several device groups.
+That can be accomplished by the below command::
+
+  fioctl waves rollout v2.0-update --limit=5
+
+It is possible to examine a list of devices that would be updated by a rollout command, without actually performing it::
+
+  fioctl waves rollout v2.0-update --limit=5 --dry-run --print-uuids
+
+.. note::
+
+    Keep in mind that the device selection is pseudo-random, and can vary from one command run to another.
+
+A user can then inspect and amend that list of devices, and pass it back to the rollout command.
+Alternatively, a user can provide their own choice of device UUIDs to update, like in the below command::
+
+  fioctl waves rollout v2.0-update --uuids=ab8ecb00-8ed4-42ff-90b2-815b371c0f86,7a733e81-f948-43a9-a358-56f3deb5f184
+
+Please, check the ``fioctl waves rollout --help`` command for all available options.
+Hopefully, they should suit your specific production release lifecycle needs.
 
 To monitor the status of your Factory OTA updates status use the ``fioctl status`` command.
 FoundriesFactory also provides a dedicated command to monitor the wave OTA updates status — ``fioctl wave status``.
