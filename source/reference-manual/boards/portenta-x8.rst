@@ -50,6 +50,9 @@ Set up the board for updating using the manufacturing tools:
           - Parity: None
           - Flow control: None
 
+    A helpful reminder, if your not receiving console output to swap the TX and RX pins as most TTL
+    USB to UART adaptors do not provide the cross over function.
+
 #. Ensure that the power is off (no power input connected)
 
 #. Put the Portenta-x8 into programing mode:
@@ -64,7 +67,9 @@ Set up the board for updating using the manufacturing tools:
           BT_SEL and BOOT programing settings
 
 #. Connect your computer to the Portenta X8 board via either USB-C® to USB-A or USB-C® to USB-C®.
-    This connection will power your board ON.
+    This connection will power your board ON. It is best to use 5V supply with at least 2A via
+    a USB-C® connector. Negotiating power supplies do not always work and frequent reboots
+    can be detected.
 
 Flashing
 --------
