@@ -3,12 +3,22 @@
 Production Targets
 ==================
 
+As a part of going to production, a user needs to define two distinct sets of devices: test versus production.
+A **production device** is defined by a presence of a special attribute in its public certificate,
+which is set at the :ref:`device registration time <ref-factory-registration-ref>`.
+If that attribute is absent, it designates a **test device**.
+
 As noted in the :ref:`offline keys documentation<ref-offline-keys>`,
 FoundriesFactory® leverages The Update Framework (TUF) to deliver Over-the-Air (OTA) Software Updates to devices.
-By design, production devices receive a slightly different copy of TUF targets metadata than test devices.
-Production TUF targets must be signed by both Foundries.io™ owned and user-owned targets signing keys.
+Production versus test devices receive different copies of the TUF metadata:
 
-Production targets are managed through so-called **waves** — a FoundriesFactory way to release production updates.
+- Test devices receive :ref:`CI targets <ref-ci-targets>`.
+- Production devices receive **production targets**,
+  managed through so-called **waves** — a FoundriesFactory way to release updates to production devices.
+
+Production targets provide an increased security compared to CI targets.
+They must be signed by the user-owned targets signing key, in addition to the Foundries.io™ owned signing key.
+
 Normally, when the TUF targets metadata is updated, all devices see it and can start updating themselves.
 Waves allow Factory operators to control an exact time when devices see a new version of the TUF targets metadata.
 
@@ -16,7 +26,7 @@ Waves allow Factory operators to control an exact time when devices see a new ve
 
     Production devices can only be updated to production targets.
     The opposite is also true, production targets can only be installed on production devices.
-    From the TUF perspective these are two isolated sets of updates.
+    From the TUF perspective CI versus production TUF targets comprise two isolated sets of updates.
 
     Within a scope of below paragraphs a term "device" always means a "production device".
 
