@@ -30,6 +30,8 @@ numbers of Targets. There are two ways these are dealt with:
  * Condensed Targets
  * Target Pruning
 
+.. _ref-condensed-targets:
+
 Condensed Targets
 -----------------
 
@@ -59,7 +61,7 @@ that are each signed with the Factory's online targets signing key::
   version=3, tag=devel
 
   # targets-experimental.json
-  version=3, tag=experimexperimental
+  version=3, tag=experimental
   version=4, tag=experimental
 
 The :ref:`device gateway <ref-ota-architecture>` is then able to serve
