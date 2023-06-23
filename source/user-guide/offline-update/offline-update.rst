@@ -5,6 +5,9 @@ Offline Updates
 
 This section guides you through the steps of updating a device offline.
 
+.. tip::
+   Make sure to check the :ref:`Offline Update Considerations`.
+
 Prerequisites
 -------------
 
@@ -142,6 +145,36 @@ Therefore, by default, an LmP image includes the minimum required configuration,
 If you register a device and ``sota.toml`` is generated, then the offline update command can either work alone or alone with ``aktualizr-lite``.
 In the later case, you must stop the ``aktualizr-lite`` systemd service before running the offline update command.
 
+.. _Offline Update Considerations:
+
+Offline Update Considerations
+-----------------------------
+
+* **Offline Update is not a packaged delivery**
+
+The content provided by ``fioctl targets offline-update`` command should be packaged by the customer and verified by the client service.
+
+* **Offline Update does not provide a secure delivery**
+
+Related to the bullet above, Foundries.io™ cannot provide secure delivery of offline update content since the customer should do the packaging and delivery.
+
+* **Offline Update allows installing Targets from different Tags**
+
+A custom client application should handle this case if it is not the intended behavior.
+
+* **Online/Offline Mixed Updates**
+
+Toggling between online and offline modes is not tested or validated by Foundries.io. It should be handled by a custom client application. Both cases can work together, but the offline update feature was initially designed to be offline only until the device was registered.
+
+There are a few points to take into account by the custom client application:
+
+   * **The critical rule is not to run two types of updates/clients simultaneously**: ``aktualizr-lite`` should be stopped before ``aklite-offline`` runs and vice-versa.
+
+   * Offline Update can downgrade version: A client around the offline updater should check it out and decide whether to allow a downgrade or not.
+
+   * Offline Update does content-based shortlisting: Only the Apps included in a source directory are installed.
+
+   * Offline Update fails if its input TUF metadata are outdated, e.g. an online update updated TUF root meta to version N while an offline content has version N-1 of root meta.
 
 .. _TUF metadata:
    https://theupdateframework.io/metadata/
