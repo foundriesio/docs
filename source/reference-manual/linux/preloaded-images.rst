@@ -40,12 +40,16 @@ Where:
 - ``app_type`` - *Optional*: Defines a type of Apps to preload.
   If an option is not defined or set to an empty value, the ``app_type``  preload will depend on the LmP version. If the LmP version is equal to or higher than **v85**, then `restorable` type is preloaded, otherwise `compose` type.
   See :ref:`ug-restorable-apps` for more details on Restorable Apps.
-- ``oe_builtin`` - *Optional*: Defines a way to accomplish preloading Apps. If the option is not defined or set to `false` (by default),
-  then Apps are preloaded by the `assemble` run of a LmP CI build. Otherwise, Apps are preloaded during an OE build CI run.
-  In this case, rootfs as well as a system image produced by the run includes preloaded Apps.
-  Only `Restorable` type of Apps (default) are supported by the OE builtin preloader.
-  This option does not work with some of the advanced tagging cases,
-  e.g. in the case of multiple container builds using the same platform (see :ref:`ref-advanced-tagging` for more details).
+- ``oe_builtin`` - *Optional*: Preload Apps during an OE build CI run. Should be left disabled/undefined for most machines.
+
+.. note::
+   The ``oe_builtin`` is a special preloading case where Apps are preloaded during an OE build CI run, rather than preloaded by the `assemble` run of a LmP CI build. This is needed when the image produced by the LmP build is not a WIC image.
+
+   In this case, rootfs as well as a system image produced by the run include preloaded Apps.
+
+   Only `Restorable` type of Apps (default) are supported by the OE builtin preloader.
+
+   This option does not work with some advanced tagging cases, e.g. multiple container builds using the same platform (see :ref:`ref-advanced-tagging` for more details).
 
 For simple workflows, this may suffice. Because ``lmp`` configuration inherits from 
 ``containers``, it will cause every **Target** built in the Factory to include and 
