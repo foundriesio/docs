@@ -501,3 +501,25 @@ For this reason, we suggest setting system-wide configs in ``/usr`` rather than 
 
 We suggest managing files that live in ``/etc`` with a systemd service (:ref:`ref-troubleshooting_systemd-service`).
 The runtime service should handle the needed updates to the ``/etc`` files.
+
+Orphan Targets
+^^^^^^^^^^^^^^
+
+In the Factory Overview page, you may notice the ``ORPHANED`` column:
+
+.. figure:: /_static/userguide/troubleshooting/orphaned-target.png
+   :width: 700
+   :align: center
+
+   Factory Overview Snippet
+
+As seen in :ref:`ref-condensed-targets`, a device only sees the ``targets.json``
+metadata which refers to the tag it is following. An Orphan Target means that
+there is at least one device running a Target which is not present in the
+Targets list for that tag.
+
+There are some cases where this can happen:
+
+* When using :ref:`Production Targets <ref-production-targets>`: A user creates a wave for Target 42 and some devices are updated. The user then cancels the wave, removing Target 42 from the Targets list. A new wave is created for Target 43. Running ``fioctl wave status`` in this case shows that some devices are running Target 42, which is not present in the Targets list, so it shows as an orphan Target.
+* A device runs an old Target that has been pruned from the Targets list.
+* A device switches from one tag to another and it is still running a Target version which is not present in the new tag.
