@@ -1,14 +1,14 @@
-httpd.sh
-^^^^^^^^
+Shell Script
+^^^^^^^^^^^^
 
-The ``Dockerfile`` will copy the ``httpd.sh`` file to your Docker image. 
+The ``Dockerfile`` instructs Docker to copy the shell script ``httpd.sh`` to the Docker image. 
 Move that file from ``shellhttpd.disabled`` to the ``shellhttpd`` folder:
 
 .. prompt:: bash host:~$
 
     mv ../shellhttpd.disabled/httpd.sh .
 
-Check the content of your ``httpd.sh``:
+Check the content of ``httpd.sh``:
 
 .. prompt:: bash host:~$, auto
 
@@ -16,7 +16,7 @@ Check the content of your ``httpd.sh``:
 
 **httpd.sh**:
 
-.. prompt:: text
+.. prompt::
 
      #!/bin/sh -e
      
@@ -30,6 +30,4 @@ Check the content of your ``httpd.sh``:
       echo "= $(date) ============================="
      done
 
-This is a shell script file that will respond to a request on the port defined by the 
-PORT environment variable (defaults to ``8080``) with the message defined by the MSG 
-environment variable (defaults to ``OK``).
+This script responds to a request on the port defined by ``PORT``(defaults to ``8080``) with the message defined by ``MSG``(defaults to ``OK``).

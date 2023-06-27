@@ -1,13 +1,14 @@
-Extra commands
+Extra Commands
 ^^^^^^^^^^^^^^
 
 Here is a list of useful commands when working with Docker containers.
 
-docker ps
-"""""""""
+Docker Process Status
+"""""""""""""""""""""
 
-The first command is: ``docker ps``.  It displays the running containers on the device.
-Add the ``--all`` parameter to see all containers on the device (even if they aren't running).
+The first command to learn is: ``docker ps``.
+This displays the running containers on the device.
+Add ``--all`` to see all containers on the device, even if they are not running.
 
 .. prompt:: bash host:~$, auto
 
@@ -20,14 +21,13 @@ Add the ``--all`` parameter to see all containers on the device (even if they ar
      CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
      244a84742697        shellhttpd:1.0       "/usr/local/bin/http…"   6 minutes ago       Up 6 minutes        0.0.0.0:8080->8080/tcp   shellhttpd
 
-docker logs
+Docker Logs
 """""""""""
-Often, it is useful to watch Docker container logs.  Use ``docker logs <container name>`` 
-to see the logs of a specific container. If you want the command to keep following the 
-log, use the ``--follow`` parameter:
+Often, it is useful to watch Docker container logs.
+Use ``docker logs <container name>`` to see the container's logs.
+If you want the command to keep following the log, use the ``--follow`` parameter:
 
-In this case, the log might be empty unless you tested the ``shellhttpd`` 
-application with ``curl`` or the browser:
+The log might be empty unless you tested the ``shellhttpd`` application with ``curl`` or the browser:
 
 .. prompt:: bash host:~$, auto
 
@@ -44,7 +44,7 @@ application with ``curl`` or the browser:
      DNT: 1
      Upgrade-Insecure-Requests: 1
      User-Agent: Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
-     Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+     Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,\*/\*;q=0.8,application/signed-exchange;v=b3;q=0.9
      Sec-Fetch-Site: none
      Sec-Fetch-Mode: navigate
      Sec-Fetch-User: ?1
@@ -60,7 +60,7 @@ application with ``curl`` or the browser:
      Cache-Control: no-cache
      User-Agent: Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
      DNT: 1
-     Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+     Accept: image/avif,image/webp,image/apng,image/svg+xml,image/\*,\*/\*;q=0.8
      Sec-Fetch-Site: same-origin
      Sec-Fetch-Mode: no-cors
      Sec-Fetch-Dest: image
@@ -71,12 +71,12 @@ application with ``curl`` or the browser:
      = Thu Mar 18 01:03:14 UTC 2021 =============================
 
 
-docker exec
-"""""""""""
+Docker Execute
+""""""""""""""
 
 The ``docker exec`` command runs a new command in a running container.
 
-To verify the files in root file system of the container, use the following command:
+To verify the files in the root file system of the container, use the following command:
 
 .. prompt:: bash host:~$, auto
 
@@ -88,7 +88,7 @@ To verify the files in root file system of the container, use the following comm
 
      httpd.sh
 
-To check what processes are running inside the container:
+To check what processes are running:
 
 .. prompt:: bash host:~$, auto
 
@@ -124,23 +124,22 @@ Where:
  - ``shellhttpd`` - container name.
  - ``sh`` - shell command.
 
-docker rm
-"""""""""
+Docker Remove
+"""""""""""""
 
-To remove the container, run the command below:
+To stop and then remove the container, run the commands:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ docker stop shellhttpd
     host:~$ docker rm shellhttpd
 
-During development, it is very common to change the Docker image and test it 
-again, so let’s give it a try:
-
+During development, it is common to make and test changes to the Docker image.
+Let us give this a try.
 In the file ``httpd.sh``, we specify the MSG variable with ``${MSG-OK}``. 
-This means if MSG is not specified, set it with the default value ``OK``.
+This means if ``MSG`` is not otherwise specified, it is set with the default value "OK".
 
-Let’s change the ``OK`` to ``FoundriesFactory``, then rebuild and run:
+Using the text editor of your choice, change ``OK`` to ``FoundriesFactory``, then rebuild and run:
 
 .. prompt:: bash host:~$, auto
 
@@ -192,11 +191,6 @@ Test the new change with curl:
     host:~$ docker stop shellhttpd
     host:~$ docker rm shellhttpd
     host:~$ docker run --env MSG=MyFirstContainer --name shellhttpd -d -p 8080:8080 shellhttpd:1.0
-
-Testing the new environment variable:
-
-.. prompt:: bash host:~$, auto
-
     host:~$ curl 127.0.0.1:8080
 
 **Example Output**:
@@ -227,4 +221,4 @@ Remove the container:
     host:~$ docker rm shellhttpd
 
 All these commands are important in understanding how Docker containers work. 
-Now let’s see how ``docker-compose`` works.
+Next is going into how ``docker-compose`` works.
