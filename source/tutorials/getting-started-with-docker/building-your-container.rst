@@ -1,9 +1,9 @@
-Building your Container
+Building Your Container
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that you have a ``Dockerfile``, you can build it locally to make sure it is working properly.
 
-From the same folder containing the ``Dockerfile``, run the command below:
+From the same folder containing the ``Dockerfile``, run the command:
 
 .. prompt:: bash host:~$, auto
 
@@ -29,7 +29,7 @@ From the same folder containing the ``Dockerfile``, run the command below:
      Successfully built a5984eb19baf
      Successfully tagged shellhttpd:1.0
 
-Next, start your first container on your host PC:
+Next, start the container on your host PC:
 
 .. prompt:: bash host:~$
 
