@@ -83,14 +83,14 @@ The recipe
 ``meta-lmp/meta-lmp-base/recipes-kernel/linux/linux-lmp-fslc-imx-xeno4_git.bb``
 can be used to enable the Xenomai4 co-kernel on iMX boards.
 
-Like its predecessors in the Xenomai core series, `Xenomai4`_ with the
-`EVL core`_ brings real-time capabilities to Linux by embedding a
-companion core into the kernel, which specifically deals with tasks
-requiring ultra low and bounded response time to events.
+	Like its predecessors in the Xenomai core series, `Xenomai4`_ with the
+	`EVL core`_ brings real-time capabilities to Linux by embedding a
+	companion core into the kernel, which specifically deals with tasks
+	requiring ultra low and bounded response time to events.
 
-In this model, the general purpose kernel and the real-time core operate
-almost asynchronously, both serving their own set of tasks, always
-giving the latter precedence over the former.
+	In this model, the general purpose kernel and the real-time core operate
+	almost asynchronously, both serving their own set of tasks, always
+	giving the latter precedence over the former.
 
 .. _Xenomai4: https://evlproject.org/overview/
 .. _EVL core: https://evlproject.org/core/
@@ -103,8 +103,7 @@ Set ``PREFERRED_PROVIDER_virtual/kernel`` to
 in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
 
     $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
-    PREFERRED_PROVIDER_virtual/kernel:mx8mm-nxp-bsp =
-    "linux-lmp-fslc-imx-xeno4"
+    PREFERRED_PROVIDER_virtual/kernel:mx8mm-nxp-bsp = "linux-lmp-fslc-imx-xeno4"
     MACHINE_FEATURES:append = " xeno4"
 
 
