@@ -1,10 +1,10 @@
 
 .. _ref-secure-boot-ti-am62x.rst:
 
-Secure Boot on TI am62x
+Secure Boot on TI AM62x
 =======================
 
-Secure TI devices requires all the images in the boot chain
+Secure TI devices require all images in the boot chain
 (tiboot3.bin, tispl.bin and u-boot.img) to be authenticated by ROM.
 
 In order to create valid boot images, the initial public software images
@@ -18,10 +18,10 @@ Fusing Keys
 -----------
 
 At the time of this writing, provisioning the RoT keys requires software
-only available under NDA: the **One Time Programmable Key Writer**.
+only available under an NDA: the **One Time Programmable Key Writer**.
 
-The non-secure part of this software executes on the R5 core and handles
-a certificate to the secure binary running on one of the M4 cores. The
+The non-secure component of this software executes on the R5 core and handles
+the certificate for the secure binary running on one of the M4 cores. The
 secure binary will perform the writing of the fuses.
 
 The software accepts either one or two private RSA 4096 keys to generate
@@ -46,28 +46,28 @@ a PEM certificate::
 Either one of the keys will be used by the ROM to perform the signature
 verification. Even if not necessary, fusing two keys is recommended
 since the ROM can be reverted in the field to use the secondary key in
-case the primary one is suspected to be compromised.
+case the primary one is suspected of being compromised.
 
 Once generated, the certificate needs to be transformed into a C header
-file. The file is then included in a board specific build process which
+file. This file is then included in a board specific build process which
 will generate the final boot-able image.
 
-As we will succinctly describe below, this header file can be distributed
+As described below, this header file can be distributed
 to non-secure environments since critical fields are ultimately
 encrypted with the TI FEK public key.
 
 Building the boot-able image requires some of the standard development
 tools publicly available from Texas Instruments:  Code Composer Studio,
-Sysconfig and the SDK.
+Sysconfig, and the SDK.
 
 On boot, this image will program the SoC fuses required to enable
-secured  boot. And since the am62x supports DFU boot, fusing a board
-would just require the following command::
+secured boot. As the am62x supports DFU boot, fusing a board
+requires just the following command::
 
   $ dfu-util -R -a bootloader -D fuse.bin
 
-You should have seen the following strings on your host when the device
-was first plugged in DFU mode::
+The following strings should be displayed on your host when the device
+is plugged in with DFU mode::
 
    New USB device number 87 using xhci_hcd
    New USB device found, idVendor=0451, idProduct=6165, bcdDevice= 2.00
@@ -90,9 +90,9 @@ sensitive information in the X509 certificate extension fields.
 
 .. note::
 
-   If they user does not generate one, the tool shall do it on his behalf.
+   If the user does not generate one, the tool shall do it on their behalf.
 
-To protect the AES encryption key and the hash two additional extensions
+To protect the AES encryption key and the hash, two additional extensions
 are created:
 
    1. AES-256 key
@@ -101,12 +101,12 @@ are created:
 These are protected/encrypted with the TI FEK public key (also
 RSA-4096).
 
-All these four extensions are then combined into an X.509 configuration
+All four extensions are then combined into an X.509 configuration
 certificate. This configuration certificate is finally signed with the
 SMPK private key to create the final X509 certificate.
 
-The OTP Keywriter project logically needs access to the keys to be fused
-as well as the TI FEK key
+The OTP Keywriter project needs access to the keys to be fused,
+as well as the TI FEK key.
 
  - TI FEK : tifek/ti_fek_public.pem
  - SMPK   : keys_devel/smpk.pem
@@ -191,19 +191,19 @@ images need to be build and signed.
                 +-----------------------+
 
 
-Signing the different components of the boot-chain was recently
-`integrated`_ in U-Boot's binman therefore simplifying the previous
+Signing the different components of the boot-chain has been
+`integrated`_ in U-Boot's binman, simplifying the previous
 process; at the time of this writing the code is only available in the
 vendor's repository hence why this page uses hyperlinks to vendor
 software and not upstream.
 
 Compiling U-Boot will take care of signing not only the binaries it
-generates but also the rest of the firmware images that need to be
-included in the final images
+generates, but the rest of the firmware images that need to be
+included in the final images.
 
-As a user, you'll merely need to **replace** U-Boot's ``customMpk.pem`` with
+As a user, you will need to **replace** U-Boot's ``board/ti/keys/custMpk.pem`` with
 the RSA-4096 key that was fused during provisioning: this will sign all
-other binaries and firmwares including the externally generated
+other binaries and firmwares, including the externally generated
 TF-A, OP-TEE.
 
 .. _documentation:
