@@ -1,29 +1,15 @@
-Commit and Push our changes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Commit and Push Changes
+^^^^^^^^^^^^^^^^^^^^^^^
 
-In the previous tutorial :ref:`tutorial-gs-with-docker`, you moved most of the files from the
-``shellhttpd.disabled`` folder to the ``shellhttpd`` folder, and then built and tested a local
-version of the container.
+In :ref:`tutorial-gs-with-docker`, you moved most of the files from the ``shellhttpd.disabled`` folder to ``shellhttpd``.
+You then built and tested a local version of the container.
 
-In this chapter, you will work on final adjustments before sending your changes to 
-the remote repository. This triggers FoundriesFactory CI to start a new build, which 
-compiles and publishes your application to `Foundries.io hub <https://hub-ui.foundries.io/>`_.
+In this chapter, you will work on the final adjustments before sending your changes to the remote repository.
+This triggers the FoundriesFactory® CI to start a new build, which compiles and publishes your application to `Foundries.io™ hub <https://hub-ui.foundries.io/>`_.
 
-Open a new terminal on your host machine and find the container folder used in 
-the previous tutorial.
+Open a terminal on your host machine and navigate to the container folder used in the previous tutorial.
 
-.. prompt:: bash host:~$
-
-     cd containers/
-
-Edit the ``shellhttpd/docker-compose.yml`` file and change the image back 
-to **hub.foundries.io**.
-
-.. prompt:: bash host:~$, auto
-
-    host:~$ gedit shellhttpd/docker-compose.yml
-
-**shellhttpd/docker-compose.yml**:
+Edit ``shellhttpd/docker-compose.yml``, changing the image back to ``hub.foundries.io``:
 
 .. prompt:: text
 
@@ -40,35 +26,33 @@ to **hub.foundries.io**.
            MSG: "${MSG-Hello world}"       
 
 There should be one file left in the ``shellhttpd.disabled`` folder: ``docker-build.conf``.
-
-Move ``docker-build.conf`` to your ``shellhttpd`` folder:
+Move it to the ``shellhttpd`` folder:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ mv shellhttpd.disabled/docker-build.conf shellhttpd/
 
-This file adds advanced configuration for a FoundriesFactory CI build. Without adding 
-too much detail, one of the features of FoundriesFactory CI is to execute commands after 
-the container image is built.  These commands verify that your container functions 
-correctly.
+This file adds advanced configuration for a FoundriesFactory CI build.
+Without adding too much detail, one of the tasks of the FoundriesFactory CI is to execute commands after the container image is built.
+These commands verify that your container functions correctly.
 
-Check the content of your ``docker-build.conf``:
+Check the content of ``docker-build.conf``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cat shellhttpd/docker-build.conf 
 
-**docker-build.conf**:
+``docker-build.conf``:
 
 .. prompt:: text
 
      # Allow CI loop to unit test the container by running a command inside it
      TEST_CMD="/bin/true"
 
-``TEST_CMD`` tells CI to run the simple command ``/bin/true``. If this command 
-fails for some reason, it will mark the container build as failed.
+``TEST_CMD`` tells the CI to run the  command ``/bin/true``.
+If this command fails for some reason, it will mark the container build as failed.
 
-Use ``git status`` in the ``containers`` folder to verify all the changes you have done:
+Use ``git status`` to verify all the changes:
 
 .. prompt:: bash host:~$, auto
 
@@ -78,8 +62,8 @@ Use ``git status`` in the ``containers`` folder to verify all the changes you ha
 
 .. prompt:: text
 
-     On branch devel
-     Your branch is up to date with 'origin/devel'.
+     On branch main
+     Your branch is up to date with 'origin/main'.
      
      Changes not staged for commit:
        (use "git add/rm <file>..." to update what will be committed)
@@ -93,7 +77,8 @@ Use ``git status`` in the ``containers`` folder to verify all the changes you ha
 	     shellhttpd/
      no changes added to commit (use "git add" and/or "git commit -a")
 
-Remove the ``shellhttpd.disabled`` folder from git:
+
+Remove ``shellhttpd.disabled`` from git:
 
 .. prompt:: bash host:~$, auto
 
@@ -124,8 +109,8 @@ Check the status again before we commit:
 
 .. prompt:: text
 
-     On branch devel
-     Your branch is up to date with 'origin/devel'.
+     On branch main
+     Your branch is up to date with 'origin/main'.
      Changes to be committed:
        (use "git restore --staged <file>..." to unstage)
 	     renamed:    shellhttpd.disabled/Dockerfile -> shellhttpd/Dockerfile
@@ -133,7 +118,7 @@ Check the status again before we commit:
 	     renamed:    shellhttpd.disabled/docker-compose.yml -> shellhttpd/docker-compose.yml
 	     renamed:    shellhttpd.disabled/httpd.sh -> shellhttpd/httpd.sh
 
-Commit your changes with the message:
+Commit your changes with a message:
 
 .. prompt:: bash host:~$, auto
 
@@ -158,8 +143,8 @@ Push all committed modifications to the remote repository:
      remote: Trigger CI job...
      remote: CI job started: https://ci.foundries.io/projects/<factory>/lmp/builds/4/
      To https://source.foundries.io/factories/<factory>/containers.git
-        daaca9c..d7bc382  devel -> devel
+        daaca9c..d7bc382  main -> main
 
 .. note::
 
-   ``git push`` output will indicate the start of a new CI job.
+   The output of ``git push`` indicates the start of a new CI job.
