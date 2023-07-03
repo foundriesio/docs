@@ -1,49 +1,40 @@
 .. _tutorial-what-is-a-target:
 
-What is a Target?
-^^^^^^^^^^^^^^^^^
+Targets
+^^^^^^^
 
-FoundriesFactory CI just created your first **Target** triggered by your changes in the 
-``containers.git``.
+The FoundriesFactory® CI created your first **Target** triggered by changes to the ``containers.git``.
 
-.. tip::
+.. hint::
 
    A **Target** is a description of the software a device should run.
 
-You just pushed changes to the ``devel`` branch of your ``containers.git`` repository. 
-By default, your Factory is configured to automatically trigger a ``containers-devel`` 
-CI job to build your container application changes.
+You previously pushed changes to your ``containers.git`` repository. 
+Your Factory automatically triggered a ``containers-main`` CI job to build these changes.
 
 After a successful build, a **Target** is created that:
 
-- Combines the last successful ``containers-devel`` and ``platform-devel`` builds.
-- Has a ``devel`` tag.  Your Factory is configured by default to add the ``devel`` tag to **Targets** triggered by changes to the ``devel`` branch.
-- Has a Hardware ID which matches the MACHINE you selected when your Factory was created.
+- Combines the latest successful ``containers-main`` and ``platform-main`` builds.
+- Has a Hardware ID which matches the ``MACHINE`` you selected when your Factory was created.
 
-Last but not least, devices configured to watch a tag and Hardware ID (MACHINE) that match 
-your latest **Target** will receive an update.
-
-.. tip::
-
-   At this point, your device should be registered to your Factory according to 
-   the :ref:`Getting Started guide <gs-register>`. If your device is online, it 
-   will automatically receive an update with your latest **Target**, but we will  
-   cover more on that in the next tutorial.
+Devices configured to watch a tag and Hardware ID (``MACHINE``) that match your latest **Target** will then receive an update.
 
 .. note::
 
-   Read the blog, `What is a Target?
-   <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ 
-   to get a high-level overview of **Targets**. Don't worry about the instructions.  
-   We will replicate them for your Factory here.
+   At this point, your device should be registered, as covered in the :ref:`Getting Started guide <gs-register>`.
+   If your device is online, it will automatically receive an update with your latest **Target**.
+   The next tutorial will cover this in detail.
 
-To help you understand What a **Target** is, the instructions below will guide you 
-through a similar path as the blog article.
+.. tip::
 
-``fioctl status`` will list all devices registered to your Factory and what tag they are 
-following.
+   Read the blog, `What is a Target? <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ 
+   to get a high-level overview of **Targets**.
+   No need to follow the instructions, as we will replicate them for here.
 
-It also lists what **Target** is installed in each device.
+To help you understand What a **Target** is, the instructions below will guide you through working with them.
+
+To list the devices registered to your Factory and the tag they are following, use ``fioctl status``
+It also lists the **Target** they have installed .
 
 .. prompt:: bash host:~$, auto
 
@@ -57,14 +48,16 @@ It also lists what **Target** is installed in each device.
      
      TAG    LATEST TARGET  DEVICES  ON LATEST  ONLINE
      ---    -------------  -------  ---------  ------
-     devel  4              1        1          1
+     main  3              1        1          1
      
-     ## Tag: devel
-	     TARGET  DEVICES  DETAILS
-	     ------  -------  -------
-	     4       1        `fioctl targets show 4`
+     Orphan target versions below are marked with a star (*)
 
-Before you inspect **Target 4**, list all your targets available with the command below:
+     ## CI Tag: main
+	        TARGET  DEVICES  INSTALLING  DETAILS
+	        ------  -------  ----------  -------
+	        3       1        0           `fioctl targets show 4`
+
+Before inspecting your latest **Target**, list all the **Targets**:
 
 .. prompt:: bash host:~$, auto
 
@@ -76,33 +69,25 @@ Before you inspect **Target 4**, list all your targets available with the comman
 
      VERSION  TAGS    APPS        HARDWARE IDs
      -------  ----    ----        ------------
-     2        devel               raspberrypi3-64
-     3        master              raspberrypi3-64
-     4        devel   shellhttpd  raspberrypi3-64
+     1        main                raspberrypi3-64
+     2        main   shellhttpd  raspberrypi3-64
 
-When your Factory is created, two platform builds are launched in 
-FoundriesFactory CI: ``devel`` and ``master``.
+When you pushed your ``containers.git`` changes, it resulted in a new version, i.e.,  Target 3. 
 
-Based on the output example, they correspond to versions 2 and 3 respectively.
+The new  **Target** was created by combining the latest 
+container build  with the latest platform build.
 
-As you probably noticed, we suggest you start your development with the ``devel`` 
-branch and install the image from ``platform-devel`` builds.
-
-When you pushed your ``containers.git`` changes, it resulted in version 4. 
-In simple terms: The new Version 4 **Target** was created by combining the latest 
-container build (Version 4) + the latest platform build (Version 2).
-
-Use this command to see a better overview of **Target 4**:
+Fioctl® can provide an overview of **Target**:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ fioctl targets show 4
+    host:~$ fioctl targets show 3
 
 **Example Output**:
 
 .. prompt:: text
 
-     Tags:	devel
+     Tags:	main
      CI:	https://ci.foundries.io/projects/<factory>/lmp/builds/4/
      Source:
 	     https://source.foundries.io/factories/<factory>/lmp-manifest.git/commit/?id=fb119f5
@@ -119,7 +104,7 @@ Use this command to see a better overview of **Target 4**:
 
 The example above, shows a **Target Name** named ``raspberrypi3-64-lmp-4`` that:
 
-- Is tagged with the ``devel`` tag.
-- Specifies the OStree HASH corresponding to the latest ``platform-devel`` build.
+- Is tagged with the ``main`` tag.
+- Specifies the OStree HASH corresponding to the latest ``platform-main`` build.
 - Lists all the container apps available, which in this case is just the ``shellhttpd`` app.
 - Based on the MACHINE ``raspberrypi3-64``.

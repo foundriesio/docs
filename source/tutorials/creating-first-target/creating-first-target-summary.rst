@@ -1,13 +1,13 @@
 Summary
 -------
 
-This tutorial shows you what a **Target** is and all the steps to create one.
-All the commands used in this Tutorial together with ":ref:`tutorial-gs-with-docker`",
-will be part of a daily development flow when you are working with FoundriesFactory.
+You explored what a **Target** is and the steps for creating one.
+The commands used in this tutorial, together with ":ref:`tutorial-gs-with-docker`",
+make up a large part of the FoundriesFactory® development flow.
 
-The flow to develop your application is simple:
+To summarize this workflow:
 
-- Try it locally.
-- Send your changes to FoundriesFactory CI.
-- CI will build and create a **Target**.
-- The device will receive it over-the-air.
+- Test it locally.
+- Push your changes.
+- The CI builds and create a **Target**.
+- The device receives it *over-the-air*.
