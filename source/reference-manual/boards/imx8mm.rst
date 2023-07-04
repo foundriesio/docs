@@ -3,70 +3,69 @@
 i.MX 8M Mini Evaluation Kit
 ===========================
 
-.. include:: secure-boot-note.rst
+.. |board_name| replace:: i.MX 8 M Mini EVK
+.. |machine_name| replace:: imx8mm-lpddr4-evk
+.. |debug_port| replace:: **J901**
+.. |download_port| replace:: **J301**
+.. |power_jack| replace:: **J302**
+.. |power_switch| replace:: **SW101**
+.. |boot_mode_switch| replace:: **SW1101**
+.. |boot_mode_sdp| replace:: ON, OFF, ON, OFF
+.. |boot_mode_emmc| replace:: OFF, ON, ON, OFF
+.. |boot_mode_bits| replace:: **1-4**
+.. |imx_n_consoles| replace:: Two
+.. |imx_tty_device| replace:: ``ttyUSB1``
+.. |imx_tty_port| replace:: ``if01``
+.. |imx_usb_type_debug| replace:: micro-B
+.. |imx_usb_type_sdp| replace:: USB-C
+.. |imx_power_jack_type| replace:: USB-C
 
-.. include:: imx8mm-prepare.rst
+.. |imx_lsusb| prompt:: bash $, auto
 
-Hardware Preparation
---------------------
+     lsusb | grep NXP
+     Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
 
-Set up the board for updating using the manufacturing tools:
-
-.. figure:: /_static/boards/imx8mmevk.png
+.. |image_board_top| image:: /_static/boards/imx8mmevk.png
      :width: 600
-     :align: center
+     :align: middle
 
-     imx8mmevk
+.. |image_board_SW| image:: /_static/boards/imx8mmevk_SW.png
+     :width: 600
+     :align: middle
 
-#. **OPTIONAL** - Only required if you have problems and/or want to see the boot console output.
-
-     Connect the micro-B end of the USB cable into debug port J901.
-     Connect the other end of the cable to a PC acting as a host
-     terminal. Two UART connections will appear on the PC.
-     On a Linux host for example::
+.. |imx_tty_list| prompt:: bash $, auto
 
           $ ls -l /dev/serial/by-id/
-          total 0
-          lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if00-port0 -> ../../ttyUSB0
-          lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if01-port0 -> ../../ttyUSB1
+            total 0
+            lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if00-port0 -> ../../ttyUSB0
+            lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if01-port0 -> ../../ttyUSB1
 
-     Using a serial terminal program like minicom, connect to the port
-     with ``if01`` in the name (in this example ttyUSB1) and apply the
-     following configuration
 
-          - Baud rate: 115200
-          - Data bits: 8
-          - Stop bit: 1
-          - Parity: None
-          - Flow control: None
-
-#. Ensure that the power is off (SW101)
-
-#. Put the imx8mmevk into programing mode:
-
-     Switch SW1101 to ON, OFF, ON, OFF (from 1-4 bit) and
-     switch SW1102 bit 10 to OFF as shown below.
-
-     .. figure:: /_static/boards/imx8mmevk_SW.png
+.. |usb_device_windows| image:: /_static/boards/windows_verify.png
           :width: 600
-          :align: center
+          :align: middle
 
-          SW1101 and SW1102 programing settings
+.. |imx_file_list| prompt:: text
 
-#. Connect your computer to the EVK board via the USB Type-C port 1 ``Download`` J301 jack.
-#. Connect the USB Type-C power plug to the port 2 ``Power`` J302 jack.
+          ├── lmp-factory-image-imx8mm-lpddr4-evk.wic
+          ├── u-boot-imx8mm-lpddr4-evk.itb
+          ├── sit-imx8mm-lpddr4-evk.bin
+          ├── imx-boot-imx8mm-lpddr4-evk
+          └── mfgtool-files-imx8mm-lpddr4-evk
+               ├── bootloader.uuu
+               ├── full_image.uuu
+               ├── imx-boot-mfgtool
+               ├── uuu
+               └── uuu.exe
 
-#. Power on the EVK board by sliding power switch SW101 to ON.
+.. |secure_boot_preparation_note| replace::
+    The instructions in this section also apply to those boards with secure
+    boot enabled. There are references on how to perform common instructions
+    along with the flow. The :ref:`ref-security` Reference Manual details the
+    required background for secure boot.
 
-Flashing
---------
+.. |secure_boot_pre_flash_note| replace:: For instructions on how to sign the
+     required images before flashing them to the board with secure boot enabled,
+     follow the instructions from :ref:`ref-secure-machines`.
 
-Once in serial downloader mode and connected to your PC the evaluation board should show up as an NXP USB device.
-
-.. include:: secure-boot-pre-flash-note.rst
-
-.. include:: imx8-flashing.rst
-
-To put the EVK into run mode, switch SW1101 and SW1102 to eMMC setting.
-
-Power on the EVK board by sliding power switch SW101 to ON.
+.. include:: imx-common-board.inc
