@@ -1,10 +1,9 @@
 .. _tutorial-configuring-and-sharing-volumes-using-docker:
 
-Copy the Configuration File using Dockerfile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Copy the Configuration File with Dockerfile
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Create the ``shellhttpd.conf`` file in your local container repository in the
-``shellhttpd`` folder, which holds your ``Dockerfile``:
+Create ``shellhttpd.conf`` in your local container repository in the ``shellhttpd`` folder, which holds your ``Dockerfile``:
 
 .. prompt:: bash host:~$, auto
 
@@ -16,9 +15,7 @@ Verify the ``shellhttpd.conf`` file:
 
     host:~$ cat shellhttpd/shellhttpd.conf
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      PORT=8080
      MSG="Hello from the file copied in the Dockerfile"
@@ -29,9 +26,7 @@ Edit the ``Dockerfile`` to create the ``shellhttpd`` folder and copy ``shellhttp
 
     host:~$ gedit shellhttpd/Dockerfile
 
-**shellhttpd/Dockerfile**:
-
-.. prompt:: text
+::
 
     FROM alpine
     
@@ -43,7 +38,7 @@ Edit the ``Dockerfile`` to create the ``shellhttpd`` folder and copy ``shellhttp
     
     CMD ["/usr/local/bin/httpd.sh"]
 
-Commit and push all changes done in the ``containers`` folder
+Commit and push the changes.
 
 .. prompt:: bash host:~$, auto
 
@@ -54,17 +49,10 @@ Commit and push all changes done in the ``containers`` folder
     host:~$ git commit -m "Adding config file with Dockerfile"
     host:~$ git push
 
-Wait for your FoundriesFactory CI job to finish and for your device to receive 
-the new target as an over-the-air update:
+Wait for the FoundriesFactory® CI job to finish and for your device to receive the new target.
 
-.. figure:: /_static/tutorials/configuring-and-sharing-volumes/building.png
-   :width: 900
-   :align: center
-
-   FoundriesFactory CI Job running
-
-In this example, the build version is ``5``. To check if your device is already 
-up-to-date, check :guilabel:`Devices` until you see ``-5`` at the end of the **Target** name. For example ``raspberrypi3-64-lmp-5``.
+To check if your device is up-to-date, from your Factory page check :guilabel:`Devices`.
+You should see a new number at the end of the **Target** name. For example, ``raspberrypi3-64-lmp-5``.
 
 When the device is up-to-date, the **Status** icon will change to green.
 
@@ -74,15 +62,12 @@ When the device is up-to-date, the **Status** icon will change to green.
 
    Device list
 
-Test the container from an external device connected to the same network 
-(e.g. your host machine: the same computer you use to access your device with ssh).
+Test the container from an external device connected to the same network, such as your computer:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ curl <Device IP>:8080
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      Hello from the file copied in the Dockerfile
