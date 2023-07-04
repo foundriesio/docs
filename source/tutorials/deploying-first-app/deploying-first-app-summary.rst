@@ -1,5 +1,5 @@
 Summary
 -------
-This tutorial shows you important commands to debug an over-the-air update as well 
-as how to enable and disable specific applications. The instructions from this 
-Tutorial together with all the previous guides will help with your development cycle.
+You were introduced to important commands for debugging over-the-air updates.
+You also learned  how to enable and disable apps.
+The instructions from this tutorial will aid you well in the development cycle.

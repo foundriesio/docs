@@ -1,17 +1,15 @@
-Debugging your device
+Debugging Your Device
 ^^^^^^^^^^^^^^^^^^^^^
 
-Your device should be configured to always download the latest **Target** version with a 
-specific ``tag``.
+Your device is configured to always download the latest **Target** version with a specific ``tag``.
 
-By default, devices will run **all** applications that are defined in the ``containers.git`` 
-repository and therefore available in the latest **Target**. This behavior can be changed 
-by enabling only specific applications. We will cover this in more detail a little later.
+By default, devices run **all** applications defined in the ``containers.git`` repo.
+This behavior can be changed by enabling only specific applications.
+This will be covered this in more detail later.
 
-To check your device configuration, you can click on the tab :guilabel:`devices` 
-on your Factory and find the column :guilabel:`TAGS`:
+To check your device configuration, click on the Factory tab :guilabel:`devices` and find the column :guilabel:`TAGS`:
 
-.. figure:: /_static/tutorials/deploying-first-app/tutorial-device.png
+.. figure:: /_static/tutorials/deploying-first-app/tutorial-device.webp
    :width: 900
    :align: center
 
@@ -23,9 +21,7 @@ You can also use ``fioctl`` to read information about your device.
 
     host:~$ fioctl device show <device-name>
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      UUID:          a06b0bab-38be-409b-b7f8-f1125231a91e
      Owner:         6025791fd93b37d33e03b349
@@ -35,7 +31,7 @@ You can also use ``fioctl`` to read information about your device.
      Ostree Hash:   3abd308ea6d4caffcdf250c7170e0dc9c8ff9082c64538bf14ca07c2df1beeff
      Created:       2021-04-20T20:54:37+00:00
      Last Seen:     2021-04-20T22:42:53+00:00
-     Tags:          devel
+     Tags:          main
      Docker Apps:   shellhttpd
      Network Info:
 	     Hostname:  raspberrypi3-64
@@ -58,20 +54,18 @@ You can also use ``fioctl`` to read information about your device.
      yx6kgczb3QNAEe/imtGemFvVsir/qxRPVODVdXSlf2doAJ21cv0VL1M++g==
      -----END PUBLIC KEY-----
 
-As expected, the device is configured to follow the ``devel`` tag. Based on that, 
-it found and updated to the latest **Target** with the ``devel`` tag, which is version 4.
-Because you didn't specify what application it should run, it automatically loads 
-all applications available in the current **Target**. In this case, ``shellhttpd``.
+The device is configured to follow the ``main`` tag.
+Based on that, it found and updated to the latest Target with the tag.
+Because we did not specify what application should run, all apps available in the current Target are automatically loaded.
+In this case, ``shellhttpd``.
 
-Another way to verify applications running on the device is with the ``docker ps`` command:
+Another way to verify the apps running on a device is with ``docker ps``:
 
 .. prompt:: bash device:~$, auto
 
     device:~$ docker ps
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      CONTAINER ID   IMAGE                                  COMMAND                  CREATED       STATUS       PORTS                    NAMES
      48f467ea2461   hub.foundries.io/<factory>/shellhttpd   "/usr/local/bin/http…"   6 hours ago   Up 6 hours   0.0.0.0:8080->8080/tcp   shellhttpd_httpd_1
