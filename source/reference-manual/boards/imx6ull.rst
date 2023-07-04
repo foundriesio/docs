@@ -13,7 +13,6 @@ i.MX 6ULL Evaluation Kit
 .. |boot_mode_sdp| replace:: OFF, ON
 .. |boot_mode_emmc| replace:: ON, OFF
 .. |boot_mode_bits| replace:: 1-2
-.. |imx_usb_type| replace:: micro-B
 .. |imx_n_consoles| replace:: One
 .. |imx_tty_device| replace:: ``ttyUSB2``
 .. |imx_tty_port| replace:: ``if00``

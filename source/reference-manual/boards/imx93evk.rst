@@ -13,7 +13,6 @@ i.MX 93 Evaluation Kit
 .. |boot_mode_sdp| replace:: OFF, OFF, ON, ON
 .. |boot_mode_emmc| replace:: ON, ON, ON, ON
 .. |boot_mode_bits| replace:: 1-4
-.. |imx_usb_type| replace:: USB-C
 .. |imx_n_consoles| replace:: Four
 .. |imx_tty_device| replace:: ``ttyUSB2``
 .. |imx_tty_port| replace:: ``if02``

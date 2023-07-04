@@ -13,7 +13,6 @@ i.MX 8 ULP Evaluation Kit
 .. |boot_mode_sdp| replace:: X, X, X, X, X, X, ON, OFF
 .. |boot_mode_emmc| replace:: OFF, OFF, X, X, OFF, OFF, OFF, ON
 .. |boot_mode_bits| replace:: 1-8
-.. |imx_usb_type| replace:: micro-C
 .. |imx_n_consoles| replace:: Three
 .. |imx_tty_device| replace:: ``ttyUSB2``
 .. |imx_tty_port| replace:: ``if02``
