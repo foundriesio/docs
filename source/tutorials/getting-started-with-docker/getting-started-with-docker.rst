@@ -1,12 +1,11 @@
 .. _tutorial-gs-with-docker:
 
-Getting Started with Docker
+Getting Started With Docker
 ===========================
 
-FoundriesFactory gives you the ability to over-the-air update ``docker-compose`` 
-applications.  This tutorial contains step-by-step instructions on how to get 
-started with Docker and ``docker-compose`` applications, including the basic 
-commands and concepts to help you to create your own application.
+FoundriesFactory® gives you the ability to update ``docker-compose`` applications Over The Air (OTA).
+This tutorial gets you started with Docker and ``docker-compose``,
+with the basic commands and concepts that will help you create your own apps.
 
 .. note::
 
@@ -18,8 +17,7 @@ Learning Objectives
 -------------------
 
 - Download your ``containers.git`` repository.
-- Build your container on your host machine.
-- Run your container on your host machine.
+- Build and run the container on your host machine.
 - Inspect running containers.
 - Structure your applications inside the repository.
 - Run your container using ``docker-compose``.
@@ -27,17 +25,9 @@ Learning Objectives
 Prerequisites
 -------------
 
-- Installed `Docker`_ on your host machine.
-- :ref:`Signed up <gs-signup>` and created your FoundriesFactory.
+- :ref:`Signed up <gs-signup>` and created your Factory.
+- `Docker`_  installed on your host machine.
 - :ref:`Configured Git. <gs-git-config>`
-
-.. tip::
-
-   It's not a problem if you just created your FoundriesFactory and your first build is 
-   still running.  This tutorial **doesn’t require a device**. By the end, your build should 
-   be finished and you can follow the instructions to flash and register your device before
-   moving to next tutorials.
-
 
 Instructions
 ------------

@@ -1,13 +1,11 @@
-docker-compose.yml
-^^^^^^^^^^^^^^^^^^
+Docker Compose YAML
+^^^^^^^^^^^^^^^^^^^
 
-This is a YAML file defining services, networks, and volumes for multi-container 
-Docker applications. In other words, all the parameters you have used with 
-``docker run`` you could specify in a ``docker-compose.yml`` file. Then, with a 
-single command, create and start all the services with your configurations.
+``docker-compose.yml`` defines the services, networks, and volumes for multi-container Docker apps.
+All the parameters you have used with ``docker run`` you can specify in ``docker-compose.yml``.
+Then, with a single command, create and start all the services with your configurations.
 
-In this example, we will launch just one image, but keep in mind that a 
-``docker-compose.yml`` file could specify more than one image at the same time.
+In the following example, we will launch a single image, but keep in mind that a  ``docker-compose.yml`` can specify multiple images.
 
 .. tip::
 
@@ -19,7 +17,7 @@ Move the default ``docker-compose.yml`` from ``shellhttpd.disabled`` to your fol
 
     host:~$ mv ../shellhttpd.disabled/docker-compose.yml .
 
-Read the ``docker-compose.yml`` file:
+Review the ``docker-compose.yml`` file:
 
 .. prompt:: bash host:~$, auto
 
@@ -41,15 +39,11 @@ Read the ``docker-compose.yml`` file:
            MSG: "${MSG-Hello world}"
 
 Most of the parameters were already used in the previous commands. 
-The only thing you need to change is the image parameter.
+The only thing to change is the image parameter.
 
-In the next tutorial, you will build and deploy the image with 
-FoundriesFactory and there the image with ``hub.foundries.io`` will be necessary.
+In the next tutorial, you will build and deploy with FoundriesFactory®, where ``hub.foundries.io`` will be necessary.
 
-For now, because you are still developing locally, you need to 
-edit the image parameter to use the image you have built in the previous steps.
-
-Change the image parameter to the name and tag we built locally ``shellhttpd:1.0``:
+As you are still developing locally, edit the image parameter to use the image and tag from the previous steps, ``shellhttpd:1.0``:
 
 .. prompt:: bash host:~$, auto
 
@@ -79,8 +73,7 @@ To run your ``docker-compose`` application, execute the ``docker-compose up --de
 
     host:~$ docker-compose up --detach
 
-Where: 
- - ``--detach`` or ``-d`` - Run containers in the background.
+Using ``--detach`` or ``-d`` runs containers in the background.
 
 To verify the running containers:
 

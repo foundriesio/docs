@@ -4,7 +4,7 @@ triggers:
     type: github_pr
     runs:
       - name: docs
-        container: python:3.6
+        container: python:3.6-alpine
         host-tag: amd64
         script: make-docs
 
@@ -16,6 +16,7 @@ triggers:
 scripts:
   make-docs: |
     #!/bin/sh -ex
+    apk add --update make git graphviz curl ttf-freefont
     pip install -r ./requirements.txt
 
     echo == $(date "+%F %T") Setting up fioctl docs

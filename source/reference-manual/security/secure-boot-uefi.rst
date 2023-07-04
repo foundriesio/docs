@@ -96,7 +96,13 @@ The suggested way to create a custom set of UEFI Secure Boot keys and certificat
 
     mkdir custom_uefi_keys_and_certs
 
-3. Run the ``gen_uefi_certs.sh`` script
+3. Install the prerequisite packages to use the ``gen_uefi_certs.sh`` script
+
+.. prompt:: bash host:~$
+
+    sudo apt install openssl, efitools, uuid-runtime
+
+4. Run the ``gen_uefi_certs.sh`` script
 
 .. prompt:: bash host:~$
 

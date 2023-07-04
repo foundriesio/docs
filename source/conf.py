@@ -106,6 +106,7 @@ extensions = [
     'sphinx-prompt',
     'myst_parser',
     'sphinx_reredirects',
+    'sphinx.ext.graphviz',
 ]
 
 copybutton_prompt_text = "$ "

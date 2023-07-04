@@ -3,17 +3,114 @@
 Crypto Keys Used by FoundriesFactory at Build Time
 ==================================================
 
-LmP build system can use some online keys for signing some boot components of
-the software stack. It can handle the U-Boot, OP-TEE, Linux Kernel image and
-modules. The device RoT key (the key used for secure boot, for example) is not
-listed here as it is not an online key and is not used during the
-FoundriesFactory build.
+By default, the LmP build system uses online keys to sign some boot components of
+the software stack.
 
-When a FoundriesFactory is created, by default two set of keys are created under
+It can handle U-Boot, OP-TEE, which is a Trusted Execution Environment (TEE) as
+well as Linux® Kernel image and modules.
+
+Secure Boot Flow
+------------------
+
+The secure boot flow starts from the boot ROM. After that step, the flow is
+defined by the SoC vendor as it depends on the architecture and the BSP they provide.
+
+LmP implements three variations of boot flow, starting with Secondary Program Loader (SPL),
+TF-A (BL2), or Unified Extensible Firmware Interface (UEFI).
+
+The following diagrams show each boot flow with the related variable used
+to configure the keys used by the Yocto Project.
+
+.. note::
+
+    The device RoT key (the key used for secure boot, for example) is shown in the diagrams.
+    However it is not an online key and is not used during the FoundriesFactory® build.
+
+The following diagram shows the secure boot flow for i.MX machines (TF-A is present only for arm64 devices):
+
+.. graphviz::
+
+   digraph {
+        graph [
+            label = "Secure boot flow for i.MX machines"
+        ];
+        node [
+            shape=box
+        ];
+        edge [
+            arrowhead=none
+        ];
+        "Boot ROM"        -> "SPL"                               [label = "RoT key"];
+        "SPL"             -> "uboot.itb"                         [label = "UBOOT_SPL_SIGN_KEYNAME"];
+        "uboot.itb"       -> "bootscr"                           [label = "UBOOT_SPL_SIGN_KEYNAME"];
+        "uboot.itb"       -> "TF-A (BL31, EL3 Runtime Firmware)" [label = "UBOOT_SPL_SIGN_KEYNAME"];
+        "uboot.itb"       -> "OP-TEE"                            [label = "UBOOT_SPL_SIGN_KEYNAME"];
+        "OP-TEE"          -> "OP-TEE TAs"                        [label = "OPTEE_TA_SIGN_KEY"];
+        "uboot.itb"       -> "U-Boot proper"                     [label = "UBOOT_SPL_SIGN_KEYNAME"];
+        "U-Boot proper"   -> "kernel fitImage"                   [label = "UBOOT_SIGN_KEYNAME"];
+        "kernel fitImage" -> "DTB files"                         [label = "UBOOT_SIGN_KEYNAME"];
+        "kernel fitImage" -> "initrd"                            [label = "UBOOT_SIGN_KEYNAME"];
+        "kernel fitImage" -> "Linux kernel"                      [label = "UBOOT_SIGN_KEYNAME"];
+        "Linux kernel"    -> "Linux kernel modules"              [label = "MODSIGN_PRIVKEY"];
+   }
+
+The following diagram shows the secure boot flow for STM32MP15-based machines:
+
+.. graphviz::
+
+   digraph {
+        graph [
+            label = "Secure boot flow for STM32MP15 based machines"
+        ];
+        node [
+            shape=box
+        ];
+        edge [
+            arrowhead=none
+        ];
+        "Boot ROM"           -> "TF-A (BL2)"            [label = "RoT key"];
+        "TF-A (BL2)"         -> "fip.bin"               [label = "TF_A_SIGN_KEY_PATH"];
+        "fip.bin"            -> "bootscr"               [label = "UBOOT_SIGN_KEYNAME"];
+        "fip.bin"            -> "OP-TEE core (BL32)"    [label = "UBOOT_SIGN_KEYNAME"];
+        "fip.bin"            -> "OP-TEE pager (BL32)"   [label = "UBOOT_SIGN_KEYNAME"];
+        "fip.bin"            -> "OP-TEE pageable (BL32)" [label = "UBOOT_SIGN_KEYNAME"];
+        "OP-TEE core (BL32)" -> "OP-TEE TAs"            [label = "OPTEE_TA_SIGN_KEY"];
+        "fip.bin"            -> "u-boot-dtb"            [label = "UBOOT_SIGN_KEYNAME"];
+        "fip.bin"            -> "U-Boot proper"         [label = "UBOOT_SIGN_KEYNAME"];
+        "U-Boot proper"      -> "kernel fitImage"       [label = "UBOOT_SIGN_KEYNAME"];
+        "kernel fitImage"    -> "DTB files"             [label = "UBOOT_SIGN_KEYNAME"];
+        "kernel fitImage"    -> "initrd"                [label = "UBOOT_SIGN_KEYNAME"];
+        "kernel fitImage"    -> "Linux kernel"          [label = "UBOOT_SIGN_KEYNAME"];
+        "Linux kernel"       -> "Linux kernel modules"  [label = "MODSIGN_PRIVKEY"];
+   }
+
+The following diagram shows the secure boot flow (when booting with UEFI)
+for ``intel-corei7-64`` based machines:
+
+.. graphviz::
+
+   digraph {
+        graph [
+            label = "Secure boot flow for UEFI based machines"
+        ];
+        node [
+            shape=box
+        ];
+        edge [
+            arrowhead=none
+        ];
+        "Boot ROM"              -> "UEFI"                 [label = "RoT key"];
+        "UEFI"                  -> "systemd-boot"         [label = "UEFI_SIGN_KEYDIR"];
+        "systemd-boot"          -> "Linux kernel"         [label = "${UEFI_SIGN_KEYDIR}/DB.key"];
+        "Linux kernel"          -> "Linux kernel modules" [label = "MODSIGN_PRIVKEY"];
+   }
+
+
+When a Factory is created, by default, two sets of keys are created under
 ``lmp-manifest`` repository:
 
 * ``conf/keys``: The key set is a copy of the default LmP public keys.
-* ``factory-keys``: The key set is created during the FoundriesFactory creation
+* ``factory-keys``: The key set is created during the Factory's creation
   and is unique for that Factory.
 
 .. warning::
@@ -22,28 +119,29 @@ When a FoundriesFactory is created, by default two set of keys are created under
         directory with the set of keys and certificates. In this case, the commands
         can be used to create the files.
 
-A pair is composed by a certificate (``*.crt``) and a key (``*.key``) file.
+A pair comprises a certificate (``*.crt``) and a key (``*.key``) file.
 
 The name of the key indicates by which component the **public** part of the key is used.
 
 The **dev** pair is a generic ``RSA`` 2048 key pair and is not in use.
 
-The **opteedev** pair is a ``RSA`` 2048 key pair by ``OP-TEE`` in order to validate trusted
+The **opteedev** pair is a ``RSA`` 2048 key pair by ``OP-TEE``to validate trusted
 applications run by ``OP-TEE``. This is used by configuring the variable ``OPTEE_TA_SIGN_KEY``.
 
-The **ubootdev** pair is a ``RSA`` 2048 key pair by U-Boot proper in order to validate the
-Linux® Kernel. This is used by configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
+The **ubootdev** pair is a ``RSA`` 2048 key pair by U-Boot proper to validate the
+Linux Kernel. This is used by configuring the variable ``UBOOT_SIGN_KEYNAME``.
 
-The **spldev** key pair is a ``RSA`` 2048 key pair used by U-Boot ``SPL`` in order to validate
+The **spldev** key pair is a ``RSA`` 2048 key pair used by U-Boot ``SPL``to validate
 ``FIT`` image containing U-Boot and ``OP-TEE``.
 This is used by configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
 
 The file ``x509.genkey`` is a configuration file used for creating
-``privkey_modsign.pem`` and ``x509_modsign.crt`` which is a RSA 2048 pair in PEM
-format, and is used for signing Linux Kernel Modules. This is used by
-configuring the variable ``MODSIGN_PRIVKEY``.
+``privkey_modsign.pem`` and ``x509_modsign.crt`` and is used for signing Linux Kernel Modules.
+This is used by configuring the variable ``MODSIGN_PRIVKEY``.
 
-The directory structure shown below:
+The **UEFI** certificates are detailed in :ref:`ref-secure-boot-uefi`.
+
+The directory structure is shown below:
 
    .. parsed-literal::
         lmp-manifest/
@@ -56,8 +154,10 @@ The directory structure shown below:
         │   │   ├── privkey_modsign.pem
         │   │   ├── spldev.crt
         │   │   ├── spldev.key
+        │   │   ├── tf-a
         │   │   ├── ubootdev.crt
         │   │   ├── ubootdev.key
+        │   │   ├── uefi
         │   │   ├── x509.genkey
         │   │   └── x509_modsign.crt
         │   └── local.conf
@@ -67,28 +167,32 @@ The directory structure shown below:
         │   ├── privkey_modsign.pem
         │   ├── spldev.crt
         │   ├── spldev.key
+        │   ├── tf-a
         │   ├── ubootdev.crt
         │   ├── ubootdev.key
+        │   ├── uefi
         │   └── x509_modsign.crt
 
-How to rotate the FoundriesFactory keys
+How to Rotate the FoundriesFactory Keys
 ---------------------------------------
 
-Each FoundriesFactory is created with a unique key set, however it is highly
+Each Factory is created with a unique key set. However, it is highly
 recommended to rotate the keys as needed. The suggestion is to rotate them each
 6 to 24 months.
 
 .. warning::
-  One of the aspects that can contribute to a secure system is to often rotate
-  the used keys. So, it is highly recommended to rotate the keys each 6 to 24
+  One of the aspects that can contribute to a secure system is to rotate
+  the used keys often. So, it is highly recommended to rotate the keys each 6 to 24
   months.
 
-In the next sections, the command line on how to create the key pair for U-Boot,
-OP-TEE and Linux Kernel Modules. Assuming the ``lmp-manifest`` repository is
+In the following sections, the command line on how to create the key pair for U-Boot,
+OP-TEE and Linux Kernel Modules is shown. Assuming the ``lmp-manifest`` repository is
 cloned inside ``<factory>`` directory.
 
-U-Boot keys
+U-Boot Keys
 """""""""""
+
+.. _ref-factory-key-ubootdev:
 
 For ``ubootdev``:
 
@@ -100,6 +204,8 @@ For ``ubootdev``:
             -pkeyopt rsa_keygen_pubexp:65537
     openssl req -batch -new -x509 -key ubootdev.key -out ubootdev.crt
 
+.. _ref-factory-key-spldev:
+
 For ``spldev``:
 
 .. prompt:: bash host:~$
@@ -110,8 +216,9 @@ For ``spldev``:
            -pkeyopt rsa_keygen_pubexp:65537
     openssl req -batch -new -x509 -key spldev.key -out spldev.crt
 
+.. _ref-factory-key-opteedev:
 
-OP-TEE keys
+OP-TEE Keys
 """""""""""
 
 .. prompt:: bash host:~$
@@ -122,14 +229,33 @@ OP-TEE keys
             -pkeyopt rsa_keygen_pubexp:65537
     openssl req -batch -new -x509 -key opteedev.key -out opteedev.crt
 
-Linux Kernel Modules keys
+
+.. _ref-factory-key-tfa:
+
+TrustedFirmware-A Keys
+"""""""""""""""""""""""
+
+For TF-A keys:
+
+.. prompt:: bash host:~$
+
+    cd <factory>/lmp-manifest/factory-keys/tf-a
+    openssl ecparam -name prime256v1 -genkey -noout -out privkey_ec_prime256v1.pem
+
+.. tip::
+        Remember to push the new keys to get them included in the next CI
+        build.
+
+.. _ref-factory-key-linux-module:
+
+Linux Kernel Modules Keys
 """""""""""""""""""""""""
 
-In order to create the key used by Linux Kernel to sign the modules a
-configuration file is needed. The `Linux Kernel documentation`_ states
-the parameters needed for the configuration file.
+A configuration file is needed to create the key used by Linux Kernel to sign
+the modules. The `Linux Kernel documentation`_ states the parameters required
+for the configuration file.
 
-For example, create a new text file with the following content or customize as
+For example, create a new text file with the following content or customize it as
 needed:
 
 .. prompt::
@@ -165,7 +291,7 @@ as shown in the following command:
             -keyout privkey_modsign.pem
 
 .. tip::
-        Don't forget to push the new keys to get it included in the next CI
+        Remember to push the new keys to get it included in the next CI
         build.
 
 .. tip::
@@ -176,10 +302,16 @@ as shown in the following command:
   .. prompt::
 
      #filename for the key/certificate for kernel modules
-     MODSIGN_PRIVKEY ?= "${MODSIGN_KEY_DIR}/privkey_modsign.pem"
-     MODSIGN_X509 ?= "${MODSIGN_KEY_DIR}/x509_modsign.crt"
+     MODSIGN_PRIVKEY = "${MODSIGN_KEY_DIR}/privkey_modsign.pem"
+     MODSIGN_X509 = "${MODSIGN_KEY_DIR}/x509_modsign.crt"
 
-     #filename for U-Boot key/certificate
-     UBOOT_SIGN_KEYNAME ?= "ubootdev"
+     # U-Boot signing key
+     UBOOT_SIGN_KEYNAME = "ubootdev"
+
+     # SPL / U-Boot proper signing key
+     UBOOT_SPL_SIGN_KEYNAME = "spldev"
+
+     # TF-A Trusted Boot
+     TF_A_SIGN_KEY_PATH = "${TOPDIR}/conf/factory-keys/tf-a/privkey_ec_prime256v1.pem"
 
 .. _Linux Kernel documentation: https://www.kernel.org/doc/html/v5.0/admin-guide/module-signing.html

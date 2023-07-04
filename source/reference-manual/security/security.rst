@@ -77,6 +77,7 @@ Secure Boot specifics of select hardware platforms are described below.
    secure-boot-imx-habv4
    secure-boot-imx-ahab
    secure-boot-stm32mp1
+   secure-boot-ti-am62x
    authentication-xilinx
    secure-boot-uefi
 
