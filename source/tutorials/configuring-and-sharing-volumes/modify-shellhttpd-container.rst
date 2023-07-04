@@ -1,24 +1,20 @@
-Modify shellhttpd Container
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Modify Shellhttpd
+^^^^^^^^^^^^^^^^^
 
-To change the environment values on the fly without restarting the 
-application, you have to edit the ``httpd.sh`` file.
-
-Open a new terminal in your host machine and find the container folder used in the previous tutorial.
+To change the environment values on the fly without restarting the app, you will edit ``httpd.sh``.
+Open a new terminal on your host and find the container folder used previously.
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cd containers/
 
-Edit the file ``httpd.sh`` according to the example below:
+Edit ``httpd.sh`` as below:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ gedit shellhttpd/httpd.sh
 
-**shellhttpd/httpd.sh**:
-
-.. prompt:: text
+.. prompt:: shell
 
      #!/bin/sh -e
      
@@ -34,8 +30,8 @@ Edit the file ``httpd.sh`` according to the example below:
 	     echo "= $(date) ============================="
      done
 
-The first line in the ``while`` loop will check for a file ``/home/shellhttpd/shellhttpd.conf`` and 
-if it exists it will load the variables specified in the file.
+The first line in the ``while`` loop will check for the file ``/home/shellhttpd/shellhttpd.conf``.
+If it exists, it will load the variables specified in the file.
 Then, ``echo`` will print the values of ``PORT`` and ``MSG``.
 ``RESPONSE`` will be redefined with the new ``MSG`` value.
 
