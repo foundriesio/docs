@@ -1,7 +1,7 @@
-Commit and Push All New Applications
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Commit and Push New Applications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use ``git status`` in the ``containers`` folder to verify all the changes you have done:
+Use ``git status`` in the ``containers`` folder to verify the changes:
 
 .. prompt:: bash host:~$, auto
 
@@ -11,8 +11,8 @@ Use ``git status`` in the ``containers`` folder to verify all the changes you ha
 
 .. prompt:: text
 
-    On branch devel
-    Your branch is up to date with 'origin/devel'.
+    On branch main
+    Your branch is up to date with 'origin/main'.
     
     Changes to be committed:
       (use "git restore --staged <file>..." to unstage)
@@ -31,7 +31,7 @@ Use ``git status`` in the ``containers`` folder to verify all the changes you ha
 	    modified:   flask-mqtt-nginx/docker-compose.yml
 	    modified:   shellhttpd-mqtt/docker-compose.yml
 
-Add all new files and changes:
+Add the new files and changes:
 
 .. prompt:: bash host:~$, auto
 
@@ -49,8 +49,6 @@ Push all committed modifications to the remote repository:
 
     host:~$ git push
 
-Example output:
-
 .. prompt:: text
 
      Enumerating objects: 15, done.
@@ -62,14 +60,15 @@ Example output:
      remote: Trigger CI job...
      remote: CI job started: https://ci.foundries.io/projects/cavel/lmp/builds/61/
      To https://source.foundries.io/factories/cavel/containers.git/
-        f358677..72a9da5  devel -> devel
+        f358677..72a9da5  main -> main
 
 .. note::
 
-   ``git push`` output will indicate the start of a new CI job.
+   The ``git push`` output will indicate the start of a new CI job.
 
 Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targets`:
 
-The latest **Target** named :guilabel:`containers-devel` should be the CI job you just created.
+The latest **Target** named :guilabel:`containers-main` should be the CI job you just created.
 
-Wait until it finishes and move to the next step.
+Wait until it finishes to move on to the next step.
+

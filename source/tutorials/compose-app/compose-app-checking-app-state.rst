@@ -3,11 +3,13 @@
 Checking App State
 ^^^^^^^^^^^^^^^^^^
 
-This page outlines the implementation of App status reporting and how to check the state of Apps running on a device.
+This page outlines App status reporting and how to check the state of Apps running on a device.
 
-The update agent running on a device inquires Docker Engine about the state of App containers, processes response, and sends a states summary to Device Gateway.
-The state inquiry happens periodically, always before checking for an update.
-The :ref:`aktualizr-lite parameter <ref-aktualizr-lite-params>` ``polling_sec`` defines the interval for an update check, it is responsible for the App state inquiry interval as well.
+The *update agent* running on a device inquires Docker Engine on the state of App containers.
+The agent then processes the response and sends a state summary to the Device Gateway.
+The state inquiry happens periodically and before checking for an update.
+The :ref:`aktualizr-lite parameter <ref-aktualizr-lite-params>` ``polling_sec`` defines the update check interval.
+It is responsible for the App state inquiry interval as well.
 
 ``aktualizr-lite`` reports a state summary:
 
@@ -15,12 +17,12 @@ The :ref:`aktualizr-lite parameter <ref-aktualizr-lite-params>` ``polling_sec`` 
 - directly after device reboot
 - when ``aktualizr-lite`` restarts.
 
-.. Important:: The FoundriesFactory backend stores just the last 10 states.
+.. Important:: The FoundriesFactory® backend stores just the last 10 states.
 
-If enabled, container health can get determined by a `health check`_ script.
-Otherwise container health gets deduced from a container state and exit code.
-A healthy container is one in either a ``running`` state or a ``exited`` state with exit code equal to zero.
-An App state is *healthy* only if its each container/service is *healthy*.
+If enabled, container health is determined by a `health check`_ script.
+Otherwise, container health is deduced from a container state and exit code.
+A healthy container is one in either a ``running`` state or a ``exited`` state with an exit code equal to zero.
+An App state is *healthy* only if each container/service is *healthy*.
 
 View a summary of App state using the ``fioctl devices show <device name>`` command.
 The output lists *healthy* and *unhealthy* Apps. For example:
@@ -45,8 +47,9 @@ The output lists *healthy* and *unhealthy* Apps. For example:
         Unhealthy Apps:	one-shot-failing,app-06,app-05,app-04,app-03
 
 
-Inspect the reported states by running the ``fioctl devices apps-states <device name>`` command.
-The command prints the last reported state of the Apps by default. To output more states, use the ``-n/--limit`` flag.
+Inspect the reported states by running ``fioctl devices apps-states <device name>``.
+The command prints the last reported state by default.
+To output more states, use the ``-n/--limit`` flag.
 
 The output uses the following template:
 

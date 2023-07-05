@@ -1,21 +1,20 @@
 Mosquitto Broker
 ^^^^^^^^^^^^^^^^
 
-Starting with the simplest Docker Compose App from the list of examples, the mosquitto container is a 
-message broker that implements the MQTT protocol. It allows any device connected 
-to the same network to publish or subscribe to topics, allowing us to establish 
-communication between different devices.
+We will start with the mosquitto container, which acts as a *message broker* that implements the MQTT protocol.
+It allows any device connected to the same network to publish or subscribe to topics.
+This allows for establishing communication between different devices.
 
-In this example, it is used slightly differently, instead of different devices 
-communicating, two different containers use MQTT to establish a communication between them.
+In this example, it is used slightly differently.
+Instead of different devices communicating, two different containers will use MQTT to establish communication between them.
 
-Open a new terminal on your host machine and find the container folder used in the previous tutorial.
+Open a new terminal on your host machine and find the container folder used previously.
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cd containers/
 
-In the containers folder, use git to download the ``mosquitto`` application from the reference extra-container repository:
+While in the containers folder, use git to download ``mosquitto`` from the ``extra-containers`` repo:
 
 .. prompt:: bash host:~$, auto
 
@@ -23,13 +22,11 @@ In the containers folder, use git to download the ``mosquitto`` application from
     host:~$ git remote update
     host:~$ git checkout remotes/fio/tutorials -- mosquitto
 
-The ``mosquitto`` application with the ``docker-compose.yml`` file should be inside your ``containers`` folder:
+The ``mosquitto`` app with ``docker-compose.yml`` should now be inside your ``containers`` folder:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ tree -L 2 .
-
-Example output:
 
 .. prompt:: text
 
@@ -44,13 +41,11 @@ Example output:
          ├── httpd.sh
          └── shellhttpd.conf
 
-Check the content of your ``mosquitto/docker-compose.yml`` file:
+Check the content of ``mosquitto/docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cat mosquitto/docker-compose.yml
-
-**mosquitto/docker-compose.yml**:
 
 .. prompt:: text
 
@@ -65,14 +60,11 @@ Check the content of your ``mosquitto/docker-compose.yml`` file:
            - 1883:1883
 
 
-The ``mosquitto/docker-compose.yml`` file has all the configuration for the 
-``mosquitto`` Docker Compose App.
-
-Where: 
+The ``mosquitto/docker-compose.yml`` file has all the configuration for the ``mosquitto`` app: 
 
 - ``version``: Denotes what Docker Compose version it is using.
-- ``services``: Defines all the different containers it will create.
+- ``services``: Defines the containers it will create.
 - ``mosquitto``: Name of the first service.
-- ``image``: Specifies the pre-built Docker Container Image eclipse-mosquitto version 1.6.12 from ``hub.docker.com``.
-- ``restart``: Specify ``unless-stopped``, which means that the Docker Container will restart,  except that when the container is stopped (manually or otherwise), it is not restarted even after Docker daemon restarts.
+- ``image``: Specifies the pre-built Docker container image, eclipse-mosquitto version 1.6.12 from ``hub.docker.com``.
+- ``restart``: Specifies ``unless-stopped``, which means that the Docker container will not restart if the container is stopped—manually or otherwise—even after the Docker daemon restarts.
 - ``port``: Map the container’s ports to the host machine
