@@ -3,82 +3,67 @@
 i.MX 8M Quad Evaluation Kit
 ===========================
 
-.. include:: imx8mq-prepare.rst
+.. |board_name| replace:: i.MX 8M Quad EVK
+.. |machine_name| replace:: imx8mq-evk
+.. |debug_port| replace:: **J1701**
+.. |download_port| replace:: **J901**
+.. |power_jack| replace:: **J902**
+.. |power_switch| replace:: **SW701**
+.. |boot_mode_switch| replace:: **SW802**
+.. |boot_mode_sdp| replace:: OFF, ON
+.. |boot_mode_emmc| replace:: ON, OFF
+.. |boot_mode_bits| replace:: 1-2
+.. |imx_n_consoles| replace:: Two
+.. |imx_tty_device| replace:: ``ttyUSB0``
+.. |imx_tty_port| replace:: ``if00``
+.. |imx_usb_type_debug| replace:: micro-B
+.. |imx_usb_type_sdp| replace:: USB-C
+.. |imx_power_jack_type| replace:: 12V
 
-Hardware Preparation
---------------------
+.. |imx_lsusb| prompt:: bash $, auto
 
-Set up the board for updating using the manufacturing tools:
+           $ lsusb | grep NXP
+           Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
 
-.. figure:: /_static/boards/imx8mqevk.png
-     :width: 400
-     :align: center
+.. |image_board_top| image:: /_static/boards/imx8mqevk.png
+     :width: 600
+     :align: middle
 
-#. **OPTIONAL** - Only required if you have a problems and/or want to see the boot console output.
+.. |image_board_SW| image:: /_static/boards/imx8mqevk_SW2.png
+     :align: middle
 
-     Connect the micro-B end of the USB cable into debug port J1701.
-     Connect the other end of the cable to a PC acting as a host
-     terminal. Two UART connections will appear on the PC.
-     On a Linux host for example::
+.. |imx_tty_list| prompt:: bash $, auto
 
-          $ ls -l /dev/serial/by-id/
-          total 0
-          lrwxrwxrwx 1 root root 13 Nov 16 23:45 usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_007FC3F4-if00-port0 -> ../../ttyUSB0
-          lrwxrwxrwx 1 root root 13 Nov 16 23:45 usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_007FC3F4-if01-port0 -> ../../ttyUSB2
+     $ ls -l /dev/serial/by-id/
+     total 0
+     lrwxrwxrwx 1 root root 13 Nov 16 23:45 usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_007FC3F4-if00-port0 -> ../../ttyUSB0
+     lrwxrwxrwx 1 root root 13 Nov 16 23:45 usb-Silicon_Labs_CP2105_Dual_USB_to_UART_Bridge_Controller_007FC3F4-if01-port0 -> ../../ttyUSB2
 
-     Using a serial terminal program like minicom, connect to the port 
-     with ``if00`` in the name (in this example ttyUSB0) and apply the
-     following configuration
-
-          - Baud rate: 115200
-          - Data bits: 8
-          - Stop bit: 1
-          - Parity: None
-          - Flow control: None
-
-#. Ensure that the power is off (SW701)
-
-#. Put the imx8mqevk into programing mode:
-
-     Switch SW801 to OFF, OFF, ON, OFF (from 1-4 bit) to boot from
-     the eMMC.
-
-     .. figure:: /_static/boards/imx8mqevk_SW1.png
-          :width: 200
-          :align: center
-
-     Switch SW802 to boot from serial downloader by setting to OFF, ON (from 1-2 bit)
-
-     .. figure:: /_static/boards/imx8mqevk_SW2.png
-          :width: 300
-          :align: center
-
-     .. figure:: /_static/boards/imx8mqevk_SW2_table.png
+.. |usb_device_windows| image:: /_static/boards/windows_verify.png
           :width: 600
-          :align: center
+          :align: middle
 
-#. Connect your computer to the EVK board via the USB Type-C jack.
+.. |imx_file_list| prompt:: text
 
-#. Connect the plug of the 12V power supply to the DC power jack J902.
+          ├── lmp-factory-image-imx8mq-evk.wic
+          ├── u-boot-imx8mq-evk.itb
+          ├── sit-imx8mq-evk.bin
+          ├── imx-boot-imx8mq-evk or imx-boot-imx8mq-evk-nohdmi
+          └── mfgtool-files-imx8mq-evk
+               ├── bootloader.uuu
+               ├── full_image.uuu
+               ├── imx-boot-mfgtool
+               ├── uuu
+               └── uuu.exe
 
-#. Power on the EVK board by sliding power switch SW701 to ON.
+.. |secure_boot_preparation_note| replace::
+    The instructions in this section also apply to those boards with secure
+    boot enabled. There are references on how to perform common instructions
+    along with the flow. The :ref:`ref-security` Reference Manual details the
+    required background for secure boot.
 
-Flashing
---------
-.. note::
+.. |secure_boot_pre_flash_note| replace:: For instructions on how to sign the
+     required images before flashing them to the board with secure boot enabled,
+     follow the instructions from :ref:`ref-secure-machines`.
 
-     Removing the power plug will not power off the board if the USB-C cable is still connected.
-
-.. note::
-
-     USB-C may power the board but it is not sufficient to power the board during run time
-     and intermittent failures will occur.
-
-Once in serial downloader mode and connected to your PC the evaluation board should show up as an NXP USB device.
-
-.. include:: imx8-flashing.rst
-
-To put the EVK into run mode, switch SW802 to internal boot by setting to
-ON, OFF (from 1-2bit). This is the opposite of programming mode described previously.
-
-Power on the EVK board by sliding power switch SW701 to ON.
+.. include:: imx-common-board.inc
