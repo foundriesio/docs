@@ -1,32 +1,29 @@
-Flask-MQTT-nginx
+Flask-MQTT-Nginx
 ^^^^^^^^^^^^^^^^
 
-The ``flask-mqtt-nginx`` is a multiple containers application where more than one container is 
-specified in the same ``docker-compose.yml`` file. There are innumerable reasons why to 
-specify two or more containers in the same Docker Compose App, one of the reasons 
-is dependencies. 
+``flask-mqtt-nginx`` is a multi-container app,
+with more than one container specified in the same ``docker-compose.yml`` file.
+There are many reasons to specify multiple containers in the same Docker Compose App.
+One is due to *dependencies*. 
 
-If one container depends on another to start-up, you have to use the same 
-``docker-compose.yml`` file to specify and launch both containers.
+If a container depends on another to start-up,
+you must use the same ``docker-compose.yml`` file to specify and launch both.
 
-The stanza ``depends_on`` will specify what service it’s depending on.
+The ``depends_on`` stanza specifies what service it is dependent on.
 
-``flask-mqtt-nginx`` application is a typical python3 Flask application together with nginx.
+``flask-mqtt-nginx`` is a typical python3 Flask app, together with Nginx.
 
-In the containers folder, use git to download the ``flask-mqtt-nginx`` folder 
-from the reference extra-container repository:
+In the containers folder, use git to download  ``flask-mqtt-nginx`` from the ``extra-containers`` repo:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ git checkout remotes/fio/tutorials -- flask-mqtt-nginx
 
-The ``flask-mqtt-nginx`` application should be inside your containers folder:
+The ``flask-mqtt-nginx`` application should now be inside your containers folder:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ tree -L 2 .
-
-Example output:
 
 .. prompt:: text
 
@@ -48,13 +45,11 @@ Example output:
          ├── Dockerfile
          └── httpd.sh
 
-Check the content of your ``flask-mqtt-nginx/docker-compose.yml`` file:
+Check the content ``flask-mqtt-nginx/docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cat flask-mqtt-nginx/docker-compose.yml
-
-**flask-mqtt-nginx/docker-compose.yml**:
 
 .. prompt:: text
 
@@ -75,21 +70,18 @@ Check the content of your ``flask-mqtt-nginx/docker-compose.yml`` file:
          depends_on:
            - flask-mqtt
 
-The ``flask-mqtt-nginx/docker-compose.yml`` file has all the configuration for the 
-``flask-mqtt-nginx`` Docker Compose Application.
-
-Where: 
+The ``flask-mqtt-nginx/docker-compose.yml`` file has the configuration for ``flask-mqtt-nginx``: 
 
 - ``flask-mqtt``: Name of the first service.
-- ``image``: Specifies the Docker Container Image from ``hub.foundries.io/${FACTORY}/flask-mqtt:latest``. Which is the Container Image created by the FoundriesFactory CI based on the Dockerfile in the ``flask-mqtt`` folder. Which will be downloaded in a moment.
-- ``extra_hosts``: Map the container to access the device localhost over the address ``host.docker.internal``.
+- ``image``: Specifies the Docker container image from ``hub.foundries.io/${FACTORY}/flask-mqtt:latest``.
+  This is the container image created by the FoundriesFactory CI based on the Dockerfile in the ``flask-mqtt`` folder—which will be downloaded in a moment.
+- ``extra_hosts``: Maps the container to access the device ``localhost`` over the address ``host.docker.internal``.
 - ``nginx``: Name of the second service.
-- ``image``:  Specifies the Docker Container Image ``nginx:alpine`` from ``hub.docker.com``.
-- ``depends_on``: Make sure that the ``nginx`` service start-up after the ``flask-mqtt`` service.
-- ``volume``: replace the default ``/etc/nginx/conf.d/default.conf`` configuration file inside the Docker Container Image with the nginx.conf file in the ``flask-mqtt-nginx`` folder.
+- ``image``:  Specifies the Docker container image ``nginx:alpine`` from ``hub.docker.com``.
+- ``depends_on``: Make sure that the ``nginx`` service starts up *after* the ``flask-mqtt`` service.
+- ``volume``: replaces the Docker container image's default configuration file ``/etc/nginx/conf.d/default.conf`` with `nginx.conf` from the ``flask-mqtt-nginx`` folder.
 
-In the containers folder, use git to download the ``flask-mqtt`` folder from the 
-reference extra-container repository:
+In the containers folder, use git to download ``flask-mqtt`` from the ``extra-container`` repo:
 
 .. prompt:: bash host:~$, auto
 
@@ -100,8 +92,6 @@ The ``flask-mqtt`` application should be inside your containers folder:
 .. prompt:: bash host:~$, auto
 
     host:~$ tree -L 2 .
-
-Example output:
 
 .. prompt:: text
 
@@ -132,8 +122,6 @@ Check the content of your ``flask-mqtt/Dockerfile`` file:
 
     host:~$ cat flask-mqtt/Dockerfile
 
-**flask-mqtt/Dockerfile**:
-
 .. prompt:: text
 
      # flask-mqtt/Dockerfile
@@ -150,22 +138,19 @@ Check the content of your ``flask-mqtt/Dockerfile`` file:
      COPY ./app.py /srv/app.py
      CMD ["python3", "-m", "flask", "run", "-h", "0.0.0.0"]
 
-The Dockerfile starts by creating a layer from the latest 
-`Alpine Docker image <https://hub.docker.com/_/alpine>`_.
+The Dockerfile starts by creating a layer from the latest `Alpine Docker image <https://hub.docker.com/_/alpine>`_.
 
-Next, it installs ``pip``, ``py3-flask`` and ``Flask-MQTT``.
+Next, ``pip``, ``py3-flask``, and ``Flask-MQTT`` are installed.
 
-Then, it sets environment variables for the Flask Application, adds ``apps.py`` file 
-from your Docker client’s current directory to your Docker Container Image 
-and configures the command to execute python3 with flask parameters.
+Then, environmental variables for the Flask Application are set.
+``apps.py`` from your Docker client’s current directory is added to your Docker container Image.
+The command to execute python3 with flask parameters is configured.
 
-Check the content of your ``flask-mqtt/app.py`` file:
+Check the content of ``flask-mqtt/app.py``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cat flask-mqtt/app.py
-
-**flask-mqtt/app.py**:
 
 .. prompt:: text
 
@@ -225,11 +210,10 @@ Check the content of your ``flask-mqtt/app.py`` file:
            global access
            access = int(value[1])
 
-The ``app.py`` is a  typical python3 Flask application. Unlike most  
-getting started with flask examples, instead of returning a  ``Hello World``, 
-it will return the ``Number of Access`` on ``shellhttpd`` container.
+``app.py`` is a typical python3 Flask application.
+Unlike many "getting started with flask" examples which return ``Hello World``, 
+it will return the ``Number of Access`` counter value from  ``shellhttpd``.
 
-It also implements MQTT communication and subscribed to the topic ``containers/requests``.
+It also implements MQTT communication and subscribes to the topic ``containers/requests``.
 
-As it receives messages starting with ``ACCESS=`` it parses and gets the value 
-in the access variable.
+As it receives messages starting with ``ACCESS=``, it parses and gets the value in the access variable.

@@ -1,16 +1,18 @@
 Applications
 ^^^^^^^^^^^^
 
-This tutorial will guide you over three 
-different Docker Compose Apps examples. In other words, ``containers.git`` will have three different folders:
+This tutorial will now guide you through examples of three Docker Compose Apps.
+The ``containers.git`` repo will then have three different application folders:
 
-``shellhttpd-mqtt``: Based on the previous ``shellhttpd``. This application counts the number of requests and sends them over MQTT.
+* ``shellhttpd-mqtt``: Based on ``shellhttpd``.
+  This app counts the number of requests and sends them over the MQTT network messaging protocol.
 
-``flask-mqtt-nginx``: A typical python3 Flask application implements a web application and receives the MQTT messages from the ``shellhttpd-mqtt`` app. The Nginx reverse proxy forwards all the requests to the Flask application.
+* ``flask-mqtt-nginx``: A python3 Flask app that implements a web app and receives the MQTT messages from ``shellhttpd-mqtt``.
+  The Nginx reverse proxy forwards all the requests to the Flask application.
 
-``mosquitto``: To enable the MQTT communication between ``shellhttpd-mqtt`` and ``flask-mqtt``, the third container establishes an MQTT broker.
+* ``mosquitto``: Enables the MQTT communication between ``shellhttpd-mqtt`` and ``flask-mqtt`` as an MQTT broker.
 
-``shellhttpd-mqtt`` and ``mosquitto`` are examples of Docker Compose Apps using single Docker Container Image.
+``shellhttpd-mqtt`` and ``mosquitto`` are examples of Docker Compose Apps using a single Docker container image.
 
-The ``flask-mqtt-nginx`` is an example of Docker Compose Apps using multiple Docker Container Images. In this case, 
-``flask-mqtt`` and ``nginx``.
+``flask-mqtt-nginx`` is an example of Docker Compose Apps using multiple Docker container images.
+In this case, ``flask-mqtt`` and ``nginx``.

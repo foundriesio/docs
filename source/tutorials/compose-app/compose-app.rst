@@ -1,13 +1,11 @@
 .. _tutorial-compose-app:
 
-Working with Compose Apps
+Working With Compose Apps
 =========================
 
-In the Reference Manual, :ref:`ref-compose-apps` section is the documentation 
-about the Compose Apps structure. At this point, if you have read the previous tutorials, 
-you probably are familiar with Docker and Docker Compose. This tutorial will 
-guide you through the examples from the Reference Manual with additional 
-implementation to give you more experience to create your own applications.
+If you have read the previous tutorials, you are familiar with Docker and Docker Compose.
+This tutorial will guide you through the examples also present in our documentation on :ref:`ref-compose-apps`.
+Additional implementation steps are provided to give you more experience in creating your own applications.
 
 .. note::
 
@@ -18,7 +16,7 @@ Learning Objectives
 
 - Improve your knowledge of Compose Apps.
 - Create a single container application.
-- Create multiple containers applications.
+- Create a multiple container application.
 
 Prerequisites
 -------------
@@ -35,7 +33,6 @@ Instructions
    :maxdepth: 1
 
    compose-app-file-structure
-   compose-app-docker-container-image
    compose-app-docker-compose-apps
    compose-app-applications
    compose-app-mosquitto-broker

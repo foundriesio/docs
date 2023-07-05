@@ -1,27 +1,23 @@
 Shellhttpd-MQTT
 ^^^^^^^^^^^^^^^
 
-This application is very similar to the ``shellhttpd`` used in the previous tutorial, 
-but instead of returning the specified message like ``Hello World``, it will return 
-how many requests the ``netcat`` had. 
+This is similar to the ``shellhttpd`` used in the previous tutorial, 
+but instead of returning the specified message like ``Hello World``,
+it returns how many requests ``netcat`` had. 
 
-The application will also use MQTT to broadcast in the ``containers/requests`` topic 
-the total access ``shellhttpd`` had.
+This app also uses MQTT to broadcast the total access count of ``shellhttpd`` in ``containers/requests``.
 
-In the containers folder, use git to download the ``shellhttpd-mqtt`` application 
-from the reference extra-container repository:
+While in the containers folder, use git to download ``shellhttpd-mqtt`` from the ``extra-containers`` repo:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ git checkout remotes/fio/tutorials -- shellhttpd-mqtt
 
-The ``shellhttpd-mqtt`` application should be inside your containers folder:
+The ``shellhttpd-mqtt`` app should now be inside your containers folder:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ tree -L 2 .
-
-Example output:
 
 .. prompt:: text
 
@@ -40,13 +36,11 @@ Example output:
          ├── Dockerfile
          └── httpd.sh
 
-Check the content of your ``shellhttpd-mqtt/docker-compose.yml`` file:
+Check the content of ``shellhttpd-mqtt/docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cat shellhttpd-mqtt/docker-compose.yml
-
-**shellhttpd-mqtt/docker-compose.yml**:
 
 .. prompt:: text
 
@@ -62,28 +56,22 @@ Check the content of your ``shellhttpd-mqtt/docker-compose.yml`` file:
          extra_hosts:
            - "host.docker.internal:host-gateway"
 
-The ``shellhttpd-mqtt/docker-compose.yml`` file has all the configuration for the 
-``shellhttpd-mqtt`` Docker Compose Application.
-
-Where: 
+The ``shellhttpd-mqtt/docker-compose.yml`` file has the configuration for the ``shellhttpd-mqtt`` app: 
 
 - ``httpd-mqtt``: Name of the first service.
-- ``image``: Specifies the Docker Container Image from ``hub.foundries.io/${FACTORY}/shellhttpd-mqtt:latest``. Which is the Container Image created by the FoundriesFactory CI based on the Dockerfile in the ``shellhttpd-mqtt`` folder. In this case, the same folder.
-- ``extra_hosts``: Map the container to access the device localhost over the address ``host.docker.internal``.
+- ``image``: Specifies the Docker container image from ``hub.foundries.io/${FACTORY}/shellhttpd-mqtt:latest``. This was created by the FoundriesFactory CI based on the Dockerfile in ``shellhttpd-mqtt``. In this case, the same folder.
+- ``extra_hosts``: Map the container to access the device ``localhost`` over the address ``host.docker.internal``.
 
-The ``Dockerfile`` is a text file that contains all the commands to assemble 
-the ``hub.foundries.io/${FACTORY}/shellhttpd-mqtt:latest`` Docker Container Image. 
+``Dockerfile`` contains the commands to assemble the ``hub.foundries.io/${FACTORY}/shellhttpd-mqtt:latest`` Docker container image. 
 
-The FoundriesFactory CI will build and publish the image. Finally, the 
-Docker Compose Application above will specify it.
+The FoundriesFactory® CI will build and publish the image.
+Finally, the Docker Compose Application above will specify it.
 
-Check the content of your ``shellhttpd-mqtt/Dockerfile`` file:
+Check the content of ``shellhttpd-mqtt/Dockerfile``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cat shellhttpd-mqtt/Dockerfile
-
-**shellhttpd-mqtt/Dockerfile**:
 
 .. prompt:: text
 
@@ -96,15 +84,12 @@ Check the content of your ``shellhttpd-mqtt/Dockerfile`` file:
      
      CMD ["/usr/local/bin/httpd.sh"]
 
-Notice that this image adds the ``mosquitto-clients`` application to the image.
-
-Finally, check the content of your ``shellhttpd-mqtt/httpd.sh`` file:
+Notice that this image adds the ``mosquitto-clients`` app to the image.
+Finally, check the content of ``shellhttpd-mqtt/httpd.sh``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cat shellhttpd-mqtt/httpd.sh
-
-**shellhttpd-mqtt/httpd.sh**:
 
 .. prompt:: text
 
@@ -122,15 +107,14 @@ Finally, check the content of your ``shellhttpd-mqtt/httpd.sh`` file:
 	     fi
      done
 
-The ``httpd.sh`` in this example is very similar to the one used in the :ref:`tutorial-gs-with-docker`.
+This ``httpd.sh`` script is similar to the one used in :ref:`tutorial-gs-with-docker`.
 
-The first line in the ``while`` creates the ``RESPONSE`` string with the ``HTTP`` 
-response plus the ``Number of Access``.
+The first line in the ``while`` loop creates the ``RESPONSE`` string from the ``HTTP`` 
+response and ``Number of Access``.
 
-Next, netcat waits for an access and forward the stdout to the ``tmp.log`` file.
-Once it gets an access, the ``grep`` guarantees that it is a ``GET/HTTP/1.1`` 
-request and if so, it increments the ``ACCESS`` and sends a message with ``mosquitto_pub``.
+Next, ``netcat`` waits for an access and forwards the stdout to ``tmp.log``.
+Once it gets access, ``grep``checks that it is a ``GET/HTTP/1.1`` request.
+If so, ``ACCESS`` is incremented, and then a message is sent with ``mosquitto_pub``.
 
-The ``mosquitto_pub`` uses the address ``host.docker.internal`` which is mapping 
-to the ``localhost`` and will correspond to the mosquitto broker. It is using 
-the topic ``containers/requests`` and the message carries the number of access.
+``mosquitto_pub`` uses the address ``host.docker.internal`` which is mapped to``localhost`` and corresponds to the mosquitto broker.
+It is using the topic ``containers/requests``, and the message carries the access count.
