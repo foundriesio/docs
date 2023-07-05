@@ -15,7 +15,7 @@ Embedded Artists i.MX 7ULP uCOM,imx7ulpea-ucom
 :ref:`NXP i.MX 93 EVK <ref-rm_board_imx93evk>`,imx93-11x11-lpddr4x-evk
 :ref:`Toradex Apalis iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
 :ref:`Toradex Apalis iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
-Toradex Apalis iMX8QM,apalis-imx8
+:ref:`Toradex Apalis iMX8QM <ref-rm_boards_apalis-imx8>`,apalis-imx8
 :ref:`QEMU AARCH32 <ref-rm_qemu_arm>`,qemuarm
 :ref:`QEMU AARCH64 <ref-rm_qemu_arm64>`,qemuarm64-secureboot
 :ref:`QEMU RISCV-64 <ref-rm_qemu_riscv64>`,qemuriscv64
