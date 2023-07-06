@@ -1,24 +1,23 @@
 Creating Targets
 ^^^^^^^^^^^^^^^^
 
-Let's simulate development in the branch ``devel``, as you change it, it 
-generates **Targets** tagged with ``devel`` and all devices following ``devel`` 
-receive updates.
+Let's simulate  regular development on the branch ``devel``.
+Recall that as you commit changes, it generates Targets tagged with ``devel``. 
+Then all devices following the ``devel`` tag receive updates.
 
-Imagine, you will keep developing on ``devel`` but you want to decide which 
-**Target** your device tagged with ``tutorial`` should update to.
+Imagine that—while you  will keep developing on ``devel`` —you want to decide which 
+Target your devices tagged with ``tutorial`` will receive.
 
-The latest ``devel`` **Target** is also tagged with ``tutorial``.
+.. hint::
+   On the previous page we tagged the latest ``devel`` Target with the additional tag, ``tutorial``.
 
-Change the ``shellhttpd`` application to create new **Target**:
+Now to change the ``shellhttpd`` application to create new Target.
 
-Edit the file ``docker-compose.yml`` according to the example below:
+Edit ``docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ gedit shellhttpd/docker-compose.yml
-
-**shellhttpd/docker-compose.yml**:
 
 .. prompt:: text
 
@@ -35,7 +34,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
 
 Note that ``MSG`` is defined with ``This is the TEST 02``.
 
-Commit and push all changes done in the ``containers`` folder:
+Commit and push the changes:
 
 .. prompt:: bash host:~$, auto
 
@@ -46,17 +45,15 @@ Commit and push all changes done in the ``containers`` folder:
 
 Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targets`:
 
-The latest **Target** named :guilabel:`containers-devel` should be the CI job you just created.
+The latest Target named :guilabel:`containers-devel` should be the CI job you just created.
 
 Wait until it finishes and change your application again.
 
-Edit the file ``docker-compose.yml`` according to the example below:
+Edit ``docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ gedit shellhttpd/docker-compose.yml
-
-**shellhttpd/docker-compose.yml**:
 
 .. prompt:: text
 
@@ -73,7 +70,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
 
 Note that ``MSG`` is defined with ``This is the TEST 03``.
 
-Commit and push all changes done in the ``containers`` folder:
+Commit and push the changes:
 
 .. prompt:: bash host:~$, auto
 
@@ -82,10 +79,9 @@ Commit and push all changes done in the ``containers`` folder:
     host:~$ git commit -m "This is the TEST 03"
     host:~$ git push
 
-Keep watching your jobs on https://app.foundries.io and once it finishes change 
-your application one more time.
+Keep watching your jobs on https://app.foundries.io and once it finishes, change your application one more time.
 
-Edit the file ``docker-compose.yml`` according to the example below:
+``docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
@@ -108,7 +104,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
 
 Note that ``MSG`` is defined with ``This is the TEST 04``.
 
-Commit and push all changes done in the ``containers`` folder:
+Commit and push the changes:
 
 .. prompt:: bash host:~$, auto
 
@@ -117,7 +113,7 @@ Commit and push all changes done in the ``containers`` folder:
     host:~$ git commit -m "This is the TEST 04"
     host:~$ git push
 
-Finally, you should have three new versions in the **Targets** version list.
+Finally, you should have three new versions in the Targets version list.
 
 .. note::
 

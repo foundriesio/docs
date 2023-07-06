@@ -1,26 +1,24 @@
 Adapting Shellhttpd
 ^^^^^^^^^^^^^^^^^^^
 
-Edit the shellhttpd application back to its original state.
+Edit ``shellhttpd`` back to its original state.
 
 .. tip::
 
   In case you do not have the ``shellhttpd`` application. Complete the tutorial: 
   :ref:`tutorial-creating-first-target`
 
-Open a new terminal in your host machine and find the container folder used in the previous tutorial.
+Open a new terminal on your host machine and go into your containers repo folder.
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cd containers/
 
-Edit the file ``httpd.sh`` according to the example below:
+Edit ``httpd.sh`` according to the example below:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ gedit shellhttpd/httpd.sh
-
-**shellhttpd/httpd.sh**:
 
 .. prompt:: text
 
@@ -42,8 +40,6 @@ Edit the file ``Dockerfile`` according to the example below:
 
     host:~$ gedit shellhttpd/Dockerfile
 
-**shellhttpd/Dockerfile**:
-
 .. prompt:: text
 
      FROM alpine
@@ -57,8 +53,6 @@ Edit the file ``docker-compose.yml`` according to the example below:
 .. prompt:: bash host:~$, auto
 
     host:~$ gedit shellhttpd/docker-compose.yml
-
-**shellhttpd/docker-compose.yml**:
 
 .. prompt:: text
 
@@ -75,7 +69,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
 
 Note that ``MSG`` is defined with ``This is the TEST 01``.
 
-Commit and push all changes done in the ``containers`` folder:
+Commit and push all changes:
 
 .. prompt:: bash host:~$, auto
 
@@ -86,8 +80,8 @@ Commit and push all changes done in the ``containers`` folder:
     host:~$ git commit -m "This is the TEST 02"
     host:~$ git push
 
-Wait for your build to finish by checking the latest **Target** on the :guilabel:`Devices` tab 
-in your Factory.
+Wait for your build to finish by checking the latest Target on the :guilabel:`Devices` tab 
+for your Factory.
 
 Use ``fioctl`` to configure your device to run just the ``shellhttpd`` application:
 
@@ -95,36 +89,30 @@ Use ``fioctl`` to configure your device to run just the ``shellhttpd`` applicati
 
     host:~$ fioctl devices config updates --apps shellhttpd <device-name>
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      Changing apps from: [] -> [shellhttpd]
      Changing packagemanager to ostree+compose_apps
 
-In a maximum of 2 minutes, your device should receive an update.
+In a few minutes, your device should receive an update.
 
-On your device, test the container again by running the following command:
+On your device, test the container again:
 
 .. prompt:: bash device:~$, auto
 
     device:~$ wget -qO- 127.0.0.1:8080
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      This is the TEST 01
 
-Check again the **Target** version list with ``fioctl``
+Check again the Target version list with ``fioctl``
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl targets list
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
@@ -138,20 +126,17 @@ Check again the **Target** version list with ``fioctl``
      9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
      10       devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
 
-Check what **Target** your device is running:
+Check what Target your device is running:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl device list
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      NAME           FACTORY     TARGET                 STATUS  APPS                                        UP-TO-DATE
      ----           -------     ------                 ------  ----                                        ----------
      <device-name>  <factory>   raspberrypi3-64-lmp-10 OK      flask-mqtt-nginx,mosquitto,shellhttpd-mqtt  true
 
-Whenever you change the ``devel`` branch, FoundriesFactory CI will build
-and generate a new **Target** tagged with ``devel``. As a result, devices following 
-``devel`` will update to the latest **Target**.
+Whenever you push changes to the ``devel`` branch, FoundriesFactory® CI will build and generate a new Target tagged with ``devel``.
+As a result, devices following ``devel`` will update to the latest Target.

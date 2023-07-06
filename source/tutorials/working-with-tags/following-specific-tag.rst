@@ -1,23 +1,20 @@
 Following a Specific Tag
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Before configuring a device to follow a specific tag, you must have at least one 
-**Target** tagged with the new tag.
+Before configuring a device to follow a specific tag, you must have at least one Target tagged with the new tag.
 
-Let's start tagging all **Targets** in the latest version with the tag ``devel`` and ``tutorial``.
+Let's start tagging all Targets in the latest version with the tag ``devel`` *and* ``tutorial``.
 
 .. tip::
    For tags, you may use the following characters: [a–z], [A–Z], [0–9], as well as  `.`, `_`, `+`, and `-`. 
 
-Use ``fioctl`` on your host machine to list all **Target** versions:
+Use ``fioctl`` on your host machine to list all Targets:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl targets list
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
@@ -37,9 +34,7 @@ Use ``fioctl`` to Tag version 10:
 
     host:~$ fioctl targets tag --by-version 10 -T devel,tutorial
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      [devel tutorial]
      Changing tags of raspberrypi3-64-lmp-10 from [devel] -> [devel tutorial]
@@ -113,15 +108,13 @@ Use ``fioctl`` to Tag version 10:
                | |  | |
                |_|  |_|
 
-Use ``fioctl`` again to list all **Target** versions:
+Use ``fioctl`` again to list all Target versions:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl targets list
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
@@ -143,9 +136,7 @@ Change the device configuration to start following the ``tutorial`` tag:
 
     host:~$ fioctl devices config updates --tags tutorial <device-name>
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      Changing tags from: [] -> [tutorial]
      Changing packagemanager to ostree+compose_apps
