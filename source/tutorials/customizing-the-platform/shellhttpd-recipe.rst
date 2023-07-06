@@ -1,20 +1,19 @@
 Shellhttpd Recipe
 ^^^^^^^^^^^^^^^^^
 
-All applications installed on your platform are described by a recipe.
+All applications installed on your *platform* are described by *recipes*.
 
-A recipe is a file with the application name, version and extension ``.bb``.
-To create the application ``shellhttpd`` the corresponding recipe will have the
+A recipe is a file with the application name, version, and the ``.bb`` extension.
+To create the application ``shellhttpd``, the corresponding recipe will have the
 name: ``shellhttpd_0.1.bb``.
 
-In the ``meta-subscriber-overrides`` folder, create the ``recipes-support`` folder.
+In ``meta-subscriber-overrides``, create the ``recipes-support`` folder.
 
 .. prompt:: bash host:~$
 
     mkdir recipes-support
 
-In the ``recipes-support`` folder, use git to download the ``shellhttpd`` recipe
-from the extra-meta-subscriber-overrides repository:
+In the ``recipes-support`` folder, use git to download the ``shellhttpd`` recipe from the ``extra-meta-subscriber-overrides`` repo:
 
 .. prompt:: bash host:~$, auto
 
@@ -29,8 +28,6 @@ The ``shellhttpd`` recipe should be inside the ``recipes-support`` folder:
 
     host:~$ tree -L 3 .
 
-Example output:
-
 .. prompt:: text
 
      └── shellhttpd
@@ -44,8 +41,6 @@ Check the content of your ``shellhttpd/shellhttpd_0.1.bb`` file:
 .. prompt:: bash host:~$, auto
 
     host:~$ cat shellhttpd/shellhttpd_0.1.bb
-
-**shellhttpd/shellhttpd_0.1.bb**:
 
 .. prompt:: text
 
@@ -82,19 +77,18 @@ Check the content of your ``shellhttpd/shellhttpd_0.1.bb`` file:
 
 The ``shellhttpd/shellhttpd_0.1.bb`` file has all the details for the ``shellhttpd`` application.
 
-This tutorial does not intend to cover the Yocto Project concepts. However,
-let's highlight the following variables:
+This tutorial does not intend to cover Yocto Project concepts in detail.
+However, note the following variables:
 
-- ``SRC_URI``: It is including the files ``httpd.sh`` and ``shellhttpd.service`` in the ``${WORKDIR}``.
-- ``do_install``: It is installing the file from ``${WORKDIR}`` to the Linux distribution root file system.
+- ``SRC_URI``: This includes the files ``httpd.sh`` and ``shellhttpd.service`` in the ``${WORKDIR}``.
+- ``do_install``: instructions to install the files from ``${WORKDIR}`` to the Linux root file system.
 
-Check the content of your ``shellhttpd/shellhttpd/httpd.sh`` file:
+Check the content of ``shellhttpd/shellhttpd/httpd.sh``:
 
 .. prompt:: bash host:~$, auto
 
      host:~$ cat shellhttpd/shellhttpd/httpd.sh
 
-**shellhttpd/shellhttpd/httpd.sh**:
 
 .. prompt:: text
 
@@ -110,17 +104,15 @@ Check the content of your ``shellhttpd/shellhttpd/httpd.sh`` file:
      	echo "= $(date) ============================="
      done
 
-The ``shellhttpd/shellhttpd/httpd.sh`` is very similar to the ``httpd.sh`` used in the previous tutorials.
+Notice that ``shellhttpd/shellhttpd/httpd.sh`` is similar to ``httpd.sh`` used in the other tutorials.
 
-This is the shell script executed by the ``shellhttpd.service`` file.
+This is the shell script executed by ``shellhttpd.service``.
 
-Check the content of your ``shellhttpd/shellhttpd/shellhttpd.service`` file:
+Check the content of ``shellhttpd/shellhttpd/shellhttpd.service``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cat shellhttpd/shellhttpd/shellhttpd.service
-
-**shellhttpd/shellhttpd/shellhttpd.service**:
 
 .. prompt:: text
 
@@ -139,7 +131,7 @@ Check the content of your ``shellhttpd/shellhttpd/shellhttpd.service`` file:
      [Install]
      WantedBy=sysinit.target
 
-The ``shellhttpd/shellhttpd/shellhttpd.service`` is a systemd service. The only
-variable that should be highlight here is:
+``shellhttpd/shellhttpd/shellhttpd.service`` is a systemd service file.
+The only variable of note is:
 
-- ``ExecStart``: Execute the ``httpd.sh`` script.
+- ``ExecStart``: Executes the ``httpd.sh`` script.

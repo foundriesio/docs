@@ -1,28 +1,28 @@
 .. _tutorial-enabling-application:
 
-Enabling Application
-^^^^^^^^^^^^^^^^^^^^
+Enabling the App
+^^^^^^^^^^^^^^^^^
 
-After creating the file recipe, it is important to install the package to the image.
+After creating the systemd service recipe, it is important to install the package to the image.
 
-The ``meta-subscriber-overrides`` provides the ``recipes-samples/images/lmp-factory-image.bb`` 
-file with the variable ``CORE_IMAGE_BASE_INSTALL``.
+In ``meta-subscriber-overrides`` is  ``recipes-samples/images/lmp-factory-image.bb`` with the variable ``CORE_IMAGE_BASE_INSTALL``.
 
-To install a package to the image file, append this variable with the package name.
+To install a package to the image, append this variable with the package name.
 
-For this example, add the ``shellhttpd`` and ``netcat`` package. Additionally, if you 
-remember from the previous tutorial, the Linux microPlatform does not include ``curl``, 
-this is why we used ``wget`` in the device. Let's include the ``curl`` as well.
+For this example, add ``shellhttpd`` and ``netcat``.
+As the Linux® microPlatform does not include ``curl``, let us include ``curl`` as well.
 
-Edit the ``recipes-samples/images/lmp-factory-image.bb`` file and append the 
-variable ``CORE_IMAGE_BASE_INSTALL``:
+.. tip::
+   This tutorial installs curl as a package to illustrate how packages can be added to the platform.
+   In practice, you can also install ``curl`` as a :ref:`container <ref-troubleshooting_network-connectivity>`.
+   Installing as a container rather than directly on the platform may be simpler and take less time.
+
+Edit ``recipes-samples/images/lmp-factory-image.bb`` and append ``CORE_IMAGE_BASE_INSTALL``:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cd ..
     host:~$ gedit recipes-samples/images/lmp-factory-image.bb
-
-**recipes-samples/images/lmp-factory-image.bb:**
 
 .. prompt:: text
 
