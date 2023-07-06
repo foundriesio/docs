@@ -1,19 +1,16 @@
 Commit and Push All New Applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use ``git status`` in the ``meta-subscriber-overrides`` folder to verify all the 
-changes you have done:
+Use ``git status`` within ``meta-subscriber-overrides`` to verify the changes:
 
 .. prompt:: bash host:~$, auto
 
     host:~$  git status
 
-**Example Output**:
+::
 
-.. prompt:: text
-
-    On branch master
-    Your branch is up to date with 'origin/master'.
+    On branch main
+    Your branch is up to date with 'origin/main'.
     
     Changes to be committed:
       (use "git restore --staged <file>..." to unstage)
@@ -40,15 +37,13 @@ Commit your changes with the message:
 
     host:~$ git commit -m "Adding shellhttpd recipe"
 
-Push all committed modifications to the remote repository:
+Push:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ git push
 
-Example output:
-
-.. prompt:: text
+::
 
      Enumerating objects: 5, done.
      Counting objects: 100% (5/5), done.
@@ -59,7 +54,7 @@ Example output:
      remote: Trigger CI job...
      remote: CI job started: https://ci.foundries.io/projects/cavel/lmp/builds/71/
      To https://source.foundries.io/factories/cavel/meta-subscriber-overrides.git/
-     7767e6a..ccebcb5  devel -> devel
+     7767e6a..ccebcb5  main -> main
 
 .. note::
 
@@ -71,6 +66,6 @@ The latest **Target** named :guilabel:`platform-devel` should be the CI job you 
 
 .. note::
 
-   The Yocto Project builds could take some time. Click on the building target and follow the live console for me details.
+   Yocto Project builds could take some time. Click on the building target and follow the live console for details.
 
-Wait until it finishes and move to the next step.
+Wait until it finishes, then move on to the next step.
