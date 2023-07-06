@@ -1,20 +1,18 @@
 Tagging a Specific Version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use ``fioctl`` on your host machine to list all **Target** versions you created:
+Use Fioctl® on your host machine to list all Target versions:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl targets list
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
      2        devel                                                                   raspberrypi3-64
-     3        master                                                                  raspberrypi3-64
+     3        main                                                                  raspberrypi3-64
      4        devel            shellhttpd                                             raspberrypi3-64
      5        devel            shellhttpd                                             raspberrypi3-64
      6        devel            shellhttpd                                             raspberrypi3-64
@@ -26,34 +24,33 @@ Use ``fioctl`` on your host machine to list all **Target** versions you created:
      12       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
      13       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
 
-If you have any device following the ``devel`` tag, it should be running the latest 
-**Target**, in the example above, version 13.
+If you have any device following the ``devel`` tag, it should be running the latest Target.
+In the example above, this is version 13.
 
-Because your device is configured to follow ``tutorial``, it should probably be
-stuck in the latest version tagged with ``tutorial``, in the example above, version 10.
+Because your device is configured to follow ``tutorial``, it should be stuck in the last version that was tagged with ``tutorial``.
+In the example above, version 10.
 
-This tutorial created 4 different **Targets**. Each one with a different message.
+We had just created 4 different Targets.
+Each one with a different message.
 
-Your device is now running a version with the ``MSG``:  ``This is the TEST 01``.
+Your device is currently running a version with the ``MSG``:  ``This is the TEST 01``.
 
-Let's imagine you don't want to deploy to your device the second version you created with the ``MSG``: ``This is the TEST 02``.
+Let's imagine you do not want to deploy the second version, the one with the ``MSG``: ``This is the TEST 02``.
 
-Also, you don't want to deploy the latest version you created with the ``MSG``: ``This is the TEST 04``.
+Also, you do not want to deploy the latest version you created with the ``MSG``: ``This is the TEST 04``.
 
-There is something special in the third change you did with the ``MSG`` set as 
-``This is the TEST 03`` and you want to deploy this version.
+There is something special in the third change you did with the ``MSG``:``This is the TEST 03``.
+You want to deploy this version.
 
-Looking to the **Target** list above. You should tag version 12 with ``tutorial``.
+Looking at the Target list above, you would tag version 12 with ``tutorial``.
 
-Use ``fioctl`` to tag version 12:
+Use Fioctl to tag version you want, making sure to use the version you want from your Factory:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl targets tag --by-version -T devel,tutorial 12
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      [devel tutorial]
      Changing tags of raspberrypi3-64-lmp-12 from [devel] -> [devel tutorial]
@@ -127,15 +124,13 @@ Use ``fioctl`` to tag version 12:
                | |  | |
                |_|  |_|
 
-In a maximum of 2 minutes, your device should receive an update.
+Within a few minutes, your device should receive an update.
 
-On your device, test the container again by running the following command:
+On your device, test the container:
 
 .. prompt:: bash device:~$, auto
 
     device:~$ wget -qO- 127.0.0.1:8080
-
-**Example Output**:
 
 .. prompt:: text
 

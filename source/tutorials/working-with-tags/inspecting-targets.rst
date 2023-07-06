@@ -1,24 +1,23 @@
-Inspecting your Factory Targets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-At this point, your Factory could have a different number of builds/versions 
-comparing to the examples below.
+Inspecting Factory Targets
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To get started, inspect all your **Targets** you have created in your Factory.
+At this point, your Factory could have a different number of builds/versions compared to the examples below.
 
-Use ``fioctl`` on your host machine to list all **Target** versions:
+To get started, inspect the Targets you have created:
+
+Use Fioctl® on your host machine to list all Target versions:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl targets list
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
      2        devel                                                          raspberrypi3-64
-     3        master                                                         raspberrypi3-64
+     3        main                                                           raspberrypi3-64
+     3        main                                                           raspberrypi3-64
      4        devel   shellhttpd                                             raspberrypi3-64
      5        devel   shellhttpd                                             raspberrypi3-64
      6        devel   shellhttpd                                             raspberrypi3-64
@@ -26,47 +25,38 @@ Use ``fioctl`` on your host machine to list all **Target** versions:
      8        devel   shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi3-64
      9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
 
-You might not have ``9`` versions. It depends on how many builds you 
-trigger on your FondriesFactory CI.
+You might not have the same number of versions as it depends on how many builds you have triggered.
 
-Note that most versions are tagged with ``devel`` because we have used the 
-``devel`` branch on previous tutorials.
+Note that though most versions are tagged with ``devel``, yours may be tagged as ``main``.
+This depends on if and when you created the ``devel`` branch.
 
-This tutorial assumes you have all applications from your ``containers.git`` at 
-``devel`` repository successfully building.
+This tutorial assumes you have any applications from  ``containers.git`` on the ``devel`` branch successfully building.
 
-Your device should also be following the ``devel`` tag and running its latest 
-**Target** with the tag ``devel``. 
+Your device should also be following the ``devel`` tag and running its latest Target with the tag ``devel``. 
 
-Based on the **Target** version listed above, the device should be running version ``9``.
+Based on the Target version listed above, the device should be running version ``9``.
 
-Use ``fioctl`` on your host machine to verify what **Target** the device is running.
+Use ``fioctl`` on your host machine to verify what Target the device is running.
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl device list
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      NAME           FACTORY     TARGET                 STATUS  APPS                                        UP-TO-DATE
      ----           -------     ------                 ------  ----                                        ----------
      <device-name>  <factory>   raspberrypi3-64-lmp-9  OK      flask-mqtt-nginx,mosquitto,shellhttpd-mqtt  true
 
-As you can see above, the device is running ``raspberrypi3-64-lmp-9`` which is 
-the **Target** created for ``raspberrypi3-64`` in the build version ``9``.
+As you can see above, the device is running ``raspberrypi3-64-lmp-9``, which is the Target created for ``raspberrypi3-64`` in the build version ``9``.
 
-To make sure your device is configured to follow the ``devel`` tag, use ``fioctl``
-to inspect the device:
+To make sure your device is configured to follow the ``devel`` tag, use ``fioctl`` to inspect the device:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ fioctl device show <device-name>
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      UUID:		2b7f3164-b288-4c7e-b4e9-2c75c9943dd1
      Owner:		5e13232f73927550af883e7b
@@ -110,5 +100,4 @@ to inspect the device:
 
 Note that the device is configured with tag: ``devel``.
 
-In case your device is not following ``devel``, flash the latest ``platform-devel`` 
-on your device and register the device again.  
+If your device is not following ``devel``, flash the latest ``platform-devel`` on your device and register the device again.  

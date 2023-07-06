@@ -1,39 +1,31 @@
 .. _tutorial-working-with-tags:
 
-Working with Tags
+Working With Tags
 =================
 
-In the previous tutorial, :ref:`tutorial-creating-first-target`, you learned 
-the concept of a **Target**. In the section ":ref:`tutorial-what-is-a-target`" 
-there is brief explanation about tags.
+Your Factory initially has a single branch, ``main``.
+By convention, Targets are tagged with the branches they are built from.
+This means the Targets have the tag ``main``.
 
-By default, your Factory is configured to tag all **Targets** built from ``master`` 
-and ``devel`` branches with the respective tag: ``master`` and ``devel``.
+.. warning::
+   For this tutorial, it is assumed you have created and worked on a ``devel`` branch.
+   This has not yet been covered.
+   See the :ref:`ref-factory-sources` reference manual on how to configure the CI with new branches.
 
-That is good to keep the development flow fast. For example, you start with the 
-``platform-devel``, a ``platform`` build based on ``devel`` branch, and install it on the device.
+This helps keep the development flow fast.
+For example, you have  ``platform-devel``, a ``platform`` build based on ``devel`` branch, and install it on the device.
 
-Then you develop applications on ``containers.git`` from the ``devel`` branch. The 
-application is built in CI with a ``containers-devel`` trigger name
-and produces a **Target** tagged with ``devel``.
+Then you develop applications on ``containers.git`` from the ``devel`` branch.
+The  application is built by the CI with a ``containers-devel`` trigger name and produces a Target tagged with ``devel``.
 
-Finally, the device automatically updates to the latest **Target** tagged with ``devel``.
+Finally, the device automatically updates to the latest Target tagged with ``devel``.
 
-.. figure:: /_static/tutorials/working-with-tags/ci_jobs.png
-   :width: 900
-   :align: center
+There are some use cases that you might want to control what tag a device follows, and Targets are tagged:
 
-   FoundriesFactory CI Job List
+- Preventing a device from following a tag such as ``devel``, which is automatically created every time you change the ``devel`` branch.
+- Testing a specific Target on a specific device.
 
-There are some use cases that you might want to control what tag the device 
-should follow and how **Targets** should be tagged.
-
-Some examples of use cases could be:
-
-- Prevent a device following a tag such as ``devel`` which is automatically created every time you change the ``devel`` branch.
-- Test a specific **Target** on a specific device.
-
-This tutorial will guide you over examples to help you understand how tags work.
+This tutorial will guide you through examples to help you understand how tags work.
 
 .. note::
 
@@ -42,8 +34,8 @@ This tutorial will guide you over examples to help you understand how tags work.
 Learning Objectives
 -------------------
 
-- Create more ``devel`` **Targets**.
-- Use ``fioctl`` to Tag a specific **Target**.
+- Create more ``devel`` Targets.
+- Use ``fioctl`` to Tag a specific Target.
 - Configure the device to follow a specific tag.
 
 Prerequisites
