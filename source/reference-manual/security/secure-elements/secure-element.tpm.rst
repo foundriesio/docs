@@ -95,6 +95,9 @@ To register with support for TPM 2 PKCS#11:
 
     lmp-device-register -n <device-name> -m /usr/lib/pkcs11/libtpm2_pkcs11.so -S <so-pin> -P <user-pin>
 
+.. seealso::
+   :ref:`howto-linux-disk-encryption`
+
 .. _TPM2 software stack:
    https://tpm2-software.github.io/
 
