@@ -33,7 +33,7 @@ by CI devices. For example, the targets.json might include::
   "raspberrypi4-64-lmp-9" : {
     "custom" : {
       "version": "9",
-      "tags" : ["master"],
+      "tags" : ["main"],
    ...
 
 In this example, Target #9 has passed CI and needs to be deployed to
@@ -66,7 +66,7 @@ that "promoted" devices will apply the update:
 
 .. prompt:: bash host:~$, auto
 
-   host:~$ fioctl targets tag --tags master,promoted --by-version 9
+   host:~$ fioctl targets tag --tags main,promoted --by-version 9
 
 When the CI job completes, devices on the promoted tag will start
 performing OTA updates that will use the static deltas.

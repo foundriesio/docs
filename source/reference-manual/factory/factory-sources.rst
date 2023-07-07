@@ -70,8 +70,9 @@ Configuring CI to Build New Branches
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default, ``meta-subscriber-overrides``, ``lmp-manifest`` and ``containers``
-have ``master`` and ``devel`` branches. ``ci-scripts`` only has the ``master``
-branch.
+have the single branch, ``main``.
+For these repos it is reccomended to also have a ``devel`` branch for non-production purposes.
+``ci-scripts`` has the single default branch ``master``.
 
 Platform Branches
 ^^^^^^^^^^^^^^^^^
@@ -83,8 +84,8 @@ To create new buildable platform branches, first enable the new branch in
 
     lmp:
       tagging:
-        refs/heads/master:
-          - tag: master
+        refs/heads/main:
+          - tag: main
         refs/heads/devel:
           - tag: devel
         refs/heads/new_branch:
@@ -127,8 +128,8 @@ To create new buildable container branches, first enable the new branch in
 
     containers:
       tagging:
-        refs/heads/master:
-          - tag: master
+        refs/heads/main:
+          - tag: main
         refs/heads/devel:
           - tag: devel
         refs/heads/new_branch:

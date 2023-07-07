@@ -255,4 +255,4 @@ Verify the ``compose-apps-early-start`` application status:
 After the ``compose-apps-early-start`` service has been successfully run, ``docker ps`` will show that the preloaded apps are running.
 
 
-.. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/master
+.. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/main

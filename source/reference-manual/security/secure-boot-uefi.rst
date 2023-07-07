@@ -82,7 +82,7 @@ Once PK is added by the user, most UEFI implementations move the active mode fro
 Creating UEFI Secure Boot Keys
 -----------------------------------
 
-The suggested way to create a custom set of UEFI Secure Boot keys and certificates is via the `lmp-tools gen_uefi_certs.sh <https://github.com/foundriesio/lmp-tools/blob/master/security/uefi/gen_uefi_certs.sh>`_ script.
+The suggested way to create a custom set of UEFI Secure Boot keys and certificates is via the `lmp-tools gen_uefi_certs.sh <https://github.com/foundriesio/lmp-tools/blob/main/security/uefi/gen_uefi_certs.sh>`_ script.
 
 1. Clone the ``lmp-tools`` repository from GitHub
 

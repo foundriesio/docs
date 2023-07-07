@@ -71,7 +71,7 @@ lmp
                 IMAGE: lmp-mini
                 EXAMPLE_VARIABLE_1: foo
            tagging:
-             refs/heads/master:
+             refs/heads/main:
                - tag: postmerge
              refs/heads/devel:
                - tag: devel
@@ -167,7 +167,7 @@ lmp:
   image_type: ``<mfg_image_type>``
       **Optional:** Sets the name of the recipe to use to build mfg_tools.
 
-      **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_)
+      **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_)
 
 .. _def-containers:
 
@@ -187,7 +187,7 @@ containers
              - arm64
              - amd64
            tagging:
-            refs/heads/master:
+            refs/heads/main:
               - tag: postmerge
             refs/heads/devel-foundries:
               - tag: devel
@@ -256,5 +256,5 @@ Optionally use a custom version of ci-scripts_ to perform CI builds.
 
    <br />
 
-.. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-samples/images
+.. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-samples/images
 .. _ci-scripts: https://github.com/foundriesio/ci-scripts

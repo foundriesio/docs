@@ -5,7 +5,7 @@ Kernel and Device Tree
 
 The LmP goal is to be as close as possible to the mainline kernel when
 possible, or to use the community kernel support, depending on the board
-vendor. Supported kernel trees can be found `here <https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-bsp/recipes-kernel/linux>`_.
+vendor. Supported kernel trees can be found `here <https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-bsp/recipes-kernel/linux>`_.
 
 Unlike U-Boot, not all patches need to be appended to the kernel recipe.
 The user needs to append patches only to include features or drivers

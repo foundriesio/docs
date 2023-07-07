@@ -158,4 +158,4 @@ reference server as per the README.md.
 .. _README.md:
    https://github.com/foundriesio/factory-registration-ref/blob/main/README.md
 .. _lmp-device-auto-register:
-   https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/recipes-support/lmp-device-auto-register/lmp-device-auto-register/lmp-device-auto-register
+   https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-support/lmp-device-auto-register/lmp-device-auto-register/lmp-device-auto-register

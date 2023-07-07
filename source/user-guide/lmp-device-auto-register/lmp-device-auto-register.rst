@@ -180,5 +180,5 @@ Verify the ``lmp-device-auto-register`` application status:
          Process: 774 ExecStart=/usr/bin/lmp-device-auto-register (code=exited, status=0/SUCCESS)
         Main PID: 774 (code=exited, status=0/SUCCESS)
 
-.. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/master
-.. _lmp-device-auto-register: https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-support/lmp-device-auto-register
+.. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/main
+.. _lmp-device-auto-register: https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-support/lmp-device-auto-register

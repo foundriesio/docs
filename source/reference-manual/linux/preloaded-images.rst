@@ -97,7 +97,7 @@ For example, let's assume you have 4 different branches with the following appli
      # devel and experimental:
      money-making-app - The "product"
      debug-tools      - A compose app with some tooling used for development
-     # master: 
+     # main: 
      money-making-app - The "product"
      fiotest          - A compose-app that some devices run for QA.
      # production:
@@ -122,7 +122,7 @@ This can be configured by additional variables on ``ref_options``.
 Let's assume you want to produce the following types of Targets:
 
  * ``devel`` preloaded with the ``money-making-app`` and ``debug-tools``.
- * ``master`` and ``production`` preloaded with the ``money-making-app``.
+ * ``main`` and ``production`` preloaded with the ``money-making-app``.
  * ``experiemental`` will not preload anything .
 
 This can be configured in `factory-config.yml` with:
@@ -133,10 +133,10 @@ This can be configured in `factory-config.yml` with:
         tagging:
          # Use a "production" branch, that may have some special platform
          # features enabled/disabled. However, it still uses the containers
-         # from master for its apps:
+         # from main for its apps:
           refs/heads/production:
             - tag: production
-              inherit: master
+              inherit: main
          ...
      
       containers:
@@ -145,9 +145,9 @@ This can be configured in `factory-config.yml` with:
           shortlist: "money-making-app"
      
         tagging:
-          # Changes to containers master create both "master" and "production" tagged targets
-          refs/heads/master:
-            - tag: master
+          # Changes to containers main create both "main" and "production" tagged targets
+          refs/heads/main:
+            - tag: main
             - tag: production
           refs/heads/devel:
             - tag: devel
@@ -184,7 +184,7 @@ be done using one off systemd service and image with pre-loaded containers.
 
 Example compose apps early start script can be found in meta-lmp:
 
-  https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-support/compose-apps-early-start
+  https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-support/compose-apps-early-start
 
 The recipe produces a systemd one off service and shell script.
 

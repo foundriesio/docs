@@ -158,7 +158,7 @@ Change the file ``ci-scripts/factory-config.yml`` to include the variable
 
   lmp:
     ref_options:
-      refs/heads/master:
+      refs/heads/main:
         params:
           DISABLE_GPLV3: "1"
       refs/heads/devel:
@@ -183,7 +183,7 @@ It is important to note that, when using an image different than
 ``lmp-factory-image``, other packages might be used. In this case, the error
 message guides on which package to target.
 
-.. _image-license-checker: https://github.com/foundriesio/meta-lmp/blob/master/meta-lmp-base/classes/image-license-checker.bbclass
+.. _image-license-checker: https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/classes/image-license-checker.bbclass
 
 
 .. rubric:: Footnotes
