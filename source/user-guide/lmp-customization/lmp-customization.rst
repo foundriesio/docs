@@ -82,6 +82,8 @@ B. Add a new driver/module to the Linux kernel source code by editing ``meta-sub
 Make sure to provide the source code and header for the new module, as well as the license and Makefile.
 Also make sure to adjust the provided values as needed by the recipe (``LICENSE``, ``PV``).
 
+.. _ref-faq-service:
+
 Adding a new Systemd Startup Service
 -------------------------------------
 
@@ -350,3 +352,20 @@ Then, enable ``ntp`` in ``meta-subscriber-overrides/recipes-samples/images/lmp-f
     If needed, this can be customized in ``meta-subscriber-overrides/recipes-core/systemd/systemd_%.bbappend``::
 
         DEF_FALLBACK_NTP_SERVERS += " <new-server>"
+
+Installing Files Under var
+--------------------------
+
+Anything created under ``/var`` gets removed when creating the OSTree deployment. For this reason, a recipe can only install content under it using `tmpfiles`_.
+
+An example of using `tmpfiles`_ to create a directory under ``/var`` can be found in meta-lmp `collectd.bbappend`_, where `tmpfiles.conf`_ shows the directory to be created.
+
+.. tip::
+   Files can also be created dynamically using a runtime service. See how to add a :ref:`Custom Systemd Service<ref-faq-service>`.
+
+.. _tmpfiles:
+   https://www.freedesktop.org/software/systemd/man/tmpfiles.d.html
+.. _collectd.bbappend:
+   https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-extended/collectd/collectd_%25.bbappend
+.. _tmpfiles.conf:
+   https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-extended/collectd/collectd/tmpfiles.conf
