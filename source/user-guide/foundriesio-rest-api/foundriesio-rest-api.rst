@@ -132,7 +132,7 @@ Using the terminal, run:
            "meta-subscriber-overrides-sha": "7de1123998c9b362df278132fde8fccb57215647",
            "name": "raspberrypi3-64-lmp",
            "tags": [
-             "master"
+             "main"
            ],
            "targetFormat": "OSTREE",
            "updatedAt": "2021-07-28T20:40:39Z",

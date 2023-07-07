@@ -35,4 +35,4 @@ A user may extend the default list of Restorable Apps in the following ways:
 
 To disable Restorable Apps, a user should specify an empty string ``""`` as a value of ``<a comma-separated list of apps>`` in one of the previous options (e.g. ``lmp-device-register --restorable-apps ""``).
 
-.. _lmp-device-auto-register: https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-base/recipes-support/lmp-device-auto-register
+.. _lmp-device-auto-register: https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-support/lmp-device-auto-register

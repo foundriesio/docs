@@ -14,7 +14,7 @@ command.
 
 To create this file use the reference board support in LmP and modify
 the configuration files as needed. The list of supported boards and
-their ``.cfg`` files can be found `here <https://github.com/foundriesio/meta-lmp/tree/master/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-fio>`_.
+their ``.cfg`` files can be found `here <https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-fio>`_.
 
 For example, see ``imx8mmevk/lmp-base.cfg``:
 

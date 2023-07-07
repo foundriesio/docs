@@ -106,22 +106,22 @@ Under ``lmp:`` and ``containers:`` the group ``tagging:`` shows the configured b
 
     lmp:
       tagging:
-        refs/heads/master:
-          - tag: master
+        refs/heads/main:
+          - tag: main
         refs/heads/devel:
           - tag: devel
     ...
     containers:
       tagging:
-        refs/heads/master:
-          - tag: master
+        refs/heads/main:
+          - tag: main
         refs/heads/devel:
           - tag: devel
     ...
 
 Based on the example, FoundriesFactory CI is configured to trigger new builds 
-whenever a new commit is sent on ``master`` or ``devel`` branches. The following 
-commands, guides you to mirror the ``master`` branch.
+whenever a new commit is sent on ``main`` or ``devel`` branches. The following 
+commands, guides you to mirror the ``main`` branch.
 
 .. note::
 
@@ -139,17 +139,17 @@ Clone your GitHub repository and enter its directory:
     git clone https://github.com/<host>/<repo_name>
     cd <repo_name>
 
-Check out the ``master`` branch.
+Check out the ``main`` branch.
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ git checkout master
+    host:~$ git checkout main
 
 In case you don't have a master branch yet, create one:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ git checkout -b master
+    host:~$ git checkout -b main
 
 You must store workflow files in the ``.github/workflows/`` directory of your repository.
 
@@ -178,7 +178,7 @@ Finally, create the file ``mirror.yml`` and make sure you update the ``<FACTORY-
             - uses: actions/checkout@v2
               with:
                 fetch-depth: 0
-            - uses: foundriesio/mirror-action@master
+            - uses: foundriesio/mirror-action@main
               with:
                 REMOTE: "https://source.foundries.io/factories/<FACTORY-NAME>/containers.git"
                 GIT_ACCESS_TOKEN: ${{ secrets.GIT_ACCESS_TOKEN }}

@@ -84,7 +84,7 @@ Target metadata can be inspected by using 3 primary commands
            $ fioctl targets list
            VERSION  TAGS    APPS                             HARDWARE IDs
            -------  ----    ----                             ------------
-           1        master  simple-app,netdata               raspberrypi3-64
+           1        main    simple-app,netdata               raspberrypi3-64
            2        devel   mosquitto,simple-app,netdata     raspberrypi3-64
            3        devel   simple-app,netdata,mosquitto     raspberrypi3-64
 
@@ -207,13 +207,13 @@ View Targets
        VERSION  TAGS    APPS        HARDWARE IDs
        -------  ----    ----        ------------
        2        devel               raspberrypi3-64
-       3        master              raspberrypi3-64
-       4        master  shellhttpd  raspberrypi3-64
-       5        master  shellhttpd  raspberrypi3-64
-       6        master              raspberrypi3-64
-       7        master              raspberrypi3-64
-       8        master  httpd       raspberrypi3-64
-       11       master  octofio     raspberrypi3-64
+       3        main                raspberrypi3-64
+       4        main    shellhttpd  raspberrypi3-64
+       5        main    shellhttpd  raspberrypi3-64
+       6        main                raspberrypi3-64
+       7        main                raspberrypi3-64
+       8        main    httpd       raspberrypi3-64
+       11       main    octofio     raspberrypi3-64
 
 List devices
   ``fioctl devices list -f <factory>``
@@ -230,13 +230,13 @@ List devices
 Set device tag
   ``fioctl devices config updates <device_name> --tag <tag>``
     Filter the Targets a device will accept by tag. For example, to move a
-    device from accepting 'devel' builds to 'master' builds. See the
+    device from accepting 'devel' builds to 'main' builds. See the
     :ref:`ref-advanced-tagging` section for more examples.
 
   .. code-block:: console
 
      $ fioctl devices config updates ein --tag devel                                 
-     Changing tag from: master -> devel  
+     Changing tag from: main -> devel  
 
 Set app(s) to be enabled
   ``fioctl devices config updates <device_name> --apps <app_name1>,<app_name2>``
