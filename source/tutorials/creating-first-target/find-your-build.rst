@@ -6,7 +6,7 @@ Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targ
 
 The latest **Target** named :guilabel:`containers-main` should be the CI job you just created.
 
-.. figure:: /_static/tutorials/creating-first-target/tutorial-find-build.webp
+.. figure:: /_static/tutorials/creating-first-target/tutorial-find-build.png
    :width: 900
    :align: center
 
@@ -18,7 +18,7 @@ Click anywhere on the Target's line in the list to see more details.
 Your Factory is configured by default to build your container for ``armhf``, ``arm64``, and ``amd64``.
 If you select the :guilabel:`+` signal in a :guilabel:`building` architecture you will be able to see the live build log:
 
-.. figure:: /_static/tutorials/creating-first-target/tutorial-containers.webp
+.. figure:: /_static/tutorials/creating-first-target/tutorial-containers.png
    :width: 900
    :align: center
 
@@ -26,7 +26,7 @@ If you select the :guilabel:`+` signal in a :guilabel:`building` architecture yo
 
 A live log example:
 
-.. figure:: /_static/tutorials/creating-first-target/tutorial-logs.webp
+.. figure:: /_static/tutorials/creating-first-target/tutorial-logs.png
    :width: 900
    :align: center
 
@@ -40,15 +40,15 @@ When the FoundriesFactory CI finishes all your builds, it will launch a final jo
 
 If all the builds finish without error, the **Target** is created and published and everything will be marked as :guilabel:`passed`.
 
-.. figure:: /_static/tutorials/creating-first-target/tutorial-finish.webp
+.. figure:: /_static/tutorials/creating-first-target/tutorial-finish.png
    :width: 900
    :align: center
 
-   Containers build log
+   Passed Targets
 
 If you reload the :guilabel:`Target` page, it will indicate new available :guilabel:`Apps`.
 
-.. figure:: /_static/tutorials/creating-first-target/tutorial-tag.webp
+.. figure:: /_static/tutorials/creating-first-target/tutorial-tag.png
    :width: 900
    :align: center
 
