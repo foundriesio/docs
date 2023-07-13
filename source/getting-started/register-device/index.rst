@@ -32,11 +32,14 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
        User code: SQRD-PLBN
        Browser URL: https://app.foundries.io/activate/
 
-3. Your device is now registered and should be visible by navigating to the `web interface <https://app.foundries.io/factories>`_ and selecting the **Devices** tab for your Factory. Or you can check by using :ref:`ref-fioctl`:
+3. Your device is now registered and should be visible by navigating to the `web interface <https://app.foundries.io/factories>`_ and selecting the :guilabel:`Devices` tab for your Factory:
 
- .. prompt:: bash host:~$, auto
+.. figure:: /_static/registering-device/tutorial-device-no-app.png
+   :width: 900
+   :align: center
 
-      host:~$ fioctl devices list
+   Device List
+
 
 .. note::
 
