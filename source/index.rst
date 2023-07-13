@@ -12,9 +12,10 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-learn
 
    getting-started/signup/index
-   getting-started/install-fioctl/index
    getting-started/flash-device/index
    getting-started/register-device/index
+   getting-started/install-fioctl/index
+
 
 .. toctree::
    :maxdepth: 1
