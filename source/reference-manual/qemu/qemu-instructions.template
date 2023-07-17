@@ -36,11 +36,8 @@ Booting in QEMU
           mkdir -p lmp-qemu/|ARCH|
           cd lmp-qemu/|ARCH|
 
-#. Download the artifacts needed for |ARCH|, replacing ``<target_number>`` with the target you would like to boot:
-
-   .. parsed-literal::
-
-        |ARTIFACT_COMMANDS|
+#. :ref:`Download the artifacts <gs-download>` needed for |ARCH|.
+   These can be found under the :guilabel:`Targets` tab for your Factory.
 
 #. `Optional`. Resize the qcow2 image:
 
