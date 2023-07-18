@@ -106,6 +106,74 @@ Update the following variables to reflect the details from the package you wish 
 #. ``DEPENDS`` Dependencies resolved at do_configure
 #. ``RDEPENDS`` Dependencies resolved at do_build
 
+Using FEATURES to configure LmP
+--------------------------------------
+
+DISTRO_FEATURES is a list of configurations from a distro that reflects how
+some packages are built or installed. There is a list of `Yocto Project distro features`_
+supported. However, the list can be expanded by other meta layers.
+
+For example, the distro feature ``systemd`` or ``wayland`` are used to define the
+list of packages to be installed, and to configure how some packages build. The
+distro feature ``modsign`` is used along with certificates to sign the kernel modules.
+
+The default value used by LmP is defined in the ``meta-lmp/meta-lmp-base/conf/distro/include/lmp.inc``
+and can be customized by architecture, machine, or any other override. To customize
+it, use ``DISTRO_FEATURES:append = <value>`` to add a feature to the list, and
+``DISTRO_FEATURES:remove = <value>`` to remove a feature from the list. To remove
+a feature from an override list, use ``DISTRO_FEATURES:remove:<machine> = <value>``.
+
+
+The command ``bitbake-getvar`` can be used to see the value of some variables, and
+all the intermediate values::
+
+  $ bitbake-getvar DISTRO_FEATURES
+  NOTE: Starting bitbake server...
+  #
+  # $DISTRO_FEATURES [7 operations]
+  #   :append /lmp/source/main/build-lmp/conf/../../layers/meta-lmp/meta-lmp-base/conf/distro/include/lmp.inc:40
+  #     " pam usrmerge virtualization ptest alsa"
+  #   :append /lmp/source/main/build-lmp/conf/../../layers/meta-lmp/meta-lmp-base/conf/distro/lmp.conf:18
+  #     " sota"
+  #   set? /lmp/source/main/build-lmp/conf/../../layers/openembedded-core/meta/conf/distro/include/default-distrovars.inc:20
+  #     "${DISTRO_FEATURES_DEFAULT}"
+  #   :append /lmp/source/main/build-lmp/conf/../../layers/openembedded-core/meta/conf/distro/include/init-manager-systemd.inc:2
+  #     " systemd"
+  #   set /lmp/source/main/build-lmp/conf/../../layers/openembedded-core/meta/conf/documentation.conf:144
+  #     [doc] "The features enabled for the distribution."
+  #   set? /lmp/source/main/build-lmp/conf/../../layers/openembedded-core/meta/conf/bitbake.conf:884
+  #     ""
+  #   :append[tegra] /lmp/source/main/build-lmp/conf/../../layers/meta-lmp/meta-lmp-bsp/conf/machine/include/lmp-machine-custom.inc:690
+  #     " opengl"
+  # pre-expansion value:
+  #   "${DISTRO_FEATURES_DEFAULT} pam usrmerge virtualization ptest alsa sota systemd"
+  DISTRO_FEATURES="acl argp bluetooth ext2 ipv4 ipv6 largefile usbgadget usbhost wifi xattr zeroconf pci vfat modsign efi security tpm integrity seccomp pam usrmerge virtualization ptest
+  alsa sota systemd"
+
+The log is generated using ``DISTRO="lmp"``. The ``DISTRO_FEATURES`` changed with
+seven operations and only one of them is for an override (``tegra``).
+The log also shows the file path and line for each operation.
+
+The line starting with ``DISTRO_FEATURES=`` show the variable value.
+
+The Yocto Project also provides ``IMAGE_FEATURES`` and ``MACHINE_FEATURES``,
+a list of features for the image and to describe the machine. There is a list of
+`Yocto Project image features`_ and `Yocto Project machine features`_ supported
+by the project.
+
+The LmP uses the ``MACHINE_FEATURES`` from a machine to define if a package is included.
+For example, the OP-Tee package is only included in an image if the target machine
+includes the feature ``optee`` in ``MACHINE_FEATURE``.
+
+.. _Yocto Project distro features:
+   https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#distro-features
+
+.. _Yocto Project image features:
+   https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#image-features
+
+.. _Yocto Project machine features:
+   https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#machine-features
+
 Including Private Git+ssh Repositories
 --------------------------------------
 
