@@ -41,19 +41,20 @@ You can check the status at:
 
 Once completed, the device will reboot after the update is applied. This
 behavior is customizable so that you can apply rules to determine when
-devices should be re-started.  Once restarted the stress-ng command will
+devices should be restarted.  Once restarted the stress-ng command will
 be available.
 
 List of Available Recipes
 -------------------------
-OE provides a tool_ to search layers and recipes.
+OE provides a tool_ to search layers and recipes. Remember to set the same branch
+name used by the current factory version.
 
 .. _tool:
    https://layers.openembedded.org/layerindex/branch/master/layers/
 
 Creating a Python3 Package from PyPi
 ------------------------------------
-There are python packages which do not yet have a recipe for python3 in OE.
+There are Python packages that do not yet have a recipe for python3 in OE.
 If this is the case with a desired package, use this template below to add a
 new package from PyPi.
 
@@ -85,7 +86,7 @@ Example file contents::
         python3-dateutil \
         "
 
-Using the information and packages at the PyPi website, you can fill in the details about the new python package
+Using the information and packages at the PyPi website, you can fill in the details about the new Python package
 
 .. figure:: /_static/pypi-package.png
    :alt: Pypi package
