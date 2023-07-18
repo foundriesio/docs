@@ -14,7 +14,7 @@ but without depending on BitBake.
 For details on what the SDK is
 and a complete description of how to work with it,
 visit
-`Yocto Project Application Development and the Extensible Software Development Kit <https://docs.yoctoproject.org/sdk-manual/index.html>`_.
+`Yocto Project Application Development and the Extensible Software Development Kit <https://docs.yoctoproject.org/kirkstone/sdk-manual/index.html>`_.
 
 The LmP can be configured to
 create an SDK install script of the same rootfs image
@@ -105,4 +105,4 @@ In the example, we see that the generated file can not be executed on the host m
 Using ``file``,  we learn this is because the binary is for ``ARM aarch64`` architecture.
 
 For more information regarding Standard SDK, follow the Yocto Project
-`instructions <https://docs.yoctoproject.org/singleindex.html#using-the-sdk-toolchain-directly>`_.
+`instructions <https://docs.yoctoproject.org/kirkstone/singleindex.html#using-the-sdk-toolchain-directly>`_.

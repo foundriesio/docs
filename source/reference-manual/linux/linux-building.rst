@@ -228,9 +228,9 @@ recommended for those new to either project.
 .. _Yocto Project main page:
    https://www.yoctoproject.org/
 .. _Yocto Project Quick Start Guide:
-   https://docs.yoctoproject.org/current/brief-yoctoprojectqs/
+   https://docs.yoctoproject.org/kirkstone/brief-yoctoprojectqs/
 .. _Yocto Project Reference Manual:
-   https://docs.yoctoproject.org/current/ref-manual/
+   https://docs.yoctoproject.org/kirkstone/ref-manual/
 .. _BitBake Manual:
    https://docs.yoctoproject.org/bitbake/
 

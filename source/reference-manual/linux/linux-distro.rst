@@ -40,7 +40,7 @@ To change the distro on a FoundriesFactory, from the ``ci-scripts`` git reposito
         IMAGE: lmp-factory-image
 
         DOCKER_COMPOSE_APP: "1"
-        
+
         DISTRO: lmp-base
 
 LmP MFGTools
@@ -53,6 +53,6 @@ LmP Wayland and LmP XWayland
 
 The distros which provide Wayland and XWayland support on top of ``lmp`` distro.
 
-.. _term-DISTRO: https://docs.yoctoproject.org/current/ref-manual/variables.html#term-DISTRO
+.. _term-DISTRO: https://docs.yoctoproject.org/kirkstone/ref-manual/variables.html#term-DISTRO
 
 .. _Poky: https://www.yoctoproject.org/software-overview/reference-distribution/
