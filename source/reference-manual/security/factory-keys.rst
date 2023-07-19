@@ -125,13 +125,13 @@ The name of the key indicates by which component the **public** part of the key 
 
 The **dev** pair is a generic ``RSA`` 2048 key pair and is not in use.
 
-The **opteedev** pair is a ``RSA`` 2048 key pair by ``OP-TEE``to validate trusted
+The **opteedev** pair is a ``RSA`` 2048 key pair by ``OP-TEE`` to validate trusted
 applications run by ``OP-TEE``. This is used by configuring the variable ``OPTEE_TA_SIGN_KEY``.
 
 The **ubootdev** pair is a ``RSA`` 2048 key pair by U-Boot proper to validate the
 Linux Kernel. This is used by configuring the variable ``UBOOT_SIGN_KEYNAME``.
 
-The **spldev** key pair is a ``RSA`` 2048 key pair used by U-Boot ``SPL``to validate
+The **spldev** key pair is a ``RSA`` 2048 key pair used by U-Boot ``SPL`` to validate
 ``FIT`` image containing U-Boot and ``OP-TEE``.
 This is used by configuring the variable ``UBOOT_SPL_SIGN_KEYNAME``.
 
