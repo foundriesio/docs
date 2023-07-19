@@ -38,14 +38,17 @@ After a successful build, FoundriesFactory produces build artifacts which can be
 
 #. Expand the :guilabel:`Targets` tab clicking on it. This shows a link to the Factory image artifact. Download the Factory image for your machine:
 
-    | E.g: ``lmp-factory-image-<machine_name>.wic.gz``
+    | E.g: ``lmp-base-console-image-<machine_name>.wic.gz``
 
     .. figure:: /_static/flash-device/artifacts.png
         :width: 769
         :align: center
 
 .. note::
-    Most platforms require more than the ``lmp-factory-image-<machine_name>.wic.gz`` artifact for flashing. The required artifacts are board specific and listed in respective pages under :ref:`ref-boards`. Targets publish all needed files for each platform under :guilabel:`Runs`.
+    Most platforms require more than the ``lmp-base-console-image-<machine_name>.wic.gz`` artifact for flashing. The required artifacts are board specific and listed in respective pages under :ref:`ref-boards`. Targets publish all needed files for each platform under :guilabel:`Runs`.
+
+.. important::
+   When you create platform builds later on, the Factory image and artifacts may follow a slightly different naming pattern, such as ``lmp-factory-image-<machine_name>``.
 
 .. _gs-flash-image:
 
