@@ -224,3 +224,12 @@ results.
    this process by killing and restarting the ``nc -lup`` command.
 
 .. _WSL: https://learn.microsoft.com/en-us/windows/wsl/about
+
+Further Debug
+~~~~~~~~~~~~~
+On a client, it is also possible to setup firewall rules that would prevent
+WireGuard from working correctly. In that case you will need to add something
+like this::
+
+  sudo iptables -I INPUT -p udp -m udp --sport 5555 -j ACCEPT
+  sudo iptables -I OUTPUT -p udp -m udp --dport 5555 -j ACCEPT
