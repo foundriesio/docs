@@ -74,7 +74,7 @@ When the container build finishes, the device will download and start the shellh
 
 Check the device status on the :guilabel:`devices` page and wait the ``shellhttpd`` on :guilabel:`APPS` and the green light on :guilabel:`STATUS`.
 
-.. figure:: /_static/tutorials/deploying-first-app/tutorial-device.webp
+.. figure:: /_static/tutorials/deploying-first-app/tutorial-device.png
    :width: 900
    :align: center
 

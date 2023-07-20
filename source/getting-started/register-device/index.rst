@@ -37,6 +37,7 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 .. figure:: /_static/registering-device/tutorial-device-no-app.png
    :width: 900
    :align: center
+   :alt: Devices view
 
    Device List
 

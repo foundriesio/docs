@@ -9,7 +9,7 @@ This will be covered this in more detail later.
 
 To check your device configuration, click on the Factory tab :guilabel:`devices` and find the column :guilabel:`TAGS`:
 
-.. figure:: /_static/tutorials/deploying-first-app/tutorial-device.webp
+.. figure:: /_static/tutorials/deploying-first-app/tutorial-device.png
    :width: 900
    :align: center
 
