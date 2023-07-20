@@ -9,6 +9,7 @@ To begin using FoundriesFactory®, start with `creating an account <signup_>`_ w
    :width: 380
    :align: center
    :target: signup_
+   :alt: signup form
 
    This is the beginning  of your journey.
 
@@ -22,11 +23,12 @@ When you create a Factory, we immediately bootstrap the CI build process.
 This generates an unmodified :ref:`ref-linux` OS Image, which is from this point onward, **owned by you**.
 
 When your account is created, it is not associated with any factories.
-Create one by clicking :guilabel:`Create Factory`.
+Create one by clicking :guilabel:`New Factory`.
 
 .. figure:: /_static/signup/no-factories.png
    :width: 900
    :align: center
+   :alt: no Factories screen
 
    Your journey begins empty handed
 
@@ -49,6 +51,7 @@ This includes QEMU_ images for ARM_ and RISC-V_ architectures.
 .. figure:: /_static/signup/create.png
    :width: 450
    :align: center
+   :alt: platform selection and factory name 
 
    Create Factory
 
@@ -73,6 +76,7 @@ Additionally, you will receive an email once the Factory initial setup is comple
 .. figure:: /_static/signup/build.png
    :width: 900
    :align: center
+   :alt: Targets view showing prebuilt target
 
    FoundriesFactory Targets
 
