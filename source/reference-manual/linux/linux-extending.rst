@@ -107,7 +107,24 @@ Update the following variables to reflect the details from the package you wish 
 #. ``RDEPENDS`` Dependencies resolved at do_build
 
 Using FEATURES to configure LmP
---------------------------------------
+-------------------------------
+
+There are three features variable we can use to control and configure the build
+system: ``DISTRO_FEATURES``, ``IMAGE_FEATURES`` and ``MACHINE_FEATURES``. Each
+one of them takes effect in one aspect of the build system.
+
+.. important::
+
+    When changing ``DISTRO_FEATURES``, the distro is changed and it results in
+    rebuild of several packages which can take a while.
+
+    When changing ``MACHINE_FEATURES``, the hardware description changes and it
+    result in different group of packages being installed in the image.
+
+    When changing ``IMAGE_FEATURES``, the image changes, and it may reflect on the
+    list of packages installed, or in the image configuration.
+
+    Make sure to understand what will be the result in case of any change.
 
 DISTRO_FEATURES is a list of configurations from a distro that reflects how
 some packages are built or installed. There is a list of `Yocto Project distro features`_
@@ -122,7 +139,6 @@ and can be customized by architecture, machine, or any other override. To custom
 it, use ``DISTRO_FEATURES:append = <value>`` to add a feature to the list, and
 ``DISTRO_FEATURES:remove = <value>`` to remove a feature from the list. To remove
 a feature from an override list, use ``DISTRO_FEATURES:remove:<machine> = <value>``.
-
 
 The command ``bitbake-getvar`` can be used to see the value of some variables, and
 all the intermediate values::
