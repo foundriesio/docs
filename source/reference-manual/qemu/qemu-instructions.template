@@ -1,11 +1,14 @@
 **Artifacts:**
 
+.. important::
+    If you are using a prebuilt Target, your artifacts may begin with ``lmp-base-console-image`` instead.
+
 .. parsed-literal::
 
      └── |ARCH|
          ├── lmp-factory-image-|MACHINE|.wic.gz
          ├── other
-         │   └── lmp-factor-image-|MACHINE|.wic.qcow2 # optional
+         │   └── lmp-factory-image-|MACHINE|.wic.qcow2 # optional
          └── |FIRMWARE_BLOB|
 
 .. note::
@@ -38,6 +41,7 @@ Booting in QEMU
 
 #. :ref:`Download the artifacts <gs-download>` needed for |ARCH|.
    These can be found under the :guilabel:`Targets` tab for your Factory.
+   Resizable qcow2 images are located in the ``other`` folder.
 
 #. `Optional`. Resize the qcow2 image:
 
