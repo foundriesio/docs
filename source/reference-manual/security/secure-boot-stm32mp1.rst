@@ -65,6 +65,9 @@ Here is an example of generating a key pair using KeyGen tool::
         + private key:      /tmp/privateKey.pem
         + public hash key:  /tmp/publicKeyhash.bin
 
+.. note::
+   The password for ``lmp-tools`` sample keys is ``foundries``.
+
 The tool also generates a third file containing the public key hash (PKH) that
 should be fused to OTP and  used to authenticate the public key on the
 target. For more details refer to ST's `STM32 KeyGen tool`_ guide.
