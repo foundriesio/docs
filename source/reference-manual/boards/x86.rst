@@ -3,7 +3,10 @@
 x86
 ===
 
-The instructions for any board based on x86 cores.
+The instructions for boards based on x86 cores.
+
+.. seealso::
+   Instructions on how to boot a :ref:`generic x86-64 image with QEMU <qemu-x86_64>`
 
 .. toctree::
    :maxdepth: 1
