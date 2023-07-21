@@ -92,6 +92,9 @@ a list of needed configurations.
 Adding a New Kernel Driver
 --------------------------
 
+.. note::
+    Out of tree kernel drivers are not supported by Foundries.io™. New modules should be fully supported by the customer.
+
 The recommended way to add a new driver or module to the Linux kernel source
 code is by creating a recipe file for this module under
 ``recipes-kernel/kernel-modules/``:
