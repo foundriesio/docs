@@ -411,3 +411,6 @@ Example:
     As ``LMP_BOOT_FIRMWARE_VERSION`` is now a preferable way to set boot firmware version, defining ``PV`` in ``lmp-boot-firmware.bbappend``
     is deprecated and should not be used. To switch to a new approach just remove ``PV = "<version>"`` line from
     ``lmp-boot-firmware.bbappend`` and define ``LMP_BOOT_FIRMWARE_VERSION`` with appropriate version value as shown above in the example.
+
+.. seealso::
+   * :ref:`ref-secure-boot-imx-ahab`

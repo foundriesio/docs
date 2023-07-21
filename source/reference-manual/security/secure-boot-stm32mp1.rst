@@ -193,6 +193,9 @@ To close the device by fusing OTP WORD0 bit 6 run `stm32key` cmd in U-Boot::
 
         => stm32key close
 
+.. seealso::
+   * :ref:`ref-boot-software-updates-stm32mp1`
+
 .. _STM32MPU Security overview:
    https://wiki.st.com/stm32mpu/wiki/Security_overview
 

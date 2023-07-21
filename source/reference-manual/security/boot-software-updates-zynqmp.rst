@@ -527,3 +527,6 @@ shell for image provisioning to corresponding offsets on QSPI:
     0 bytes written, 7179209 bytes skipped in 7.433s, speed 1025601 B/s
     device 0 offset 0xaa0000, size 0x6d8bc9
     0 bytes written, 7179209 bytes skipped in 7.433s, speed 1025601 B/s
+
+.. seealso::
+   * :ref:`ref-authentication-xilinx`

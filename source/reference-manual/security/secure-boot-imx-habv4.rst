@@ -394,6 +394,8 @@ Our ``u-boot-spl-sign.csf-template`` takes care of supporting CAAM on closed pla
 	Engine = CAAM
 	Features = MID, RNG
 
+.. seealso::
+   * :ref:`ref-boot-software-updates-imx`
 
 .. _Secure Boot Using HABv4 Guide:
    https://www.nxp.com/webapp/Download?colCode=AN4581&location=null

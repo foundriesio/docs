@@ -254,6 +254,9 @@ We recommend using the XLWPT tool (as described at `XAPP1319`_) for registering 
 
 For more information on registering the PUF and how it is used by OP-TEE for generating a hardware unique key, please have a look at `XAPP1333`_ and https://github.com/OP-TEE/optee_os/pull/4874.
 
+.. seealso::
+   * :ref:`ref-boot-software-updates-zynqmp`
+
 .. _vivado_docker:
    https://github.com/ldts/petalinux-docker
 

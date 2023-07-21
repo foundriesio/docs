@@ -245,6 +245,9 @@ To avoid any mistakes board securing procedure can be automated program using SD
 U-Boot cmd ``fiohab_close`` will automatically validate that all SRK fuses have correct values and after then will close
 the board, otherwise it will print error message.
 
+.. seealso::
+   * :ref:`ref-boot-software-updates-imx8qm`
+
 .. _AN12312 Secure Boot on i.MX 8 and i.MX 8X Families using AHAB – Application Note:
    https://www.nxp.com/docs/en/application-note/AN12312.pdf
 
