@@ -169,7 +169,7 @@ With ``lmp-boot-firmware`` integration the signed ``boot.bin`` file will be depl
 For more information about boot firmware updates on Xilinx-based targets see :ref:`Boot Software Updates on Zynq UltraScale+ MPSoC <ref-boot-software-updates-zynqmp>`.
 
 Secure Storage (RPMB) using the PUF
-===================================
+-----------------------------------
 
 The PUF can be used to generate a hardware unique key (HUK) at OP-TEE for secure storage via the eMMC RPMB partition.
 
