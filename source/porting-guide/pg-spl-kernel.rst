@@ -87,6 +87,8 @@ over those files relevant to the reference board, change the file name,
 and review the content configurations while reviewing the schematics or
 a list of needed configurations.
 
+.. _ref-pg-new-driver:
+
 Adding a New Kernel Driver
 --------------------------
 
