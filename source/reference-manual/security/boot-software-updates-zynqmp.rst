@@ -399,12 +399,12 @@ boot.cmd
 
 Currently LmP uses template-based way of generation of final ``boot.cmd``.
 It's constructed from common boot files
-(*./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit/boot-common.cmd.in*),
+(``./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit``),
 which contains SoC agnostic DEFINEs and common functionality, and board
-specific ``boot.cmd``, which is included `boot-common.cmd.in`.
+specific ``boot.cmd``, which includes the common scripts.
 
 Example of board ``boot.cmd``
-(*./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/uz/boot.cmd*):
+(``./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/uz/boot.cmd``):
 
 ::
 
@@ -433,16 +433,51 @@ Example of board ``boot.cmd``
     setenv check_board_closed "is_boot_authenticated"
     setenv check_secondary_boot "multi_boot"
 
-    # Boot images (primary and secondary)
-    setenv bootloader_image_update 'boot0001.bin'
-    setenv bootloader_s_image_update 'boot0002.bin'
+    if test "${modeboot}" = "qspiboot"; then
+    	# Use SD for open boards, and eMMC for closed
+    	run check_board_closed
+    
+    	if test -n "${board_is_closed}"; then
+    		# Use eMMC for further loading/booting Linux FIT image
+    		setenv devnum 0
+    	else
+    		# Use SD for further loading/booting Linux FIT image
+    		setenv devnum 1
+    	fi
 
-    # FIT image (primary and secondary)
-    setenv bootloader2_image_update 'u-boot0001.itb'
-    setenv bootloader2_s_image_update 'u-boot0002.itb'
+    	setenv qspi_bootloader_offset 0x0
+    	setenv qspi_bootloader_s_offset 0x60000
 
-    setenv set_primary_boot "multi_boot 1"
-    setenv set_secondary_boot "multi_boot 2"
+    	setenv qspi_bootloader2_offset 0x100000
+    	setenv qspi_bootloader2_s_offset 0xaa0000
+
+    	setenv setup_update 'sf probe && setenv update_cmd "sf update ${loadaddr}"'
+
+    	# Boot images (primary and secondary)
+    	setenv bootloader_image_update '${qspi_bootloader_offset}'
+    	setenv bootloader_s_image_update '${qspi_bootloader_s_offset}'
+
+    	# FIT image (primary and secondary)
+    	setenv bootloader2_image_update '${qspi_bootloader2_offset}'
+    	setenv bootloader2_s_image_update '${qspi_bootloader2_s_offset}'
+
+    	setenv set_primary_boot "multi_boot 0"
+    	setenv set_secondary_boot "multi_boot 12"
+
+    else
+    	setenv setup_update 'setenv update_cmd "mmc dev ${devnum} && fatwrite mmc ${devnum}:${bootpart} ${loadaddr}"'
+
+    	# Boot images (primary and secondary)
+    	setenv bootloader_image_update 'boot0001.bin'
+    	setenv bootloader_s_image_update 'boot0002.bin'
+
+    	# FIT image (primary and secondary)
+    	setenv bootloader2_image_update 'u-boot0001.itb'
+    	setenv bootloader2_s_image_update 'u-boot0002.itb'
+
+    	setenv set_primary_boot "multi_boot 1"
+    	setenv set_secondary_boot "multi_boot 2"
+    fi
 
     # Writing images
     run setup_update
@@ -450,6 +485,8 @@ Example of board ``boot.cmd``
     setenv update_secondary_image 'echo "${fio_msg} writing ${image_path} ..."; setenv run_update "${update_cmd} ${bootloader_s_image_update} ${filesize}"; run run_update'
     setenv update_primary_image2 'echo "${fio_msg} writing ${image_path} ..."; setenv run_update "${update_cmd} ${bootloader2_image_update} ${filesize}"; run run_update'
     setenv update_secondary_image2 'echo "${fio_msg} writing ${image_path} ..."; setenv run_update "${update_cmd} ${bootloader2_s_image_update} ${filesize}"; run run_update'
+
+    setenv do_reboot "reset"
 
     @@INCLUDE_COMMON@@
 
