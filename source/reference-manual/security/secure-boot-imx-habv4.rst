@@ -62,7 +62,7 @@ The first step is to generate the PKI tree and commit the fuse table to the hard
 
 Please refer to NXP's `Secure Boot Using HABv4 Guide`_ for a detailed description on how to generate the PKI tree.
 
-For development purposes, we keep i.MX HABv4 sample keys and certificates at ``lmp-tools/security/imx_hab4``. The fuse table can be inspected by executing the ``print_fuses`` script in that same directory. The output should be::
+For development purposes, we keep i.MX HABv4 sample keys and certificates at `lmp-tools/security/imx_hab4`_. The fuse table can be inspected by executing the ``print_fuses`` script in that same directory. The output should be::
 
 	0xEA2F0B50
 	0x871167F7
@@ -408,3 +408,6 @@ Our ``u-boot-spl-sign.csf-template`` takes care of supporting CAAM on closed pla
 
 .. _-pp:
    https://github.com/nxp-imx/mfgtools/commit/5a790eae0a0f424e145171681e1a3a4f3fa47904
+
+.. _lmp-tools/security/imx_hab4:
+   https://github.com/foundriesio/lmp-tools/tree/master/security/imx_hab4

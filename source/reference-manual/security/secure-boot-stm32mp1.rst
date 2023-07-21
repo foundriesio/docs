@@ -33,6 +33,9 @@ The first step is to generate the ECC key pair and commit the fuse table
 to the hardware. This can be done with the STM32 KeyGen tool, which is part of
 the `STM32CubeProgrammer SDK`_ software package.
 
+.. note::
+   For development purposes, we keep sample keys and certificates at `lmp-tools/security/stm32mp1`_.
+
 Here is an example of generating a key pair using KeyGen tool::
 
         $ cd STM32CubeProgrammer
@@ -198,3 +201,6 @@ To close the device by fusing OTP WORD0 bit 6 run `stm32key` cmd in U-Boot::
 
 .. _STM32CubeProgrammer SDK:
    https://www.st.com/en/development-tools/stm32cubeprog.html
+
+.. _lmp-tools/security/stm32mp1:
+   https://github.com/foundriesio/lmp-tools/tree/master/security/stm32mp1

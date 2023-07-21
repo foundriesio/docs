@@ -35,8 +35,7 @@ The first step is to generate the PKI tree and commit the fuse table to the hard
 Please refer to NXP's `AN12312 Secure Boot on i.MX 8 and i.MX 8X Families using AHAB – Application Note`_ for a detailed
 description on how to generate the PKI tree.
 
-For development purposes, we keep i.MX AHAB sample keys and certificates at ``lmp-tools/security/imx_ahab``. The fuse table
-can be inspected by executing the ``print_fuses`` script in that same directory. The output should be::
+For development purposes, we keep i.MX AHAB sample keys and certificates at `lmp-tools/security/imx_ahab`_. The fuse table can be inspected by executing the ``print_fuses`` script in that same directory. The output should be::
 
 	0x7E90F8D6
 	0xE1020512
@@ -248,3 +247,6 @@ the board, otherwise it will print error message.
 
 .. _AN12312 Secure Boot on i.MX 8 and i.MX 8X Families using AHAB – Application Note:
    https://www.nxp.com/docs/en/application-note/AN12312.pdf
+
+.. _lmp-tools/security/imx_ahab:
+   https://github.com/foundriesio/lmp-tools/tree/master/security/imx_ahab
