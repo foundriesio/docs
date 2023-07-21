@@ -478,5 +478,8 @@ Example:
     is deprecated and should not be used. To switch to a new approach just remove ``PV = "<version>"`` line from
     ``lmp-boot-firmware.bbappend`` and define ``LMP_BOOT_FIRMWARE_VERSION`` with appropriate version value as shown above in the example.
 
+.. seealso::
+   * :ref:`ref-secure-boot-imx-habv4`
+
 .. |image of iMX6 layout| image:: boot-software-updates/imx6-layout.png
 .. |image of iMX8M layout| image:: boot-software-updates/imx8m-layout.png
