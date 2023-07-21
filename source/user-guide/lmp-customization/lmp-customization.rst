@@ -52,35 +52,12 @@ Create ``meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-base-scr.bbappend``
 Automatically Loading a Kernel Module
 -------------------------------------
 
-There are different options on how to automatically load a kernel module.
-The best way depends on the use case.
-Two cases are covered here.
-
-A. Configure to only load a natively supported kernel module, such as ``i2c-dev``, by adding the following change in ``conf/machine/include/lmp-factory-custom.inc``::
+Configure to only load a natively supported kernel module, such as ``i2c-dev``, by adding the following change in ``conf/machine/include/lmp-factory-custom.inc``::
 
     KERNEL_MODULE_AUTOLOAD:<machine> = "i2c-dev"
 
-B. Add a new driver/module to the Linux kernel source code by editing ``meta-subscriber-overrides/recipes-kernel/kernel-modules/<module>_<pv>.bb`` and configuring the autoload in the recipe::
-
-    SUMMARY = "Module summary"
-    LICENSE = "GPLv2"
-    LIC_FILES_CHKSUM = "file://COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e"
-
-    inherit module
-
-    SRC_URI = " \
-      file://Makefile \
-      file://<module>.c \
-      file://<module>.h \
-      file://COPYING \
-    "
-
-    S = "${WORKDIR}"
-
-    KERNEL_MODULE_AUTOLOAD:append = "<module>"
-
-Make sure to provide the source code and header for the new module, as well as the license and Makefile.
-Also make sure to adjust the provided values as needed by the recipe (``LICENSE``, ``PV``).
+.. note::
+    To autoload an out of tree kernel module, please refer to :ref:`ref-pg-new-driver`.
 
 .. _ref-faq-service:
 
