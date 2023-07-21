@@ -384,12 +384,12 @@ boot.cmd
 
 Currently LmP uses template-based way of generation of final boot.cmd.
 It's constructed from common boot files
-(*./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit/boot-common.cmd.in*),
+(``./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit``),
 which contains all SoC agnostic DEFINEs and common functionality, and board
-specific boot.cmd, which is included boot-common.cmd.in
+specific boot.cmd, which includes the common scripts.
 
 Example of board boot.cmd
-(*./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8mmevk/boot.cmd*):
+(``./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8mm-lpddr4-evk/boot.cmd``):
 
 ::
 
@@ -407,16 +407,20 @@ Example of board boot.cmd
     setenv fit_addr ${initrd_addr}
 
     # Boot firmware updates
-    setenv bootloader 42
-    setenv bootloader2 300
-    setenv bootloader_s 1042
-    setenv bootloader2_s 1300
+
+    # Offsets are in blocks (512KB each)
+    setenv bootloader 0x42
+    setenv bootloader2 0x300
+    setenv bootloader_s 0x1042
+    setenv bootloader2_s 0x1300
+
     setenv bootloader_image "imx-boot"
     setenv bootloader_s_image ${bootloader_image}
     setenv bootloader2_image "u-boot.itb"
     setenv bootloader2_s_image ${bootloader2_image}
     setenv uboot_hwpart 1
 
+    @@INCLUDE_COMMON_IMX@@
     @@INCLUDE_COMMON@@
 
 From the list above you can find that the only needed variables that

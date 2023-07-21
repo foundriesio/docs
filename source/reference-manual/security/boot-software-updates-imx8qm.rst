@@ -302,12 +302,12 @@ boot.cmd
 
 Currently LmP uses template-based way of generation of final boot.cmd.
 It's constructed from common boot files
-(*./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit/boot-common.cmd.in*),
+(``./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit``),
 which contains all SoC agnostic DEFINEs and common functionality, and board
-specific boot.cmd, which is included boot-common.cmd.in
+specific boot.cmd, which includes the common scripts.
 
 Example of board boot.cmd
-(*./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8qm-mek/boot.cmd*):
+(``./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8qm-mek/boot.cmd``):
 
 ::
 
@@ -340,8 +340,10 @@ Example of board boot.cmd
     setenv bootcmd_load_fw 'run bootcmd_load_hdmi; run bootcmd_load_m4_0; run bootcmd_load_m4_1;'
 
     # Boot firmware updates
-    setenv bootloader 0
-    setenv bootloader2 400
+
+    # Offsets are in blocks (512 bytes each)
+    setenv bootloader 0x0
+    setenv bootloader2 0x400
     setenv bootloader_s ${bootloader}
     setenv bootloader2_s ${bootloader2}
     setenv bootloader_image "imx-boot"
@@ -350,13 +352,14 @@ Example of board boot.cmd
     setenv bootloader2_s_image ${bootloader2_image}
 
     setenv update_image_boot0 'echo "${fio_msg} writing ${image_path} ..."; run set_blkcnt && mmc dev ${devnum} 1 && mmc write ${loadaddr} ${start_blk} ${blkcnt}'
-    setenv update_image_boot1 'echo "${fio_msg} writing ${image_path} ..."; run set_blkcnt && mmc dev ${devnum} 2 && mmc write ${loadaddr} ${start_blk} ${blkcnt}'
 
-    setenv backup_boot0 'echo "${fio_msg} backing up primary boot image set ..."; mmc dev ${devnum} 1 && mmc read ${loadaddr} 0x0 0x3FFE && mmc dev ${devnum} 2 && mmc write ${loadaddr} 0x0 0x3FFE'
-    setenv restore_boot0 'echo "${fio_msg} restore primary boot image set ..."; mmc dev ${devnum} 2 && mmc read ${loadaddr} 0x0 0x3FFE && mmc dev ${devnum} 1 && mmc write ${loadaddr} 0x0 0x3FFE'
+    setenv backup_primary_image 'echo "${fio_msg} backing up primary boot image set ..."; mmc dev ${devnum} 1 && mmc read ${loadaddr} 0x0 0x3FFE && mmc dev ${devnum} 2 && mmc write ${loadaddr} 0x0 0x3FFE'
+    setenv restore_primary_image 'echo "${fio_msg} restore primary boot image set ..."; mmc dev ${devnum} 2 && mmc read ${loadaddr} 0x0 0x3FFE && mmc dev ${devnum} 1 && mmc write ${loadaddr} 0x0 0x3FFE'
 
-    setenv update_primary_image "run update_image_boot0"
-    setenv update_primary_image2 "run update_image_boot0"
+    setenv update_primary_image1 'if test "${ostree_deploy_usr}" = "1"; then setenv image_path "${bootdir}/${bootloader_s_image}"; else setenv image_path "${ostree_root}/usr/lib/firmware/${bootloader_s_image}"; fi; setenv start_blk "${bootloader_s}";  run load_image; run update_image_boot0'
+    setenv update_primary_image2 'if test "${ostree_deploy_usr}" = "1"; then setenv image_path "${bootdir}/${bootloader2_s_image}"; else setenv image_path "${ostree_root}/usr/lib/firmware/${bootloader2_s_image}"; fi; setenv start_blk "${bootloader2_s}";  run load_image; run update_image_boot0'
+
+    setenv update_primary_image 'run update_primary_image1; run update_primary_image2'
 
     setenv do_reboot "reboot"
 
