@@ -12,10 +12,10 @@ must be signed and combined with various headers, certificates, and other
 binary images.
 
 Secure Board Provisioning
-=========================
+-------------------------
 
 Fusing Keys
------------
+^^^^^^^^^^^
 
 At the time of this writing, provisioning the RoT keys requires software
 only available under an NDA: the **One Time Programmable Key Writer**.
@@ -77,7 +77,7 @@ is plugged in with DFU mode::
    SerialNumber: 01.00.00.00
 
 Certificate Generation in the OTP KeyWriter
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The process requires the OEM to generate a random 256-bit number; this
 number will be the AES symmetric encryption key used to protect the
@@ -116,7 +116,7 @@ as well as the TI FEK key.
 
 
 Installing Software on Secured Boards
-=====================================
+-------------------------------------
 
 The boot-chain is well described in Texas Instruments U-boot's
 `documentation`_ page for the am62x platform. In summary, the following
