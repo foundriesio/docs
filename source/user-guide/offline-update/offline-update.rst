@@ -17,7 +17,7 @@ Prerequisites
 
         cat meta-subscriber-overrides.git/recipes-sota/aktualizr/aktualizr_%.bbappend
         PACKAGECONFIG:append = " aklite-offline"
-2. Enable :ref:`App Preloading <ref-preloaded-images>` if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
+2. Enable :ref:`ug-container-preloading` if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
 
 3. Ensure that :ref:`TUF keys are taken offline <ref-offline-keys>`. If they are not, then do it.
 

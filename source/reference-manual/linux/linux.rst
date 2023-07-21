@@ -38,7 +38,6 @@ and maintained by Foundries.io on `GitHub`_.
    linux-update
    linux-extending
    linux-oss-compliance
-   preloaded-images
    factory-device-reset
    building-sdk
    toolchain
