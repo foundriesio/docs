@@ -110,21 +110,6 @@ Flash the image and boot the device.
 Checking the Preloaded Image
 ----------------------------
 
-app_type: compose
-~~~~~~~~~~~~~~~~~
-
-On your device, switch to root and list the files in the folder
-``/var/sota/compose-apps/<app>``. In this case the preloaded app is ``shellhttpd``.
-
-.. prompt:: bash device:~$
-
-    sudo su
-    ls /var/sota/compose-apps/shellhttpd
-
-.. prompt:: text
-
-    Dockerfile  docker-build.conf  docker-compose.yml  httpd.sh
-
 app_type: restorable
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -164,6 +149,14 @@ A user can try to start preloaded Restorable Apps manually by using `aklite-apps
     sudo su
     aklite-apps run [--apps <a comma separated list of Apps>]
 
+.. note::
+    ``app_type`` is set to ``restorable`` by default since LmP **v85**. If ``compose`` app type is set, then the preloaded apps are located under ``/var/sota/compose-apps/<app>``. Here is an example using ``shellhttpd`` preloaded app:
+
+    .. prompt:: bash device:~$
+
+        sudo su
+        ls /var/sota/compose-apps/shellhttpd
+        Dockerfile  docker-build.conf  docker-compose.yml  httpd.sh
 
 Starting Compose Apps Automatically
 -----------------------------------
