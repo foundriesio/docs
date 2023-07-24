@@ -104,6 +104,8 @@ You can also test the container from an external device connected to the same ne
 
      Hello world
 
-You can follow a more detailed documentation by following the next section **Tutorials** starting with :ref:`tutorial-gs-with-docker`
+You can get a more detailed guide by following the next section, **Tutorials**, starting with :ref:`tutorial-gs-with-docker`.
 
-
+.. seealso::
+   If you would like to learn about how to customize the platform,
+   checkout both our :ref:`tutorial <tutorial-customizing-the-platform>`, and the user guide on :ref:`lmp-customization`.
