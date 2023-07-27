@@ -454,8 +454,6 @@ If a bind mount destination does not exist, Docker will create the endpoint as a
 
 The Docker documentation on `containers and bind mounting <https://docs.docker.com/storage/bind-mounts/>`_ is a good place to start if you wish to learn more about this.
 
-.. _ref-troubleshooting_systemd-service:
-
 NXP SE05X Secure Element and PKCS#11 Trusted Application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
