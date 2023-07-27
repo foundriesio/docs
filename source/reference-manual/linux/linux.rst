@@ -37,6 +37,7 @@ and maintained by Foundries.io on `GitHub`_.
    linux-disk-encryption
    linux-update
    linux-extending
+   linux-dev-mode
    linux-oss-compliance
    factory-device-reset
    building-sdk
