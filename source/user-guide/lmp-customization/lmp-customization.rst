@@ -59,7 +59,7 @@ Configure to only load a natively supported kernel module, such as ``i2c-dev``, 
 .. note::
     To autoload an out of tree kernel module, please refer to :ref:`ref-pg-new-driver`.
 
-.. _ref-faq-service:
+.. _ref-troubleshooting_systemd-service:
 
 Adding a new Systemd Startup Service
 -------------------------------------
@@ -338,7 +338,7 @@ Anything created under ``/var`` gets removed when creating the OSTree deployment
 An example of using `tmpfiles`_ to create a directory under ``/var`` can be found in meta-lmp `collectd.bbappend`_, where `tmpfiles.conf`_ shows the directory to be created.
 
 .. tip::
-   Files can also be created dynamically using a runtime service. See how to add a :ref:`Custom Systemd Service<ref-faq-service>`.
+   Files can also be created dynamically using a runtime service. See how to add a :ref:`Custom Systemd Service<ref-troubleshooting_systemd-service>`.
 
 .. _tmpfiles:
    https://www.freedesktop.org/software/systemd/man/tmpfiles.d.html
