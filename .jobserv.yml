@@ -5,12 +5,12 @@ triggers:
     runs:
       - name: docs
         container: python:3.6-alpine
-        host-tag: amd64
+        host-tag: fio-internal-ci
         script: make-docs
 
       - name: link-check
         container: python:3.6-alpine
-        host-tag: multiarch-osf
+        host-tag: fio-internal-ci
         script: link-check
 
 scripts:
