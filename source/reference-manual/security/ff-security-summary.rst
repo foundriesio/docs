@@ -96,21 +96,21 @@ Secure Over the Air Updates
    * - Keys
      - Type
      - Owner
-   * - Offline TUF Root Key
+   * - Offline TUF Root Signing Keys
      - Ed25519 (default) or RSA 4096 **(*)**
-     - Owned and managed by the customer (offline key)
-   * - Online TUF Snapshot Key
+     - Owned and managed by the customer (offline keys)
+   * - Online TUF Snapshot Signing Key
      - Ed25519 (default) or RSA 4096 **(*)**
      - Owned and managed by FoundriesFactory CI
-   * - Online TUF Timestamp Key
+   * - Online TUF Timestamp Signing Key
      - Ed25519 (default) or RSA 4096 **(*)**
      - Owned and managed by FoundriesFactory CI
    * - Online TUF Targets Signing Key
      - Ed25519 (default) or RSA 4096 **(*)**
      - Owned and managed by FoundriesFactory CI
-   * - Offline TUF Targets Signing Key
+   * - Offline TUF Targets Signing Keys
      - Ed25519 (default) or RSA 4096 **(*)**
-     - Owned and managed by the customer (offline key)
+     - Owned and managed by the customer (offline keys)
    * - OTA Client (``aktualizr-lite``/``fioconfig``) mTLS Key
      - NIST P-256
      - Owned by the device (unique per device), created during registration (CSR)
@@ -118,4 +118,4 @@ Secure Over the Air Updates
 .. note::
    **(*)** Can be selected at Factory creation or changed later.
 
-   Factories created before **v89** use ``RSA 4096`` by default but can switch to use ``Ed25519``.
+   Factories created before **v89** use ``RSA 4096`` by default and can switch to use ``Ed25519``.

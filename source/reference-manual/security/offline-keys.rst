@@ -19,6 +19,11 @@ makes it hard to perform known attacks by obtaining only one of the secrets.
 
 FoundriesFactory provides the ability to manage TUF keys via dedicated `Fioctl™ <Fioctl_>`_ commands.
 
+.. note::
+    We recommend running the command ``fioctl keys tuf updates review`` from time to time.
+    It will show you a list of our recommendations about improving your TUF usage, which evolve over time.
+    For example, it can show you the up to date information about the `Recommended Offline TUF Keys Schema`_.
+
 How to Rotate Offline TUF Root Key
 ----------------------------------
 
@@ -145,7 +150,7 @@ For example, after the first (offline) TUF targets key rotation, it will look li
 
     tufrepo
     `-- keys
-        |-- fioctl-targets-<keyid>pub
+        |-- fioctl-targets-<keyid>.pub
         `-- fioctl-targets-<keyid>.sec
 
 Similarly, the ``<keyid>`` part can be verified using this command::
@@ -174,14 +179,128 @@ See the section `How to View Offline TUF Keys`_ to understand the keys tarball i
 Expert Mode
 -----------
 
-The Fioctl_ ``keys tuf updates`` command set allows you to implement various TUF key workflows based on your requirements.
-For example, it allows you to generate the TUF root versus targets keys on separate machines by different people.
-It also allows you to make granular changes your Factory TUF keys, e.g. rotate select online keys on Foundries.io servers.
+The Fioctl_ ``keys tuf updates`` command set allows you to implement various TUF key workflows based on your requirements:
+
+- Generate the TUF root versus the TUF targets keys on separate machines by different people.
+- Make granular changes to your Factory TUF keys, e.g. rotate select online keys on Foundries.io servers.
+- Add more than 1 offline TUF signing key for the TUF root or the production TUF targets role.
+- Set a signature threshold for the TUF root or the production TUF targets role.
+
 Please, run the command ``fioctl keys tuf updates --help`` to view the examples.
 
 One command of interest is ``fioctl keys tuf updates review``.
 It analyses your Factory's existing TUF root on the server, and prints a list of recommendations for improving it.
 Over time our engineers will add more items to that list as we develop new security features.
+
+.. _ref-offline-keys-more-than-1-root:
+
+How to Add More Than 1 Offline TUF Keys
++++++++++++++++++++++++++++++++++++++++
+
+Usually, you need to add more than 1 offline TUF signing key for your TUF roles in one of these use cases:
+
+- Improving the TUF root key redundancy,
+  so that a single key loss does not leed to the loss of control over your Factory updates.
+- Improving the production TUF targets authorship transparency,
+  so that every release engineer has their own key, not shared with others.
+
+In order to implement any workflow involving TUF roles with multiple offline signing keys,
+one should use the ``fioctl keys tuf updates`` subcommands.
+They require making transactional changes distributed across several machines,
+thus they cannot be executed using shortcut ``fioctl keys tuf`` subcommands.
+
+In order to add a new offline signing key to your TUF root, you would start with the below command::
+
+    $ fioctl keys tuf updates init -m 'Your TUF root changes summary'
+    A new transaction to update TUF root keys started.
+    Your transaction ID is ELNOADKR .
+    Please, keep it secret and only share with participants of the transaction.
+    Only the user who initiated the transaction can make changes to it without the transaction ID.
+    Other users are required to supply this transaction ID for all commands except review and cancel.
+
+This command initiates a new transaction to modify the TUF root, without committing it yet.
+An admin initiating the transaction should capture the transaction ID (``ELNOADKR`` above).
+It will be used as a 2-factor authorization of further changes to the TUF root in the same transaction by other admins.
+
+More often than not, a new key needs to be added for a person not yet owning any offline TUF signing key.
+
+.. note::
+    From the security perspective, that person needs to generate and add their cryptographic key on their own.
+    It is a bad habit if the admin generates a cryptographic key on behalf of another user, and then shares it with that user.
+    Such action would mean that two users have access to the same cryptografic key, violating basic security principles.
+
+So, an admin initiating the transaction, should share the transaction ID from above with the user who will add a new key.
+There are many ways to share it, either by in-person talk, or encrypted peer-to-peer communication mediums.
+It is safe if the transaction ID is leaked after the transaction finishes, as it is only temporal.
+
+Having the transaction ID, a user who needs to add a new key would run the below command (e.g. for the TUF root role)::
+
+    $ fioctl keys tuf updates add-offline-key --role=targets --keys path/to/tuf-targets-keys.tgz --txid ELNOADKR
+
+This command generates a new offline signing key for the TUF targets, and adds it to the TUF root.
+These changes are not committed yet, they are only staged for commit within the scope of the transaction.
+
+.. note::
+    It is not secure to keep several cryptographic keys for the same entity in one place.
+    Thus, Fioctl denies adding a new offline key into a file which already contains such key for the same Factory.
+    It still allows to keep previous (already inactive) keys in the same file as a backup.
+
+Now that the user added their key, an admin who owns the offline TUF root signing key, needs to sign these changes.
+If it is the same admin who initiated the transaction, they can run the below command::
+
+    $ fioctl keys tuf updates sign --keys path/to/tuf-root-keys.tgz
+
+If it is a different admin, they would also need to supply the transaction ID to that command.
+
+Once all the desired changes have been done, an admin can apply them (commit the transaction) using the below command::
+
+    $ fioctl keys tuf updates apply
+
+.. note::
+    Before applying the TUF root updates, it is a good habit to review them using ``fioctl keys tuf updates review``.
+
+At any moment before applying the changes, and admin can cancel the transaction by the below command::
+
+    $ fioctl keys tuf updates cancel
+
+Any user with admin rights can cancel the TUF root updates transaction, not only the one who initiated it.
+
+How to Increase the TUF Signature Threshold
++++++++++++++++++++++++++++++++++++++++++++
+
+Requiring more than 1 offline signature for any TUF root changes greatly improves the TUF root role security.
+In some use cases you might also require more than 1 offline signature for :ref:`production TUF targets <ref-production-targets>`.
+
+For that, you would start a new transaction (as :ref:`above <ref-offline-keys-more-than-1-root>`),
+and set the signature threshold using the below commands::
+
+    $ fioctl keys tuf updates init -m 'Your TUF root changes summary'
+    $ fioctl keys tuf updates set-threshold 2 --role=<role>
+
+It is not allowed to set the signature threshold to a higher value than the number of keys for a given TUF role.
+Thus, normally, you would run the workflow `How to Add More Than 1 Offline TUF Keys`_ before setting the threshold.
+These two operations can also be combined into one TUF root updates transaction.
+
+When you increase the signature threshold for the production TUF targets,
+you also need to sign existing production targets by additional offline signing key.
+This can be done within the same transaction using the below command::
+
+    $ fioctl keys tuf updates sign-prod-target --keys path/to/tuf-targets-keys.tgz
+
+Once you are satisfied with the changes, you can apply them using ``fioctl keys tuf updates apply``.
+
+Recommended Offline TUF Keys Schema
++++++++++++++++++++++++++++++++++++
+
+Your Factory will function well with just one offline TUF root key and one offline TUF targets key.
+However, we recommend using the following offline TUF keys schemas:
+
+- For the TUF root role, have at least 3 offline TUF keys (5 keys is even better); and set signature threshold to 2.
+- For the TUF targets role, have a separate offline TUF key for every person authorized to release production targets.
+
+A general rule is: the higher is the signature threshold, the harder it is for an attacker to break your Factory updates.
+But remember that the key redundancy for the TUF root role must be sufficiently higher than the signature threshold.
+Key redundancy is not critical for the TUF targets, as you can add more TUF targets key if you have enough TUF root keys.
 
 .. _Fioctl:
     https://github.com/foundriesio/fioctl
