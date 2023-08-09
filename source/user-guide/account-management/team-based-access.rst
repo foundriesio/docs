@@ -3,8 +3,13 @@
 Team Based Factory Access
 =========================
 
+.. seealso::
+   * :ref:`Account Roles <ref-account-roles>` for account management.
+
+   * :ref:`API Scopes <ref-scopes>` for available token scopes.
+
 .. tip::
-   The FoundriesFactory :ref:`API documentation<ref-scopes>` covers available scopes.
+   The FoundriesFactory® :ref:`API documentation<ref-scopes>` covers available scopes.
 
 Larger organizations often need to restrict the access level a user has to the Factory.
 For example, some users might only need access for managing devices,
@@ -23,19 +28,16 @@ Once a user is assigned a team, their access will be limited to the scopes grant
 Also, a user will get access to the team's device groups and their devices in accordance with the team scopes.
 See :ref:`Access to Device Groups` for more details.
 
-
 .. important::
    It may take a moment for changes to scope/teams to take effect.
 
 Teams can be created by anyone with either the **Owner** or **Admin** role.
-Additionally, these roles are granted read-write operations for all Factory resources by default,
-but when checking user scope with ``fioctl users <user id>`` ,
-it will return blank unless they are part of a team.
+While these roles are granted read-write operations for all Factory resources by default,
+checking user scope with ``fioctl users <user id>`` will return blank unless they are part of a team.
 Members with devices may manage their own with read-write access.
 
 .. tip::
    You can always edit a Team, changing the name, description, or scope.
-
 
 How it Works: Walk Through
 --------------------------
@@ -63,12 +65,12 @@ Team "read-write-ci" can do CI read-write operations:
 .. figure:: /_static/teams-example-read-only.png
    :align: center
    :scale: 80%
-   :alt: Teams example - Team read-only users
+   :alt: Teams example: Team read-only users
 
 .. figure:: /_static/teams-example-read-write-ci.png
    :align: center
    :scale: 80%
-   :alt: Teams example - Team read-write CI users
+   :alt: Teams example: Team read-write CI users
 
 A member is then added to both teams.
 The member then has a combined list of scopes:
@@ -87,12 +89,6 @@ The member then has a combined list of scopes:
 
 The user now has read **and** write (update) access to the CI,
 while retaining the read-only scopes for the other resources.
-
-.. seealso::
-   * :ref:`Account Roles <ref-account-roles>` for account management.
-
-   * :ref:`API Scopes <ref-scopes>` for available scopes.
-
 
 .. _Access to Device Groups:
 
@@ -128,9 +124,8 @@ Example
 
 A Factory has two teams in place and one device group, ``test-lab-devices``.
 
-Members of the "read-only-users" team have read-only access to all factory resources with one exception - device groups and devices.
+Members of the "read-only-users" team have read-only access to all factory resources with one exception—device groups and devices.
 They can see only the ``test-lab-devices`` group and devices included into it.
-
 
 .. figure:: /_static/userguide/account-management/team-with-group-and-read-access.png
    :align: center
