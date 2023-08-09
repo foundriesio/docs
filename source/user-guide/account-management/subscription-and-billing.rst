@@ -1,17 +1,17 @@
 .. _ref-subscription-and-billing:
 
-Managing your Subscription
+Managing Your Subscription
 ==========================
 
 .. hint::
-   FoundriesFactory is a DevSecOps platform subscription service.
+   FoundriesFactory® is a DevSecOps platform subscription service.
    Per month or annual plan choices,
    both provide access to all FoundriesFactory features and support.
 
 Subscriptions apply per Factory;
 if you have *Factories*, you will manage them separately.
 
-Changing your Plan
+Changing Your Plan
 ------------------
 
 From your Factory's page, navigate to the :guilabel:`Plan` tab.
@@ -44,7 +44,7 @@ For using other forms of payment, please `contact us <https://foundriesio.atlass
 Payment and Billing
 --------------------
 
-To make changes —such as payment method or autorenewal— you must have an **Owner** or **Accounting** role.
+To make changes—such as payment method or autorenewal—you must have an **Owner** or **Accounting** role.
 Changes can be made through the :guilabel:`Plan` tab.
 
 .. important::
