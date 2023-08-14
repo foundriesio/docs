@@ -3,26 +3,26 @@
 Fioctl
 ======
 
-This section assumes you have followed :ref:`sec-learn` to its completion. The
-aim of this section is to provide you with a template for using
-:ref:`ref-fioctl` by way of example.
+This section provides details on using :ref:`Fioctl® <ref-fioctl>` by way of example.
+
+Prerequisites
+-------------
+
+* Completion of the getting started guide.
 
 .. _ug-fioctl-enable-apps:
 
 Enabling/Disabling Apps
 -----------------------
 
-By default all apps defined in :term:`containers.git` for any given tag are
-enabled. To change this behaviour, a list of allowed apps can be given **per
-device**, enabling only those apps that are in a comma separated list.
+All apps defined in :term:`containers.git` for any given tag are enabled by default.
+To change this behavior, allowed apps can be set **per device**, enabling only those in a comma-separated list.
 
 Via Fioctl
 ~~~~~~~~~~
 
 ``fioctl devices config updates <device_name> --apps <app_name1>,<app_name2>``
   Set the app(s) a device will run.
-
-**Example**
 
 .. code-block:: console
    
@@ -41,11 +41,10 @@ Via Fioctl
    # Now only the app(s) supplied in the list will run on the device.
 
 
-Via lmp-device-register
-~~~~~~~~~~~~~~~~~~~~~~~
+Via the LmP Device Register Script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When registering a device, ``lmp-device-register`` can set a list of apps to
-enable.
+When registering a device, ``lmp-device-register`` can set a list of apps to enable.
 
 ``lmp-device-register --api-token=<token> --apps <app_name1>,<app_name2>``
   Set the app(s) a device will run, during registration.
@@ -55,23 +54,21 @@ enable.
 Inspecting Targets
 ------------------
 
-A Factory produces Targets whenever a
-change is pushed to the :ref:`ref-factory-sources`. A Target is a description of
-the software a device should run, as defined by a list of metadata which
-includes an **OSTree Hash** and one or more **Docker-Compose App URIs**.
+.. hint::
+   A Factory produces Targets when a change is pushed to the :ref:`ref-factory-sources`.
+   A Target is a description of the software a device should run.
+   It is defined by a list of metadata which includes an **OSTree Hash** and one or more **Docker-Compose App URIs**.
 
-This metadata is recorded upon Target creation, making the Target an
-**immutable** description of the Factory at a point in time.
+   This metadata is recorded upon Target creation, making the Target an **immutable** description of the Factory at a point in time.
 
-:ref:`ref-fioctl` provides many methods of viewing Target metadata, which can
-reveal:
+:ref:`Fioctl <ref-fioctl>` provides many methods of viewing Target metadata, which can reveal:
 
-* What **apps** are available inside the Target.
-* What **tag** a Target has.
-* What **MACHINE** a Target has been produced for **(HARDWARE ID).**
-* What **git commits** caused the Target to be produced.
+* The available **apps** inside a Target.
+* Which **tag** a Target has.
+* What **MACHINE** a Target has been produced for (**HARDWARE ID**).
+* What **git commits** triggered the Target to be built.
 
-Target metadata can be inspected by using 3 primary commands
+Target metadata can be inspected by using 3 primary commands:
 
 ``fioctl targets list``
     Lists the Targets a Factory has produced so far.
@@ -92,9 +89,8 @@ Target metadata can be inspected by using 3 primary commands
     Lists the Targets a Factory has produced in ``-r`` (raw) json format.
     This is often piped into ``jq`` in order to format the json neatly.
 
-    The command output below has highlighted the ``docker_compose_apps`` section, which
-    contains the **names of apps** that are available in this Target, as well as
-    their **Docker-Compose App URIs**.
+    The command output below highlights the ``docker_compose_apps`` section.
+    This contains the **names of apps** available for the Target, as well as their **Docker-Compose App URIs**.
 
     Additionally, the **OSTree Hash** for the Target has been highlighted.
 
@@ -161,13 +157,10 @@ Target metadata can be inspected by using 3 primary commands
 
     These details include:
 
-    * A web link to the CI build produced for this Target where to view
-      the **console.log** or **download artifacts**.
-    * The **hashes for each repo** in the :ref:`ref-factory-sources` at the time
-      the Target was produced.
-    * The **OSTree Hash** for this Target.
-    * The **Docker-Compose App URI** for each available app at the time the Target
-      was produced.
+    * A link to the CI build for the Target, where you can  view the **console.log** or **download artifacts**.
+    * The **hashes for each repo** in the :ref:`ref-factory-sources` at the time the Target was produced.
+    * The **OSTree Hash** for the Target.
+    * The **Docker-Compose App URI** for each available app at the time the Target was produced.
 
       .. toggle-header::
          :header: **Click to show command output**
@@ -217,8 +210,7 @@ View Targets
 
 List devices
   ``fioctl devices list -f <factory>``
-    Lists the devices that have connected to a Factory, along with associated
-    metadata, such as device name, status, Target and enabled apps.
+    Lists the devices connected to a Factory and metadata, such as device name, status, Target, and enabled apps.
 
   .. code-block:: console
      
@@ -229,9 +221,9 @@ List devices
 
 Set device tag
   ``fioctl devices config updates <device_name> --tag <tag>``
-    Filter the Targets a device will accept by tag. For example, to move a
-    device from accepting 'devel' builds to 'main' builds. See the
-    :ref:`ref-advanced-tagging` section for more examples.
+    Filter the Targets a device will accept by tag.
+    For example, to move a device from accepting 'devel' builds to 'main' builds.
+    See :ref:`ref-advanced-tagging` for more examples.
 
   .. code-block:: console
 
@@ -249,10 +241,8 @@ Set app(s) to be enabled
 
 Enable :ref:`ref-wireguard`
   ``fioctl devices config wireguard <device_name> <enable|disable>``
-    Enable or disable the Wireguard systemd service on a LmP device. This
-    requires that you configure a Factory to use an instance of Wireguard you
-    have set up on your own server as described in the :ref:`ref-wireguard`
-    guide.
+    Enable or disable the Wireguard systemd service on a LmP device.
+    This requires a Factory configured to use a  Wireguard instance you have set up on your own server as described in the :ref:`ref-wireguard` guide.
 
   .. code-block::
 
