@@ -47,7 +47,7 @@ Click :guilabel:`Create Factory` once your details are entered.
 
 The :ref:`ref-linux` supports a wide range of platforms out of the box.
 This includes QEMU_ images for ARM_ and RISC-V_ architectures.
-To run an x86-64 image, select **Generic x86-64**, which works on both ``intel-core-i7-64`` and ``qemuarm64-secureboot`` machines.
+To run an x86-64 image, select **Generic x86-64**, which works for ``intel-core-i7-64`` and can be used by QEMU.
 
 .. figure:: /_static/signup/create.png
    :width: 450

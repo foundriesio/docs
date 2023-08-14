@@ -23,7 +23,7 @@ This will set up the necessary environment for sphinx packages and place them he
 
 ```bash
 
-$ sudo apt-get install python3 python3-virtualenv
+$ sudo apt-get install graphviz python3 python3-virtualenv
 $ virtualenv -p /usr/bin/python3 venv
 $ . ./venv/bin/activate
 $ pip install -r requirements.txt
