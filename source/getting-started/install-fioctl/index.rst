@@ -35,7 +35,7 @@ We use `Github Releases`_ to distribute static golang binaries.
 .. tabs::
 
    .. group-tab:: Linux
-      
+
       .. attention::
         Make sure you have ``curl`` installed.
 
@@ -60,7 +60,7 @@ We use `Github Releases`_ to distribute static golang binaries.
             host:~$ sudo chmod +x /usr/local/bin/fioctl
 
    .. group-tab:: macOS
-      
+
       .. attention::
         Make sure you have ``curl`` installed.
 
@@ -77,9 +77,9 @@ We use `Github Releases`_ to distribute static golang binaries.
          .. prompt:: bash host:~$, auto
 
             host:~$ sudo curl -o /usr/local/bin/fioctl -L https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64
-        
+
          .. important::
-        
+
             For MacOS running on a Apple M1 processor, replace ``fioctl-darwin-amd64`` with ``fioctl-darwin-arm64``, and set ``FIOCTL_VERSION`` to v0.21 or newer.
 
       2. Make the :ref:`ref-fioctl` binary executable:
@@ -122,7 +122,7 @@ For this, you will generate OAuth2 application credentials for interacting with 
      https://app.foundries.io/settings/credentials/
 
      and create a new "Application Credential" to provide inputs below.
-     
+
      Client ID:
 
 :ref:`ref-fioctl` will now ask for your Client ID and Secret. Follow the next steps to generate them.
@@ -161,7 +161,7 @@ Use the Client ID and Secret to finish the Fioctl login.
    :width: 500
    :align: center
 
-   Client ID and Secret 
+   Client ID and Secret
 
 .. prompt:: bash host:~$, auto
 
@@ -171,10 +171,21 @@ Use the Client ID and Secret to finish the Fioctl login.
      https://app.foundries.io/settings/credentials/
 
      and create a new "Application Credential" to provide inputs below.
-     
+
      Client ID:
      Client secret:
      You are now logged in to Foundries.io services.
+
+The following command can be used to test the ``fioctl`` configuration.
+
+.. prompt:: bash host:~$, auto
+
+   host:~$ fioctl -f <factory> status
+      Total number of devices: 0
+      TAG  LATEST TARGET  DEVICES  ON LATEST  ONLINE
+      ---  -------------  -------  ---------  ------
+
+      Orphan target versions below are marked with a star (*)
 
 .. seealso::
    :ref:`ref-fioctl` documentation.
