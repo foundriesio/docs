@@ -3,7 +3,7 @@
 Integrating NXP EdgeLock 2GO
 ============================
 
-EdgeLock® 2GO is an add-on service from NXP® that is integrated into FoundriesFactory as an option to simplify the securing of devices during manufacturing.
+EdgeLock® 2GO is an add-on service from NXP®, integrated into FoundriesFactory® to simplify the securing of devices during manufacturing.
 The service enables the automated installation and secure storage of required keys, certificates, and credentials when the end device first connects to the internet.
 
 .. admonition:: Key Benefits
@@ -13,26 +13,26 @@ The service enables the automated installation and secure storage of required ke
    - simplified management of keys and certificates for devices and fleets in the field.
 
 EdgeLock 2GO requires that the device hardware includes an NXP SE05x hardware security element, or uses an i.MX 8ULP or 9 series SoC.
-We offer a free evaluation of the service on the `i.MX 8M Plus EVK <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/evaluation-kit-for-the-i-mx-8m-plus-applications-processor:8MPLUSLPD4-EVK>`_ with a connected SE050 evaluation, or on the Arduino Portenta X8 (early Q4 2022).
-
+We offer a free evaluation for the `i.MX 8M Plus EVK <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/evaluation-kit-for-the-i-mx-8m-plus-applications-processor:8MPLUSLPD4-EVK>`_ with a connected SE050 evaluation,
+or on the `Arduino Portenta X8 <https://docs.arduino.cc/hardware/portenta-x8>`_.
 
 Prerequisites
 -------------
 
  * An :ref:`NXP SE05X secure element <ref-secure-elements>`
- * A FoundriesFactory that has been registered with EdgeLock 2GO. Please `contact our support team <https://foundriesio.atlassian.net/servicedesk/customer/portal/1/group/1/create/3>`_.
+ * A Factory registered with EdgeLock 2GO. Please `contact our support team <https://foundriesio.atlassian.net/servicedesk/customer/portal/1/group/1/create/3>`_.
  * Access to your Factory PKI :ref:`root of trust <Root-of-trust>`.
 
-Enabling Auto-connect to Foundries.io
---------------------------------------------------
+Enabling Auto-connect to Your Factory
+-------------------------------------
 
-Fioctl® includes commands that will configure EdgeLock 2GO to give out credentials that automatically connect aktualizr-lite to the device gateway, removing the need to run ``lmp-device-register``:
+Fioctl® can configure EdgeLock 2GO to give out credentials that automatically connect aktualizr-lite to the device gateway, removing the need to run ``lmp-device-register``:
 
 .. prompt:: bash host:~$, auto
 
    host:~$ fioctl el2g config-device-gateway --pki-dir <path to your PKI root of trust>
 
-Now EdgeLock 2GO will have an intermediate CA that can create device client certificates acceptable to the Foundries.io device gateway.
+Now EdgeLock 2GO will have an intermediate CA that can create device client certificates acceptable to the Foundries.io™ device gateway.
 Running ``fioctl el2g status`` will show something similar to::
 
   # Subdomain: yaytcakbhsmvi0cy.device-link.edgelock2go.com
@@ -55,10 +55,10 @@ Running ``fioctl el2g status`` will show something similar to::
   MIIBmjCCAUCgAwIBAgIUfFokkHTzV2GHUc+P2gKWfe5rWu4wCgYIKoZIzj0EAwIw
   ...
 
-Optional: Enabling Devices to Connect with AWS IoT
+Optional: Enabling Devices to Connect With AWS IoT
 ----------------------------------------------------
 
-Users interested in integrating with AWS IoT can follow these steps to enlist their devices.
+Integrate with AWS IoT using the following steps to enlist devices.
 
 Configure the integration by running:
 
@@ -77,11 +77,11 @@ complete the process.
 
 .. note::
 
-  If this command is run **after** a device has been initially provisioned, you will have to perform a manual step on the device to pick up the change:
+  If this command is run **after** a device has been initially provisioned, you need to perform a manual step on the device to pick up the change:
 
   .. prompt:: bash device:~$, auto
 
-     device:~$ sudo REPOID=$(cat /etc/default/lmp-el2go-auto-register) lmp-el2go-auto-register
+     device:~$ sudo $(cat /etc/default/lmp-el2go-auto-register) lmp-el2go-auto-register
 
 At this point you have two options: Manual device registration or Just-In-Time-Provisioning (JITP).
 
@@ -96,10 +96,10 @@ JITP
 ~~~~
 JITP automates the device registration process with AWS IoT.
 Setting up JITP is specific to a user's AWS deployment, requiring an IAM policy template to define what a device may do.
-The `Integrating with AWS IoT using Just-in-Time Provisioning`_ blog shows one way to set this up, and includes a template_ that *can* be used here.
-With a policy in-hand, enable JITP using the CA created above with `fioctl el2g config-aws` by running something like:
+`Integrating with AWS IoT using Just-in-Time Provisioning`_ shows one way to do this, and includes a template_ that *can* be used here.
+With a policy in-hand, enable JITP using the CA created above with ``fioctl el2g config-aws`` by running something like:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: bash
 
    host:~$ aws iot update-ca-certificate --certificate-id <CERT ID FROM ABOVE> --registration-config='{"templateBody": "{\"Parameters\": {\"AWS::IoT::Certificate::Id\": {\"Type\": \"String\"}, \"AWS::IoT::Certificate::CommonName\": {\"Type\": \"String\"}, \"AWS::IoT::Certificate::SerialNumber\": {\"Type\": \"String\"}}, \"Resources\": {\"thing\": {\"Type\": \"AWS::IoT::Thing\", \"Properties\": {\"ThingName\": {\"Ref\": \"AWS::IoT::Certificate::CommonName\"}, \"AttributePayload\": {\"SerialNumber\": {\"Ref\": \"AWS::IoT::Certificate::SerialNumber\"}}}}, \"certificate\": {\"Type\": \"AWS::IoT::Certificate\", \"Properties\": {\"CertificateId\": {\"Ref\": \"AWS::IoT::Certificate::Id\"}, \"Status\": \"ACTIVE\"}}, \"policy\": {\"Type\": \"AWS::IoT::Policy\", \"Properties\": {\"PolicyName\": \"<YOUR POLICY NAME>\"}}}}", "roleArn": "<YOUR ROLE ARN>"}'
 
@@ -124,7 +124,7 @@ This can be retrieved by running::
 For example::
 
   # conf/machine/include/lmp-factory-custom.inc
-  EL2GO_HOSTNAME = XXXXXXXXXXXXX.device-link.edgelock2go.com
+  EL2GO_HOSTNAME = "XXXXXXXXXXXXX.device-link.edgelock2go.com"
 
 You'll now need to enable the device auto registration recipe_.
 First, include the package in your factory image with::
@@ -157,7 +157,7 @@ Once built with these configuration options a device will start the ``lmp-el2go-
  * Download configured key pairs
  * Configure/start aktualizr-lite
 
-Enlisting devices
+Enlisting Devices
 -----------------
 Devices must be added to an EdgeLock 2GO allow-list so that they will be authorized to obtain client credentials.
 A device with an SE05X, product ID ``935389312472``, can be added with:
@@ -168,7 +168,7 @@ A device with an SE05X, product ID ``935389312472``, can be added with:
 
 The status of the device will look similar to::
 
-   host:~$ fioctl el2g devices
+   host:~$ fioctl el2g devices list
    GROUP             ID                                          LAST CONNECTION
    -----             --                                          ---------------
    fio-935389312472  348555492004256518532939906410866457667712
@@ -205,7 +205,7 @@ If needed, you can troubleshoot this by running:
 
 Testing AWS IoT
 ---------------
-If your devices are configured to use AWS IoT, you can test things out with our example container that publishes an MQTT message to your instance::
+If your devices are configured to use AWS IoT, you can test using our example container, which publishes an MQTT message to your instance::
 
   device:~$ docker run --rm -it \
       -e AWS_ENDPOINT=<YOUR AWS MQTT SERVER>.amazonaws.com \
@@ -219,22 +219,23 @@ The message is published to the topic ``se050/demo`` with a payload of
 
 EdgeLock 2GO Concepts
 ---------------------
- * **Device Group** - EdgeLock 2GO manages devices by device groups.
+
+ * **Device Group** — EdgeLock 2GO manages devices by device groups.
    A device group is fixed to a specific product ID (e.g. an SE050 or SE051).
    The ``fioctl el2g`` commands create two device groups for a factory to make it easy to manage a homogenous security policy.
    One device group is for CI devices and the other is for production devices.
- * **Secure Object** - Secure objects are assigned to device groups to tell the EdgeLock 2GO what x509 key pairs should be assigned to devices.
+ * **Secure Object** — Secure objects are assigned to device groups to tell the EdgeLock 2GO what x509 key pairs should be assigned to devices.
    The most common use of a secure object combines a "Keypair" with a "Certificate".
    The certificate object is linked to an X509 Certificate Authority configured in the service.
    It can then sign certificate signing requests for a device key pair in order to generate client certificates.
- * **Subdomain** - Every EdgeLock 2GO account has a "device-link" subdomain that a device's ``nxp_iot_agent_demo`` binary connects to.
+ * **Subdomain** — Every EdgeLock 2GO account has a "device-link" subdomain that a device's ``nxp_iot_agent_demo`` binary connects to.
    This is the service where secure objects will be exchanged.
 
-Further details
+Further Details
 ---------------
-Foundries includes a set of convenience APIs for working with EdgeLock 2GO which are used by fioctl.
-They are documented at
-https://api.foundries.io/ota/
+
+FoundriesFactory includes a convenient APIs for working with EdgeLock 2GO, which are used by fioctl.
+They are documented at https://api.foundries.io/ota/
 
 You may also access the full EdgeLock 2GO API via a reverse proxy:
 
@@ -245,4 +246,7 @@ API documentation links:
  * `Developer Guide <https://cdn.foundries.io/el2go/AN12642_EdgeLock_2GO_Developer_Guide_for_Foundries.io_users.pdf>`_
  * `OpenAPI Swagger <https://cdn.foundries.io/el2go/el2go-managed-api-gateway-api-58.45.0.yaml>`_
 
-The default FoundriesFactory EdgeLock 2GO implementation provides a free of charge evaluation for 30 days. Once enabled for commercial use the standard package limits usage to 50,000 devices per subscription year and 2x key pairs and 2x X.509 certificates per device - i.e. the FoundriesFactory key pair and certificate, and one additional set for authentication to a third party service such as AWS. If you require additional devices, or more key pairs per device, please contact us.
+The default FoundriesFactory EdgeLock 2GO implementation provides a free of charge evaluation for 30 days.
+Once enabled for commercial use, the standard package limits usage to 50,000 devices per subscription year and 2x key pairs and 2x X.509 certificates per device.
+This covers the FoundriesFactory key pair and certificate and one additional set for authentication to a third-party service such as AWS.
+If you require additional devices, or more key pairs per device, please contact us.
