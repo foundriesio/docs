@@ -3,32 +3,24 @@
 Auto Hostname
 =============
 
-This section shows how to enable the ``lmp-auto-hostname`` recipe. This recipe customizes 
-device hostnames at runtime, either by appending the **serial** number
-from the device tree of the hardware, or the **mac address** to the hostname.
+This section shows how to enable ``lmp-auto-hostname``.
+This utility customizes a device's hostname at runtime, by appending it with either the **serial** number from the device tree, or the **mac address**.
 
-The recipe lmp-auto-hostname_ is provided by meta-lmp_ and can be added by 
-customizing your ``meta-subscriber-overrides.git``.
+The recipe for lmp-auto-hostname_ is provided by meta-lmp_ and can be added by customizing ``meta-subscriber-overrides.git``.
 
-Enabling Recipe
----------------
+Adding the Recipe
+-----------------
 
 Clone your ``meta-subscriber-overrides.git`` repo and enter its directory:
 
 .. prompt:: bash host:~$
 
-    git clone -b devel https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
+    git clone https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
     cd meta-subscriber-overrides
 
-Edit the ``recipes-samples/images/lmp-factory-image.bb`` file and add the recipe on the ``CORE_IMAGE_BASE_INSTALL`` list:
+Edit ``recipes-samples/images/lmp-factory-image.bb``, adding the recipe to the ``CORE_IMAGE_BASE_INSTALL`` list:
 
-.. prompt:: bash host:~$, auto
-
-    host:~$ gedit recipes-samples/images/lmp-factory-image.bb
-
-**recipes-samples/images/lmp-factory-image.bb**:
-
-.. prompt:: text
+.. code-block:: diff
 
      diff --git a/recipes-samples/images/lmp-factory-image.bb b/recipes-samples/images/lmp-factory-image.bb
      --- a/recipes-samples/images/lmp-factory-image.bb
@@ -52,37 +44,34 @@ The ``lmp-auto-hostname`` recipe can be configured through variables.
 
     .. option:: serial
 
-       appends the serial number of the device.
+       Appends the serial number of the device:
 
-       **Example Result:** ``raspberrypi4-64-100000008305bbc3``
+       ``raspberrypi4-64-100000008305bbc3``
 
     .. option:: mac
 
-       appends the MAC address of a chosen network interface.
+       Appends the MAC address of a chosen network interface.
 
-       **Example Result:** ``raspberrypi4-64-dca6321669ea``
+       ``raspberrypi4-64-dca6321669ea``
 
 .. confval:: LMP_HOSTNAME_NETDEVICE=<interface>
     :default: ``eth0``
 
-    *if* using ``mac`` mode, provide the device network interface to retrieve
-    a MAC address from.
+    If using ``mac`` mode, provide the device network interface to retrieve a MAC address from:
 
-    **Example Value:** ``eth0`` or ``wlan0``
+    ``eth0`` or ``wlan0``
 
 Configuring the LmP Auto Hostname
 ---------------------------------
 
-According to your needs, select the tab serial or MAC.
+Select the Serial or MAC tab below, according to your needs.
 
 .. tabs::
 
    .. group-tab:: Serial
       
-      Serial is configured by default in the ``lmp-auto-hostname`` recipe, 
-      no need for extra changes.
-
-      Add the ``recipes-samples/images/lmp-factory-image.bb`` file, commit and push:
+      Serial is configured by default in the ``lmp-auto-hostname`` recipe, no need for extra changes.
+      Add the ``recipes-samples/images/lmp-factory-image.bb`` file, commit, and push:
 
       .. prompt:: bash host:~$, auto
 
@@ -91,20 +80,18 @@ According to your needs, select the tab serial or MAC.
 
    .. group-tab:: MAC
 
-      Edit the ``conf/machine/include/lmp-factory-custom.inc`` file and add the variables:
+      Edit ``conf/machine/include/lmp-factory-custom.inc``, adding the variables:
       
       .. prompt:: bash host:~$, auto
       
           host:~$ gedit recipes-samples/images/lmp-factory-image.bb
       
-      **conf/machine/include/lmp-factory-custom.inc**:
-      
-      .. prompt:: text
+      ::
       
            LMP_HOSTNAME_MODE = "mac"
            LMP_HOSTNAME_NETDEVICE = "eth0"
       
-      Add the changed files, commit and push:
+      Add the changed files, commit, and push:
 
       .. prompt:: bash host:~$, auto
 
@@ -113,17 +100,16 @@ According to your needs, select the tab serial or MAC.
           host:~$ git commit -m "lmp-auto-hostname: Adding recipe"
           host:~$ git push
 
-The latest **Target** named ``platform-devel`` should be the CI job you just created.
+The latest Target named ``platform-devel`` should be the CI job you just created.
 
-When FoundriesFactory CI finishes all jobs, if your device is already registered, 
-wait until the Over-the-Air update finishes, otherwise download and flash the image.
+If your device is already registered, when all jobs finish, wait until the Over-the-Air update completes.
+Otherwise download and flash the image.
 
 Testing Auto Hostname
 ---------------------
 
-Log in to the device via SSH and check the new hostname right after ``fio@``.
-
-Check also the file ``/etc/hostname`` to confirm the new hostname.
+Log in to the device via SSH and check the new hostname (right after ``fio@``).
+You can also check ``/etc/hostname`` to confirm the new hostname.
 
 .. tabs::
 
@@ -133,9 +119,7 @@ Check also the file ``/etc/hostname`` to confirm the new hostname.
       
           cat /etc/hostname 
       
-      **Example Output**:
-      
-      .. prompt:: text
+      ::
       
            raspberrypi3-64-51ca7875
       
@@ -145,11 +129,9 @@ Check also the file ``/etc/hostname`` to confirm the new hostname.
       
           cat /etc/hostname 
       
-      **Example Output**:
+      ::
       
-      .. prompt:: text
-      
-           raspberrypi3-64-b827ebca7875
+          raspberrypi3-64-b827ebca7875
 
 .. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/main
 .. _lmp-auto-hostname: https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-support/lmp-auto-hostname

@@ -3,7 +3,7 @@
 LmP Customization
 ======================
 
-This page covers some common ways that the Linux® microPlatform (LmP) can be modified.
+This page covers common ways that the Linux® microPlatform (LmP) can be modified.
 This includes kernel options, startup services, user and group configuration, 
 and other options related to the platform build. 
 
