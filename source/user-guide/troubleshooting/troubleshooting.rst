@@ -173,14 +173,14 @@ It manifests as a failed boot attempt and error in the u-boot log:
 This suggests that the SPL key is missing from the factory.
 The key is defined in the OE recipe and it defaults to ``spldev``.
 
-.. prompt::
+::
 
     UBOOT_SPL_SIGN_KEYNAME="spldev"
 
 This can be confirmed by checking whether files ``spldev.key`` or ``spldev.crt`` are missing from the ``lmp-manifest/factory-keys`` directory.
 If so, the easiest fix is to generate the keys and add them to the repository.
 
-.. prompt::
+.. code-block:: console
 
     cd factory-keys
     openssl genpkey -algorithm RSA -out spldev.key \
@@ -190,7 +190,7 @@ If so, the easiest fix is to generate the keys and add them to the repository.
 
 Once the ``spldev.key`` and ``spldev.crt`` are created, add them to the repository.
 
-.. prompt::
+.. code-block:: console
 
     git add factory-keys/spldev.key
     git add factory-keys/spldev.crt
@@ -341,7 +341,7 @@ First, configure the **aktualizr-lite** polling interval:
        cd meta-subscriber-overrides
        mkdir -p recipes-sota/sota-fragment/sota-fragment
 
-5. Create the ``90-sota-fragment.toml`` file under this new directory:
+5. Create ``90-sota-fragment.toml`` under this new directory:
 
    .. code-block::
 
@@ -354,7 +354,7 @@ First, configure the **aktualizr-lite** polling interval:
 6. In the ``recipes-samples/images/lmp-factory-image.bb`` file, include this new package under ``CORE_IMAGE_BASE_INSTALL``.
    For example:
 
-   .. code-block::
+   .. code-block:: diff
 
        --- a/recipes-samples/images/lmp-factory-image.bb
        +++ b/recipes-samples/images/lmp-factory-image.bb
@@ -518,6 +518,9 @@ Targets list for that tag.
 
 There are some cases where this can happen:
 
-* When using :ref:`Production Targets <ref-production-targets>`: A user creates a wave for Target 42 and some devices are updated. The user then cancels the wave, removing Target 42 from the Targets list. A new wave is created for Target 43. Running ``fioctl wave status`` in this case shows that some devices are running Target 42, which is not present in the Targets list, so it shows as an orphan Target.
+* When using :ref:`Production Targets <ref-production-targets>`: A user creates a wave for Target 42 and some devices are updated.
+  The user then cancels the wave, removing Target 42 from the Targets list.
+  A new wave is created for Target 43.
+  Running ``fioctl wave status`` in this case shows that some devices are running Target 42, which is not present in the Targets list, so it shows as an orphan Target.
 * A device runs an old Target that has been pruned from the Targets list.
 * A device switches from one tag to another and it is still running a Target version which is not present in the new tag.

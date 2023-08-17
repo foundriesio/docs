@@ -13,20 +13,20 @@ Prerequisites
 
 1. Enable Offline Update support, i.e. add ``aklite-offline`` to ``PACKAGECONFIG`` of ``aktualizr``. For example:
 
-    .. prompt:: text
+    .. prompt:: bash
 
         cat meta-subscriber-overrides.git/recipes-sota/aktualizr/aktualizr_%.bbappend
         PACKAGECONFIG:append = " aklite-offline"
 2. Enable :ref:`ug-container-preloading` if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
 
-3. Ensure that :ref:`TUF keys are taken offline <ref-offline-keys>`. If they are not, then do it.
+3. Ensure that :ref:`TUF keys are taken offline <ref-offline-keys>`.
 
 4. Build an LmP image and flash it onto a target device or update the device with the image via OTA.
 
-
 Obtaining Offline Update Content
 --------------------------------
-Once the prerequisites are met, download the offline update content from the FoundriesFactory to some medium, e.g., a USB drive, which can be attached to a target device.
+
+First download the offline update content from your Factory to an install medium which can be attached to the target device.
 The offline update content consists of:
 
 1. `TUF metadata`_;
@@ -51,6 +51,7 @@ Use the command ``fioctl targets offline-update <target-name> <dst> --tag <tag> 
 
 Performing the Offline Update
 -----------------------------
+
 Before doing the offline update, make the offline update content accessible on a device, e.g., attach and mount the USB drive.
 
 Use the ``aklite-offline`` CLI utility to perform an offline update.
@@ -152,19 +153,21 @@ Offline Update Considerations
 
 * **Offline Update is not a packaged delivery**
 
-The content provided by ``fioctl targets offline-update`` command should be packaged by the customer and verified by the client service.
+  The content provided by ``fioctl targets offline-update`` command should be packaged by you, and verified by the client service.
 
 * **Offline Update does not provide a secure delivery**
 
-Related to the bullet above, Foundries.io™ cannot provide secure delivery of offline update content since the customer should do the packaging and delivery.
+  Related to the bullet above, Foundries.io™ cannot provide secure delivery of offline update content since you should do the packaging and delivery.
 
 * **Offline Update allows installing Targets from different Tags**
 
-A custom client application should handle this case if it is not the intended behavior.
+  A custom client application should handle this case if it is not the intended behavior.
 
 * **Online/Offline Mixed Updates**
 
-Toggling between online and offline modes is not tested or validated by Foundries.io. It should be handled by a custom client application. Both cases can work together, but the offline update feature was initially designed to be offline only until the device was registered.
+  Toggling between online and offline modes is not tested or validated by Foundries.io.
+  It should be handled by a custom client application.
+  Both cases can work together, but the offline update feature is designed to be offline only, until the device is registered.
 
 There are a few points to take into account by the custom client application:
 
