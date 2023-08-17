@@ -3,36 +3,29 @@
 Multi-Stage Container Builds
 ============================
 
-When developing for embedded devices, optimization is one of the most 
-important things to consider.
+Optimization is always a consideration when developing for embedded devices.
+Using Multi-stage builds optimize your Dockerfiles, and keep them easier to read and maintain.
 
-Multi-stage builds are useful to optimize your Dockerfiles and keep them 
-easy to read and maintain.
-
-You can find more information about it on: `Use multi-stage builds`_.
+.. seealso::
+   Docker's documentation on `multi-stage builds`_.
 
 This guide assumes you have Docker installed on your computer.
 
-To summarize, multi-stage container builds allow you to develop in one stage and 
-copy just the necessary artifacts to the next stage. That being said, in the first 
-stage you can install dependencies for development, like a toolchain, and compile 
-your application. In the final stage, you can keep the image nice and clean with 
-just what is necessary for your application while making use of the final artifacts from 
-the first stage.
+To summarize, multi-stage container builds allow you to develop in one stage, then copy only the necessary artifacts to the next stage.
+In the first stage you can install dependencies for development, like a toolchain, and compile your application.
+In the final stage, the image is kept clean with just the necessities for your application.
+This is done by making use of the final artifacts from the first stage.
 
-This section will present a Dockerfile implementing a ``helloworld`` application 
-written in C. 
+This guide presenst a Dockerfile implementing a ``helloworld`` application written in C. 
 
-In the first example, the Dockerfile is implementing everything 
-in a single stage, leaving all the objects and spare software in the image. The 
-second example shows how to convert it into a multi-stage container, where the 
-build happens in the first stage, and all the objects and spare software 
-stay in the first stage. Finally, the second stage copies the binary from the 
-first stage and ends up with a smaller and optimized image.
+In the first example, the Dockerfile is implementing everything in a single stage, leaving all objects and spare software in the image.
 
-Both examples, single and multi-stage, will use the same file structure:
+The second example shows how to convert this into a multi-stage container.
+This time, the build happens in the first stage, and the second stage copies the binary—ending with a smaller and optimized image.
 
-.. prompt:: text
+Both examples use the same file structure:
+
+::
 
      ├── single
      │   └── Dockerfile
@@ -51,13 +44,7 @@ Create the file structure:
 
 Create the ``helloworld.c`` file:
 
-.. prompt:: bash host:~$, auto
-
-    host:~$ gedit helloworld.c
-
-**helloworld.c**:
-
-.. prompt:: text
+.. code-block:: c
 
     #include <stdio.h>
     int main()
@@ -65,17 +52,11 @@ Create the ``helloworld.c`` file:
       printf("hello, world!\n");
     }
  
-    /* helloworld.c */
+    /* helloworld.c \*/
 
 Create the ``start.sh`` file:
 
-.. prompt:: bash host:~$, auto
-
-    host:~$ gedit start.sh
-
-**start.sh**:
-
-.. prompt:: text
+.. code-block:: bash
 
     #!/bin/sh
     
@@ -96,13 +77,9 @@ Single Stage Container
 
 Create the ``Dockerfile`` that implements the single stage container:
 
-.. prompt:: bash host:~$, auto
+``single/Dockerfile``:
 
-    host:~$ gedit single/Dockerfile
-
-**single/Dockerfile**:
-
-.. prompt:: text
+.. code-block:: dockerfile
 
     FROM debian:bullseye-slim
     RUN  echo "-------Single-Stage--------------"
@@ -123,20 +100,18 @@ Create the ``Dockerfile`` that implements the single stage container:
     
     ENTRYPOINT ["/app/start.sh"]
 
-The ``Dockerfile`` is very simple. It installs ``build-essential``, 
-copies the files ``helloworld.c`` and ``start.sh`` to the container image, 
-compiles ``helloworld.c`` and sets the entrypoint to start the ``start.sh`` script.
+The ``Dockerfile`` is straightforward..
+It installs ``build-essential``, copies the files ``helloworld.c`` and ``start.sh`` to the container image,
+then compiles ``helloworld.c`` and sets the entrypoint to start the ``start.sh`` script.
 
-Build the docker example and check the image size:
+Build the Docker example and check the image size:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ docker build --tag single:1.0 -f single/Dockerfile .
     host:~$ docker image ls
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      docker image ls
      REPOSITORY                         TAG             IMAGE ID       CREATED          SIZE
@@ -148,9 +123,7 @@ Run the image and open a second terminal:
 
     host:~$ docker run -it --rm --name single single:1.0
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      hello, world!
      hello, world!
@@ -162,36 +135,28 @@ In the second terminal, inspect the image and note that the spare files are pres
 
     host:~$ docker exec -it single ls /app
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      helloworld  helloworld.c  start.sh
 
-Note that the gcc software is present in the image:
+Note that the GCC compiler is present in the image:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ docker exec -it single sh -c 'type gcc'
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      gcc is /usr/bin/gcc
 
 Multi-Stage Container
 ---------------------
 
-Create the ``Dockerfile`` that implements the multi-stage container:
+Create the ``Dockerfile`` to implement the multi-stage container:
 
-.. prompt:: bash host:~$, auto
+``multi/Dockerfile``:
 
-    host:~$ gedit multi/Dockerfile
-
-**multi/Dockerfile**:
-
-.. prompt:: text
+.. code-block:: dockerfile
 
     FROM debian:bullseye-slim AS builder
     RUN  echo "-------Multi-Stage--------------"
@@ -226,32 +191,28 @@ Create the ``Dockerfile`` that implements the multi-stage container:
     
     ENTRYPOINT ["/app/start.sh"]
 
-In this case, the ``Dockerfile`` is divided into two stages: ``builder`` and ``final-stage``. 
-The first stage starts with ``AS builder`` after specifying the starting image (first line of the Dockerfile). Next, 
-it installs ``build-essential`` and compiles ``helloworld.c``.
+This ``Dockerfile`` is divided into two stages: ``builder`` and ``final-stage``. 
+The first stage starts with ``AS builder`` after specifying the starting image (first line of the Dockerfile).
+Next, it installs ``build-essential`` and compiles ``helloworld.c``.
 
-The second stage starts with ``AS final-stage`` right after specifying the image used 
-for the second stage (line 18 of the Dockerfile).
-Finally, it ``COPY`` the ``helloworld`` binary from the first stage using the parameter ``--from=builder``.
+The second stage starts with ``AS final-stage`` after specifying the image to be used. (line 18 of the Dockerfile).
+Finally, ``COPY`` get the ``helloworld`` binary from the first stage using the parameter ``--from=builder``.
 
-Build the docker example and check the image size:
+Build the Docker example and check the image size:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ docker build --tag multi:1.0 -f multi/Dockerfile .
     host:~$ docker image ls
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      docker image ls
      REPOSITORY                         TAG             IMAGE ID       CREATED          SIZE
      single                             1.0             ba94763b6fe4   25 seconds ago   351MB
      multi                              1.0             bdeac19070ea   50 minutes ago   80.4MB
 
-Note the difference between the `single` and `multi` images. A simple ``helloworld`` 
-with just the ``build-essential`` software shows how useful a multi-stage container could be.
+Note the difference between the `single` and `multi` images.
 
 Run the image and open a second terminal:
 
@@ -259,37 +220,31 @@ Run the image and open a second terminal:
 
     host:~$ docker run -it --rm --name multi multi:1.0
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      hello, world!
      hello, world!
      hello, world!
 
-In the second terminal, inspect the image and note that only the needed files are 
-present in the image (``helloworld.c`` is not installed in the final stage):
+In the second terminal, inspect the image.
+Note that only the needed files are present in the image (``helloworld.c`` is not installed in the final stage):
 
 .. prompt:: bash host:~$, auto
 
     host:~$ docker exec -it multi ls /app
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      helloworld  start.sh
 
-Note that the ``gcc`` software is not installed in the final stage:
+Notice how ``gcc`` is not installed in the final stage:
 
 .. prompt:: bash host:~$, auto
 
     host:~$ docker exec -it multi sh -c 'type gcc'
 
-**Example Output**:
-
-.. prompt:: text
+::
 
      gcc: not found
 
-.. _Use multi-stage builds: https://docs.docker.com/build/building/multi-stage/
+.. _multi-stage builds: https://docs.docker.com/build/building/multi-stage/
