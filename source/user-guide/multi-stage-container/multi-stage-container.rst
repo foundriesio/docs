@@ -100,11 +100,11 @@ Create the ``Dockerfile`` that implements the single stage container:
     
     ENTRYPOINT ["/app/start.sh"]
 
-The ``Dockerfile`` is straightforward..
+The ``Dockerfile`` is straightforward.
 It installs ``build-essential``, copies the files ``helloworld.c`` and ``start.sh`` to the container image,
 then compiles ``helloworld.c`` and sets the entrypoint to start the ``start.sh`` script.
 
-Build the Docker example and check the image size:
+Build the Docker image and check the image size:
 
 .. prompt:: bash host:~$, auto
 
@@ -198,7 +198,7 @@ Next, it installs ``build-essential`` and compiles ``helloworld.c``.
 The second stage starts with ``AS final-stage`` after specifying the image to be used. (line 18 of the Dockerfile).
 Finally, ``COPY`` get the ``helloworld`` binary from the first stage using the parameter ``--from=builder``.
 
-Build the Docker example and check the image size:
+Build the Docker image and check the image size:
 
 .. prompt:: bash host:~$, auto
 
@@ -227,7 +227,7 @@ Run the image and open a second terminal:
      hello, world!
 
 In the second terminal, inspect the image.
-Note that only the needed files are present in the image (``helloworld.c`` is not installed in the final stage):
+Note that only the required files are present in the image (``helloworld.c`` is not installed in the final stage):
 
 .. prompt:: bash host:~$, auto
 
