@@ -21,11 +21,12 @@ There are four roles available. The two core roles being:
   - add and update members
   - manage teams
   - manage the Factory subscription plan
+  - register, delete, and rename all devices
   - manage the Factory's Public Key Infrastructure (PKI) and create Waves.
   
 The remaining two each get a subset of the **Owner** permissions.
 
-* **Admin**: Add and update members, :ref:`manage teams <ref-team-based-access>`, manage PKI, and create Waves.
+* **Admin**: Add and update members, :ref:`manage teams <ref-team-based-access>` and device groups, manage PKI, and create Waves.
 * **Accounting** limited to managing the :ref:`Factory plan <ref-subscription-and-billing>`.
 
 .. tip::
@@ -33,6 +34,10 @@ The remaining two each get a subset of the **Owner** permissions.
     For example, more than one member can have the **Owner** role.
     However, a single member has only one role at a time.
 
+By default, users can access device groups they created, the devices in them, and the devices they own.
+
+.. seealso::
+   :ref:`Team Based Factory Access <ref-team-based-access>` for permissions related to development and device management.
 
 How it Works: Walk Through
 --------------------------
@@ -56,7 +61,5 @@ and assigns the desired role:
    :align: center
    :alt: UI, changing member role
 
-From here roles can be changed anytime.
+From here, roles can be changed anytime.
 
-.. seealso::
-   :ref:`Team Based Factory Access <ref-team-based-access>` for permissions related to development and device management.
