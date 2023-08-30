@@ -57,7 +57,7 @@ making sure to set the appropriate values for ``app_type`` and ``oe_builtin`` (s
 - ``app_type`` - Defines the type of Apps to preload.
   If not defined, or set to an empty value, the ``app_type`` preload will depend on the LmP version.
   If the LmP version is **v85** or newer, then `restorable` type is preloaded, otherwise `compose` type is used.
-  See :ref:`ug-restorable-apps` for more details on Restorable Apps.
+  See :ref:`ug-restorable-apps`.
 - ``oe_builtin`` - *Optional*: Preload Apps during an OE build CI run. Should be left disabled/undefined for most machines.
 
 .. note::
