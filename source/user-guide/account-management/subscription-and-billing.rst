@@ -44,7 +44,7 @@ For using other forms of payment, please `contact us <https://foundriesio.atlass
 Payment and Billing
 --------------------
 
-To make changes—such as payment method or autorenewal—you must have an **Owner** or **Accounting** role.
+To make changes—such as payment method, credit card, billing address, or autorenewal—you must have an **Owner** or **Accounting** role.
 Changes can be made through the :guilabel:`Plan` tab.
 
 .. important::
