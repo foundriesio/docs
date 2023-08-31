@@ -60,7 +60,6 @@ configuration::
         DISTRO: lmp-mfgtool
         IMAGE: mfgtool-files
         EXTRA_ARTIFACTS: mfgtool-files.tar.gz
-        UBOOT_SIGN_ENABLE: "1"
 
 How to use
 ----------
