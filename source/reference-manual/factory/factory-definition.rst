@@ -12,6 +12,8 @@ repository in the  **factory-config.yml** file.
 notify
 ------
 
+Configures the users who receive an email with the build notification.
+
 .. sidebar:: ``notify:`` Section Example
 
     .. code-block:: yaml
@@ -49,6 +51,9 @@ notify:
 
 lmp
 ---
+
+Configures the LmP aspects to this factory, including images, distro and machine names.
+Variables to be used with the metadata and artifacts.
 
 .. sidebar:: ``lmp:`` Section Example
 
@@ -169,10 +174,37 @@ lmp:
 
       **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_)
 
+Variables
+^^^^^^^^^
+
+* **BUILD_SDK**:
+               With this variable set to ``1``, the SDK artifact will be part
+               of the build. Reference: :ref:`ref-building-sdk`.
+* **DEV_MODE**:
+               This is a flexible variable used to configure the source code
+               into development mode. The development mode should be defined
+               by the user. Reference: :ref:`ref-dev-mode`.
+* **DISABLE_GPLV3**:
+               When set to ``1``, this variable configures the source code
+               to avoid the LmP default packages under GPLv3.
+               Reference: :ref:`ref-remove-gplv3`.
+* **DISTRO**:
+               Defines the distro being used. Reference: :ref:`ref-linux-distro`.
+* **SSTATE_CACHE_MIRROR**:
+               Defaults to the directory mounted on the SDK build container.
+               If this directory exists, it is used as the source for the
+               shared state cache (sstate-cache) mirror. When the directory does
+               not exist, the ``lmp-manifest`` value is used (currently it points
+               to the public HTTP shared state cache).
+* **TUF_TARGETS_EXPIRE**:
+               Is used to change the default target expiration date (default 1y).
+
 .. _def-containers:
 
 containers
 ----------
+
+Defines the container's configuration, including some image configuration and target architecture.
 
 .. sidebar:: ``containers:`` Section Example
 

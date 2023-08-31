@@ -144,6 +144,8 @@ This error means, for image `lmp-factory-image`, a long list of packages under
 GPLv3 are being installed, for example ``bash``. The goal now to clear the image
 from those dependencies.
 
+.. _ref-remove-gplv3:
+
 How to remove packages under GPLv3 family license
 -------------------------------------------------
 
