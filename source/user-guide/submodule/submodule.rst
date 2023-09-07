@@ -4,19 +4,18 @@ Working With Git Submodules
 ===========================
 
 This section shows how to add a git submodule to your FoundriesFactory® repository.
-
-This is when you want an external Git repository, such as GitHub, connected to a Factory repository as a submodule.
+This is used when you want an external Git repository, such as GitHub, connected to a Factory repository as a submodule.
 
 Submodules can be used to isolate two different application teams, allowing work to take place in separate repositories.
 Each team works in their own repository and each repository is added as a submodule in the Factory repository.
 
-This section can be adapted for other git repository hosting services.
+.. tip::
+   The steps to add a submodule can be adapted for other git repository hosting services.
 
 Create a GithHub Repository
 ---------------------------
 
 Go to GitHub_ and create a new repo.
-
 You can choose to use a private or a public repository, each involves separate steps:
 
 .. tabs::
@@ -31,46 +30,13 @@ You can choose to use a private or a public repository, each involves separate s
       
          New Private GitHub repository
       
-      The FoundriesFactory CI needs GitHub personal access token to download the submodule content during the build.
-
-      Go to GitHub and in the upper right corner, click on your avatar and :guilabel:`Settings`.
-
-      .. figure:: /_static/userguide/submodule/settings.png
-         :width: 300
-         :align: center
+      The FoundriesFactory CI needs a GitHub personal access token to download the submodule content during the build.
+      Many organizations require the recommended Fine-grained tokens be used.
+      Follow GitHub's `instructions to generate the token <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token>`_.
+      Copy the personal access token.
       
-         GitHub Settings
-      
-      In the left menu, click on the :guilabel:`Developer settings`.
-      
-      Next, click on the :guilabel:`Personal access tokens` and click on the  button :guilabel:`Generate new token`.
-
-      .. figure:: /_static/userguide/submodule/newtoken.png
-         :width: 800
-         :align: center
-      
-         Generate new token
-
-      Complete the :guilabel:`Note` and select the :guilabel:`Expiration` you like. 
-      Finally, select the :guilabel:`repo` scope and click on the :guilabel:`Generate token`.
-
-      .. figure:: /_static/userguide/submodule/personaltoken.png
-         :width: 800
-         :align: center
-      
-         Personal Token Scope
-      
-      Make sure to copy your personal access token.
-
-      .. figure:: /_static/userguide/submodule/token.png
-         :width: 450
-         :align: center
-      
-         Personal Token Scope      
-      
-      Configure your Factory with the personal access token.
-
-      Use ``fioctl`` to configure the ``githubtok`` variable.
+      Now Configure your Factory with the personal access token.
+      Use ``fioctl`` to configure the ``githubtok`` variable:
 
       .. prompt:: bash host:~$, auto
 
@@ -89,10 +55,8 @@ You can choose to use a private or a public repository, each involves separate s
 Preparing the GitHub Repository
 --------------------------------
 
-For this guide, the GitHub repo  will be used to specify a Docker Compose Application.
-
+For this guide, the GitHub repo will be used to specify a Docker Compose Application.
 The requirements for the FoundriesFactory CI to build this is to have a folder with a ``Dockerfile`` and a ``docker-compose.yml``
-
 If you are not familiar with the ``containers.git`` file structure, see the section on :ref:`tutorial-compose-app-file-structure`.
 
 Create a folder to initialize the repo.
@@ -189,10 +153,8 @@ Inside the ``containers`` directory, adapt the command below using your GitHub r
     host:~$ git commit -m "Adding myapp submodule"
     host:~$ git push
 
-Go to the `web app <https://app.foundries.io>`_, select your Factory and click on :guilabel:`Targets`:
-
+Go to the `web app <https://app.foundries.io>`_, select your Factory and click on :guilabel:`Targets`.
 The latest Target should be the CI job you just created.
-
 Click anywhere on the Target’s line to see more details.
 
 After the CI Job finishes, refresh the page and find your application in Apps:
