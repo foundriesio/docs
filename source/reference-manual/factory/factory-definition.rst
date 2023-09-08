@@ -21,7 +21,7 @@ Configures the users who receive an email with the build notification.
          notify:
            email:
              users: foo@foo.com,bar@bar.com
-           failures_only: false
+             failures_only: false
 
 notify:
  email:
