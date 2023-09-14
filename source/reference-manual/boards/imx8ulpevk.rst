@@ -47,7 +47,7 @@ i.MX 8 ULP Evaluation Kit
 
 .. |imx_file_list| prompt:: text
 
-          ├── lmp-factory-image-imx8ulp-lpddr4-evk.wic
+          ├── lmp-factory-image-imx8ulp-lpddr4-evk.wic.gz
           ├── u-boot-imx8ulp-lpddr4-evk.itb
           ├── imx-boot-imx8ulp-lpddr4-evk
           └── mfgtool-files-imx8ulp-lpddr4-evk

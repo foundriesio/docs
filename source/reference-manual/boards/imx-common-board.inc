@@ -23,15 +23,14 @@ Factory.
         |     ``u-boot-<machine_name>.itb``
         |     ``imx-boot-<machine_name>``
 
+          .. note::
+            The compressed image (``.wic.gz``) is used since LmP **v92**. Before it the scripts
+            require a compressed file image (``.wic``).
+
           .. figure:: /_static/boards/generic-steps-2.png
             :width: 769
             :align: center
 
-#. Extract the file ``lmp-factory-image-<machine_name>.wic.gz``:
-
-     .. parsed-literal::
-
-      gunzip lmp-factory-image-|machine_name|.wic.gz
 
 #. Download and extract the file ``mfgtool-files-<machine_name>.tar.gz``:
 
