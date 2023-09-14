@@ -47,7 +47,7 @@ i.MX 8M Mini Evaluation Kit
 
 .. |imx_file_list| prompt:: text
 
-          ├── lmp-factory-image-imx8mm-lpddr4-evk.wic
+          ├── lmp-factory-image-imx8mm-lpddr4-evk.wic.gz
           ├── u-boot-imx8mm-lpddr4-evk.itb
           ├── sit-imx8mm-lpddr4-evk.bin
           ├── imx-boot-imx8mm-lpddr4-evk

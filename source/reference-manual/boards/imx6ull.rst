@@ -45,7 +45,7 @@ i.MX 6ULL Evaluation Kit
 
 .. |imx_file_list| prompt:: text
 
-          ├── lmp-factory-image-imx6ullevk.wic
+          ├── lmp-factory-image-imx6ullevk.wic.gz
           ├── u-boot-imx6ullevk.itb
           ├── sit-imx6ullevk.bin
           ├── SPL-imx6ullevk
