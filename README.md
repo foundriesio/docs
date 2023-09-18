@@ -14,7 +14,9 @@ Before beginning any work, review the [contributing section](#contributing).
 
 To build the documentation, python3 and `pip3` are required.
 All required python modules are listed in `requirements.txt`.
-Install them with `pip install -r requirements.txt`.
+Install them with `pip3 install -r requirements.txt`.
+
+📌 **NOTE:** After run `pip3 install -r requirements.txt`, restart your terminal or use source to ensure Sphinx is set up.
 
 ### Using Virtualenv to Provide Requirements
 
@@ -39,6 +41,10 @@ To build the html from rst files, from the top directory run:
 $ make html
 
 ```
+
+📌 **NOTE:** When you fork this project, make sure to disable the option that allows forking of only the main branch. 
+If you overlook this step, you may encounter issues when executing the make html command, as you will be required to 
+specify the value via the environment variables `MP_UPDATE_VERSION`.
 
 You can then open `build/html/index.html` in your browser to view the
 documentation.
