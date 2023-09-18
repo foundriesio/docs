@@ -217,7 +217,7 @@ Run the following command to add the relevant entries to the Git configuration:
 
       git config --global credential.https://source.foundries.io.username fio-oauth2
       git config --global credential.https://source.foundries.io.helper fio
-      ln -s /usr/bin/fioctl /usr/bin/git-credential-fio
+      ln -s /usr/local/bin/fioctl /usr/bin/git-credential-fio
 
    * Existing users reconfiguring Git access may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility::
 
