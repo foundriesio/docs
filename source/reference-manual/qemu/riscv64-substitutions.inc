@@ -1,10 +1,12 @@
 .. |ARCH| replace:: riscv64
 .. |MACHINE| replace:: qemuriscv64
 .. |FIRMWARE_BLOB| replace:: fw_payload.elf
-.. |QEMU_GUI_FLAGS| replace::
+.. |QEMU_GUI_FLAGS_LINUX| replace::
 
      -display gtk,gl=on -device virtio-gpu-pci
+.. |QEMU_GUI_FLAGS_MAC| replace::
 
+     -display cocoa -device virtio-gpu-pci
 .. |ARTIFACT_COMMANDS| replace::
 
      # Download and extract the Factory image
