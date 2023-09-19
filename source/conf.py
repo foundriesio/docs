@@ -394,7 +394,7 @@ redirects = {
      "customer-factory/writing-images": "../getting-started/flash-device/index.html",
      "customer-factory/updating-the-core": "../reference-manual/linux/linux-update.html",
      "customer-factory/source-code": "../tutorials/customizing-the-platform/customizing-the-platform.html",
-     "customer-factory/managing": "../user-guide/account-management/account-management.html",
+     "customer-factory/managing": "../getting-started/register-device/index.html",
      "customer-factory/getting-started": "../getting-started/signup/index.html",
      "customer-factory/first-boot": "../getting-started/flash-device/index.html#booting-and-connecting-to-the-network",
      "customer-factory/extending": "../reference-manual/linux/linux-extending.html",
