@@ -1,10 +1,12 @@
 .. |ARCH| replace:: arm64
 .. |MACHINE| replace:: qemuarm64-secureboot
 .. |FIRMWARE_BLOB| replace:: flash.bin
-.. |QEMU_GUI_FLAGS| replace::
+.. |QEMU_GUI_FLAGS_LINUX| replace::
 
      -display gtk,gl=on -device virtio-gpu-pci
+.. |QEMU_GUI_FLAGS_MAC| replace::
 
+     -display cocoa -device virtio-gpu-pci
 .. |ARTIFACT_COMMANDS| replace::
 
      # Download and extract the Factory image

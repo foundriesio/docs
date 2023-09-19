@@ -1,10 +1,12 @@
 .. |ARCH| replace:: arm
 .. |MACHINE| replace:: qemuarm
 .. |FIRMWARE_BLOB| replace:: u-boot-qemuarm.bin
-.. |QEMU_GUI_FLAGS| replace::
+.. |QEMU_GUI_FLAGS_LINUX| replace::
 
      -display gtk,gl=on -device virtio-gpu-pci
+.. |QEMU_GUI_FLAGS_MAC| replace::
 
+     -display cocoa -device virtio-gpu-pci
 .. |ARTIFACT_COMMANDS| replace::
 
      # Download and extract the Factory image

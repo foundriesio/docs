@@ -97,9 +97,21 @@ Booting Graphically
 
 In order to boot QEMU with an OpenGL capable virtual GPU (required for Wayland/Weston), add the following flags to the QEMU CLI:
 
-.. parsed-literal::
+.. tabs::
 
-     |QEMU_GUI_FLAGS|
+   .. group-tab:: Linux
 
-Do not copy the ``-nographic`` flag at the end of the QEMU CLI below.
+      .. parsed-literal::
+
+         |QEMU_GUI_FLAGS_LINUX|
+
+   .. group-tab:: macOS
+
+      .. parsed-literal::
+
+         |QEMU_GUI_FLAGS_MAC|
+
+.. note::
+
+    Do not copy the ``-nographic`` flag at the end of the QEMU CLI below.
 
