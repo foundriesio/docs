@@ -3,9 +3,9 @@
 Registering Your Device
 =======================
 
-Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool that registers your device via the Foundries.io™ REST API.
+Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool that manages device registration for your device via the Foundries.io™ REST API.
 
-1. Run this command from the device console to register it with your Factory:
+1. To register a device with your Factory, run the following from the device console:
 
  .. prompt:: bash device:~$, auto
 
@@ -14,11 +14,10 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 .. note::
     The parameter ``-f <factory>`` is only needed for the first target.
 
-2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API. Follow the instructions on the promped message:
+2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API.
+   Follow the instruction prompts:
 
    .. highlight:: none
-
-   **Example Output**:
 
    .. prompt:: text
 
@@ -44,5 +43,9 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 
 .. note::
 
-    **By default**, after registration devices will run **all** applications that are available in the latest Target. This behavior can be changed by enabling only specific applications.
+    After registration devices will run **all** applications that are available in the latest Target.
+    This default behavior can be changed by enabling only specific applications.
     Read :ref:`ug-fioctl-enable-apps` to learn how.
+
+.. seealso::
+   :ref:`Team Based Factory Access <ref-team-based-access>` for permissions related to device management.
