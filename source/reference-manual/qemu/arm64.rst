@@ -18,6 +18,31 @@ QEMU CLI
        -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
        -chardev null,id=virtcon -machine virt,secure=on -nographic
 
+.. note::
+    The |FIRMWARE_BLOB| artifact can typically be found in the same location where you downloaded the ``.wic.gz`` image. If you are unable to locate |FIRMWARE_BLOB|, consider checking for other artifacts such as; ``QEMU_EFI.fd`` and ``QEMU_VARS.fd``. These can be used to boot the image with the ``-drive`` flag.
+    Example:
+
+    .. code-block::
+
+        qemu-system-aarch64 \
+        -drive file=lmp-factory-image-qemuarm64-secureboot.wic.qcow2,if=virtio,format=qcow2 \
+        -device qemu-xhci \
+        -device usb-tablet \
+        -device usb-kbd \
+        -net nic \
+        -net user \
+        -machine virt \
+        -cpu host \
+        -smp 4 \
+        -m 2048 \
+        -accel hvf \
+        -no-reboot \
+        -device virtio-gpu-pci \
+        -display default,show-cursor=on \
+        -drive file=QEMU_EFI.fd,format=raw,readonly=on,if=pflash \
+        -drive file=QEMU_VARS.fd,format=raw,if=pflash \   # Here's the added line
+        -serial mon:stdio -serial null
+
 .. include:: qemu-ssh.template
 
 .. tip::
