@@ -21,16 +21,16 @@ Booting in QEMU
 
 .. important:: These instructions require QEMU 5.2 or later.
 
+#. List available Targets and decide on which to boot::
+
+     fioctl targets list
+
 .. note::
-	Make sure to set the FIOCTL_FACTORY environment variable:
+    Make sure to set the FIOCTL_FACTORY environment variable so that you can list the target of the specified factory:
 
     .. parsed-literal::
 
         export FIOCTL_FACTORY=<factory>
-
-#. List available Targets and decide on which to boot::
-
-     fioctl targets list
 
 #. Make a directory for the artifacts and ``cd`` into it:
 
