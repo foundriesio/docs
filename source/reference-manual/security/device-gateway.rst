@@ -66,8 +66,12 @@ Setting up your PKI
 -------------------
 
 :ref:`ref-fioctl` includes a sub-command to set this up:
-``fioctl keys ca create /absolute/path/to/certs/``. A few important things to
-note about this command:
+
+.. code-block::
+
+    fioctl keys ca create /absolute/path/to/certs/
+
+A few important things to note about this command:
 
  * It's highly recommend that you use a PKCS#11 compatible HSM. This
    will ensure the safety of your factory's root of trust private key.
@@ -75,8 +79,11 @@ note about this command:
  * The "PKI Directory" is important and should be securely backed
    up.
 
-You can view the configured certificates with
-``fioctl keys ca show --pretty``.
+After running the above command, you can validate the outcome and view the configured certificates by using the following command:
+
+.. code-block::
+
+    fioctl keys ca show --pretty
 
 The Factory PKI is interwoven with Device Manufacturing Process and Device Registration,
 you can find out more details on this topic in this guide :ref:`ref-factory-registration-ref`.
