@@ -40,7 +40,6 @@ QEMU CLI
         -device virtio-gpu-pci \
         -display default,show-cursor=on \
         -drive file=QEMU_EFI.fd,format=raw,readonly=on,if=pflash \
-        -drive file=QEMU_VARS.fd,format=raw,if=pflash \   # Here's the added line
         -serial mon:stdio -serial null
 
 .. include:: qemu-ssh.template
