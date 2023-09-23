@@ -21,6 +21,11 @@ Prerequisites and Pre-Work
       - Ethernet cable (if choosing Wired)
       - Console access to your hardware via UART serial (if choosing WiFi)
 
+.. note::
+
+   If you're starting out and prefer emulation over a physical board, refer to the guide :ref:`gs-emulation-with-qemu`.
+   This guide will walk you through "Flashing the Image," allowing you to move on to :ref:`gs-register`.
+
 .. _gs-download:
 
 Downloading the LmP System Image
