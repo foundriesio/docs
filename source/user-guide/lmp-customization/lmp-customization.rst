@@ -12,6 +12,49 @@ and other options related to the platform build.
    The tutorial for :ref:`tutorial-customizing-the-platform` covers adding a custom recipe service.
    This helps introduces core concepts and steps related to customizing LmP, and is a good place to start.
 
+.. _ref-customizing-the-distro:
+
+Customizing the Distro
+-----------------------------
+
+This section shows how to build new targets with other Distro. Following an example on
+how to build a new targets with :ref:`LmP XWayland <ref-lmp-wayland-xwayland>`.
+
+1. Update your factory config:
+
+.. code-block:: shell
+
+    git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
+    cd ci-scripts
+    vi factory-config.yml
+
+2. Add the distro under ``LmP``:
+
+.. code-block:: yaml
+
+    worker_tag: "amd64-partner-aws"
+    params:
+        IMAGE: lmp-factory-image
+        SSTATE_CACHE_MIRROR: ""
+        DOCKER_COMPOSE_APP: "1"
+        DISTRO: "lmp-xwayland"
+
+3. Commit and push the changes:
+
+.. code-block:: shell
+
+    git add .
+    git commit -m "Adding lmp-xwayland as base for my factory"
+    git push
+
+4. Changes into the ``ci-script`` repository don't auto-trigger builds. Push a commit in ``lmp-manifest`` or ``meta-subscriber-overrides``:
+
+.. code-block:: shell
+
+    git clone https://source.foundries.io/factories/<factory>/lmp-manifest.git
+    cd lmp-manifest
+    git commit -m "trigger build" --allow-empty
+
 Kernel Command Line Arguments
 -----------------------------
 

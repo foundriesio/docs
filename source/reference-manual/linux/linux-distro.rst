@@ -7,6 +7,9 @@ LmP provides reference distros to be used in different use cases. They state the
 
 If you are not familiar with the concept of Distro, the Yocto Project definition can help (`term-DISTRO`_), another good document is the `Poky`_ description, which is the default distro reference used by the Yocto Project.
 
+.. note::
+   For guidance on building new targets with a different distro and customizations, see: :ref:`Customizing the Distro <ref-customizing-the-distro>`.
+
 LmP
 ***
 
@@ -47,6 +50,8 @@ LmP MFGTools
 ************
 
 The distro used to generate the ``mfgtool-files`` artifacts which provide the deploy and update tool for some machines (i.MX family).
+
+.. _ref-lmp-wayland-xwayland:
 
 LmP Wayland and LmP XWayland
 ****************************

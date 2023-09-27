@@ -95,7 +95,18 @@ Booting in QEMU
 Booting Graphically
 -------------------
 
-In order to boot QEMU with an OpenGL capable virtual GPU (required for Wayland/Weston), add the following flags to the QEMU CLI:
+This section shows how to boot QEMU with an OpenGL capable virtual GPU—required for Wayland/Weston.
+To check the available options for your system, use the ``-display help`` flag:
+
+.. parsed-literal::
+   $ qemu-system-aarch64 -display help
+   Available display backend types:
+   none
+   curses
+   cocoa
+   dbus
+
+In general, adding the following flags to the QEMU CLI should work:
 
 .. tabs::
 
@@ -113,5 +124,26 @@ In order to boot QEMU with an OpenGL capable virtual GPU (required for Wayland/W
 
 .. note::
 
+    You can also utilize the option ``-display default``.
+    This attempts to use the default display type corresponding to the operating system on which you are running the command.
+
+.. note::
+
     Do not copy the ``-nographic`` flag at the end of the QEMU CLI below.
+
+.. important::
+
+   Specifying display options in QEMU does not make console-only images graphical. It just opens a potential graphical
+   output window. Interaction is mainly text-based. The images created with ``DISTRO=lmp-xwayland`` or ``DISTRO=lmp-wayland``
+   have graphical interfaces. For further information see: :ref:`LmP Wayland and LmP XWayland <ref-lmp-wayland-xwayland>`.
+
+   If you are following :ref:`gs-flash-device` and downloading the console image, it will not boot with a
+   graphical interface. See :ref:`Customizing the Distro <ref-customizing-the-distro>` to know how to build a new
+   target image. Also, ensure that you download the image with the interface, which is usually
+   prefixed with ``lmp-factory-image``.
+
+.. important::
+
+   Compatibility of the display options may vary, and not all options are supported on every host OS.
+   Refer to the `QEMU Documentation <https://www.qemu.org/>`_ for more advanced configurations and options.
 
