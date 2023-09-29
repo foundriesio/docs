@@ -36,13 +36,32 @@ Download necessary files from ``https://app.foundries.io/factories/<factory>/tar
    machine.**
 
    | E.g: ``lmp-factory-image-am62xx-evm.wic.gz``
-   
+
    .. figure:: /_static/boards/am62xx-sk-steps-2.png
       :align: center
       :width: 600
 #. Extract the file ``lmp-factory-image-am62xx-evm.wic.gz``::
 
       gunzip lmp-factory-image-am62xx-evm.wic.gz
+
+#. Expand the **run** in the :guilabel:`Runs` section which corresponds
+   with the name of the board ti-mfgtool-files and **download the tools for that
+   machine.**
+
+   E.g: ``ti-mfgtool-files-am62xx-evm.tar.gz``
+
+#. Download and extract the file ``ti-mfgtool-files-am62xx-evm.tar.gz``::
+
+      tar -zxvf ti-mfgtool-files-am62xx-evm.tar.gz
+
+#. Organize all the files like the tree below::
+
+      ├── lmp-factory-image-am62xx-evm.wic
+      └── ti-mfgtool-files-am62xx-evm
+          ├── flash.sh
+          ├── tiboot3.bin
+          ├── tispl.bin
+          └── uboot.img
 
 .. _SK-AM62B:
    https://www.ti.com/tool/SK-AM62B
