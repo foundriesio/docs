@@ -156,7 +156,7 @@ with the following steps.
 
    .. parsed-literal::
 
-      repo init -u https://source.foundries.io/factories/<factory-name>/lmp-manifest.git -b devel -m <factory-name>.xml
+      repo init -u https://source.foundries.io/factories/<factory-name>/lmp-manifest.git -b main -m <factory-name>.xml
       repo sync
 
    The manifest ``<factory-name>.xml`` refers to all the LmP meta layers
