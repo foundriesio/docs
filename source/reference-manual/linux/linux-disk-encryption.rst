@@ -97,7 +97,7 @@ Make sure LUKS support is enabled for your x86 target:
 .. code-block:: console
 
   $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
-  DISTRO_FEATURES:intel-corei7-64:append = " luks"
+  DISTRO_FEATURES:append:intel-corei7-64 = " luks"
 
 Then make sure to enroll the :ref:`UEFI Secure Boot Certificates <ref-secure-boot-uefi>`
 to enable secure boot support. This is required as the LUKS2 TPM 2.0 token
