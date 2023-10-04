@@ -36,7 +36,7 @@ Performing a Production OTA
 ---------------------------
 
 A customer should define a process to select CI builds which need to be delivered to production devices.
-Every user performing production OTAs should generate their personal :ref:`offline TUF targets key <ref-offline-keys>` used to sign production targets.
+Every user performing production OTAs should generate their personal :ref:`offline TUF targets key <ref-offline-keys>` to sign production Targets.
 
 Let's assume a user selected a CI build version 42 as ready to be run in production.
 To start the production release process, a user would create a new wave using the below command::
@@ -50,6 +50,7 @@ That TUF targets role only includes a single Target from CI build (in above exam
 .. note::
 
    We recommend that a user generates :ref:`OSTree static deltas<ref-static-deltas>` before rolling out waves to devices.
+   Static Deltas will optimize your OTA update download.
 
 Once created, a new wave can be rolled out to Factory production devices, all at once or in phases.
 There are several ways how a wave can be rolled out:
