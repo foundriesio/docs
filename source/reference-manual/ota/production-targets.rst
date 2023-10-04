@@ -35,7 +35,9 @@ Waves allow Factory operators to control an exact time when devices see a new ve
 Performing a Production OTA
 ---------------------------
 
-A user should define a process to select CI builds which need to be delivered to production devices.
+A customer should define a process to select CI builds which need to be delivered to production devices.
+Every user performing production OTAs should generate their personal :ref:`offline TUF targets key <ref-offline-keys>` used to sign production targets.
+
 Let's assume a user selected a CI build version 42 as ready to be run in production.
 To start the production release process, a user would create a new wave using the below command::
 
