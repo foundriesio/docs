@@ -26,6 +26,9 @@ to configure the keys used by the Yocto Project.
     The device RoT key (the key used for secure boot, for example) is shown in the diagrams.
     However it is not an online key and is not used during the FoundriesFactory® build.
 
+i.MX Secure Boot Flow
+"""""""""""""""""""""
+
 The following diagram shows the secure boot flow for i.MX machines (TF-A is present only for arm64 devices):
 
 .. graphviz::
@@ -53,6 +56,9 @@ The following diagram shows the secure boot flow for i.MX machines (TF-A is pres
         "kernel fitImage" -> "Linux kernel"                      [label = "UBOOT_SIGN_KEYNAME"];
         "Linux kernel"    -> "Linux kernel modules"              [label = "MODSIGN_PRIVKEY"];
    }
+
+STM32MP15 Secure Boot Flow
+""""""""""""""""""""""""""
 
 The following diagram shows the secure boot flow for STM32MP15-based machines:
 
@@ -84,6 +90,9 @@ The following diagram shows the secure boot flow for STM32MP15-based machines:
         "Linux kernel"       -> "Linux kernel modules"  [label = "MODSIGN_PRIVKEY"];
    }
 
+UEFI Secure Boot Flow
+"""""""""""""""""""""
+
 The following diagram shows the secure boot flow (when booting with UEFI)
 for ``intel-corei7-64`` based machines:
 
@@ -105,6 +114,8 @@ for ``intel-corei7-64`` based machines:
         "Linux kernel"          -> "Linux kernel modules" [label = "MODSIGN_PRIVKEY"];
    }
 
+FoundriesFactory Keys
+---------------------
 
 When a Factory is created, by default, two sets of keys are created under
 ``lmp-manifest`` repository:
@@ -174,7 +185,7 @@ The directory structure is shown below:
         │   └── x509_modsign.crt
 
 How to Rotate the FoundriesFactory Keys
----------------------------------------
+"""""""""""""""""""""""""""""""""""""""
 
 Each Factory is created with a unique key set. However, it is highly
 recommended to rotate the keys as needed. The suggestion is to rotate them each
@@ -190,7 +201,7 @@ OP-TEE and Linux Kernel Modules is shown. Assuming the ``lmp-manifest`` reposito
 cloned inside ``<factory>`` directory.
 
 U-Boot Keys
-"""""""""""
+~~~~~~~~~~~
 
 .. _ref-factory-key-ubootdev:
 
@@ -219,7 +230,7 @@ For ``spldev``:
 .. _ref-factory-key-opteedev:
 
 OP-TEE Keys
-"""""""""""
+~~~~~~~~~~~
 
 .. prompt:: bash host:~$
 
@@ -233,7 +244,7 @@ OP-TEE Keys
 .. _ref-factory-key-tfa:
 
 TrustedFirmware-A Keys
-"""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 For TF-A keys:
 
@@ -249,7 +260,7 @@ For TF-A keys:
 .. _ref-factory-key-linux-module:
 
 Linux Kernel Modules Keys
-"""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A configuration file is needed to create the key used by Linux Kernel to sign
 the modules. The `Linux Kernel documentation`_ states the parameters required
