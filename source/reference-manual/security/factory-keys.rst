@@ -325,4 +325,7 @@ as shown in the following command:
      # TF-A Trusted Boot
      TF_A_SIGN_KEY_PATH = "${TOPDIR}/conf/factory-keys/tf-a/privkey_ec_prime256v1.pem"
 
+  This blog post shows how to identify which keys are being used during boot time: `How to read the boot logs to check the used keys`_.
+
 .. _Linux Kernel documentation: https://www.kernel.org/doc/html/v5.0/admin-guide/module-signing.html
+.. _How to read the boot logs to check the used keys: https://foundries.io/insights/blog/checking-log-secure/
