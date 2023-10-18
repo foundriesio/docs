@@ -71,7 +71,7 @@ Configuring CI to Build New Branches
 
 By default, ``meta-subscriber-overrides``, ``lmp-manifest`` and ``containers``
 have the single branch, ``main``.
-For these repos it is reccomended to also have a ``devel`` branch for non-production purposes.
+For these repos it is recommended to also have a ``devel`` branch for non-production purposes.
 ``ci-scripts`` has the single default branch ``master``.
 
 Platform Branches
