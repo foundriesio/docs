@@ -254,6 +254,41 @@ This lets you can check the pruned targets before running the actual command::
 
   fioctl targets prune --by-tag <tag> --keep-last <number> --dryrun
 
+Device Registration Common Errors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Even if the device has a proper internet connection, users can still run into errors during device registration.
+The ``lmp-device-register`` provides some diagnostics in the error message without exposing sensitive information to avoid possible attack vectors.
+
+Here, we show additional information to help debug of common errors encountered during the registration:
+
+.. code-block::
+
+   Unable to create device: HTTP_401
+   Polis Error: {"error":"not_found","error_description":"Cannot find a user with the provided token","status":404}
+
+This indicates a problem with the token.
+
+**Solution:** Verify there is a valid non-expired token in https://app.foundries.io/settings/tokens/.
+
+.. code-block::
+
+   Unable to create device: HTTP_403
+   message: A factory admin must add you to a team with one of these scopes: home-hub:devices:create
+
+This indicates no permission to create a device in the Factory.
+
+**Solution:** Verify the user token has ``device:create`` scope in https://app.foundries.io/settings/tokens/.
+If the Factory has :ref:`ref-team-based-access` set, check if the user is part of a team which has ``device:create`` permissions.
+
+.. code-block::
+
+   Error authorizing device: 'scope' parameter is not valid: wrong Factory value
+
+This usually means the device is running an image which was built locally and not on FoundriesFactory CI.
+
+**Solution:** Flash an image built from CI.
+
 .. _ref-ts-howto:
 
 How Tos
