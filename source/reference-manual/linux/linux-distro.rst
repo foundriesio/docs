@@ -57,7 +57,7 @@ To change the distro on a FoundriesFactory, from the ``ci-scripts`` git reposito
 lmp-mfgtool
 ***********
 
-The distro used to generate the ``mfgtool-files`` artifacts which provide the deploy and update tool for some machines (i.MX family).
+The distro used to generate the ``mfgtool-files`` artifacts which provide the deploy and update tool for some machines.
 
 .. _ref-lmp-wayland-xwayland:
 
