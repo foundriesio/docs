@@ -1,13 +1,13 @@
 Summary of Crypto Keys Used by FoundriesFactory
 ===============================================
 
-This page provides a brief summary cryptographic keys used by FoundriesFactory®.
-For detailed information on each key, please check the relevant page under :ref:`ref-security`.
+This page provides a brief summary of cryptographic keys used by FoundriesFactory®.
 
 Secure Connection to Cloud Services
 -----------------------------------
 
 These certificates are required to access the FoundriesFactory CI servers.
+For detailed information, check :ref:`ref-secure-cloud-services`.
 
 .. list-table:: Device Gateway Certificates Summary
    :header-rows: 1
@@ -31,6 +31,9 @@ These certificates are required to access the FoundriesFactory CI servers.
 Secure Boot (Hardware Root of Trust)
 ------------------------------------
 
+The Hardware Root of Trust depends on the SoC used.
+Please refer to :ref:`ref-secure-boot` pages and to the vendor reference manual for more information.
+
 .. list-table:: Secure Boot Certificates Summary
    :header-rows: 1
 
@@ -41,16 +44,13 @@ Secure Boot (Hardware Root of Trust)
      - Depends on the SoC
      - Owned and managed by the customer (offline key)
 
-The Hardware Root of Trust depends on the SoC used.
-Please refer to :ref:`ref-secure-boot` pages and
-to the vendor reference manual for more information.
-
 Secure Online Keys for Boot Stack
 ---------------------------------
 
+The detailed description for the LmP Build certificates, including diagrams for the boot flow, is in :ref:`ref-factory-keys`.
+
 The exact list of keys used for the boot stack depends on the hardware used.
-Some platforms will not make use of all keys.
-A list of available keys for an LmP build can be found below:
+Some platforms will not make use of all keys. A list of available keys for an LmP build can be found below:
 
 .. list-table:: LmP Build Certificates Summary
    :header-rows: 1
@@ -84,11 +84,11 @@ A list of available keys for an LmP build can be found below:
      - Owned by the customer, available as an online key for FoundriesFactory CI
      - ``TF_A_SIGN_KEY_PATH``
 
-The detailed description for the LmP Build certificates,
-including diagrams for the boot flow, is in :ref:`ref-factory-keys`.
-
 Secure Over the Air Updates
 ---------------------------
+
+Keys used to deliver secure software updates to FoundriesFactory devices.
+Additional information can be found in :ref:`ref-ota-security`.
 
 .. list-table:: Secure OTA Certificates Summary
    :header-rows: 1
