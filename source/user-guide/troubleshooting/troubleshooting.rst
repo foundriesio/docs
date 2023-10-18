@@ -480,6 +480,51 @@ Secure storage also can be leveraged to store custom device information, like MA
 
 You may wish to retrieve these values from the application. Please refer to the `fiovb-container <https://github.com/foundriesio/containers/tree/master/fiovb-container>`_ example, which brings a simple application to run ``fiovb_printenv`` from inside a container.
 
+.. _ref-ts-bootdelay:
+
+Enable U-Boot Boot Delay
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, LmP disables U-Boot's boot delay feature for security purposes. However, this is a powerful ally during the development phase, as it provides direct access to U-Boot's environment for debugging.
+
+* **Secured/Closed Boards**
+
+This requires changing the ``lmp.cfg`` U-Boot config fragment in order to override ``CONFIG_BOOTDELAY=-2`` set by default in LmP.
+
+1. Create ``bootdelay.cfg`` configuration fragment:
+
+**meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-fio/<machine>/bootdelay.cfg:**
+
+.. code-block::
+
+   CONFIG_BOOTDELAY=3
+
+2. Append it to the U-Boot source:
+
+**meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-fio_%.bbappend**
+
+.. code-block::
+
+   FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
+   SRC_URI:append = " \
+       file://bootdelay.cfg \
+   "
+
+After pushing to the Factory, it is necessary to trigger :ref:`ref-boot-software-updates` for the devices to take the update, or re-flash the device entirely to include this change.
+
+* **Open Boards**
+
+Open/non-secured boards also benefit from the procedure detailed for secured boards, however as they rely on U-Boot env support, there is a handier way on enabling boot delay during runtime:
+
+.. prompt::
+
+   $ sudo su
+   # fw_setenv bootdelay 3
+   # reboot
+
+After reboot, the device shows the U-Boot bootdelay prompt.
+
 .. _ref-ts-tips:
 
 Tips and Abouts
