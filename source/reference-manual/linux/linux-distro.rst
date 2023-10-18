@@ -7,17 +7,25 @@ LmP provides reference distros to be used in different use cases. They state the
 
 If you are not familiar with the concept of Distro, the Yocto Project definition can help (`term-DISTRO`_), another good document is the `Poky`_ description, which is the default distro reference used by the Yocto Project.
 
+LmP supported distros are:
+
+* ``lmp``
+* ``lmp-base``
+* ``lmp-mfgtool``
+* ``lmp-wayland``
+* ``lmp-xwayland``
+
 .. note::
    For guidance on building new targets with a different distro and customizations, see: :ref:`Customizing the Distro <ref-customizing-the-distro>`.
 
-LmP
+lmp
 ***
 
 The ``lmp`` is the default distro for a FoundriesFactory. The main point of this distro is to configure the packages for working with OTA, and to organize the boot sequence, including the image architecture using OSTree and installing the needed artifacts.
 
 This is the default distro used when a FoundriesFactory is created.
 
-LmP Base
+lmp-base
 ********
 
 The ``lmp-base`` is the distro recommended for bring up and low level development (when the platform system is being developed or adjusted, for example).
@@ -46,15 +54,15 @@ To change the distro on a FoundriesFactory, from the ``ci-scripts`` git reposito
 
         DISTRO: lmp-base
 
-LmP MFGTools
-************
+lmp-mfgtool
+***********
 
 The distro used to generate the ``mfgtool-files`` artifacts which provide the deploy and update tool for some machines (i.MX family).
 
 .. _ref-lmp-wayland-xwayland:
 
-LmP Wayland and LmP XWayland
-****************************
+lmp-wayland/lmp-xwayland
+************************
 
 The distros which provide Wayland and XWayland support on top of ``lmp`` distro.
 
