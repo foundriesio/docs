@@ -470,6 +470,16 @@ Follow these steps to do so:
 
 4. Lastly, perform the registration again.
 
+.. _ref-ts-fiovb-container:
+
+Read Secure Variables from Containers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After a board is fused and closed, the secure storage (RPMB) becomes available and handles the necessary variables to perform the OTA logic.
+Secure storage also can be leveraged to store custom device information, like MAC addresses, serial numbers, and other relevant values.
+
+You may wish to retrieve these values from the application. Please refer to the `fiovb-container <https://github.com/foundriesio/containers/tree/master/fiovb-container>`_ example, which brings a simple application to run ``fiovb_printenv`` from inside a container.
+
 .. _ref-ts-tips:
 
 Tips and Abouts
