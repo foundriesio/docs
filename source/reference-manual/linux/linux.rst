@@ -29,6 +29,7 @@ and maintained by Foundries.io on `GitHub`_.
    linux-dev-container
    linux-building
    linux-kernel
+   linux-lmp-fs
    linux-layers
    linux-distro
    linux-wic-installer
