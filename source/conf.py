@@ -104,7 +104,6 @@ extensions = [
     'sphinx_copybutton',
     'sphinx_toolbox.confval',
     'sphinx-prompt',
-    'myst_parser',
     'sphinx_reredirects',
     'sphinx.ext.graphviz',
 ]

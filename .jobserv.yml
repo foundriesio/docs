@@ -4,19 +4,19 @@ triggers:
     type: github_pr
     runs:
       - name: docs
-        container: python:3.6-alpine
+        container: python:3.9-alpine
         host-tag: fio-internal-ci
         script: make-docs
 
       - name: link-check
-        container: python:3.6-alpine
+        container: python:3.9-alpine
         host-tag: fio-internal-ci
         script: link-check
 
 scripts:
   make-docs: |
     #!/bin/sh -ex
-    apk add --update make git graphviz curl ttf-freefont
+    apk add --update make git graphviz curl ttf-freefont gcc musl-dev python3-dev
     pip install -r ./requirements.txt
 
     echo == $(date "+%F %T") Setting up fioctl docs
@@ -42,6 +42,6 @@ scripts:
 
   link-check: |
     #!/bin/sh -ex
-    apk add --update make git
+    apk add --update make git graphviz curl ttf-freefont gcc musl-dev python3-dev
     pip install -r ./requirements.txt
     make BUILDDIR=/archive SPHINXBUILD=sphinx-build linkcheck
