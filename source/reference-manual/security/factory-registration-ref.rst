@@ -3,18 +3,25 @@
 Manufacturing Process for Device Registration
 =============================================
 
-lmp-device-auto-register works great when run manually and can be configured
+Device registration is an important step to ensure that only trusted and authorized devices can
+connect to the Foundries.io™ infrastructure. ``lmp-device-auto-register`` works well when run manually, and can be configured
 to auto register devices in **CI**
 :ref:`builds <ug-lmp-device-auto-register>`. However,
 a different process is required for provisioning production devices.
 The key to production provisioning lies in owning the
-:ref:`device gateway PKI <ref-device-gateway>`. Once a customer has
+:ref:`device gateway PKI <ref-device-gateway>`.
+
+The :ref:`device gateway PKI <ref-device-gateway>` serves as the trust anchor for all device communications.
+When a device tries to connect to the Foundries.io gateway, it presents a TLS certificate.
+Once a customer has
 control of their PKI, they can create client TLS certificates for
 devices that will be trusted by the Foundries.io device gateway.
 
 Customers all have unique requirements, so Foundries.io created a
 `reference implementation`_ that customers can fork and modify to
-their liking. Here are some common ways to use this reference.
+their liking. By using this example, customers can authenticate
+and register devices, granting them the necessary certificates to be
+trusted by the Foundries.io gateway. Here are some common ways to use this reference.
 
 .. _ref-fully-detached:
 
