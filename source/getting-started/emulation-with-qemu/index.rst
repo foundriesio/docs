@@ -113,6 +113,11 @@ Once you’ve converted and resized the image, you can then use it with your QEM
    For this specific platform, we use the ``-bios=flash.bin`` flag to boot the system.
    However, the flags and configurations may vary based on the selected platform.
 
+.. note::
+
+   To emulate multiple devices, ensure that you convert to the QCOW2 format.
+   Each image converted and subsequently run with QEMU will be recognized as a distinct device.
+
 Next Step
 --------------------------
 

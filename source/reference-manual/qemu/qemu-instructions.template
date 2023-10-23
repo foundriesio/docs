@@ -13,8 +13,8 @@
 
 .. note::
     You can fetch either the compressed ``.wic.gz`` or the ``.qcow2`` artifact, you do not need both.
-    Use the .qcow2 artifact if you wish to change the QEMU disk size.
-
+    Use the .qcow2 artifact if you wish to change the QEMU disk size or If you are looking to emulate multiple devices.
+    Each image converted and subsequently run with QEMU will be recognized as a distinct device.
 
 Booting in QEMU
 ---------------
