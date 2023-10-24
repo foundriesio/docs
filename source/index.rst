@@ -85,6 +85,13 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
 
    glossary/index
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Release Notes
+   :name: sec-release-notes
+
+   release-notes/release-notes
+
 .. ifconfig:: todo_include_todos is True
 
    **Documentation-wide TODO List**
