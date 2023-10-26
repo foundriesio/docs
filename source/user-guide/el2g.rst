@@ -234,8 +234,9 @@ EdgeLock 2GO Concepts
 Installing Additional Secure Objects
 ------------------------------------
 
-Any additional Secure Objects that are defined in EdgeLock 2GO and provisioned into the secure element when the device registers.
-Additionally, keypairs and certificates are loaded into PKCS#11 so they are accessible to e.g. OpenSSL.
+Additional Secure Objects can be defined in EdgeLock 2GO through the API.
+These objects are provisioned into the Secure Element when the device registers.
+On top of this, keypairs and certificates are loaded into PKCS#11 so they are accessible, e.g., OpenSSL.
 The convention is that the keypair secure object has an even-numbered OID (e.g. 0x10000010) and the corresponding certificate has an OID one higher (e.g. 0x10000011).
 To enable automatic loading of the keypair and certificate, the ``GENERIC_KEYPAIRS`` variable must be set in ``/etc/default/lmp-el2go-auto-register`` e.g.,
 
