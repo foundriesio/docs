@@ -231,20 +231,20 @@ EdgeLock 2GO Concepts
  * **Subdomain** — Every EdgeLock 2GO account has a "device-link" subdomain that a device's ``nxp_iot_agent_demo`` binary connects to.
    This is the service where secure objects will be exchanged.
 
-Installing Additional Secure Objects
+Installing additional Secure Objects
 ------------------------------------
 
 Any additional Secure Objects that are defined in EdgeLock 2GO and provisioned into the secure element when the device registers.
 Additionally, keypairs and certificates are loaded into PKCS#11 so they are accessible to e.g. OpenSSL.
 The convention is that the keypair secure object has an even-numbered OID (e.g. 0x10000010) and the corresponding certificate has an OID one higher (e.g. 0x10000011).
-To enable automatic loading of the keypair and certificate, the ``GENERIC_KEYPAIRS`` variable must be set in ``/etc/default/lmp-el2go-auto-register`` e.g.,
+To enable automatic loading of the keypair and certificate, the `GENERIC_KEYPAIRS` variable must be set in `/etc/default/lmp-el2go-auto-register`. E.g.
 
-::
   # recipes-support/lmp-el2go-auto-register/lmp-el2go-auto-register/default.env
   REPOID=<YOUR ID FROM fioctl factories>
   GENERIC_KEYPAIRS="0x10000010"
 
-``GENERIC_KEYPAIRS`` defaults to 0X83000044 which is the OID used by AWS IoT.
+`GENERIC_KEYPAIRS` defaults to 0X83000044 which is the OID used by AWS IoT.
+
 
 Further Details
 ---------------
