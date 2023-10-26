@@ -62,6 +62,11 @@ Where ``<soc>`` can be found in the table below:
    * - imx8mn, imx8mp
      - imx8mn_imx8mp
 
+.. note::
+    For Toradex devices ``apalis-imx6-sec`` and ``apalis-imx8-sec``, provide the
+    additional ``-t`` parameter so the Toradex PIDs are included in the output
+    scripts.
+
 4. Install the scripts to the ``meta-subscriber-overrides``:
 
 .. prompt:: bash host:~$
