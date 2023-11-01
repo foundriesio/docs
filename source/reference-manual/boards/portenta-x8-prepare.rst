@@ -1,46 +1,36 @@
 Preparation
 -----------
 
-Ensure you replace the ``<factory>`` placeholder below with the name of your
-Factory.
+.. important::
 
-#. Download necessary files from ``https://app.foundries.io/factories/<factory>/targets``
+   Ensure you replace ``<factory>`` With the name of your Factory.
 
-     a. Click the latest :guilabel:`Target` with the ``platform-devel`` :guilabel:`Trigger`.
+#. Download the necessary files from ``https://app.foundries.io/factories/<factory>/targets``
 
-          .. figure:: /_static/boards/generic-portena-steps-1.png
-            :width: 769
-            :align: center
+     a. Click the latest Target with the ``platform`` Trigger.
 
-     #. Expand the **run** in the :guilabel:`Runs` section which corresponds
-        with the name of the board and **download the Factory image for that
-        machine.**
+     b. Expand the :guilabel:`Runs` section which corresponds with the board.
+        **Download the Factory image for that machine**::
 
-        | E.g: 
-        |     ``lmp-partner-arduino-image-<machine-name>.wic.gz``
-        |     ``u-boot-<machine-name>.itb``
-        |     ``sit-<machine-name>.bin``
-        |     ``imx-boot-<machine-name>``
+          lmp-partner-arduino-image-<machine-name>.wic.gz
+          u-boot-<machine-name>.itb
+          sit-<machine-name>.bin
+          imx-boot-<machine-name>
 
-          .. figure:: /_static/boards/portena-steps-2.png
-            :width: 769
-            :align: center
-
-#. Extract the file ``lmp-partner-arduino-image-<machine-name>.wic.gz``::
-
+#. Extract ``lmp-partner-arduino-image-<machine-name>.wic.gz``:
+   
+   .. prompt::
+        
       gunzip lmp-partner-arduino-image-<machine-name>.wic.gz
 
-#. Expand the **run** in the :guilabel:`Runs` section which corresponds
-   with the name of the board mfgtool-files and **download the tools for that
-   machine.**
+#. Expand the :guilabel:`Runs` section which corresponds with the board.
+   **Download the corresponding mfgtool files**, e.g., ``mfgtool-files-<machine-name>.tar.gz``.
 
-   E.g: ``mfgtool-files-<machine-name>.tar.gz``
-
-#. Download and extract the file ``mfgtool-files-<machine-name>.tar.gz``::
+#. Extract the files::
 
       tar -zxvf mfgtool-files-<machine-name>.tar.gz
 
-#. Organize all the files like the tree below::
+#. Organize the files, mirroring the tree below::
 
       ├── lmp-partner-arduino-image-<machine-name>.wic
       ├── u-boot-<machine-name>.itb

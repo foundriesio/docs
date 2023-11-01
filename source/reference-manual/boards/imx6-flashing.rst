@@ -9,7 +9,7 @@
 
          .. highlight:: none
 
-         In this mode you will use the ``uuu`` tools to program the images to the eMMC.
+         In this mode, you will use the ``uuu`` tools to program the images to the eMMC.
 
       #. Run the command below to program the LmP to the EMMC::
 

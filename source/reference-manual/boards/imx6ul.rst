@@ -59,15 +59,16 @@ i.MX 6UL Evaluation Kit
                └── uuu.exe
 
 .. |secure_boot_preparation_note| replace:: The instructions in this section
-     show the preparation before the flashing procedure.
+     show the preparation needed before the flashing procedure.
 
-.. |secure_boot_pre_flash_note| replace:: Follow the instructios below.
+.. |secure_boot_pre_flash_note| replace:: Follow the instructions below.
 
-Pre-preparation
+
+Pre-Preparation
 ---------------
 
-Before starting to work with |board_name| make sure to switch **SW601** to device
-microSD by setting to OFF, OFF, ON, OFF (from 1-4 bit)
+Before starting to work with |board_name|,
+switch **SW601** to device microSD by setting to OFF, OFF, ON, OFF (from 1–4 bit)
 
      .. figure:: /_static/boards/imx6_sw601.png
           :width: 300

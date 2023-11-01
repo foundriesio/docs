@@ -1,45 +1,35 @@
 Preparation
 -----------
 
-Ensure you replace the ``<factory>`` placeholder below with the name of your
-Factory.
+.. important::
+   Ensure you replace the ``<factory>`` placeholder below with the name of your Factory.
 
 #. Download necessary files from ``https://app.foundries.io/factories/<factory>/targets``
 
-     a. Click the latest :guilabel:`Target` with the ``platform-devel`` :guilabel:`Trigger`.
+     a. Click the latest Target with the :guilabel:`platform` trigger.
 
-          .. figure:: /_static/boards/generic-steps-1.png
-            :width: 769
-            :align: center
+     b. Expand the **run** in the :guilabel:`Runs` section which corresponds with the name of the board.
+        **Download the Factory image for that machine.**
+        For example::
 
-     #. Expand the **run** in the :guilabel:`Runs` section which corresponds
-        with the name of the board and **download the Factory image for that
-        machine.**
-
-        | E.g: 
-        |     ``lmp-factory-image-<machine-name>.wic.gz``
-        |     ``u-boot-<machine-name>.itb``
-        |     ``imx-boot-<machine-name>``
-
-          .. figure:: /_static/boards/apalis-imx8-steps-2.png
-            :width: 769
-            :align: center
+             lmp-factory-image-<machine-name>.wic.gz
+             u-boot-<machine-name>.itb
+             imx-boot-<machine-name>
 
 #. Extract the file ``lmp-factory-image-<machine-name>.wic.gz``::
 
       gunzip lmp-factory-image-<machine-name>.wic.gz
 
-#. Expand the **run** in the :guilabel:`Runs` section which corresponds
-   with the name of the board mfgtool-files and **download the tools for that
-   machine.**
+#. Expand the **run** in the :guilabel:`Runs` section which corresponds with the name of the board.
+   Download the **mfgtools** for that machine, e.g., ``mfgtool-files-<machine-name>.tar.gz``.
 
-   E.g: ``mfgtool-files-<machine-name>.tar.gz``
+#. Extract the file
+   
+   .. prompt:: auto
+      
+         tar -zxvf mfgtool-files-<machine-name>.tar.gz
 
-#. Download and extract the file ``mfgtool-files-<machine-name>.tar.gz``::
-
-      tar -zxvf mfgtool-files-<machine-name>.tar.gz
-
-#. Organize all the files like the tree below::
+#. Organize all the files, mirroring the tree below::
 
       ├── lmp-factory-image-<machine-name>.wic.gz
       ├── u-boot-<machine-name>.itb

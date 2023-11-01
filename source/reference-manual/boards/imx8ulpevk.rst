@@ -61,6 +61,6 @@ i.MX 8 ULP Evaluation Kit
 .. |secure_boot_preparation_note| replace:: The instructions in this section
      show the preparation before the flashing procedure.
 
-.. |secure_boot_pre_flash_note| replace:: Follow the instructios below.
+.. |secure_boot_pre_flash_note| replace:: Follow the instruction below.
 
 .. include:: imx-common-board.inc

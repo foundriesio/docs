@@ -3,7 +3,7 @@
 x86
 ===
 
-The instructions for boards based on x86 cores.
+Instructions for boards based on x86 cores.
 
 .. seealso::
    Instructions on how to boot a :ref:`generic x86-64 image with QEMU <qemu-x86_64>`

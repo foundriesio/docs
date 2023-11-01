@@ -6,39 +6,39 @@ STM32MP157 Discovery Kit
 FoundriesFactory CI Build
 -------------------------
 
-Including STM OpenEmbedded layer requires accepting EULA. When building locally
-it is enough to accept EULA using interactive prompt. When building in CI this
-isn't possible. To enable EULA acceptance in the CI job, ``EULA_stm32mp15disco``
-variable needs to be set in the ``factory-config.yml``::
+.. important::
+   Including the STM™ OpenEmbedded layer requires accepting the EULA.
+   When building locally, it is enough to accept the EULA from an interactive prompt.
+   When building in CI, this is not possible.
+   To enable EULA acceptance in the CI job, the variable ``EULA_stm32mp15disco`` needs to be set in the ``factory-config.yml``
+   ::
 
-    ...
-    lmp:
-      params:
-        ...
-        EULA_stm32mp15disco: "1"
-        ...
+      ...
+      lmp:
+        params:
+          ...
+          EULA_stm32mp15disco: "1"
+          ...
 
-``factory-config.yml`` can be found in ci-scripts.git repository that is
-created for each factory.
+  ``factory-config.yml`` can be found in the ``ci-scripts.git`` repo for your Factory.
 
 .. include:: generic-prepare.rst
 
 Flashing
 --------
 
-Now, flash the ``lmp-factory-image-stm32mp15-disco.wic.gz`` retrieved from the
-previous section to an SD Card. This contains the :term:`system image` that the
-device will boot.
+Flash  ``lmp-factory-image-stm32mp15-disco.wic.gz`` to an SD Card.
+This contains the bootable :term:`system image`.
 
 .. include:: generic-flashing.rst
 
 
-Boot mode
+Boot Mode
 ---------
 
-STM32MP157C-DK2 board has a dip switch that controls boot mode. Dip switch
-covers BOOT0 and BOOT2 signals. They both have to be turned ON for the board
-to boot from SD card.
+The STM32MP157C-DK2 has a dip switch that controls boot mode.
+The dip switch covers ``BOOT0`` and ``BOOT2`` signals.
+Turn both ``ON`` for the board to boot from SD card.
 
 .. figure:: /_static/boards/stm32mp1_boot_mode.png
      :width: 660

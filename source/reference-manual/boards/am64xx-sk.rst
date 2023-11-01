@@ -8,9 +8,9 @@ Texas Instruments AM64x SKEVM
 Hardware Preparation
 --------------------
 
-Set up the board for booting from MMC1 - SDCard:
+Set up the board for booting from MMC1–SDCard:
 
-#. Ensure that the power is off (remove cable from J8)
+#. Ensure that the power is off (remove cable from **J8**):
 
 .. figure:: /_static/boards/am64xx-sk-top.png
      :width: 600
@@ -30,9 +30,8 @@ Set up the board for booting from MMC1 - SDCard:
 Flashing
 --------
 
-Now, flash the ``lmp-factory-image-am64xx-evm.wic.gz`` retrieved from the
-previous section to an SD Card. This contains the :term:`system image` that the
-device will boot.
+Flash ``lmp-factory-image-am64xx-evm.wic.gz`` to an SD Card.
+This contains the bootable :term:`system image`.
 
 .. include:: generic-flashing.rst
 
