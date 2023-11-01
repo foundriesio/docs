@@ -3,34 +3,28 @@
 Jetson AGX Orin Developer Kit
 =============================
 
-This page shows how to flash a Jetson AGX Orin Developer Kit with LmP artifacts.
+This page covers flashing a Jetson AGX Orin Developer Kit with LmP artifacts.
 
 Preparation
 -----------
 
-1. On your factory, click on the latest ``platform-devel`` build:
+1. In your Factory, click on the latest ``platform`` build.
 
-  .. figure:: /_static/boards/generic-steps-1.png
-     :width: 769
-     :align: center
+2. Expand the run for ``jetson-agx-orin-devkit``.
+   Find ``lmp-factory-image-jetson-agx-orin-devkit.tegraflash.tar.gz`` and download the file.
 
-2. Expand the run for ``jetson-agx-orin-devkit`` and look for the **lmp-factory-image-jetson-agx-orin-devkit.tegraflash.tar.gz**
-artifact:
+3. Unzip the file:
 
-  .. figure:: /_static/boards/jetson-agx-orin-devkit_artifacts.png
+   .. prompt:: bash host:~$, auto
 
-3. Unzip the downloaded file:
+         host:~$ tar -xvf lmp-factory-image-jetson-agx-orin-devkit.tegraflash.tar.gz
 
-  .. prompt:: bash host:~$, auto
-
-     host:~$ tar -xvf lmp-factory-image-jetson-agx-orin-devkit.tegraflash.tar.gz
-
-The script used for flashing is **doflash.sh**.
+The script used for flashing is ``doflash.sh``.
 
 Hardware Preparation
 --------------------
 
-Set up the board to boot into recovery mode:
+Set the board to boot into recovery mode:
 
 .. figure:: /_static/boards/jetson-agx-orin-devkit.png
      :width: 600
@@ -38,18 +32,20 @@ Set up the board to boot into recovery mode:
 
      jetson-agx-orin-devkit
 
-1. Connect the USB cable in the base board Type-C connector (10) to the host machine.
+1. Connect the USB cable in the base board Type-C connector (**10**) to the host machine.
 
-2. Press and hold down the Force Recovery button, then either press the Reset button (if already powered) or press the Power button, releasing both buttons in the end.
+2. While holding down the force recovery button, either press the Reset button (if already powered), or the Power button.
+   Release both buttons.
 
-   To check if the board is in recovery mode ``lsusb`` can be used to check if a device from vendor ``0955`` (NVIDIA) is available::
+   To check if the board is in recovery mode, ``lsusb`` can be used.
+   Check if a device from vendor ``0955`` (NVIDIA) is available::
 
        host:~$ lsusb | grep 0955
        Bus 001 Device 014: ID 0955:7023 NVIDIA Corp. APX
 
-   This device is only available when the board successfully booted in recovery mode.
+   This device is only available when the board successfully boots in recovery mode.
 
-3. **OPTIONAL:** For UART output connect a USB cable in the base board USB Micro B connector (9) to the host machine.
+3. **OPTIONAL**: For UART output, connect a USB cable from the base board's USB Micro B connector (**9**), to the host machine.
 
 Flashing
 --------

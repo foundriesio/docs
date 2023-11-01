@@ -12,7 +12,7 @@ Hardware Preparation
 
 #. Ensure that the power code is disconnected.
 
-#. Connect the Micro-USB cable to the ``J4`` connector for serial console
+#. Connect the Micro-USB cable to the **J4** connector for serial console
    output.
 
 
@@ -36,12 +36,10 @@ The SoM Starter Kits use a two stage boot process:
 - The secondary boot device is an SD card containing the Linux kernel and
   system root.
 
-The Xilinx Starter Kit carrier card hardware design sets and factory-locks
-the MPSoC boot mode to QSPI32. The SoM boots up to U-Boot using the QSPI
-contents and U-Boot then does a hand-off to the secondary boot device.
-To replace the boot image on QSPI device with LmP boot images, they have to be
-manually flashed to QSPI using pre-installed U-Boot bootloader shell, which
-will be automatically booted on the first boot:
+The Xilinx Starter Kit carrier card hardware design sets and factory-locks the MPSoC boot mode to QSPI32.
+The SoM boots to U-Boot using the QSPI contents, and U-Boot then does a hand-off to the secondary boot device.
+To replace the boot image on a QSPI device with LmP boot images, manually flash to QSPI using the pre-installed U-Boot bootloader shell.
+The shell is automatically booted on first boot:
 ::
 
     > sf probe; setenv bootseq 1; mmc dev ${bootseq};
@@ -56,7 +54,7 @@ will be automatically booted on the first boot:
     > sf erase 0x2220000 0x20000
     > reset
 
-After reboot, LmP U-Boot serial output is shown:
+After rebooting, the LmP U-Boot serial output is shown:
 
 ::
 
@@ -80,16 +78,13 @@ After reboot, LmP U-Boot serial output is shown:
 Recovery
 --------
 
-If boot images are eventually corrupted, Kria KV260 Vision AI Starter Kit
-provides a Image Recovery application. The Image Recovery application is a
-baremetal application that uses a web-browser-user interface. It is
-invoked when the FW-update (``FWUEN``) button is pressed at power-on,
-or automatically, when both image A and image B becomes un-bootable.
-It can be used to directly update the A/B images and persistent register
-states.
+If boot images become corrupted, the Kria KV260 Vision AI Starter Kit provides an Image Recovery application.
+The Image Recovery is a baremetal application that uses a web-browser user interface.
+It can be invoked when the FW-update (**FWUEN**) button is pressed at power-on.
+This can happen automatically, when both A and B images becomes un-bootable.
+It can be used to directly update the A/B images, and persistent register states.
 
-Read the `Boot Firmware Image Recovery`_ page for more details on this
-application.
+Read the `Boot Firmware Image Recovery`_ page for more details on this application.
 
 .. |Image of Kria board| image:: kria_kv260.png
 .. _Boot Firmware Image Recovery: https://xilinx.github.io/kria-apps-docs/bootfw/build/html/docs/bootfw_image_recovery.html

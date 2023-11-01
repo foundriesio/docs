@@ -18,7 +18,7 @@ Set up the board for updating using the manufacturing tools:
 
      portenta-x8
 
-#. **OPTIONAL** —Only required if you have problems and/or want to see the boot console output.
+#. **OPTIONAL**: Only required if you have problems and/or want to see the boot console output.
 
 .. figure:: /_static/boards/portenta-x8-uart.png
      :width: 600
@@ -26,7 +26,7 @@ Set up the board for updating using the manufacturing tools:
 
      UART 2 Pins
 
-#. You may need to solder a six pin header to the UART2 pad.
+#. You may need to solder a six pin header to the **UART2** pad.
 
 #. Connect a TTL USB to UART 3v3 adapter to the corresponding UART 2 pins on the breakout board.
 
@@ -50,26 +50,26 @@ Set up the board for updating using the manufacturing tools:
           - Parity: None
           - Flow control: None
 
-    A helpful reminder, if your not receiving console output to swap the TX and RX pins. Most TTL
-    USB to UART adaptors do not provide the cross over function.
+    .. tip::
+        If you are not receiving console output to swap the TX and RX pins. Most TTL
+        USB to UART adaptors do not provide the cross over function.
 
-#. Ensure that the power is off (no power input connected)
+#. Ensure that the power is off—no power input connected.
 
-#. Put the Portenta-x8 into programing mode:
+#. Put the Portenta x8 into programming mode:
 
-     Switch BT_SEL to ON and
-     Switch BOOT ON as shown below.
+     Switch **BT_SEL** to **ON** and switch **BOOT** to **ON** as shown below.
 
      .. figure:: /_static/boards/portenta-x8-boot.png
           :width: 600
           :align: center
 
-          BT_SEL and BOOT programing settings
+          BT_SEL and BOOT programming settings
 
 #. Connect your computer to the Portenta X8 board via either USB-C® to USB-A or USB-C® to USB-C®.
-    This connection will power your board ON. It is best to use 5V supply with at least 2A via
-    a USB-C® connector. Negotiating power supplies do not always work and frequent reboots
-    can be detected.
+   This connection will power your board ON. It is best to use 5V supply with at least 2A via
+   a USB-C® connector. Negotiating power supplies do not always work and frequent reboots
+   can be detected.
 
 Flashing
 --------
@@ -80,4 +80,4 @@ Once in serial downloader mode and connected to your PC the evaluation board sho
 
 .. include:: imx8-flashing.rst
 
-To put the Portenta X8 into run mode, switch BT_SEL and BOOT to OFF.
+To put the Portenta X8 into run mode, switch **BT_SEL** and **BOOT** to **OFF**.

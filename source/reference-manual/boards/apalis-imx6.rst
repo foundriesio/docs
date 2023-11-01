@@ -12,8 +12,7 @@ Apalis iMX6 with the Ixora Carrier Board
 Flashing
 --------
 
-Once in serial downloader mode and connected to your PC, the evaluation board
-should show up as a Freescale USB device.
+Once in serial downloader mode and connected to your PC, the evaluation board should show up as a Freescale USB device.
 
 .. note:: Device names and IDs can slightly differ from the steps below.
 
@@ -21,7 +20,6 @@ should show up as a Freescale USB device.
 
 .. include:: imx6-flashing.rst
 
-To go back to run mode, disconnect the jumper from the recovery pads (JP4) and
-reconnect the JP2 jumper.
+To return to run mode, disconnect the jumper from the recovery pads (JP4) and reconnect the JP2 jumper.
 
 Power on the board to boot the new image.

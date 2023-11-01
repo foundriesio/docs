@@ -3,111 +3,99 @@
 STM32MP15 EV1 Evaluation Board
 ==============================
 
-This page shows how to flash an STM32MP15 EV1 board with LmP artifacts.
+This page covers flashing an STM32MP15 EV1 board with LmP artifacts.
 
-Getting Required Software
--------------------------
+Getting the Required Software
+-----------------------------
 
 **STM32CubeProgrammer** is used to flash the STM32MP15 EV1 board.
-This section shows how to properly download and setup this tool on a Linux
-machine. Please skip to the next section if **STM32CubeProgrammer** is
-already installed on your machine.
+This section shows how to download and set it up.
+Skip to the next section if you already have **STM32CubeProgrammer** installed.
 
 
 .. tabs::
 
     .. group-tab:: Linux
 
-	1. Download the `STM32CubeProgrammer`_ software for Linux.
+			1. Download the `STM32CubeProgrammer`_ software for Linux®.
 
-	2. Unzip it to a known location:
+			2. Unzip it to a known location:
 
-	.. prompt:: bash host:~$, auto
+				.. prompt:: bash host:~$, auto
+						
+						host:~$ mkdir <STM32CubeProgrammer_path>
+						host:~$ unzip en.stm32cubeprg-lin_v*.zip -d <STM32CubeProgrammer_path>
 
-		host:~$ mkdir <STM32CubeProgrammer_path>
-		host:~$ unzip en.stm32cubeprg-lin_v*.zip -d <STM32CubeProgrammer_path>
+			3. Run the installer and follow the instructions on screen:
 
-	3. Run the installer and follow the instructions on screen:
+				.. prompt:: bash host:~$, auto
 
-	.. prompt:: bash host:~$, auto
+						host:~$ ./SetupSTM32CubeProgrammer*.linux
 
-		host:~$ ./SetupSTM32CubeProgrammer*.linux
+			4. Export the ``STM32CubeProgrammer_path`` to the system path:
 
-	4. Export the ``STM32CubeProgrammer_path`` to the system path:
+				.. prompt:: bash host:~$, auto
 
-	.. prompt:: bash host:~$, auto
+						host:~$ export PATH=<STM32CubeProgrammer_path>/bin:$PATH
 
-		host:~$ export PATH=<STM32CubeProgrammer_path>/bin:$PATH
+			5. To allow **STM32CubeProgrammer** to access the USB port through low-level commands, proceed as follows:
 
-	5. To allow **STM32CubeProgrammer** to access the USB port through low-level commands, proceed as follows:
+				.. prompt:: bash host:~$, auto
 
-	.. prompt:: bash host:~$, auto
-
-		host:~$ cd <STM32CubeProgrammer_path>/Drivers/rules
-		host:~$ sudo cp *.* /etc/udev/rules.d/
+						host:~$ cd <STM32CubeProgrammer_path>/Drivers/rules
+						host:~$ sudo cp *.* /etc/udev/rules.d/
 
     .. group-tab:: Windows
 
-	1. Download the `STM32CubeProgrammer`_ software for Windows.
+			1. Download the `STM32CubeProgrammer`_ software for Windows.
 
-	2. Unzip it to a known location.
+			2. Unzip it to a known location.
 
-	3. Execute the Windows installer and follow the instructions on screen.
+			3. Execute the Windows installer and follow the instructions on screen.
 
-	4. Run ``STM32 Bootloader.bat`` to install the required DFU drivers and	activate the STM32 device in USB DFU mode.
+			4. Run ``STM32 Bootloader.bat`` to install the required DFU drivers and	activate the STM32 device in USB DFU mode.
 
-	For more information, check the `STM32CubeProgrammer Installation page`_.
+For more information, check the `STM32CubeProgrammer Installation page`_.
 
 Preparation
 -----------
 
-1. On your factory, click on the latest ``platform-devel`` build:
+1. In your Factory, click on the latest ``platform`` build.
 
-	.. figure:: /_static/boards/generic-steps-1.png
-	  :width: 769
-	  :align: center
+2. Expand the run for ``stm32mp15-eval``, and under the ``other`` folder, find and download ``flashlayouts-stm32mp15-eval.tar.gz``.
 
-2. Expand the run for ``stm32mp15-eval`` and look for the **flashlayouts-stm32mp15-eval.tar.gz**
-artifact under the ``other`` folder:
+3. Unzip the file: ::
 
-	.. figure:: /_static/boards/stm32mp15-eval_artifacts.png
+	   tar -xvf flashlayouts-stm32mp15-eval.tar.gz
 
-3. Unzip the downloaded file:
-
-.. prompt:: bash host:~$, auto
-
-	host:~$ tar -xvf flashlayouts-stm32mp15-eval.tar.gz
-
-The file used for flashing is **FlashLayout_stm32mp1-optee.tsv**.
+The file used for flashing is ``FlashLayout_stm32mp1-optee.tsv``
 
 Hardware Preparation
 --------------------
 
 1. Connect the USB OTG cable in the base board to the host machine.
 
-2. Set the boot switches in the CPU board to Serial Download Mode, ``0000``:
+2. Set the boot switches in the CPU board to Serial Download Mode, **0000**:
 
-	.. figure:: /_static/boards/stm32-ev1_sdp.jpg
-	  :width: 350
-	  :align: center
+	 .. figure:: /_static/boards/stm32-ev1_sdp.jpg
+	    :width: 350
+	    :align: center
 
-	  stm32mp15-ev1 SDP mode
+	    stm32mp15-ev1 SDP mode
 
-3. **OPTIONAL:** For UART output in the USB connector in the CPU board, remove
-``JP1`` jumper and move ``JP4`` and ``JP5`` to the 2-3 position, as pictures
-below:
+3. **OPTIONAL**: For UART output in the USB connector on the CPU board, remove **JP1** jumper and move **JP4** and **JP5** to the 2–3 position:
 
 	.. figure:: /_static/boards/stm32-ev1_jp1.jpg
-	  :width: 50%
-	  :align: center
+	   :width: 50%
+	   :align: center
 
-	  stm32mp15-ev1 JP1
+	   stm32mp15-ev1 JP1
 
 	.. figure:: /_static/boards/stm32-ev1_jp4-jp5.jpg
-	  :width: 350
-	  :align: center
+	   :width: 350
+	   :align: center
 
-	  stm32mp15-ev1 JP4 and JP5
+	   stm32mp15-ev1 JP4 and JP5
 
 Flashing
 --------
@@ -142,8 +130,7 @@ Index`` from the previous step if needed:
 This can take a few minutes to complete. The process can be watched from the
 host console, UART output, or board display.
 
-3. Once the flashing procedure finishes, change the boot switches to eMMC boot,
-``0100``:
+3. Once the flashing procedure finishes, change the boot switches to eMMC boot, **0100**:
 
 	.. figure:: /_static/boards/stm32-ev1_boot.jpg
 	  :width: 350

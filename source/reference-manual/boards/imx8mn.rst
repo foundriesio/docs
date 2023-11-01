@@ -58,13 +58,13 @@ i.MX 8M Nano Evaluation Kit
                └── uuu.exe
 
 .. |secure_boot_preparation_note| replace::
-    The instructions in this section also apply to those boards with secure
-    boot enabled. There are references on how to perform common instructions
-    along with the flow. The :ref:`ref-security` Reference Manual details the
-    required background for secure boot.
+    The instructions in this section also apply to those boards with secure boot enabled.
+    There are references on how to perform common instructions along with the flow.
+    The :ref:`ref-security` section details the required background for secure boot.
 
-.. |secure_boot_pre_flash_note| replace:: For instructions on how to sign the
-     required images before flashing them to the board with secure boot enabled,
-     follow the instructions from :ref:`ref-secure-machines`.
+.. |secure_boot_pre_flash_note| replace::
+   For instructions on how to sign the
+   required images before flashing them to the board with secure boot enabled,
+   see :ref:`ref-secure-machines`.
 
 .. include:: imx-common-board.inc

@@ -9,10 +9,10 @@
 
          .. highlight:: none
 
-         In this mode you will use the ``uuu`` tools to program the images to the eMMC. The USB
-         ID may differ if a different SoC is used.
+         In this mode, you will use the ``uuu`` tools to program the images to the eMMC.
+         The ``USB ID`` may differ if a different SoC is used.
 
-      #. Run the command below to program the LmP to the EMMC::
+      #. To program the LmP to the EMMC, run::
 
            $ sudo mfgtool-files-<machine-name>/uuu -pp 1 mfgtool-files-<machine-name>/full_image.uuu
            uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.43-0-ga9c099a
@@ -23,21 +23,21 @@
            1:31     3/ 3 [=================100%=================] SDPV: jump
            2:31     8/ 8 [Done                                  ] FB: done
 
-      #. Turn off the power.
-      #. Put the board into run mode
+      #. Turn off the power
+      #. Put the board into run mode.
 
    .. group-tab:: Windows
 
       #. Start the ``Device Manager``
       #. Select ``View``
       #. Select ``Devices by container``
-      #. Verify a device like the following:
+      #. Verify a device as in the following:
 
       .. figure:: /_static/boards/windows_verify.png
           :width: 600
           :align: center
 
-      #. Run the command below to program the LmP to the EMMC::
+      #. To program the LmP to the EMMC, run::
 
            C:\Users\Someone> mfgtool-files-<machine-name>\uuu.exe -pp 1 mfgtool-files-<machine-name>\full_image.uuu
            uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.43-0-ga9c099a
@@ -48,5 +48,5 @@
            1:31     3/ 3 [=================100%=================] SDPV: jump
            2:31     8/ 8 [Done                                  ] FB: done
 
-      #. Turn off the power.
-      #. Put the board into run mode
+      #. Turn off the power
+      #. Put the board into run mode.

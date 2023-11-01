@@ -2,16 +2,15 @@
 
    .. group-tab:: Linux
 
-      1. Determine the disk you want to flash by finding the device with the
-         ``SIZE`` that matches your flash drive in the list below.  Be sure to ignore
-         partitions (where ``TYPE`` is ``part``).  Save the ``NAME`` for your flash drive to
-         be used in a later step as the disk path. e.g: ``/dev/mmcblk0``, ``/dev/sdb``::
+      1. Determine which disk to flash by finding the device with the ``SIZE`` that matches that of your flash drive.
+         Ignore partitions (indicated by ``part`` under ``TYPE``).
+         Note the ``NAME`` of the flash drive (e.g., ``/dev/mmcblk0``, ``/dev/sdb``), as it will be used for the disk path::
 
            lsblk -po +MODEL
 
          .. highlight:: none
 
-         **Example Output**::
+         ::
 
            $ lsblk -po +MODEL
            NAME             MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT                 MODEL
@@ -32,17 +31,15 @@
 
    .. group-tab:: macOS
 
-      1. Determine the disk you want to flash by finding the device with the
-         ``SIZE`` that matches your flash drive in the list below.  Be sure to ignore
-         partitions (lines without the * in the ``SIZE``).  Save the ``IDENTIFIER`` for your
-         flash drive to be used in a later step as the disk path. e.g:
-         ``/dev/disk3``::
+      1. Determine which disk you want to flash by finding the device with the ``SIZE`` that matches that of your flash drive.
+         Ignore partitions (lines without ``*`` in the ``SIZE``).
+         Note the ``IDENTIFIER`` of the flash drive, (e.g., ``/dev/disk3``) as it will be used for the disk path::
 
-           diskutil list
+           ``diskutil list``:
 
          .. highlight:: none
 
-         **Example Output**::
+         ::
 
            $ diskutil list
            /dev/disk3 (internal, physical):
@@ -62,17 +59,15 @@
 
    .. group-tab:: Windows
 
-      Windows has no ``dd`` like tool built into the operating system to flash
-      your image to disk. In this case, we recommend you download and use either
-      **Win32 Disk Imager** or **Rufus**.
+      Windows has no built in tools for flashing the image to disk.
+      We recommend you download and use either **Win32 Disk Imager** or **Rufus**.
 
       .. note:: 
 
-           Your system image is in a compressed wic.gz format. To follow these next
-           steps, you must extract it using a tool like 7zip_ which will leave you with a
-           .wic image file.
+           Your system image is in a compressed ``wic.gz`` format.
+           To follow these next steps, you must extract it using a tool like 7zip_ which will leave you with a ``.wic`` image file.
 
-      **Using Rufus**
+      **Using Rufus**:
 
       #. Download and run Rufus_.
       #. Select your disk.
@@ -86,9 +81,10 @@
       #. Select your ``<system-image>``
       #. Select your disk via the :guilabel:`Device` dropdown.
       #. Click :guilabel:`Write`
-      #. Wait for the image to finish writing, and a **Write Successful** dialog will appear.
+      #. Wait for the image to finish writing.
+         A **Write Successful** dialog will appear.
 
-1. Remove the flash drive from the host and insert/connect it into the board.
+1. Remove the flash drive and connect it to the board.
 
 2. Power on the board to boot the new image.
 

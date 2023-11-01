@@ -1,20 +1,16 @@
-i.MX 8M Plus Evaluation Kit with SE050ARD
+i.MX 8M Plus Evaluation Kit With SE050ARD
 =========================================
 
-This document walks a developer through the steps of installing a
-FoundriesFactory image with the SE050 hardware enabled onto the NXP
-``imx8mp-lpddr4-evk`` that is connected to the NXP OM-SE050ARD development
-platform.
+This document walks through the steps of installing a FoundriesFactory® image with SE050 hardware enabled onto the NXP® ``imx8mp-lpddr4-evk``,
+connected to the NXP OM-SE050ARD development platform.
 
 .. note::
-    An image created in the factory with the SE050 enabled does not boot on
-    boards without the SE050 properly attached.
+    An image created in a Factory with SE050 enabled does not boot on boards without the SE050 properly attached.
 
 Attaching the SE050
 -------------------
 
-Using four male to male jumper wires (Arduino Compatible Pin size)
-connect the two boards as follows:
+Using four male to male jumper wires (Arduino Compatible Pin size) connect the two boards as shown:
 
 .. figure:: /_static/boards/imx8mp-lpddr4-evk_J22.png
      :width: 400
@@ -48,8 +44,7 @@ Connect the signals as follows:
 | GND      |       J22 pin 7      | J2 pin 7    |
 +----------+----------------------+-------------+
 
-Be sure that the jumpers on the SE050 evaluation board are
-set as follows:
+Be sure that the jumpers on the SE050 evaluation board are set as shown:
 
 .. figure:: /_static/boards/se050ard_jumpers.png
      :width: 400
@@ -57,7 +52,7 @@ set as follows:
 
      SE050 Jumper Settings
 
-Lastly, the connected boards should look like this:
+The connected boards should look like this:
 
 .. figure:: /_static/boards/se050ard_imx8mp.jpg
      :width: 400
@@ -68,9 +63,8 @@ Lastly, the connected boards should look like this:
 Installing the FoundriesFactory Image
 -------------------------------------
 
-Download the images that have the SE050 enabled from the factory following
-the instructions in :ref:`ref-rm_board_imx8mp-lpddr4-evk`.
+Download the images that have the SE050 enabled from the Factory.
+Follow the instructions in :ref:`ref-rm_board_imx8mp-lpddr4-evk`.
 
 .. note::
-    A reference on the needed changes to enable the SE050 middleware can be
-    found in :ref:`ref-security_se05x_enablement`.
+    A reference on the needed changes to enable the SE050 middleware can be found in :ref:`ref-security_se05x_enablement`.

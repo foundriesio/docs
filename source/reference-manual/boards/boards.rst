@@ -3,7 +3,7 @@
 Supported Boards
 ================
 
-Find below the instructions on how to flash the supported boards.
+Select your board below to view flashing instructions.
 
 .. toctree::
    :maxdepth: 1

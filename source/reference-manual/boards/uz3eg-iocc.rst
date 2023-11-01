@@ -8,22 +8,21 @@ Avnet UltraZed SOM with UltraZed-EG IO Carrier Card
 Hardware Preparation
 --------------------
 
-#. Ensure that the power switch is off (``SW8`` switch is off).
+#. Ensure that the power switch is off (**SW8** switch is off).
 
 #. Install UltraZed SOM on UltraZed-EG carrier.
 
-#. Connect the Micro-USB cable to the ``J11`` (``DUAL USB UART`` label)
-   connector.
+#. Connect the Micro-USB cable to the **J11** (**DUAL USB UART** label) connector.
 
-#. Connect power cord.
+#. Connect the power cord.
 
-#. Set boot switch, which is located on SOM, to ``[1:4]`` to
-   ``OFF,ON,OFF,ON``, so it boots from SD by default.
+#. Set the boot switch located on the SOM at **[1:4]** to **OFF,ON,OFF,ON**.
+   This will cause it to boot from the SD by default.
 
 
-Flashing and boot
+Flashing and Boot
 -----------------
 
-.. note:: Device names and IDs can slightly differ from the steps below.
+.. note:: Device names and IDs can differ slightly from the steps below.
 
 .. include:: generic-flashing.rst
