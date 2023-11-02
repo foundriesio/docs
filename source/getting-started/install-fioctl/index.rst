@@ -213,11 +213,7 @@ Run the following command to add the relevant entries to the Git configuration:
    This is because it needs to have privileges to create a symlink in the same directory as where ``git`` is located.
 
 .. warning::
-   * If for some reason the command fails with an error, the following manual steps can be taken to get the exact same result::
-
-      git config --global credential.https://source.foundries.io.username fio-oauth2
-      git config --global credential.https://source.foundries.io.helper fio
-      ln -s /usr/local/bin/fioctl /usr/bin/git-credential-fio
+   * If for some reason the command ``sudo fioctl configure-git`` fails with an error, manual steps can be taken to get the exact same result. For comprehensive instructions, please see the :ref:`Fioctl™ Errors <ref-ts-errors>` section.
 
    * Existing users reconfiguring Git access may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility::
 
