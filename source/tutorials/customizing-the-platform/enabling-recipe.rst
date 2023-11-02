@@ -22,7 +22,7 @@ Edit ``recipes-samples/images/lmp-factory-image.bb`` and append ``CORE_IMAGE_BAS
 .. prompt:: bash host:~$, auto
 
     host:~$ cd ..
-    host:~$ gedit recipes-samples/images/lmp-factory-image.bb
+    host:~$ vi recipes-samples/images/lmp-factory-image.bb
 
 .. prompt:: text
 

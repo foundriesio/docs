@@ -12,7 +12,7 @@ Start by removing ``shellhttpd.conf`` from the ``Dockerfile`` to simplify your a
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/Dockerfile
+    host:~$ vi shellhttpd/Dockerfile
 
 ::
 
@@ -26,7 +26,7 @@ Edit ``docker-compose.yml`` and change the ``volumes`` stanza to share the ``/va
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/docker-compose.yml
+    host:~$ vi shellhttpd/docker-compose.yml
 
 ::
 

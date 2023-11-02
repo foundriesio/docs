@@ -47,7 +47,7 @@ As you are still developing locally, edit the image parameter to use the image a
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit docker-compose.yml
+    host:~$ vi docker-compose.yml
 
 **docker-compose.yml**:
 

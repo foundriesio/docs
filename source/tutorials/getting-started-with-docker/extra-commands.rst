@@ -143,7 +143,7 @@ Using the text editor of your choice, change ``OK`` to ``FoundriesFactory``, the
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit httpd.sh
+    host:~$ vi httpd.sh
 
 **httpd.sh**:
 
