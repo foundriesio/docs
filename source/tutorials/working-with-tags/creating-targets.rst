@@ -17,7 +17,7 @@ Edit ``docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/docker-compose.yml
+    host:~$ vi shellhttpd/docker-compose.yml
 
 .. prompt:: text
 
@@ -53,7 +53,7 @@ Edit ``docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/docker-compose.yml
+    host:~$ vi shellhttpd/docker-compose.yml
 
 .. prompt:: text
 
@@ -85,7 +85,7 @@ Keep watching your jobs on https://app.foundries.io and once it finishes, change
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/docker-compose.yml
+    host:~$ vi shellhttpd/docker-compose.yml
 
 **shellhttpd/docker-compose.yml**:
 

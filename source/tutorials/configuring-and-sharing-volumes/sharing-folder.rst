@@ -14,7 +14,7 @@ Edit ``docker-compose.yml``, adding the ``volumes`` stanza:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/docker-compose.yml
+    host:~$ vi shellhttpd/docker-compose.yml
 
 ::
 

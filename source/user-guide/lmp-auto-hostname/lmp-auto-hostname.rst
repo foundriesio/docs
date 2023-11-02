@@ -84,7 +84,7 @@ Select the Serial or MAC tab below, according to your needs.
       
       .. prompt:: bash host:~$, auto
       
-          host:~$ gedit recipes-samples/images/lmp-factory-image.bb
+          host:~$ vi recipes-samples/images/lmp-factory-image.bb
       
       ::
       

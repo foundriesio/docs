@@ -12,7 +12,7 @@ Edit ``httpd.sh`` as below:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/httpd.sh
+    host:~$ vi shellhttpd/httpd.sh
 
 .. prompt:: shell
 
