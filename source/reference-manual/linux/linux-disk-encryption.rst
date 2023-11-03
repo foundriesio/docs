@@ -488,7 +488,7 @@ presence of the RSA-2048 key mentioned earlier:
 
    The OP-TEE PKCS#11 secure storage emulation  will NOT survive across
    reboots. As a consequence of this, because the root file system
-   was encrypted, the system will encounter a    failure in mounting the
+   was encrypted, the system will encounter a failure in mounting the
    root file system during the subsequent boot.
 
 
