@@ -4,7 +4,7 @@ Disk Encryption Support
 =======================
 
 To enhance the security of system deployments before manufacturing
-provisions the targets, LmP takes the following approach:
+provisions the Targets, LmP takes the approach detailed here.
 
 During the image creation process in CI, LmP uses LUKS to construct a
 symmetrically encrypted root file-system. The master key used for
