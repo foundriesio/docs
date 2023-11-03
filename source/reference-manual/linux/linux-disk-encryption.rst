@@ -8,7 +8,7 @@ provisions the Targets, LmP takes the approach detailed here.
 
 During the image creation process in CI, LmP uses LUKS to construct a
 symmetrically encrypted root file-system. The master key used for
-data encryption is locked/unlocked via a simple passphrase.
+data encryption is locked/unlocked via a passphrase.
 
 Upon the initial boot, during initramfs, the passphrase used for
 accessing the master key is discarded and replaced by a cryptographic
