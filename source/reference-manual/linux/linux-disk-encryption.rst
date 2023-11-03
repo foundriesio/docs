@@ -297,7 +297,7 @@ Make sure LUKS support is enabled for your ``qemuarm64-secureboot`` target:
   DISTRO_FEATURES:append:qemuarm64-secureboot = " luks"
 
 
-When running Qemu, please be cautious not to exceed 2GB of memory usage,
+When running QEMU, please be cautious not to exceed 2GB of memory usage,
 as attempting to use more than 2GB of memory may prevent the OP-TEE
 emulation from successfully booting. So, it's advisable to stay within
 this memory limit.
