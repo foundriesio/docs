@@ -16,7 +16,7 @@ In the first stage you can install dependencies for development, like a toolchai
 In the final stage, the image is kept clean with just the necessities for your application.
 This is done by making use of the final artifacts from the first stage.
 
-This guide presenst a Dockerfile implementing a ``helloworld`` application written in C. 
+This guide presents a Dockerfile implementing a ``helloworld`` application written in C. 
 
 In the first example, the Dockerfile is implementing everything in a single stage, leaving all objects and spare software in the image.
 

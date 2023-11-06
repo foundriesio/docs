@@ -38,7 +38,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-user-guide
 
    user-guide/account-management/account-management
-   user-guide/container-preloading/container-preloading
+   user-guide/containers-and-docker/index
    user-guide/custom-ci/custom-ci
    user-guide/lmp-customization/lmp-customization
    user-guide/lmp-auto-hostname/lmp-auto-hostname
@@ -47,7 +47,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/mirror-action/mirror-action
    user-guide/submodule/submodule
    user-guide/custom-sota-client
-   user-guide/multi-stage-container/multi-stage-container
    user-guide/fioctl/index
    user-guide/cert-rotation
    user-guide/device-gateway-pki/device-gateway-pki

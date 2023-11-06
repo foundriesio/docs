@@ -24,7 +24,7 @@ Prerequisites
 - Completed the :ref:`tutorial-gs-with-docker` tutorial.
 - Completed the :ref:`tutorial-creating-first-target` tutorial.
 - Completed the :ref:`tutorial-deploying-first-app` tutorial.
-- Read the :ref:`ref-compose-apps` reference manual.
+- Read the :ref:`ref-compose-apps` guide.
 
 Instructions
 ------------

@@ -3,7 +3,7 @@
 Docker Credential Helper
 ========================
 
-``fioctl`` has a Docker credential helper, providing easier access to hub.foundries.io.
+Fioctl® has a Docker credential helper, providing easier access to ``hub.foundries.io``.
 This enables the use of Docker commands from a personal computer, such as a laptop.
 
 .. note::
@@ -20,7 +20,7 @@ This creates a symlink named ``docker-credential-fio`` in the directory of the d
 .. important::
     Because the Docker client is usually somewhere under ``/usr``, you will want to run ``fioctl configure-docker`` with root permission.
 
-The helper then updates `your` Docker config file, which is located under ``$HOME/.docker``.
+The helper then updates *your* Docker config file, which is located under ``$HOME/.docker``.
 
 .. note::
     The helper configures for the current `user` and not the entire `system`.
