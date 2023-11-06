@@ -336,6 +336,11 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 # Config for sphinx-reredirects, maps source: target, target path is relative to source.
 # TODO: troubleshooting sections redirecting to lmp-customization do not appear to be functional
 redirects = {
+     "reference-manual/docker/compose-apps": "../../user-guide/containers-and-docker/compose-apps.html",
+     "reference-manual/docker/configure-docker-helper": "../../user-guide/containers-and-docker/configure-docker-helper.html",
+     "reference-manual/docker/containers": "../../user-guide/containers-and-docker/containers.html",
+     "user-guide/containers-preloading/container-preloading": "../containers-and-docker/container-preloading.html",
+     "user-guide/multi-stage-container/multi-stage-container": "../containers-and-docker/multi-stage-container",
      "reference-manual/factory/team-based-access": "../../user-guide/account-management/team-based-access.html",
      "reference-manual/factory/factory-keys": "../../reference-manual/security/factory-keys.html",
      "reference-manual/security/secure-boot": "security.html#secure-boot-hardware-root-of-trust",
