@@ -7,14 +7,7 @@
 
      └── |ARCH|
          ├── lmp-factory-image-|MACHINE|.wic.gz
-         ├── other
-         │   └── lmp-factory-image-|MACHINE|.wic.qcow2 # optional
          └── |FIRMWARE_BLOB|
-
-.. note::
-    You can fetch either the compressed ``.wic.gz`` or the ``.qcow2`` artifact, you do not need both.
-    Use the .qcow2 artifact if you wish to change the QEMU disk size, or if you are looking to emulate multiple devices.
-    Each image converted and subsequently run with QEMU will be recognized as a distinct device.
 
 Booting in QEMU
 ---------------
@@ -41,26 +34,15 @@ Booting in QEMU
 
 #. :ref:`Download the artifacts <gs-download>` needed for |ARCH|.
    These can be found under the :guilabel:`Targets` tab for your Factory.
-   Resizable qcow2 images are located in the ``other`` folder.
 
-#. `Optional`. Resize the qcow2 image:
+#. `Optional`. Create and resize a qcow2 image:
 
    .. parsed-literal::
-
+        qemu-img create -f qcow2 -F raw -b lmp-factory-image-|MACHINE|-secureboot.wic qemuarm64-secureboot_device1.qcow2
         qemu-img resize -f qcow2 lmp-factory-image-|MACHINE|.wic.qcow2 8G
    
-   The above example resizes to 8G—set to meet your needs.
+   The above example creates and then resizes to 8G—set to meet your needs.
 
-   .. tip::
-       
-       If you already have the wic file, you can use it to create a qcow image:
-
-       .. parsed-literal::
-            
-            qemu-img create -f qcow2 -F raw -b lmp-factory-image-|MACHINE|.wic lmp-factory-image-|MACHINE|.wic.qcow2
-      
-      You can then use ``qemu-img resize`` as above.
-            
  
 #. The directory tree should now look like this:
 
@@ -76,6 +58,8 @@ Booting in QEMU
    You can save this as ``run.sh`` inside the directory for convenience.
 
 .. important::
+    Use  .qcow2 if you wish to change the QEMU disk size, or if you are looking to emulate multiple devices.
+    Each image converted and subsequently run with QEMU will be recognized as a distinct device.
     If you are using the qcow2 image, change the script so that:
 
        * ``file=`` is set as the qcow2 image name, i.e., lmp-factory-image-|MACHINE|.wic.qcow2
