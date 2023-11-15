@@ -62,7 +62,7 @@ Push:
 
 Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targets`:
 
-The latest **Target** named :guilabel:`platform-devel` should be the CI job you just created.
+The latest **Target** named :guilabel:`platform-main` should be the CI job you just created.
 
 .. note::
 
