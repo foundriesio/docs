@@ -3,16 +3,15 @@
 Factory Definition
 ==================
 
-Each Factory can be customized to control how CI handles it. This is managed in
-the "Factory Definition" which is located in a factory's **ci-scripts.git**
-repository in the  **factory-config.yml** file.
+Each Factory can be customized to control how CI handles it.
+This is managed in the "Factory Definition" , located in a Factory's ``ci-scripts.git`` repo, in ``factory-config.yml``.
 
 .. _def-notify:
 
 notify
 ------
 
-Configures the users who receive an email with the build notification.
+Configures who receives an email with build notifications.
 
 .. sidebar:: ``notify:`` Section Example
 
@@ -26,10 +25,10 @@ Configures the users who receive an email with the build notification.
 notify:
  email:
   users: ``<email_1>,<email_2>,<...>``
-      **Required:** Comma separated list of addresses to email after each CI build.
+      **Required:** A Comma separated list of email addresses to email after each CI build.
 
   failures_only: ``<true|false>``
-      **Optional:** If set to ``true`` users will only be notified of CI failures.
+      **Optional:** If set to ``true``, users will only be notified of CI failures.
 
       **Default:** ``false``
 
@@ -38,12 +37,12 @@ notify:
 
      **Default:** ``Disabled``
 
-  - url: ``https://example.com/customer-webhook-endpoint``
-      **Required:** Customer owned HTTP(s) endpoint to send webhooks
+    url: ``https://example.com/your-webhook-endpoint``
+      **Required:** A HTTP(s) endpoint you own to send webhooks
     secret_name: ``my-secret-name``
         **Required:**  See :ref:`ref-ci-webhooks` for details.
     failures_only: ``<true|false>``
-        **Optional:** If set to ``true`` users will only be notified of CI failures.
+        **Optional:** If set to ``true``, users will only be notified of CI failures.
 
         **Default:** ``false``
 
@@ -52,8 +51,8 @@ notify:
 lmp
 ---
 
-Configures the LmP aspects to this factory, including images, distro and machine names.
-Variables to be used with the metadata and artifacts.
+Configures the LmP aspects of the Factory, including images, distro, and machine names.
+Variables to be used with metadata and artifacts.
 
 .. sidebar:: ``lmp:`` Section Example
 
@@ -66,22 +65,22 @@ Variables to be used with the metadata and artifacts.
            params:
              EXAMPLE_VARIABLE_1: hello_world
            machines:
-             - imx8mmevk
+             - imx8mm-lpddr4-evk
            image_type: lmp-factory-image
            ref_options:
-            refs/heads/devel:
+            refs/heads/main:
               machines:
-                - raspberrypi3-64
+                - raspberrypi4-64
               params:
-                IMAGE: lmp-mini
+                IMAGE: lmp-factory-image
                 EXAMPLE_VARIABLE_1: foo
            tagging:
              refs/heads/main:
                - tag: postmerge
-             refs/heads/devel:
-               - tag: devel
+             refs/heads/feature1:
+               - tag: feature1
            mfg_tools:
-             - machine: imx8mmevk
+             - machine: imx8mm-lpddr4-evk
                image_type: mfgtool-files
                params:
                  DISTRO: lmp-mfgtool
@@ -90,49 +89,44 @@ Variables to be used with the metadata and artifacts.
 lmp:
  preloaded_images:
   enabled: ``<true|false>``
-      **Optional:** Whether to preload docker images into the system-image as
-      part of a platform build.
+      **Optional:** Whether to preload Docker images into the system-image as part of a platform build.
 
       **Default:** ``false``
 
       **Inherits:** ``containers``
 
   shortlist: ``<app1>,<app2>,<...>``
-      **Optional:** Comma separated list of apps to preload. If it is not specified
-      or its value is empty, then all Target's apps are preloaded.
+      **Optional:** Comma separated list of apps to preload.
+      If not specified, or its value is empty, then all of a Target's apps are preloaded.
 
       **Default:**  None
 
  params:
   EXAMPLE_VARIABLE_1: ``<value>``
-      **Optional:** Define an arbitrary environment variable to be passed into
-      the LmP build. You can define as many as you want.
+      **Optional:** Define an arbitrary environment variable to be passed into the LmP build.
+      You can define as many as you want.
 
-      **Default:** This variable is user defined and does not exist unless
-      instantiated.
+      **Default:** This variable is user defined and does not exist unless instantiated.
 
  machines:|br| ``- <machine_1>`` |br| ``- <machine_2>``
-      **Required**: Specify the list of :ref:`Supported LmP Machines
-      <ref-linux-supported>` to build for by their ``MACHINE`` name. A Factory's
-      subscription is generally only good for a single machine.
+      **Required**: Specify the list of :ref:`Supported LmP Machines <ref-linux-supported>` to build for, using the ``MACHINE`` name.
+      A Factory's subscription is generally only for a single machine.
 
-      **Default:** Set by user during :ref:`gs-signup`
+      **Default**: Set during :ref:`gs-signup`.
 
- .. note::
-
-     The CI is configured to decline changes in the ``machines:`` parameter.
-     If needed, ask a support engineer to update the machine definition for your
-     FoundriesFactory.
+     .. note::
+        
+        The CI is configured to decline changes to the ``machines:`` parameter.
+        If needed, `ask a support engineer <https://support.foundries.io>`_ to update the machine definition for your Factory.
 
  image_type:``<lmp_image_type>``
-      **Optional:** Set the LmP image type to produce by recipe name. For
-      example, ``lmp-mini-image``, ``lmp-base-console-image`` from meta-lmp_.
+      **Optional:** Set the LmP image type by recipe name.
+      For example, ``lmp-mini-image``, ``lmp-base-console-image`` from meta-lmp_.
 
-      **Default:** ``lmp-factory-image`` |br| (from
-      **recipes-samples/images/lmp-factory-image.bb** in your
-      **meta-subscriber-overrides.git** repo)
+      **Default:** ``lmp-factory-image`` |br| 
+      from ``recipes-samples/images/lmp-factory-image.bb`` in your ``meta-subscriber-overrides.git`` repo.
 
- ref_options:
+ref_options:
   refs/heads/``<branch>``:
       **Optional:** Override options when specific git references are updated
 
@@ -140,36 +134,37 @@ lmp:
 
       .. code-block:: yaml
 
-	   # In the below example, when the branch named "devel" is built by our
-	   # CI system, it will have its option values for "machine" and
-	   # "params" overriden by what is specified after "refs/heads/devel:".
-	   # In the "devel" build, IMAGE will now equal "lmp-mini" rather than
-	   # "lmp-factory-image" as initially defined.
+	      # In the below example, when the branch named "feature1" is built by our
+	      # CI system, it will have its option values for "machine" and
+	      # "params" overriden by what is specified after "refs/heads/feature1:".
+	      # In the "feature1" build, IMAGE will now equal "lmp-mini-image" rather than
+	      # "lmp-factory-image" as initially defined.
 
-           lmp:
-             params:
-               IMAGE: lmp-factory-image
-             machines:
-               - imx8mmevk
-             ref_options:
-               refs/heads/devel:
-                 machines:
-                   - raspberrypi3-64
+               lmp:
                  params:
-                   IMAGE: lmp-mini
+                  IMAGE: lmp-factory-image
+                machines:
+                  - imx8mn-ddr4-evk
+                ref_options:
+                  refs/heads/feature1:
+                    machines:
+                      - imx8mn-ddr4-evk
+                    params:
+                      IMAGE: lmp-mini-image
+
  tagging:
   refs/heads/``<branch>``:|br| ``-tag: <tag>``
       **Optional:** Control how OTA_LITE tags are handled. See
       :ref:`ref-advanced-tagging` for more details.
 
  mfg_tools:|br| ``- machine: <machine>``
-      **Optional:** Do an OE build to produce manufacturing tooling for a given
-      ``MACHINE``. This is used to facilitate the manufacturing process and to ensure
-      secure boot on devices. Currently only NXP tools are supported.**
+      **Optional:** Do an OE build to produce manufacturing tooling for a given ``MACHINE``.
+      This is used to facilitate the manufacturing process, and to ensure secure boot on devices.
+      Currently, only NXP® tools are supported.
 
       **Default:** None
 
-  image_type: ``<mfg_image_type>``
+ image_type: ``<mfg_image_type>``
       **Optional:** Sets the name of the recipe to use to build mfg_tools.
 
       **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_)
@@ -178,24 +173,22 @@ Variables
 ^^^^^^^^^
 
 * **BUILD_SDK**:
-               With this variable set to ``1``, the SDK artifact will be part
-               of the build. Reference: :ref:`ref-building-sdk`.
+               With this variable set to ``1``, the SDK artifact will be part of the build.
+               Reference: :ref:`ref-building-sdk`.
 * **DEV_MODE**:
-               This is a flexible variable used to configure the source code
-               into development mode. The development mode should be defined
-               by the user. Reference: :ref:`ref-dev-mode`.
+               This is a flexible variable used to configure the source code into development mode.
+               The development mode should be defined by you.
+               Reference: :ref:`ref-dev-mode`.
 * **DISABLE_GPLV3**:
-               When set to ``1``, this variable configures the source code
-               to avoid the LmP default packages under GPLv3.
+               When set to ``1``, this variable configures the source code to avoid the LmP default packages under GPLv3.
                Reference: :ref:`ref-remove-gplv3`.
 * **DISTRO**:
-               Defines the distro being used. Reference: :ref:`ref-linux-distro`.
+               Defines the distro being used.
+               Reference: :ref:`ref-linux-distro`.
 * **SSTATE_CACHE_MIRROR**:
                Defaults to the directory mounted on the SDK build container.
-               If this directory exists, it is used as the source for the
-               shared state cache (sstate-cache) mirror. When the directory does
-               not exist, the ``lmp-manifest`` value is used (currently it points
-               to the public HTTP shared state cache).
+               If this directory exists, it is used as the source for the shared state cache (``sstate-cache``) mirror.
+               When the directory does not exist, the ``lmp-manifest`` value is used (currently points to the public HTTP shared state cache).
 * **TUF_TARGETS_EXPIRE**:
                Is used to change the default target expiration date (default 1y).
 
@@ -230,14 +223,13 @@ Defines the container's configuration, including some image configuration and ta
 containers:
  preloaded_images:
   enabled: ``<true|false>``
-      **Optional:** Whether to preload docker images into the system-image as
-      part of a containers build.
+      **Optional:** Whether to preload Docker images into the system-image as part of a containers build.
 
       **Default:** ``false``
 
   shortlist: ``<app1>,<app2>,<...>``
-      **Optional:** Comma separated list of apps to preload. If it is not specified
-      or its value is empty, then all Target's apps are preloaded.
+      **Optional:** Comma separated list of apps to preload.
+      If it is not specified or its value is empty, then all Target's apps are preloaded.
 
       **Default:**  None
 
@@ -245,7 +237,7 @@ containers:
       **Optional:** Specify a list of architectures to build containers for.
       Containers are only built for the specified list.
 
-      **Default:** ``arm,arm64,amd64``
+      **Default:** ``arm,arm64,amd64``. 
 
  tagging:
   refs/heads/``<branch>``:|br| ``-tag: <tag>``
@@ -259,18 +251,17 @@ containers:
 
       **Default:** false
 
-container_registries:
----------------------
+container_registries
+--------------------
  container_registries:
   type: |br| ``aws|azure|gar``
-      **Optional:** Authenticate with :ref:`third-party registries
-      <ref-private-registries>` during container builds.
+      **Optional:** Authenticate with :ref:`third-party registries <ref-private-registries>` during container builds.
 
       **Default:** none
 
 ci_scripts
 ----------
-Optionally use a custom version of ci-scripts_ to perform CI builds.
+Optionally, use a custom version of ci-scripts_ to perform CI builds.
 
  ci_scripts:
   url:

@@ -3,7 +3,7 @@
 Data Retention Policies
 =======================
 
-Understanding data retention policies within a FoundriesFactory can help with the compliance processes for a product.
+Understanding data retention policies for Foundries.io™ FoundriesFactory® can help with the compliance processes for a product.
 This page explains how data is managed within a Factory.
 FoundriesFactory consists of several tightly integrated projects:
 
@@ -28,7 +28,7 @@ Customer Data
 source.foundries.io
 ~~~~~~~~~~~~~~~~~~~
 Source code like ``containers.git`` lives in Digital Ocean's SFO2 data center where it is periodically backed up.
-Backups —but not the source itself— older than 6 months get pruned.
+Backups—but not the source itself—older than 6 months get pruned.
 Source code gets deleted when a Factory is deleted.
 
 ci.foundries.io
@@ -55,10 +55,12 @@ This data get pruned periodically, and gets deleted when a Factory is deleted.
 
 api.foundries.io
 ~~~~~~~~~~~~~~~~
+
 A reverse proxy to other services, and stores no data.
 
 app.foundries.io
 ~~~~~~~~~~~~~~~~
+
 This service has two components:
 
  * A web view to ``api.foundries.io``
@@ -108,4 +110,4 @@ Backups over 6 months old get pruned.
 ostree.foundries.io
 ~~~~~~~~~~~~~~~~~~~
 Devices pull LmP updates down from this service.
-It is managed in a similar way to hub.foundries.io.
+It is managed in a similar way to ``hub.foundries.io``.

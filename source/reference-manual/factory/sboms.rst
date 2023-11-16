@@ -6,23 +6,27 @@ Software Bill of Materials
 A Software Bill of Materials(SBOM) declares *the list of software packages used to build a Target*.
 SBOMs are foundational to understanding:
 
- * Inventory management — the packages a Target uses.
- * License compliance — the software licenses of the packages.
- * Vulnerability management — the package versions.
+ * Inventory management—the packages a Target uses.
+ * License compliance—the software licenses of the packages.
+ * Vulnerability management—the package versions.
 
-The FoundriesFactory SBOM feature extracts the SBOM data and analyzes it according to your needs.
+The FoundriesFactory® SBOM feature extracts the SBOM data and analyzes it according to your needs.
 
 .. important::
-   `Per our terms and conditions <https://foundries.io/company/terms/>`_: FoundriesFactory build SBOMs (“the SBOM data”) are provided for your use and are generated from SPDX metadata in all project source code files. Responsibility for open source license compliance rests with you. In no event shall Foundries.io Limited be liable for any claim, damages or other liability, whether in an action of contract, tort or other legal theory, arising from, out of, or in connection with the use of the SBOM data.
+   `Per our terms and conditions <https://foundries.io/company/terms/>`_:
+   FoundriesFactory build SBOMs (“the SBOM data”) are provided for your use and are generated from SPDX metadata in all project source code files.
+   Responsibility for open source license compliance rests with you.
+   In no event shall Foundries.io Limited be liable for any claim, damages or other liability,
+   whether in an action of contract, tort or other legal theory, arising from, out of, or in connection with the use of the SBOM data.
 
 SBOMs and Builds
 ----------------
 
 The FoundriesFactory CI generates SBOM artifacts whenever there a change happens in a Factory build.
-this happens for two kinds of builds:
+This happens for two kinds of builds:
 
- * Yocto Project — `Software Package Data Exchange`_ (SPDX) artifacts using built-in tooling.
- * Container — produce SDPX artifacts using Syft_.
+ * Yocto Project: `Software Package Data Exchange`_ (SPDX) artifacts using built-in tooling.
+ * Container: produce SDPX artifacts using Syft_.
 
 You can download them from the web UI when viewing a Target.
 Both artifacts go into the ``sboms`` directory.
@@ -72,7 +76,7 @@ For example::
 Notice how:
 
  * The Target SBOMs come from container build 222 and Yocto build 262.
- * The Yocto build has 3 different SBOMs, available as `tar.zst` files. Two of note:
+ * The Yocto build has 3 different SBOMs, available as ``tar.zst`` files. Two of note:
    * ``initramfs-...``; runtime packages
    * ``lmp-factory-image-...``; packages required for boot.
 
@@ -101,9 +105,9 @@ These tend to work with two competing SBOM formats:
  * SPDX_
  * CycloneDX_
 
-Customers may want to just export their SBOM data into spreadsheets for quick, custom processing.
+You may want to just export their SBOM data into spreadsheets for quick, custom processing.
 While the native storage format for Factory SBOMs is SPDX,
-the Foundries.io API provides a best-effort conversion to both CycloneDX and CSV.
+the Foundries.io™ API provides a best-effort conversion to both CycloneDX and CSV.
 This allows users to export data from their Factory and into their tool of choice.
 
 To view an SBOM in a given format::
