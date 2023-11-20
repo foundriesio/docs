@@ -44,6 +44,8 @@ It overrides some configurations from ``lmp`` to generate a friendly system for 
 
 * The Linux Kernel binary, along with the required DTB files, are provided as separate files, instead of inside a boot image. This way the binaries can be replaced for testing purposes.
 
+.. _ref-lmp-mfgtool:
+
 lmp-mfgtool
 ***********
 
