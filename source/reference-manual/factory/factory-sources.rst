@@ -52,6 +52,8 @@ Defined containers will be pushed to your Factory’s private Docker registry at
 
    Commit messages that include ``[skip ci]`` or ``[ci skip]`` will not trigger CI builds.
 
+.. _ref-new-branch:
+
 Configuring the CI to Build New Branches
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -1,3 +1,5 @@
+.. _ref-pg:
+
 FoundriesFactory Porting Guide
 ==============================
 
