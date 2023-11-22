@@ -40,7 +40,7 @@ To view the daemon logs:
 Manual Mode
 -----------
 
-Disabling daemon mode is not recommended, but running ``aktualizr-lite`` manually can be useful for debugging, testing, or demoing a device.
+Disabling daemon mode is not recommended nor supported, but running ``aktualizr-lite`` manually can be useful for debugging, testing, or demoing a device.
 
 .. note:: Manual mode will require you to reboot your device to apply an update.
 

@@ -56,7 +56,7 @@ These folders are treated like persistent storage on the device and have particu
 
    * As soon as OSTree detects a change in this directory, it performs a 3-way merge using the old default configuration, the active system's ``/etc``, and the new default configuration. This is then not covered by OTA anymore.
 
-   * For the reason above, Foundries.io do not recommend setting system configurations in this directory. It is more reliable to set critical configurations under ``/usr/lib`` as that is always covered by OTA.
+   * For the reason above, we do not recommend nor support setting system configurations in this directory. It is more reliable to set critical configurations under ``/usr/lib`` as that is always covered by OTA.
 
 .. _ref-linux-lmp-fs-important-files:
 
