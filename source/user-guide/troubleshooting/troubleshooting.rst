@@ -286,7 +286,8 @@ Or, you can prune by tag, such as ``devel`` or ``experimental``::
 
   fioctl targets prune --by-tag <tag>
 
-We highly recommend not pruning all Targets from a tag to avoid container builds failing from the lack of platform builds for this tag.
+We do not recommend nor support pruning all Targets from a tag.
+Doing so can lead to container builds failing from the lack of platform builds for the tag.
 To keep the last ``<number>`` of the Targets from a tag, use::
 
   fioctl targets prune --by-tag <tag> --keep-last <number>
@@ -627,9 +628,9 @@ Updates To etc
 ^^^^^^^^^^^^^^
 
 Files created or modified in ``/etc`` during runtime are not handled by OSTree during an OTA.
-For this reason, we suggest setting system-wide configs in ``/usr`` rather than ``/etc`` whenever possible so that these changes are covered by OTA updates.
+For this reason, set system-wide configs in ``/usr`` rather than ``/etc`` whenever possible, so that these changes are covered by OTA updates.
 
-We suggest managing files that live in ``/etc`` with a systemd service (:ref:`ref-troubleshooting_systemd-service`).
+Manage files that live in ``/etc`` with a systemd service (:ref:`ref-troubleshooting_systemd-service`).
 The runtime service should handle the needed updates to the ``/etc`` files.
 
 Orphan Targets

@@ -52,7 +52,7 @@ How to Secure the Platform
 --------------------------
 
 .. note::
-    This page illustrates how the HABv4 Secure Boot process works, and provides background information for our :ref:`ref-secure-machines` implementation for better understanding. We recommend fusing and closing a board following our :ref:`ref-secure-machines` guide, where some steps described here are omitted and handled in our code for simpler and safer operations.
+    This page illustrates how the HABv4 Secure Boot process works, and provides background information for our :ref:`ref-secure-machines` implementation for better understanding. For fusing and closing a board, follow our :ref:`ref-secure-machines` guide, where some steps described here are omitted and handled in our code for simpler and safer operations.
 
 The first step is to generate the PKI tree and commit the fuse table to the hardware.
 
@@ -190,7 +190,7 @@ Alternatively, you can use the kernel to program the A-core fuses via SDP by usi
 Upon reboot, if **CONFIG_IMX_HAB** is enabled in U-Boot, HABv4 will raise events to indicate that an **unsigned SPL image** has been executed. Those events can be inspected by running U-Boot's ``hab_status`` command.
 
 .. important::
-    Once the security fuses have been programmed, we recommend that all your UUU scripts are modified to use only **signed SPL** images since some of those scripts might depend on the occurrence — or not — of HABv4 events. This is already covered in our :ref:`ref-secure-machines` implementations.
+    Once the security fuses have been programmed, modify all your UUU scripts to use only **signed SPL** images since some of those scripts might depend on the occurrence — or not — of HABv4 events. This is already covered in our :ref:`ref-secure-machines` implementations.
 
 To secure the platform, there is an extra fuse that needs to be programmed: we will only take that step once we are sure that we can successfully sign and boot a signed SPL image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
 
