@@ -90,6 +90,7 @@ The member then has a combined list of scopes:
 The user now has read **and** write (update) access to the CI,
 while retaining the read-only scopes for the other resources.
 
+
 .. _Access to Device Groups:
 
 Team Based Access to Device Groups
@@ -137,3 +138,14 @@ Therefore, members of this team can modify the ``test-lab-devices`` group and it
 .. figure:: /_static/userguide/account-management/team-with-group-and-write-access.png
    :align: center
    :alt: "lab-dev-users" scopes: read-update team with a device group
+
+
+.. _team-based-access-tuf:
+
+Changes to TUF Root
+-------------------
+
+With Fioctl® v0.35 and newer, if someone makes changes to TUF root, others will be required to upgrade to the same version if they wish to make changes.
+This is to prevent accidental eraser of the TUF keys ownership information.
+
+

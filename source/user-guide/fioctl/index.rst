@@ -10,6 +10,41 @@ Prerequisites
 
 * Completion of the getting started guide.
 
+
+.. _ug-fioctl-auto-update:
+
+Auto Updating
+-------------
+
+``fioctl version --update-to <version>``
+  Fioctl v0.36 and later can be updated—rather securely, via TUF—without the need to manually reinstall the binary.
+
+.. code-block:: console
+  
+   # check if an update is available:
+   host:~$ fioctl version
+   v0.37-24-gd450f5b
+   Update available: 0.38.0
+	 https://github.com/foundriesio/fioctl/releases/download/v0.38/fioctl-linux-amd64
+
+   # update by running:
+   host:~$ fioctl version --update-to 0.38.0
+   v0.37-24-gd450f5b
+   Downloading update: https://github.com/foundriesio/fioctl/releases/download/v0.38/fioctl-linux-amd64
+   Saving new version to /var/code/vs-code-server-config/fioctl/bin/fioctl-linux-amd64
+
+.. important::
+   
+   A note about write permissions:
+  
+   It is likely that you will need to gain write privilege to update.
+   This *can* be done via ``sudo``, assuming it is not a read-only partition.
+   However, also consider running ``sudo su`` within a new terminal.
+   This is to avoid having sudo holding a session, and some privilege escalation risks.
+
+.. seealso::
+   :ref:`Updating Fioctl version for writing to TUF Root <team-based-access-tuf>`
+
 .. _ug-fioctl-enable-apps:
 
 Enabling/Disabling Apps
