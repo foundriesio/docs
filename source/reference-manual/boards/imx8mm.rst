@@ -22,8 +22,8 @@ i.MX 8M Mini Evaluation Kit
 
 .. |imx_lsusb| prompt:: bash $, auto
 
-     lsusb | grep NXP
-     Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
+     $ lsusb | grep NXP
+       Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
 
 .. |image_board_top| image:: /_static/boards/imx8mmevk.png
      :width: 600
