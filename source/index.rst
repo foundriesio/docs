@@ -40,7 +40,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/account-management/account-management
    user-guide/containers-and-docker/index
    user-guide/custom-ci/custom-ci
-   user-guide/lmp-customization/lmp-customization
+   user-guide/lmp-customization/index
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
    user-guide/foundriesio-rest-api/foundriesio-rest-api

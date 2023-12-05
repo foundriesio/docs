@@ -1,7 +1,7 @@
 .. _ref-building-sdk:
 
-Building SDK
-============
+Building The Yocto Project Standard SDK
+=======================================
 
 The Yocto Project Standard SDK is a development environment composed by:
 
@@ -11,36 +11,25 @@ The Yocto Project Standard SDK is a development environment composed by:
 
 The SDK is used to replicate the tools and files from the target image,
 but without depending on BitBake.
-For details on what the SDK is
-and a complete description of how to work with it,
-visit
-`Yocto Project Application Development and the Extensible Software Development Kit <https://docs.yoctoproject.org/kirkstone/sdk-manual/index.html>`_.
+For details on what the SDK is, and a complete description of how to work with it,
+visit `Yocto Project Application Development and the Extensible Software Development Kit <https://docs.yoctoproject.org/kirkstone/sdk-manual/index.html>`_.
 
-The LmP can be configured to
-create an SDK install script of the same rootfs image
-built by the CI.
-The SDK install script is created by
-``bitbake <image> -c populate_sdk``.
+The LmP can be configured to create an SDK install script of the same rootfs image built by the CI.
+The SDK install script is created by ``bitbake <image> -c populate_sdk``.
 
-When the ``lmp:params:BUILD_SDK`` is set
-and a new target is created,
+When the ``lmp:params:BUILD_SDK`` is set and a new target is created,
 the SDK install script is also built.
 
-This configuration increases the build time,
-so enable the variable
-only when a new SDK install script is needed.
+This configuration increases the build time, so enable it only when a new SDK install script is needed.
 
-Change the file
-``ci-scripts/factory-config.yml``
-to include the variable ``BUILD_SDK: "1"``
-whenever a new SDK install script is needed,
-as the following example.
+Change ``ci-scripts/factory-config.yml`` to include the variable ``BUILD_SDK: "1"``.
+Do this whenever a new SDK install script is needed:
 
 .. prompt:: text
 
-  lmp:
-    params:
-        BUILD_SDK: "1"
+   lmp:
+     params:
+         BUILD_SDK: "1"
 
 The SDK image is available under the ``SDK`` folder.
 
@@ -52,8 +41,7 @@ The SDK image is available under the ``SDK`` folder.
 Installation
 ------------
 
-After downloading the SDK install script,
-you can install it in any folder.
+After downloading the SDK install script, you can install it in any folder.
 In this example, we use ``/usr/local/cortexa53-crypto``.
 
 .. prompt:: text
@@ -68,7 +56,7 @@ In this example, we use ``/usr/local/cortexa53-crypto``.
   SDK has been successfully set up and is ready to be used.
   Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
 
-After the installation, the resultant folder has the ``sysroots`` for the host and target architecture.
+After installation, the resultant folder has the ``sysroots`` for the host and target architecture.
 It also contains the script used to setup the environment to work with the SDK:
 
 .. prompt:: text
@@ -97,12 +85,11 @@ source the script as in the following instructions:
   $ file helloworld
     helloworld: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=80e241327bd3412b91c2035cbacb73e87797e0b5, for GNU/Linux 3.14.0, with debug_info, not stripped
 
-With the exported environment variable,
-it is possible to build using the toolchain
+With the exported environment variable, it is possible to build using the toolchain
 and, when needed, to use the header or other files from the ``sysroots``.
 
-In the example, we see that the generated file can not be executed on the host machine.
-Using ``file``,  we learn this is because the binary is for ``ARM aarch64`` architecture.
+In the example, we saw that the generated file can not be executed on the host machine.
+Using ``file``,  we learned that this is because the binary is for ``ARM aarch64`` architecture.
 
-For more information regarding Standard SDK, follow the Yocto Project
+For more information regarding the Standard SDK, follow the Yocto Project
 `instructions <https://docs.yoctoproject.org/kirkstone/singleindex.html#using-the-sdk-toolchain-directly>`_.
