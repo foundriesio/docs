@@ -15,7 +15,7 @@ and other options related to the platform build.
 .. _ref-customizing-the-distro:
 
 Customizing the Distro
------------------------------
+-----------------------
 
 This section shows how to build new targets with other Distro. Following an example on
 how to build a new targets with :ref:`LmP XWayland <ref-lmp-wayland-xwayland>`.

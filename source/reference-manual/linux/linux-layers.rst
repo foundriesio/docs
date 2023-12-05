@@ -3,9 +3,8 @@
 OpenEmbedded / Yocto Project Layers
 ===================================
 
-The Linux microPlatform (LmP) is composed of several OpenEmbedded and Yocto
-Project layers, including the core build system, distribution, images,
-and Board Support Packages (BSPs).
+The Linux® microPlatform (LmP) is composed of several OpenEmbedded and Yocto Project layers,
+including the core build system, distribution, images, and Board Support Packages (BSPs).
 
 .. _ref-linux-layers-meta-lmp-base-layers:
 
@@ -22,7 +21,7 @@ Layer                                 Description
                                       distribution.
 `meta-openembedded`_                  A collection of layers and recipes for the
                                       OE-core universe. Since the reduction in recipes to the core,
-                                      meta-openembedded was created for everything else. There are
+                                      ``meta-openembedded`` was created for everything else. There are
                                       currently approximately 650 recipes in this layer. It is used by
                                       the LmP for additional utilities and network
                                       support.
@@ -53,13 +52,13 @@ Layer                                 Description
 `meta-arm`_                           Provides support for general recipes for the ARM
                                       architecture and BSP support for ARM reference platforms.
 `meta-intel`_                         Board support layer for Intel based devices.
-`meta-raspberrypi`_                   Board support layer for the Raspberry Pi boards.
+`meta-raspberrypi`_                   Board support layer for the Raspberry Pi board
                                       based devices.
 `meta-yocto`_                         Board support layer for the Yocto Project hardware
                                       references, such as BeagleBone Black.
 `meta-freescale`_                     Board support layer for the Freescale platforms.
 `meta-freescale-3rdparty`_            Additional board support layer for Freescale platforms
-                                      (not officially supported by meta-Freescale maintainers).
+                                      (not officially supported by ``meta-freescale`` maintainers).
 `meta-st-stm32mp`_                    Board support layer for STMicroelectronics based devices.
 `meta-tegra`_                         Board support layer for NVIDIA based devices.
 `meta-ti`_                            Board support layer for Texas Instruments based devices.
@@ -74,34 +73,26 @@ Layer                                 Description
 The meta-lmp Base Layer
 ---------------------------------------
 
-The ``meta-lmp-base`` layer provides the LmP distribution
-configuration and a base set of recipes and config files, such as a unified
-Linux kernel and a set of standard images.
+The ``meta-lmp-base`` layer provides the LmP distribution configuration and a base set of recipes and config files,
+such as a unified Linux kernel and a set of standard images.
 
-Configuration for the LmP distro can be found at
-``conf/distro/lmp.conf`` and ``conf/distro/include/lmp.inc``.
+Configuration for the LmP distro can be found at ``conf/distro/lmp.conf`` and ``conf/distro/include/lmp.inc``.
 
-The ``lmp-base-console-image`` recipe can be found at
-``recipes-samples/images/lmp-base-console-image.bb``. You can find the
-default set of packages used by the image via the
-``CORE_IMAGE_BASE_INSTALL`` variable.
+The ``lmp-base-console-image`` recipe can be found at ``recipes-samples/images/lmp-base-console-image.bb``.
+You can find the default set of packages used by the image via the ``CORE_IMAGE_BASE_INSTALL`` variable.
 
 The meta-lmp-bsp Layer
 --------------------------------------
 
-``meta-lmp-bsp`` provides the kernel recipes, u-boot configuration
-fragments, WIC files, and so on for supported targets.
+``meta-lmp-bsp`` provides the kernel recipes, u-boot configuration fragments, WIC files, and so on for supported targets.
 
 While primarily used as an extension of the vendor BSP layers (e.g. meta-freescale),
-it can also handle board configuration for cases where the vendor layer
-is not easily compatible with LmP (e.g. a layer based on an older Yocto Project release).
+it can also handle board configuration for cases where the vendor layer is not easily compatible with LmP (e.g. a layer based on an older Yocto Project release).
 
 The main configuration can be found at ``conf/machine/include/lmp-machine-custom.inc``.
-This gets included by ``meta-lmp-base/classes/lmp.bbclass`` if available (users can decide
-to use ``meta-lmp-base`` only).
+This gets included by ``meta-lmp-base/classes/lmp.bbclass`` if available (you can decide to use ``meta-lmp-base`` only).
 
-Here is an example of how a BSP configuration gets extended from the
-vendor BSP layer::
+Here is an example of how a BSP configuration gets extended from the vendor BSP layer::
 
   # Beaglebone
   PREFERRED_PROVIDER_virtual/bootloader:beaglebone-yocto = "u-boot-fio"
@@ -115,31 +106,24 @@ vendor BSP layer::
   KERNEL_IMAGETYPE:beaglebone-yocto = "fitImage"
   KERNEL_CLASSES:beaglebone-yocto = " kernel-lmp-fitimage "
 
-When adding or changing the LmP BSP configuration values, please use
-``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
-instead, which gets parsed after ``lmp-machine-custom.inc`` and is
-factory specific.
+When adding or changing the LmP BSP configuration values, please use ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc`` instead.
+This gets parsed after ``lmp-machine-custom.inc`` and is factory specific.
 
-``lmp-machine-custom.inc`` should be used for LmP upstream BSP support
-only.
+``lmp-machine-custom.inc`` should be used for LmP upstream BSP support only.
 
 
 Customizing the LmP BSP Layers List
------------------------------------------------
+-----------------------------------
 
-LmP is composed of a set of base layers plus an extensive
-list of BSP layers that are all enabled by default
-(see :ref:`ref-linux-layers-meta-lmp-bsp-layers`).
+LmP is composed of a set of base layers plus an extensive list of BSP layers that are all enabled by default.
+See :ref:`ref-linux-layers-meta-lmp-bsp-layers`.
 
-As this is not desired by everyone, any
-FoundriesFactory user can easily customize the BSP layers enabled and used
-by a Factory.
+As this is not desired by everyone, any Factory can easily customize the BSP layers enabled.
 
-To define your own set of BSP layers (used by Bitbake), modify (or
-create if your Factory was created before LmP v76) the
-``lmp-manifest/conf/bblayers-factory.inc`` bblayers include fragment,
-replacing the ``BSPLAYERS`` variable with your own list of BSP layers.
-Make sure ``meta-lmp-bsp`` is also included by default, unless you
+To define your own set of BSP layers,
+modify (create if your Factory was created before LmP v76) the ``lmp-manifest/conf/bblayers-factory.inc`` bblayers include fragment.
+Replace the ``BSPLAYERS`` variable with your own list of BSP layers.
+Make sure ``meta-lmp-bsp`` is also included, unless you
 want to completely define your own BSP configuration.
 
 An example for enabling only the ``meta-intel`` BSP layer::

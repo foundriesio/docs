@@ -3,62 +3,49 @@
 Disk Encryption Support
 =======================
 
-LmP currently supports encrypting the disk used by the root file system
-on first boot, as a way to guarantee a unique LUKS2 master key per device.
+LmP supports encrypting the disk used by the root file system on first boot. 
+This is to guarantee a unique LUKS2 master key per device.
 
-The effort for creating an encrypted root file system during image creation
-in CI (and required logic for online re-encryption during first boot) can be
-tracked at https://github.com/foundriesio/meta-lmp/pull/868.
+The effort for creating an encrypted root file system via CI (and required logic for online re-encryption during first boot) is part of ``meta-lmp`` `pull request 868 <https://github.com/foundriesio/meta-lmp/pull/868>`.
 
 Prerequisites
 -------------
 
-As the process for decrypting the disk needs to be unattended, LmP requires
-either PKCS#11 (e.g. OP-TEE with RPMB as secure storage) or TPM 2.0 to be
-available by the target hardware, as they can be leveraged for securely
-storing the Key Encryption Key (KEK) used for later decrypting the disk during
-the boot process (via LUKS2 tokens, leveraging systemd-pkcs11 or systemd-tpm2,
-see `systemd-cryptenroll`_ for more information).
+As the process for decrypting the disk needs to be unattended, LmP requires either PKCS#11 (e.g. OP-TEE with RPMB as secure storage) or TPM 2.0 to be available by the target hardware.
+These are leveraged for securely storing the Key Encryption Key (KEK) used for decrypting the disk during the boot process. 
+This is done via LUKS2 tokens, leveraging systemd-pkcs11 or systemd-tpm2, see `systemd-cryptenroll`_ for more information.
 
-For better security, TPM 2.0 support also requires UEFI secure boot to be
-enabled, as the key is bound to the Platform Configuration Register (PCR) 7,
-which tracks the secure boot state of the machine.
+For enhanced security, TPM 2.0 support also requires UEFI secure boot to be enabled.
+This is because the key is bound to the Platform Configuration Register (PCR) 7, which tracks the secure boot state of the machine.
 
 Enabling Support for Disk Encryption
 ------------------------------------
 
 The following options require customizations for disk encryption support:
 
-For adding the required ``initramfs-module-cryptfs`` module to the initramfs
-(based on what gets provided by ``MACHINE_FEATURES``, like ``tpm2`` or ``optee``):
+For adding the required ``initramfs-module-cryptfs`` module to the initramfs (based on what gets provided by ``MACHINE_FEATURES``, like ``tpm2`` or ``optee``):
 
 .. code-block:: none
 
   DISTRO_FEATURES:append = " luks"
 
-For splitting the ``/boot`` content from the ostree deployment in a separated
-partition (where kernel/initramfs gets stored, unencrypted). This option is
-enabled by default on systems booting with UEFI support.
+For splitting the ``/boot`` content from the ostree deployment in a separated partition (where kernel/initramfs gets stored, unencrypted).
+This option is enabled by default on systems booting with UEFI support:
 
 .. code-block:: none
 
   OSTREE_SPLIT_BOOT = "1"
 
-For supporting copying content from ``/usr/lib/ostree-boot`` (used for
-boot firmware updates) into ``/boot`` as part of the ostree deployment step (OTA).
-This is required for supporting boot firmware updates on devices with encrypted
-root file systems.
+For supporting the copying of content from ``/usr/lib/ostree-boot`` (used for boot firmware updates) to ``/boot``, as part of the ostree deployment step (OTA).
+This is required for supporting boot firmware updates on devices with encrypted root file systems:
 
 .. code-block:: none
 
   OSTREE_DEPLOY_USR_OSTREE_BOOT = "1"
 
-For supporting ``/boot`` in a separated partition at the final image the selected
-``WKS_FILE`` needs to support split boot. UEFI based devices already have such
-setup by default, but on most ARM/ARM64 devices a custom WKS might be
-required. As an example, iMX8-based devices should use
-``sdimage-imx8-spl-split-boot-sota.wks.in`` instead of the default
-``sdimage-imx8-spl-sota.wks.ini`` file:
+For supporting ``/boot`` being in a separated partition at the final image the selected ``WKS_FILE`` needs to support split boot.
+UEFI based devices already have such setup by default, but on most ARM/ARM64 devices a custom WKS might be required.
+As an example, iMX8-based devices should use ``sdimage-imx8-spl-split-boot-sota.wks.in`` instead of the default ``sdimage-imx8-spl-sota.wks.ini`` file:
 
 .. code-block:: none
 
@@ -66,31 +53,25 @@ required. As an example, iMX8-based devices should use
 
 .. note::
 
-  Besides a custom ``WKS_FILE`` for split boot support, make sure to also update
-  the target fstab to automatically mount ``/boot`` (from the first partition)
-  at the root file system ``/boot`` folder.
-  This is not required with UEFI-based systems as systemd is capable of
-  automatically identifying and mounting the ESP partition during boot.
+  Along with a custom ``WKS_FILE`` for split boot support, also update the target fstab to automatically mount ``/boot`` (from the first partition).
+  This is not required with UEFI-based systems, as systemd is capable of automatically identifying and mounting the ESP partition during boot.
 
 Implementation Details for OP-TEE PKCS#11 Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A dedicated slot is required to avoid conflicts with the PKCS#11 token slot
-normally used by ``aktualizr-lite``. This dedicated slot is currently hardcoded
-to slot 1, with the label ``lmp``.
+A dedicated slot is required to avoid conflicts with the PKCS#11 token slot normally used by ``aktualizr-lite``.
+This dedicated slot is currently hardcoded to slot 1, with the label ``lmp``.
 
-During the encryption process the token slot is initialized and a RSA 2048 key
-is generated, which is later used by `systemd-cryptenroll`_.
+During the encryption process the token slot is initialized and a RSA 2048 key is generated, which is later used by `systemd-cryptenroll`_.
 
-Make sure to **not** erase the token slot or the key during the lifetime of the
-image, otherwise the system will fail to boot (a recovery key can be created and
-provided manually if required, but it won't be an unattended boot).
+Make sure to **not** erase the token slot or the key during the lifetime of the image.
+Doing so would cause the system to fail at boot.
+A recovery key can be created and provided manually if required, but it will not be an unattended boot.
 
 Testing TPM 2.0 Support With Qemu (x86) and swtpm
 -------------------------------------------------
 
-It is possible to test the disk encryption support with TPM 2.0 with Qemu and
-`swtpm`_.
+It is possible to test the disk encryption support with TPM 2.0 with QEMU and `swtpm`_.
 
 Make sure LUKS support is enabled for your x86 target:
 
@@ -99,19 +80,18 @@ Make sure LUKS support is enabled for your x86 target:
   $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
   DISTRO_FEATURES:append:intel-corei7-64 = " luks"
 
-Then make sure to enroll the :ref:`UEFI Secure Boot Certificates <ref-secure-boot-uefi>`
-to enable secure boot support. This is required as the LUKS2 TPM 2.0 token
-leverages PCR 7, which tracks the secure boot state.
+Then enroll the :ref:`UEFI Secure Boot Certificates <ref-secure-boot-uefi>` to enable secure boot support.
+This is required as the LUKS2 TPM 2.0 token leverages PCR 7, which tracks the secure boot state.
 
-Now install ``swtpm`` in the host machine (if not already installed), and start the ``swtpm``
-daemon, which will be later consumed by Qemu and act as the hardware TPM.
+Now install ``swtpm`` on the host machine, and start the ``swtpm`` daemon.
+This will be consumed by QEMU and act as the hardware TPM.
 
 .. code-block:: console
 
    $ mkdir -p /tmp/mytpm
    $ while true; do swtpm socket --tpmstate dir=/tmp/mytpm --ctrl type=unixio,path=/tmp/mytpm/swtpm-sock --tpm2; done;
 
-Run Qemu with the required extra TPM 2.0 related commands:
+Run QEMU with the required extra TPM 2.0 related commands:
 
 .. code-block:: console
 
@@ -125,7 +105,7 @@ Run Qemu with the required extra TPM 2.0 related commands:
       -chardev socket,id=chrtpm,path=/tmp/mytpm/swtpm-sock \
       -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0
 
-Now during boot you should see the following during the first boot:
+You should see the following during the first boot:
 
 .. code-block:: none
 

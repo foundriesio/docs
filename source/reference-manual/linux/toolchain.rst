@@ -3,50 +3,43 @@
 Toolchain
 =========
 
-The default toolchain used in ``openembedded-core`` is ``gcc`` but this is configurable.
+The default toolchain used in ``openembedded-core`` is ``gcc``, but this is configurable.
 The ``clang`` toolchain is provided by ``meta-clang``, and can be set globally or per recipe.
-Since version **v89**, LmP uses ``clang`` as the default compiler and ``llvm`` as the default runtime.
+Since version **v89**, the LmP uses ``clang`` as the default compiler, and ``llvm`` as the default runtime.
 
-.. prompt:: text
+.. code-block::
 
-  TOOLCHAIN ?= "clang"
-  RUNTIME = "llvm"
+   TOOLCHAIN ?= "clang"
+   RUNTIME = "llvm"
 
-However, some issues exist when using clang/llvm as the default,
-as some recipes are not prepared to be built with this toolchain.
-To address these issues is recomendend to add a new file where these
-tweeks will be made to build sucessfully.
+However, some issues exist when using clang/llvm as the default.
+Namely, some recipes are not prepared to be built with this toolchain.
+To address this, add a new file where the tweaks to build successfully will be made.
 
-In the public LmP layer ``meta-lmp`` we use the
-``meta-lmp-base/conf/distro/include/non-clangable.inc``
-for that propuse.
-Adding another ``non-clangable.inc`` on the factory layer ``meta-subscriber-overrides``
-can be a solution, where we will collect all the ``clang`` tweeks needed.
+In the public LmP layer ``meta-lmp``, we use the ``meta-lmp-base/conf/distro/include/non-clangable.inc`` for that propose.
+We will add another ``non-clangable.inc`` in the Factory layer ``meta-subscriber-overrides``, where we will collect all the ``clang`` tweaks needed.
 
-This configuration can be added in the factory global configurations file
-``conf/machine/include/lmp-factory-custom.inc``
+This configuration can be added in the Factory global configurations file, ``conf/machine/include/lmp-factory-custom.inc``
 
-.. prompt:: text
+.. code-block::
 
-  require conf/machine/include/non-clangable.inc
+   require conf/machine/include/non-clangable.inc
 
-**So we will use the factory file ``conf/machine/include/non-clangable.inc``**
-to customize everything ``clang`` related.
+**So we will use the Factory file**, ``conf/machine/include/non-clangable.inc`` to customize everything ``clang`` related.
 
-Changing the toolchain
+Changing the Toolchain
 ----------------------
 
-To change the default values disabling the ``clang`` compiler globaly and use the ``gcc``
-we need to change the ``TOOLCHAIN`` value.
+To change the default values, disable the ``clang`` compiler globally.
+Instead, use ``gcc`` by changing the ``TOOLCHAIN`` value:
 
 .. prompt:: text
 
   TOOLCHAIN = "gcc"
 
-Changing the compiler per recipe is also possible. To do that we add the
-line above in a `.bbappend` for the recipe.
-This can also be done in the factory, changing the file
-``conf/machine/include/non-clangable.inc``, from ``meta-subscriber-overrides``.
+Changing the compiler per recipe is also possible.
+To do this, we add the line above in a  recipe ``.bbappend``.
+This can also be done in the Factory, changing the file ``conf/machine/include/non-clangable.inc``, in ``meta-subscriber-overrides``:
 
 .. prompt:: text
 
@@ -56,10 +49,10 @@ This can also be done in the factory, changing the file
 Customizing the Default Toolchain
 ---------------------------------
 
-When using the clang toolchain we have the ``toolchain-clang`` override that can be used
-to do the customization and this will only take effect when clang is in use.
-All of these customizations can be placed in the factory by changing the file
-``conf/machine/include/non-clangable.inc``, from ``meta-subscriber-overrides``.
+When using the clang toolchain, we have the ``toolchain-clang`` override.
+This can be used to do the customization, and will only take effect when clang is in use.
+All of these customizations can be placed in the Factory.
+Once again, do this by changing the file ``conf/machine/include/non-clangable.inc``, in ``meta-subscriber-overrides``:
 
 .. prompt:: text
 

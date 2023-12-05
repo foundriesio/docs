@@ -3,7 +3,9 @@
 LmP File Structure
 ==================
 
-LmP uses the `OSTree`_ upgrade system to cover platform updates. It brings a modified file system structure, the details for which are covered on this page, along with some tips about the LmP structure and OTA behavior.
+LmP uses the `OSTree`_ upgrade system to cover platform updates.
+This brings a modified file system structure, which is detailed on this page.
+Also covered here are some related tips about LmP structure, and OTA behavior.
 
 OSTree File System Structure
 ----------------------------
@@ -33,9 +35,12 @@ OSTree File System Structure
    drwxr-xr-x  12 root root 4096 Jan  1  1970 usr
    drwxr-xr-x  13 root root 4096 Aug  1 15:46 var
 
-OSTree brings a **read-only** file system, where the disk partition is ``/sysroot`` and the root that mounted at ``/`` (as above) is ``/sysroot/ostree/deploy/lmp/deploy/<sha>``.
+OSTree brings a **read-only** file system, where the disk partition is ``/sysroot``.
+The root that mounted at ``/`` (as above) is ``/sysroot/ostree/deploy/lmp/deploy/<sha>``.
 
-Some folders should not be manipulated in order to ensure proper behavior of OTA. The ``/usr`` path is an example of a critical folder that is mounted as read-only and should not be touched—this is covered by LmP OTA.
+.. warning::
+   Some folders should not be manipulated in order to ensure proper behavior of OTA.
+   The ``/usr`` path is an example of a critical folder that is mounted as read-only and should not be touched—this is handled by the LmP OTA.
 
 Persistent Storage
 ------------------
@@ -54,7 +59,8 @@ These folders are treated like persistent storage on the device and have particu
 
    * Covered by OTA if untouched.
 
-   * As soon as OSTree detects a change in this directory, it performs a 3-way merge using the old default configuration, the active system's ``/etc``, and the new default configuration. This is then not covered by OTA anymore.
+   * As soon as OSTree detects a change in this directory, it performs a 3-way merge using the old default configuration, the active system's ``/etc``, and the new default configuration.
+     This is then no longer covered by OTA.
 
    * For the reason above, Foundries.io do not recommend setting system configurations in this directory. It is more reliable to set critical configurations under ``/usr/lib`` as that is always covered by OTA.
 
@@ -79,13 +85,15 @@ Important Files and Folders
    -rw-r--r-- 1 root root    885 Aug  1 15:41 sota.toml
    -rw-r--r-- 1 root root 180224 Aug  1 15:49 sql.db
 
-**/var/sota/sota.toml**: Stores relevant OTA information, like Tag, Apps, custom configurations, certificates location and server address.
+``/var/sota/sota.toml``: Stores relevant OTA information, like Tag, Apps, custom configurations, certificates location and server address.
 
-**/var/sota/reset-apps**: Holds preloaded apps if :ref:`ug-restorable-apps` are used (default since LmP **v85**).
+``/var/sota/reset-apps``: Holds preloaded apps if :ref:`ug-restorable-apps` are used (default since LmP **v85**).
 
-**/var/sota/compose-apps**: Apps are extracted to this location during app loading. It holds preloaded apps if Compose Apps are used.
+``/var/sota/compose-apps``: Apps are extracted to this location during app loading.
+It holds preloaded apps if Compose Apps are used.
 
-**/var/sota/current-target**: Brings valuable information about the current Target running on the device, including LmP and containers information. This is populated after the first OTA.
+``/var/sota/current-target``: Brings valuable information about the current Target running on the device, including LmP and containers information.
+This is populated after the first OTA.
 
 .. prompt::
 
@@ -97,15 +105,17 @@ Important Files and Folders
    CONTAINERS_SHA="459e19cde44e17b17054b0cd972f0520cd214f58"
    TAG="<tag>"
 
-**/var/sota/sql.db**: Device registration database.
+``/var/sota/sql.db``: Device registration database.
 
-**/var/sota/client.pem**, **/var/sota/pkey.pem** and **/var/sota/root.crt**: Device registration certificates. If available, ``client.pem`` and ``pkey.pem`` can be stored in an HSM rather than on files.
+``/var/sota/client.pem``, ``/var/sota/pkey.pem``, and ``/var/sota/root.crt``: Device registration certificates.
+If available, ``client.pem`` and ``pkey.pem`` can be stored in an HSM rather than on files.
 
 * ``/var/lib/docker``: Stores Docker images and containers.
 
 * ``/var/rootdirs/home/fio/``: Home directory.
 
-* ``/etc/os-release``: Brings valuable LmP information, including LmP Target, Tag and LmP release. It does not include information on containers Target.
+* ``/etc/os-release``: Brings valuable LmP information, including LmP Target, Tag, and LmP release.
+  It does not include information on Target containers.
 
 .. prompt::
 
@@ -127,9 +137,10 @@ Important Files and Folders
 Tips and Suggestions
 --------------------
 
-* A :ref:`systemd service <ref-troubleshooting_systemd-service>` can be used in case a file in a directory not covered by OTA needs to be updated.
+* A :ref:`systemd service <ref-troubleshooting_systemd-service>` can be used if case a file in a directory not covered by OTA needs to be updated.
 
-* It is recommended to store custom user files under ``/var/local``. Keep any custom files location in mind when implementing a :ref:`ref-factory-device-reset`.
+* It is recommended to store custom user files under ``/var/local``.
+  Keep any custom files location in mind when implementing a :ref:`ref-factory-device-reset`.
 
 * The full initial Target information (includes containers and LmP) just after the provisioning of a device can be checked with:
 
@@ -140,6 +151,7 @@ Tips and Suggestions
 
 After the first OTA, it can be read in ``/var/sota/current-target`` as discussed previously.
 
-* If enabling :ref:`ref-linux-persistent-log`, ``/var/log`` is used to store system logs. It is recommended to mount it in an additional storage so it does not take valuable internal storage space which could impact the OTA behavior.
+* If enabling :ref:`ref-linux-persistent-log`, ``/var/log`` is used to store system logs.
+  It is recommended to mount it in an additional storage so it does not take valuable internal storage space which could impact the OTA behavior.
 
 .. _OSTree: https://ostreedev.github.io/ostree/introduction/

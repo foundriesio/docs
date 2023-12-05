@@ -1,3 +1,5 @@
+.. _extending-lmp:
+
 Extending the Linux microPlatform
 =================================
 
@@ -5,20 +7,15 @@ Extending the Linux microPlatform
 
 Adding Packages to the Image
 ----------------------------
-The **meta-subscriber-overrides.git** repo allows you to customize the
-packages included in your factory image.
 
-Add packages to the list for ``CORE_IMAGE_BASE_INSTALL`` located in
-**recipes-samples/images/lmp-factory-image.bb**.
+The ``meta-subscriber-overrides.git`` repo allows you to customize the packages included in your factory image.
+To do this, you add packages as a list to the variable ``CORE_IMAGE_BASE_INSTALL`` in ``recipes-samples/images/lmp-factory-image.bb``.
+For a quick example let us add the ``stress-ng`` utility package to the build:
 
-For a quick example let’s add the "stress-ng" utility package to the build.::
+.. code-block:: bash
 
   git clone https://source.foundries.io/factories/<myfactory>/meta-subscriber-overrides.git
   vi meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb
-
-If the git clone fails with an unable to access error then check you have a
-valid token in your ``.netrc`` file. You can look at
-:ref:`sec-learn` for instructions.
 
 Add "stress-ng" to the package list.::
 
@@ -32,22 +29,21 @@ Then::
   git commit -m "add stress-ng package to device image"
   git push
 
-Go and get a coffee - your Factory is generating a new image with this package.
-This will take at least half an hour (and maybe longer depending on current Factory capacity).
+Go and get a coffee—your Factory is generating a new image with this package.
+This can take a half an hour or more.
 
 You can check the status at:
 
- https://ci.foundries.io/projects/<myfactory>/lmp/
+ ``https://ci.foundries.io/projects/<myfactory>/lmp/``
 
-Once completed, the device will reboot after the update is applied. This
-behavior is customizable so that you can apply rules to determine when
-devices should be restarted.  Once restarted the stress-ng command will
-be available.
+Once completed, the device will reboot after the update is applied.
+This behavior is customizable so that you can apply rules to determine when devices should be restarted.
+Once restarted the stress-ng command will be available.
 
 List of Available Recipes
 -------------------------
-OE provides a tool_ to search layers and recipes. Remember to set the same branch
-name used by the current factory version.
+OE provides a tool_ to search layers and recipes.
+Remember to set the same branch name used by the current factory version.
 
 .. _tool:
    https://layers.openembedded.org/layerindex/branch/master/layers/
@@ -55,11 +51,9 @@ name used by the current factory version.
 Creating a Python3 Package from PyPi
 ------------------------------------
 There are Python packages that do not yet have a recipe for python3 in OE.
-If this is the case with a desired package, use this template below to add a
-new package from PyPi.
+If this is the case with a desired package, use this template below to add a new package from PyPi.
 
-Create a recipe in the **meta-subscriber-overrides.git** repository using the
-following naming scheme:
+Create a recipe in the **meta-subscriber-overrides.git** repository using the following naming scheme:
 
   ``recipes-devtools/python/python3-<package name>_<version>.bb``
 
@@ -109,9 +103,8 @@ Update the following variables to reflect the details from the package you wish 
 Using FEATURES to configure LmP
 -------------------------------
 
-There are three features variable we can use to control and configure the build
-system: ``DISTRO_FEATURES``, ``IMAGE_FEATURES`` and ``MACHINE_FEATURES``. Each
-one of them takes effect in one aspect of the build system.
+There are three features variable we can use to control and configure the build system: ``DISTRO_FEATURES``, ``IMAGE_FEATURES`` and ``MACHINE_FEATURES``.
+Each one of them takes effect in one aspect of the build system.
 
 .. important::
 
@@ -126,22 +119,18 @@ one of them takes effect in one aspect of the build system.
 
     Make sure to understand what will be the result in case of any change.
 
-DISTRO_FEATURES is a list of configurations from a distro that reflects how
-some packages are built or installed. There is a list of `Yocto Project distro features`_
-supported. However, the list can be expanded by other meta layers.
+DISTRO_FEATURES is a list of configurations from a distro that reflects how some packages are built or installed.
+There is a list of `Yocto Project distro features`_ supported.
+However, the list can be expanded by other meta layers.
 
-For example, the distro feature ``systemd`` or ``wayland`` are used to define the
-list of packages to be installed, and to configure how some packages build. The
-distro feature ``modsign`` is used along with certificates to sign the kernel modules.
+For example, the distro feature ``systemd`` or ``wayland`` are used to define the list of packages to be installed, and to configure how some packages build.
+The distro feature ``modsign`` is used along with certificates to sign the kernel modules.
 
-The default value used by LmP is defined in the ``meta-lmp/meta-lmp-base/conf/distro/include/lmp.inc``
-and can be customized by architecture, machine, or any other override. To customize
-it, use ``DISTRO_FEATURES:append = <value>`` to add a feature to the list, and
-``DISTRO_FEATURES:remove = <value>`` to remove a feature from the list. To remove
-a feature from an override list, use ``DISTRO_FEATURES:remove:<machine> = <value>``.
+The default value used by LmP is defined in the ``meta-lmp/meta-lmp-base/conf/distro/include/lmp.inc`` and can be customized by architecture, machine, or any other override.
+To customize it, use ``DISTRO_FEATURES:append = <value>`` to add a feature to the list, and ``DISTRO_FEATURES:remove = <value>`` to remove a feature from the list.
+To remove a feature from an override list, use ``DISTRO_FEATURES:remove:<machine> = <value>``.
 
-The command ``bitbake-getvar`` can be used to see the value of some variables, and
-all the intermediate values::
+The command ``bitbake-getvar`` can be used to see the value of some variables, and all the intermediate values::
 
   $ bitbake-getvar DISTRO_FEATURES
   NOTE: Starting bitbake server...
@@ -166,20 +155,16 @@ all the intermediate values::
   DISTRO_FEATURES="acl argp bluetooth ext2 ipv4 ipv6 largefile usbgadget usbhost wifi xattr zeroconf pci vfat modsign efi security tpm integrity seccomp pam usrmerge virtualization ptest
   alsa sota systemd"
 
-The log is generated using ``DISTRO="lmp"``. The ``DISTRO_FEATURES`` changed with
-seven operations and only one of them is for an override (``tegra``).
+The log is generated using ``DISTRO="lmp"``. The ``DISTRO_FEATURES`` changed with seven operations and only one of them is for an override (``tegra``).
 The log also shows the file path and line for each operation.
 
 The line starting with ``DISTRO_FEATURES=`` show the variable value.
 
-The Yocto Project also provides ``IMAGE_FEATURES`` and ``MACHINE_FEATURES``,
-a list of features for the image and to describe the machine. There is a list of
-`Yocto Project image features`_ and `Yocto Project machine features`_ supported
-by the project.
+The Yocto Project also provides ``IMAGE_FEATURES`` and ``MACHINE_FEATURES``, a list of features for the image and to describe the machine.
+There is a list of `Yocto Project image features`_ and `Yocto Project machine features`_ supported by the project.
 
 The LmP uses the ``MACHINE_FEATURES`` from a machine to define if a package is included.
-For example, the OP-Tee package is only included in an image if the target machine
-includes the feature ``optee`` in ``MACHINE_FEATURE``.
+For example, the OP-Tee package is only included in an image if the target machine includes the feature ``optee`` in ``MACHINE_FEATURE``.
 
 .. _Yocto Project distro features:
    https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#distro-features
