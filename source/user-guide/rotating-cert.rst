@@ -1,6 +1,6 @@
 .. _ref-cert-rotation-ug:
 
-Device Certificate Rotation
+Rotating Device Certificate 
 ===========================
 
 The :ref:`Device Certificate Rotation <ref-cert-rotation>` reference manual describes core concepts and functions of certificate rotation.
