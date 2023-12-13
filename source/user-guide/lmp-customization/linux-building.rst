@@ -36,7 +36,7 @@ On Debian-based Linux distributions, including Ubuntu, run::
        texinfo g++ gcc-multilib build-essential chrpath socat cpio \
        openjdk-11-jre python2.7 python3 python3-pip python3-pexpect xz-utils \
        debianutils iputils-ping libsdl1.2-dev xterm libssl-dev libelf-dev \
-       android-tools-fsutils ca-certificates repo whiptail
+       android-sdk-libsparse-utils ca-certificates repo whiptail
 
 .. note::
 
