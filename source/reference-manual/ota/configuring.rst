@@ -82,10 +82,16 @@ Two interesting things that can be done with this include ``on-changed`` and ``u
   }
   EOF
 
-The ``on-changed`` parameter allows to run commands upon receiving configuration fragments. By default, it only runs commands from ``/usr/share/fioconfig/handlers``, so a custom handler should be created in this folder, see `fioconfig_git.bb <https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-support/fioconfig/fioconfig_git.bb>`_ for reference.
+The ``on-changed`` parameter allows to run commands upon receiving configuration fragments.
+The `fioconfig` may only run "trusted" scripts from the ``/usr/share/fioconfig/handlers/`` folder to protect devices from arbitrary script execution.
+As such, a custom handler should be created in this folder.
+See `fioconfig_git.bb <https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-support/fioconfig/fioconfig_git.bb>`_ for reference.
 
 .. tip::
-   It is possible to use the ``on-changed`` parameter to run commands outside of the ``/usr/share/fioconfig/handlers`` folder by running ``fioconfig daemon --unsafe-handlers``. This would allow running configurations as::
+  For testing purposes, it is possible to use the ``on-changed`` parameter to run commands outside of the ``/usr/share/fioconfig/handlers`` folder.
+  This is done by running ``fioconfig daemon --unsafe-handlers``.
+  We do not recommend doing that in production.
+  This allows running configurations as::
 
       cat >tmp.json <<EOF
       {

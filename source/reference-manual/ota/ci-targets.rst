@@ -3,29 +3,25 @@
 CI Targets
 ==========
 
-The point of FoundriesFactory is to create Targets. The magic
-is how a ``git push`` can make this all happen. Because
-of how easy these are to create, there is another type of Target,
-:ref:`Production Targets <ref-production-targets>`, that are intended
-to be used for production devices. However, it's almost always
-originally created by CI when:
+The point of a Factory is to create Targets.
+A ``git push`` is all that is required to trigger a Target to be built.
 
- * A change is pushed to source.foundries.io
- * A CI job is triggered in ci.foundries.io
- * The CI job signs the resulting TUF ``targets.json`` with the Factory's
-   "online" targets signing key.
+There is another type of Target, :ref:`Production Targets <ref-production-targets>`, that are intended to be used for production devices.
+However, it is almost always originally created by the CI when:
 
-The online targets signing key ID can be seen in the TUF root
-metadata:
+ * A change is pushed to ``source.foundries.io``
+ * A CI job is triggered in ``ci.foundries.io``
+ * The CI job signs the resulting TUF ``targets.json`` with the Factory's "online" Targets signing key.
+
+The online Targets signing key ID can be seen in the TUF root metadata:
 
 .. code-block:: bash
 
   $ fioctl get https://api.foundries.io/ota/repo/<FACTORY>/api/v1/user_repo/root.json \
   | jq '.signed.roles.targets.keyids[0]'
 
-Due to the number of changes and development branches a typical
-customer may have, the TUF targets metadata can grow to include large
-numbers of Targets. There are two ways these are dealt with:
+Due to all the changes and branches you may have, the TUF Targets metadata can grow to include a large number of Targets.
+There are two ways this can be dealt with:
 
  * Condensed Targets
  * Target Pruning
@@ -35,23 +31,20 @@ numbers of Targets. There are two ways these are dealt with:
 Condensed Targets
 -----------------
 
-Each device is configured to take updates for Targets that include
-a specific tag. Because of this, the most of the Targets in the
-CI ``targets.json`` aren't relevant and can be ignored by the device.
-In order to provide smaller TUF metadata payloads, the Foundries
-back-end employs a trick referred to as "condensed targets".
+Each device is configured to take updates for Targets that include a specific tag.
+Because of this, most of the Targets in ``targets.json`` are not relevant for any given device and can be ignored by it.
+In order to provide smaller TUF metadata payloads, the backend employs what is referred to as "condensed Targets".
 
-Condensed Targets are produced by taking the raw CI version and then
-producing condensed versions for each unique tag. For example, the
-raw targets.json might include::
+Condensed Targets are produced by taking the raw CI version, and then producing condensed versions for each unique tag.
+For example, a raw ``targets.json`` might include::
 
   version=1, tag=master
   version=2, tag=devel
   version=3, tag=devel
   version=4, tag=devel,experimental
 
-The back-end will actually produce three different condensed versions
-that are each signed with the Factory's online targets signing key::
+The back-end will actually produce three different condensed versions.
+Each one is signed with the Factory's online Targets signing key::
 
   # targets-master.json
   version=1, tag=master
@@ -64,14 +57,13 @@ that are each signed with the Factory's online targets signing key::
   version=3, tag=experimental
   version=4, tag=experimental
 
-The :ref:`device gateway <ref-ota-architecture>` is then able to serve
-an optimized targets.json to each CI device.
+The :ref:`device gateway <ref-ota-architecture>` is then able to serve an optimized ``targets.json`` to each CI device.
 
 Target Pruning
 --------------
 
-Each successful build appends a Target to targets.json. Eventually
-it grows too large and users will see an error in CI::
+Each successful build appends a Target to ``targets.json``.
+Eventually it can grow too large, and you would see an error in CI::
 
   Publishing local TUF targets to the remote TUF repository
   == 2022-03-24 00:44:18 Running: garage-sign targets push --repo /root/tmp.gkfCEF
@@ -79,4 +71,4 @@ it grows too large and users will see an error in CI::
   |  com.advancedtelematic.libtuf.http.CliHttpClient$CliHttpClientError: ReposerverHttpClient|PUT|http/413|https://api.foundries.io/ota/repo/andy-corp/api/v1/user_repo/targets%7C<html>
   |  <head><title>413 Request Entity Too Large</title></head>
 
-When this happens, it's time to :ref:`prune targets <ref-troubleshooting_request-entity-too-large>`.
+When this happens, it is time to :ref:`prune targets <ref-troubleshooting_request-entity-too-large>`.

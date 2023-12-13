@@ -3,6 +3,8 @@
 Over the Air Updates
 ====================
 
+This section provides reference information and in depth details on Over the Air (OTA) Updates for your Factory.
+
 .. toctree::
    :maxdepth: 1
 

@@ -3,12 +3,12 @@
 Device Tags
 ===========
 
-The Foundries.io version of aktualizr-lite includes a concept called "device
-tags" to help maintain better control of your fleet. Each device can subscribe
-to a list of tags. If specified, a device will only apply updates from TUF that
-include a tag from its list.
+The Foundries.io™ version of aktualizr-lite includes a concept called "device tags".
+This helps you maintain better control over your fleet.
+Each device can subscribe to a single tag to obtain updates from.
+If specified, a device will only apply updates from TUF which includes the tag.
 
-Let's look at an example targets.json to explain::
+Let us look at an example ``targets.json``::
 
  {
   ...
@@ -48,35 +48,32 @@ Let's look at an example targets.json to explain::
   }
  }
 
-You could have two devices. Device #1 might be used for integration testing. It
-would set the tags in its sota.toml as::
+You may have two devices.
+If Device #1 is used for integration testing, it would set the tags in its ``sota.toml`` as::
 
  [pacman]
  tags = "postmerge"
 
-In this case, the aktualizr-lite daemon would pick the latest "postmerge" build
-for this device, version **144**.
+In this case, the aktualizr-lite daemon would pick the latest "postmerge" build for this device, version **144**.
 
-Device #2 might be used in production. It would set its tag to only run
-"promoted" builds::
+Device #2 is used in production.
+It would set its tag to only run "promoted" builds::
 
  [pacman]
  tags = "promoted"
 
-In this case, the aktualizr-lite daemon would pick the latest "promoted" build
-for this device, version **143**.
+In this case, the aktualizr-lite daemon would pick the latest "promoted" build for this device, version **143**.
 
 Managing Tags
 -------------
 
-By default LmP builds triggered in your factory after code has been merged to
-master will be tagged with "postmerge". After doing QA on this build, it can
-be "promoted" using the fioctl_ tool::
+By default, LmP builds are triggered for your Factory after code has been merged to main will be tagged with "postmerge".
+After doing QA on this build, it can be "promoted" using the Fioctl_ tool::
 
  fioctl targets tag -Tpostmerge,promoted raspberrypi3-64-lmp-144
 
-That will kick off a CI job that will tag build 144 as promoted. This would
-result in the Device 2 from the example above in updating.
+This will kick off a CI job that will tag build 144 as promoted.
+This would result in Device 2 (from the above example) in updating.
 
-.. _fioctl:
+.. _Fioctl:
    https://github.com/foundriesio/fioctl/releases
