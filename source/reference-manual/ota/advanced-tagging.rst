@@ -3,26 +3,26 @@
 Advanced Tagging
 ================
 
-Some users incorporate non-trivial workflows that can require advanced tagging
-techniques. These workflows can be handled in the :ref:`ref-factory-definition`.
+You may sometimes need to incorporate a non-trivial workflow requiring advanced tagging techniques.
+These workflows are handled in the :ref:`ref-factory-definition`.
 
 Terminology
 -----------
 
-**Platform Build** - A build created by a change to the LmP (lmp-manifest.git
-or meta-subscriber-overrides.git). This is the base OS image.
+**Platform Build**: A build created by a change in ``lmp-manifest.git`` or ``meta-subscriber-overrides.git``.
+This is the base OS image.
 
-**Container Build** - A build created by a change to containers.git.
+**Container Build**: A build created by a change to ``containers.git``.
 
-**Target** - This an entry in a factory's TUF targets.json file. It represents
-what should be thought of as an immutable combination of the Platform build's
-OSTree hash + the output of a Container build.
+**Target**: An entry in a Factory's TUF ``targets.json``.
+It represents an immutable combination of the Platform build's OSTree hash with the output of a container build.
 
-**Tag** - A Target has a "custom" section where with a list of Tags. The
-tags can be used to say things like "this is a development build"
-or this is a "production" build.
+**Tag**: A Target has a "custom" section where with a list of Tags.
+**Tag:**: A user defined attribute of a Target designating its intended usage.
+Tags are defined in the "custom" section of a Target.
+They can be used to e.g. distinguish between "development" versus "production" builds.
 
-Scenario 1: A new platform build that re-uses containers
+Scenario 1: A New Platform Build That Re-Uses Containers
 --------------------------------------------------------
 
 A Factory is set up with the normal ``main`` branch::
@@ -36,8 +36,8 @@ A Factory is set up with the normal ``main`` branch::
       refs/heads/main:
         - tag: main
 
-You'd like to introduce a new ``stable`` branch from the LmP but have it use
-the latest containers from master. This can be done with::
+You want to introduce a new ``stable`` branch from the LmP, but have it use the latest containers from ``main``.
+This can be done with::
 
   lmp:
     tagging:
@@ -52,7 +52,7 @@ the latest containers from master. This can be done with::
         - tag: main
         - tag: stable
 
-Consider this pseudo targets example::
+Consider this pseudo Targets example::
 
   targets:
     build-1:
@@ -64,10 +64,10 @@ Consider this pseudo targets example::
       compose-apps: foo:v2, bar:v2
       tags: main
 
-If a change to the stable branch was pushed to the LmP, a new
-target, build-3, would be added. The build logic would then look through
-the targets list to find the most recent ``main`` target so that
-it can copy those compose-apps. This would result in a new target::
+If a change to the stable branch was pushed to the LmP, a new Target, ``build-3``, would be added.
+The build logic would then look through the Targets list to find the most recent ``main`` Target.
+It can then copy the compose-apps from that most recent Target.
+This would result in a new Target::
 
   build-3:
     ostree-hash: NEWHASH
@@ -75,7 +75,7 @@ it can copy those compose-apps. This would result in a new target::
     tags: stable
 
 On the other hand, there might also be a new container build for ``main``.
-In this case the build logic will produce two new targets::
+In this case, the build logic will produce two new Targets::
 
   build-4:  # for stable it will be based on build-3
     ostree-hash: NEWHASH
@@ -87,13 +87,13 @@ In this case the build logic will produce two new targets::
     compose-apps: foo:v3, bar:v3
     tags: main
 
-Scenario 2: Multiple container builds using the same platform
+Scenario 2: Multiple Container Builds Using the Same Platform
 -------------------------------------------------------------
 
-This scenario is the reverse of the previous one. A factory might have a
-platform build tagged with ``main``. However, there are two versions of
-containers being worked on: ``main`` and ``foo``. This could be handled
-with::
+This scenario is the reverse of the first one.
+A Factory might have a platform build tagged with ``main``.
+However, there are two versions of containers being worked on: ``main`` and ``foo``.
+This could be handled with::
 
   lmp:
     tagging:
@@ -108,13 +108,13 @@ with::
         - tag: foo
           inherit: main
 
-Scenario 3: Multiple teams, different cadences
+Scenario 3: Multiple Teams, Different Cadences
 ----------------------------------------------
 
-Some organizations may have separate core platform and application teams. In
-this scenario, it may be desirable to let each team move at their own decoupled
-paces. Furthermore, the application team might have stages(branches) of
-development they are working on. This could be handled with something like::
+Your organization may have separate core platform and application teams.
+In this scenario, it may be desirable to let each team move at their own pace.
+Furthermore, the application team might have stages(branches) of development they are working on.
+This can be handled with something like::
 
   lmp:
     tagging:
@@ -131,12 +131,11 @@ development they are working on. This could be handled with something like::
         - tag: qa
           inherit: main
 
-This scenario is going to produce ``main`` tagged builds that have no
-containers, but can be generically verified. Then each containers.git branch
-will build Targets and grab the latest ``main`` tag to base its platform
-on. **NOTE:** Changes to ``main`` don't cause new container builds. In
-order to get a container's branch updated to the latest ``main`` a user
-would need to push an empty commit to containers.git to trigger a new build::
+This will produce ``main`` tagged builds that have no containers, but can be generically verified.
+Then, each ``containers.git`` branch will build Targets and grab the latest ``main`` tag to base its platform on.
+
+It is important to note that changes to ``main`` do not cause new container builds.
+In order to get a container's branch updated to the latest ``main``, push an empty commit to ``containers.git`` to trigger a new build::
 
  # from branch qa
  git commit --allow-empty -m 'Pull in latest platform changes from main'

@@ -3,12 +3,12 @@
 Targets Overview
 ================
 
-Perhaps the most important goal of a FoundriesFactory is to deliver
-immutable software updates to devices. This is achieved by using the
-`The Update Framework`_ (TUF). The central piece to TUF is the notion
-of a Target. A Target defines a cryptographically verifiable
-description of the software a device should run. A simplified example
-could be::
+Perhaps the most important goal of a Factory is to deliver immutable software updates to devices.
+This is achieved by using the `The Update Framework`_ (TUF).
+The central piece to TUF is the notion of a Target.
+A Target defines a cryptographically verifiable description of the software a device should run.
+
+For a simplified example::
 
  "raspberrypi3-64-lmp-42" : {
     "hashes" : {"sha256" : "0xdeadbeef"},
@@ -28,42 +28,40 @@ This Target specifies some important bits of information:
 
  * This is build ``42``
  * The immutable OSTree hash of the base image is ``0xdeadbeef``
- * The Compose App, ``shellhttpd``, is part of the Target.
+ * The Compose app, ``shellhttpd``, is part of the Target.
 
-The Target is the goal. Developers push changes to Git in hopes of
-building a Target. Devices look to the OTA system for the latest
-Target they should run. Operators oversee the intersection of these
-goals.
+The Target is the goal.
+Developers push changes to Git so as to build a Target.
+Devices look to the OTA system for the latest Target they should run.
+Operators oversee the intersection of these goals.
 
-The point of the Factory is to create Targets. The magic of the
-Factory is how a simple ``git push`` can make this all happen and
-is where you can start to visualize a Factory. The
-:ref:`Factory Definition <ref-factory-definition>` file instructs
-CI what it's supposed to build when changes hit source.foundries.io.
-The default factory-config.yml tells CI:
+The point of a Factory is to create Targets.
+The interesting thing about a Factory, is how with a ``git push``, you can make this all happen.
+This is where you can start to visualize a Factory.
+The :ref:`Factory Definition <ref-factory-definition>` file instructs CI what to build when changes hit ``source.foundries.io``.
 
- * If an LmP change (lmp-manifest.git or meta-subscriber-overrides.git)
-   comes in on the master branch, do a platform build and tag it with
-   "master".
+The default ``factory-config.yml`` tells CI:
 
- * If a container change (containers.git) comes in on master branch,
-   do a container build and tag it with master.
+ * If an LmP change (``lmp-manifest.git`` or ``meta-subscriber-overrides.git``) is made to the default(i.e., "main") branch,
+   do a platform build and tag it with "default".
+
+ * If a container change (``containers.git``) is made to the default branch, do a container build and tag it with "default".
 
 However, this can grow much :ref:`more complex <ref-advanced-tagging>`.
 
-CI must also take into account that Targets require both an OSTree
-image **and** Compose Apps. This turns out to be a fairly simple
-calculation. CI looks at the previous Target for a given tag. In
-the case of a platform build, it will copy the Compose Apps defined for it.
-In the case of a container build, it will copy the OSTree hash. In
-this way, there aren't "container targets" and "platform targets". There
-are only Targets.
+CI must also take into account that Targets require both an OSTree image **and** Compose apps.
+This turns out to be a fairly simple calculation.
+CI looks at the previous Target for a given tag.
+In the case of a platform build, it will copy the Compose apps defined for it.
+In the case of a container build, it will copy the OSTree hash.
+In this way, there are not "container targets" and "platform targets"; there are only Targets.
 
 Visualizing a Factory
 ---------------------
 
-Start with ``factory-config.yml``. The ``tagging`` and ``ref_options``
-stanzas describe the intent. Then take a high-level view of the fleet:
+Start with ``factory-config.yml``.
+The ``tagging`` and ``ref_options`` stanzas describe the intent.
+Then take a high-level view of the fleet:
 
 .. code-block:: bash
 
@@ -80,8 +78,8 @@ stanzas describe the intent. Then take a high-level view of the fleet:
     46      1        `fioctl targets show 46`
     112     1        `fioctl targets show 112`
 
-This will show all Targets active in the field. Now take a look
-at a specific Target:
+This will show all Targets active in the field.
+Now take a look at a specific Target:
 
 .. code-block:: bash
 
@@ -102,8 +100,7 @@ at a specific Target:
         ---          ----
         shellhttpd   sha256:e4a7b3a31c0126d28aaf75e1b8b6e83c7afd160b110267530b8572ce192160da
 
-This command gives the exact details of the Target, including the CI
-change that produced it.
+This command gives the exact details of the Target, including the CI change that produced it.
 
 .. _The Update Framework:
    https://theupdateframework.com/

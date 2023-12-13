@@ -1,9 +1,11 @@
 .. _ref-aktualizr-lite:
 
-aktualizr-lite
+Aktualizr-Lite
 ==============
 
-The default OTA client shipped with the Linux microPlatform is ``aktualizr-lite``. This client is a build variant of the Aktualizr project. It is targeting users who wish to have the security aspects of TUF but do not want the complexity of Uptane.
+The default OTA client shipped with the Linux® microPlatform is ``aktualizr-lite``.
+This client is a build variant of the Aktualizr project.
+It is for those who wish to have the security aspects of TUF, but without the complexity of Uptane.
 
   .. figure:: /_static/diagrams/aktualizr-lite/aktualizr-lite.png
      :align: center
@@ -14,7 +16,9 @@ There are two modes ``aktualizr-lite`` supports.
 Daemon Mode (Default)
 ---------------------
 
-This is the default mode of ``aktualizr-lite`` in the Linux microPlatform. It is a systemd service, which is enabled by default on Community Factory images. Additionally, the daemon will only be enabled in a Personal or Enterprise factory after ``lmp-device-register`` has sucessfully registered your device. The daemon will periodically check for new updates, and apply them when found.
+This is the default mode of ``aktualizr-lite`` in the Linux microPlatform.
+The daemon will only be enabled in a Factory after ``lmp-device-register`` has successfully registered your device.
+The daemon periodically checks for new updates, and applies them when found.
 
 To disable daemon mode:
 
@@ -49,49 +53,55 @@ Disabling daemon mode is not recommended nor supported, but running ``aktualizr-
 View Current Status
 ~~~~~~~~~~~~~~~~~~~
 
-You can run ``sudo aktualizr-lite status`` to view the current status of the device.
+To view the current status of the device::
+
+    sudo aktualizr-lite status
 
 Fetch and List Updates
 ~~~~~~~~~~~~~~~~~~~~~~
 
-This command will refresh the targets metadata from the OTA server, and present you with a list of available targets which can be applied.
+This will refresh the Targets metadata from the OTA server, and present you with a list of available Targets::
 
-``sudo aktualizr-lite list``
+   sudo aktualizr-lite list
 
 Apply Latest Update
 ~~~~~~~~~~~~~~~~~~~
 
-This command will apply the latest available update to the device. This includes both OSTree and Docker app targets.
+This will apply the latest available update to the device.
+This includes both OSTree and Docker app Targets::
 
-``sudo aktualizr-lite update``
+   sudo aktualizr-lite update
 
 Apply Specific Update
 ~~~~~~~~~~~~~~~~~~~~~
 
-If you would like to update to a specific build number, you can use the following command.
+To update to a specific build number::
 
 ``sudo aktualizr-lite update --update-name <build_number>``
 
 .. note::
 
-    This can only be performed when the original and update targets are under the same tag. In case the update is tagged differently, it is required to switch tags before running this command.
+    This can only be performed when the original and update Targets are under the same tag.
+    In case the update is tagged differently, it is required to switch tags before running this command.
 
 Configuration
 -------------
 
-Configuration update methods
+Configuration Update Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * Editing ``/var/sota/sota.toml`` on a device
-* Adding or editing an existing configuration snippet e.g. ``/etc/sota/conf.d/z-50-fioctl-01.toml`` on a device
-* Running *fioctl* from any host ``fioctl devices config <device>``, see :ref:`ref-configuring-devices` for more details
+* Adding or editing an existing configuration snippet, e.g. ``/etc/sota/conf.d/z-50-fioctl-01.toml`` on a device
+* Running ``fioctl devices config <device>`` from a host.
+  See :ref:`ref-configuring-devices` for more details.
 
 .. _ref-aktualizr-lite-params:
 
 Parameters
 ~~~~~~~~~~
 
-The following are aktualizr-repo's configuration parameters that can be useful to play with, the presented values are the default one.
+The following are aktualizr-repo's configuration parameters that can be useful to modify.
+The presented values are the default one.
 
 .. code-block::
 
