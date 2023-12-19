@@ -236,7 +236,7 @@ Follow the example below and make sure you update ``<FACTORY_NAME>`` with your F
 
     host:~$ cd myapp/
     host:~$ mkdir -p .github/workflows/ 
-    host:~$ gedit .github/workflows/source-fio-update.yml
+    host:~$ vi .github/workflows/source-fio-update.yml
 
 .. code-block:: yaml
 

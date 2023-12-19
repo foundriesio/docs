@@ -1,46 +1,31 @@
 Building
 --------
 
-When building the Cortex R5 u-boot, it builds for all different variants:
+When building the Cortex R5 U-Boot, all variants are built:
 
-* ``hs-fs`` (High Security/Field Securable) also known as `SK-AM64B`_: This is a SoC/board state before a customer has blown the keys in the device. i.e. the state at which HS device leaves TI factory. In this state, the device protects the ROM code, TI keys and certain security peripherals. In this state, device do not force authentication for booting, however DMSC is locked.
+* ``hs-fs`` (High Security/Field Securable), also known as `SK-AM64B`_: This is a SoC/board state before a customer has blown the keys in the device,
+  i.e., the state at which the HS device leaves TI factory.
+  The device protects the ROM code, TI keys and certain security peripherals.
+  In this state, devices do not force authentication for booting, however DMSC is locked.
 
-* ``hs`` (High Security/Security Enforced) also known as `SK-AM64B`_: This is a SoC/board state after a customer has successfully blown the keys and set “customer keys enable”. In HS-SE device all security features are enabled. All secrets within the device are fully protected and all of the security goals are fully enforced. The device also enforces secure booting.
+* ``hs`` (High Security/Security Enforced), also known as `SK-AM64B`_: This is a SoC/board state after successfully blowning the keys and set “customer keys enable”.
+  In HS-SE device all security features are enabled.
+  All secrets within the device are fully protected and all of the security goals are fully enforced.
+  The device also enforces secure booting.
 
-* ``gp`` (General Purpose) variant also known as `SK-AM64`_: This is a SoC/board state where there is no device protection and authentication is not enabled for booting the device.
+* ``gp`` (General Purpose), also known as `SK-AM64`_: This is a SoC/board state with no device protection and authentication is not enabled for booting the device.
 
-The default variant is the ``hs-fs``. To boot an image on the others variants without pre-flash files manipulations
-on the target file-system we need to change the ``SYSFW_SUFFIX`` variable.
-The following changes the default to ``gp`` so the image produced boots on that variant:
+The default variant is  ``hs-fs``.
+To boot an image on other variants without pre-flash files manipulations on the target file-system, we need to change the ``SYSFW_SUFFIX`` variable.
+The following changes the default to ``gp``, so that the image produced boots that variant:
 
 .. code-block:: shell
 
    echo 'SYSFW_SUFFIX:am64xx-evm-k3r5 = "gp"' >> meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
 
-Preparation
------------
+.. include:: generic-prepare.rst
 
-Ensure you replace the ``<factory>`` placeholder below with the name of your
-Factory.
-
-Download necessary files from ``https://app.foundries.io/factories/<factory>/targets``
-
-#. Click the latest Target with the :guilabel:`platform-devel` trigger.
-
-   .. figure:: /_static/boards/generic-steps-1.png
-      :align: center
-      :width: 300
-
-#. Expand the **run** in the :guilabel:`Runs` section (by clicking on the ``+`` sign) which corresponds
-   with the name of the board and **download the Factory image for that
-   machine.**
-
-   | E.g: ``lmp-factory-image-am64xx-evm.wic.gz``
-   
-   .. figure:: /_static/boards/am64xx-sk-steps-2.png
-      :align: center
-      :width: 600
-#. Extract the file ``lmp-factory-image-am64xx-evm.wic.gz``::
+#. Extract the file::
 
       gunzip lmp-factory-image-am64xx-evm.wic.gz
 

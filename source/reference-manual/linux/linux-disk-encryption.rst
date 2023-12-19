@@ -78,42 +78,34 @@ the Platform Configuration Register 7 (PCR 7), which monitors the
 
 We demonstrate both of these scenarios using QEMU in the sections below.
 
-
 Enabling Support for Disk Encryption
 ------------------------------------
 
 The following options require customizations for disk encryption support:
 
-For adding the required ``initramfs-module-cryptfs`` module to the initramfs
-(based on what gets provided by ``MACHINE_FEATURES``, like ``tpm2`` or ``optee``):
+For adding the required ``initramfs-module-cryptfs`` module to the initramfs (based on what gets provided by ``MACHINE_FEATURES``, like ``tpm2`` or ``optee``):
 
 .. code-block:: none
 
   DISTRO_FEATURES:append = " luks"
 
-For splitting the ``/boot`` content from the ostree deployment in a separated
-partition (where kernel/initramfs gets stored, unencrypted). This option is
-enabled by default on systems booting with UEFI support.
+For splitting the ``/boot`` content from the ostree deployment in a separated partition (where kernel/initramfs gets stored, unencrypted).
+This option is enabled by default on systems booting with UEFI support:
 
 .. code-block:: none
 
   OSTREE_SPLIT_BOOT = "1"
 
-For supporting copying content from ``/usr/lib/ostree-boot`` (used for
-boot firmware updates) into ``/boot`` as part of the ostree deployment step (OTA).
-This is required for supporting boot firmware updates on devices with encrypted
-root file systems.
+For supporting the copying of content from ``/usr/lib/ostree-boot`` (used for boot firmware updates) to ``/boot``, as part of the ostree deployment step (OTA).
+This is required for supporting boot firmware updates on devices with encrypted root file systems:
 
 .. code-block:: none
 
   OSTREE_DEPLOY_USR_OSTREE_BOOT = "1"
 
-For supporting ``/boot`` in a separated partition at the final image the selected
-``WKS_FILE`` needs to support split boot. UEFI based devices already have such
-setup by default, but on most ARM/ARM64 devices a custom WKS might be
-required. As an example, iMX8-based devices should use
-``sdimage-imx8-spl-split-boot-sota.wks.in`` instead of the default
-``sdimage-imx8-spl-sota.wks.ini`` file:
+For supporting ``/boot`` being in a separated partition at the final image the selected ``WKS_FILE`` needs to support split boot.
+UEFI based devices already have such setup by default, but on most ARM/ARM64 devices a custom WKS might be required.
+As an example, iMX8-based devices should use ``sdimage-imx8-spl-split-boot-sota.wks.in`` instead of the default ``sdimage-imx8-spl-sota.wks.ini`` file:
 
 .. code-block:: none
 
@@ -121,17 +113,25 @@ required. As an example, iMX8-based devices should use
 
 .. note::
 
-  Besides a custom ``WKS_FILE`` for split boot support, make sure to also update
-  the target fstab to automatically mount ``/boot`` (from the first partition)
-  at the root file system ``/boot`` folder.
-  This is not required with UEFI-based systems as systemd is capable of
-  automatically identifying and mounting the ESP partition during boot.
+  Along with a custom ``WKS_FILE`` for split boot support, also update the target fstab to automatically mount ``/boot`` (from the first partition).
+  This is not required with UEFI-based systems, as systemd is capable of automatically identifying and mounting the ESP partition during boot.
+
+Implementation Details for OP-TEE PKCS#11 Support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A dedicated slot is required to avoid conflicts with the PKCS#11 token slot normally used by ``aktualizr-lite``.
+This dedicated slot is currently hardcoded to slot 1, with the label ``lmp``.
+
+During the encryption process the token slot is initialized and a RSA 2048 key is generated, which is later used by `systemd-cryptenroll`_.
+
+Make sure to **not** erase the token slot or the key during the lifetime of the image.
+Doing so would cause the system to fail at boot.
+A recovery key can be created and provided manually if required, but it will not be an unattended boot.
 
 Testing TPM 2.0 Support With Qemu (x86) and swtpm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is possible to test the disk encryption support with TPM 2.0 with Qemu and
-`swtpm`_.
+It is possible to test the disk encryption support with TPM 2.0 with QEMU and `swtpm`_.
 
 Make sure LUKS support is enabled for your x86 target:
 
@@ -144,15 +144,15 @@ Then make sure to enroll the :ref:`UEFI Secure Boot Certificates <ref-secure-boo
 to enable secure boot support. This is required as the LUKS2 TPM 2.0 token
 leverages **PCR 7**, which tracks the secure boot state.
 
-Now install ``swtpm`` in the host machine (if not already installed), and start the ``swtpm``
-daemon, which will be later consumed by Qemu and act as the hardware TPM.
+Now install ``swtpm`` on the host machine, and start the ``swtpm`` daemon.
+This will be consumed by QEMU and act as the hardware TPM.
 
 .. code-block:: console
 
    $ mkdir -p /tmp/mytpm
    $ while true; do swtpm socket --tpmstate dir=/tmp/mytpm --ctrl type=unixio,path=/tmp/mytpm/swtpm-sock --tpm2; done;
 
-Run Qemu with the required extra TPM 2.0 related commands:
+Run QEMU with the required extra TPM 2.0 related commands:
 
 .. code-block:: console
 
@@ -166,7 +166,7 @@ Run Qemu with the required extra TPM 2.0 related commands:
       -chardev socket,id=chrtpm,path=/tmp/mytpm/swtpm-sock \
       -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0
 
-Now during boot you should see the following during the first boot:
+You should see the following during the first boot:
 
 .. code-block:: none
 

@@ -3,25 +3,24 @@
 Beaglebone Black
 ================
 
-This tutorial covers both Beaglebone Black and Beaglebone Black Wireless.
+.. note:: 
+   This tutorial applies to both the Beaglebone Black and Beaglebone Black Wireless.
 
 .. include:: generic-prepare.rst
 
 Flashing
 --------
 
-Now, flash the ``lmp-factory-image-beaglebone-yocto.wic.gz`` retrieved from the
-previous section to an SD Card. This contains the :term:`system image` that the
-device will boot.
+Flash your Factory image to an SD Card.
+This contains the bootable :term:`system image`.
 
-By default Beaglebone Black boots from internal eMMC. There are several ways to
-avoid this:
+By default, the Beaglebone Black boots from internal eMMC.
+To avoid this, you can either:
 
-   * Press S2 button before powering on
+   * Press the **S2** button before powering on.
+     This causes the boot sequence to start from SPI0, followed by SD card.
+     If the board is not connected to any SPI boot source, the SD card should be used.
 
-     This causes boot sequence to start from SPI0 followed by SD card. If the
-     board is not connected to any SPI boot source SD card should be used
-
-   * Erase eMMC or disable 'bootable' flag on eMMC boot partition
+   * Erase the eMMC, or disable the 'bootable' flag on the eMMC boot partition.
 
 .. include:: generic-flashing.rst

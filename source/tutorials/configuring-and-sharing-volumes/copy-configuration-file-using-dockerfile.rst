@@ -24,7 +24,7 @@ Edit the ``Dockerfile`` to create the ``shellhttpd`` folder and copy ``shellhttp
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/Dockerfile
+    host:~$ vi shellhttpd/Dockerfile
 
 ::
 

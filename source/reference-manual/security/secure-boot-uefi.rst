@@ -17,7 +17,7 @@ This implies owning the Platform Key (PK), Key Exchange Keys (KEKs), Allow list 
 
 Machine Owner Key (MOK) Secure Boot leverages a pre-bootloader Shim.
 Commonly used by generic Linux distributions, this is not recommended for deployments of secure products.
-As such, it is not supported by LmP.
+As such, it is not supported by LmP or Foundries.io.
 
 The default UEFI-based bootloader used by LmP is `systemd-boot`_.
 
@@ -36,7 +36,7 @@ Keys and Roles
   Key normally used by system and OS vendors.
   One or more KEKs are typically available as RSA-2048 X509 certificates.
   The KEK private key can sign changes to DB and DBX.
-  KEK can be used to sign bootable content; this is not recommended as replacing KEK is nontrivial due to PK involvement.
+  KEK can be used to sign bootable content; this is not recommended nor supported as replacing KEK is nontrivial due to PK involvement.
 
 **Allow list Database (DB)**
 
@@ -82,7 +82,7 @@ Once PK is added by the user, most UEFI implementations move the active mode fro
 Creating UEFI Secure Boot Keys
 -----------------------------------
 
-The suggested way to create a custom set of UEFI Secure Boot keys and certificates is via the `lmp-tools gen_uefi_certs.sh <https://github.com/foundriesio/lmp-tools/blob/master/security/uefi/gen_uefi_certs.sh>`_ script.
+To create a custom set of UEFI Secure Boot keys and certificates, use the `lmp-tools gen_uefi_certs.sh <https://github.com/foundriesio/lmp-tools/blob/master/security/uefi/gen_uefi_certs.sh>`_ script.
 
 1. Clone the ``lmp-tools`` repository from GitHub
 

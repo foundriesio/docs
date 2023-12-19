@@ -3,40 +3,36 @@
 Using Third-Party Private Container Registries
 ==============================================
 
-Users sometimes need Foundries.io CI services access container images
-from a private third-party container registry such as AWS's ECR_.
-There are two reasons this would normally happen:
+Sometimes there is a need for a Factory's CI services to a private third-party container registry, such as AWS's ECR_.
+There are two common reasons this would be needed:
 
- * A container in ``containers.git`` is based on a private container
-   image. e.g. Its Dockerfile has ``FROM <private
-   registry>/<container>``
+ * A container in ``containers.git`` is based on a private container image.
+   For example, the Dockerfile has ``FROM <private registry>/<container>``
 
- * A Docker Compose App references a private container image. e.g.
-   Its ``docker-compose.yml`` has a line like ``image: <private
-   registry>/<container>``
+ * A Docker Compose App references a private container image.
+   For example, a ``docker-compose.yml`` with the line ``image: <private registry>/<container>``
 
-In either case, CI will need read access to the private container image
-in order to construct a Target. The :ref:`ref-factory-definition`
-(``ci-scripts.git``) provides a way to configure this.
+The CI needs read access to the private container image in order to construct a Target.
+The :ref:`ref-factory-definition` (``ci-scripts.git``) provides a way to configure this.
 
 
 Configuring for CI Azure Container Registry (ACR)
 -------------------------------------------------
 
-CI can be configured to use an ACR `service principal`_ with read-only
-access to a private ACR instance. First, CI must be configured with
-the service principal's ID and password::
+The CI can be configured to use an ACR `service principal`_ with read-only access to a private ACR instance.
+First, the CI must be configured with the service principal's ID and password::
 
  $ fioctl secrets update azprincipal='<ID>:<PASSWORD>'
 
-The factory :ref:`configuration <ref-factory-definition>` is then
-updated accordingly::
+The Factory :ref:`configuration <ref-factory-definition>` is then updated accordingly:
 
-  # factory-config.yml
-  container_registries:
-  - type: azure
-    url: <YOUR REGISTRY>.azurecr.io
-    azure_principal_secret_name: azprincipal
+.. code-block:: YAML
+
+    # factory-config.yml
+    container_registries:
+    - type: azure
+      url: <YOUR REGISTRY>.azurecr.io
+      azure_principal_secret_name: azprincipal
 
 .. _service principal:
    https://learn.microsoft.com/en-us/azure/container-registry/container-registry-auth-service-principal#authenticate-with-the-service-principal
@@ -46,15 +42,14 @@ updated accordingly::
 Configuring Devices for ACR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Azure does not include a built-in way for devices to `securely access`_
-a container registry like AWS IoT does. The recommended approach for
-this scenario is pushing container images from ACR into
-`hub.foundries.io` or having a container image built with something similar to::
+Azure does not include a built-in way for devices to `securely access`_ a container registry.
+The recommended approach is pushing container images from ACR to ``hub.foundries.io``.
+Another approach is having a container image built similar to::
 
  # containers.git <CONTAINER>/Dockerfile
  FROM <YOUR REGISTRY>.azurecr.io
 
-Then compose apps can reference this `hub.foundries.io` container image.
+Then compose apps can reference the ``hub.foundries.io`` container image.
 
 .. _securely access:
    https://learn.microsoft.com/en-us/answers/questions/734990/iot-device-authentication-with-acr
@@ -62,27 +57,26 @@ Then compose apps can reference this `hub.foundries.io` container image.
 Configuring CI for AWS ECR
 --------------------------
 
-CI uses the `aws ecr get-login-password`_ command to authenticate. A
-factory can be configured to use this by first providing an AWS
-credentials file to CI::
+CI uses the `aws ecr get-login-password`_ command to authenticate.
+A Factory can be configured to use this by first providing an AWS credentials file to CI::
 
  $ fioctl secrets update aws_creds="$(cat $HOME/.aws/credentials)"
 
 .. note::
 
-   Using a personal credentials file is probably not secure. An AWS
-   admin should create an IAM account that can only **pull** from
-   the container registry.
+   Using a personal credentials file is probably not secure.
+   An AWS admin should create an IAM account that can only **pull** from the container registry.
 
-Next the factory :ref:`configuration <ref-factory-definition>`
-needs to be set. Example configuration::
+Then the :ref:`configuration <ref-factory-definition>` needs to be set.
 
-  # factory-config.yml
-  container_registries:
-  - type: aws
-    region: us-east-2
-    url: XXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com
-    aws_creds_secret_name: aws_creds
+.. code-block:: YAML
+
+   # factory-config.yml
+   container_registries:
+   - type: aws
+     region: us-east-2
+     url: XXXXXXXXXX.dkr.ecr.us-east-2.amazonaws.com
+     aws_creds_secret_name: aws_creds
 
 .. _ECR:
    https://aws.amazon.com/ecr/
@@ -93,31 +87,26 @@ needs to be set. Example configuration::
 Configuring Devices for AWS ECR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Devices may need access to private ECR container images. While
-bootstrapping a project, it is often easiest to simply copy AWS
-credentials to each device. However, before going to production, it is
-highly recommend to use an approach that can be backed by x509
-certificates such as the ones used for the :ref:`device gateway <ref-device-gateway>`.
-`AWS IoT`_ includes a mechanism for eliminating hard-coded
-credentials_.
+Devices may need access to private ECR container images.
+While bootstrapping a project, it may be easiest to copy AWS credentials to each device.
+However, before going to production, it is highly recommend to use an approach that can be backed by x509 certificates. 
+This includes the ones used for the :ref:`device gateway <ref-device-gateway>`.
+`AWS IoT`_ includes a mechanism for eliminating hard-coded credentials_.
 
 .. _AWS IoT:
    https://aws.amazon.com/iot/
 .. _credentials:
    https://aws.amazon.com/blogs/security/how-to-eliminate-the-need-for-hardcoded-aws-credentials-in-devices-by-using-the-aws-iot-credentials-provider/
 
-Another approach is to follow the procedure as outlined for devices accessing
-the :ref:`Azure Container Registry <ref-acr-devices>`. This wraps the container
-images into `hub.foundries.io` . With this setup, devices rely on the Factory
-authentication instead of authenticating to AWS ECR.
+Another approach is to follow the procedure outlined for devices accessing the :ref:`Azure Container Registry <ref-acr-devices>`.
+This wraps the container images into ``hub.foundries.io`` .
+With this setup, devices rely on the Factory authentication instead of authenticating to AWS ECR.
 
 Configuring for CI Google Artifact Registry (GAR)
 -------------------------------------------------
 
-CI can be configured to use a Google Compute Platform(GCP)
-`service account`_ with read-only access to a private GAR instance. A
-service account can be created that may only do Docker pull operations
-with::
+The CI can be configured to use a Google Compute Platform(GCP) `service account`_ with read-only access to a private GAR instance.
+A service account can be created that may only do Docker pull operations::
 
  # Create the service account
  $ NAME=<user name, eg "fio-ci">
@@ -137,13 +126,11 @@ with::
    application_default_credentials.json \
    --iam-account=${NAME}@${PROJ_ID}.iam.gserviceaccount.com
 
-The service account key file created above then needs to be configured
-for CI with::
+The service account key file created above then needs to be configured for CI::
 
  $ fioctl secrets update gcp_creds==application_default_credentials.json
 
-The factory :ref:`configuration <ref-factory-definition>` is then
-updated accordingly::
+The Factory :ref:`configuration <ref-factory-definition>` is then updated accordingly::
 
   # factory-config.yml
   container_registries:
@@ -156,6 +143,5 @@ updated accordingly::
 Configuring Devices for GAR
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Google does not have a way to authenticate it's IoT core devices with
-the Artifact Registry. We recommend following the same approach as
-outlined for devices accessing the :ref:`Azure Container Registry <ref-acr-devices>`.
+Google does not have a way to authenticate IoT core devices with the Artifact Registry.
+We recommend following the same approach as outlined for devices accessing the :ref:`Azure Container Registry <ref-acr-devices>`.

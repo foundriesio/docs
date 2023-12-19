@@ -38,18 +38,17 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-user-guide
 
    user-guide/account-management/account-management
-   user-guide/container-preloading/container-preloading
+   user-guide/containers-and-docker/index
    user-guide/custom-ci/custom-ci
-   user-guide/lmp-customization/lmp-customization
+   user-guide/lmp-customization/index
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
    user-guide/foundriesio-rest-api/foundriesio-rest-api
    user-guide/mirror-action/mirror-action
    user-guide/submodule/submodule
    user-guide/custom-sota-client
-   user-guide/multi-stage-container/multi-stage-container
    user-guide/fioctl/index
-   user-guide/cert-rotation
+   user-guide/rotating-cert
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/offline-update/offline-update
    user-guide/el2g

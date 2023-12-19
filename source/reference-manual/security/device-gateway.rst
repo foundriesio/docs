@@ -73,8 +73,8 @@ Setting up your PKI
 
 A few important things to note about this command:
 
- * It's highly recommend that you use a PKCS#11 compatible HSM. This
-   will ensure the safety of your factory's root of trust private key.
+ * Use a PKCS#11 compatible HSM.
+   This will ensure the safety of your factory's root of trust private key.
 
  * The "PKI Directory" is important and should be securely backed
    up.

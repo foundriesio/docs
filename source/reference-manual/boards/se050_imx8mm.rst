@@ -1,20 +1,16 @@
 i.MX 8M Mini/Nano Evaluation Kit with SE050ARD
 ==============================================
 
-This document will walk a developer through the steps of installing a
-FoundriesFactory image with the SE050 hardware enabled onto the NXP
-``imx8mm-lpddr4-evk`` or ``imx8mn-ddr4-evk`` that is connected to the NXP
-OM-SE050ARD development platform.
+This page walks through installing a SE050 hardware enabled FoundriesFactory® image onto an NXP® ``imx8mm-lpddr4-evk`` or ``imx8mn-ddr4-evk``, 
+connected to the NXP OM-SE050ARD development platform.
 
 .. note::
-    An image created in the factory with the SE050 enabled will not boot on
-    boards without the SE050 properly attached.
+    An image created in a Factory with the SE050 enabled will not boot on boards without the SE050 properly attached.
 
 Attaching the SE050
 -------------------
 
-Using four male to male jumper wires (Arduino Compatible Pin size)
-connect the two boards as follows:
+Using four male to male jumper wires (Arduino Compatible Pin size), connect the two boards as shown:
 
 .. figure:: /_static/boards/imx8mmevk_J1004.png
      :width: 400
@@ -48,7 +44,7 @@ Connect the signals as follows:
 | GND      | J1004 pin 7  | J2 pin 7    |
 +----------+--------------+-------------+
 
-Alternatively use J22 on OM-SE050ARD and connect as follows
+Alternatively, use J22 on OM-SE050ARD:
 
 +---------+-------------+-------------+
 | Signal  | 8MMINI-BB   | OM-SE050ARD |
@@ -62,8 +58,7 @@ Alternatively use J22 on OM-SE050ARD and connect as follows
 | GND     | J1004 pin 7 | J22 pin 3   |
 +---------+-------------+-------------+
 
-Be sure that the jumpers on the SE050 evaluation board are
-set as follows:
+Be sure that the jumpers on the SE050 evaluation board are set as shown:
 
 .. figure:: /_static/boards/se050ard_jumpers.png
      :width: 400
@@ -71,7 +66,7 @@ set as follows:
 
      SE050 Jumper Settings
 
-Lastly the connected boards should look like this:
+The connected boards should look like this:
 
 .. figure:: /_static/boards/se050ard_imx8mm.png
      :width: 400
@@ -82,10 +77,9 @@ Lastly the connected boards should look like this:
 Installing the FoundriesFactory Image
 -------------------------------------
 
-Download the images that have the SE050 enabled from the factory following
-the instructions in :ref:`ref-rm_board_imx8mmevk` or
-:ref:`ref-rm_board_imx8mn-ddr4-evk` depending on the hardware used.
+Download the images that have the SE050 enabled from the Factory.
+Follow the instructions in :ref:`ref-rm_board_imx8mmevk` or :ref:`ref-rm_board_imx8mn-ddr4-evk` 
+—depending on the hardware used.
 
 .. note::
-    A reference on the needed changes to enable the SE050 middleware can be
-    found in :ref:`ref-security_se05x_enablement`.
+    A reference on the needed changes to enable the SE050 middleware can be found in :ref:`ref-security_se05x_enablement`.

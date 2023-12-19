@@ -10,6 +10,48 @@ This page covers a variety of topics falling under addressing specific :ref:`err
 Errors and Solutions
 ---------------------
 
+Fioctl™ Errors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If for some reason the command ``sudo fioctl configure-git`` fails with an error, the following manual steps can be
+taken to get the exact same result:
+
+1. Configure Git with the necessary credentials:
+
+ .. code-block:: bash
+
+    git config --global credential.https://source.foundries.io.username fio-oauth2
+    git config --global credential.https://source.foundries.io.helper fio
+
+2. Create the symbolic link manually. The correct path will be displayed in the `Fioctl` error message and may vary depending on your operating system and Git configuration environment.
+
+ **Example**:
+
+ .. code-block:: bash
+
+    $ sudo fioctl configure-git
+    Symlinking /usr/local/bin/fioctl to /opt/homebrew/bin/git-credential-fio
+    ERROR: symlink /usr/local/bin/fioctl /opt/homebrew/bin/git-credential-fio: file exists
+
+ In the above example, the symbolic link command would be:
+
+ .. code-block:: bash
+
+    sudo ln -sf /usr/local/bin/fioctl /usr/local/bin/git-credential-fio
+
+ However, for Linux environments, it is usually:
+
+ .. code-block:: bash
+
+    sudo ln -s /usr/local/bin/fioctl /usr/bin/git-credential-fio
+
+3. Configure Git to use the correct `git-credential-fio` helper by specifying its path:
+
+ .. code-block:: bash
+
+    git config --global credential.helper /path/to/symlinking/git-credential-fio
+
+
 Aktualizr-Lite Common Reports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -244,7 +286,8 @@ Or, you can prune by tag, such as ``devel`` or ``experimental``::
 
   fioctl targets prune --by-tag <tag>
 
-We highly recommend not pruning all Targets from a tag to avoid container builds failing from the lack of platform builds for this tag.
+We do not recommend nor support pruning all Targets from a tag.
+Doing so can lead to container builds failing from the lack of platform builds for the tag.
 To keep the last ``<number>`` of the Targets from a tag, use::
 
   fioctl targets prune --by-tag <tag> --keep-last <number>
@@ -585,9 +628,9 @@ Updates To etc
 ^^^^^^^^^^^^^^
 
 Files created or modified in ``/etc`` during runtime are not handled by OSTree during an OTA.
-For this reason, we suggest setting system-wide configs in ``/usr`` rather than ``/etc`` whenever possible so that these changes are covered by OTA updates.
+For this reason, set system-wide configs in ``/usr`` rather than ``/etc`` whenever possible, so that these changes are covered by OTA updates.
 
-We suggest managing files that live in ``/etc`` with a systemd service (:ref:`ref-troubleshooting_systemd-service`).
+Manage files that live in ``/etc`` with a systemd service (:ref:`ref-troubleshooting_systemd-service`).
 The runtime service should handle the needed updates to the ``/etc`` files.
 
 Orphan Targets

@@ -3,34 +3,24 @@ Preparation
 
 |secure_boot_preparation_note|
 
-Ensure you replace the ``<factory>`` placeholder below with the name of your
-Factory.
+.. important::
+   Ensure you replace ``<factory>`` placeholder below with the name of your Factory.
 
-#. Download necessary files from ``https://app.foundries.io/factories/<factory>/targets``
+#. Download the necessary files from ``https://app.foundries.io/factories/<factory>/targets``:
 
-     a. Click the latest :guilabel:`Target` with the ``platform-devel`` :guilabel:`Trigger`.
+     a. Click the latest Target with the :guilabel:`platform` trigger.
 
-          .. figure:: /_static/boards/generic-steps-1.png
-            :width: 769
-            :align: center
+     b. Expand the **run** in the :guilabel:`Runs` section which corresponds with the name of the board.
+        **Download the Factory image for that machine.**
+        For example::
+        
+             lmp-factory-image-<machine_name>.wic.gz
+             u-boot-<machine_name>.itb
+             imx-boot-<machine_name>
 
-     #. Expand the **run** in the :guilabel:`Runs` section which corresponds
-        with the name of the board and **download the Factory image for that
-        machine.**
-
-        | E.g:
-        |     ``lmp-factory-image-<machine_name>.wic.gz``
-        |     ``u-boot-<machine_name>.itb``
-        |     ``imx-boot-<machine_name>``
-
-          .. note::
-            The compressed image (``.wic.gz``) is used since LmP **v92**. Before it the scripts
-            require a compressed file image (``.wic``).
-
-          .. figure:: /_static/boards/generic-steps-2.png
-            :width: 769
-            :align: center
-
+      .. note::
+            The compressed image (``.wic.gz``) is used since LmP **v92**.
+            Before, the scripts required a compressed file image (``.wic``).
 
 #. Download and extract the file ``mfgtool-files-<machine_name>.tar.gz``:
 
@@ -38,7 +28,7 @@ Factory.
 
       tar -zxvf mfgtool-files-|machine_name|.tar.gz
 
-#. Organize all the files like the tree below:
+#. Organize all the files, mirroring the tree below:
 
      |imx_file_list|
 
@@ -51,18 +41,17 @@ Set up the board for updating using the manufacturing tools:
 
 Top view of |board_name|
 
-#. **OPTIONAL**—Only required if you have problems or want to see the boot console output.
+#. **OPTIONAL**. Only required if you have problems or want to see the boot console output.
 
      Connect the |imx_usb_type_debug| end of the USB cable into debug port |debug_port|.
-     Connect the other end of the cable to a PC acting as a host
-     terminal. |imx_n_consoles| UART connections will appear on the PC.
-     On a Linux host for example:
+     Connect the other end of the cable to a PC acting as a host terminal.
+     |imx_n_consoles| UART connections will appear on the PC. For example, on a Linux host:
 
      |imx_tty_list|
 
      Using a serial terminal program like `minicom <https://salsa.debian.org/minicom-team/minicom>`_,
-     connect to the port with |imx_tty_port| in the name (in this example |imx_tty_device|)
-     and apply the following configuration:
+     connect to the port with |imx_tty_port| in the name (in this example |imx_tty_device|).
+     Apply the following configuration:
 
           - Baud rate: 115200
           - Data bits: 8
@@ -89,8 +78,7 @@ Top view of |board_name|
 Flashing
 --------
 
-Once in serial downloader mode and connected to your PC the evaluation board
-should show up as an NXP® USB device.
+Once in serial downloader mode and connected to your PC, the evaluation board should show up as an NXP® USB device.
 
 |secure_boot_pre_flash_note|
 
@@ -102,10 +90,10 @@ should show up as an NXP® USB device.
 
          |imx_lsusb|
 
-         In this mode you will use the ``uuu`` tools to program the images to the eMMC. The USB
-         ID may differ if a different SoC is used.
+         In this mode you will use the ``uuu`` tools to program the images to the eMMC. 
+         The ``USB ID`` may differ if a different SoC is used.
 
-      #. Run the command below to program the LmP to the EMMC:
+      #. To program the LmP to the EMMC run
 
           .. parsed-literal::
 
@@ -117,7 +105,7 @@ should show up as an NXP® USB device.
 
              1:92     6/ 6 [Done                                  ] FB: done
 
-      #. Turn off the power.
+      #. Turn off the power
       #. Put the board into run mode
 
    .. group-tab:: Windows

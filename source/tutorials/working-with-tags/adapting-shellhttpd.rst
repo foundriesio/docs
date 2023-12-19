@@ -18,7 +18,7 @@ Edit ``httpd.sh`` according to the example below:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/httpd.sh
+    host:~$ vi shellhttpd/httpd.sh
 
 .. prompt:: text
 
@@ -38,7 +38,7 @@ Edit the file ``Dockerfile`` according to the example below:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/Dockerfile
+    host:~$ vi shellhttpd/Dockerfile
 
 .. prompt:: text
 
@@ -52,7 +52,7 @@ Edit the file ``docker-compose.yml`` according to the example below:
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ gedit shellhttpd/docker-compose.yml
+    host:~$ vi shellhttpd/docker-compose.yml
 
 .. prompt:: text
 

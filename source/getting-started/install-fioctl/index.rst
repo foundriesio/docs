@@ -3,7 +3,7 @@
 Installing Fioctl
 =================
 
-:ref:`Fioctl™ <ref-fioctl>` is a simple tool for interacting with the Foundries.io REST API.
+:ref:`Fioctl™ <ref-fioctl>` is a simple tool for interacting with the Foundries.io™ REST API.
 
 .. seealso::
    Fioctl is based on Foundries.io's  `ota-lite API <https://api.foundries.io/ota/>`_.
@@ -27,10 +27,12 @@ Installation
 Manual Installation
 ^^^^^^^^^^^^^^^^^^^
 
-We use `Github Releases`_ to distribute static golang binaries.
+We use `GitHub Releases`_ to distribute static golang binaries.
 
 .. tip::
-   Repeating the following steps will overwrite an existing binary, useful for updating or changing version.
+   Fioctl v0.36 and later has an auto-update feature.
+   Run ``fioctl version`` to check for an update, then run ``fioctl version --update-to <version>``.
+   For more details checkout the :ref:`Fioctl user guide <ug-fioctl>`.
 
 .. tabs::
 
@@ -64,7 +66,7 @@ We use `Github Releases`_ to distribute static golang binaries.
       .. attention::
         Make sure you have ``curl`` installed.
 
-      1. Download a Darwin binary from the `Github Releases`_ page to a directory on your ``PATH``.
+      1. Download a Darwin binary from the `GitHub Releases`_ page to a directory on your ``PATH``.
 
          For example, to download version |fioctl_version| on macOS, define the version:
 
@@ -91,7 +93,7 @@ We use `Github Releases`_ to distribute static golang binaries.
 
    .. group-tab:: Windows
 
-      1. Download a Windows binary from the `Github Releases`_ page.
+      1. Download a Windows binary from the `GitHub Releases`_ page.
       2. Put it in a folder of your choosing and rename it to ``fioctl.exe``
       3. Press ``Win + R`` and type ``SystemPropertiesAdvanced``
       4. Press ``enter`` or click ``OK``.
@@ -112,7 +114,7 @@ Authenticating Fioctl
 #####################
 
 With :ref:`ref-fioctl` installed, authenticate it with our backend.
-For this, you will generate OAuth2 application credentials for interacting with the FoundriesFactory API:
+For this, you will generate OAuth2 application credentials for interacting with the FoundriesFactory® API:
 
 .. prompt:: bash host:~$, auto
 
@@ -190,7 +192,7 @@ The following command can be used to test the ``fioctl`` configuration.
 .. seealso::
    :ref:`ref-fioctl` documentation.
 
-.. _Github Releases: https://github.com/foundriesio/fioctl/releases
+.. _GitHub Releases: https://github.com/foundriesio/fioctl/releases
 
 .. _gs-git-config:
 
@@ -213,11 +215,7 @@ Run the following command to add the relevant entries to the Git configuration:
    This is because it needs to have privileges to create a symlink in the same directory as where ``git`` is located.
 
 .. warning::
-   * If for some reason the command fails with an error, the following manual steps can be taken to get the exact same result::
-
-      git config --global credential.https://source.foundries.io.username fio-oauth2
-      git config --global credential.https://source.foundries.io.helper fio
-      ln -s /usr/local/bin/fioctl /usr/bin/git-credential-fio
+   * If for some reason the command ``sudo fioctl configure-git`` fails with an error, manual steps can be taken to get the exact same result. For comprehensive instructions, please see the :ref:`Fioctl™ Errors <ref-ts-errors>` section.
 
    * Existing users reconfiguring Git access may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility::
 

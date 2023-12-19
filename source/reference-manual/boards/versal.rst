@@ -8,7 +8,7 @@ Versal AI Core Series VCK190 Evaluation Kit
 Hardware Preparation: Console/JTAG
 ----------------------------------------
 
-Set up the board for accessing the console or using the JTAG interface
+Set up the board for accessing the console or using the JTAG interface:
 
 .. figure:: /_static/boards/vck190.png
      :width: 800
@@ -16,9 +16,9 @@ Set up the board for accessing the console or using the JTAG interface
 
 #. Using a USB Type-C cable, connect the board to the PC host.
 
-#. Four UART connections will appear on the PC: one of them is a JTAG interface, and another one is a console.
+#. Four UART connections will appear on the PC: including a JTAG interface and a console.
 
-     On a Linux host for example you will see::
+   On a Linux® host, for example, you will see::
 
        usb 1-14.4.4.3: new high-speed USB device number 117 using xhci_hcd
        usb 1-14.4.4.3: New USB device found, idVendor=0403, idProduct=6011, bcdDevice= 8.00
@@ -39,7 +39,7 @@ Set up the board for accessing the console or using the JTAG interface
        usb 1-14.4.4.3: Detected FT4232H
        usb 1-14.4.4.3: FTDI USB Serial Device converter now attached to ttyUSB7
 
-     Inspection of these new devices will show::
+  Inspection of these new devices will show::
 
       $ ls -la /dev/serial/by-id/
       total 0
@@ -53,9 +53,10 @@ Console Hardware Configuration
 
 #. Power off the board.
 
-#. Using a serial terminal program like minicom, connect to the port
-   with ``usb-Xilinx_VCK190_532143136405-if01-port0`` in the name
-   (in this example ttyUSB5) and apply the following configuration::
+#. Using a serial terminal program like minicom,
+   connect to the port with ``usb-Xilinx_VCK190_532143136405-if01-port0`` in the name.
+   In this example that would be ``ttyUSB5``.
+   Apply the following configuration::
 
           - Baud rate: 115200
           - Data bits: 8

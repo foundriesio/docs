@@ -23,7 +23,7 @@ i.MX 8 ULP Evaluation Kit
 .. |imx_lsusb| prompt:: bash $, auto
 
            $ lsusb | grep NXP
-           Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
+             Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
 
 .. |image_board_top| image:: /_static/boards/imx8ulp-lpddr4-evk.png
      :width: 600
@@ -61,6 +61,6 @@ i.MX 8 ULP Evaluation Kit
 .. |secure_boot_preparation_note| replace:: The instructions in this section
      show the preparation before the flashing procedure.
 
-.. |secure_boot_pre_flash_note| replace:: Follow the instructios below.
+.. |secure_boot_pre_flash_note| replace:: Follow the instruction below.
 
 .. include:: imx-common-board.inc
