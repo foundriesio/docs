@@ -263,6 +263,6 @@ A user can also dump a pre-selected device list into a file; then inspect, amend
 
     fioctl waves rollout v2.0-update --limit 1000 --print-uuids >/path/to/pre-selected.lst
     # Open and edit /path/to/pre-selected.lst using your editor of choice.
-    fioctl waves rollout v2.0-update --uuids >/path/to/pre-selected.lst
+    fioctl waves rollout v2.0-update --uuids @/path/to/pre-selected.lst
 
 One way or another, the Fioctl® allows you to implement various processes to roll out updates to your Factory device fleet.
