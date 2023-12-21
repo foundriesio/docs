@@ -23,6 +23,8 @@ The resulting TLS certificate will be used by the FoundriesFactory EST server.
 .. note::
    This option requires the FoundriesFactory® backend to have a certificate authority to sign renewal requests.
    This "online-ca" is configured when running ``fioctl keys ca create``.
+   Please note that ``fioctl keys ca create`` can **only** be run once;
+   see :ref:`ref-device-gateway-pki-details` for more information.
 
 User Managed
 ~~~~~~~~~~~~
