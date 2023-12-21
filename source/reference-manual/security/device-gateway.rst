@@ -67,6 +67,9 @@ Setting up your PKI
 
 :ref:`ref-fioctl` includes a sub-command to set this up:
 
+.. warning::
+   The following command can only be used once.
+
 .. code-block::
 
     fioctl keys ca create /absolute/path/to/certs/
@@ -78,6 +81,10 @@ A few important things to note about this command:
 
  * The "PKI Directory" is important and should be securely backed
    up.
+
+ * As noted in the warning, it can only be set once.
+   A reset requires contacting `Customer Support <https://foundriesio.atlassian.net/servicedesk/customer/portals>`,
+   and will result in connected devices loosing connection.
 
 After running the above command, you can validate the outcome and view the configured certificates by using the following command:
 

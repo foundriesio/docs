@@ -3,6 +3,15 @@
 Details Of Device Gateway PKI Settings
 ======================================
 
+.. warning::
+   The factory root of trust **can only be set once** —
+   `contact customer support<https://foundriesio.atlassian.net/servicedesk/customer/portals>` if you need to have the value reset.
+   This means the command ``fioctl keys ca create`` works only for the first run.
+   Subsequent attempts will fail.
+   Additionally,if you do have a reset performed, it will result in connected devices losing connection.
+   However, the Device CA bundle (``ca-crt``) can be updated many times;
+   you may add or remove local/offline CA certs for the bundle with ``fioctl keys ca update``.
+
 This guide covers Public Key Infrastructure (PKI) Settings.
 In particular, the low-level details of what happens behind the scenes when running the ``fioctl keys ca`` commands.
 It also provides instructions to create, sign, and use an *offline* (aka *local*) device certificate.
@@ -71,12 +80,6 @@ The following files are uploaded:
 1. ``tls-crt`` - the result of ``tls-csr`` signing;
 2. ``online-crt`` and ``local-ca.pem`` bundled together into the ``ca-crt`` field of the PATCH request;
 3. ``factory_ca.pem`` - root CA certificate created by running ``create_ca`` transferred via ``root-crt`` fields of the PATCH request.
-
-.. warning::
-   The factory root of trust can be set once—contact customer support if you need to have the value reset.
-   Thus, the given command ``fioctl keys ca create`` works only for the first run, subsequent command calls will fail.
-   However Device CA bundle (``ca-crt``) can be updated many times;
-   a user may add or remove local/offline CA certs to and from the bundle with ``fioctl keys ca update``.
 
 Device Key and Certificate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
