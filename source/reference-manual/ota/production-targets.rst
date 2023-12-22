@@ -3,7 +3,7 @@
 Production Targets
 ==================
 
-As a part of going to production,you need to define two distinct sets of devices: *test* versus *production*.
+As a part of going to production, you need to define two distinct sets of devices: *test* versus *production*.
 A **production device** is defined by a presence of a special attribute in its public certificate.
 This is set at the :ref:`device registration time <ref-factory-registration-ref>`.
 If the attribute is absent, it designates a **test device**.
@@ -28,7 +28,7 @@ Waves allow Factory operators to control an exact time when devices see a new ve
     The opposite is also true, production Targets can only be installed on production devices.
     From the TUF perspective CI versus production TUF Targets comprise two isolated sets of updates.
 
-    Within the scope of the below paragraphs, "device" refers  exclusively to a "production device".
+    Within the scope of the below paragraphs, "device" refers exclusively to a "production device".
 
 .. _ref-rm-wave:
 
@@ -38,7 +38,7 @@ Performing a Production OTA
 First define a process to select CI builds which need to be delivered to production devices.
 Every user performing production OTAs should generate their personal :ref:`offline TUF targets key <ref-offline-keys>` to sign production Targets.
 
-Let's assume you selected CI build version 42 as ready to be run in production.
+Let us assume you selected CI build version 42 as ready to be run in production.
 To start the production release process, create a new wave using the below command::
 
   # fioctl waves init <wave-name> <target number> <tag> -k <keys.tgz>
@@ -61,7 +61,7 @@ There are several ways how a wave can be rolled out:
 - To a subset of devices in a Factory (potentially, across several device groups, including group-less devices).
 - To all devices in a Factory.
 
-We recommend you first roll out a wave to a dedicated device group, which contains a small number of production devices.
+We recommend that you first roll out a wave to a dedicated device group, which contains a small number of production devices.
 Another good option is to roll out a wave to a small subset of devices in a bigger device group.
 Let us assume you want to first roll out a new ``v2.0-update`` wave to a device group called ``canary``.
 This can be done using the below command::
@@ -187,9 +187,9 @@ Releasing to Large Device Fleets
 Now let us look at a more complex example of rolling out an update to a large device fleet.
 Assume that your Factory has 100'000 production devices to be updated within a wave.
 Normally, these devices will be split into a couple of groups according to your criteria.
-Also assume your device fleet is arranged according to geographic presence,
-e.g. device groups are ``us-east``, ``us-west``, ``eu-emea``, and ``apac``.
-Some, or all of these device groups, would still contain a large number of devices.
+Also assume your device fleet is arranged according to geographic presence.
+For example, having device groups ``us-east``, ``us-west``, ``eu-emea``, and ``apac``.
+Some—or all—of these device groups would still contain a large number of devices.
 From a safety perspective, it is risky to deliver an update to the entirety of any group like that.
 
 A usual practice would be to apply the "canary" approach (described above) to every individual device group.
