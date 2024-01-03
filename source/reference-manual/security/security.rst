@@ -7,22 +7,22 @@ Overview
 --------
 
 Security has multiple layers and dimensions.
-It starts all the way from booting the device to running software on it and connecting to cloud services.
-FoundriesFactory® provides a set of features to target every aspect of your Factory security.
+It starts at booting the device, and goes all the way to running software on it, and connecting to cloud services.
+A FoundriesFactory® Factory provides a set of features to target each aspect.
 
-Below sections focus on the following aspects:
+The following sections focus on how to securely:
 
-  - how to securely connect your devices to Foundries.io™ cloud services.
-  - how to securely boot your devices;
-  - how to securely update firmware and software on your devices;
-  - how to securely store secrets on your devices;
+  - connect your devices to Foundries.io™ cloud services.
+  - boot your devices;
+  - update the firmware and software on your devices;
+  - store secrets on your devices;
 
 .. _ref-security-summary:
 
 FoundriesFactory Security Summary
 ---------------------------------
 
-A brief summary of the crypto keys used in a FoundriesFactory can be found in:
+A brief summary of the crypto keys used in a Factory can be found in:
 
 .. toctree::
    :maxdepth: 1
@@ -36,12 +36,12 @@ Secure Connection to Cloud Services
 
 Your devices communicate with a set of FoundriesFactory cloud services,
 the central of which is the :ref:`Device Gateway <ref-ota-architecture>`.
-The `Device Gateway` enforces Factory devices to establish the `Mutual TLS (mTLS) <mTLS_>`_ connection to it.
+The `Device Gateway` enforces Factory devices establishing the `Mutual TLS (mTLS) <mTLS_>`_ connection to it.
 During the `TLS Handshake <TLS_>`_ phase in `Mutual TLS`,
-both the device and the cloud service present and verify their TLS certificates.
+both device and cloud service present and verify their TLS certificates.
 
 The Factory owner must take their :ref:`Factory PKI <ref-device-gateway>` offline before going to production.
-We also recommend to take the :ref:`Device Registration Service <ref-factory-registration-ref>` under full control.
+We also recommend taking the :ref:`Device Registration Service <ref-factory-registration-ref>` under full control.
 Finally, the :ref:`Device Networking <ref-device-network-access>` must be configured properly to connect to cloud services.
 
 .. toctree::
@@ -64,9 +64,9 @@ Finally, the :ref:`Device Networking <ref-device-network-access>` must be config
 Secure Boot (Hardware Root of Trust)
 ------------------------------------
 
-FoundriesFactory `Secure Boot` is the mechanism to force a device to only execute boot software that is signed by a certain set of keys.
+FoundriesFactory `Secure Boot` is a mechanism to force a device to only execute boot software signed by a certain set of keys.
 The verification process and corresponding security functions are performed by the SoC boot ROM.
-These are the starting points for building a hardware root of trust.
+These are the starting points for building *a hardware root of trust*.
 
 The SoC hardware security manual should be consulted to identify the supported key types and the signing process.
 Secure Boot specifics of select hardware platforms are described below.
@@ -81,7 +81,7 @@ Secure Boot specifics of select hardware platforms are described below.
    authentication-xilinx
    secure-boot-uefi
 
-More information around Secure Boot aspects supported by LmP can be found in:
+More information around the Secure Boot aspects supported by LmP can be found in:
 
 .. toctree::
    :maxdepth: 1
@@ -90,7 +90,7 @@ More information around Secure Boot aspects supported by LmP can be found in:
    revoke-imx-keys
    tee-on-versal-acap
 
-See how to implement the `Secure Boot Firmware Updates`_ below.
+See how to implement the `Secure Boot Firmware Updates`_ further below.
 
 Secure Online Keys for Boot Stack
 ---------------------------------
@@ -110,8 +110,8 @@ More information on how these keys are used and how to modify them can be found 
 Secure Over the Air Updates
 ---------------------------
 
-FoundriesFactory `Over the Air Updates (OTA)` is the mechanism to deliver firmware and software updates to your Factory devices securely.
-It leverages `The Update Framework (TUF) <TUF_>`_ underneath which uses a set of keys to sign every software piece.
+FoundriesFactory `Over the Air Updates (OTA)` is the mechanism used to securely deliver firmware and software updates to your devices.
+It leverages `The Update Framework (TUF) <TUF_>`_ , which uses a set of keys to sign every software piece.
 These keys should be managed :ref:`offline <ref-offline-keys>` by the Factory owner before going to production.
 
 .. toctree::
@@ -130,8 +130,9 @@ These keys should be managed :ref:`offline <ref-offline-keys>` by the Factory ow
 
 Secure Boot Firmware Updates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 FoundriesFactory uses OTA_ to deliver secure boot firmware updates to your devices.
-Secure Boot Firmware Update specifics of select hardware platforms are described below.
+Secure Boot Firmware update specifics for select hardware platforms are described below.
 
 .. toctree::
    :maxdepth: 1
@@ -141,8 +142,8 @@ Secure Boot Firmware Update specifics of select hardware platforms are described
    boot-software-updates-zynqmp
    boot-software-updates-stm32mp1
 
-Anti-rollback protection, which prevents downgrading of boot firmware can be
-enabled by following the guide below.
+Anti-rollback protection, which prevents downgrading of boot firmware,
+can be enabled by following the guide below.
 
 .. toctree::
    :maxdepth: 1
@@ -154,10 +155,10 @@ enabled by following the guide below.
 Secure Element as Secrets Storage
 ---------------------------------
 
-There are different techniques how to securely store secrets on your devices.
+There are different techniques to securely store secrets on your devices.
 We recommend that you take advantage of the `Hardware Security Module (HSM)` to keep your device secrets sealed.
 
-Hardware Secure Module (Secure Element) specifics of select hardware platforms are described below.
+Hardware Secure Module (Secure Element) specifics for select hardware platforms are described below.
 
 .. toctree::
    :maxdepth: 1
