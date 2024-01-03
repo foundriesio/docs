@@ -8,7 +8,7 @@ Texas Instruments AM62x SKEVM
 Hardware Preparation
 --------------------
 
-Set up the board for booting from MMC1-SDCard:
+Set up the board for booting from USB DFU mode:
 
 #. Ensure that the power is off (remove cable from **J11**):
 
@@ -18,25 +18,49 @@ Set up the board for booting from MMC1-SDCard:
 
      AM62xx-sk top view
 
-#. Put the am62xx-sk into boot from SDCard Mode:
-
-.. figure:: /_static/boards/am62xx-sk-switches.png
-     :width: 300
-     :align: center
-
-     Switch settings
-
+#. Put the am62xx-sk into boot from USB DFU Mode,
+   changing boot switches to: ``00000000 11001010``
 
 Flashing
 --------
 
-Flash ``lmp-factory-image-am62xx-evm.wic.gz`` to an SD Card.
-This contains the bootable :term:`system image`.
+#. Power on the board and flash it using ``flash.sh`` from the ``ti-mfgtool-files-am62xx-evm`` directory.
+   This copies the ``lmp-factory-image-am62xx-evm.wic`` image.
+   The wic image contains the :term:`system image` that the device will boot.
 
-.. include:: generic-flashing.rst
+.. prompt:: bash host:~$, auto
 
-.. figure:: /_static/boards/am62xx-sk-bottom.png
-     :width: 600
-     :align: center
+    host:~$ sudo ./ti-mfgtool-files-am62xx-evm/flash.sh --wic lmp-factory-image-am62xx-evm.wic
+     Load U-Boot via DFU...
+     ------------------------------------------
+     DFU BOOT TIBOOT3: TIFS and R5
+     ------------------------------------------
+     ------------------------------------------
+     DFU BOOT TISPL: TFA/OPTEE/ and A53 SPL
+     ------------------------------------------
+     ------------------------------------------
+     DFU BOOT UBOOT: A53 UBOOT
+     ------------------------------------------
+     ------------------------------------------
+     Exposing eMMC via USB using UMS
+     ------------------------------------------
+     Detected device: /dev/sda
+     Confirm flashing lmp-factory-image-am62xx-evm.wic to /dev/sda (y/N) >y
+     ------------------------------------------
+     Flashing /dev/sda via UMS
+     ------------------------------------------
+     844103680 bytes (844 MB, 805 MiB) copied, 57 s, 14,8 MB/s
+     814+1 records in
+     814+1 records out
+     854511616 bytes (855 MB, 815 MiB) copied, 57,7472 s, 14,8 MB/s
+     Flashing is finished
 
-     SDCard location
+2. Power off the board.
+
+Configure eMMC UDA Boot
+-----------------------
+
+#. Put the am62xx-sk into boot from eMMC UDA mode,
+   changing boot switches to: ``00000000 11000010``.
+
+#. Power on the board.
