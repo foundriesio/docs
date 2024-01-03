@@ -1,12 +1,12 @@
 Summary of Crypto Keys Used by FoundriesFactory
 ===============================================
 
-This page provides a brief summary of cryptographic keys used by FoundriesFactory®.
+This page provides a brief summary of cryptographic keys used by your Factory.
 
 Secure Connection to Cloud Services
 -----------------------------------
 
-These certificates are required to access the FoundriesFactory CI servers.
+The following certificates are required to access the FoundriesFactory® CI servers.
 For detailed information, check :ref:`ref-secure-cloud-services`.
 
 .. list-table:: Device Gateway Certificates Summary
@@ -26,13 +26,13 @@ For detailed information, check :ref:`ref-secure-cloud-services`.
      - If enabled (required by ``lmp-device-register`` for performing the device CSR), owned and managed by Foundries.io
    * - Local CA private key (``local-ca.key``)
      - NIST P-256
-     - If enabled, owned and managed by the customer (used for performing the device CSR)
+     - If enabled, owned, and managed by the customer (used for performing the device CSR)
 
 Secure Boot (Hardware Root of Trust)
 ------------------------------------
 
 The Hardware Root of Trust depends on the SoC used.
-Please refer to :ref:`ref-secure-boot` pages and to the vendor reference manual for more information.
+Please refer to the :ref:`ref-secure-boot` pages and to your vendor's reference manual for more information.
 
 .. list-table:: Secure Boot Certificates Summary
    :header-rows: 1
@@ -47,10 +47,11 @@ Please refer to :ref:`ref-secure-boot` pages and to the vendor reference manual 
 Secure Online Keys for Boot Stack
 ---------------------------------
 
-The detailed description for the LmP Build certificates, including diagrams for the boot flow, is in :ref:`ref-factory-keys`.
+A detailed description of LmP build certificates, including diagrams for the boot flow, is in :ref:`ref-factory-keys`.
 
-The exact list of keys used for the boot stack depends on the hardware used.
-Some platforms will not make use of all keys. A list of available keys for an LmP build can be found below:
+The exact list of keys used for the boot stack depends on the hardware.
+Some platforms will not make use of all keys.
+A list of available keys for an LmP build can be found below:
 
 .. list-table:: LmP Build Certificates Summary
    :header-rows: 1
@@ -87,7 +88,7 @@ Some platforms will not make use of all keys. A list of available keys for an Lm
 Secure Over the Air Updates
 ---------------------------
 
-Keys used to deliver secure software updates to FoundriesFactory devices.
+Keys used to deliver secure software updates to Factory devices.
 Additional information can be found in :ref:`ref-ota-security`.
 
 .. list-table:: Secure OTA Certificates Summary
