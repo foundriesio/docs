@@ -3,13 +3,11 @@
 WireGuard VPN
 =============
 
-Factory users may need to remotely access devices that are behind firewalled
-private networks. In order to help make remote access easy, the LmP ships
-with WireGuard_ available and integrated into :ref:`fioctl` and NetworkManager.
+You may need your Factory to remotely access devices behind private network firewalls.
+To make remote access easier, LmP ships with WireGuard_ integrated into :ref:`Fioctl <fioctl>` and NetworkManager.
 
-Every organization has unique remote access requirements. The
-`Factory WireGuard Server`_ has been created as a guide for deploying
-a Factory VPN server to a customer managed server.
+Every organization has unique remote access requirements.
+The `Factory WireGuard Server`_ was created as a guide for deploying a Factory VPN server to a server you manage.
 
 .. _WireGuard:
    https://www.wireguard.com/
@@ -23,30 +21,33 @@ Actions on VPN Server
 
 .. note::
 
-   Make sure to replace the ``<factory>`` (name of your FoundriesFactory)
-   placeholder with your own information in the following commands.
+   In the following commands, replace ``<factory>`` with the name of your Factory.
 
-Install dependencies::
+Install dependencies:
 
-   $ sudo apt install git wireguard wireguard-tools python3 python3-requests
+.. prompt:: bash
 
+     sudo apt install git wireguard wireguard-tools python3 python3-requests
 
-Clone VPN server code::
+Clone the VPN server code:
 
-   $ git clone https://github.com/foundriesio/factory-wireguard-server/
-   $ cd factory-wireguard-server
+.. prompt:: bash
 
+     git clone https://github.com/foundriesio/factory-wireguard-server/
+     cd factory-wireguard-server
 
-Configure the Factory with this new service and enable the daemon::
+Configure your Factory with this new service, and enable the daemon:
 
-   $ sudo ./factory-wireguard.py \
+.. code:: bash
+
+     sudo ./factory-wireguard.py \
        --oauthcreds /root/fiocreds.json \ # oauth2 credentials will be written here
        --factory <factory> \
        --privatekey /root/wgpriv.key \ # where to store generated private key
        enable
 
-At this point you will be prompted to authorize an Oauth2 request. It
-will look something like::
+At this point, you will be prompted to authorize an Oauth2 request.
+It will look something like::
 
    External Endpoint: 165.227.222.126:5555
    VPN Address: 10.42.42.0
@@ -59,37 +60,34 @@ will look something like::
     Creating systemd service factory-vpn-andy-corp.service
     Service is running. Logs can be viewed with: journalctl -fu factory-vpn-andy-corp.service
 
-The daemon keeps track of connected devices by putting entries into
-``/etc/hosts`` so that they can be easily referenced from the server.
+The daemon keeps track of connected devices by putting entries into ``/etc/hosts``.
+This is so they can be easily referenced from the server.
 
-Enabling remote access to a device
+Enabling Remote Access to a Device
 ----------------------------------
 
-A device can be configured to connect to the VPN server using fioctl::
+A device can be configured to connect to the VPN server using the Fioctl® utility::
 
   $ fioctl devices config wireguard <device> enable
 
-This setting can take up to 5 minutes to be applied by `fioconfig` on the
-device. Once active, it can be reached from the VPN server with a command
-like::
+This setting can take up to 5 minutes to be applied by ``fioconfig`` on the device.
+Once active, it can be reached from the VPN server using SSH::
 
   $ ssh <device>
 
-Remote access can be disabled from fioctl with::
+Remote access can be disabled from Fioctl with::
 
   $ fioctl devices config wireguard <device> disable
 
 
-Changing wireguard server address
+Changing Wireguard Server Address
 ---------------------------------
 
 It is sometimes necessary to change the WireGuard server's private VPN address.
-For example, when the initial setup is done using a developer's laptop, default
-factory-wireguard.py settings are probably used. Later on, when it's required for
-more developers to have remote access to the devices, the server should be moved
-(for example to a cloud hosted VM). When such move happens it might be necessary
-to change WireGuard's address (default might already be in use). This is easy on
-the server side as it's just a command line parameter::
+For example, when initial setup is done on a developer's laptop, the default ``factory-wireguard.py`` settings are used.
+Later on, when more developers need to have remote access to the devices, the server should be moved (such as to a cloud hosted VM).
+When such a move happens, it may be necessary to change WireGuard's address (the default might already be in use).
+This is easy on the server side, as it is just a command line parameter::
 
    $ sudo ./factory-wireguard.py \
        --apitoken <api token> \  # https://app.foundries.io/settings/tokens
@@ -98,27 +96,34 @@ the server side as it's just a command line parameter::
        enable
        --vpnaddr 10.42.44.1
 
-It's a bit more complicated on the device side. Once the WireGuard configuration is
-initiated, it's not changed when server endpoint moves. This needs to be done
-manually by updating device settings. The settings are stored in
-``wireguard-client`` file. Example *old settings*::
+It is a bit more complicated on the device side.
+Once the WireGuard configuration is initiated, it is not changed when server endpoint moves.
+This needs to be done manually by updating device settings.
+The settings are stored in the ``wireguard-client`` file.
+Example of *old settings*::
 
   address=10.42.42.2
   pubkey=abcdefghijk123456789
 
-The public key corresponds to a private key that is already stored on the device.
-This part should not be changed. It is important to keep this configuration file
-unencrypted. After the change the file should look like this::
+A public key corresponds to a private key already stored on the device.
+This part should not be changed.
+It is important to keep this configuration file unencrypted.
+With the *new settings*, the example file would look like::
 
   address=10.42.44.2
   pubkey=abcdefghijk123456789
 
-This change can be done using ``fioct devices config set`` command. More details
-can be found in :ref:`fioctl` section. This can be done with::
+.. important::
+   If you copy/paste the above example, replace ``pubkey`` value with the
+   public key already on the device.
+
+This change can be done with ``fioct devices config set``.
+More details can be found under the :ref:`fioctl` section.
+An example of this command::
 
   $ fioctl devices config set my-device-1 --raw my-device-1.config.json
 
-The contents of the ``my-device.config.json`` below:
+The contents of the ``my-device.config.json`` would look like:
 
 .. code:: json
 
@@ -137,28 +142,26 @@ The contents of the ``my-device.config.json`` below:
 Troubleshooting
 ---------------
 
-Wireguard uses UDP. This can be difficult to troubleshoot. A very common problem
-is when the VPN server has a firewall blocking traffic to the Wireguard port.
+Wireguard uses UDP, which can be difficult to troubleshoot.
+A common problem arises when the VPN server has a firewall blocking traffic to the Wireguard port.
 
 .. note::
 
-  When configuring a server behind a firewall, make sure the desired port
-  is passed through to the host running the server.
+  When configuring a server behind a firewall, make sure the desired port is passed through to the host running the server.
 
-When activating the wireguard server, you may get::
+When activating the Wireguard server, you may get::
 
   ERROR: A UDP socket is already opened on 165.227.222.126:5555
 
 Make sure no other service is using the port.
 
-If no other service is using that port, add ``--no-check-ip``
-after the ``enable`` to activate the wireguard server.
+If no other service is using that port, add ``--no-check-ip`` after the ``enable`` to activate the Wireguard server.
 
 Method 1
 ~~~~~~~~
 
-One way to debug this situation is by running ``wg show`` on both the server and
-device in question. This output will help show what might be wrong.
+One way to debug this situation is by running ``wg show`` on both the server and device in question.
+This output may help identify the problem.
 
 ``wg show`` on the device::
 
@@ -182,25 +185,21 @@ device in question. This output will help show what might be wrong.
 
  peer: sn4oAhIsJXRdTToO0ofRJRhuC7ObPOJYU+s5n8bPPSA=
 
-This shows that the device is trying to connect, but no data has been
-transferred. The server is showing that the device hasn't established a
-connection (there's no data for the peer). If the server's IP is correct, then
-its likely a firewall is blocking UDP traffic to this port.
+This shows that the device is trying to connect, but no data has been transferred.
+The server is showing that the device has not established a connection (there is no data for the peer).
+If the server's IP is correct, then it is likely a firewall is blocking UDP traffic to this port.
 
 Method 2
 ~~~~~~~~
 
-Another method that can be used to debug this scenario is to use ``nc -lup
-12345`` (netcat) in UDP listen mode on the server running Wireguard. Then
-attempting to send text via UDP to the specified port, which in this example is
-``12345``. This port can be replaced in order to test another.
+Another method is to use ``nc -lup 12345`` (netcat) in UDP listen mode on the server running Wireguard.
+Then attempt to send text via UDP to the specified port (in this example ``12345``).
+This port can be replaced in order to test another.
 
-Netcat should be available by default on any Unix system (Linux,
-macOS, WSL_, BSD).
+Netcat is usually available by default on any Unix system (Linux, macOS, WSL_, BSD).
 
-Any machine can be used as the client in this example. It is
-often helpful to try this with multiple clients on multiple networks and
-internet connections to confirm your results.
+Any machine can be used as the client in this example.
+It may be helpful to try this with multiple clients on multiple networks and internet connections to confirm your results.
 
 On the server running Wireguard::
 
@@ -210,26 +209,34 @@ On any client::
 
   echo "UDP is not blocked on this port!" | nc -u <server address> 12345
 
-Watch the terminal of the server where you ran ``nc -lup 12345``, you will see
-the text appear if UDP is not blocked on the port ``12345``.
+Watch the terminal of the server where you ran ``nc -lup 12345``.
+You will see the text appear if UDP is not blocked on port ``12345``.
 
-If something is preventing traffic reaching the destination then you will not
-see a message appear. After trying one client, try another to confirm your
-results.
+If something is preventing traffic reaching the destination, then you will not see the text.
+After trying one client, try another to confirm your results.
 
 .. note::
 
-   Since UDP is stateless, each successful connection means you need to restart
-   the ``nc`` session on the server. For each debug attempt, rinse and repeat
-   this process by killing and restarting the ``nc -lup`` command.
+   Since UDP is stateless, each successful connection means you need to restart the ``nc`` session on the server.
+   For each debug attempt, refresh and repeat this process by killing and restarting the ``nc -lup`` command.
 
 .. _WSL: https://learn.microsoft.com/en-us/windows/wsl/about
 
 Further Debug
 ~~~~~~~~~~~~~
-On a client, it is also possible to setup firewall rules that would prevent
-WireGuard from working correctly. In that case you will need to add something
-like this::
+
+On a client, it is also possible to setup firewall rules that would prevent WireGuard from working correctly.
+In this case, you will need to add something like this::
 
   sudo iptables -I INPUT -p udp -m udp --sport 5555 -j ACCEPT
   sudo iptables -I OUTPUT -p udp -m udp --dport 5555 -j ACCEPT
+
+When troubleshooting Wireguard issues after rebooting your host,
+running the following ``systemctl`` commands can help determine if the 1-shot service is running.
+Note that you will have needed to run the ``factory-wireguard.py`` script.
+
+::
+
+ sudo systemctl status factory-vpn-<factory>
+ sudo systemctl enable factory-vpn-<factory>
+ sudo systemctl start factory-vpn-<factory>
