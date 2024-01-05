@@ -6,22 +6,22 @@ LmP vXX  Release Notes
 Note::
 You can view the full changelog LINK TO CHANGELOG for greater detail
 
-Important Changes From vXX
----------------------------
+Attention Points for Migration
+------------------------------
 
-Quality of life changes which may effect how a customer interacts with a Factory
-
-Release Highlights
-------------------
-
-Copy from changelog
+Quality of life changes which may affect how a customer interacts with a Factory
 
 New Features
-^^^^^^^^^^^^
+------------
+
+Aktualizr-Lite Updates
+----------------------
 
 Hardware Support
-^^^^^^^^^^^^^^^^
+----------------
 
 Bug Fixes
-^^^^^^^^^
+---------
 
+General Updates
+---------------
