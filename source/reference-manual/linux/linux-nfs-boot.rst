@@ -1,13 +1,14 @@
 .. _howto-linux-nfs-boot:
 
-LmP root file-system over NFS
+LmP Root File-System Over NFS
 =============================
 
 Introduction
 ------------
+
 LmP uses OSTree to pack the device root filesystem. In early boot,
 initramfs manipulates OSTree storage to layout the target root
-filesystem for Linux kernel mounting.
+filesystem for Linux® kernel mounting.
 
 Yocto enables modular initramfs configuration, allowing selective
 support for udev, rootfs, ostree, or network filesystem in the
@@ -17,8 +18,9 @@ scripts to prepare shared network filesystem for mounting on the target.
 Generally, NFS booting any LmP system requires configuring NFS support
 in the ramdisk, along with a TFTP server and an NFS server.
 
-NFS use case: validation of eMMC card
+NFS Use Case: Validation of eMMC Card
 -------------------------------------
+
 During product development, validating the eMMC card for system boot
 might be needed. The Linux kernel eMMC subsystem offers an extensive set
 of tests. Unfortunately, many tests require unbinding the eMMC card from
@@ -32,8 +34,9 @@ eMMC, and run the tests. Here's an example executing eMMC tuning tests:
       $ echo 52 > /sys/kernel/debug/mmc0/mmc0\:0001/test
 
 
-Enabling NFS support on initramfs
+Enabling NFS Support on initramfs
 ---------------------------------
+
 To configure the ramdisk for NFS boot using Yocto requires enabling the
 ``initramfs-module-nfsrootfs`` package.
 
@@ -60,13 +63,14 @@ Access to the LmP released WIC file, the kernel Image for booting, the
 board's device tree blob, and the generated ramdisk is necessary for the
 following sections.
 
-Preparing the NFS server
+Preparing the NFS Server
 ------------------------
+
 Copy the WIC image created during the build step to the NFS shared
 folder and mount it for simplicity. Alternatively, you can extract and
 copy all its contents based on your use case.
 
-To mount the WIC, use the fdisk utility to determine the start sector
+To mount the WIC, use ``fdisk`` to determine the start sector
 and length of the rootfs image in the file (i.e., the number of
 sectors).
 
@@ -98,8 +102,9 @@ expect something as follows:
     ostree/boot.1/lmp/180c0adc612a144a262f15e6c124cc3ac22260b7b2897832a1228da2d3e359a5/0
 
 
-Preparing the TFTP server
+Preparing the TFTP Server
 -------------------------
+
 LmP employs U-boot as both the primary and secondary bootloader on ARM
 platforms. The secondary bootloader's role is to boot the Linux kernel.
 
@@ -209,8 +214,9 @@ At this point, we have all the components to boot over NFS. The TFTP
 server shall export ``Image``, ``system.dtb`` and ``ramdisk``.
 
 
-Using U-boot to boot the NFS
+Using U-boot to Boot the NFS
 -----------------------------
+
 For the first boot you will have to flash the WIC image as per the LmP
 instructions. Then boot the system and dump the command line:
 
