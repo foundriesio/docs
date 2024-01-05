@@ -4,8 +4,8 @@ LmP V92 Release Notes
 .. note::
     You can view the full `v92 changelog`_ for greater detail.
 
-Important Changes From V91
----------------------------
+Attention Points for Migration
+------------------------------
 
 Things to be aware of when updating LmP from the v91 release:
 
@@ -21,11 +21,8 @@ Things to be aware of when updating LmP from the v91 release:
 
 Please also check the respective vendor BSP release notes for more information.
 
-Release Highlights
-------------------
-
 New Features
-^^^^^^^^^^^^
+------------
 
  * Support for encrypted rootfs images with on-line re-encryption using TPM 2.0 or PKCS#11
  * Common configuration fragment for u-boot now available as part of meta-lmp-base
@@ -34,8 +31,20 @@ New Features
  * Support for nvidia-container-runtime on Tegra devices
  * Support for dynamic generation of flashlayout files on STM32MP15 based devices
 
+Aktualizr-Lite Updates
+----------------------
+
+ * Update size check before pulling update for both apps and ostree
+ * API: Add delayed App installation mode
+ * Several bug fixes for both online and offline updates
+
+Hardware Support
+----------------
+
+ * i.MX 93: following the NXP BSP lf-6.1.36-2.1.0 release, only A1 silicon based EVKs are supported
+
 General Updates
-^^^^^^^^^^^^^^^
+---------------
 
  * LmP release based on the OE/Yocto 4.0.15 Kirkstone release
  * Bitbake updated to the 2.0.15 release
@@ -58,18 +67,6 @@ General Updates
  * Linux-lmp-fslc-imx updated to the 6.1.36-2.1.0 BSP release
  * Linux-lmp-fslc-imx-rt updated to the v6.1.38 stable release
  * Linux-lmp-ti-staging updated to the v6.1.33 stable release
-
-Aktualizr-Lite Updates
-^^^^^^^^^^^^^^^^^^^^^^
-
- * Update size check before pulling update for both apps and ostree
- * API: Add delayed App installation mode
- * Several bug fixes for both online and offline updates
-
-Hardware Support
-^^^^^^^^^^^^^^^^
-
- * i.MX 93: following the NXP BSP lf-6.1.36-2.1.0 release, only A1 silicon based EVKs are supported
 
 .. _v92 changelog:
    https://foundries.io/products/releases/92/
