@@ -33,6 +33,7 @@ The LmP is open source software, and maintained by Foundries.io on `GitHub`_.
    linux-net-debug
    linux-disk-encryption
    linux-update
+   linux-nfs-boot
    linux-dev-mode
    linux-oss-compliance
    factory-device-reset
