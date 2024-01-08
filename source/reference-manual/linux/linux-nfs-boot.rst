@@ -6,17 +6,18 @@ LmP Root File-System Over NFS
 Introduction
 ------------
 
+Generally, NFS booting any LmP system requires configuring NFS support
+in the ramdisk, along with a TFTP server and an NFS server.
+
 LmP uses OSTree to pack the device root filesystem. In early boot,
 initramfs manipulates OSTree storage to layout the target root
 filesystem for Linux® kernel mounting.
 
-Yocto enables modular initramfs configuration, allowing selective
-support for udev, rootfs, ostree, or network filesystem in the
+The Yocto Project enables modular initramfs configuration, allowing
+selective support for udev, rootfs, ostree, or network filesystem in the
 ramdisk. Adding NFS and OSTree ramdisk support permits switch root
 scripts to prepare shared network filesystem for mounting on the target.
 
-Generally, NFS booting any LmP system requires configuring NFS support
-in the ramdisk, along with a TFTP server and an NFS server.
 
 NFS Use Case: Validation of eMMC Card
 -------------------------------------
@@ -40,7 +41,8 @@ Enabling NFS Support on initramfs
 To configure the ramdisk for NFS boot using Yocto requires enabling the
 ``initramfs-module-nfsrootfs`` package.
 
-A reference snippet can be seen below:
+This is not enabled by default in the factory. If you are building LmP
+locally, you could modify ``meta-lmp`` as follows:
 
 .. prompt:: text
 
@@ -56,6 +58,21 @@ A reference snippet can be seen below:
      initramfs-module-ostree-factory-reset \
      ${VIRTUAL-RUNTIME_base-utils} \
      ${@bb.utils.contains('DISTRO_FEATURES', 'ima', 'initramfs-framework-ima', '', d)} \
+
+
+Or if you prefer building your factory under CI control, you could apply
+the following patch to your ``meta-subscriber-override`` repository:
+
+.. prompt:: text
+
+     diff --git a/recipes-core/images/initramfs-ostree-lmp-image.bbappend b/recipes-core/images/initramfs-ostree-lmp-image.bbappend
+     new file mode 100644
+     index 0000000..49de5cf
+     --- /dev/null
+     +++ b/recipes-core/images/initramfs-ostree-lmp-image.bbappend
+     @@ -0,0 +1 @@
+     +PACKAGE_INSTALL += " initramfs-module-nfsrootfs "
+
 
 Then rebuild LmP as usual.
 
