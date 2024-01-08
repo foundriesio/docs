@@ -7,7 +7,7 @@ LmP V92 Release Notes
 Attention Points for Migration
 ------------------------------
 
-Things to be aware of when updating LmP from the v91 release:
+Things to be aware of when :ref:`updating LmP <ref-linux-update>` from the v91 release:
 
  * Base OE/Yocto version in v92 is still kirkstone (4.0.15)
  * NXP BSP updated to the lf-6.1.36-2.1.0 release:
@@ -24,9 +24,9 @@ Please also check the respective vendor BSP release notes for more information.
 New Features
 ------------
 
- * Support for encrypted rootfs images with on-line re-encryption using TPM 2.0 or PKCS#11
+ * Support for :ref:`encrypted rootfs images with on-line re-encryption using TPM 2.0 or PKCS#11 <howto-linux-disk-encryption>` 
  * Common configuration fragment for u-boot now available as part of meta-lmp-base
- * Manufacturing tool support for TI AM62XX/AM64XX devices is now available
+ * Manufacturing tool support for TI :ref:`AM62XX <ref-rm_board_am62xx-sk>`/:ref:`AM64XX <ref-rm_board_am64xx-sk>` devices is now available
  * Boot firmware version can now be exposed in both U-Boot proper and SPL
  * Support for nvidia-container-runtime on Tegra devices
  * Support for dynamic generation of flashlayout files on STM32MP15 based devices
