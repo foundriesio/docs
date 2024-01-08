@@ -15,6 +15,7 @@ Things to be aware of when :ref:`updating LmP <ref-linux-update>` from the v91 r
    * U-boot had a major update from 2022.04 to 2023.04, porting work and configuration changes might be required
    * OP-TEE updated from 3.20 to 3.21, requiring ELE firmware updates on both i.MX93 and i.MX8ULP targets
    * Base BSP kernel updated from 6.1 to 6.1.36, with additional fixes and improved hardware support
+   * ``imx8mp-lpddr4-evk`` MFGTool now uses standard imx-boot, u-boot.itb is not required for flashing anymore
  * TI BSP updated to the 09.00.00.009 release, but without major changes when comparing with 09.00.00.005
  * NVIDIA Tegra BSP updated to the L4T R35.4.1 release, still based on JetPack 5
  * STM32MP15 flashlayout definition is now generated dynamically, which might require changes depending on the level of customization
