@@ -47,7 +47,7 @@ The certificate renewal logic uses the EST 7030 `simple re-enrollment`_ process 
 
  * EST Server verifies request, creates a new certificate, and returns it to the device
 
- * The new certificate is valid for one year
+ * The new certificate is valid for one year.
 
 .. _simple re-enrollment:
    https://www.rfc-editor.org/rfc/rfc7030.html#section-4.2.2
@@ -74,10 +74,10 @@ Details can be viewed with::
   2022-11-28T22:29:51+00:00 : Update device specific configuration on server with new key(intel-corei7-64-lmp-290) -> Succeed
   2022-11-28T22:29:51+00:00 : Finalize aktualizr configuration(intel-corei7-64-lmp-290) -> Succeed
 
-In addition to update events, when a new key is in place a ``DEVICE_PUBKEY_CHANGE`` event will be sent to the factory's :ref:`ref-event-queues`.
-This message plus the ``DEVICE_CONFIG_APPLIED`` should help you understand when rotations happen.
+In addition to update events, when a new key is in place a ``DEVICE_PUBKEY_CHANGE`` event will be sent to the Factory's :ref:`ref-event-queues`.
+This message, plus ``DEVICE_CONFIG_APPLIED``, should help you understand when rotations happen.
 
 Next Steps
 ----------
 
-The :ref:`Device Certificate Rotation <ref-cert-rotation-ug>` user guide explains how to enable this in your factory.
+:ref:`Device Certificate Rotation <ref-cert-rotation-ug>` explains how to enable this in your Factory.
