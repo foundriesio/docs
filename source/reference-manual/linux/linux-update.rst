@@ -19,6 +19,9 @@ It also shows common update problems and how to solve them.
     The examples show a LmP update from v88 to v91 for an i.MX 8MMini based machine using the ``imx8mm-lpddr4-evk`` reference machine.
     Similar steps are taken for different reference hardware and LmP versions.
 
+.. important:: 
+    See :ref:`release notes <changelog>` for things to be aware of when updating to a given release.
+
 .. tip::
     When facing issues to reproduce these steps, do not hesitate to contact `Foundries.io support <https://support.foundries.io/>`_.
 
