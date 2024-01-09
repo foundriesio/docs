@@ -153,7 +153,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'FoundriesFactory'
-copyright = '2017-2023, Foundries.io, Ltd'
+copyright = '2017-2024, Foundries.io, Ltd'
 author = 'Foundries.io, Ltd.'
 
 # The version info for the project you're documenting, acts as replacement for
