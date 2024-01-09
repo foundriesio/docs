@@ -2,40 +2,42 @@
 
 .. _ref-secure-boot-imx-ahab:
 
-Secure Boot on i.MX 8/8X Families using AHAB including 8QM
+Secure Boot on i.MX 8/8X Families Using AHAB Including 8QM
 ==========================================================
 
-The i.MX 8 and i.MX 8X families of applications processors introduce a secure boot concept which differs
-from HABv4 used on i.MX 6/7/8M families. Due to the multi-core architecture the Security Controller (SECO) and System Control Unit (SCU)
-are heavily involved in the secure boot process, comparing to HABv4, where BootROM (running on A-core) is fully
-responsible for that.
+The i.MX 8 and i.MX 8X families of application processors introduce a Secure Boot concept which differs from HABv4 used on the i.MX 6/7/8M families.
+Due to the multi-core architecture, the Security Controller (SECO) and System Control Unit (SCU) are heavily involved in the secure boot process.
+This is in contrast to HABv4, where BootROM (running on A-core) is fully responsible.
 
 AHAB Architecture Overview
 --------------------------
 
-The Advanced High Assurance Boot (AHAB) feature as well as HABv4 relies on digital signatures to prevent
-unauthorized software execution during the device boot sequence.
+The Advanced High Assurance Boot (AHAB) feature, as well as HABv4, relies on digital signatures to prevent unauthorized software execution during the device boot sequence.
 
-In i.MX 8 and i.MX 8X families the System Control Unit (SCU) is responsible to interface with the boot media, managing
-the process of loading the firmware and software images in different partitions of the SoC. The Security Controller (SECO)
-is responsible to authenticate the images and authorize the execution of them.
+In the i.MX 8 and i.MX 8X families, the System Control Unit (SCU) is responsible for interfacing with the boot media.
+It manages the process of loading firmware and software images in different partitions of the SoC.
+The Security Controller (SECO) is responsible for authenticating images and authorizing their execution.
 
 How to Secure the Platform
 --------------------------
 
 .. note::
-    This page illustrates how the AHAB Secure Boot process works, and provides background information for our :ref:`ref-secure-machines` implementation for better understanding. We recommend fusing and closing a board following our :ref:`ref-secure-machines` guide, where some steps described here are omitted and handled in our code for simpler and safer operations.
+    This page illustrates how the AHAB Secure Boot process works.
+    It provides background information for our :ref:`ref-secure-machines` implementation, for better understanding.
+    
+    We recommend fusing and closing a board following our :ref:`ref-secure-machines` guide.
+    In the guide, some steps described here are omitted, and handled in our code for simpler and safer operations.
 
 The first step is to generate the PKI tree and commit the fuse table to the hardware.
 
- .. warning::
+.. warning::
+   Once the fuses have been programmed they can not be modified.
 
-   Once the fuses have been programmed they can't be modified.
+Please refer to NXP's `AN12312 Secure Boot on i.MX 8 and i.MX 8X Families using AHAB—Application Note`_ for a detailed description on generating the PKI tree.
 
-Please refer to NXP's `AN12312 Secure Boot on i.MX 8 and i.MX 8X Families using AHAB – Application Note`_ for a detailed
-description on how to generate the PKI tree.
-
-For development purposes, we keep i.MX AHAB sample keys and certificates at `lmp-tools/security/imx_ahab`_. The fuse table can be inspected by executing the ``print_fuses`` script in that same directory. The output should be::
+For development purposes, we keep i.MX AHAB sample keys and certificates at `lmp-tools/security/imx_ahab`_.
+The fuse table can be inspected by executing the ``print_fuses`` script in that same directory.
+The output should be::
 
 	0x7E90F8D6
 	0xE1020512
@@ -54,12 +56,14 @@ For development purposes, we keep i.MX AHAB sample keys and certificates at `lmp
 	0x6E0B791C
 	0x6A558134
 
-The Security Reference Manual for your specific SoC indicates which fuses need to be programed with the SRK fuse information.
+The Security Reference Manual for your specific SoC indicates which fuses need to be programmed with the SRK fuse information.
 
-i.MX 8QM fusing
---------------------------
+i.MX 8QM Fusing
+---------------
 
-.. note:: The values shown in this section are just examples of our standard LmP AHAB keys and are not meant for production. Fuses cannot be changed after the first write.
+.. warning::
+    The values shown in this section are just examples of our standard LmP AHAB keys, and are not meant for production.
+    Fuses cannot be changed after the first write.
 
 On the i.MX 8QM SoC fuses are stored in fuse bank 0, words 722 to 737::
 
@@ -80,7 +84,8 @@ On the i.MX 8QM SoC fuses are stored in fuse bank 0, words 722 to 737::
         => fuse prog -y 0 736 0x6E0B791C
         => fuse prog -y 0 737 0x6A558134
 
-Alternatively, you can program SoC fuses via SDP by using NXP's Universal Update Utility. This is shown in the following script::
+Alternatively, you can program SoC fuses via SDP by using the NXP® Universal Update Utility.
+This is shown in the following script::
 
         uuu_version 1.3.102
 
@@ -123,7 +128,8 @@ Alternatively, you can program SoC fuses via SDP by using NXP's Universal Update
         FB: acmd reset
         FB: done
 
-Upon reboot, if **CONFIG_AHAB_BOOT** is set AHAB will raise events to indicate that an **unsigned imx-boot image** has been executed. Those events can be inspected by running U-Boot's command ``ahab_status`` for i.MX8/i.MX8x::
+Upon reboot, if ``CONFIG_AHAB_BOOT`` is set, AHAB will raise events to indicate that an **unsigned imx-boot image** has been executed.
+Those events can be inspected by running U-Boot's command ``ahab_status`` for i.MX8/i.MX8x::
 
     => ahab_status
     Lifecycle: 0x0020, NXP closed
@@ -132,24 +138,29 @@ Upon reboot, if **CONFIG_AHAB_BOOT** is set AHAB will raise events to indicate t
             CMD = AHAB_AUTH_CONTAINER_REQ (0x87)
             IND = AHAB_NO_AUTHENTICATION_IND (0xEE)
 
-To secure the platform, there is an extra step that needs to be done: we will only take that step once we are sure that we can successfully sign and boot a signed boot image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
+To secure the platform, there is an extra step that needs to be done:
+we will only take that step once we are sure that we can successfully sign and boot a signed boot image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
 
-How to sign an i.MX boot image
+How to Sign an i.MX Boot Image
 ------------------------------
 
-To build a signed image, you need to create a Command Sequence File - CSF - describing the commands that the CSU executes during secure boot. These commands instruct AHAB on which memory areas of the image to authenticate, which keys to install and use, what data to write to a register and so on. In addition, the necessary certificates and signatures involved in the verification of the image are attached to the CSF generated binary output.
+To build a signed image, you need to create a Command Sequence File (CSF) describing the commands that the CSU executes during secure boot.
+These commands instruct AHAB on which memory areas to authenticate, which keys to install and use, what data to write to a register, and so on.
+In addition, the necessary certificates and signatures involved in the verification of the image are attached to the CSF generated binary output.
 
 We keep a template at ``lmp-tools/security/imx_ahab/u-boot-spl-sign.csf-template``.
 
-This template is used by the ``lmp-tools/security/imx_ahab/sign-file.sh`` script which dynamically generates the authenticate data command "Offsets" line based on imx-boot image.  The command "Offset" line contains two values:
+This template is used by ``lmp-tools/security/imx_ahab/sign-file.sh`` which dynamically generates the authenticate data command "Offsets" line, based on imx-boot image.
+The "Offset" line contains two values:
 
-* Container header - offset to header of container, which contains set of binary images that should be signed
-* Signature block - offset to the signature block header
+* Container header: offset to header of container, which contains the set of binary images that should be signed
+* Signature block: offset to the signature block header.
 
-.. note::
-    Once the security fuses have been programmed, we recommend that all your UUU scripts are modified to use only **signed imx-boot** images since some of those scripts might depend on the occurrence - or not - of AHAB events.
+.. warning::
+    Once the security fuses have been programmed, we recommend that all your UUU scripts be modified to use only **signed imx-boot** images.
+    Some of those scripts might depend on the occurrence of AHAB events.
 
-The ``lmp-tools/security/imx_ahab/sign-file.sh`` script executes NXP's Code Signing Tool after preparing the CSF information based on the template::
+``lmp-tools/security/imx_ahab/sign-file.sh`` executes NXP's Code Signing Tool after preparing the CSF information based on the template::
 
     $ cd security/imx_ahab/
     $ ./sign-file.sh --cst ./cst --spl imx-boot-apalis-imx8
@@ -165,7 +176,8 @@ The ``lmp-tools/security/imx_ahab/sign-file.sh`` script executes NXP's Code Sign
     Process completed successfully and signed file is .imx-boot-apalis-imx8.signed
 
 
-Booting this signed imx-boot image and inspecting the HAB status should give no HAB events therefore indicating that the image was correctly signed::
+Booting this signed imx-boot image, and inspecting the HAB status should give no HAB events.
+This indicates that the image was correctly signed::
 
     => ahab_status
     Lifecycle: 0x0020, NXP closed
@@ -177,25 +189,29 @@ Booting this signed imx-boot image and inspecting the HAB status should give no 
 .. warning::
     The next fuse instruction will close the board for unsigned images: make sure you can rebuild the signed images before running this command.
 
-How to close board
-------------------
+How to Close the Board
+----------------------
 
 .. warning::
-    This section describes the manual process of closing a board. It's preferable to use UUU script from the next section, as it's considered to be less error-prone as it contains implicit checks for SRK values.
+    This section describes the manual process of closing a board.
+    It is preferable to use the UUU script from the next section.
+    The script is considered to be less error-prone, as it contains implicit checks for SRK values.
 
-Now we can close the device meaning that from thereon only signed images can be booted on this platform. For that we should run ``ahab_close``::
+Now we can close the device so that from here on only signed images can be booted on the platform.
+For this we run ``ahab_close``::
 
 	=> ahab_close
 
 Rebooting the board and checking the AHAB status should give lifecycle value ``0x80 OEM closed``.
 
 .. warning::
-    A production device should also "lock" the SRK values to prevent bricking a closed device.  Refer to the Security Reference Manual for the location and values of these fuses.
+    A production device should also "lock" the SRK values to prevent bricking a closed device.
+    Refer to the Security Reference Manual for the location and values of these fuses.
 
-How to close board using UUU script
------------------------------------
+How to Close the Board Using UUU Script
+---------------------------------------
 
-To avoid any mistakes board securing procedure can be automated program using SDP via NXP's Universal Update Utility with a script as follows::
+To avoid mistakes, the board securing procedure can be automated using SDP via NXP's Universal Update Utility, with a script as follows::
 
         uuu_version 1.3.102
 
@@ -242,13 +258,13 @@ To avoid any mistakes board securing procedure can be automated program using SD
 
         FB: done
 
-U-Boot cmd ``fiohab_close`` will automatically validate that all SRK fuses have correct values and after then will close
-the board, otherwise it will print error message.
+U-Boot ``fiohab_close`` will automatically validate that all SRK fuses have the correct values.
+It will then close the board if the values are correct, otherwise it will print an error message.
 
 .. seealso::
    * :ref:`ref-boot-software-updates-imx8qm`
 
-.. _AN12312 Secure Boot on i.MX 8 and i.MX 8X Families using AHAB – Application Note:
+.. _AN12312 Secure Boot on i.MX 8 and i.MX 8X Families using AHAB—Application Note:
    https://www.nxp.com/docs/en/application-note/AN12312.pdf
 
 .. _lmp-tools/security/imx_ahab:

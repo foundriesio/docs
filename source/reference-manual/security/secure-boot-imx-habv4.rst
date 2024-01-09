@@ -2,19 +2,27 @@
 
 .. _ref-secure-boot-imx-habv4:
 
-Secure Boot on i.MX 6/7/8M Families using HABv4
-===============================================
-On the i.MX 6/7/8M platforms, Secure Boot is implemented via the High Availability Boot (HABv4) component of the on-chip ROM. The ROM is responsible for loading the initial program image, the bootloader; HABv4 then enables the ROM to authenticate it using digital signatures.
+Secure Boot on i.MX 6/7/8M Using HABv4
+======================================
 
-HABv4 also provides a mechanism to establish a root of trust for the remaining software components and establishes a secure state — the close state — on the i.MX IC secure state machine in hardware.
+On the i.MX 6/7/8M platforms, Secure Boot is implemented via the High Availability Boot (HABv4) component of the on-chip ROM.
+The ROM is responsible for loading the initial program image, the bootloader; HABv4 then enables the ROM to authenticate it using digital signatures.
 
-Our implementation
+HABv4 also provides a mechanism to establish a root of trust for the remaining software components and establishes a secure state—the close state—on the i.MX IC secure state machine in hardware.
+
+Our Implementation
 ------------------
-Foundries.io LmP uses U-Boot as the bootloader with SPL being its first stage loader. Our secure boot implementation will put the IC in a secure state accepting only signed SPL firmware.
 
-SPL then boots the trusted execution environment — OP-TEE — where we run an 'early' trusted application, ``fiovb`` (Foundries.io Verified Boot). This trusted application provides secure access to the Replay Protected Memory Block (RPMB) partition in eMMC which is used to store keys, firmware and rollback information.
+The LmP uses U-Boot as the bootloader, with SPL being its first stage loader.
+Our Secure Boot implementation will put the IC in a secure state, accepting only signed SPL firmware.
 
-OP-TEE also prepares the next stage bootloader — U-Boot — and generates an overlay DTS for the Linux kernel consumption. U-Boot implements the ``fiovb`` command to validate the trusted application functionality. In the case of i.MX 7ULP, U-Boot also controls the M4 firmware upgrade process using the ``fiovb`` trusted application.
+SPL then boots the trusted execution environment—OP-TEE—where we run an 'early' trusted application, ``fiovb`` (Foundries.io™ Verified Boot).
+This trusted application provides secure access to the Replay Protected Memory Block (RPMB) partition in eMMC.
+This is used to store keys, firmware, and rollback information.
+
+OP-TEE also prepares the next stage bootloader—U-Boot—and generates an overlay DTS for the Linux® kernel consumption.
+U-Boot implements the ``fiovb`` command to validate the trusted application functionality.
+In the case of i.MX 7ULP, U-Boot also controls the M4 firmware upgrade process using the ``fiovb`` trusted application.
 
 U-Boot then jumps to the kernel entry point.
 
@@ -24,13 +32,15 @@ A system like the one just described, which boots without TF-A (for example i.MX
       :align: center
       :width: 6in
 
-Systems using TF-A (ie, i.MX 8M*) are slightly different. The following diagrams describes the secure boot sequence with a succint description of the Yocto Project meta layer's configuration for i.MX 8MM based platforms with TF-A:
+Systems using TF-A (ie, i.MX 8M*) are slightly different.
+The following diagrams describes the secure boot sequence with a succinct description of the Yocto Project meta-layer's configuration for i.MX 8MM based platforms with TF-A:
 
    .. figure:: /_static/imx8-secure-boot.png
       :align: left
       :width: 8in
 
-The communication path to gain access from userland to RPMB via the pseudo trusted application (PTA) follows the OP-TEE standard convention for PTAs (as the image below describes). Userland uses ``libteec`` to issue an ioctl call to the Linux TEE driver, which in turn transitions the processor to its secure state and calls the application entrypoint.
+The communication path to gain access from userland to RPMB via the pseudo trusted application (PTA) follows the OP-TEE standard convention for PTAs (as the image below describes).
+Userland uses ``libteec`` to issue an ioctl call to the Linux TEE driver, which in turn transitions the processor to its secure state and calls the application entrypoint.
 
 With this in mind, ``fiovb`` is implemented as a secured user application instead of a PTA.
 
@@ -41,7 +51,9 @@ With this in mind, ``fiovb`` is implemented as a secured user application instea
 
 HABv4 Architecture Overview
 ---------------------------
-HABv4 authentication is based on public key cryptography using the RSA algorithm in which image data is signed offline using a series of private keys. The resulting signed image data is then verified on the i.MX processor using the corresponding public keys.
+
+HABv4 authentication is based on public key cryptography using the RSA algorithm, in which image data is signed offline using a series of private keys.
+The resulting signed image data is then verified on the i.MX processor using the corresponding public keys.
 
 This key structure is known as a PKI tree; super root keys, or SRK, are components of the PKI tree: HAB relies on a table of the public SRKs to be hashed and placed in fuses on the target.
 The i.MX Code Signing Tool (CST) is used to generate the HABv4 signatures for images using the PKI tree data and SRK table.
@@ -52,17 +64,22 @@ How to Secure the Platform
 --------------------------
 
 .. note::
-    This page illustrates how the HABv4 Secure Boot process works, and provides background information for our :ref:`ref-secure-machines` implementation for better understanding. For fusing and closing a board, follow our :ref:`ref-secure-machines` guide, where some steps described here are omitted and handled in our code for simpler and safer operations.
+	 This page illustrates how the HABv4 Secure Boot process works.
+	 It provides background information for our :ref:`ref-secure-machines` implementation for better understanding.
 
-The first step is to generate the PKI tree and commit the fuse table to the hardware.
+	 We recommend fusing and closing a board following our :ref:`ref-secure-machines` guide.
+	 In the guide, some steps described here are omitted, and handled in our code for simpler and safer operations.
+
+The first step is to generate the PKI tree, and commit the fuse table to the hardware.
 
  .. warning::
+    Once the fuses have been programmed they can not be modified.
 
-   Once the fuses have been programmed they can't be modified.
+Please refer to the NXP® `Secure Boot Using HABv4 Guide`_ for a detailed description on how to generate the PKI tree.
 
-Please refer to NXP's `Secure Boot Using HABv4 Guide`_ for a detailed description on how to generate the PKI tree.
-
-For development purposes, we keep i.MX HABv4 sample keys and certificates at `lmp-tools/security/imx_hab4`_. The fuse table can be inspected by executing the ``print_fuses`` script in that same directory. The output should be::
+For development purposes, we keep i.MX HABv4 sample keys and certificates at `lmp-tools/security/imx_hab4`_.
+The fuse table can be inspected by executing the ``print_fuses`` script in that same directory.
+The output should be::
 
 	0xEA2F0B50
 	0x871167F7
@@ -79,7 +96,9 @@ The Security Reference Manual for your specific SoC will indicate which fuses ne
 i.MX 7ULP Fusing
 ^^^^^^^^^^^^^^^^
 
-.. note:: The values shown in this section are just examples of our standard LmP HABv4 keys and are not meant for production. Fuses cannot be changed after the first write.
+.. warning::
+	 The values shown in this section are just examples of our standard LmP HABv4 keys, and are not meant for production.
+	 Fuses cannot be changed after the first write.
 
 On the i.MX 7ULP the A7 fuses are stored in the fuse bank 5, words 0 to 7 and the M4 fuses are stored in the fuse bank 6, words 0 to 7.
 
@@ -105,7 +124,8 @@ For the M4 fuses it would look like this::
 	=> fuse prog 6 6 0xA71BBE78
 	=> fuse prog 6 7 0xA3AD024A
 
-Alternatively, you can use the kernel to program the A7 fuses via SDP by using NXP's Universal Update Utility. This is shown in the following script (replace @@MACHINE@@ with your machine name)::
+Alternatively, you can use the kernel to program the A7 fuses via SDP by using NXP's Universal Update Utility.
+This is shown in the following script (replace ``@@MACHINE@@`` with your machine name)::
 
 	uuu_version 1.0.1
 
@@ -150,7 +170,9 @@ And the following script would work for setting the M4 fuses::
 i.MX 8MM Fusing
 ^^^^^^^^^^^^^^^
 
-.. note:: The values shown in this section are just examples of our standard LmP HABv4 keys and are not meant for production. Fuses cannot be changed after the first write.
+.. warning::
+	 The values shown in this section are just examples of our standard LmP HABv4 keys and are not meant for production.
+	 Fuses cannot be changed after the first write.
 
 On the i.MX 8MM the A-core fuses are stored in fuse banks 6-7, words 0 to 3::
 
@@ -163,7 +185,8 @@ On the i.MX 8MM the A-core fuses are stored in fuse banks 6-7, words 0 to 3::
         => fuse prog -y 7 2 0xA71BBE78
         => fuse prog -y 7 3 0xA3AD024A
 
-Alternatively, you can use the kernel to program the A-core fuses via SDP by using NXP's Universal Update Utility. This is shown in the following script::
+Alternatively, you can use the kernel to program the A-core fuses via SDP by using NXP's Universal Update Utility.
+This is shown in the following script::
 
         uuu_version 1.2.39
 
@@ -187,24 +210,33 @@ Alternatively, you can use the kernel to program the A-core fuses via SDP by usi
         FB: DONE
 
 
-Upon reboot, if **CONFIG_IMX_HAB** is enabled in U-Boot, HABv4 will raise events to indicate that an **unsigned SPL image** has been executed. Those events can be inspected by running U-Boot's ``hab_status`` command.
+Upon reboot, if ``CONFIG_IMX_HAB`` is enabled in U-Boot, HABv4 will raise events indicating that an **unsigned SPL image** has been executed. 
+Host events can be inspected by running U-Boot's ``hab_status`` command.
 
 .. important::
-    Once the security fuses have been programmed, modify all your UUU scripts to use only **signed SPL** images since some of those scripts might depend on the occurrence — or not — of HABv4 events. This is already covered in our :ref:`ref-secure-machines` implementations.
+   
+	 Once the security fuses have been programmed, modify all your UUU scripts to use only **signed SPL** images.
+	 Some of those scripts might depend on the occurrence of HABv4 events.
+	 This is already covered in our :ref:`ref-secure-machines` implementations.
 
-To secure the platform, there is an extra fuse that needs to be programmed: we will only take that step once we are sure that we can successfully sign and boot a signed SPL image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
+To secure the platform, there is an extra fuse that needs to be programmed.
+We will only take this step once we are sure that we can successfully sign and boot a signed SPL image with a matching set of keys (containing the same public key hashes as those stored in the SRK fuses).
 
 How to Sign an SPL Image
 ------------------------
 
 .. note::
-    For simplicity, we provide a ``readme.md`` file with straight forward instructions on how to sign the SPL and mfgtool/SDP SPL for each board in our :ref:`ref-secure-machines` implementations. This is part of the ``mfgtool-files`` artifact for the secure machines.
+   
+	 We provide a ``readme.md`` file with straight forward instructions on signing the SPL and mfgtool/SDP SPL for each board in our :ref:`ref-secure-machines` implementations.
+	 This is part of the ``mfgtool-files`` artifact for the secure machines.
 
-To build a signed image, you need to create a Command Sequence File (CSF) describing all the commands that the ROM will execute during Secure Boot. These commands instruct HABv4 on which memory areas of the image to authenticate, which keys to install and use, what data to write to a register, and so on. In addition, the necessary certificates and signatures involved in the verification of the image are attached to the CSF generated binary output.
+To build a signed image, you need to create a Command Sequence File (CSF) describing all the commands that the ROM will execute during Secure Boot.
+These commands instruct HABv4 on which memory areas to authenticate, which keys to install and use, what data to write to a register, and so on.
+In addition, the necessary certificates and signatures involved in the verification of the image are attached to the CSF generated binary output.
 
 We keep a template at ``lmp-tools/security/imx_hab4/u-boot-spl-sign.csf-template``.
 
-This template is used by the ``lmp-tools/security/imx_hab4/sign-file.sh`` script which dynamically generates the authenticate data command "blocks" line(s) based on your binary.  The command "blocks" line contains three values:
+This template is used by ``lmp-tools/security/imx_hab4/sign-file.sh`` script which dynamically generates the authenticate data command "blocks" line(s) based on your binary.  The command "blocks" line contains three values:
 
 * The first value is the address on the target where HAB expects the signed image data to begin.
 * The second value is the offset into the file where CST will begin signing.
@@ -243,7 +275,7 @@ Booting this signed SPL image and inspecting the HAB status should give no HAB e
 	No HAB Events Found!
 
 .. warning::
-    The next fuse instruction will close the board for unsigned images: make sure you can rebuild the signed images before programming that fuse.
+   The next fuse instruction will close the board for unsigned images: make sure you can rebuild the signed images before programming that fuse.
 
 
 Now we can close the device — From here on only signed images can be booted on the platform. For the i.MX 7ULP, we need to fuse bit31 of word 6 from bank 29 (SEC_CONFIG[1] in the documentation)::
@@ -263,7 +295,7 @@ Rebooting the board and checking the HAB status should give::
 	No HAB Events Found!
 
 .. warning::
-    A production device should also "lock" the SRK values to prevent bricking a closed device.  Refer to the Security Reference Manual for the location and values of these fuses.
+   A production device should also "lock" the SRK values to prevent bricking a closed device.  Refer to the Security Reference Manual for the location and values of these fuses.
 
 
 How to Sign an SPL Image for SDP
@@ -304,17 +336,18 @@ To comply with these requirements we need to sign the image adding the ``--fix-s
 
 
 .. note::
-    Which SoCs fall in which category can be identified by inspecting the `Universal Update Utility`_  g_RomInfo: if the option ``ROM_INFO_HID_SKIP_DCD`` is configured, then the DCD does **not** need to be fixed for that SoC.
+   Which SoCs fall in which category can be identified by inspecting the `Universal Update Utility`_  g_RomInfo.
+	 If the option ``ROM_INFO_HID_SKIP_DCD`` is configured, then the DCD does **not** need to be fixed for that SoC.
 
 
 Booting Signed Images With the `Universal Update Utility`_
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
-    These steps are covered in our mfgtool implementation of :ref:`ref-secure-machines`.
+   These steps are covered in our mfgtool implementation of :ref:`ref-secure-machines`.
 
-1. On i.MX 6UL/6ULL families, we need to let SDP know the DCD location as well as inform it that the DCD has been cleared.
-So a typical UUU boot script would be as (replace ``@@MACHINE@@`` with your machine configuration name)
+1. For i.MX 6UL/6ULL, we need to let SDP know the DCD location, as well as inform it that the DCD has been cleared.
+A typical UUU boot script would be (replace ``@@MACHINE@@`` with your machine configuration name):
 
 .. code-block:: console
    :emphasize-lines: 3
@@ -337,22 +370,30 @@ So a typical UUU boot script would be as (replace ``@@MACHINE@@`` with your mach
    SDPU: delay 1000
    SDPU: write -f u-boot-@@MACHINE@@.itb
 
-On both cases, if the device has been closed and it is only accepting signed images, **it is recommended that UUU is started before powering the board and before connecting it to the host PC so that UUU polls for the connection and responds to it as soon as possible**. To that effect we need to make sure of UUU's polling period flag::
+In both cases, if the device has been closed and is only accepting signed images, **it is recommended that UUU be started before powering the board, and before connecting it to the host PC, so that UUU polls for the connection and responds to it as soon as possible**.
+To that effect we need to make sure of UUU's polling period flag::
 
 	$ uuu -pp 1 file.uuu
 
 .. note::
-    The flags `-dcdaddr`_, `-cleardcd`_, and `-pp`_ are required for SDP on older SoCs and have been contributed to the Universal Update Utility by Foundries.io. Make sure your UUU version is up-to-date with these changes.
+
+	 The flags `-dcdaddr`_, `-cleardcd`_, and `-pp`_ are required for SDP on older SoCs.
+	 These have  been contributed to the Universal Update Utility by Foundries.io.
+	 Make sure your UUU version is up-to-date with these changes.
 
 How to Sign an M4 Binary for HABv4 Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
-    This applies to i.MX 7ULP which has the Cortex-M4 as the primary core.
+   This applies to i.MX 7ULP which has the Cortex-M4 as the primary core.
 
-If you wish to use the i.MX HABv4 validation process when booting an M4 binary, it will also need to be signed in a similar manner. This is also true for SoCs such as i.MX7ULP which support "dual-boot" mode. The M4 bootrom loads the M4 binary at power on. If the device is in a closed state, the bootrom requires the M4 binary to be signed.
+To use the i.MX HABv4 validation process when booting an M4 binary, it will also need to be signed in a similar manner.
+This is also true for SoCs such as i.MX7ULP which support "dual-boot" mode.
+The M4 bootrom loads the M4 binary at power on.
+If the device is in a closed state, the bootrom requires the M4 binary to be signed.
 
-Signing the M4 application image is nearly the same as before.  Instead of the ``--spl`` parameter, use ``--m4app``::
+Signing the M4 application image is nearly the same as before.
+Instead of the ``--spl`` parameter, use ``--m4app``::
 
 	$ cd security/imx_hab4/
 	$ ./sign-file.sh --cst ./cst --m4app sdk20-app_flash.img
@@ -375,16 +416,18 @@ Signing the M4 application image is nearly the same as before.  Instead of the `
 	$ ls sdk20-app_flash.img.signed
 	sdk20-app_flash.img.signed
 
-Booting a closed system with a CAAM device
+Booting a Closed System With a CAAM Device
 ------------------------------------------
-If you are running with a *Cryptographic Acceleration and Assurance Module* device you will notice that in the closed configuration and for devices with HAB 4.4.0 (or lower), the HAB code locks the job ring and DECO master ID registers.
 
-So if the user-specific application requires any changes in the CAAM MID registers, it is necessary to add the “Unlock CAAM MID” command into the CSF file.
+If you are running with a *Cryptographic Acceleration and Assurance Module* device, notice that in the closed configuration—and for devices with HAB 4.4.0 (or lower)—the HAB code locks the job ring and DECO master ID registers.
 
-Not doing so, since the CAAM will not have been configured for the proper MIDs, leaves some of the CAAM registers not accessible for writing and any attempt to write to them will cause system **core fails**.
+If the user-specific application requires any changes in the CAAM MID registers, it is necessary to add the “Unlock CAAM MID” command into the CSF file.
+Not doing so, since the CAAM will not have been configured for the proper MIDs, leaves some of the CAAM registers not accessible for writing.
+Thus, any attempt to write to them will cause system **core fails**.
 
 .. note::
-	The current NXP BSP implementation expects the CAAM registers to be unlocked when configuring the CAAM to operate in the non-secure TrustZone world. This applies when OP-TEE is enabled on the i.MX 6, i.MX 7, and i.MX 7ULP processors.
+	 The current NXP BSP implementation expects the CAAM registers to be unlocked when configuring the CAAM to operate in the non-secure TrustZone world.
+	 This applies when OP-TEE is enabled on the i.MX 6, i.MX 7, and i.MX 7ULP processors.
 
 Our ``u-boot-spl-sign.csf-template`` takes care of supporting CAAM on closed platforms by adding the following section::
 
