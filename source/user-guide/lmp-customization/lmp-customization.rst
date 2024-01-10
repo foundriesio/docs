@@ -318,7 +318,14 @@ Adding LmP Users
 
        \$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E.
 
-   This is the ``USER_PASSWD``/``LMP_PASSWORD`` to be added to the build as the new user password.   
+#. You can also escape any special characters by using the ``printf`` command in bash:
+
+   .. code-block:: none
+
+       password_hash=`mkpasswd -m sha512crypt`
+       printf '%q' "$password_hash"
+
+   This is the ``USER_PASSWD``/``LMP_PASSWORD`` to be added to the build as the new user password.
 
 #. If including a new user, add the following block to ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb``:
 
