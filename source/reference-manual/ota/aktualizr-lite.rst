@@ -77,7 +77,7 @@ Apply Specific Update
 
 To update to a specific build number::
 
-``sudo aktualizr-lite update --update-name <build_number>``
+ sudo aktualizr-lite update --update-name <build_number>
 
 .. note::
 
