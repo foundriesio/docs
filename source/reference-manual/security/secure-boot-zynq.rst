@@ -1,35 +1,41 @@
 .. highlight:: sh
 
-
 .. _ref-authentication-xilinx:
 
 Secure Boot on Zynq UltraScale+ MPSoC
 =====================================
-This is a simple guide on how to provision a device enabling the bootloader hardware authentication.
+
+This page covers provisioning a device to enable the bootloader hardware authentication.
 
 .. note::
 
-   Helper scripts are also available at the `lmp-tools`_ repository.
+   Helper scripts are also available in the `lmp-tools`_ repository.
 
-Get the PMU firmware
+Get the PMU Firmware
 --------------------
-Get a valid version of the PMU firmware for the hardware ``pmu-firmware-MACHINE.bin``, which can be found at the deploy folder when built with LmP.
 
-Replace MACHINE with the target machine name (e.g. ``pmu-firmware-uz3eg-iocc-sec.bin``).
+Get a valid version of the PMU firmware for the hardware, ``pmu-firmware-MACHINE.bin``.
+This can be found in the deploy folder.
 
-Build the bootloader
+Replace ``MACHINE`` with the machine name (e.g. ``pmu-firmware-uz3eg-iocc-sec.bin``).
+
+Build the Bootloader
 --------------------
-Build U-boot for the ZynqMP SoC platform with Secondary Program Loader (SPL) support, which will produce a file called ``u-boot-spl.bin``.
 
-This file can also be found in the deploy folder when building LmP for secure targets.
- This is because with secure targets the variable ``SPL_BINARY`` is set to ``spl/u-boot-spl.bin``, causing it to assume that the final ``boot.bin`` will be manually generated and signed by the user.
+Build U-boot for the ZynqMP SoC platform with Secondary Program Loader (SPL) support.
+This will produce a file called ``u-boot-spl.bin``.
+
+Note that this file can also be found in the deploy folder when building LmP for secure targets.
+This is because with secure targets, the variable ``SPL_BINARY`` is set to ``spl/u-boot-spl.bin``.
+This causes the build to assume that the final ``boot.bin`` will be manually generated and signed by the user.
 
 On normal (open) targets, the LmP build process only publishes the final ``boot.bin`` binary.
 Without any signing requirements, the image can be created and published as part of the build process.
 
-Create the Primary and Secondary keys
+Create the Primary and Secondary Keys
 -------------------------------------
-Create a set of PEM keys that will be used by the hardware to authenticate the bootloader::
+
+Create a set of PEM keys for the hardware to authenticate the bootloader::
 
        $ cat keys.bif
        keys:
@@ -42,10 +48,11 @@ Create a set of PEM keys that will be used by the hardware to authenticate the b
 
        $./bootgen -arch zynqmp -image keys.bif -generate_keys pem
 
-Create the bootable image
+Create the Bootable Image
 -------------------------
-Create the bootable image requesting only authentication by using the following BIF. In this example, the PMUFW and SPL would be loaded at specific locations.
 
+Create the bootable image requesting only authentication, by using the following BIF.
+In this example, the PMUFW and SPL would be loaded at specific locations.
 It is worth mentioning that whenever authentication is enabled for the bootloader, the PMUFW will also be signed::
 
        $ cat bootloader.bif
@@ -59,11 +66,13 @@ It is worth mentioning that whenever authentication is enabled for the bootloade
 
         $ ./bootgen -arch zynqmp -image bootloader.bif -w on -o boot.bin -efuseppkbits fuse-ppk.txt
 
-Besides ``boot.bin``, bootgen will also generate a SHA-384 of the PPK ``fuse-ppk.txt`` which will need to be written to the PPK fuse so that the hardware can authenticate the image with the public primary key.
+Besides ``boot.bin``, bootgen will also generate a SHA-384 of the PPK ``fuse-ppk.txt``. 
+This will need to be written to the PPK fuse so that the hardware can authenticate the image with the public primary key.
 
-Check the bootable image
+Check the Bootable Image
 ------------------------
-The integrity of the generated image can be checked as follows::
+
+Check the integrity of the generated image::
 
         $ ./bootgen -arch zynqmp -image boot.bin -verify
 
@@ -73,24 +82,37 @@ The layout of the bootable image can be read as follows::
 
 Fuse the Primary Public Key SHA-384
 -----------------------------------
-At the time of writing, there is not an open source solution that allows the user to read/write to the ZynqMP SoC eFUSEs. A good alternative to other GUI based tools from Xilinx is to use the Xilinx Lightweight Provisioning Tool, since it allows requests to be scripted: use this tool to write the content of ``fuse-ppk.txt`` to the PPK eFUSE. Notice that this tool is only shared on demand from your Xilinx support representative.
+
+Currently, there is no open source solution to read/write to the ZynqMP SoC eFUSEs.
+An alternative to other GUI based tools from Xilinx is the Xilinx Lightweight Provisioning Tool.
+It allows requests to be scripted: use this tool to write the content of ``fuse-ppk.txt`` to the PPK eFUSE.
+
+.. important::
+   The Xilinx LIghtweight Provisiong Tool is only shared on demand from your Xilinx support representative.
 
 For more information on how to program the eFUSEs, please have a look at `XAPP1319`_.
 
-If you want to roll-out your own solution to read or write to the eFUSES, please have a look at the `Xilskey service`_ and the relevant `documentation`_; be aware however that these registers are only accessible from exception level 3 (EL3).
+If you want to roll-out your own solution to read or write to the eFUSES, please have a look at the `Xilskey service`_ and the relevant `documentation`_.
+Be aware however that these registers are only accessible from exception level 3 (EL3).
 
-A simple solution if you wanted to pass some of those eFUSE values to TF-A or OP-TEE would be to read them from SPL and then add them to the ``secure-chosen`` node in the device tree which would then be shared with those executables.
+If you want to pass some of those eFUSE values to TF-A or OP-TEE, a solution would be to read them from SPL, and then add them to the ``secure-chosen`` node in the device tree.
+This would then be shared with those executables.
 
-Program the bootable image
+Program the Bootable Image
 --------------------------
-Unless you are booting from SD or eMMC devices, chances are that you will need to use the JTAG interface for that first write to QSPI. JTAG accessibility however seems to be only viable using the Xilinx VIVADO SDK which is big commitment in terms of storage.
 
-One alternative to a full SDK install is running Vivado in a container on your Linux machine. During this development, we used the following `vivado_docker`_ repository.
+Unless you are booting from SD or eMMC, you will need to use the JTAG interface for the first write to QSPI.
+However, JTAG accessibility requires using the Xilinx VIVADO SDK, which is big commitment in terms of storage.
 
-Sign the FPGA bitstream
+One alternative to a full SDK install is running Vivado in a container from a Linux® machine.
+During development, we used the following `vivado_docker`_ repository.
+
+Sign the FPGA Fitstream
 -----------------------
+
 When authentication is enabled in the bootable image, the CSU will also authenticate the FPGA bistream before allowing it to load.
-Because of this, the bitstream must also be signed before adding it to the FIT image, and it can be found inside target ``xsa`` file (e.g. ``uz3eg_iocc_base.bit``)::
+Because of this, the bitstream must also be signed before adding it to the FIT image.
+It can be found inside the target ``xsa`` file (e.g. ``uz3eg_iocc_base.bit``)::
 
        $ cat fpga.bif
        the_ROM_image:
@@ -103,7 +125,8 @@ Because of this, the bitstream must also be signed before adding it to the FIT i
 
         $ ./bootgen -arch zynqmp -image fpga.bif -w on -o uz3eg_iocc_base.bit.bin
 
-Now extend the `bitstream-signed`_ recipe including your signed bitstream, then select it as the preferred provider for ``virtual/bitstream`` and specify the right binary and compatible string, such as::
+Now extend the `bitstream-signed`_ recipe to include your signed bitstream.
+Select it as the preferred provider for ``virtual/bitstream``, and specify the correct binary and compatible string::
 
        $ cat meta-lmp-bsp/conf/machine/uz3eg-iocc-sec.conf
 
@@ -114,7 +137,8 @@ Now extend the `bitstream-signed`_ recipe including your signed bitstream, then 
 
 Booting SPL
 -----------
-Applying this `patch`_ to U-boot you should see the following on a successful boot::
+
+Applying this `patch`_ to U-boot, you should see the following on a successful boot::
 
         U-Boot SPL 2021.07+xlnx+gb9b970209c (Jul 22 2021 - 10:50:54 +0000)
         PMUFW:  v1.1
@@ -147,12 +171,14 @@ Applying this `patch`_ to U-boot you should see the following on a successful bo
 
 
 .. note::
-        Booting a secure image disables the JTAG interface even if no JTAG related fuses were written. Use the SPL configuration option `CONFIG_SPL_ZYNQMP_RESTORE_JTAG`_ to re-enable it on boot.
+        Booting a secure image disables the JTAG interface, even if no JTAG related fuses were written.
+        Use the SPL configuration option `CONFIG_SPL_ZYNQMP_RESTORE_JTAG`_ to re-enable it on boot.
 
-Integrating the Signed boot.bin in LmP
---------------------------------------
+Integrating the Signed ``boot.bin`` in LmP
+------------------------------------------
 
-Now that you validated the signed ``boot.bin`` file, make sure to integrate it as part of the LmP publishing process in order to support boot firmware updates::
+Now that you validated the signed ``boot.bin`` file, make sure to integrate it as part of the LmP publishing process.
+This is needed in order to support boot firmware updates::
 
        meta-lmp-bsp/conf/machine/uz3eg-iocc-sec.conf:PREFERRED_PROVIDER_virtual/boot-bin = "lmp-boot-firmware"
 
@@ -164,17 +190,15 @@ Now that you validated the signed ``boot.bin`` file, make sure to integrate it a
        PV:uz3eg-iocc-sec = "1"
        SRC_URI:uz3eg-iocc-sec = "file://boot.bin"
 
-With ``lmp-boot-firmware`` integration the signed ``boot.bin`` file will be deployed under the deploy/lmp-boot-firmware folder.
+With ``lmp-boot-firmware`` integration, the signed ``boot.bin`` file will be deployed under ``deploy/lmp-boot-firmware/``.
 
-For more information about boot firmware updates on Xilinx-based targets see :ref:`Boot Software Updates on Zynq UltraScale+ MPSoC <ref-boot-software-updates-zynqmp>`.
+For more information about boot firmware updates on Xilinx-based targets, see :ref:`Boot Software Updates on Zynq UltraScale+ MPSoC <ref-boot-software-updates-zynqmp>`.
 
 Secure Storage (RPMB) using the PUF
 -----------------------------------
 
 The PUF can be used to generate a hardware unique key (HUK) at OP-TEE for secure storage via the eMMC RPMB partition.
-
-For PUF to be functional you will need to fuse PPK and RSA_EN (for secure boot), register the PUF and program the syndrome data (via Red AES key).
-
+For PUF to be functional you will need to fuse PPK and RSA_EN (for secure boot), register the PUF and program the Syndrome data (via Red AES key).
 We recommend using the XLWPT tool (as described at `XAPP1319`_) for registering PUF::
 
           ___  ___ _ __        _ ____
@@ -252,7 +276,8 @@ We recommend using the XLWPT tool (as described at `XAPP1319`_) for registering 
          PUF AUX value read from eFUSEs   : 0x0062C179
          PUF CHASH value read from eFUSEs : 0x8D22500B
 
-For more information on registering the PUF and how it is used by OP-TEE for generating a hardware unique key, please have a look at `XAPP1333`_ and https://github.com/OP-TEE/optee_os/pull/4874.
+For more information on registering the PUF, and how it is used by OP-TEE for generating a hardware unique key,
+see `XAPP1333`_ and https://github.com/OP-TEE/optee_os/pull/4874.
 
 .. seealso::
    * :ref:`ref-boot-software-updates-zynqmp`
