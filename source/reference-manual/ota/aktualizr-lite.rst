@@ -84,6 +84,12 @@ To update to a specific build number::
     This can only be performed when the original and update Targets are under the same tag.
     In case the update is tagged differently, it is required to switch tags before running this command.
 
+.. warning::
+   Downgrading to a older Target is neither recommended or supported by our team;
+   doing so may lead to unverified corner cases.
+   Only choose to do so mindfully.
+   For any update, always test before rolling out to production devices.
+
 Configuration
 -------------
 
