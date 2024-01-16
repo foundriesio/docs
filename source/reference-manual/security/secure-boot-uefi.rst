@@ -5,19 +5,21 @@
 Unified Extensible Firmware Interface (UEFI) Secure Boot
 ========================================================
 
-Unified Extensible Firmware Interface (UEFI) Secure Boot is the industry standard defined in the UEFI specification, allowing images loaded by the UEFI runtime to be verified with the certificates corresponding to the trusted keys.
+Unified Extensible Firmware Interface (UEFI) Secure Boot is the industry standard defined in the UEFI specification.
+It allows images loaded by the UEFI runtime to be verified via certificates corresponding to the trusted keys.
 
-Whenever this feature is enabled in LmP, the bootloader and kernel will be signed automatically during the build, implying the signed binaries are contained in the final rootfs image.
+When enabled in LmP, the bootloader and kernel will be signed automatically during the build.
+This implies that the signed binaries are contained in the final rootfs image.
 
 Our Implementation
 ------------------
 
-Foundries.io LmP expects the user to take complete ownership of the keys and certificates required for supporting UEFI Secure Boot.
-This implies owning the Platform Key (PK), Key Exchange Keys (KEKs), Allow list Database (DB) and Deny list Database (DBX).
+You are expected to take complete ownership of the keys and certificates required for supporting UEFI Secure Boot.
+This implies owning the Platform Key (PK), Key Exchange Keys (KEKs), Allow list Database (DB), and Deny list Database (DBX).
 
-Machine Owner Key (MOK) Secure Boot leverages a pre-bootloader Shim.
-Commonly used by generic Linux distributions, this is not recommended for deployments of secure products.
-As such, it is not supported by LmP or Foundries.io.
+Machine Owner Key (MOK) Secure Boot leverages a pre-bootloader shim.
+Commonly used by generic Linux® distros, this is not recommended for the deployment of secure products.
+As such, it is not supported.
 
 The default UEFI-based bootloader used by LmP is `systemd-boot`_.
 
@@ -28,7 +30,7 @@ Keys and Roles
 
   Master key certificate.
   Only one PK may exist on the system as a RSA-2048 X509 certificate.
-  The PK private key can sign UEFI environment variable changes or KEK, DB, and DBX changes that can be validated by the PK certificate.
+  The PK private key can sign UEFI environment variable changes, or KEK, DB, and DBX changes, that can be validated by the PK certificate.
   The PK cannot be used for signing binaries that are verified at boot time.
 
 **Key Exchange Keys (KEKs)**
@@ -36,19 +38,19 @@ Keys and Roles
   Key normally used by system and OS vendors.
   One or more KEKs are typically available as RSA-2048 X509 certificates.
   The KEK private key can sign changes to DB and DBX.
-  KEK can be used to sign bootable content; this is not recommended nor supported as replacing KEK is nontrivial due to PK involvement.
+  KEK can be used to sign bootable content; this is not recommended nor supported, as replacing KEK is nontrivial due to PK involvement.
 
-**Allow list Database (DB)**
+**Allow List Database (DB)**
 
   Can contain SHA-256 hashes or RSA-2048 X509 certificates.
   Binaries without known hashes can be validated by a certificate.
   In LmP the DB private key is the main key used for signing both the bootloader and the kernel binaries.
 
-**Deny list Database (DBX)**
+**Deny List Database (DBX)**
 
   Can contain SHA-256 hashes or RSA-2048 X508 certificates.
-  The DBX has veto power during boot time and gets parsed first during the boot chain.
-  Any binary hash matching a DBX hash or that has a signature verified by a DBX certificate will be prevented from executing at boot time.
+  The DBX has veto power during boot time, and gets parsed first during the boot chain.
+  Any binary hash matching a DBX hash, or that has a signature verified by a DBX certificate, will be prevented from executing at boot time.
 
 Vendor Operating Modes for UEFI Secure Boot
 -------------------------------------------
@@ -65,7 +67,8 @@ The most commonly found modes are:
 **User/Custom Mode**
 
   Signature and hash checks are enforced on boot time executables.
-  Custom Mode allows the system owner to change the contents of the Secure Boot PK, KEK, DB and DBX data stores, owning the chain of trust completely (the recommended mode to use with LmP).
+  Custom Mode allows the system owner to change the contents of the Secure Boot PK, KEK, DB and DBX data stores, owning the chain of trust completely.
+  This is the recommended mode to use with the LmP.
 
 **Disabled Mode**
 
@@ -77,12 +80,13 @@ The most commonly found modes are:
   Option available when the system does not have a PK installed.
   Setup mode allows for PK, KEK, DB and DBX values to be manipulated by the user for claiming ownership of the Secure Boot implementation.
 
-Once PK is added by the user, most UEFI implementations move the active mode from Setup to User/Custom at the next boot automatically (this is the why it should be the last certificate to be added by the user).
+Once PK is added by the user, most UEFI implementations move the active mode from Setup to User/Custom at the next boot automatically.
+This is the why it should be the last certificate you add.
 
 Creating UEFI Secure Boot Keys
------------------------------------
+------------------------------
 
-To create a custom set of UEFI Secure Boot keys and certificates, use the `lmp-tools gen_uefi_certs.sh <https://github.com/foundriesio/lmp-tools/blob/master/security/uefi/gen_uefi_certs.sh>`_ script.
+To create a custom set of UEFI Secure Boot keys and certificates, use `lmp-tools gen_uefi_certs.sh <https://github.com/foundriesio/lmp-tools/blob/master/security/uefi/gen_uefi_certs.sh>`_.
 
 1. Clone the ``lmp-tools`` repository from GitHub
 
@@ -96,13 +100,13 @@ To create a custom set of UEFI Secure Boot keys and certificates, use the `lmp-t
 
     mkdir custom_uefi_keys_and_certs
 
-3. Install the prerequisite packages to use the ``gen_uefi_certs.sh`` script
+3. Install the prerequisite packages to use ``gen_uefi_certs.sh``
 
 .. prompt:: bash host:~$
 
     sudo apt install openssl, efitools, uuid-runtime
 
-4. Run the ``gen_uefi_certs.sh`` script
+4. Run ``gen_uefi_certs.sh``
 
 .. prompt:: bash host:~$
 
@@ -110,14 +114,14 @@ To create a custom set of UEFI Secure Boot keys and certificates, use the `lmp-t
     ../lmp-tools/security/uefi/gen_uefi_certs.sh
 
 The generated certificates must be enrolled into your target UEFI implementation.
-The DB private key must be made available to LmP during build time, for signing the required bootloader and kernel boot images.
+The DB private key must be made available to LmP during build time for signing the required bootloader and kernel boot images.
 
 Store the generated keys and certificates securely.
 
-Custom keys can be added to the lmp-manifest repository directory ``factory-keys/uefi``.
+Custom keys can be added to the ``lmp-manifest`` repo directory ``factory-keys/uefi``.
 
 Enabling UEFI Secure Boot Usage in LmP
--------------------------------------------
+--------------------------------------
 
 The signing process in LmP is controlled by the following Yocto Project variables:
 
@@ -129,9 +133,9 @@ The signing process in LmP is controlled by the following Yocto Project variable
     * If set to ``1`` the systemd-boot bootloader and Linux kernel binaries will be signed by with the DB key (``DB.key`` at ``UEFI_SIGN_KEYDIR``)
 
 Backup Current UEFI Secure Boot Certificates
----------------------------------------------------
+--------------------------------------------
 
-It is advisable to backup the UEFI Secure Boot current values (created and included by the UEFI firmware and hardware platform vendors), so they may be restored in case of errors.
+It is advisable to backup the current UEFI Secure Boot values—created and included by the UEFI firmware and hardware platform vendors—to be restored in case of errors.
 
 .. note::
 
@@ -152,11 +156,12 @@ It is advisable to backup the UEFI Secure Boot current values (created and inclu
 The ``sig-list-to-certs`` utility (from efitools) can be used to break from ESL into hashes and certificates.
 
 Enrolling Custom UEFI Secure Boot Certificates
---------------------------------------------------
+----------------------------------------------
 
-It is possible to enroll custom UEFI Secure Boot Certificates using your firmware's built-in setup utility, ``KeyTool`` (from efitools), or by creating a custom ``LockDown`` efi program with the certificates embedded into it.
+It is possible to enroll custom UEFI Secure Boot Certificates using your firmware's built-in setup utility, ``KeyTool`` (from ``efitools``).
+You could also create a custom ``LockDown`` efi program with the certificates embedded into it.
 
-By default LmP installs the required certificates (via ``UEFI_SIGN_KEYDIR``) into the ESP image partition (under ``ESP/uefi_certs``).
+By default, LmP installs the required certificates (via ``UEFI_SIGN_KEYDIR``) into the ESP image partition (under ``ESP/uefi_certs``).
 This can be used when enrolling via the firmware's built-in setup utility.
 When automating the enrollment process, using ``LockDown`` is the recommended path.
 
