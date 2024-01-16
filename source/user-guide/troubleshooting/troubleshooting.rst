@@ -51,6 +51,16 @@ taken to get the exact same result:
 
     git config --global credential.helper /path/to/symlinking/git-credential-fio
 
+.. tip::
+
+    For troubleshooting, prepend ``GIT_CURL_VERBOSE=1 GIT_TRACE=1`` to your ``git clone``
+    command. This modification will provide more detailed information during
+    the cloning process. Carefully review the logs to ensure that the ``git-credential-fio``
+    helper has been executed for credential management.
+
+    To verify that ``git-credential-fio get`` is functioning correctly, run this command
+    and then press ``Control + D``. This action allows you to check if the password
+    required for logging into ``source.foundries.io`` is correct.
 
 Aktualizr-Lite Common Reports
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
