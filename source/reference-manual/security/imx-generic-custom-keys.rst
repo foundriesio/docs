@@ -1,30 +1,27 @@
 
-How to use custom keys
-----------------------
+Using Custom Keys
+-----------------
 
-Create the keys
-^^^^^^^^^^^^^^^
+Creating the Keys
+^^^^^^^^^^^^^^^^^
 
-There are different ways to create and store the needed keys for the secure
-boot. One important reference to understand how to generate the PKI tree is
-`i.MX Secure Boot on HABv4 Supported Devices`_ application note from NXP.
+There are different ways to create and store the keys needed for Secure Boot.
+One reference for learning how to generate the PKI tree is the `i.MX Secure Boot on HABv4 Supported Devices`_ application note from NXP.
 
-In addition, the U-Boot project also includes a documentation on `Generating a
-fast authentication PKI tree`_.
+In addition, the U-Boot project also includes documentation on `Generating a fast authentication PKI tree`_.
 
-.. warning:: It is critical that the keys created in this process must be stored
-  in a secure and safe place. Once the keys are fused to the board and it is
-  closed, that board will only boot signed images. So the keys are required in
-  future steps.
+.. warning::
+   It is critical that the keys created in this process be stored in a secure and safe place.
+   Once the keys are fused to the board and it is closed, only signed images will boot.
+   The keys are required in future steps.
 
-Generate the MfgTools scripts
+Generate the MfgTools Scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There is a set of scripts to help with creating the set of commands used to fuse
-the key into the fuse banks of ``<machine>``, and to close the board which
-configures the board to only boot signed images.
+There are scripts to help with creating the commands to fuse the key into the fuse banks of ``<machine>``, and to close the board.
+This will configure the board to only boot signed images.
 
-1. Clone the ``lmp-tools`` from GitHub
+1. Clone ``lmp-tools`` from GitHub
 
 .. prompt:: bash host:~$
 
@@ -63,9 +60,7 @@ Where ``<soc>`` can be found in the table below:
      - imx8mn_imx8mp
 
 .. note::
-    For Toradex devices ``apalis-imx6-sec`` and ``apalis-imx8-sec``, provide the
-    additional ``-t`` parameter so the Toradex PIDs are included in the output
-    scripts.
+    For Toradex devices ``apalis-imx6-sec`` and ``apalis-imx8-sec``, provide the additional ``-t`` parameter so the Toradex PIDs are included in the output scripts.
 
 4. Install the scripts to the ``meta-subscriber-overrides``:
 
@@ -80,7 +75,7 @@ The content of ``mfgtool-files_%.bbappend`` should be::
 
     FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-5. Inspect the changes and push it accordingly
+5. Inspect the changes, and push accordingly
 
 .. prompt:: bash host:~$
 
@@ -97,13 +92,12 @@ The result of ``git status`` should look like::
           new file:   recipes-support/mfgtool-files/mfgtool-files/<machine>/fuse.uuu
           new file:   recipes-support/mfgtool-files/mfgtool-files_%.bbappend
 
-The changes add the UUU scripts to the ``mfgtool-files`` artifacts of next
-targets. Run the ``fuse.uuu`` and ``close.uuu`` to fuse the custom keys and
-close the board, respectively.
+The changes add the UUU scripts to the ``mfgtool-files`` artifacts of next targets.
+Run the ``fuse.uuu`` and ``close.uuu`` to fuse the custom keys and close the board, respectively.
 
-.. warning:: The scripts ``fuse.uuu`` and ``close.uuu`` include commands which
-  result is irreversible. The  scripts should be executed with caution and only
-  after understanding its critical implications.
+.. warning::
+   The scripts ``fuse.uuu`` and ``close.uuu`` include commands which result is irreversible.
+   The scripts should be executed with caution and only after understanding its critical implications.
 
 .. _i.MX Secure Boot on HABv4 Supported Devices: https://www.nxp.com/webapp/Download?colCode=AN4581&location=null
 .. _Generating a fast authentication PKI tree: https://github.com/nxp-imx/uboot-imx/blob/lf_v2022.04/doc/imx/habv4/introduction_habv4.txt
