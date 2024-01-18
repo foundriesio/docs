@@ -6,14 +6,14 @@ Crypto Keys Used by FoundriesFactory at Build Time
 By default, the LmP build system uses online keys to sign some boot components of
 the software stack.
 
-It can handle U-Boot, OP-TEE, which is a Trusted Execution Environment (TEE) as
+It can handle U-Boot, OP-TEE—which is a Trusted Execution Environment (TEE)—as
 well as Linux® Kernel image and modules.
 
 Secure Boot Flow
 ------------------
 
 The secure boot flow starts from the boot ROM. After that step, the flow is
-defined by the SoC vendor as it depends on the architecture and the BSP they provide.
+defined by the SoC vendor, as it depends on the architecture and the BSP they provide.
 
 LmP implements three variations of boot flow, starting with Secondary Program Loader (SPL),
 TF-A (BL2), or Unified Extensible Firmware Interface (UEFI).
@@ -29,13 +29,13 @@ to configure the keys used by the Yocto Project.
 i.MX Secure Boot Flow
 """""""""""""""""""""
 
-The following diagram shows the secure boot flow for i.MX machines (TF-A is present only for arm64 devices):
+The following diagram shows the Secure Boot flow for i.MX machines (TF-A is present only for arm64 devices):
 
 .. graphviz::
 
    digraph {
         graph [
-            label = "Secure boot flow for i.MX machines"
+            label = "Secure Boot flow for i.MX machines"
         ];
         node [
             shape=box
@@ -60,13 +60,13 @@ The following diagram shows the secure boot flow for i.MX machines (TF-A is pres
 STM32MP15 Secure Boot Flow
 """"""""""""""""""""""""""
 
-The following diagram shows the secure boot flow for STM32MP15-based machines:
+The following diagram shows the Secure Boot flow for STM32MP15-based machines:
 
 .. graphviz::
 
    digraph {
         graph [
-            label = "Secure boot flow for STM32MP15 based machines"
+            label = "Secure Boot flow for STM32MP15 based machines"
         ];
         node [
             shape=box
@@ -93,14 +93,14 @@ The following diagram shows the secure boot flow for STM32MP15-based machines:
 UEFI Secure Boot Flow
 """""""""""""""""""""
 
-The following diagram shows the secure boot flow (when booting with UEFI)
+The following diagram shows the Secure Boot flow (when booting with UEFI)
 for ``intel-corei7-64`` based machines:
 
 .. graphviz::
 
    digraph {
         graph [
-            label = "Secure boot flow for UEFI based machines"
+            label = "Secure Boot flow for UEFI based machines"
         ];
         node [
             shape=box
@@ -188,7 +188,7 @@ How to Rotate the FoundriesFactory Keys
 """""""""""""""""""""""""""""""""""""""
 
 Each Factory is created with a unique key set. However, it is highly
-recommended to rotate the keys as needed. The suggestion is to rotate them each
+recommended to rotate the keys as needed. The suggestion is to rotate them every
 6 to 24 months.
 
 .. warning::
@@ -198,8 +198,8 @@ recommended to rotate the keys as needed. The suggestion is to rotate them each
 
   Please note that, depending on the key, it may be required to trigger a :ref:`ref-boot-software-updates` to correctly change the FoundriesFactory keys used. A mismatch in used keys could lead to devices failing to boot, which would then rollback to the previous stable version using the old keys.
 
-In the following sections, the command line on how to create the key pair for U-Boot,
-OP-TEE and Linux Kernel Modules is shown. Assuming the ``lmp-manifest`` repository is
+In the following sections, the command line is shown on how to create the key pair for U-Boot,
+OP-TEE and Linux Kernel Modules. This is assuming the ``lmp-manifest`` repository is
 cloned inside ``<factory>`` directory.
 
 U-Boot Keys
@@ -264,11 +264,11 @@ For TF-A keys:
 Linux Kernel Modules Keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A configuration file is needed to create the key used by Linux Kernel to sign
+A configuration file is needed to create the key used by the Linux Kernel to sign
 the modules. The `Linux Kernel documentation`_ states the parameters required
 for the configuration file.
 
-For example, create a new text file with the following content or customize it as
+For example, create a new text file with the following content, or customize it as
 needed:
 
 .. prompt::
@@ -304,7 +304,7 @@ as shown in the following command:
             -keyout privkey_modsign.pem
 
 .. tip::
-        Remember to push the new keys to get it included in the next CI
+        Remember to push the new keys to get included in the next CI
         build.
 
 .. tip::
