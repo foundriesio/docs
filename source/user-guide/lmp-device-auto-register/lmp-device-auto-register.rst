@@ -108,6 +108,41 @@ When the CI finishes, download and flash the image.
   To get a better understanding of what is going on, one can look at the lmp-device-auto-register_ repo.
   The Systemd Service file and corresponding shell script can be customized, just like the API token file is being overwritten.
 
+Additional Configuration
+------------------------
+
+Auto registration can use device tags and HSM.
+Additional configuration can be added by creating files in ``/etc/sota`` directory
+
+Registering the device with a tag can be done by creating ``/etc/sota/tag`` file.
+The file should contain only the tag.
+Example ``tag`` file:
+
+::
+
+    postmerge
+
+Registering the device using HSM can be done by creating ``/etc/sota/hsm`` file.
+The file should contain the following contents:
+
+::
+
+    HSM_MODULE=</path/to/module>
+    HSM_PI=<PIN value>
+    HSM_SOPIN=<SO pin value>
+
+Example ``hsm`` file for SE050 device
+
+::
+
+    HSM_MODULE="/usr/lib/libckteec.so.0"
+    HSM_PI=87654321
+    HSM_SOPIN=12345678
+
+``lmp-device-auto-register`` recipe does not create these files.
+They need to be created by the user either by amending the ``lmp-device-auto-register`` recipe,
+or by creating a separate recipe.
+
 Testing Auto Register
 ---------------------
 
