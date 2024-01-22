@@ -5,7 +5,7 @@ Details Of Device Gateway PKI Settings
 
 .. warning::
    The factory root of trust **can only be set once** —
-   `contact customer support<https://foundriesio.atlassian.net/servicedesk/customer/portals>` if you need to have the value reset.
+   `contact customer support <https://support.foundries.io>` if you need to have the value reset.
    This means the command ``fioctl keys ca create`` works only for the first run.
    Subsequent attempts will fail.
    Additionally,if you do have a reset performed, it will result in connected devices losing connection.

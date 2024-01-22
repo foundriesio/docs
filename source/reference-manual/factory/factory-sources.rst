@@ -35,7 +35,7 @@ You will find four git repositories:
      Defines your platform and container build job to our continuous integration system which uses the data from ``master`` branch.
      Note that you are prevented from making a commit changing the ``lmp:machines:`` stanza , as well as any changes altering the history (force push is disabled).  
      Factories are created to support specific machines.
-     If you need to alter this behavior after starting a Factory, please open a `support ticket <https://foundriesio.atlassian.net/servicedesk/customer/portals>`_.
+     If you need to alter this behavior after starting a Factory, please open a `support ticket <https://support.foundries.io>`_.
 
 Triggering Builds
 ~~~~~~~~~~~~~~~~~
