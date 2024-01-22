@@ -43,7 +43,7 @@ Click :guilabel:`Create Factory` once your details are entered.
 .. warning::
 
    Once a Factory is created, the chosen platform/machine and Factory name cannot be changed.
-   Create a new Factory or `contact support <https://foundriesio.atlassian.net/servicedesk/customer/portals>`_ if a mistake is made.
+   Create a new Factory or `contact support <https://support.foundries.io>`_ if a mistake is made.
 
 The :ref:`ref-linux` supports a wide range of platforms out of the box.
 This includes QEMU_ images for ARM_ and RISC-V_ architectures.
