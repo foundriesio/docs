@@ -142,7 +142,7 @@ This time, with the bootloader configured to disable write access to the ``SRK_R
 This is a two-steps process which is highly dependent on the device configuration and access, and requires caution.
 The revoke fusing command can make the device unavailable if not executed properly.
 
-To get help with automating the revocation, open a `support ticket <https://foundriesio.atlassian.net/servicedesk/customer/portals>`_.
+To get help with the revocation automatization, open a `support ticket <https://support.foundries.io>`_.
 
 .. i.MX Secure Boot on HABv4 Supported Devices (Rev. 4 — June 2020)
 .. _Secure Boot Using HABv4 Guide:
