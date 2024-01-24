@@ -1,7 +1,40 @@
 .. _ug-custom-sota-client:
 
+Customizing Over The Air Updates
+================================
+
+By default, Secure Over The Air update (SOTA), operates as a daemon process (ref:`ref-aktualizr-lite`) which
+periodically checks for updates. If an update is available, it will automatically download, and install
+it to a device that is following the update tag.
+
+This is not always the desired operation. There are a couple ways to control this operation:
+
+#. Callbacks
+#. Custom Update Agent
+
+Callbacks
+---------
+
+Aktualizr-lite provides the ability to run an executable at the following OTA operations:
+
+* Before checking in — check-for-update-pre  return: none
+* After checking in  — check-for-update-post return: OK or FAILED: reason
+* Before a download  — download-pre          return: none
+* After a download   — download-post         return: OK or FAILED: reason
+* Before an install  — install-pre           return: none
+* After an install   — install-post          return: NEEDS_COMPLETION, OK, or FAILED: reason
+* After a reboot     — install-final-pre     return: none
+
+A simple recipe is in `aktualizr-callback`_ and a sample script is in `callback-handler`_.
+
+.. _`aktualizr-callback`:
+   https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-sota/aktualizr/aktualizr-callback_1.0.bb
+
+.. _`callback-handler`:
+   https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-sota/aktualizr/aktualizr-callback/callback-handler
+
 Custom Update Agents
-====================
+--------------------
 
 This section shows how to create a custom update agent—"SOTA client"—for your platform.
 :ref:`ref-aktualizr-lite` is a general purpose SOTA client that fits many needs.
@@ -12,7 +45,7 @@ In these cases, a custom SOTA client can be written in C++ using the aktualizr-l
    https://github.com/foundriesio/aktualizr-lite/blob/master/include/aktualizr-lite/api.h
 
 Using the Custom SOTA Client Example
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The example `SOTA client`_ in aktualizr-lite is a great place to start experimenting.
 The ``meta-lmp`` layer includes a recipe_ that runs this example as the default SOTA client.
@@ -33,7 +66,7 @@ Users can build this custom client into their LmP image with a small addition to
     echo 'SOTA_CLIENT = "custom-sota-client"' >> conf/machine/include/lmp-factory-custom.inc
 
 Forking the custom SOTA Client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 
 Producing a factory-specific SOTA client can be done by:
 
