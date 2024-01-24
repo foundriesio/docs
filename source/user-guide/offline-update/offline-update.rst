@@ -19,7 +19,7 @@ Prerequisites
         PACKAGECONFIG:append = " aklite-offline"
 2. Enable :ref:`ug-container-preloading` if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
 
-3. Ensure that :ref:`TUF keys are taken offline <ref-offline-keys>`.
+3. Ensure that :ref:`The Update Framework (TUF) keys are taken offline <ref-offline-keys>`.
 
 4. Build an LmP image and flash it onto a target device or update the device with the image via OTA.
 
@@ -61,13 +61,13 @@ Use the ``aklite-offline`` CLI utility to perform an offline update.
 2. Run one of :ref:`the post installation actions <Post Install and Run Actions>` depending on the ``aklite-offline install`` result:
 
     a. code 100: reboot device and invoke ``aklite-offline run [--config <config dir or file>]`` to finalize an ostree installation and start Apps if both ostree/rootfs and Apps are updated;
-    b. code 101: restart the Docker Engine (e.g. ``systemctl restart docker``) and invoke ``aklite-offline run [--config <config dir or file>]``  if just Apps are updated.
+    b. code 10: invoke ``aklite-offline run [--config <config dir or file>]`` to start updated Apps.
     c. code 90: reboot device to finalize the previous boot firmware update and go to the step #1 to start the update.
 
 3. Reboot a device after running ``aklite-offline run [--config <config dir or file>]`` command if:
 
     a. code 100: Apps failed to start after update, you must reboot a device to complete the rollback;
-    b. code 90: the update includes a boot firmware, you can optionally reboot a device to finalize the boot firmware upgrade.
+    b. code 5: the update includes a boot firmware, you can optionally reboot a device to finalize the boot firmware upgrade.
 
 Usage Details
 -------------
@@ -97,6 +97,20 @@ The ``install`` command sets the following exit codes:
 
 - *0*: Installation was not performed.
     - Device already runs the specified target, no update is needed.
+- *4*: Installation was not performed.
+    - Failed to pull the provided TUF metadata to the device TUF repo or the provided TUF metadata are invalid.
+- *6*: Installation was not performed.
+    - Failed to find Targets in the device TUF repo that matches a device tag and/or hardware ID.
+- *8*: Installation was not performed.
+    - Failed to find the ostree commit and/or all Apps of the Target to be installed in the provided source bundle.
+- *10*: Installation succeeded.
+    -  ``aklite-offline run`` must be invoked to start the updated Apps.
+- *30*: Installation was not performed.
+    - Could not start a new update because there is an ongoing installation that requires finalization.
+- *50*: Installation was not performed.
+    - Failed to pull Target content.
+- *70*: Installation was not performed.
+    - The pulled Target content is invalid, specifically App compose file is invalid.
 - *90*: Installation was not performed.
     - Reboot is required to complete the previous boot firmware update. After reboot a client should repeat the update attempt from the beginning.
 - *100*: Installation succeeded.
@@ -108,18 +122,22 @@ The ``run`` command sets the following exit codes:
 
 - *0*: Update succeeded.
     - Device is booted on the updated rootfs and running the updated Apps.
+- *5*: Update succeeded.
+    - The boot firmware was updated too. Optionally, a reboot to confirm its update can be performed.
+- *40*: The ``run`` command was not executed
+    - Could not start the command because there is no pending installation. Make sure you ran the ``install`` command before.
 - *90*: Update succeeded.
     - Device is booted on the updated rootfs and running the updated Apps.
     - Bootloader is updated too, optionally, a reboot to confirm its update can be performed.
 - *99*: Update failed.
-    - Device failed to boot on the updated rootfs and rollbacked to the previous version.
+    - Device failed to boot on the updated rootfs and rolled back to the previous version.
 - *100*: Update failed.
     - Device successfully booted on the updated rootfs but failed to start the updated Apps after the reboot.
-    - Device is rollbacking to the previous version, reboot followed by ``aklite-offline run`` is required to complete the rollback.
+    - Device is rolling back to the previous version, reboot followed by ``aklite-offline run`` is required to complete the rollback.
 - *110*: Update failed.
-    - Device failed to boot on the updated rootfs and rollbacked to the previous version.
+    - Device failed to boot on the updated rootfs and rolled back to the previous version.
     - Device failed to start the previous version's Apps since they are unknown.
-- *120*: Update failed.
+- *120*: Update and rollback failed.
     - Device successfully booted on the updated rootfs but failed to start the updated Apps after the reboot.
     - Device cannot perform rollback because the Target/version to rollback to is unknown.
 
