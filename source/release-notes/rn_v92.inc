@@ -22,6 +22,16 @@ Things to be aware of when :ref:`updating LmP <ref-linux-update>` from the v91 r
 
 Please also check the respective vendor BSP release notes for more information.
 
+Known Issues
+------------
+
+There is now a known issue with regards to ``fioconfig`` and the handler it executes whenever the config is changed.
+The handler in question ``aktualizr-toml-update`` currently expects a default location for the ``sota.toml`` file.
+However if the directory that contains the ``sota.toml`` is changed due to configuration, this may result in an error
+thrown by the handler stating it cannot find ``sota.toml``, whenever running a ``fioconfig`` change. This has been patched
+in the following `commit`_. That patch will ensure the handler from then on uses whichever directory has been configured
+to hold the ``sota.toml`` file.
+
 New Features
 ------------
 
@@ -71,3 +81,5 @@ General Updates
 
 .. _v92 changelog:
    https://foundries.io/products/releases/92/
+.. _commit:
+   https://github.com/foundriesio/meta-lmp/commit/294c684386b7e463b21dcfa56c62d10224b9dfff
