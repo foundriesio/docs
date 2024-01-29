@@ -5,22 +5,22 @@
 Boot Software Updates on iMX8QM
 ===============================
 
-Boot artifacts
+Boot Artifacts
 --------------
 
-imx-boot image
-~~~~~~~~~~~~~~
+``imx-boot`` Image
+~~~~~~~~~~~~~~~~~~
 
-**imx-boot** image is the first boot image container set by CSU ROM.
-**imx-boot** image consists of two containers:
+The ``imx-boot`` image is the first boot image container set by CSU ROM.
+It consists of two containers:
 
 -  SECO container for SECO FW
--  SCU container for SCU FW, and optinal AP IPL (Cortex A processing domain),
+-  SCU container for SCU FW, and optional AP IPL (Cortex A processing domain),
    CM4 FW and DDR init images
 
-By default U-Boot SPL image is used as the main AP IPL image.
-SECO container is always signed and provided by NXP, and SCU container can
-be signed by OEM vendor/customer.
+By default, U-Boot SPL is used as the main AP IPL image.
+The SECO container is always signed, and is provided by NXP®.
+The SCU container can be signed by you or the OEM vendor.
 
 Here is an example of typical boot image container set layout:
 
@@ -46,39 +46,30 @@ Here is an example of typical boot image container set layout:
     |    Cortex-A FW (AP IPL)   |
      ---------------------------
 
-U-Boot FIT image
+U-Boot FIT Image
 ~~~~~~~~~~~~~~~~
 
-U-boot FIT-image is a generic name for the signed FIT-image that
-contains U-Boot proper (u-boot.bin) and a host of other firmware.
+"U-boot FIT-image" is a generic name for the signed FIT-image containing U-Boot proper (``u-boot.bin``) and a host of other firmware.
 This file is verified by SPL via a public key stored in SPL’s dtb.
-This artifact may be signed (on closed boards) as a part of CI and
-can be included automatically in a boot software OTA package.
+This artifact may be signed—on closed boards—as a part of CI, and can be included automatically in a boot software OTA package.
 
--  U-boot-nodtb.bin
--  U-boot.dtb
+-  ``U-boot-nodtb.bin``
+-  ``U-boot.dtb``
 -  OP-TEE
 -  Arm Trusted Firmware (ARMv8)
 
-If the CI signing key has been rotated since the last OTA, then we need
-to also update the SPL.dtb verification data prior to trying to boot the
-new U-Boot FIT-image.
+If the CI signing key has been rotated since the last OTA, then the SPL.dtb verification data needs to be updated prior to booting the new U-Boot FIT-image.
 
-
-MMC boot image layout
+MMC Boot Image Layout
 ---------------------
 
-From *5.8.2.2.1 High Level eMMC Boot Flow Note* (iMX8QM Reference manual),
-for the eMMC boot scenarios where the images are located in the boot
-partition the boot image set selection is done based on
-**BOOT_PARTITION_ENABLE** eMMC **ECSD** register values, which means that
-secondary boot image set should be flashed to **boot1** hw partition to the
-same offset (0x0) as the primary one.
+According to the  *5.8.2.2.1 High Level eMMC Boot Flow Note* (iMX8QM Reference manual), for the eMMC boot scenarios where the images are located in the boot partition, the boot image set selection is done based on ``BOOT_PARTITION_ENABLE`` eMMC ``ECSD`` register values.
+This means that the secondary boot image set should be flashed to the ``boot1`` hw partition from the same offset (``0x0``) as the primary one.
 
-Update procedure
+Update Procedure
 ----------------
 
-Primary vs Secondary boot paths
+Primary vs Secondary Boot Paths
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 iMX8QM SoC supports two different container sets of boot images:
@@ -86,88 +77,70 @@ iMX8QM SoC supports two different container sets of boot images:
 -  Primary Boot Container set (Set0)
 -  Secondary Boot Container set (Set1) (optional)
 
-SCU ROM reads both Image Container Set0’s and Set1’s headers, then select
-the container set with the newer SW version for Primary boot path and the
-container set with the older SW vesion for Secondary boot path. In case
-SW versions are equal, SCU ROM picks Set0.
+SCU ROM reads the headers for both, then selects the container set with the newer SW version for Primary boot path.
+The container set with the older SW vesion becomes the  Secondary boot path.
 
-Unfortunately SoC doesn't provide any mechanisms for user to control in
-runtimewhat container set to boot, like setting **PERSIST\_SECONDARY\_BOOT**
-bit  **SRC\_GPR10**, so in our setup we don't rely on different SW versions
-of Image Container Sets, and use Set0 for as Primary boot path,
-and Set1 as a recovery path (Secondary boot path).
+In the case where the versions are equal, SCU ROM picks Set0.
 
-register in i.MX8M.
+Unfortunately, the SoC does not provide mechanisms for the user to control in runtime what container set to boot, such as setting the ``PERSIST\_SECONDARY\_BOOT`` bit  ``SRC\_GPR10``.
+In response to this, in our setup we do not rely on different SW versions of Image Container Sets.
+Instead we use Set0  as the Primary boot path, and Set1 as a recovery path (Secondary boot path).
 
-libaktualizr and aktualizr-lite
+Libaktualizr and Aktualizr-Lite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. aktualizr-lite makes decision if boot firmware needs to be updated based
-   on the contents of **${ostree\_root}/usr/lib/firmware/version.txt**,
-   where ostree\_root is root of newly deployed ostree sysroot. Example
-   of contents: **bootfirmware\_version=10**
-2. After parsing bootfirmware\_version, it compares version number with
-   the existing one, which is obtained via **fiovb** or **ubootenv**.
-3. If bootfirmware\_version from version.txt is higher than existing
-   one, aktualizr-lite sets **bootupgrade\_available** via **fiovb** or
-   **ubootenv**.
+1. Aktualizr-lite decides if boot firmware needs to be updated based on ``${ostree\_root}/usr/lib/firmware/version.txt``, where ``ostree\_root`` is the root of newly deployed ostree sysroot.
+   Example of contents: ``bootfirmware\_version=10``
+2. After parsing ``bootfirmware\_version``, it compares the new version number with the existing one.
+   This is obtained via ``fiovb`` or ``ubootenv``.
+3. If ``bootfirmware\_version`` from ``version.txt`` is higher than the existing one, aktualizr-lite sets ``bootupgrade\_available`` via ``fiovb`` or ``ubootenv``.
 4. Reboot should be performed.
 
-U-Boot boot.cmd script
-~~~~~~~~~~~~~~~~~~~~~~
+U-Boot ``boot.cmd`` Script
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: boot-software-updates/upgrade-flow-imx8qm.png
    :alt: Boot firmware upgrade flow for iMX8QM
 
    Boot firmware upgrade flow for iMX8QM
 
-1. Actual update is done via U-Boot **boot.cmd** (boot.scr) script.
-2. **boot.cmd** script checks if primary path is booted.
-3. In case **upgrade\_available** is set the check if boot firmware
-   upgrade is needed is done by looking into **bootupgrade\_available** flag.
-   If both are true, boot firmware images are obtained from newly
-   deployed ostree sysroot and then written to the primary boot path offsets.
-   After that **bootupgrade\_primary\_updated** is set, and regular reset is
-   issued.
-4. After reboot SCU ROM tries to boot newly updated images from the primary
-   boot path (Set0). If image verification fails, it automatically will fall
-   back to Set1. If Set1 is booted (which means that verification of Set0
-   failed), rollback procedure will be issued, and previous version of
-   Set0 will be restored. If on the conntrary Set0 is booted, but bootcount
-   hits bootlimit (that means that boot procedure haven't finished
-   succesfully), rollback procedure will be also issued.
-5. After Linux is booted aktualizr-lite confirms successful update by clearing
-   **upgrade\_available** flag. At this point new boot firmware images are
-   already validated. Additional reboot is needed after this step.
-6. After reboot U-Boot checks if **bootupgrade\_primary\_updated** is set and
-   **upgrade\_available** is cleared. This means that aktualizr-lite
-   has confirmed succesful boot, and U-Boot clears
-   **bootupgrade\_primary\_updated** flag. Otherwise **bootcount** value is
-   incremented.
+1. Actual update is done via U-Boot ``boot.cmd`` (``boot.scr``) script.
+2. ``boot.cmd`` checks if primary path is booted.
+3. In case ``upgrade\_available`` is set, check if boot firmware upgrade is needed by checking the ``bootupgrade\_available`` flag.
+   If both are true, obtain boot firmware images from the newly deployed ostree sysroot and write them to the primary boot path offsets.
+   Next ``bootupgrade\_primary\_updated`` is set, and regular reset is issued.
+4. After reboot, SCU ROM tries to boot the newly updated images from the primary boot path (Set0).
+   If image verification fails, automatically fall back to Set1.
+   If Set1 is booted—meaning verification of Set0 failed—the rollback procedure will be issued, and the previous version of Set0 will be restored.
+   Conversely, if Set0 is booted but ``bootcount`` hits ``bootlimit`` (meaning the boot procedure did not finish successfully), the rollback procedure will be also issued.
+5. After Linux boots, aktualizr-lite confirms a successful update by clearing ``upgrade\_available``.
+   At this point new boot firmware images are already validated.
+   An additional reboot is needed after this step.
+6. After reboot, U-Boot checks if ``bootupgrade\_primary\_updated`` is set and ``upgrade\_available`` is cleared.
+   This means aktualizr-lite has confirmed a successful boot, and U-Boot clears ``bootupgrade\_primary\_updated``.
+   Otherwise ``bootcount`` is incremented.
 
+Add a New Board
+---------------
 
-Add new board
--------------
+``meta-lmp``
+~~~~~~~~~~~~
 
-meta-lmp
-~~~~~~~~
+``mfgtool`` Scripts
+^^^^^^^^^^^^^^^^^^^
 
-mfgtool scripts
-^^^^^^^^^^^^^^^
-
-To deploy boot images to the destination board mfgtools package is used.
-It uses special configuration file with uuu extensions, that contains
-all needed instructions for correct deployment of boot images. Current
-uuu files don't support flashing images for secondary boot path, so
-appropriate adjustments should be made, adding secondary imx-boot
-and U-Boot FIT deployment steps:
+To deploy boot images to the destination board, the mfgtools package is used.
+It uses a special configuration file with uuu extensions
+This contains all the instructions need for the correct deployment of boot images.
+Default uuu files do not support flashing images for secondary boot path.
+The appropriate adjustments should be made: adding secondary imx-boot, and U-Boot FIT deployment steps:
 
 ::
 
     +FB: flash bootloader2 ../u-boot-@@MACHINE@@.itb
     +FB: flash bootloader2_s ../u-boot-@@MACHINE@@.itb
 
-So the final uuu script looks like:
+The final uuu script looks like:
 
 ::
 
@@ -204,13 +177,11 @@ So the final uuu script looks like:
     FB: done
 
 
-lmp.cfg files
-^^^^^^^^^^^^^
+``lmp.cfg`` Files
+^^^^^^^^^^^^^^^^^
 
-To enable support for flashing/booting secondary boot images, just
-adjust regular **lmp.cfg** and the one for mfgtools for your board enabling
-support of secondary boot path. These config options should be added to
-regular **lmp.cfg**:
+To enable support for flashing/booting secondary boot images, adjust both the default ``lmp.cfg``, and the one for mfgtools.
+The following config options need to be added to the default ``lmp.cfg``:
 
 ::
 
@@ -218,18 +189,16 @@ regular **lmp.cfg**:
     CONFIG_SECONDARY_BOOT_SECTOR_OFFSET=0x0
     CONFIG_SECONDARY_BOOT_RUNTIME_DETECTION=y
 
-And to mfgtool **lmp.cfg**:
+And to mfgtool ``lmp.cfg``:
 
 ::
 
     CONFIG_FSL_FASTBOOT_BOOTLOADER_SECONDARY=y
     CONFIG_SECONDARY_BOOT_SECTOR_OFFSET=0x0
 
-As secondary boot path is mainly used for boot firmware update image
-validation, sometimes in exceptional cases it behaves incorrectly,
-causing hangs etc. To cover such cases watchdog support has to be
-enabled in SPL by adding these config options to **lmp.cfg** of your
-board:
+The secondary boot path is primarily used for boot firmware update image validation.
+In exceptional cases, it can behave incorrectly, causing hangs and other issues.
+To cover such cases, watchdog support has to be enabled in SPL by adding config options to ``lmp.cfg``:
 
 ::
 
@@ -239,47 +208,38 @@ board:
     CONFIG_SPL_WATCHDOG_SUPPORT=y
 
 
-Pre-load boot.cmd by SPL
-^^^^^^^^^^^^^^^^^^^^^^^^
+Pre-Load ``boot.cmd`` by SPL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As boot.cmd script depends on U-Boot cmds for booting Linux, it should be
-aligned with U-Boot version. By default in regular setups without boot firmware
-update support boot.cmd is stored in first FAT partition in eMMC/SD.
-So to get boot.cmd updates together with other boot software images,
-it should be moved from FAT partition to U-Boot FIT image. To do that edit
-**lmp-machine-custom.inc** adding this line for your board (imx8qmevk as
-an example):
+As ``boot.cmd`` depends on U-Boot commands for booting Linux®, it should be aligned with the U-Boot version.
+By default, in setups without boot firmware update support, ``boot.cmd`` is stored in the first FAT partition in eMMC/SD.
+To get ``boot.cmd`` updates—together with other boot software images—it should be moved from the FAT partition, to the U-Boot FIT image.
+To do this, edit ``lmp-machine-custom.inc``, adding this line for your board (imx8mqevk used as an example):
 
 ::
 
     BOOTSCR_LOAD_ADDR_imx8qmmek = "0x44800000"
 
-This change will include Linux **boot.cmd** into U-Boot FIT image
-alongside with TF-A/OP-TEE/U-Boot proper/U-Boot dtb images. When SPL
-parses U-Boot FIT image (u-boot.itb) it will pre-load **boot.itb**
-(compiled and wrapped **boot.cmd**) to the address specified in
-**BOOTSCR\_LOAD\_ADDR** variable.
+This change will include Linux ``boot.cmd`` into the U-Boot FIT image, alongside TF-A/OP-TEE/U-Boot proper/U-Boot dtb images.
+When SPL parses the U-Boot FIT image (``u-boot.itb``) it will pre-load ``boot.itb`` (compiled and wrapped ``boot.cmd``) to the address specified in ``BOOTSCR\_LOAD\_ADDR`` variable.
 
-To let U-Boot know where to take boot script from, you should also
-adjust **CONFIG\_BOOTCOMMAND** param in your U-Boot **lmp.cfg** of your
-board.
+To let U-Boot know where to get the boot script from, you should also adjust ``CONFIG\_BOOTCOMMAND`` in the U-Boot ``lmp.cfg`` of your board.
 
 ::
 
     CONFIG_BOOTCOMMAND="setenv verify 1; source 0x44800000; reset"
 
 
-Test basic API
+Test Basic API
 ~~~~~~~~~~~~~~
 
-After applying all updates from previous steps, we should validate that
-everything is in place. Basically this consists of two basic steps:
+After applying all the updates from previous steps, we should validate that everything is in place.
+This consists of two basic steps:
 
 - Boot container set detection (primary or secondary)
 - Obtain board security state (open/closed states)
 
-So to test Boot container set detection use this U-Boot command
-**imx\_secondary\_boot**.
+To test Boot container set detection, use the U-Boot command ``imx\_secondary\_boot``.
 
 Example of test:
 
@@ -288,25 +248,21 @@ Example of test:
     u-boot=> imx_secondary_boot
     Secondary boot bit = 0
 
-To check if the security status of your board is detected correctly, use
-**imx\_is\_closed** command:
+To check if the security status of your board is detected correctly, use the ``imx\_is\_closed`` command:
 
 ::
 
     u-boot=> imx_is_closed
     Board is in open state
 
+``boot.cmd``
+~~~~~~~~~~~~
 
-boot.cmd
-~~~~~~~~
+Currently, LmP uses template-based generation for the final ``boot.cmd``.
+It is constructed from common boot files (``./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit``),
+which contains all SoC agnostic ``DEFINE`` statements and common functionality, and board specific ``boot.cmd``, which includes the common scripts.
 
-Currently LmP uses template-based way of generation of final boot.cmd.
-It's constructed from common boot files
-(``./meta-lmp-base/recipes-bsp/u-boot/u-boot-ostree-scr-fit``),
-which contains all SoC agnostic DEFINEs and common functionality, and board
-specific boot.cmd, which includes the common scripts.
-
-Example of board boot.cmd
+Example of board ``boot.cmd``
 (``./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8qm-mek/boot.cmd``):
 
 ::
@@ -367,23 +323,20 @@ Example of board boot.cmd
     @@INCLUDE_COMMON_ALTERNATIVE@@
 
 
-sysroot and signed boot artifacts
+Sysroot and Signed Boot Artifacts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All boot artifacts (imx-boot and U-Boot FIT) are automatically deployed
-to sysroot during build time, however on closed boards, where initial boot
-image has to be signed in advance by a subscriber private key, there is way to
-add signed binary instead of automatic inclusion of unsigned boot artifacts.
 
-To do that, just add ``lmp-boot-firmware.bbappend`` to your *meta-subscriber-overrides*
-layer, adding the path to the signed binary and the signed binary itself.
+All boot artifacts (SPL/imx-boot and U-Boot FIT) are automatically deployed to sysroot during build time.
+However, on closed boards where the initial boot image has to be signed in advance by a subscriber private key,
+there is way to add a signed binary instead of automatic inclusion of unsigned boot artifacts.
 
-Then define boot firmware version number by setting ``LMP_BOOT_FIRMWARE_VERSION``
-global variable in your ``lmp-factory-custom.inc``. Boot firmware version
-information will be automatically added to `${osroot}/usr/lib/firmware/version.txt`
-file and U-Boot Device Tree Blob.
+To do this, add ``lmp-boot-firmware.bbappend`` to your ``meta-subscriber-overrides`` layer, adding the path to the signed binary and the signed binary itself.
+Next, define the boot firmware version by setting the ``LMP_BOOT_FIRMWARE_VERSION`` global variable in your ``lmp-factory-custom.inc``.
+Boot firmware version information will be automatically added to ``${osroot}/usr/lib/firmware/version.txt`` and the U-Boot Device Tree Blob.
 
 Example:
+
 ::
 
     diff --git a/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend
@@ -410,10 +363,11 @@ Example:
     +LMP_BOOT_FIRMWARE_VERSION:imx8qm-mek = "3"
 
 .. note::
+   As ``LMP_BOOT_FIRMWARE_VERSION`` is now the preferred way to set boot firmware version,
+   defining ``PV`` in ``lmp-boot-firmware.bbappend`` is deprecated and should not be used.
+   To switch to the new approach, remove ``PV = "<version>"`` from ``lmp-boot-firmware.bbappend``,
+   and define ``LMP_BOOT_FIRMWARE_VERSION`` with the appropriate version value as shown above in the example.
 
-    As ``LMP_BOOT_FIRMWARE_VERSION`` is now a preferable way to set boot firmware version, defining ``PV`` in ``lmp-boot-firmware.bbappend``
-    is deprecated and should not be used. To switch to a new approach just remove ``PV = "<version>"`` line from
-    ``lmp-boot-firmware.bbappend`` and define ``LMP_BOOT_FIRMWARE_VERSION`` with appropriate version value as shown above in the example.
 
 .. seealso::
    * :ref:`ref-secure-boot-imx-ahab`
