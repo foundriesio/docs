@@ -254,7 +254,7 @@ The final uuu script looks like:
 ``lmp.cfg`` Files
 ^^^^^^^^^^^^^^^^^
 
-To enable support for flashing/booting secondary boot images, adjust both the default ``lmp.cfg`` ,and the one for mfgtools.
+To enable support for flashing/booting secondary boot images, adjust both the default ``lmp.cfg``, and the one for mfgtools.
 The following config options need to be added to the default ``lmp.cfg``:
 
 ::
@@ -427,7 +427,7 @@ Example:
 .. note::
 
     As ``LMP_BOOT_FIRMWARE_VERSION`` is now the preferred way to set boot firmware version, defining ``PV`` in ``lmp-boot-firmware.bbappend`` is deprecated and should not be used.
-    To switch to the newew approach, remove ``PV = "<version>"`` from ``lmp-boot-firmware.bbappend``, and define ``LMP_BOOT_FIRMWARE_VERSION`` with the appropriate version value as shown above in the example.
+    To switch to the new approach, remove ``PV = "<version>"`` from ``lmp-boot-firmware.bbappend``, and define ``LMP_BOOT_FIRMWARE_VERSION`` with the appropriate version value as shown above in the example.
 
 .. seealso::
    * :ref:`ref-secure-boot-imx-habv4`
