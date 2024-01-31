@@ -3,17 +3,15 @@
 Enabling SE05X
 ==============
 
-This section demonstrates how to enable the SE05X middleware in
-``meta-subscriber-overrides``.
+This section demonstrates how to enable the SE05X middleware in ``meta-subscriber-overrides``.
 
 .. note::
     This procedure is valid for boards running OP-TEE 3.15.0 or newer.
 
-Enable the `se05x` MACHINE_FEATURES for the target machine and provide the
-correct OEFID for the `se05x` device in **lmp-factory-custom**. The OEFID value
-can be found in `SE050 configurations`_.
+Enable the ``se05x`` ``MACHINE_FEATURES`` for the target machine and provide the correct OEFID in ``lmp-factory-custom``.
+The OEFID value can be found in `SE050 configurations`_.
 
-**conf/machine/include/lmp-factory-custom.inc:**
+``conf/machine/include/lmp-factory-custom.inc``:
 
 .. prompt:: text
 
@@ -21,7 +19,7 @@ can be found in `SE050 configurations`_.
     MACHINE_FEATURES:append:<machine> = " se05x"
 
 .. note::
-    If set incorrectly, the correct OEFID value can be checked in the boot log:
+    If set incorrectly, the *correct* OEFID value can be checked in the boot log:
 
     .. code-block:: none
 
@@ -32,12 +30,10 @@ can be found in `SE050 configurations`_.
         I/TC: se050: Info: OEF ID
         I/TC: se050: Info: 	a1.f4
 
-This step is enough to enable SE05X for the supported machines for factories
-created since v85.
+This step is enough to enable SE05X for the supported machines for Factories created since LmP v85.
 
-Push the changes to the ``meta-subscriber-overrides`` repository to trigger a
-new build with SE05X support enabled. Be aware that an image created with SE05X
-enabled does not boot on boards without the SE05X properly attached.
+Push the changes to the ``meta-subscriber-overrides``, triggering a new build with SE05X support enabled.
+Be aware that an image created with SE05X enabled does not boot on boards without the SE05X properly attached.
 
 .. note::
     Please be aware that at this moment only:
@@ -50,24 +46,22 @@ enabled does not boot on boards without the SE05X properly attached.
 
     support SE05X integration without extra changes in LmP.
 
-Special cases
+Special Cases
 -------------
 
-1. For older factories created **before v85**, it is also needed to add the `se05x`
-features to the **lmp-factory-image** build:
+1. For Factories created **before v85**, it is also necessary to add  ``se05x`` to the ``lmp-factory-image`` build:
 
-**recipes-samples/images/lmp-factory-image.bb:**
+``recipes-samples/images/lmp-factory-image.bb``:
 
 .. prompt:: text
 
     # Support for SE05X
     require ${@bb.utils.contains('MACHINE_FEATURES', 'se05x', 'recipes-samples/images/lmp-feature-se05x.inc', '', d)}
 
-2. If working with a different i.MX machine without SE05X LmP default support
-(``imx6ullevk`` and ``imx8mm-lpddr4-evk``), also provide which SoC I2C bus
-connects to the SE05X device:
+2. If working with a different i.MX machine without default SE05X LmP support (``imx6ullevk`` and ``imx8mm-lpddr4-evk``),
+   also provide which SoC I2C bus connects to the SE05X device:
 
-**recipes-security/optee/optee-os-fio_%.bbappend:**
+``recipes-security/optee/optee-os-fio_%.bbappend``:
 
 .. prompt:: text
 
@@ -75,11 +69,9 @@ connects to the SE05X device:
         ${@bb.utils.contains('MACHINE_FEATURES', 'se05x', 'CFG_IMX_I2C=y CFG_CORE_SE05X_I2C_BUS=<i2c_bus>', '', d)} \
     "
 
-Make sure to push the changes to the ``meta-subscriber-overrides`` repository
-to trigger a build with the new configurations.
+Make sure to push the changes to the ``meta-subscriber-overrides`` repo, triggering a build with the new configurations.
 
-3. On STM32MP157 DK board Arduino Uno V3 expansion is used for connecting
-SE05X board.
+3. On STM32MP157 DK board, Arduino Uno V3 expansion is used for connecting the SE05X board.
 
 .. _SE050 configurations:
    https://www.nxp.com/docs/en/application-note/AN12436.pdf
