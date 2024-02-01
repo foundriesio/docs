@@ -27,10 +27,12 @@ Flashing
 #. Power on the board and flash it using ``flash.sh`` from the ``ti-mfgtool-files-am62xx-evm`` directory.
    This copies the ``lmp-factory-image-am62xx-evm.wic`` image.
    The wic image contains the :term:`system image` that the device will boot.
+   With ``--mmc-id 0`` param explicitly specify eMMC (id = 0) as a boot media,
+   where wic image will be flashed.
 
 .. prompt:: bash host:~$, auto
 
-    host:~$ sudo ./ti-mfgtool-files-am62xx-evm/flash.sh --wic lmp-factory-image-am62xx-evm.wic
+    host:~$ sudo ./ti-mfgtool-files-am62xx-evm/flash.sh --wic lmp-factory-image-am62xx-evm.wic --mmc-id 0
      Load U-Boot via DFU...
      ------------------------------------------
      DFU BOOT TIBOOT3: TIFS and R5
@@ -42,7 +44,7 @@ Flashing
      DFU BOOT UBOOT: A53 UBOOT
      ------------------------------------------
      ------------------------------------------
-     Exposing eMMC via USB using UMS
+     Exposing MMC ID = 0 via USB using UMS
      ------------------------------------------
      Detected device: /dev/sda
      Confirm flashing lmp-factory-image-am62xx-evm.wic to /dev/sda (y/N) >y
