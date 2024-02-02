@@ -1,3 +1,12 @@
+# PR Template and Checklist
+
+Please complete as much as possible to speed up the reviewing process.
+
+Readiness and adding reviewers as appropriate is required.
+
+All PRs should be reviewed by a technical writer/documentation team and a peer.
+If effecting customers—which is a majority of content changes—a member of Customer Success must also review.
+
 ## Readiness
 
 * [ ] Merge (pending reviews)
@@ -9,9 +18,6 @@
 _Why merge this PR? What does it solve?_
 
 ## Checklist
-
-_Optional. Add a 'x' to steps taken._
-_You can fill this out after opening the PR. "Did I..."_
 
 * [ ] Run spelling and grammar check, preferably with linter.
 * [ ] Avoid changing any header associated with a link/reference.
