@@ -61,6 +61,12 @@ There are several ways how a wave can be rolled out:
 - To a subset of devices in a Factory (potentially, across several device groups, including group-less devices).
 - To all devices in a Factory.
 
+.. note::
+
+    You may create as many waves as you need for your release strategy.
+    But, there may be only one active wave per device tag at a time.
+    If you need to roll out more than one wave to one tag, either complete or cancel a previous wave to that tag.
+
 We recommend that you first roll out a wave to a dedicated device group, which contains a small number of production devices.
 Another good option is to roll out a wave to a small subset of devices in a bigger device group.
 Let us assume you want to first roll out a new ``v2.0-update`` wave to a device group called ``canary``.
