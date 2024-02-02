@@ -12,11 +12,11 @@ Each team works in their own repository and each repository is added as a submod
 .. tip::
    The steps to add a submodule can be adapted for other git repository hosting services.
 
-Create a GithHub Repository
+Create a GitHub Repository
 ---------------------------
 
 Go to GitHub_ and create a new repo.
-You can choose to use a private or a public repository, each involves separate steps:
+You can choose to use a private or public repository, each involves separate steps:
 
 .. tabs::
 
@@ -229,7 +229,7 @@ Name it with ``FOUNDRIES_API_TOKEN``, paste your ``<Token>`` on Value and click 
      
    Action Token
 
-Create the ``.github/workflows/source-fio-update.yml`` inside your GitHub application repo.
+Create ``.github/workflows/source-fio-update.yml`` inside your GitHub application repo.
 Follow the example below and make sure you update ``<FACTORY_NAME>`` with your Factory, and ``<SUBMODULE_FOLDER>`` with your submodule folder.
 
 .. prompt:: bash host:~$, auto
@@ -261,7 +261,7 @@ Follow the example below and make sure you update ``<FACTORY_NAME>`` with your F
              submodule-path: "./<SUBMODULE_FOLDER>"
              remote-branch: ${{ github.ref }}
 
-Add and commit your GitHub Action:
+Add then commit your GitHub Action:
 
 .. prompt:: bash host:~$, auto
 
