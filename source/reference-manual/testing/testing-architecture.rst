@@ -5,25 +5,21 @@
 Architecture Overview
 =====================
 
-The Factory includes a generic :ref:`API and data model <ref-fiotest>`
-to allow customers the freedom to test how they choose. In most cases,
-you'll be able to use fiotest as-is for your testing needs.
+Your Factory includes a generic :ref:`API and data model <ref-fiotest>` that allows you the freedom to test how you choose.
+In most cases, you'll be able to use fiotest as-is for your testing needs.
 
-All things in the Factory revolve around Targets and the testing
-mechanism is no different. Devices run Targets. The results of any
-tests they run are correlated with its Target. This allows you to get
-a test reporting of Targets in your Factory.
+All things in a Factory revolve around Targets, and the testing mechanism is no different.
+Devices run Targets.
+The results of any tests they run are correlated with its Target.
+This allows you to get a test reporting of Targets in your Factory.
 
-The fiotest container can be set up in your Factory as a
-:ref:`Docker Compose application <ref-compose-apps>`. The fiotest
-container has the ability to interact with the host OS and configure
-aktualizr-lite to notify it when a new Target has been installed.
-fiotest is then able to run tests and report the results back through
-the :ref:`device gateway <ref-ota-architecture>`.
+The fiotest container can be set up in your Factory as a :ref:`Docker Compose application <ref-compose-apps>`.
+The fiotest container has the ability to interact with the host OS.
+It can configure aktualizr-lite to notify it when a new Target has been installed.
+Then, fiotest is able to run tests and report the results back through the :ref:`device gateway <ref-ota-architecture>`.
 
-fiotest includes a `test specification`_ that allows you to define
-how and what to test. The container can also be extended/customized
-for your specific needs.
+fiotest includes a `test specification`_ that allows you to define how and what to test.
+The container can also be extended/customized for your specific needs.
 
 Workflow
 ~~~~~~~~
