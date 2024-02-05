@@ -1,10 +1,9 @@
 .. _ref-pg-machine-conf:
 
-Machine configuration file
+Machine Configuration File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The machine configuration file is where the hardware is described in
-terms of variables such as:
+The machine configuration file describes hardware in terms of variables such as:
 
 .. Glossary::
 
@@ -28,9 +27,7 @@ terms of variables such as:
      State the target name to be used with imx-boot, a
      critical package to the bring up of i.MX8 SoC family boards
 
-The machine configuration file from a reference board can serve as a
-reminder on what variable set is important to define.
+The machine configuration file from a reference board can serve as a reminder on what variable set is important to define.
 
 It is possible that the porting task targets a new machine configuration file.
-In this case, any machine related configuration should be placed in the new
-machine configuration file.
+In this case, any machine related configuration should be placed in the new machine configuration file.

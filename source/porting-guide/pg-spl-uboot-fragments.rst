@@ -1,20 +1,21 @@
-Creating the U-Boot configuration fragments (``lmp-base.cfg``, ``lmp.cfg``)
-===========================================================================
+Creating the U-Boot Configuration Fragments
+===========================================
 
-The ``meta-lmp`` layer uses ``.cfg`` configuration fragments to append and override
-configurations in the board ``defconfig`` file.
+The two fragments are:
 
-``lmp-base.cfg`` is the configuration used for ``DISTRO=lmp-base`` and ``lmp.cfg``
-is the one for ``DISTRO=lmp``.
+* ``lmp-base-cfg``
+* ``lmp.cfg``
 
-The ``.cfg`` file enables the features required for SPL and U-Boot proper to
-support LmP, such as booting SPL, verifying the signature of the
-consequent loaded images, enabling eMMC secure storage, and custom boot
-command.
+The ``meta-lmp`` layer uses ``.cfg`` configuration fragments to append and override configurations in the board ``defconfig`` file.
 
-To create this file use the reference board support in LmP and modify
-the configuration files as needed. The list of supported boards and
-their ``.cfg`` files can be found `here <https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-fio>`_.
+``lmp-base.cfg`` is used for ``DISTRO=lmp-base``, while ``lmp.cfg`` is used for ``DISTRO=lmp``.
+
+The ``.cfg`` file enables the features required for SPL and U-Boot proper to support LmP.
+This includes booting SPL, verifying the signature of the consequent loaded images, enabling eMMC secure storage, and custom boot command.
+
+To create this file, use the reference board support in LmP and modify the configuration files as needed.
+The list of supported boards and their ``.cfg`` files can be found in the ``meta-lmp``
+`repo <https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-fio>`_.
 
 For example, see ``imx8mmevk/lmp-base.cfg``:
 
@@ -48,15 +49,16 @@ For example, see ``imx8mmevk/lmp-base.cfg``:
     CONFIG_BOOTCOMMAND="fatload mmc ${emmc_dev}:1 ${loadaddr} /boot.scr;
     source ${loadaddr}; reset"
 
-Most of the configuration is generic to all boards. The user needs to
-pay attention to board-specific configuration, in this case:
+Most of the configuration is generic to all boards.
+You will need to pay attention to board-specific configuration.
+In this case:
 
 .. prompt:: text
 
   CONFIG_ENV_FAT_DEVICE_AND_PART="2:1"
 
 Where ``2`` represents the uSDHC index for the eMMC device in imx8mmevk.
-The user should align this with the expected for their board.
+You should align this with what is expected for your board.
 
 .. note::
 
