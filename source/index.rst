@@ -38,6 +38,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :name: sec-user-guide
 
    user-guide/fioctl/index
+   user-guide/qemu/qemu
    user-guide/account-management/account-management
    user-guide/custom-ci/custom-ci
    user-guide/mirror-action/mirror-action
@@ -62,7 +63,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    reference-manual/index
    reference-manual/docker/docker
    reference-manual/boards/boards
-   reference-manual/qemu/qemu
    reference-manual/factory/factory
    reference-manual/linux/linux
    reference-manual/ota/ota

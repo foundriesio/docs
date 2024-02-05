@@ -417,6 +417,7 @@ redirects = {
      "getting-started/git-config/index": "../install-fioctl/index.html#configuring-git",
      "reference-manual/linux/linux-building": "../../user-guide/lmp-customization/linux-building.html",
      "reference-manual/linux/linux-extending": "../../user-guide/lmp-customization/linux-extending.html",
+     "reference-manual/qemu/qemu": "../../user-guide/qemu/qemu.html",
       }
 
 # Make external links open in a new tab.
