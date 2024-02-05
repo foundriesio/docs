@@ -1,13 +1,13 @@
 .. _ref-pg-spl-optee:
 
-OP-TEE (when applicable)
+OP-TEE (When Applicable)
 ========================
 
-OP-TEE is deployed as part of the FIT image. Foundries.io has its own
-OP-TEE recipes and the user needs to provide machine-specific
-configuration in ``meta-subscriber-overrides`` for the OP-TEE build, e.g.
-OP-TEE machine name, UART address, overlay address. The recommendation is to
-use the reference board OP-TEE support for the OPTEEMACHINE.
+OP-TEE is deployed as part of the FIT image.
+Foundries.io has its own OP-TEE recipes.
+You will need to provide machine-specific configuration in ``meta-subscriber-overrides`` for the OP-TEE build, e.g.
+OP-TEE machine name, UART address, and overlay address.
+The recommendation is to use the reference board OP-TEE support for the ``OPTEEMACHINE``.
 
 ``recipes-security/optee/optee-os-fio_3.10.0.bbappend``:
 
@@ -22,6 +22,6 @@ use the reference board OP-TEE support for the OPTEEMACHINE.
 
 .. note::
 
-    If the user chooses to not use the reference board as the
-    OPTEEMACHINE, further considerations have to be made in order to
-    integrate OP-TEE support into LmP: :ref:`ref-sec-tfa-optee`.
+    If you choose to not use the reference board as the ``OPTEEMACHINE``,
+    further considerations are needed to integrate OP-TEE support into LmP.
+    See :ref:`ref-sec-tfa-optee`.

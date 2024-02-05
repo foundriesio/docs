@@ -1,15 +1,12 @@
 .. _ref-pg-uboot-env:
 
-U-Boot environment and boot script
+U-Boot Environment and Boot Script
 ==================================
 
-The last step to configure U-Boot in LmP is to provide the boot
-environment (for ``lmp-base``) and the boot command. The user can start by
-using the reference board support and adjusting the files according to the
-target board.
+The last step to configure U-Boot in LmP is to provide the boot environment (for ``lmp-base``) and the boot command.
+You can start by using the reference board support, adjusting the files accordingly for the target board.
 
-For the ``lmp-base`` distro, provide the boot environment input file
-(``uEnv.txt.in``), which sets the needed variables for booting:
+For the ``lmp-base`` distro, provide the boot environment input file ``uEnv.txt.in``, which sets the needed variables for booting:
 
 ``u-boot-base-scr/imx8mmevk/uEnv.txt.in``:
 
@@ -23,12 +20,11 @@ For the ``lmp-base`` distro, provide the boot environment input file
     bootcmd_run=booti ${loadaddr} - ${fdt_addr}
     bootcmd=run bootcmd_args; run bootcmd_dtb; run bootcmd_load_k; run bootcmd_run
 
-The user needs to define the ``devnum`` and ``bootcmd_args`` root parameters to
-meet the eMMC index on their board. Other board specific variables can
-be set in this file if needed, like ``fdt_file`` or console configurations.
+You will need to define the ``devnum`` and ``bootcmd_args`` root parameters to meet the eMMC index on your board.
+Other board specific variables can be set in this file if needed, like ``fdt_file`` or console configurations.
 
-After ``uEnv.txt.in`` is in place, provide ``boot.cmd``, which loads this
-environment and boots to kernel:
+After ``uEnv.txt.in`` is in place, provide ``boot.cmd``.
+This loads this environment and boots to kernel:
 
 ``u-boot-base-scr/imx8mmevk/boot.cmd``:
 
@@ -49,9 +45,8 @@ For the ``lmp-base`` distro, these files live in ``u-boot-base-scr``:
     │     └── uEnv.txt.in
     └── u-boot-base-scr.bbappend
 
-Also for the ``lmp`` distro, the only file that needs to be provided is ``boot.cmd``,
-but in this case it handles both the environment as well as the boot
-command:
+Also for the ``lmp`` distro, the only file that needs to be provided is ``boot.cmd``.
+Note that in this case, it handles both the environment and the boot command:
 
 ``u-boot-ostree-scr-fit/imx8mmevk/boot.cmd``:
 
@@ -83,16 +78,15 @@ command:
 
     @@INCLUDE_COMMON@@
 
-The user needs to define ``devnum`` as expected by the board and make sure
-the ``initrd_addr`` is set in U-Boot correctly, otherwise the user may need
-to set the ``initrd_addr`` (as well as any other missing addresses) in this
-file.
+You will need to define ``devnum`` as expected by the board.
+Make sure the ``initrd_addr`` is set in U-Boot correctly.
+Otherwise you may need to set the ``initrd_addr`` (as well as any other missing addresses) in this file.
+
 
 .. note::
 
-    If porting to a new SoC not supported in LmP, the boot
-    firmware offsets also need to be calculated and adjusted as the
-    procedure described here :ref:`ref-sec-tfa-optee`.
+    If porting to a new SoC not supported in LmP,
+    the boot firmware offsets also need to be calculated and adjusted as described under :ref:`ref-sec-tfa-optee`.
 
 The boot.cmd for the ``lmp`` distro lives in:
 
@@ -104,5 +98,4 @@ The boot.cmd for the ``lmp`` distro lives in:
     │       └── boot.cmd
     └── u-boot-ostree-scr-fit.bbappend
 
-After providing these files, LmP has all the needed configuration to
-boot U-Boot and get to the kernel.
+After providing these files, LmP has all the needed configuration to boot U-Boot and get to the kernel.
