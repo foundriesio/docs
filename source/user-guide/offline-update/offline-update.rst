@@ -33,16 +33,19 @@ The offline update content consists of:
 2. `OSTree`_ repo containing a device's rootfs;
 3. :ref:`Compose Apps <ref-compose-apps>`.
 
-Use the command ``fioctl targets offline-update <target-name> <dst> --tag <tag> [--prod] [--expires-in-days <days>]`` to download the update content.
+Use the command ``fioctl targets offline-update <target-name> <dst> <--tag <tag> [--prod] | --wave <wave-name>> [--expires-in-days <days>]`` to download the update content.
 
 * ``<target-name>`` - denotes the Target to update a device to
 * ``<dst>`` - defines a path to download the update content to
 * ``<tag>`` - specifies the Target tag and the tag that the device is on
 * ``--prod`` - indicates that this is an update for a production device and ``<target-name>`` refers to *Production Target* (see the note below)
+* ``--wave`` - indicates that this is an update for a production device and ``<target-name>`` refers to *Wave Target* (see the note below)
 * ``<days>`` - Offline artifact validity period in days
 
 .. note::
-    Use ``fioctl waves init/complete`` commands to generate :ref:`Production Targets <ref-production-targets>`.
+    Use ``fioctl waves init`` command to generate :ref:`Wave Target <ref-rm-wave>`.
+
+    Use ``fioctl waves complete`` command to turn *Wave Target* into :ref:`Production Target <ref-production-targets>`.
 
     Ensure that the target device is a *Production* device, see :ref:`Manufacturing Process for Device Registration <ref-factory-registration-ref>` for more details.
 
