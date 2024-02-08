@@ -46,6 +46,27 @@ notify:
 
         **Default:** ``false``
 
+.. _def-tuf-expiration:
+
+``tuf``
+-------
+Configures the validity period of the Factory TUF targets role metadata
+
+.. sidebar:: ``tuf:`` Section Example
+
+    .. code-block:: yaml
+
+         tuf:
+           targets_expire_after: "2Y33M44D"
+
+tuf:
+  targets_expire_after: ``<validity-period>``
+    **Optional:** Validity period of the CI TUF targets metadata since Target creation by a CI build.
+    It can be expressed in years, months, and days, with each component being optional.
+    The format must follow the order of years, months, and days, as demonstrated by ``1Y3M5D``.
+
+    **Default:** ``1Y``
+
 .. _def-lmp:
 
 lmp
@@ -189,8 +210,6 @@ Variables
                Defaults to the directory mounted on the SDK build container.
                If this directory exists, it is used as the source for the shared state cache (``sstate-cache``) mirror.
                When the directory does not exist, the ``lmp-manifest`` value is used (currently points to the public HTTP shared state cache).
-* **TUF_TARGETS_EXPIRE**:
-               Is used to change the default target expiration date (default 1y).
 
 .. _def-containers:
 
