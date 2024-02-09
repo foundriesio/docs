@@ -175,6 +175,8 @@ For example, the OP-Tee package is only included in an image if the target machi
 .. _Yocto Project machine features:
    https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#machine-features
 
+.. _ref-ug-private-repo:
+
 Including Private Git+ssh Repositories
 --------------------------------------
 
