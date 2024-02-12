@@ -49,3 +49,21 @@ Producing a factory-specific SOTA client can be done by:
 
 .. _custom-sota-client:
    https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-sota/custom-sota-client
+
+Custom SOTA Client Work Modes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+By default, the example `SOTA client`_ works as a daemon updating a device to the latest version once it becomes available.
+In addition to the default daemon mode, users can run it as a CLI utility and perform specific steps of the update process separately.
+
+.. prompt:: bash
+
+    /build-custom/custom-sota-client --help
+    Usage:
+        custom-sota-client [cmd] [options]
+    Supported commands: check install run pull daemon
+    Default command is "daemon"
+
+* ``check`` - updates the device's TUF repo with the latest Factory's TUF metadata or with the TUF metadata specified in the offline update bundle, and checks if there is a newer than currently installed Target.
+* ``pull`` - pulls the delta between the currently installed and the specified one.
+* ``install`` - installs the previously pulled Target; yields an error if the specified Target has not been pulled before.
+* ``run`` - finalizes the installed Target; confirms an update after reboot on a new rootfs version and/or starts the updated apps.
