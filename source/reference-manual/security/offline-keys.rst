@@ -24,6 +24,8 @@ FoundriesFactory provides the ability to manage TUF keys via dedicated `Fioctlâ„
     It will show you a list of our recommendations about improving your TUF usage, which evolve over time.
     For example, it can show you the up to date information about the `Recommended Offline TUF Keys Schema`_.
 
+.. _ref-offline-tuf-root-key-rotation:
+
 How to Rotate Offline TUF Root Key
 ----------------------------------
 

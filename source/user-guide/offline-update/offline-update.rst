@@ -219,8 +219,83 @@ Offline Update Considerations
     However, since the API supports both types of the update, a user may develop :ref:`a custom sota client <ug-custom-sota-client>` that does
     these two types of update in parallel by mistake.
 
+Controlling the Expiration Time of the Offline Update Bundle
+------------------------------------------------------------
+
+The bundle obtained through the ``fioctl targets offline-update`` command comes with an expiration time.
+If the expiration time of the bundle has passed, the offline update will fail.
+
+Use the ``--expires-in-days`` parameter of the ``fioctl targets offline-update`` command to set the desired expiration time of the bundle.
+If the command fails with the one of the errors below, then it means the root or
+targets metadata expires sooner than the date specified in the parameter.
+
+.. code-block:: bash
+
+    Getting CI Target details; target: intel-corei7-64-lmp-2377, tag: master...
+    Refreshing and downloading TUF metadata for Target intel-corei7-64-lmp-2377 to 2377/tuf...
+    ERROR: Failed to download TUF metadata: HTTP error during POST 'https://api.foundries.io/ota/factories/<factory>/targets/intel-corei7-64-lmp-2377/meta/': 400 BAD REQUEST
+    = Root metadata expire (2024-07-06T07:56:57Z) before the specified expiration time (2025-02-11T09:17:39Z)
+
+    Getting production Target details; target: intel-corei7-64-lmp-2356, tag: master...
+    Refreshing and downloading TUF metadata for Target intel-corei7-64-lmp-2356 to 2356/tuf...
+    ERROR: Failed to download TUF metadata: HTTP error during POST 'https://api.foundries.io/ota/factories/<factory>/targets/intel-corei7-64-lmp-2356/meta/': 400 BAD REQUEST
+    = Targets metadata expire (2025-01-28T16:38:23Z) before the specified expiration time (2025-02-06T09:27:35Z)
+
+To fix the issue, either decrease the parameter value or refresh the root/targets metadata accordingly and then re-run the command.
+
+To refresh root metadata you should :ref:`rotate TUF root role key <ref-offline-tuf-root-key-rotation>`.
+The expiration time is set to one year since the moment of the latest root key rotation.
+
+To refresh targets role metadata use one of the following depending on targets type, CI or wave/production.
+
+* CI targets — Trigger a new CI build, it will create a new target and update CI targets role metadata expiration time to 1 year since the moment of creation.
+* Wave or production targets — Create a new wave for the given target version.
+  Use ``--expires-days`` or ``--expires-at`` parameters of the ``fioctl waves init`` command to set a desired expiration time.
+  By default, if none of the parameters above are specified, the expiration of a wave's targets role metadata is set to one year.
+
+Therefore, the ``--expires-in-days`` parameter of the ``fioctl targets offline-update`` command is the primary knob
+to tune the bundle's expiration time up to 1 year (the maximum validity period of TUF root metadata).
+Effectively, this parameter sets the expiration time for the bundle's copy of the TUF timestamp role metadata, and does not affect the factory's metadata.
+
+Root and/or CI/wave/production targets refreshing serves as the secondary mechanism.
+It should be applied if the desired expiration time occurs later than
+the root's and/or the targets' expiration, respectively.
+
+More details on FoundriesFactory TUF metadata expiration time can be found in :ref:`the following section <Math Behind the Offline Update Bundle Expiration Time>`.
+
+.. _Math Behind the Offline Update Bundle Expiration Time:
+
+Understanding the Math Behind the Offline Update Bundle Expiration Time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The expiration time of the bundle is determined by the expiration times of the TUF metadata it encompasses.
+Specifically, it equals the minimum value among the expiration times across all TUF roles' metadata.
+
+* CI/Wave/Production *root* role metadata
+    The expiration time is set to 1 year from the moment when of the latest TUF root key was added or rotated.
+    The other commands that modify the TUF root metadata do not extend its expiration.
+    It is possible to set the TUF root expiration time to any value through the API.
+
+* CI *timestamp*, *snapshot*, and *targets* roles metadata
+    The default expiration time is set to 1 year since the last successful CI build.
+    If there are no builds for a year, the expiration is automatically extended by one month every month.
+    A user can overwrite the default value using the factory config parameter :ref:`tuf.targets_expire_after <def-tuf-expiration>`.
+
+* Wave/Production *timestamp* roles metadata
+    The expiration time is set to 7 days.
+    The `TUF specification`_ recommends setting a short expiration date for the TUF timestamp metadata and re-signing it frequently.
+    This allows clients to quickly detect if they are being prevented from obtaining the most recent metadata ("indefinite freeze attacks").
+    The FoundriesFactory automatically refreshes the metadata for an additional 7 days just before expiration.
+
+* Wave/Production *snapshot* and *targets* roles metadata
+    The default expiration time is set to 1 year.
+    A user can overwrite the default value using the ``--expires-days`` or ``--expires-at`` parameter of the ``fioctl wave init`` command.
+
 .. _TUF metadata:
    https://theupdateframework.io/metadata/
+
+.. _TUF specification:
+   https://theupdateframework.github.io/specification/latest/
 
 .. _OSTree:
   https://github.com/ostreedev/ostree
