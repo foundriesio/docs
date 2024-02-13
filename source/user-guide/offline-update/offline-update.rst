@@ -172,33 +172,52 @@ In the later case, you must stop the ``aktualizr-lite`` systemd service before r
 Offline Update Considerations
 -----------------------------
 
-* **Offline Update is not a packaged delivery**
+* **Offline Update Bundle Packaging**
 
   The content provided by ``fioctl targets offline-update`` command should be packaged by you, and verified by the client service.
 
-* **Offline Update does not provide a secure delivery**
+* **Offline Update Bundle Delivery**
 
   Related to the bullet above, Foundries.io™ cannot provide secure delivery of an update bundle since you should do the packaging and delivery.
 
-* **Offline Update allows installing Targets from different Tags**
+* **Offline Update for Unregistered Devices**
 
-  A custom client application should handle this case if it is not the intended behavior.
+  When dealing with devices not registered in FoundriesFactory® or :ref:`a custom registration server <ref-fully-detached>`,
+  several considerations arise:
 
-* **Online/Offline Mixed Updates**
+  * Production Status: The distinction between production and non-production status of the device remains undetermined.
+  * Device Tag: The specific tag associated with the device is not configured.
 
-  Toggling between online and offline modes is not tested or validated by Foundries.io.
-  It should be handled by a custom client application.
-  Both cases can work together, but the offline update feature is designed to be offline only, until the device is registered.
+  As a consequence, during the initial offline update, users can install both production and non-production targets on unregistered devices.
+  However, subsequent updates are constrained by the type of targets installed during the initial update.
+  Therefore, the target type chosen during the first update dictates the supported targets' type for future updates.
 
-There are a few points to take into account by the custom client application:
+  Additionally, due to the absence of a defined tag in the configuration of unregistered devices,
+  users can install targets associated with any tag.
+  This issue can be addressed by incorporating a configuration snippet (a ``*.toml`` file) into either ``/usr/lib/sota/conf.d`` or ``/etc/sota/conf.d``.
+  We recommend implementing this solution through a new recipe in the factory's ``meta-subscriber-overrides.git`` repository.
+  The snippet should contain the following content:
 
-   * **The critical rule is not to run two types of updates/clients simultaneously**: ``aktualizr-lite`` should be stopped before ``aklite-offline`` runs and vice-versa.
+.. prompt:: text
 
-   * Offline Update can downgrade version: A client around the offline updater should check it out and decide whether to allow a downgrade or not.
+    [pacman]
+    tags = "<tag>"
 
-   * Offline Update does content-based shortlisting: Only the Apps included in a source directory are installed.
+* **Online/Offline Mixed Updates (aka hybrid mode)**
 
-   * Offline Update fails if its input TUF metadata are outdated, e.g. an online update updated TUF root meta to version N while an offline content has version N-1 of root meta.
+  There are a few points to take into account by the custom client application:
+
+  * Offline or Online downgrade fails by default.
+    Therefore, if the latest target is installed on a device through an online update,
+    then an offline update for the outdated bundle fails, unless a user explicitly specifies the ``--force`` parameter.
+  * Offline Update fails if its input TUF metadata are outdated.
+    For example, it fails if an online update upgrades the device's TUF root/timestamp/snapshot/targets metadata
+    to version N while the bundle contains version N-1 of the metadata.
+  * Running offline and online update simultaneously leads to undefined behaviour.
+    It is impossible to run two or more update agents of the same or different types simultaneously,
+    for example ``aktualizr-lite daemon`` and ``aklite-offline``.
+    However, since the API supports both types of the update, a user may develop :ref:`a custom sota client <ug-custom-sota-client>` that does
+    these two types of update in parallel by mistake.
 
 .. _TUF metadata:
    https://theupdateframework.io/metadata/
