@@ -135,6 +135,7 @@ The presented values are the default one.
     # A percentage of an available storage that can be used by Compose Apps.
     # aktualizr-lite checks whether there is enough storage available before performing OTA update of Compose Apps.
     # min(sizeof(AppsV_N+1) - sizeof(AppsV_N), 0)  <  <available_storage> * <storage_watermark>/100
+    # storage_watermark value has to be between 20 and 95
     # By default, if the configuration param is not specified, it is set to "80".
     storage_watermark = "60" (set to "80" if not specified)
 
