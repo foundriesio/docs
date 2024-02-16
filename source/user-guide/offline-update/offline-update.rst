@@ -27,13 +27,13 @@ Obtaining Offline Update Content
 --------------------------------
 
 First download the offline update content from your Factory to an install medium which can be attached to the target device.
-The offline update content consists of:
+The offline update content, further referred to as "bundle", consists of:
 
 1. `TUF metadata`_;
 2. `OSTree`_ repo containing a device's rootfs;
 3. :ref:`Compose Apps <ref-compose-apps>`.
 
-Use the command ``fioctl targets offline-update <target-name> <dst> <--tag <tag> [--prod] | --wave <wave-name>> [--expires-in-days <days>]`` to download the update content.
+Use the command ``fioctl targets offline-update <target-name> <dst> <--tag <tag> [--prod] | --wave <wave-name>> [--expires-in-days <days>]`` to download the bundle.
 
 * ``<target-name>`` - denotes the Target to update a device to
 * ``<dst>`` - defines a path to download the update content to
@@ -55,11 +55,11 @@ Use the command ``fioctl targets offline-update <target-name> <dst> <--tag <tag>
 Performing the Offline Update
 -----------------------------
 
-Before doing the offline update, make the offline update content accessible on a device, e.g., attach and mount the USB drive.
+Before doing the offline update, ensure the bundle is accessible on a device, e.g., attach and mount the USB drive.
 
 Use the ``aklite-offline`` CLI utility to perform an offline update.
 
-1. Run ``aklite-offline install [--config <config dir or file>] --src-dir <path to offline update content>``.
+1. Run ``aklite-offline install [--config <config dir or file>] --src-dir <path to a bundle>``.
 
 2. Run one of :ref:`the post installation actions <Post Install and Run Actions>` depending on the ``aklite-offline install`` result:
 
@@ -87,7 +87,7 @@ The CLI utility supports two commands:
     /var/sota/sota.toml
     /etc/sota/conf.d/
 
-    ``--src-dir`` - Path to a directory that contains update content downloaded by ``fioctl targets offline-update`` command.
+    ``--src-dir`` - Path to a directory that contains the bundle downloaded by ``fioctl targets offline-update`` command.
 
 
 .. _Post Install and Run Actions:
@@ -178,7 +178,7 @@ Offline Update Considerations
 
 * **Offline Update does not provide a secure delivery**
 
-  Related to the bullet above, Foundries.io™ cannot provide secure delivery of offline update content since you should do the packaging and delivery.
+  Related to the bullet above, Foundries.io™ cannot provide secure delivery of an update bundle since you should do the packaging and delivery.
 
 * **Offline Update allows installing Targets from different Tags**
 
