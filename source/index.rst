@@ -43,14 +43,25 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/custom-ci/custom-ci
    user-guide/mirror-action/mirror-action
    user-guide/submodule/submodule
+   reference-manual/remote-access/remote-access
    user-guide/foundriesio-rest-api/foundriesio-rest-api
    user-guide/containers-and-docker/index
+   reference-manual/docker/private-registries
    user-guide/lmp-customization/index
    user-guide/lmp-auto-hostname/lmp-auto-hostname
    user-guide/lmp-device-auto-register/lmp-device-auto-register
    user-guide/custom-sota-client
    user-guide/offline-update/offline-update
+   porting-guide/pg
+   reference-manual/linux/linux-disk-encryption
+   reference-manual/linux/factory-device-reset
+   reference-manual/linux/linux-update
+   reference-manual/security/secure-machines
+   reference-manual/security/offline-keys
+   reference-manual/security/factory-keys
+   reference-manual/factory/sboms
    user-guide/el2g
+   reference-manual/ota/production-targets
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/rotating-cert
    user-guide/troubleshooting/troubleshooting
