@@ -13,7 +13,7 @@ When building the Cortex R5 U-Boot, all variants are built:
   All secrets within the device are fully protected and all of the security goals are fully enforced.
   The device also enforces secure booting.
 
-* ``gp`` (General Purpose), also known as `SK-AM64`_: This is a SoC/board state with no device protection and authentication is not enabled for booting the device.
+* ``gp`` (General Purpose), also known as SK-AM64: This is a SoC/board state with no device protection and authentication is not enabled for booting the device.
 
 The default variant is  ``hs-fs``.
 To boot an image on other variants without pre-flash files manipulations on the target file-system, we need to change the ``SYSFW_SUFFIX`` variable.
@@ -32,5 +32,3 @@ The following changes the default to ``gp``, so that the image produced boots th
 .. _SK-AM64B:
    https://www.ti.com/tool/SK-AM64B
 
-.. _SK-AM64:
-   https://www.ti.com/tool/SK-AM64
