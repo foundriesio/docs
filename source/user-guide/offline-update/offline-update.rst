@@ -17,7 +17,19 @@ Prerequisites
 
         cat meta-subscriber-overrides.git/recipes-sota/aktualizr/aktualizr_%.bbappend
         PACKAGECONFIG:append = " aklite-offline"
-2. Enable :ref:`ug-container-preloading` if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
+
+2. Enable Apps fetching if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
+   To do so, add the following configuration snippet to the ``containers`` section of :ref:`your Factory definition <ref-factory-definition>`:
+
+    .. prompt:: bash
+
+
+        containers:
+            ...
+            offline:
+                enabled: <true | false>
+                app_shortlist: <comma separated list of apps> # all target apps are fetched if not specified or empty
+
 
 3. Ensure that :ref:`The Update Framework (TUF) keys are taken offline <ref-offline-keys>`.
 
