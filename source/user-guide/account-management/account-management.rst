@@ -3,8 +3,8 @@
 Factory & Account Management
 ============================
 
-This section covers topics related to using the FoundriesFactory® web UI.
-This includes managing your subscription, adding members to your Factory,
+This section covers topics related to using the :term:`FoundriesFactory`\® web UI.
+This includes managing your subscription, adding members to your :term:`Factory`,
 or setting who can interact with devices and access source code.
 
 .. toctree::
