@@ -28,10 +28,10 @@ Prerequisites and Pre-Work
 
 .. _gs-download:
 
-Downloading the LmP System Image
---------------------------------
+Downloading the System Image
+----------------------------
 
-After a successful build, FoundriesFactory produces build artifacts which can be downloaded from the :guilabel:`Targets` tab of your Factory.
+After a successful build, FoundriesFactory produces build artifacts which can be downloaded from the :guilabel:`Targets` tab of your :term:`Factory`.
 
 #. Navigate to the :guilabel:`Targets` section of your Factory.
 
@@ -69,7 +69,7 @@ Please refer to this section for specifics on flashing your system image using t
 See :ref:`ref-qemu` for booting Qemu images.
 
 .. note::
-   LmP enforces eMMC boot whenever possible as this is the path to enable all security features it provides. So for platforms with available eMMC, such as the NXP® i.MX EVKs, booting from eMMC rather than SD is highly recommended and enabled by default.
+   The :term:`Linux microPlatform` (LmP) enforces eMMC boot whenever possible as this is the path to enable all security features it provides. So for platforms with available eMMC, such as the NXP® i.MX EVKs, booting from eMMC rather than SD is highly recommended and enabled by default.
 
 .. _gs-boot:
 

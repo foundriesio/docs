@@ -19,7 +19,7 @@ Creating Your Factory
 =====================
 
 :ref:`ref-factory` is the start of your embedded OS, tailored specifically for your product.
-When you create a Factory, we immediately bootstrap the CI build process.
+When you create a :term:`Factory`, we immediately bootstrap the CI build process.
 This generates an unmodified :ref:`ref-linux` OS Image, which is from this point onward, **owned by you**.
 
 When your account is created, it is not associated with any factories.
@@ -82,7 +82,7 @@ Additionally, you will receive an email once the Factory initial setup is comple
    FoundriesFactory Targets
 
 Targets are a reference to a platform image and Docker applications.
-When developers push code, FoundriesFactory produces a new target.
+When developers push code, FoundriesFactory produces a new :term:`Target`.
 Registered devices then update and install Targets.
 
 .. note::
