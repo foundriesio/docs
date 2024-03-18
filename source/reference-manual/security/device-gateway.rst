@@ -77,7 +77,7 @@ A few important things to note about this command:
  * The "PKI Directory" is important, and should be securely backed up.
 
  * As noted in the warning, it can only be set once.
-   A reset requires contacting `Customer Support <https://support.foundries.io>`,
+   A reset requires contacting `Customer Support <https://support.foundries.io>`_,
    and will result in connected devices loosing connection.
 
 After running the above command, you can validate the outcome and view the configured certificates by using the following command:
