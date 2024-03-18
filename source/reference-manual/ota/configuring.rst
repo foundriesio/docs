@@ -89,7 +89,7 @@ See `fioconfig_git.bb <https://github.com/foundriesio/meta-lmp/blob/main/meta-lm
 
 .. tip::
   For testing purposes, it is possible to use the ``on-changed`` parameter to run commands outside of the ``/usr/share/fioconfig/handlers`` folder.
-  This is done by running ``fioconfig daemon --unsafe-handlers``.
+  This is done by running ``fioconfig --unsafe-handlers daemon``.
   We do not recommend doing that in production.
   This allows running configurations as::
 
