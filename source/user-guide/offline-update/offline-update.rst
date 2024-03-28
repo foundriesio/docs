@@ -113,13 +113,19 @@ The ``install`` command sets the following exit codes:
 - *0*: Installation was not performed.
     - Device already runs the specified target, no update is needed.
 - *4*: Installation was not performed.
-    - Failed to pull the provided TUF metadata to the device TUF repo or the provided TUF metadata are invalid.
+    - Failed to update TUF metadata.
 - *6*: Installation was not performed.
     - Failed to find Targets in the device TUF repo that matches a device tag and/or hardware ID.
 - *8*: Installation was not performed.
     - Failed to find the ostree commit and/or all Apps of the Target to be installed in the provided source bundle.
 - *10*: Installation succeeded.
     -  ``aklite-offline run`` must be invoked to start the updated Apps.
+- *11*: Installation was not performed.
+    - Provided TUF metadata is invalid.
+- *12*: Installation was not performed.
+    - Provided TUF metadata is expired.
+- *14*: Installation was not performed.
+    - TUF metadata not found in the provided path.
 - *30*: Installation was not performed.
     - Could not start a new update because there is an ongoing installation that requires finalization.
 - *50*: Installation was not performed.
