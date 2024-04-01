@@ -1,3 +1,5 @@
+.. _ff-crypto-key-summary:
+
 Summary of Crypto Keys Used by FoundriesFactory
 ===============================================
 
