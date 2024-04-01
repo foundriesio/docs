@@ -22,7 +22,7 @@ There are four roles available. The two core roles being:
   - manage teams
   - manage the Factory subscription plan
   - register, delete, and rename all devices
-  - manage the Factory's Public Key Infrastructure (PKI) and create Waves.
+  - manage the Factory's :term:`Public Key Infrastructure` (PKI) and create Waves.
   
 The remaining two each get a subset of the **Owner** permissions.
 
