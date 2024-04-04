@@ -3,158 +3,275 @@
 Details Of Device Gateway PKI Settings
 ======================================
 
-.. warning::
-   The factory root of trust **can only be set once** —
-   `contact customer support <https://support.foundries.io>` if you need to have the value reset.
-   This means the command ``fioctl keys ca create`` works only for the first run.
-   Subsequent attempts will fail.
-   Additionally,if you do have a reset performed, it will result in connected devices losing connection.
-   However, the Device CA bundle (``ca-crt``) can be updated many times;
-   you may add or remove local/offline CA certs for the bundle with ``fioctl keys ca update``.
-
-This guide covers Public Key Infrastructure (PKI) Settings.
-In particular, the low-level details of what happens behind the scenes when running the ``fioctl keys ca`` commands.
-It also provides instructions to create, sign, and use an *offline* (aka *local*) device certificate.
-
-The :ref:`Factory PKI <ref-device-gateway>` reference manual describes core concepts of Device Gateway PKI and how it can be configured by using the ``fioctl keys ca``.
-
-.. seealso::
-   Documentation on using :ref:`Fioctl® <ug-fioctl>`
-
-Under the Hood
-~~~~~~~~~~~~~~
-
 The PKI for Device Gateway and Factory Devices is vital for the secure communication between them.
-It is important to understand exactly what the given command does.
+It is important to understand exactly what the Factory PKI related commands do.
+The :ref:`Factory PKI <ref-device-gateway>` reference manual describes core concepts of your Factory PKI.
+It also provides examples to configure your Factory PKI using the :ref:`Fioctl® <ref-fioctl>` commands.
 
-Before a user sets up the PKI, their Devices and Device Gateway talk to each other by utilizing a so-called "shared PKI".
-This is the default PKI that the FoundriesFactory™ service sets up as part of new Factory provisioning.
-The ``fioctl`` command communicates with the end point ``https://api.foundries.io/ota/factories/$FACTORY/certs/`` to create and update Factory specific PKI keys and certificates.
-As long as the Factory uses the "shared PKI", the endpoint returns an empty response, as no Factory PKI is set::
+This user guide focuses more on the Factory PKI internals.
+That should allow you to integrate with the Factory PKI API directly if you need to.
 
-    curl -s -H "OSF-TOKEN: $TOKEN" https://api.foundries.io/ota/factories/${FACTORY}/certs/ | jq
+Fioctl uses the `Golang native cryptographic libraries <https://pkg.go.dev/crypto>`_ to implement all PKI related commands.
+However, the same cryptographic functions can be implemented using `OpenSSL <https://www.openssl.org/>`_, as demonstrated in this guide.
+
+.. warning::
+   The Factory :ref:`Root of Trust <Root-of-Trust>` **can only be set once**; subsequent attempts will fail.
+   Other Factory PKI certificates can be updated at any time; having that you own your Factory Root of Trust.
+
+   `Contact customer support <https://support.foundries.io>` if you need your Factory PKI being reset.
+   Once a reset was performed, all connected devices will lose their connection.
+   These devices will not be able to connect to the Device Gateway until they are re-provisioned with a new Root of Trust.
+   On practice that usually means that these devices need to be re-flashed (after the Factory PKI reset).
+
+
+Taking Ownership of Factory PKI Using the API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before setting up your Factory PKI, your Devices and Device Gateway talk to each other by utilizing a so-called "shared PKI".
+This is the default PKI that FoundriesFactory® sets up as part of provisioning a new Factory.
+
+You can always check your Factory PKI settings using the ``fioctl keys ca show``.
+In case of a shared PKI that command would tell you that your Factory PKI is not configured yet.
+
+In order to take ownership of your Factory PKI, run a ``fioctl keys ca create`` command.
+This command communicates with the FoundriesFactory API to create and update Factory specific PKI keys and certificates.
+
+First, a command calls the API to initialize a Factory PKI, which performs the following actions:
+
+- Verify if the Factory PKI was already initialized, and fail if a user attempts to initialize an already initialized PKI.
+- Generates a server-side crypto-key for the ref:`tls-crt` and returns a Certificate Signing Request (CSR) for it.
+- Optionally generates a server-side crypto-key for the ref:`online-ca` and returns a CSR for it.
+- Optionally generates a server-side crypto-key for the ref:`est-tls-crt` and returns a CSR for it.
+
+Once the ``fioctl keys ca create`` command receives a response, it performs the following actions:
+
+    - Generates the Factory Root CA on either your local file system or an HSM device.
+    - Optionally generates a Local Device CA on your local file system, and signs it using the Factory Root CA.
+    - Signs all CSRs received from the above API call.
+    - Finally, that command uploads all generated certificates to the API; private keys are not uploaded.
+
+You can replay what the ``fioctl keys ca create`` command does using the following steps.
+
+1. Call the API to Generate CSRs
+''''''''''''''''''''''''''''''''
+
+You may use `Curl <https://curl.se/>`_ to play with the Factory PKI APIs.
+The following command calls the API to generate CSRs for the server TLS certificate and the Online Device CA::
+
+    curl "https://api.foundries.io/ota/factories/${FACTORY}/certs/" \
+        -s -X POST -H "Content-Type: application/json" -H "OSF-Token: $TOKEN" \
+        -d '{"first-time-init": true, "tls-csr": true, "ca-csr": true, "est-tls-csr": false}'
+
+The above API returns the following output in case of success::
+
     {
-      "tls-crt": null,
-      "ca-crt": null,
-      "root-crt": null
+        "ca-csr": "(Optionally) A CSR for online Device CA of your Factory in PEM format."
+        "tls-csr": "A CSR for device APIs server TLS certificate of your Factory in PEM format".
+        "est-tls-csr": "(Optionally) A CSR for (Foundries.io hosted) EST server TLS certificate of your Factory in PEM format".
     }
 
-* ``root-crt`` is the PKI root CA certificate, also referred as :ref:`Root of Trust <Root-of-trust>`
-* ``ca-crt`` is a certificate bundle containing one :ref:`online CA <online-ca>` certificate and optionally one or more :ref:`local CA <local-ca>` certificates, aka "offline-ca".
-* ``tls-crt`` is a Device Gateway certificate, also referred as :ref:`a server TLS certificate <tls-crt>`
+You need to store all received CSRs on your local file system to be able to use OpenSSL to generate corresponding certificates.
+For example, store a `tls-csr` into a `tls.csr` file (as used in examples below) and so on.
 
+2. Generate a Private Key and Certificate for Factory Root CA
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-The first step that the ``fioctl`` command does is send a post request to the PKI endpoint.
-In the following example, a response is redirected to a json file so its content can be used later.::
+You may use OpenSSL to generate your Factory Root CA.
 
-    curl -s -X POST -H "Content-Type: application/json" -H "OSF-TOKEN: $TOKEN" "https://api.foundries.io/ota/factories/${FACTORY}/certs/" | jq . > factory_certs.json
+First, you need to create the following certificate configuration file on your file system::
 
-The endpoint handler does the following:
+    factory_ca.cnf:
+        [req]
+        prompt = no
+        distinguished_name = dn
+        x509_extensions = ext
 
-1. Generates a private key and corresponding Certificate Signing Request (CSR) for Device Gateway (tls-crt);
-2. Generates a private key and corresponding CSR for Online Device CA (online-ca);
-3. Returns a json formatted response to a caller, the response includes:
+        [dn]
+        CN = Factory-CA
+        OU = <your-factory-name>
 
-   a. ``tls-csr`` - CSR for Device Gateway certificate
-   b. ``ca-csr`` - CSR for Online Device CA certificate
-   c. ``create_ca`` - a script that can be used for root CA creation, i.e. a private key and corresponding self-signed certificate
-   d. ``create_device_ca`` - a script that can be used for "local-ca"/"offline-ca" creation, i.e. a private key, corresponding certificate signed by the root CA
-   e. ``sign_tls_csr`` - a script that signs received ``tls-csr`` by the root CA
-   f. ``sign_ca_csr`` - a script that signs received ``ca-csr`` ("online-ca") by the root CA.
+        [ext]
+        basicConstraints=CA:TRUE
+        keyUsage = keyCertSign, cRLSign
+        extendedKeyUsage = critical, clientAuth, serverAuth
 
-A user can extract any of the aforementioned fields by utilizing the ``jq`` utility: ::
+.. important::
+    It is important that the Organization Unit (OU) of your Factory Root CA Subject field is set to your Factory name.
+    That information is used by the API to validate that you upload a Root CA for a correct Factory.
 
-    cat factory_certs.json | jq -r .create_ca
+Next, use the following OpenSSL command to generate the private key for your Factory Root CA::
 
-Once the ``fioctl`` command receives a response, it makes use of the above scripts included in a response.
-Specifically, it:
+    openssl ecparam -genkey -name prime256v1 | openssl ec -out factory_ca.key
 
-1. Invokes the ``create_ca`` script to generate Root CA key (``factory_ca.key``) and Root CA certificate (``factory_ca.pem``);
-2. Signs the ``tls-csr`` by invoking the ``sign_tls_csr`` script, the resultant certificate is stored in ``tls-crt``;
-3. Signs the ``ca-csr`` by invoking the ``sign_ca_csr`` script, the resultant certificate is stored in ``online-crt``;
-4. Creates a local/offline Device CA by using ``create_device_ca``, the resultant private key and certificate are stored in ``local-ca.key`` and ``local-ca.pem`` correspondingly;
+The above command stores the private key in a ``factory_ca.key`` file on your local file system.
+If you want to store in on an HSM device, look at the `Fioctl Bash based PKI implementation`_ for an example.
 
-Then the ``fioctl`` command uploads the generated artifacts to the backend by issuing a ``PATCH`` request to the endpoint.
-The following files are uploaded:
+.. _Fioctl Bash based PKI implementation: https://github.com/foundriesio/fioctl/blob/main/x509/bash.go
 
-1. ``tls-crt`` - the result of ``tls-csr`` signing;
-2. ``online-crt`` and ``local-ca.pem`` bundled together into the ``ca-crt`` field of the PATCH request;
-3. ``factory_ca.pem`` - root CA certificate created by running ``create_ca`` transferred via ``root-crt`` fields of the PATCH request.
+Once you have a configuration and private key files, use the following OpenSSL command to generate the Factory Root CA::
 
-Device Key and Certificate
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-Once the PKI is setup, your Factory Device Gateway is ready to communicate via mTLS with Factory devices.
-The devices must have a private key and a x509 certificate to setup mTLS session with Device Gateway.
-It also needs the Root CA certificate to verify Device Gateway certificate during mTLS handshake.
+    openssl req -new -x509 -days 7300 -sha256 -config factory_ca.cnf -key factory_ca.key -out factory_ca.pem
 
-As explained above, the ``fioctl`` command generates two types of Device CA, online and local/offline CAs.
-Both of these CAs can be used to sign Device CSR.
+The above command stores your Factory Root CA certificate in a ``factory_ca.pem`` file on your local file system.
+In this example, the Factory Root CA is self-signed by its own private key.
+Alternatively, you may sign it by a higher level CA at your disposal.
 
-Online Device Certificate
-*************************
-In the case of online CA, a private key is owned by the backend. Hence, only the backend can sign a Device CSR with the online CA.
-The utility called ``lmp-device-register`` can be used for this purpose, and is the default device registration mechanism.
-The tool generates a device private key, creates a corresponding device CSR, and makes a request to the backend to sign it with the online CA.
-As a response, the backend returns a signed device certificate as well as a default configuration for the device (aka ``sota.toml``).
-More details on ``lmp-device-register`` usage can be found in the :ref:`getting started guide <gs-register>`.
+3. Optionally Generate Your Local Device CA
+'''''''''''''''''''''''''''''''''''''''''''
 
-Local/Offline Device Certificate
-********************************
+Although Foundries.io™ securely stores your Factory Online Device CA; its private key is not owned by you.
+We recommended generating one or more Local Device CA for your Factory before going to production.
+Those Local Device CAs should be used to issue client TLS certificates for your production devices.
+In a fully sealed setup you would disable or revoke the Online Device CA for your Factory.
 
-We advise using the Factory registration `reference implementation`_ as a mechanism for offline device key and certificate generation as well as device registration.
-The following is a guide on the manual creation of Local/Offline Device keys and certificates.
-This can be useful for understanding low-level details of the overall process.
+Similarly to the Factory Root CA, you may use OpenSSL to generate your Local Device CA.
 
-Create a directory for offline device key and certificate::
+First, you need to create the following certificate configuration files on your file system::
 
-    mkdir -p devices/offline-device
+    local_ca.cnf
+        [req]
+        prompt = no
+        distinguished_name = dn
 
-Generate a private key::
+        [dn]
+        CN = fio-<your-user-uid>
+        OU = <your-factory-name>
 
-    openssl ecparam -genkey -name prime256v1 -out devices/offline-device/pkey.pem
+    ca.ext:
+        keyUsage=critical, keyCertSign
+        basicConstraints=critical, CA:TRUE, pathlen:0
 
-Set offline Device certificate config::
+.. important::
+    It is important that the Organization Unit of your Factory Device CA Subject field is set to your Factory name.
+    That information is used by the API to validate that you upload a Root CA for a correct Factory.
 
-   cat > devices/offline-device/device-cert.conf <<EOF
-   [req]
-   prompt = no
-   days=3650
-   distinguished_name = req_dn
+    Additionally, the Common Name (CN) of your Factory Local Device CA Subject field needs to equal "fio-" plus your user ID.
+    A user ID can be determined from the ``fioctl users`` command output or your Factory Users page.
+    A user specified in this field becomes an owner of all devices auto-registered using client certificates issued by this CA.
 
-   [req_dn]
-   # Device ID
-   commonName="`uuidgen`"
-   organizationalUnitName="${FACTORY}"
-   EOF
+Next, use the following OpenSSL command to generate the private key for your Factory Root CA::
 
-Make sure to replace ``<device-UUID>`` and ``${FACTORY}`` with your values.
+    openssl ecparam -genkey -name prime256v1 | openssl ec -out local_ca.key
 
-Set offline Device certificate extensions::
+Then, generate a CSR for your Local Device CA using the following OpenSSL command::
 
-   cat > devices/offline-device/device-cert.ext <<EOF
-   keyUsage=critical,digitalSignature,keyAgreement
-   extendedKeyUsage=critical,clientAuth
-   EOF
+    openssl req -new -config local_ca.cnf -key local_ca.key -out local_ca.csr
 
-Generate CSR::
+Finally, use OpenSSL to generate your Factory Local Device CA, and sign it by your Factory Root CA::
 
-    openssl req -new -config devices/offline-device/device-cert.conf -key devices/offline-device/pkey.pem -out devices/offline-device/device-cert.csr
+    openssl x509 -req -days 3650 -sha256 -CAcreateserial -in local_ca.csr \
+        -extfile ca.ext -CAkey factory_ca.key -CA factory_ca.pem -out local_ca.pem
 
-Sign CSR and produce offline Device certificate::
+These commands will store your Factory Local Device CA private key and certificate in ``local_ca.key`` and ``local_ca.pem`` files.
 
-    openssl x509 -req -in devices/offline-device/device-cert.csr -CAcreateserial -extfile devices/offline-device/device-cert.ext -CAkey local-ca.key -CA local-ca.pem -sha256 -out devices/offline-device/client.pem
+4. Sign CSRs Received from the API
+''''''''''''''''''''''''''''''''''
 
-Check the generate offline Device key and certificate.
-Before doing that you need to find out hostname of your Factory Device Gateway,
-it can be extracted from the Device Gateway certificate (``tls-crt``)::
+You may use OpenSSL to sign API provided CSRs for your Factory, similarly to how the Factory Local Device CA is signed.
 
-   openssl x509 -noout -in tls-crt -ext subjectAltName
+First, you need to create the following certificate configuration files on your file system::
 
-::
+    server.ext
+        keyUsage=critical, digitalSignature
+        extendedKeyUsage=critical, serverAuth
 
-    curl --cacert factory_ca.pem --cert devices/offline-device/client.pem --key devices/offline-device/pkey.pem https://<device-gateway-ID>.ota-lite.foundries.io:8443/repo/1.root.json | jq
+    ca.ext:
+        keyUsage=critical, keyCertSign
+        basicConstraints=critical, CA:TRUE, pathlen:0
 
-It is worth noticing that the device is registered at the backend on the first request to Device Gateway in this case.
+Next, use OpenSSL to determine the DNS names from the server TLS CSR, and append it to the server configuration file::
 
-.. _reference implementation:
-   https://github.com/foundriesio/factory-registration-ref
+    echo "subjectAltName=$(openssl req -text -noout -verify -in tls.csr | grep DNS:)" >> server.ext
+
+Finally, use OpenSSL to generate the server TLS certificate, and sign it by your Factory Root CA::
+
+    openssl x509 -req -days 3650 -sha256 -CAcreateserial -in tls.csr \
+        -extfile server.ext -CAkey factory_ca.key -CA factory_ca.pem -out tls.pem
+
+Similarly, you may generate and sign a server TLS certificate for Foundries.io hosted EST server if you need it.
+
+If you also want to have a Factory Online Device CA, generate and sign using the following OpenSSL command::
+
+    openssl x509 -req -days 3650 -sha256 -CAcreateserial -in online_ca.csr \
+        -extfile ca.ext -CAkey factory_ca.key -CA factory_ca.pem -out online_ca.pem
+
+5. Upload Generated Certificates to the API
+'''''''''''''''''''''''''''''''''''''''''''
+
+Once you have generated all the necessary certificates, you may upload them to the Factory PKI API.
+
+You might have generated more than one Device CA (for example both Local and Online Device CAs, or several Local Device CAs).
+In this case, you need to contatenate them into a single file before the upload, e.g. using this command::
+
+    cat online_ca.pem local_ca.pem >> device_ca_list.pem
+
+Your Factory PKI certificates may be uploaded to the API using this Curl command::
+
+    ROOT_CA_CRT=$(cat factory_ca.pem | awk -v ORS='\\n' '1') \
+    DEVICE_CA_CRT=$(cat device_ca_list.pem | awk -v ORS='\\n' '1') \
+    TLS_CRT=$(cat tls.pem | awk -v ORS='\\n' '1') \
+    curl "https://api.foundries.io/ota/factories/${FACTORY}/certs/" \
+        -s -X PATCH -H "Content-Type: application/json" -H "OSF-Token: $TOKEN" \
+        -d '{"root-crt": "'"${ROOT_CA_CRT}"'", "tls-crt": "'"${TLS_CRT}"'", "ca-crt": "'"${DEVICE_CA_CRT}"'"}'
+
+After this command your Factory PKI is ready to use.
+
+Registering Factory Devices Using the API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Devices are usually registered with your Factory by running the
+`lmp-device-register® <https://github.com/foundriesio/lmp-device-register/>`_ tool.
+See the :ref:`getting started guide <gs-register>` for more details on using the tool.
+
+This same task may be accomplished by generating the device client certificate using OpenSSL, and uploading it to the API.
+The device may be registered via the FoundriesFactory API or the your own registration service
+(e.g. a `factory-registration-ref® <https://github.com/foundriesio/factory-registration-ref>`_).
+
+Below steps perform device registration using OpenSSL the same way as the ``lmp-device-register``
+and ``factory-registration-reg`` tools would do.
+
+First, you need to create the following certificate configuration files on your file system::
+
+    client.cnf
+        [req]
+        prompt = no
+        distinguished_name = dn
+
+        [dn]
+        CN = <your-device-uuid>
+        OU = <your-factory-name>
+
+    client.ext:
+        keyUsage=critical, digitalSignature
+        basicConstraints=critical, clientAuth
+
+Next, use the following OpenSSL command to generate the private key for your device client certificate::
+
+    openssl ecparam -genkey -name prime256v1 | openssl ec -out client.key
+
+Then, generate a CSR for your device client certificate using the following OpenSSL command::
+
+    openssl req -new -config client.cnf -key client.key -out client.csr
+
+Finally, use OpenSSL to generate your device client certificate, and sign it by your Factory Local Device CA::
+
+    openssl x509 -req -days 3650 -sha256 -CAcreateserial -in client.csr \
+        -extfile ca.ext -CAkey local_ca.key -CA local_ca.pem -out client.pem
+
+At this point, the device should be ready to connect to your Factory Device Gateway to fetch updates.
+Optionally, you might register your device with the API using this Curl command::
+
+    DEVICE_CRT=$(cat client.pem | awk -v ORS='\\n' '1') \
+    curl "https://api.foundries.io/ota/devices/" \
+        -s -X PUT -H "Content-Type: application/json" -H "OSF-Token: $TOKEN" \
+        -d '{"client.pem": "'"${DEVICE_CRT}"'", "name": "<optional-device-name>"}'
+
+You may run the following commands to verify that your device can connect to your Factory Device Gateway::
+
+    # Run this command first to see the device gateway host name (which looks like <device-gateway-ID>.ota-lite.foundries.io):
+    openssl x509 -noout -in tls.pem -ext subjectAltName
+
+    # Then, substitute the <device-gateway-ID> in the below command with your findings.
+    curl --cacert factory_ca.pem --cert client.pem --key client.key https://<device-gateway-ID>.ota-lite.foundries.io:8443/repo/1.root.json | jq
+
+If you did not register your device with the API, it will be auto-registered on the first call to the Device Gateway.
