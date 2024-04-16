@@ -234,5 +234,82 @@ Verify the ``compose-apps-early-start`` application status:
 
 After the ``compose-apps-early-start`` service has been successfully run, ``docker ps`` will show that the preloaded apps are running.
 
+Common Advanced Scenario
+------------------------
+
+More complex workflows are common.
+For example, a Factory may have ``containers.git`` set up with multiple branches where each specifies a different set of apps.
+
+Assume you have four branches with the following application:
+
+.. code-block:: shell
+
+     # devel and experimental:
+     money-making-app - The "product"
+     debug-tools      - A compose app with some tooling used for development
+     # main: 
+     money-making-app - The "product"
+     fiotest          - A compose-app that some devices run for QA.
+     # production:
+     money-making-app - The "product"
+
+In this scenario, you can configure each Target individually to preload different applications in its image.
+
+Configure this with additional variables for ``ref_options``.
+
+.. code-block:: yaml
+
+      ref_options:
+        refs/heads/devel:
+          params:
+            APP_SHORTLIST: "<app1>,<app2>,<...>"
+            ASSEMBLE_SYSTEM_IMAGE: "<1|0>  "
+
+- ``APP_SHORTLIST`` - Overrides the list of application.
+- ``ASSEMBLE_SYSTEM_IMAGE`` - To enable|disable preloading Apps.
+
+Assume you want to produce the following types of Targets:
+
+ * ``devel`` preloaded with the ``money-making-app`` and ``debug-tools``.
+ * ``main`` and ``production`` preloaded with the ``money-making-app``.
+ * ``experiemental`` will not preload anything .
+
+Configure this in ``factory-config.yml`` with:
+
+.. code-block:: yaml
+
+      lmp:
+        tagging:
+         # Use a "production" branch, that may have some special platform
+         # features enabled/disabled. However, it still uses the containers
+         # from master for its apps:
+          refs/heads/production:
+            - tag: production
+              inherit: main
+         ...
+     
+      containers:
+        preloaded_images:
+          enabled: true
+          shortlist: "money-making-app"
+     
+        tagging:
+          # Changes to containers main create both "main" and "production" tagged Targets.
+          refs/heads/main:
+            - tag: main
+            - tag: production
+          refs/heads/devel:
+            - tag: devel
+     
+        ref_options:
+          refs/heads/devel:
+            params:
+              APP_SHORTLIST: "money-making-app,debug-tools"
+          refs/heads/experimental:
+            params:
+              # Don't produce a preloaded system image
+              ASSEMBLE_SYSTEM_IMAGE: "0"
+
+With this configuration, the Factory will produce Targets with the correct apps preloaded and enabled by default.
 
 .. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/main
