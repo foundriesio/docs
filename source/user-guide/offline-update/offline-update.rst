@@ -64,6 +64,24 @@ Use the command ``fioctl targets offline-update <target-name> <dst> <--tag <tag>
 .. note::
     In order to download all artifacts, ``fioctl`` requires token with scopes: ``targets:read``, ``ci:read``.
 
+Signing the Offline Update Bundle
+---------------------------------
+It is essential to sign the bundle using one or more `TUF targets role`_ keys.
+This ensures the authenticity of an offline update bundle during the update process on a device.
+
+If the bundle contains :ref:`CI targets <ref-ci-targets>`, it is signed by the OTA Lite service using the online TUF targets role key.
+Users do not need to take any action in this scenario.
+
+If the bundle contains :ref:`production or wave targets <ref-production-targets>`, it should be signed using one or more TUF targets offline keys.
+Use ``fioctl targets offline-update sign <bundle-path> --keys <path-to-targets-keys-file>`` command to sign the bundle.
+The number of required signatures is determined by the threshold set in the latest `TUF root role metadata`_,
+which is printed as part of the overall output of any of the ``fioctl targets offline-update`` sub-commands.
+Additionally, you can find out the signature threshold by running ``fioctl targets offline-update show <bundle-path>``,
+as well as by using ``fioctl keys tuf show-root --prod`` command (look for the targets role threshold).
+
+The "aklite-offline" utility verifies the bundle signature(s) before initiating the update process to ensure the authenticity of the bundle.
+If the signature check fails, the utility will not start the update process.
+
 Performing the Offline Update
 -----------------------------
 
@@ -126,6 +144,11 @@ The ``install`` command sets the following exit codes:
     - Provided TUF metadata is expired.
 - *14*: Installation was not performed.
     - TUF metadata not found in the provided path.
+- *15*: Installation was not performed.
+    - The bundle metadata is invalid. There are a few reasons why the metadata might be invalid:
+        1. One or more bundle signatures is/are invalid.
+        2. The bundle targets' type, whether CI or production, differs from the device's type.
+        3. The bundle targets' tag differs from the device's tag.
 - *30*: Installation was not performed.
     - Could not start a new update because there is an ongoing installation that requires finalization.
 - *50*: Installation was not performed.
@@ -311,6 +334,12 @@ Specifically, it equals the minimum value among the expiration times across all 
 
 .. _TUF metadata:
    https://theupdateframework.io/metadata/
+
+.. _TUF targets role:
+   https://theupdateframework.github.io/specification/latest/#targets
+
+.. _TUF root role metadata:
+   https://theupdateframework.github.io/specification/latest/#root
 
 .. _TUF specification:
    https://theupdateframework.github.io/specification/latest/
