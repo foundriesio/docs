@@ -422,6 +422,7 @@ redirects = {
      "reference-manual/linux/linux-building": "../../user-guide/lmp-customization/linux-building.html",
      "reference-manual/linux/linux-extending": "../../user-guide/lmp-customization/linux-extending.html",
      "reference-manual/qemu/qemu": "../../user-guide/qemu/qemu.html",
+     "reference-manual/linux/preloaded-images": "../../user-guide/containers-and-docker/container-preloading.html"
       }
 
 # Make external links open in a new tab.
