@@ -140,3 +140,8 @@ Change the device configuration to start following the ``tutorial`` tag:
 
      Changing tags from: [] -> [tutorial]
      Changing packagemanager to ostree+compose_apps
+
+.. note::
+   If the device is currently running apps associated with target tag
+   the new tag has to have at least the same set of apps available.
+   Otherwise request for changing tags will be rejected.
