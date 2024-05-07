@@ -3,7 +3,7 @@
 Customizing Over The Air Updates
 ================================
 
-By default, Secure Over The Air update (SOTA), operates as a daemon process (ref:`ref-aktualizr-lite`) which
+By default, Secure Over The Air update (SOTA), operates as a daemon process (:ref:`ref-aktualizr-lite`) which
 periodically checks for updates. If an update is available, it will automatically download, and install
 it to a device that is following the update tag.
 
