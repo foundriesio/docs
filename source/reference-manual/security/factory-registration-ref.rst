@@ -47,7 +47,7 @@ However, it does have a couple caveats:
 Registering Production Device by Default
 ----------------------------------------
 
-After the development cycle, when every device to be registered is a production device, it may be good to enable this by default in LmP.
+After the development cycle, when every device to be registered is a :term:`production device`, it may be good to enable this by default in LmP.
 
 Create or modify the ``lmp-device-register_%.bbappend`` file in the Factory's ``meta-subscriber-overrides``:
 
