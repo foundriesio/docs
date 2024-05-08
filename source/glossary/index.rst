@@ -219,7 +219,7 @@ Terminology
      * :ref:`Account Management, Team Based Access and TUF Keys <team-based-access-tuf>`
      * :ref:`Custom CI User Guide, TUF Targets <ug-custom-ci-for-apps>`
      * :ref:`CI Targets Reference Manual, TUF Targets; TUF Metadata <ref-ci-targets>`
-     * :ref:`Offline Updates, TUF Metadata; TUF Keys; TUF Repo; <ug-offline-update>`
+     * :ref:`Offline Updates, TUF Metadata; TUF Keys; TUF Repo <ug-offline-update>`
      * :ref:`Reference Manual, Offline Factory TUF Keys <ref-offline-keys>`
      * :ref:`Crypto Key Summary, TUF Signing Keys <ff-crypto-key-summary>`
      * :ref:`Production Targets, TUF <ref-production-targets>`
@@ -236,3 +236,102 @@ Terminology
 
    X.509
      An International Telecommunication Union (ITU) standard defining the format of public key certificates.
+
+   Device Fleet
+     The set of all devices in a Factory.
+
+     * :ref:`OTA Reference Manual, Fleet Wide Configuration <ref-configuring-devices>`
+     * :ref:`OTA Production Devices Reference Manual, Fleet Production Targets <ref-production-targets>`
+     * :ref:`Revoke Secure Boot Keys on i.MX, Revoke a Key for Devices in a Fleet <ref-revoke-imx-keys>`
+
+   Device Tag
+     Instructs the Device Gateway to return the corresponding set of TUF metadata.
+     A tag (string value) gets set in a device config.
+
+     * :ref:`OTA Reference manual, Device Tags<ref-device-tags>`
+
+   Fioconfig
+     Simple daemon designed to manage configuration data for an embedded device.
+     Based on a customized OTA Community Edition device-gateway endpoint.
+
+     * :ref:`OTA Reference Manual, Fioconfig <ref-fioconfig>`
+     * `Fioconfig on GitHub <https://github.com/foundriesio/fioconfig>`_
+
+   ``lmp-device-register``
+     Tool for managing device registration via the Foundries.io REST API.
+
+     * :ref:`Getting Started, Registering Your Device <gs-register>`
+     * :ref:`Device Gateway PKI User Guide, Online Device Certificate Using lmp-device-register <ref-device-gateway-pki-details>`
+     * :ref:`Restorable Apps Reference Manual, extending list of Restorable Apps  Using lmp-device-register <ug-restorable-apps>`
+
+   OTA Update
+   Over-The-Air Update
+   OTA
+      Updating firmware and software for a system/device remotely.
+      The update on a device is triggered remotely and the data fetched from the OTA service via internet.
+
+      * :ref:`Reference Manual, OTA <ref-ota>`
+      * :ref:`Security Reference Manual, OTA <ref-ota-security>`
+
+   OSTree
+      OSTree is both a shared library and suite of command line tools.
+      It combines a “git-like” model for committing and downloading bootable filesystem trees,
+      along with a layer for deploying them and managing the bootloader configuration.
+
+      * :ref:`Custom CI for RootFS User Guide, OSTree Repo <ug-custom-ci-for-rootfs>`
+      * :ref:`Fioctl User Guide, OSTree Hash <ug-fioctl>`
+
+   Production Device
+      A device with a flag in its certificate which enables it to receive production updates.
+
+      * :ref:`Factory Registration Reference Manual, Registering Proudction Devices by Default <ref-factory-registration-ref>`
+      * :ref:`Reference Manual, Production Targets for Production Devices <ref-production-targets>`
+
+   Production Targets
+      :term:`TUF` Targets delivered to production devices during an :term:`OTA Update`.
+
+      * :ref:`Reference Manual, Production Targets <ref-production-targets>`
+      * :ref:`Offline Update Reference Manual, Production Targets <ref-offline-keys>`
+      * :ref:`OTA Reference Manual, CI Targets <ref-ci-targets>`
+    
+   Rollback
+      The process of an online (OTA) or offline update applying a software or firmware version that was running on a device before a failed update.
+
+      * :ref:`Reference Manual, Update Rollback <ref-update-rollback>`
+      * :ref:`Offline Update User Guide, Rollback Actions and Error Codes <ug-offline-update>`
+      * :ref:`Security Reference Manual, Anti-Rollback Protection <ref-anti-rollback-protection>`
+
+   SOTA
+      Secure-Over-The-Air. See :term:`OTA`.
+
+      * :ref:`User Guide, Custom SOTA Client <ug-custom-sota-client>`
+      * :ref:`Factory Reset Reference Manual, Keeping SOTA <ref-factory-device-reset>`
+
+
+   Static Deltas
+      One or more compressed binary files containing a diff between two filesystem trees.
+      Stored in an ostree repo and represented by a commit hash.
+
+      * :ref:`Reference Manual, Static Deltas <ref-static-deltas>`
+
+   Update Agent
+      Software that runs on a device and performs OTA updates.
+
+      * :ref:`Custom Sota Client User Guide, Custom Update Agent <ug-custom-sota-client>`
+   
+   Wave
+      The FoundriesFactory method for adding a specific CI Targets version to production Targets.
+      Provisions it to production devices in a controlled way.
+
+      * :ref:`Production Targets Reference Manual, Wave <ref-production-targets>`
+   
+   Wave Rollout
+      An action of rolling out an OTA update associated with a Wave to a subset of production devices.
+
+   Wave Tag
+      A tag designating production devices to which a given Wave is being provisioned.
+
+   CI Targets
+      TUF Targets created during the CI builds and delivered to non-production devices during an OTA update.
+
+      * :ref:`Reference Manual, CI Targets <ref-ci-targets>`
