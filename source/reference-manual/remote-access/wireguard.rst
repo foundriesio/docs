@@ -60,6 +60,10 @@ It will look something like::
     Creating systemd service factory-vpn-andy-corp.service
     Service is running. Logs can be viewed with: journalctl -fu factory-vpn-andy-corp.service
 
+You will create two tokens.
+Token 1, a short-lived token with ``devices:read-update`` to update factory.
+Token 2, long-term token with ``devices:read``.
+
 The daemon keeps track of connected devices by putting entries into ``/etc/hosts``.
 This is so they can be easily referenced from the server.
 
