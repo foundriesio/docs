@@ -292,6 +292,13 @@ Optionally, use a custom version of ci-scripts_ to perform CI builds.
 
     **Default:** master
 
+Variables
+^^^^^^^^^
+
+* **DISABLE_SBOM**:
+               With this variable set to ``1``, container CI builds will skip the SBOM generation step.
+               Reference: :ref:`sbom`.
+
 
 .. # define a hard line break for HTML
 .. |br| raw:: html

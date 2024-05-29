@@ -44,6 +44,8 @@ Syft Artifacts
 Container builds produce an SPDX file for each container/architecture.
 This will look like ``hub.foundries.io/<FACTORY>/shellhttpd/arm64.sdpx.json``.
 
+Customers may disable generating SBOMs for containers by setting the environment variable ``DISABLE_SBOM=1`` in their :ref:`ref-factory-definition`.
+
 Working With SBOMs
 ------------------
 
