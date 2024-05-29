@@ -27,8 +27,14 @@ Prerequisites
         containers:
             ...
             offline:
-                enabled: <true | false>
-                app_shortlist: <comma separated list of apps> # all target apps are fetched if not specified or empty
+                enabled: <true | false> # `false` implies that apps are disabled for an offline update
+                app_shortlist: <comma separated list of apps> # all target apps are fetched if not specified or empty; if absent then the image preloading app shortlist is applied if set
+
+            ref_options:
+                refs/heads/<branch>:
+                    params:
+                        FETCH_APPS: <"1" | "0"> # overrides value set in `containers.offline.enabled` for a given branch
+                        FETCH_APPS_SHORTLIST: <comma separated list of apps> # overrides value set in `containers.offline.app_shortlist` for a given branch
 
 
 3. Ensure that :ref:`The Update Framework (TUF) keys are taken offline <ref-offline-keys>`.
