@@ -296,7 +296,7 @@ Variables
 ^^^^^^^^^
 
 * **DISABLE_SBOM**:
-               With this variable set to ``1``, container CI builds will skip the SBOM generation step.
+               With this variable set to ``1``, container CI builds will skip the Software Bill Of Materials (SBOM) generation step.
                Reference: :ref:`sbom`.
 
 
