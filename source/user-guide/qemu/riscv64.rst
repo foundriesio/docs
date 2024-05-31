@@ -1,7 +1,7 @@
 .. _ref-rm_qemu_riscv64:
 
-riscv64
-=======
+``riscv64``
+===========
 
 .. include:: riscv64-substitutions.inc
 .. include:: qemu-instructions.template
