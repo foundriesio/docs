@@ -1,8 +1,8 @@
 .. _qemu-x86_64:
 
 
-x86_64
-======
+``x86_64``
+==========
 
 .. include:: x86_64-substitutions.inc
 .. include:: qemu-instructions.template

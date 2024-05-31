@@ -1,9 +1,13 @@
 .. _ref-rm_qemu_arm64:
 
-arm64
-=====
+``arm64``
+=========
 
 .. include:: arm64-substitutions.inc
+
+.. important::
+     If using QEMU versions < 9.0, replace ``-machine acpi=off`` with ``-no-acpi``
+
 .. include:: qemu-instructions.template
 
 QEMU CLI
@@ -11,7 +15,7 @@ QEMU CLI
 
 .. code-block::
 
-    qemu-system-aarch64 -m 1024 -cpu cortex-a57 -no-acpi -bios flash.bin \
+    qemu-system-aarch64 -m 1024 -cpu cortex-a57 -machine acpi=off -bios flash.bin \
        -device virtio-net-device,netdev=net0,mac=52:54:00:12:35:02 -device virtio-serial-device \
        -drive id=disk0,file=lmp-factory-image-qemuarm64-secureboot.wic,if=none,format=raw \
        -device virtio-blk-device,drive=disk0 -netdev user,id=net0,hostfwd=tcp::2222-:22 \
@@ -19,7 +23,9 @@ QEMU CLI
        -chardev null,id=virtcon -machine virt,secure=on -nographic
 
 .. note::
-    The |FIRMWARE_BLOB| artifact can typically be found in the same location where you downloaded the ``.wic.gz`` image. If you are unable to locate |FIRMWARE_BLOB|, consider checking for other artifacts such as; ``QEMU_EFI.fd`` and ``QEMU_VARS.fd``. These can be used to boot the image with the ``-drive`` flag.
+    A |FIRMWARE_BLOB| artifact is usally in the same location where you downloaded the ``.wic.gz`` image.
+    If you are unable to locate |FIRMWARE_BLOB|, consider checking for other artifacts such as ``QEMU_EFI.fd`` and ``QEMU_VARS.fd``.
+    Use these to boot the image with the ``-drive`` flag.
     Example:
 
     .. code-block::

@@ -7,7 +7,7 @@ Replace the ``<factory>`` placeholder below with the name of your Factory.
 
 #. Download the necessary files from ``https://app.foundries.io/factories/<factory>/targets``:
 
-     a. Click the latest Target with the :guilabel:`platform-devel` trigger.
+     a. Click the latest Target.
 
           .. figure:: /_static/qemu/generic-steps-1.png
              :width: 300

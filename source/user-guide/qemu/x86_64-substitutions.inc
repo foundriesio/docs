@@ -14,12 +14,12 @@
      # Download OVMF UEFI Firmware
      fioctl targets artifacts <target_number> |MACHINE|/|FIRMWARE_BLOB| > |FIRMWARE_BLOB|
      # If resizing disk image, download the wic.qcow2 file. This is different than the ovmf.secboot.qcow2!
-     fioctl targets artifacts <target_number> |MACHINE|/other/lmp-factory-image-|MACHINE|.wic.qcow2 > lmp-factory-image-|MACHINE|.wic.qcow2
+     fioctl targets artifacts <target_number> |MACHINE|/other/lmp-factory-image-|MACHINE|.wic.qcow2 > |MACHINE|\_device1.qcow2
 
 .. |QEMU_COW| replace::
 
      qemu-system-x86_64 -m 1024 -cpu kvm64 -enable-kvm -serial mon:stdio -serial null \\
-     -drive file=lmp-factory-image-intel-corei7-64.wic.qcow2,format=qcow2,if=none,id=hd \\
+     -drive file=|MACHINE|\_device1.qcow2,format=qcow2,if=none,id=hd \\
      -device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd -device virtio-rng-pci \\
      -drive if=pflash,format=qcow2,file=ovmf.secboot.qcow2 \\
      -net user,hostfwd=tcp::22223-:22 -net nic -nographic
