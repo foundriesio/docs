@@ -167,6 +167,8 @@ The ``install`` command sets the following exit codes:
     - Reboot is required to complete installation. After reboot ``aklite-offline run`` must be invoked.
 - *101*: Installation succeeded.
     - Restart of dockerd service is required to complete installation, e.g. ``systemctl restart docker``. After the restart ``aklite-offline run`` must be invoked.
+- *102*: Downgrade attempt.
+    - The Target to be installed has a version lower than the one running. Use the ``--force`` option to force its installation.
 
 The ``run`` command sets the following exit codes:
 
