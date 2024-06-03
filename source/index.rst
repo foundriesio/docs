@@ -39,6 +39,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
 
    user-guide/fioctl/index
    user-guide/qemu/qemu
+   user-guide/personas/personas
    user-guide/account-management/account-management
    user-guide/ip-protection/ip-protection
    user-guide/custom-ci/custom-ci
