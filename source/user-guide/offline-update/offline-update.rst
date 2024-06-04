@@ -105,7 +105,7 @@ Use the ``aklite-offline`` CLI utility to perform an offline update.
 
 3. Reboot a device after running ``aklite-offline run [--config <config dir or file>]`` command if:
 
-    a. code 100: Apps failed to start after update, you must reboot a device to complete the rollback;
+    a. code 100: Apps failed to start after update, you must reboot the device and re-execute ``aklite-offline run`` to complete the rollback;
     b. code 5: the update includes a boot firmware, you can optionally reboot a device to finalize the boot firmware upgrade.
 
 Usage Details
