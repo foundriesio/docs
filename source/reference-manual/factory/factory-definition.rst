@@ -206,10 +206,6 @@ Variables
 * **DISTRO**:
                Defines the distro being used.
                Reference: :ref:`ref-linux-distro`.
-* **SSTATE_CACHE_MIRROR**:
-               Defaults to the directory mounted on the SDK build container.
-               If this directory exists, it is used as the source for the shared state cache (``sstate-cache``) mirror.
-               When the directory does not exist, the ``lmp-manifest`` value is used (currently points to the public HTTP shared state cache).
 
 .. _def-containers:
 
