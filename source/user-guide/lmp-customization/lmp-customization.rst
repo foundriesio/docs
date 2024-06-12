@@ -1,59 +1,58 @@
 .. _lmp-customization:
 
 LmP Customization
-======================
+=================
 
-This page covers common ways that the Linux® microPlatform (LmP) can be modified.
-This includes kernel options, startup services, user and group configuration, 
-and other options related to the platform build. 
+This page covers common ways to modify the Linux® microPlatform (LmP).
+This includes kernel options, startup services, user and group configuration, and other options related to the platform build. 
 
 .. seealso::
 
    The tutorial for :ref:`tutorial-customizing-the-platform` covers adding a custom recipe service.
-   This helps introduces core concepts and steps related to customizing LmP, and is a good place to start.
+   This is a good place to start, as it introduces concepts and steps related to customizing LmP.
 
 .. _ref-customizing-the-distro:
 
 Customizing the Distro
 -----------------------
 
-This section shows how to build new targets with other Distro. Following an example on
-how to build a new targets with :ref:`LmP XWayland <ref-lmp-wayland-xwayland>`.
+This section shows how to build new Targets with a different distro.
+The following is an example on how to build a new Target with :ref:`LmP XWayland <ref-lmp-wayland-xwayland>`.
 
 1. Update your factory config:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-    git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
-    cd ci-scripts
-    vi factory-config.yml
+       git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
+       cd ci-scripts
+       vi factory-config.yml
 
 2. Add the distro under ``LmP``:
 
-.. code-block:: yaml
+   .. code-block:: yaml
 
-    worker_tag: "amd64-partner-aws"
-    params:
-        IMAGE: lmp-factory-image
-        SSTATE_CACHE_MIRROR: ""
-        DOCKER_COMPOSE_APP: "1"
-        DISTRO: "lmp-xwayland"
+       worker_tag: "amd64-partner-aws"
+       params:
+          IMAGE: lmp-factory-image
+          DOCKER_COMPOSE_APP: "1"
+          DISTRO: "lmp-xwayland"
 
 3. Commit and push the changes:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-    git add .
-    git commit -m "Adding lmp-xwayland as base for my factory"
-    git push
+       git add .
+       git commit -m "Adding lmp-xwayland as base for my factory"
+       git push
 
-4. Changes into the ``ci-script`` repository don't auto-trigger builds. Push a commit in ``lmp-manifest`` or ``meta-subscriber-overrides``:
+4. Changes to the ``ci-script`` repository do not auto-trigger builds.
+   To do so, push a commit in ``lmp-manifest`` or ``meta-subscriber-overrides``:
 
-.. code-block:: shell
+   .. code-block:: shell
 
-    git clone https://source.foundries.io/factories/<factory>/lmp-manifest.git
-    cd lmp-manifest
-    git commit -m "trigger build" --allow-empty
+       git clone https://source.foundries.io/factories/<factory>/lmp-manifest.git
+       cd lmp-manifest
+       git commit -m "trigger build" --allow-empty
 
 Kernel Command Line Arguments
 -----------------------------
@@ -63,8 +62,8 @@ The two options available are ``lmp``  (default) and ``lmp-base``.
 
 See the :ref:`ref-linux-distro` page for an overview of the two options.
 
-Distro: lmp
-^^^^^^^^^^^
+Distro: ``lmp``
+^^^^^^^^^^^^^^^
 
 Extend the kernel command line by setting ``OSTREE_KERNEL_ARGS`` in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``::
 
@@ -73,12 +72,13 @@ Extend the kernel command line by setting ``OSTREE_KERNEL_ARGS`` in ``meta-subsc
 Make sure you set the correct ``<machine>`` and other variables as needed.
 
 .. note::
+
     The default is ``OSTREE_KERNEL_ARGS_COMMON ?= "root=LABEL=otaroot rootfstype=ext4"``.
-    This variable is responsible for setting a valid ``root`` label for the device.
+    This variable sets a valid ``root`` label for the device.
     It is not necessary on devices specifying the partition path directly with ``root=``.
 
-Distro: lmp-base
-^^^^^^^^^^^^^^^^
+Distro: ``lmp-base``
+^^^^^^^^^^^^^^^^^^^^
 
 Extend the kernel command line by appending your commands to ``bootcmd_args`` in ``meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-base-scr/<machine>/uEnv.txt.in``.
 For example::
@@ -380,8 +380,8 @@ Then, enable ``ntp`` in ``meta-subscriber-overrides/recipes-samples/images/lmp-f
 
         DEF_FALLBACK_NTP_SERVERS += " <new-server>"
 
-Installing Files Under var
---------------------------
+Installing Files Under ``var``
+------------------------------
 
 Anything created under ``/var`` gets removed when creating the OSTree deployment. For this reason, a recipe can only install content under it using `tmpfiles`_.
 
