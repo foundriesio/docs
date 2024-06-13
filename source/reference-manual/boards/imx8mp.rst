@@ -65,7 +65,7 @@ i.MX 8M Plus Evaluation Kit
     :ref:`ref-security`  details the required background for secure boot.
 
 .. |secure_boot_pre_flash_note| replace:: For instructions on how to sign the
-     required images before flashing them to the board with secure boot enabled,
-     see:ref:`ref-secure-machines`
+    required images before flashing them to the board with secure boot enabled,
+    see :ref:`ref-secure-machines`
 
 .. include:: imx-common-board.inc
