@@ -64,7 +64,7 @@ i.MX 6ULL Evaluation Kit
 
 .. |secure_boot_pre_flash_note| replace:: For instructions on how to sign the
      required images before flashing them to the board with secure boot enabled,
-     see:ref:`ref-secure-machines`.
+     see :ref:`ref-secure-machines`.
 
 Pre-Preparation
 ---------------
