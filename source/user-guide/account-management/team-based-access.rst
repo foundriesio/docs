@@ -149,3 +149,6 @@ With Fioctl® v0.35 and newer, if someone makes changes to TUF root, others will
 This is to prevent accidental eraser of the TUF keys ownership information.
 
 
+.. seealso::
+   :ref:`ref-troubleshooting_user-permissions`
+
