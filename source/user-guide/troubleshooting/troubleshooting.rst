@@ -634,6 +634,47 @@ Rather than including ``curl`` on the host device, a simple approach is to run i
     / # apk add curl
     / # curl
 
+.. _ref-troubleshooting_user-permissions:
+
+Debugging User Permissions
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the Factory has :ref:`Teams <ref-team-based-access>` defined, user permissions are defined by the teams they are part of.
+
+This shows steps to help troubleshooting unexpected permission problems.
+
+* Get user ID:
+
+.. prompt::
+
+   $ fioctl users
+
+* Get user information:
+
+.. prompt::
+
+   $ fioctl users <ID>
+   ID                        NAME                  ROLE
+   --                        ----                  ----
+   XXXXXXXXXXXXXXXXXXXXXXXX  User Name             User Role
+
+   TEAMS
+   -----
+
+   EFFECTIVE SCOPES
+   ----------------
+
+This returns the combination of scopes allowed to this particular user based on their teams.
+
+If this does not have the expected scopes, the Factory Owner/Admin may need to add the user to a proper Team with the wanted scopes.
+
+* If this returns the expected scopes, verify if the proper scopes are also set for the private token set at https://app.foundries.io/settings/credentials/.
+
+.. tip::
+
+   It is possible to add scopes for an existing token.
+   After editing a token, refresh the fioctl access with ``fioctl login --refresh-access-token``.
+
 Updates To etc
 ^^^^^^^^^^^^^^
 
