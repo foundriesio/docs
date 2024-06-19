@@ -668,12 +668,14 @@ This returns the combination of scopes allowed to this particular user based on 
 
 If this does not have the expected scopes, the Factory Owner/Admin may need to add the user to a proper Team with the wanted scopes.
 
-* If this returns the expected scopes, verify if the proper scopes are also set for the private token set at https://app.foundries.io/settings/credentials/.
+* If this returns the expected scopes, verify if the proper scopes are also set for the private token set at https://app.foundries.io/settings/credentials/. You may also verify the credential expiration date.
 
 .. tip::
 
    It is possible to add scopes for an existing token.
    After editing a token, refresh the fioctl access with ``fioctl login --refresh-access-token``.
+
+* Doing ``fioctl logout`` then ``fioctl login`` can recover from cases where the credentials are badly set.
 
 Updates To etc
 ^^^^^^^^^^^^^^
