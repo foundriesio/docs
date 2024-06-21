@@ -97,11 +97,12 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    glossary/index
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Release Notes
    :name: sec-release-notes
 
-   release-notes/release-notes
+   v93 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v93.md>
+   v92 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v92.md>
 
 .. ifconfig:: todo_include_todos is True
 
