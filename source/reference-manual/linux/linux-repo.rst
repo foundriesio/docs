@@ -8,7 +8,7 @@ This section describes `Repo`_ and how the Linux® microPlatform uses it.
 A Linux microPlatform (LmP) build tree installation contains multiple Git repositories.
 These are managed by a *manifest file* in a *Repo manifest repository*.
 
-Your Factory's  manifest repository's name is ``lmp-manifest``.
+Your Factory's manifest repository's name is ``lmp-manifest``.
 In :ref:`ref-linux-building`, `repo init`_ is given the URL for the manifest repository.
 
 The manifest repository contains a manifest file, named ``default.xml``.

@@ -5,7 +5,7 @@ Emulation With QEMU
 
 .. note::
 
-  This tutorial is designed to assist you in getting started with using QEMU to emulate devices on your desktop.
+  This tutorial is designed to assist you in getting started with using :term:`QEMU` to emulate devices on your desktop.
   Please note that we are selecting a specific machine to establish an environment for experimenting with FoundriesFactory®.
   This approach will enable you to engage with subsequent tutorials and enhance your skills.
 

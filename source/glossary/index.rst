@@ -12,7 +12,8 @@ Terminology
 
    Foundries.io
      Provider of FoundriesFactory® DevSecOps platform and the :term:`Linux microPlatform`\™ OS.
-     `Website <https://foundries.io>`_.
+     
+     * `Website <https://foundries.io>`_
 
    Factory
      An instance of :term:`FoundriesFactory` tailored to your device and needs.
@@ -78,7 +79,7 @@ Terminology
      You can view the summary with ``fioctl targets list``, or view in full with ``fioctl targets list --raw``
 
    ``MACHINE``
-     The machine name, as configured in the Yocto Project meta-layer.
+     The machine name, as configured in the :term:`Yocto Project` meta-layer.
      Officially supported in FoundriesFactory if listed in :ref:`ref-linux-supported`.
    
    CA
@@ -197,7 +198,8 @@ Terminology
    TLS
    Transport Layer Security
      Cryptographic protocol for securing communication within a network.
-     See-also: :term:`mTLS`
+     
+     * See-also: :term:`mTLS`
 
    TLS Handshake
      The procedure belonging to the :term:`TLS` protocol where the client and server agree on how to exchange information.
@@ -335,3 +337,205 @@ Terminology
       TUF Targets created during the CI builds and delivered to non-production devices during an OTA update.
 
       * :ref:`Reference Manual, CI Targets <ref-ci-targets>`
+  
+   Bitbake
+      Similar in purpose to Make. Part of :term:`Open Embedded`/:term:`Yocto Project`.
+      It *bakes* :term:`recipes <Recipe>` into packages/images.
+
+      * :ref:`Custom CI User Guide, Bitbake Dev Container <ug-custom-ci-for-rootfs>`
+      * :ref:`LmP Customization User Guide, Building from Source <ref-linux-building>`
+      * :ref:`LmP Customization-extending User Guide, bitbake-getvar <ref-adding-packages-image>`
+      * :ref:`Updating the LmP Core Reference Manual, Using bitbake -e <ref-linux-update>`
+
+   BSP
+   Board Support Package
+      Software/data needed for specific hardware such as firmware and device drivers.
+      May come from a vendor or the community.
+
+      Within the Yocto Project, a "meta-bsp" :term:`layer` provides a BSP.
+      These generally follow the convention of ``meta-<board-name>``.
+      You can read more about BSP layers in the Yocto Project's `BSP developer guide <https://docs.yoctoproject.org/bsp-guide/bsp.html>`_
+
+      * :ref:`FoundriesFactory Porting Guide <ref-pg>`
+      * :ref:`Linux Layers Reference Manual, LmP BSP Layers <ref-linux-layers-meta-lmp-bsp-layers>`
+
+   Distro
+   Distribution
+      A collection of tools/files/software along with a Linux Kernel,
+      which form an Operating System to meet a given use case.
+      FoundriesFactory provides the :term:`LmP` distro.
+      
+      In the context of the Yocto Project,
+      it also refers to the *file* containing the description of what the Linux Distribution should be.
+      The variable for setting the distribution is ``DISTRO``, which defaults to ``lmp``.
+
+      * :ref:`Reference Manual, LmP Distros <ref-linux-distro>`
+      * :ref:`LmP Customization Reference Manual, Customizing the Distro <ref-customizing-the-distro>`
+      * :ref:`Factory Definition Reference Manual, LmP Distro variable <ref-factory-definition>`
+
+   Layer
+      Openembedded/Yocto Project Layers.
+      A layer is a collection of related recipes/files.
+      Generally layers have the prefix `meta-`, such as  `meta-lmp`
+
+      * :ref:`Linux Layers Reference Manual <ref-linux-layers>`
+      * `Yocto Project: Understanding and Creating Layers <https://docs.yoctoproject.org/dev-manual/layers.html>`_
+
+   Open Embedded
+   OpenEmbedded-core
+      Build system used by the Yocto Project.
+
+      OpenEmbedded-core —or OE-Core— is the :term:`layer` containing the core Open Embedded metadata.
+
+      * `Open Embedded Website <https://www.openembedded.org/wiki/Main_Page>`_
+
+   Poky
+      Reference distro for the Yocto Project.
+      Meant for illustrative uses, not for Production purposes.
+
+   QEMU
+      **Q**\uick **Emu**\lator.
+      Open Source emulator covering common architectures.
+      FoundriesFactory supports the QEMU machines covered in our User-Guide.
+
+      * :ref:`User-Guide, QEMU <ref-qemu>`
+      * :ref:`Getting Started, Emulation with QEMU <gs-emulation-with-qemu>`
+      * `Official QEMU Documentation <https://www.qemu.org/docs/master/>`_
+
+   Recipe
+      A central Yocto Project concept,
+      recipes are the instructions and data for a software package read by Bitbake.
+      
+      You can identify recipes by the ``.bb``  filename extension.  
+      A recipe can be modified/extended by using a ``.bbappend`` file.
+
+      A collection of related recipes is a :term:`layer`.
+
+      * :ref:`Customizing the Platform Tutorial, Creating a Recipe <tutorial-customizing-the-platform>`
+      * `Yocto Project Documentation: Understanding and Creating Layers <https://docs.yoctoproject.org/dev-manual/layers.html#understanding-and-creating-layers>`_
+      * `Yocto Project Documentation: Modifiying an Existing Recipe <https://docs.yoctoproject.org/kernel-dev/common.html#modifying-an-existing-recipe>`_
+
+   SDK
+   Software Development Kit
+      The Yocto Project Standard SDK is used for cross-development toolchain/libraries.
+      Generated for a specific image.
+
+      * :ref:`Reference Manual, Building the Yocto Project Standard SDK <ref-building-sdk>`
+      * `Yocto Project Documentation: Standard SDK Manual <https://docs.yoctoproject.org/sdk-manual/index.html>`_
+
+   Wic
+      Utility for creating partitioned OpenEmbedded :term:`images <Image>` (.wic)
+
+      * :ref:`Reference Manual, Wic image Installer <ref-linux-wic-installer>`
+      * `Yocto Project Documentation: Creating Partitioned Images Using Wic <https://docs.yoctoproject.org/dev/dev-manual/wic.html#creating-partitioned-images-using-wic>`_
+
+   WireGuard
+      Open Source protocol and software for VPNs.
+
+      * :ref:`WireGuard Reference Manual, FoundriesFactory WireGuard Setup <ref-wireguard>`
+      * `Official WireGuard Quick Start <https://www.wireguard.com/quickstart/>`_
+
+   Yocto Project
+      A collection of tools and processes for Embedded Linux creation and development.
+      Familiarity with the Yocto Project will aid with customizing the LmP.
+      The official documentation provides in-depth details and guides.
+
+      * `The Yocto Project Website <https://www.yoctoproject.org/>`_
+      * :ref:`Building From Source User Guide, Using The Yocto Project locally <ref-linux-building>`
+
+   Image
+      The final artifact of an Yocto Project build and appears in several contexts.
+      It can be the artifact resultant of an CI build, or a local build.
+      It can be a bootable image or part of an update.
+
+      * :ref:`Getting started: Flashing Your Device, Downloading and Flashing Factory Image <gs-flash-device>`
+      * :ref:`Custom CI User Guide, Creating System Image without CI <ug-custom-ci-for-rootfs>`
+      * :ref:`Building Linux User Guide, Building and Installing an Image Locally <ref-linux-building>`
+      
+   Rootfs
+      The root file system is the collection of all the files and directories in the image. In this context, it is created by the Yocto Project tools and can be extended during the first build. It can be read-only or not.
+      
+      * `Kernel rootfs Documentation <https://www.kernel.org/doc/Documentation/filesystems/ramfs-rootfs-initramfs.txt>`_
+      * :ref:`Custom CI for RootFS User Guide <ug-custom-ci-for-rootfs>`
+      * :ref:`NFS Boot Reference Manual, <howto-linux-nfs-boot>`
+      
+      Also see :term:`ostree`.
+   
+   WKS
+      OpenEmbdded kickstart file. Used to create the :term:`Wic` partitioned image.
+
+      * `OpenEmbdded Kickstart Reference <https://docs.yoctoproject.org/ref-manual/kickstart.html>`_
+
+   Machine
+      In the context of the Yocto Project/Open Embedded, the device target to build an image for.
+      Defined by the variable ``MACHINE`` in ``local.conf``  within a Yocto Project build directory,
+      via a script/configuration tool.
+
+      For LmP, the target device to build an image for gets defined within the Factory Definition.
+
+      * :ref:`Building From Source Reference Manual, Setup Work Environment; MACHINE target <ref-linux-building-install>`
+      * :ref:`Factory Definition Reference Manual, Machine Name <def-lmp>`
+
+   UUU
+   Universal Update Utility 
+      A manufacturing tool designed to flash i.MX boards with a given image.
+      :term:`mfgtools` uses configuration files with the ``.uuu`` extension. 
+
+      * `UUU GitHub Repository <https://github.com/nxp-imx/mfgtools>`_ 
+      * :ref:`i.MX HABv4 Secure Boot Security Reference Manual, Programming the A7 fuses with UUU <ref-secure-boot-imx-habv4>`
+      * :ref:`i.MX AHAB Secure Boot Security Reference Manual, Closing the board Using UUU <ref-secure-boot-imx-ahab>`
+      
+   SE050
+      The EdgeLock SE05x Secure Element.
+
+      * :ref:`ref-secure-element`
+      * :ref:`Security Reference Manual, SE05x Enablement <ref-security_se05x_enablement>`
+
+   EVK
+      Evaluation kit.
+      A board/hardware used for evaluating and developing before production.
+
+   target
+      The name of resultant CI build.
+      The kind of artifact generated by the CI build depends on which build is it.
+      In the context of the Yocto Project, the machine/architecture artifacts to build for.
+
+   Repo
+      Tool for projects with multiple git repositories.
+
+      * :ref:`Repo Source Control Tool, Repo and the LmP <ref-linux-repo>`
+      * :ref:`Building Linux User Guide, Downloading Layers with Repo <ref-linux-building>`
+      * `Official Homepage for Repo <https://gerrit.googlesource.com/git-repo>`_
+
+      Note that "repo" is also used as shorthand for repository.
+
+   Manifest
+      A  manifest repository containing a manifest file for the :term:`Repo tool <Repo>`
+      The manifest file is ``default.xml`` and contains the other repositories used.
+      The LmP manifest repository is ``lmp-manifest.git`` which is part of all Factories.
+
+      * :ref:`Repo Source Control Tool, Repo and the LmP <ref-linux-repo>`
+   
+   ``FIO``
+      Foundries.io Git development tags used for upstream patches.
+
+      * :ref:`ref-development-tags`
+
+   Fragments
+      Kernel configuration fragments are Linux kernel configuration options outside a Linux Kernel ``.config``.
+      These get applied by the OpenEmbedded build system.
+
+      * :ref:`LmP Linux Kernel Reference Manual, LmP Kernel Configuration Fragments <ref-linux-fragments>`
+
+   RPMB
+      Replay Protected Memory Block.
+      Used as secure storage.
+
+      * :ref:`Machines with Secure Aspects Enabled Reference Manual, Accessing RPMB Secure Storage <ref-secure-machines>`
+   
+   mfgtools 
+      Freescale/NXP® I.MX Chip tools.
+      Also see :term:`UUU`.
+      
+      * `mfgtools GitHub Repository <https://github.com/nxp-imx/mfgtools>`_
+

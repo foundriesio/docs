@@ -92,7 +92,7 @@ The result of ``git status`` should look like::
           new file:   recipes-support/mfgtool-files/mfgtool-files/<machine>/fuse.uuu
           new file:   recipes-support/mfgtool-files/mfgtool-files_%.bbappend
 
-The changes add the UUU scripts to the ``mfgtool-files`` artifacts of next targets.
+The changes add the :term:`UUU` scripts to the ``mfgtool-files`` artifacts of next targets.
 Run the ``fuse.uuu`` and ``close.uuu`` to fuse the custom keys and close the board, respectively.
 
 .. warning::

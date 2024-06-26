@@ -124,7 +124,7 @@ For the M4 fuses it would look like this::
 	=> fuse prog 6 6 0xA71BBE78
 	=> fuse prog 6 7 0xA3AD024A
 
-Alternatively, you can use the kernel to program the A7 fuses via SDP by using NXP's Universal Update Utility.
+Alternatively, you can use the kernel to program the A7 fuses via SDP by using NXP's :term:`Universal Update Utility`.
 This is shown in the following script (replace ``@@MACHINE@@`` with your machine name)::
 
 	uuu_version 1.0.1

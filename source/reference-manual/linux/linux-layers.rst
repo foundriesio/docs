@@ -4,7 +4,7 @@ OpenEmbedded / Yocto Project Layers
 ===================================
 
 The Linux® microPlatform (LmP) is composed of several OpenEmbedded and Yocto Project layers,
-including the core build system, distribution, images, and Board Support Packages (BSPs).
+including the core build system, distribution, images, and :term:`Board Support Packages <Board Support Package>` (BSPs).
 
 .. _ref-linux-layers-meta-lmp-base-layers:
 
@@ -84,7 +84,7 @@ You can find the default set of packages used by the image via the ``CORE_IMAGE_
 The meta-lmp-bsp Layer
 --------------------------------------
 
-``meta-lmp-bsp`` provides the kernel recipes, u-boot configuration fragments, WIC files, and so on for supported targets.
+``meta-lmp-bsp`` provides the kernel recipes, u-boot configuration fragments, :term:`WIC` files, and so on for supported :term:`targets <target>`.
 
 While primarily used as an extension of the vendor BSP layers (e.g. meta-freescale),
 it can also handle board configuration for cases where the vendor layer is not easily compatible with LmP (e.g. a layer based on an older Yocto Project release).

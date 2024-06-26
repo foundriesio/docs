@@ -16,4 +16,4 @@ The suggestion here is to prefer the machine from the SoC vendor.
 
 The SoC vendor is usually present on the tag ``@NAME`` in the machine configuration file.
 
-In this document, there are several examples where i.MX8M Mini EVK is used as a reference board.
+In this document, there are several examples where i.MX8M Mini :term:`EVK` is used as a reference board.

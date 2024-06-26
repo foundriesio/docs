@@ -72,7 +72,7 @@ tuf:
 lmp
 ---
 
-Configures the LmP aspects of the Factory, including images, distro, and machine names.
+Configures the LmP aspects of the Factory, including images, distro, and :term:`machine` names.
 Variables to be used with metadata and artifacts.
 
 .. sidebar:: ``lmp:`` Section Example

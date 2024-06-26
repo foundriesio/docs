@@ -23,7 +23,7 @@ storage of the key information.
 By enrolling the KEK this way, the system gains the capability of
 unlocking the volume seamlessly, without requiring any user involvement.
 
-Once the KEK has been enrolled, LmP marks the rootfs volume for disk
+Once the KEK has been enrolled, LmP marks the :term:`rootfs` volume for disk
 `re-encryption`_, mounts it and allows the system to continue with the
 boot sequence. This is know in LUKS terminology as ``online
 re-encryption``.

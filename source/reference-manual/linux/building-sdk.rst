@@ -3,7 +3,7 @@
 Building The Yocto Project Standard SDK
 =======================================
 
-The Yocto Project Standard SDK is a development environment composed by:
+The Yocto Project Standard :term:`SDK` is a development environment composed by:
 
 * toolchain
 * debug tools
@@ -12,7 +12,7 @@ The Yocto Project Standard SDK is a development environment composed by:
 The SDK is used to replicate the tools and files from the target image,
 but without depending on BitBake.
 For details on what the SDK is, and a complete description of how to work with it,
-visit `Yocto Project Application Development and the Extensible Software Development Kit <https://docs.yoctoproject.org/kirkstone/sdk-manual/index.html>`_.
+visit `Yocto Project Application Development and the Extensible Software Development Kit <https://docs.yoctoproject.org/sdk-manual/index.html>`_.
 
 The LmP can be configured to create an SDK install script of the same rootfs image built by the CI.
 The SDK install script is created by ``bitbake <image> -c populate_sdk``.

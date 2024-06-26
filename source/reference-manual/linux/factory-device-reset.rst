@@ -51,4 +51,4 @@ compose-apps to be preserved.
 RPMB
 ~~~~
 
-Currently, ``RPMB`` is not cleared in either reset procedures.
+Currently, :term:`RPMB` is not cleared in either reset procedures.

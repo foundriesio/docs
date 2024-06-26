@@ -13,10 +13,10 @@ The kernel recipe can be found within the :ref:`meta-lmp layer <ref-linux-layers
 LmP Kernel Configuration Fragments
 ----------------------------------
 
-Together with the unified Linux Kernel tree, the LmP provides an additional repository for kernel configuration fragments.
+Together with the unified Linux Kernel tree, the LmP provides an additional repository for :term:`kernel configuration fragments <Fragments>`.
 The latest continuous release of the kernel configuration fragments is available at `lmp-kernel-cache <https://github.com/foundriesio/lmp-kernel-cache>`_.
 
-You can find the list of supported BSP definitions and the configuration fragments used under ``lmp-kernel-cache/bsp``.
+You can find the list of supported :term:`BSP` definitions and the configuration fragments used under ``lmp-kernel-cache/bsp``.
 
 The fragments repository works similarly to the upstream ``yocto-kernel-cache`` repository.
 As such, the same development workflow and documentation applies.
