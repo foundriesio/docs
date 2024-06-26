@@ -8,8 +8,8 @@ Building From Source
 This is a guide for building the base Linux® microPlatform (LmP) from source for QEMU AARCH64 (Arm® 64).
 Information specific to other targets is provided in :ref:`ref-linux-supported`.
 
-This guide assumes familiarity with OpenEmbedded concepts.
-If you are just getting started with OpenEmbedded/the Yocto Project, it is strongly recommended to begin with the documentation provided under :ref:`ref-linux-building-ref`.
+This guide assumes familiarity with :term:`Open Embedded` concepts.
+If you are just getting started with OpenEmbedded/the :term:`Yocto Project`, it is strongly recommended to begin with the documentation provided under :ref:`ref-linux-building-ref`.
 
  .. important::
 
@@ -68,7 +68,7 @@ The `Google Repo`_ tool is used to fetch Git repos at known-good revisions, and 
       You can also reuse an existing installation directory, or ``/build/lmp``
       if building inside the ``lmp-sdk`` container, as described at :ref:`ref-linux-dev-container`.
 
-#. Install update |version| using repo:
+#. Install update |version| using :term:`Repo`:
 
    .. parsed-literal::
 
@@ -136,7 +136,7 @@ If you are already working with a Factory, you can instead download the source c
 
    The manifest ``<factory-name>.xml`` refers to all the LmP meta-layers and also to the ``<factory-name>`` specific repositories as described :ref:`ref-factory-sources`.
 
-3.  Build the image for ``<factory-name>``:
+3.  Build the image for ``<factory-name>`` with :term:`bitbake`:
 
    .. parsed-literal::
 

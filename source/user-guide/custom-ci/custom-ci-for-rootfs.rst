@@ -4,7 +4,7 @@ Custom CI for RootFS
 ====================
 
 FoundriesFactory® includes all you need to build a Linux®-based operating system and securely deploy it.
-In particular, it provides you with a git repo and a CI service that handles building the kernel and rootfs, and delivering them to devices.
+In particular, it provides you with a git repo and a CI service that handles building the kernel and :term:`rootfs`, and delivering them to devices.
 This is done while leveraging the TUF compliant OTA service.
 You can learn more in the :ref:`reference <ref-linux>` section.
 
@@ -19,7 +19,7 @@ Prerequisites
 Bitbake
 -------
 
-Use the :ref:`lmp-sdk container<ref-linux-dev-container>` (aka dev container) to bitbake a system image or an ostree repo that contains an OTA-updatable part for rootfs.
+Use the :ref:`lmp-sdk container<ref-linux-dev-container>` (aka dev container) to :term:`bitbake` a system image or an ostree repo that contains an OTA-updatable part for rootfs.
 
 1. Disable FoundriesFactory CI specific steps.
    Add the following to ``conf/local.conf``:

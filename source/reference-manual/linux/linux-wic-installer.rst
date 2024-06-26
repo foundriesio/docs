@@ -18,7 +18,7 @@ To generate a WIC based image installer, switch the default ``WKS_FILE:sota`` de
   # WIC-based installer for the generic-arm64 target
   WKS_FILE:generic-arm64:sota = "image-efi-installer.wks.in"
 
-WIC is only capable of consuming a single WKS file (even if multiple are defined via ``WKS_FILES``).
+WIC is only capable of consuming a single :term:`WKS` file (even if multiple are defined via ``WKS_FILES``).
 Doing this forces the build system to only generate installer images.
 
 Remove the custom ``WKS_FILE:sota`` override to restore the default behavior and generate normal bootable WIC images.

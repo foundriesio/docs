@@ -20,7 +20,7 @@ and ``meta-subscriber-overrides.git``.
 This is the repository you should change to update your platform to newer 
 Linux microPlatform versions. For more information, read :ref:`ref-linux-update`.
 
-``meta-subscriber-overrides`` is the supported meta-layer for customization.
+``meta-subscriber-overrides`` is the supported :term:`meta-layer <Layer>` for customization.
 This is a high-priority layer with the power to change anything on the platform.
 
 This tutorial guides you through a ``meta-subscriber-overrides`` customization. 

@@ -216,9 +216,9 @@ This is done by adding the following config options to ``lmp.cfg``:
 MfgTool Scripts
 ^^^^^^^^^^^^^^^
 
-To deploy boot images to the destination board, the mfgtools package is used.
+To deploy boot images to the destination board, the :term:`mfgtools` package is used.
 It uses a special configuration file with ``uuu`` extensions, which contains all instructions needed for the deployment of boot images.
-Default uuu files do not support flashing images for secondary boot path.
+Default :term:`uuu` files do not support flashing images for secondary boot path.
 Doing so requires the following adjustments: adding SIT image, secondary SPL, and U-Boot FIT deployment steps:
 
 ::
