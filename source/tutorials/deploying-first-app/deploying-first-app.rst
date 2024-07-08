@@ -3,7 +3,7 @@
 Deploying Your First Application
 ================================
 
-In the tutorial ref:`tutorial-creating-first-target`, you learned about **Targets**.
+In the tutorial :ref:`tutorial-creating-first-target`, you learned about **Targets**.
 This is core to understanding how FoundriesFactory® works.
 Now you will learn how devices *consume* Targets.
 You will also learn how to configure a device with the desired applications.
