@@ -1,6 +1,6 @@
 .. _ug-custom-sota-client:
 
-Customizing Over The Air Updates
+Customizing Over the Air Updates
 ================================
 
 By default, Secure Over The Air update (SOTA), operates as a daemon process (:ref:`ref-aktualizr-lite`) which
@@ -44,7 +44,7 @@ In these cases, a custom SOTA client can be written in C++ using the aktualizr-l
 .. _API:
    https://github.com/foundriesio/aktualizr-lite/blob/master/include/aktualizr-lite/api.h
 
-Using the Custom SOTA Client Example
+Using The Custom SOTA Client Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The example `SOTA client`_ is a great place to start experimenting.
@@ -65,7 +65,7 @@ Users can build this custom client into their LmP image with a small addition to
     cd meta-subscriber-overrides
     echo 'SOTA_CLIENT = "custom-sota-client"' >> conf/machine/include/lmp-factory-custom.inc
 
-Forking the custom SOTA Client
+Forking the Custom SOTA Client
 """"""""""""""""""""""""""""""
 
 Producing a factory-specific SOTA client can be done by:
