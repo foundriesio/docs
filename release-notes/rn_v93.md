@@ -3,6 +3,8 @@
 > [!NOTE]
   You can view the full [v93 changelog](https://foundries.io/products/releases/93/) for greater detail.
 
+* [v93 Test Results](https://qa-reports.foundries.io/lmp/lmp-ci-testing/build/90302a18e84910cd360d535bf45ad94eda491954/)
+
 ## Attention Points for Migration
 
 Things to be aware of when [updating LmP](https://docs.foundries.io/93/reference-manual/linux/linux-update.html)from the v92 release:

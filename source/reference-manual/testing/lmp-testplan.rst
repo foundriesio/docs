@@ -5,8 +5,9 @@ Test Plan
 #########
 
 Below you will find the test plan Foundries.io uses for FoundriesFactory®.
+Test results for each release can be found in the `release notes <https://github.com/foundriesio/docs/tree/main/release-notes>`_.
 
-What To Test
+What to Test
 ============
 
 In the context of this test plan, **mandatory** means the testing that must be performed to release the software.
@@ -14,7 +15,7 @@ Moreover, all tests must pass before the release is announced.
 **Optional** means that the tests may be performed if time allows.
 If optional test results are missing, release can be announced.
 
-Testing must focus on the mandatory features of the FoundriesFactory image:
+Testing focuses on the mandatory features of each FoundriesFactory release:
 
  * Linux microPlatform
  * Base OS running with OSTree based root filesystem
@@ -22,11 +23,12 @@ Testing must focus on the mandatory features of the FoundriesFactory image:
  * Docker engine running Docker compose apps
  * Fioconfig
 
-Remaining elements of the system may be tested as optional but are not as important.
-For example, testing of various I/O interfaces can be done case-by-case depending on the customer requirements and hardware capabilities
+This includes the open source Linux® microPlatform (LmP) builds on supported SoC vendor reference development evaluation kits (:term:`EVK`).
 
-A complete test list for all devices can be found in the `qa-tools git repository`_.
-Most of the test are stored in the `test-definitions repository`_.
+Remaining elements of the system may be tested as optional but are not as important.
+For example, testing of I/O interfaces  done case-by-case depending on customer requirements and hardware capabilities
+
+Most tests are in the `test-definitions repository`_.
 
 LmP Test Plan
 -------------
@@ -229,7 +231,7 @@ We are currently testing 2 scenarios:
    Testing of Docker apps update should be done using a container registered for aktualizr-lite callbacks.
    This way we are as close as possible to testing a production setup.
 
-When To Test
+When to Test
 ============
 
 A testing round is started after every merge to ``lmp-manifest``.
@@ -238,9 +240,6 @@ A successful build in the testing Factory triggers tests on the devices.
 OTA update is delivered to the *rolling update* devices.
 This also triggers a testing round on the new Target.
 For a release candidate build, additional manual tests are performed.
-
-.. _qa-tools git repository:
-   https://github.com/foundriesio/qa-tools
 
 .. _test-definitions repository:
    https://github.com/linaro/test-definitions
