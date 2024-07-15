@@ -3,6 +3,7 @@
 > [!NOTE]
 > You can view the full [v92 changelog](https://foundries.io/products/releases/92/) for greater detail.
 
+* [v92 Test Results](https://qa-reports.foundries.io/lmp/lmp-ci-testing/build/51952d1d66536c4432bd3a27f8acbea7bc664f46/)
 
 ## Attention Points for Migration
 
