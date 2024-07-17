@@ -101,6 +101,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    :caption: Release Notes
    :name: sec-release-notes
 
+   v94 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v94.md>
    v93 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v93.md>
    v92 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v92.md>
 
