@@ -60,6 +60,46 @@ print('LMP build number is %s' % lmp_build)
 # (This doesn't affect links to artifacts.)
 mp_tags = ''
 
+# -- Search Configuration ------------------------------------------------
+
+meilisearch_index_key = os.environ.get('MEILISEARCH_INDEX_KEY')
+meilisearch_search_key = os.environ.get('MEILISEARCH_SEARCH_KEY')
+meilisearch_host = os.environ.get('MEILISEARCH_HOST_URL')
+
+if not meilisearch_index_key or not meilisearch_host or not meilisearch_search_key:
+    search_version = 'default'
+
+else:
+    if mp_version.startswith('git-'):
+        search_version = 'dev'
+
+    else:
+
+        import meilisearch
+
+# Using Api key restricted to get/indexes, then seeing if the index exists.
+# This means an empty index must be created prior to deploying a new version.
+# If no index exists, the default Sphinx search will be used.
+        client = meilisearch.Client(meilisearch_host, meilisearch_index_key)
+        results = client.get_raw_indexes()
+
+# A very un-python loop, but it works
+        i=0
+        index_name = 'default'
+        while i < len(results["results"]) and index_name != mp_version:
+            index_name = results["results"][i]["uid"]
+            i += 1
+        if index_name == mp_version:
+            search_version = mp_version
+        else:
+            search_version = 'default'
+
+# pass to template engine's context
+html_context = {'search_version': search_version,
+                'meilisearch_host': meilisearch_host,
+                'meilisearch_search_key': meilisearch_search_key,
+}
+
 # -- General configuration ------------------------------------------------
 
 # Derive the subscriber tags to use for this build from the
@@ -285,7 +325,9 @@ html_css_files = [
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {}
+html_sidebars = {
+        '**': ['searchbox.html']
+        }
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

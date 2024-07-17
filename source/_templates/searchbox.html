@@ -1,0 +1,33 @@
+{% if search_version == 'default'  %}
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="{{ pathto('search') }}" method="get">
+    <input type="text" name="q" placeholder="{{ _('Using builtin search') }}" aria-label="{{ _('Search docs') }}" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+{% else %}
+
+<div id="search"></div>
+
+<script src="https://unpkg.com/meilisearch-docsearch@latest/dist/index.global.js"></script>
+<script>
+    
+    const { docsearch } = window.__docsearch_meilisearch__;
+    docsearch({
+      container: "#search",
+      host: "{{ meilisearch_host }}",
+      apiKey: "{{ meilisearch_search_key }}",
+      indexUid: "{{ search_version }}",
+    });
+
+</script>
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/meilisearch-docsearch@latest/dist/index.css"
+/>
+
+{% endif %}
