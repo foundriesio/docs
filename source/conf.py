@@ -175,7 +175,9 @@ linkcheck_ignore = [
     'https://mgmt.foundries.io/leshan/#/security',
     'https://github.com/foundriesio/fiotest#testing-specification',
     'https://github.com/foundriesio/jobserv/blob/72935348e902cdf318cfee6ab00acccee1438a7c/jobserv/notify.py#L141-L146',
-    'https://www.st.com/en/development-tools/stm32cubeprog.html', #slow, very slow.
+    r'https://www.st.com/.*', #slow, very slow.
+    r'https://wiki.st.com/.*',
+    'https://ngrok.com', # ssl cert expired, will likely want to remove from docs if this persists
 ]
 
 # Time in seconds to wait for a response. May result infalse errors, but also keeps things from timing out
