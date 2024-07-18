@@ -9,6 +9,20 @@ This enables the use of Docker commands from a personal computer, such as a lapt
 .. note::
    The :ref:`credentials<ref-api-access>` will need the “containers:read” scope to work with Docker.
 
+.. important::
+   On macOS, you may encounter authentication issues.
+   This is due to Git on OSX using the Keychain Access Utility.
+   Git attempts to use this for authentication before ``git-credential-fio``.
+
+   The solution is to remove Keychain Access entries from your git config file.
+   Locate the git config by running::
+
+    git config -l --show-origin | grep credential
+  
+   Edit the gitconfig file with ``credential.helper=osxkeychain``, commenting out the line.
+
+   Fioctl should now be able to authenticate.
+
 To do this, run:
 
 .. code:: bash
