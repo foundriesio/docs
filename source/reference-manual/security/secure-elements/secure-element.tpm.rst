@@ -117,6 +117,6 @@ To register with support for TPM 2 PKCS#11:
    https://github.com/tpm2-software/tpm2-pkcs11/blob/master/docs/INTEROPERABILITY.md
 
 .. _OPTIGA TPM Application Note:
-   https://raw.githubusercontent.com/Infineon/pkcs11-optiga-tpm/main/documents/tpm-appnote-pkcs11.pdf
+   https://github.com/Infineon/pkcs11-optiga-tpm
 .. _pkcs11 tool configuration guide:
    https://github.com/tpm2-software/tpm2-pkcs11/blob/master/docs/PKCS11_TOOL.md

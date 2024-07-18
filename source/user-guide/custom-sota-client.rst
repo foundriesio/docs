@@ -55,7 +55,7 @@ Later, this can serve as an example to copy/paste into a Factory specific recipe
    https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-sota/custom-sota-client
 
 .. _SOTA client:
-   https://github.com/foundriesio/aktualizr-lite/tree/master/examples/custom-client-cxx
+   https://github.com/foundriesio/aktualizr-lite/tree/v94/examples/custom-client-cxx
 
 Users can build this custom client into their LmP image with a small addition to ``meta-subscriber-overrides.git``:
 
@@ -78,7 +78,7 @@ Producing a factory-specific SOTA client can be done by:
  #. Changing the ``custom-sota-client_git.bb`` Git references (``SRC_URI``, ``BRANCH``, ``SRCREV``) to point at your new sources.
 
 .. _examples/custom-client-cxx:
-   https://github.com/foundriesio/aktualizr-lite/tree/master/examples/custom-client-cxx
+   https://github.com/foundriesio/aktualizr-lite/tree/v94/examples/custom-client-cxx
 
 .. _custom-sota-client:
    https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-sota/custom-sota-client
