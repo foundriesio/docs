@@ -152,6 +152,7 @@ copybutton_prompt_text = "$ "
 
 sphinx_tabs_valid_builders = ['linkcheck']
 
+
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
@@ -196,6 +197,17 @@ source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
+
+# Settings for theme used by simplepdf when building PDF version
+simplepdf_vars = {
+        'primary': '#2C1256',
+        'secondary': '#000000',
+        'cover': '#2C1256',
+        'cover-bg': 'white',
+        'links': '#2980B9',
+        }
+
+simplepdf_file_name = 'FoundriesFactory_' + mp_version + '.pdf'
 
 # General information about the project.
 project = 'FoundriesFactory'
@@ -328,7 +340,7 @@ html_css_files = [
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-        '**': ['searchbox.html']
+        '**': ['searchbox.html'],
         }
 
 # Additional templates that should be rendered to pages, maps page names to

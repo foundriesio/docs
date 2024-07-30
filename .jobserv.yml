@@ -16,7 +16,7 @@ triggers:
 scripts:
   make-docs: |
     #!/bin/sh -ex
-    apk add --update make git graphviz curl ttf-freefont gcc musl-dev python3-dev
+    apk add --update make git graphviz curl ttf-freefont gcc musl-dev python3-dev 
     pip install -r ./requirements.txt
 
     echo == $(date "+%F %T") Setting up fioctl docs
