@@ -152,6 +152,16 @@ copybutton_prompt_text = "$ "
 
 sphinx_tabs_valid_builders = ['linkcheck']
 
+simplepdf_vars = {
+        'primary': '#2C1256',
+        'secondary': '#000000',
+        'cover': '#2C1256',
+        'cover-bg': 'white',
+        'links': '#2980B9',
+        }
+
+simplepdf_file_name = 'FoundriesFactory_' + mp_version + '.pdf'
+
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
@@ -196,6 +206,10 @@ source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
+
+# PDF location of docs, used by _templates/footer.html
+# html_context['download'] =  '_static/downloads/docs.pdf'
+html_context['download'] =  '../pdf/simplepdf/' + simplepdf_file_name
 
 # General information about the project.
 project = 'FoundriesFactory'
@@ -328,7 +342,7 @@ html_css_files = [
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-        '**': ['searchbox.html']
+        '**': ['searchbox.html'],
         }
 
 # Additional templates that should be rendered to pages, maps page names to
