@@ -41,54 +41,7 @@ To view the daemon logs:
 ``sudo journalctl -f -u aktualizr-lite``
 
 
-Manual Mode
------------
-
-Disabling daemon mode is not recommended nor supported, but running ``aktualizr-lite`` manually can be useful for debugging, testing, or demoing a device.
-
-.. note:: Manual mode will require you to reboot your device to apply an update.
-
-.. note:: If ``aktualizr-lite`` default daemon mode does not fit your needs, the alternative is to create a :ref:`ug-custom-sota-client`.
-
-View Current Status
-~~~~~~~~~~~~~~~~~~~
-
-To view the current status of the device::
-
-    sudo aktualizr-lite status
-
-Fetch and List Updates
-~~~~~~~~~~~~~~~~~~~~~~
-
-This will refresh the Targets metadata from the OTA server, and present you with a list of available Targets::
-
-   sudo aktualizr-lite list
-
-Apply Latest Update
-~~~~~~~~~~~~~~~~~~~
-
-This will apply the latest available update to the device.
-This includes both OSTree and Docker app Targets::
-
-   sudo aktualizr-lite update
-
-Apply Specific Update
-~~~~~~~~~~~~~~~~~~~~~
-
-To update to a specific build number::
-
- sudo aktualizr-lite update --update-name <build_number>
-
-.. note::
-
-    This can only be performed when the original and update Targets are under the same tag.
-    In case the update is tagged differently, it is required to switch tags before running this command.
-
-.. warning::
-   Downgrading to a older Target is neither recommended or supported by our team;
-   doing so may lead to unverified corner cases.
-   Only choose to do so mindfully.
-   For any update, always test before rolling out to production devices.
+.. note:: If ``aktualizr-lite`` default daemon mode does not fit your needs, the alternative is :ref:`ug-custom-sota-client`.
 
 Configuration
 -------------
