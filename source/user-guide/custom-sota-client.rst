@@ -11,6 +11,7 @@ This is not always the desired operation. There are a couple ways to control thi
 
 #. Callbacks
 #. Custom Update Agent
+#. Command Line Interface
 
 Callbacks
 ---------
@@ -101,3 +102,200 @@ In addition to the default daemon mode, users can run it as a CLI utility and pe
 * ``pull`` - pulls the delta between the currently installed and the specified one.
 * ``install`` - installs the previously pulled Target; yields an error if the specified Target has not been pulled before.
 * ``run`` - finalizes the installed Target; confirms an update after reboot on a new rootfs version and/or starts the updated apps.
+
+Command Line Interface (experimental)
+-------------------------------------
+The `aktualizr-lite` daemon executable can be invoked to perform individual operations allowing more control over the update flow.
+**This interface is subject to change over the next releases.**
+
+.. prompt::
+
+      $ aktualizr-lite --help
+      aktualizr-lite command line options:
+      --update-lockfile arg         If provided, an flock(2) is applied to this
+                                    file before performing an update in daemon mode
+      -h [ --help ]                 print usage
+      -v [ --version ]              Current aktualizr version
+      -c [ --config ] arg           configuration file or directory
+      --loglevel arg                set log level 0-5 (trace, debug, info, warning,
+                                    error, fatal)
+      --repo-server arg             URL of the Uptane repo repository
+      --ostree-server arg           URL of the Ostree repository
+      --primary-ecu-hardware-id arg hardware ID of primary ecu
+      --update-name arg             optional name of the update when running
+                                    "update". default=latest
+      --install-mode arg            Optional install mode. Supported modes:
+                                    [delay-app-install]. By default both ostree and
+                                    apps are installed before reboot
+      --interval arg                Override uptane.polling_secs interval to poll
+                                    for update when in daemon mode.
+      --command arg                 Command to execute: run, status, finalize,
+                                    check, list, install, pull, update, daemon
+
+Available commands:
+
+* ``list`` - lists the targets present in the currently stored TUF metadata.
+* ``check`` - updates the device's TUF repo with the latest Factory's TUF metadata, and lists the available targets.
+* ``pull`` - pulls the delta between the currently installed Target and the one specified with the `--update-name` option. If no target is specified, the latest one is used.
+* ``install`` - installs the previously pulled Target; yields an error if the specified Target has not been pulled before.
+* ``run`` - finalizes the installation of the Target; confirms an update after reboot on a new rootfs version and/or starts the updated apps. A ``finalize`` alias is provided for this command for backwards compatibility.
+* ``update`` - performs a complete update process, including the ``check``, ``pull`` and ``install`` operations. The ``run`` operation still needs to be manually invoked after the reboot.
+
+Exit Codes
+^^^^^^^^^^
+The commands set exit codes (``echo $?``) that can be used by the caller to act accordingly.
+The possible return codes for the CLI commands are listed bellow:
+
+**Return codes for** ``check``, ``pull``, ``install``, **and** ``update`` **commands:**
+
+- *0*: Success
+    - Operation executed successfully
+- *3*: Success
+    - Unable to fetch updated TUF metadata, but stored metadata is valid
+- *4*: Failure
+    - Failed to update TUF metadata
+- *6*: Failure
+    - There is no target in the device TUF repo that matches a device tag and/or hardware ID
+- *8*: Failure
+    - Failed to find the ostree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
+- *11*: Failure
+    - Invalid TUF metadata
+- *12*: Failure
+    - TUF metadata is expired
+- *13*: Failure
+    - Unable to fetch TUF metadata
+- *14*: Failure
+    - TUF metadata not found in the provided path (offline mode only)
+- *15*: Failure
+    - The bundle metadata is invalid (offline mode only).There are a few reasons why the metadata might be invalid:
+        1. One or more bundle signatures is/are invalid.
+        2. The bundle targets' type, whether CI or production, differs from the device's type.
+        3. The bundle targets' tag differs from the device's tag.
+- *16*: Success
+    - Update is required: new target version available
+- *17*: Success
+    - Update is required: apps need synchronization
+- *18*: Success
+    - Update is required: rollback to a previous target
+- *20*: Failure
+    - Selected target not found
+- *1*: Failure
+    - Unknown error
+
+**Return codes for** ``pull``, ``install``, **and** ``update`` **commands:**
+
+- *21*: Failure
+    - Unable to find target to rollback to after a failure to start Apps at boot on a new version of sysroot
+- *30*: Failure
+    - Unable to pull/install: there is an installation that needs completion
+- *50*: Failure
+    - Unable to download target
+- *60*: Failure
+    - There is no enough free space to download the target
+- *70*: Failure
+    - The pulled target content is invalid, specifically App compose file is invalid
+- *75*: Failure
+    - Selected target is already installed
+- *102*: Failure
+    - Attempted to install a previous version
+
+**Return codes for** ``install``, **and** ``update`` **commands:**
+
+- *10*: Success
+    - Execute the `run` subcommand to finalize installation
+- *80*: Failure
+    - Unable read target data, make sure it was pulled
+- *90*: Failure
+    - Reboot is required to complete the previous boot firmware update. After reboot the update attempt must be repeated from the beginning
+
+**Return codes for** ``install``, ``run``,  **and** ``update`` **commands:**
+
+- *100*: Success
+    - Reboot to finalize installation
+- *5*: Success
+    - Reboot to finalize bootloader installation
+- *120*: Failure
+    - Installation failed, rollback initiated but requires reboot to finalize
+
+**Return codes for** ``run`` **command:**
+
+- *40*: Failure
+    - No pending installation to run
+- *99*: Failure
+    - Offline installation failed, rollback performed
+- *110*: Failure
+    - Online installation failed, rollback performed
+- *130*: Failure
+    - Installation failed and rollback operation was not successful
+
+Automating the use of CLI operations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The individual command line interface operations, specially `check`, `pull`, `install` and `run`, can be used to
+automate an update flow like to the one implemented by the main *aktualizr-lite* daemon, while allowing for limited
+customizations.
+
+.. highlight:: bash
+   :linenothreshold: 1
+
+Sample bash script illustrating usage of CLI operations and return codes handling::
+
+    #!/bin/env bash
+
+    # Relevant aktualizr-lite CLI return codes for controlling execution flow
+    OK=0
+    CHECKIN_OK_CACHED=3
+
+    UPDATE_NEW_VERSION=16
+    UPDATE_SYNC_APPS=17
+    UPDATE_ROLLBACK=18
+
+    REBOOT_REQUIRED_BOOT_FW=90
+    REBOOT_REQUIRED_ROOT=100
+
+    # Commands
+    reboot_cmd="/sbin/reboot"
+    aklite_cmd="/bin/aktualizr-lite"
+
+    # Interval between each update server polling (seconds)
+    interval=60
+
+    # Complete previous installation, if pending
+    $aklite run; ret=$?
+    if [ $ret -eq $REBOOT_REQUIRED_ROOT ]; then
+        echo "A system reboot is required to finalize the pending installation."
+        exit 1
+    fi
+
+    while true; do
+        echo "Checking for updates..."
+        $aklite_cmd check; ret=$?
+        if [ $ret -eq $UPDATE_NEW_VERSION -o $ret -eq $UPDATE_SYNC_APPS -o $ret -eq $UPDATE_ROLLBACK ]; then
+            echo "There is a target that is meant to be installed (check returned $ret). Pulling..."
+            $aklite_cmd pull; ret=$?
+            if [ $ret -eq $OK ]; then
+                echo "Pull operation successful. Installing..."
+                $aklite_cmd install; ret=$?
+                if [ $ret -eq $REBOOT_REQUIRED_ROOT -o $ret -eq $REBOOT_REQUIRED_BOOT_FW ]; then
+                    echo "Installation completed, reboot required ($ret)"
+                    break
+                elif [ $ret -eq $OK ]; then
+                    echo "Installation completed, no reboot needed"
+                    continue
+                else
+                    echo "Installation failed with error $ret"
+                fi
+            else
+                echo "Pull operation failed with error $ret"
+            fi
+        elif [ $ret -eq $OK -o $ret -eq $CHECKIN_OK_CACHED ]; then
+            echo "No update is needed"
+        else
+            echo "Check operation failed with error $ret"
+        fi
+        echo "Sleeping $interval seconds..."
+        sleep $interval
+    done
+
+    echo "Rebooting ($aklite_cmd)..."
+    $aklite_cmd
