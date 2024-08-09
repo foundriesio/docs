@@ -16,7 +16,8 @@ triggers:
 scripts:
   make-docs: |
     #!/bin/sh -ex
-    apk add --update make git graphviz curl ttf-freefont gcc musl-dev python3-dev
+    apk add --update make git graphviz curl ttf-freefont gcc g++ musl-dev python3-dev weasyprint
+    pip install --upgrade wheel
     pip install -r ./requirements.txt
 
     echo == $(date "+%F %T") Setting up fioctl docs
@@ -25,7 +26,7 @@ scripts:
     chmod +x /tmp/fioctl
     /tmp/fioctl gen-rst ./source/reference-manual/factory/fioctl/
 
-    make OUTDIR=/archive SPHINXBUILD=sphinx-build singlehtml html
+    make OUTDIR=/archive SPHINXBUILD=sphinx-build simplepdf singlehtml html
 
     urlbase="https://ci.foundries.io/projects/${H_PROJECT}/builds/${H_BUILD}/${H_RUN}/"
 

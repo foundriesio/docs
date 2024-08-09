@@ -1,5 +1,7 @@
-Terminology
-===========
+.. _glossary:
+
+Glossary
+========
 
 .. Glossary::
    :sorted:

@@ -34,6 +34,12 @@ html:
 	@echo
 	@echo "Build finished. The HTML pages are in $(OUTDIR)/html."
 
+.PHONY: simplepdf
+simplepdf:
+	$(SPHINXBUILD) -M simplepdf source $(OUTDIR)/pdf
+	@echo
+	@echo "Build finished. The PDF is in $(OUTDIR)/pdf."
+
 .PHONY: dirhtml
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(OUTDIR)/dirhtml

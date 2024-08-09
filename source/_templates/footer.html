@@ -1,0 +1,10 @@
+{% extends "!footer.html" %}
+{%-block contentinfo %}
+{{ super }}
+
+<div class="download" data-toggle="download" role="note" aria-label="Download">
+   <a href="{{ pathto(download,1) }}" Download>
+   <button type="button" button style="margin:10px;"> Offline Version </button>
+   </a>
+</div>
+{% endblock %}
