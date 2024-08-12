@@ -151,7 +151,8 @@ extensions = [
 copybutton_prompt_text = "$ "
 
 sphinx_tabs_valid_builders = ['linkcheck']
-
+linkcheck_retries = 3
+linkcheck_anchors_ignore = ['L189-L192']
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
@@ -180,8 +181,8 @@ linkcheck_ignore = [
     'https://ngrok.com', # ssl cert expired, will likely want to remove from docs if this persists
 ]
 
-# Time in seconds to wait for a response. May result infalse errors, but also keeps things from timing out
-linkcheck_timeout = 5
+# Time in seconds to wait for a response. May result in false errors, but also keeps things from timing out
+linkcheck_timeout = 10
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
