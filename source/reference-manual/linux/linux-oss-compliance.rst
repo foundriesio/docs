@@ -6,10 +6,10 @@ FoundriesFactory® is configured to use some of them by default.
 These provide a good starting point when working with license requirements.
 
 There are several OSS licenses.
-This document details technical aspects for handling the GPLv2 and GPLv3 license family.
+This document details technical aspects of handling the GPLv2 and GPLv3 license family.
 However, the content here can be extended to other licenses.
 
-.. warning:: This document focus on some technical aspects and must not be considered a legal advice.
+.. warning:: This document focuses on some technical aspects and must not be considered legal advice.
    Always consult a lawyer.
 
 Providing Source Code and License Manifest
@@ -48,10 +48,10 @@ When using FoundriesFactory with hardware configured with secure boot, it may be
 For example, GPLv3 requires that hardware restrictions *not limit or disallow variations of the software from being executed on the hardware*.
 When using secure boot, the hardware is configured only to execute a complete boot and run unmodified software signed with a private key.
 
-.. warning:: There are other examples on why a license should be avoided or chosen. Advice from a lawyer is recommended.
+.. warning:: There are other examples of why a license should be avoided or chosen. Advice from a lawyer is recommended.
 
 .. note:: Another option to meet the GPLv3 requirement when using hardware configured with secure boot,
-   is providing either a way of disabling secure boot, or the keys when requested.
+   is providing either a way of disabling secure boot or the keys when requested.
 
 When using LmP there are two variables that can be used for blocking licenses, ``INCOMPATIBLE_LICENSE`` and ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST`` [1]_.
 Both of these variables list the licenses by SPDX identifier.
@@ -74,7 +74,7 @@ Using this configuration to build ``lmp-factory-image`` results in the following
 In this example, the package `bash` cannot be installed because it is licensed under GPLv3.
 This is the default approach from the Yocto Project.
 An error is raised when a package under one of the listed licenses is used during build time.
-This is true even if the package is not to be installed to the final image.
+This is true even if the package is not to be installed in the final image.
 
 If a package is released under multi-license, this error is raised if any of the incompatible licenses are included.
 This strategy can be used when there is a need to verify build time dependencies between packages.
@@ -86,19 +86,13 @@ This variable is introduced by the ``image-license-checker`` class.
 In the same way as with ``INCOMPATIBLE_LICENSE``, it lists the licenses to be avoided, by SPDX identifier.
 
 With this class, the package under the avoided license is built—when brought as a dependency.
-When creating the rootfs, the licenses are checked, and if a package is under multi-license, a error is raised if any of the incompatible licenses are included.
+When creating the rootfs, the licenses are checked, and if a package is under multi-license, an error is raised if any of the incompatible licenses are included.
 
 Another important difference is that this class prevents the installation of the avoided license package, even for multi-licensed packages.
 
 This class can be reviewed at `image-license-checker`_.
 
-Add to the LmP Factory customization file— ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc`` —the following lines:
-
-.. prompt:: text
-
-   IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST = "GPL-3.0* LGPL-3.0* AGPL-3.0*"
-   IMAGE_LICENSE_CHECKER_NON_ROOTFS_DENYLIST = "GPL-3.0* LGPL-3.0* AGPL-3.0*"
-   inherit image-license-checker
+Add to the LmP Factory customization file ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc`` the lines from `ci-scripts` [3]_.
 
 Using this configuration to build ``lmp-factory-image`` results in the following error:
 
@@ -154,7 +148,7 @@ It is important to note that when using an image different than ``lmp-factory-im
 In this case, the error message guides on which package to target.
 
 .. seealso::
-   
+
    :ref:`sbom`
 
 
@@ -170,3 +164,5 @@ In this case, the error message guides on which package to target.
 .. [2] Since **v87**,
      the contents of ``INCOMPATIBLE_LICENSE`` has changed,
      as a consequence of the Kirkstone SPDX tags change.
+.. [3] The list of license strings follows the SPDX standard and may vary.
+       Consult the up-to-date code https://github.com/foundriesio/ci-scripts/blob/master/lmp/bb-config.sh#L189-L192.

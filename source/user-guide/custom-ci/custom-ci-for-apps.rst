@@ -1,7 +1,5 @@
 .. _ug-custom-ci-for-apps:
 
-.. _ug-custom-ci-app:
-
 Custom CI To Build Compose App Targets
 ======================================
 
@@ -9,31 +7,31 @@ FoundriesFactory® includes all you need to build a containerized application an
 This includes: 
 
 * a git repository
-* a CI service that handles the steps to build and delivery apps leveraging the TUF compliant OTA service.
+* a CI service that handles the steps to build and delivery apps leveraging the :term:`TUF` compliant OTA service.
 
-You can learn more through this :ref:`tutorial <tutorial-compose-app>`.
+Learn more through this :ref:`tutorial <tutorial-compose-app>` on compose apps.
 
 FoundriesFactory consists of well integrated but loosely coupled services.
-This allows for using the FoundriesFactory OTA framework directly, without using either FoundriesFactory git repos or the CI service.
-This means you can host your source code anywhere, and build your App through any framework, and still leverage the rest of FoundriesFactory.
+This allows for using the OTA framework without also using the FoundriesFactory git repos or CI service.
+This means you can host your source code anywhere or build your App through any framework, while still leveraging the rest of FoundriesFactory.
 
 This section guides you through the steps of creating a custom CI pipeline in GitHub that:
 
-- builds multi-arch container images and pushes them to `FoundriesFactory Registry`_;
+- builds multi-arch container images and pushes them to the `FoundriesFactory Registry`_;
 - builds a `FoundriesFactory Compose App`_ and pushes it to the `FoundriesFactory Registry`_;
-- composes `TUF Targets role metadata`_ compliant with FoundriesFactory TUF requirements;
+- composes `TUF Targets role metadata`_ compliant with our TUF requirements;
 - adds the composed TUF Targets to `FoundriesFactory Targets`_.
 
 Prerequisites
 -------------
 
-#. A successful build with a corresponding Target and tag, and the hardware ID, to use for this guide.
+*  A successful platform build for the corresponding tag (``custom-ci-devel`` in the example), and the hardware ID (machine) of a device for following along
 
-#. A GitHub repo with source code, Dockerfiles, and a Docker compose file.
+*  GitHub repo with source code, Dockerfiles, and a Docker compose file.
 
-Below is an example of how the prerequisites would look like:
+The prerequisites will look like:
 
-1. Factory ``lmp-demo`` with a successfully built Target having the tag ``custom-ci-devel`` and the hardware ID ``raspberrypi4-64``.
+1. A Factory (``lmp-demo``) with a built Target. It has the tag ``custom-ci-devel`` and the hardware ID ``raspberrypi4-64``.
 
     .. code-block:: bash
 
@@ -45,45 +43,45 @@ Below is an example of how the prerequisites would look like:
            Tags:          custom-ci-devel
            OSTree Hash:   fe15cf8ad5e09136725ef996c93299d70fa0d20bfa2f10651437b8860b9edcdb
 
-3. `The GitHub repo`_ that contains a working App implementation.
-
+2. `The GitHub repo`_ that contains a working App implementation.
 
 Creating And Setting the Access Token
 -------------------------------------
 
-The GitHub action needs to be authentication for the FoundriesFactory OTA service and the `FoundriesFactory Registry`_.
-You can create the token to add to the GitHub action via the `FoundriesFactory WebApp`_.
-The token must have ``containers:read-update`` and ``targets:read-update`` scopes to access the registry and the OTA service, respectively.
+First, you will need to authenticate the GitHub action for the OTA service and the `FoundriesFactory Registry`_.
+Create the token to add to the GitHub action via the `FoundriesFactory WebApp`_.
+The token must have ``containers:read-update``, ``targets:read-update`` and ``ci:read-update`` scopes to access the registry, FoundriesFactory CI and the OTA service.
 
 Set Token in GitHub Repo
 ------------------------
 
-Go to ``https://github.com/foundriesio/<your repo>/settings/secrets/actions`` and add a secret named ``FIO_TOKEN`` with the value of the token obtained in the previous step.
+Go to ``https://github.com/<your account>/<your repo>/settings/secrets/actions`` and add a secret named ``FIO_TOKEN`` with the value obtained in the previous step.
 
 Define GitHub Actions Workflow
 ------------------------------
 
 The next step is to define a GitHub actions workflow in your repo or extend an existing one.
-`The sample GitHub actions workflow`_ demonstrates a workflow that communicates with FoundriesFactory to achieve the `goals <ug-custom-ci-app>` of this guide.
+`The sample GitHub actions workflow`_ demonstrates a workflow that communicates with FoundriesFactory to achieve the goal of this guide.
 The workflow does the following:
 
 1. Builds and pushes images to the registry.
-2. Stores the built image URIs (must be digest/hashed references) so they can be referenced from the App compose project.
+2. Stores the built image URIs (must be digest/hashed references) for the App compose project to reference.
 3. Builds and pushes the Compose App by utilizing the `compose-publish`_ utility.
-4. Composes and posts new Target(s) that references the App built in step 3.
-   The ``fioctl targets add`` command is utilized to accomplish it.
+4. Composes and posts the new Target(s) that reference the App built in step 3.
+   It accomplishes this with the  ``fioctl targets add`` command.
 
 Learn App Repo Structure Details
 --------------------------------
-It is important to understand the structure of the sample App before creating your own App and CI job that communicates with the FoundriesFactory services.
 
-Docker files and build directories for the container images are located in sub-directories of ``<root>/docker``.
+You need to understand the structure of the sample App before creating your own App and CI job.
+
+The Docker files and build directories for container images are in sub-directories of ``<root>/docker``.
 The name of each sub-directory corresponds to a container image name.
-The compose project definition refers to the container images defined in the repo, and built by the CI job with the reference ``hub.foundries.io/lmp-demo/<app-name|dir>``.
+The compose project definition refers to the container images defined in the repo and built by the CI job with the reference ``hub.foundries.io/lmp-demo/<app-name|dir>``.
 
-The App compose file and any supplementary files are placed under the ``<root>/compose/<app-dir>`` directory.
-The container images in the same repo as the App, built by the repo CI job, should be referenced in the compose file *without* any tag or hash, e.g., ``image: hub.foundries.io/lmp-demo/ha-app``.
-Container images that are not hosted in the given repo (``external``), and not built by the CI job, must be referenced *with* a tag or a hash, e.g. ``image: ghcr.io/home-assistant/home-assistant:2022.11.4``.
+The App compose file and any supplementary files go under ``<root>/compose/<app-dir>``.
+In the compose file, reference container images in the same repo and built by the repo CI,*without* any tag or hash, e.g., ``image: hub.foundries.io/lmp-demo/ha-app``.
+Reference container images **not** hosted in the given repo (``external``) *with* a tag or a hash, e.g. ``image: ghcr.io/home-assistant/home-assistant:2022.11.4``.
 
 FoundriesFactory Utilities: Usage Details
 -----------------------------------------
@@ -92,7 +90,7 @@ The `compose-publish`_ CLI utility does the following:
 1. Pins images referenced from the App compose file.
 
     a) If an image is already pinned (digest, a reference with sha256 hash) it does nothing.
-    b) If an image is referred by a tag it tries to get the image digest—a reference with sha256 hash.
+    b) If an image is referenced by a tag, it tries to get the image digest—a reference with sha256 hash.
        If it fails to obtain an image digest, the utility exists with an error.
     c) If an image reference has no tag or hash, it checks if the digest is specified via the ``--pinned-images`` parameter.
        If not found, the utility exists with an error.
@@ -104,10 +102,10 @@ The `compose-publish`_ CLI utility does the following:
 
 3. Pushes the App container image to the `FoundriesFactory Registry`_.
 
-The utility outputs the built and pushed App image digest to the file specified via ``-d``.
-The published App can now be referenced with a hashed URI — ``hub.foundries.io/<factory>/<app-name>@sha256:<hash>``.
+The utility outputs the App image digest to the file specified via ``-d``.
+Reference the published App with a hashed URI: ``hub.foundries.io/<factory>/<app-name>@sha256:<hash>``.
 
-Once the App is successfully built and pushed to the registry, a new Target referring to it can be created.
+After pushing the App to the registry, you can create a new Target referencing it.
 Use the Fioctl® command ``fioctl targets add`` to do so.
 
 Check the Workflow Result
@@ -117,8 +115,8 @@ Use ``fioctl targets list`` and ``fioctl targets show`` to check whether the new
 
 .. note::
 
-    In some cases a user may want to keep their App source code in their private repo yet still use the FoundriesFactory CI service.
-    If it is the case, then you can check out the following two approaches:
+    What if you may want to keep your App source code in a private repo, yet still use the FoundriesFactory CI service?
+    In this case, check out the following two approaches:
 
     1. :ref:`Git Mirroring <ug-mirror-action>`
     2. :ref:`Git Submodules <ug-submodule>`

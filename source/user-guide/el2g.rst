@@ -21,12 +21,12 @@ Prerequisites
 
  * An :ref:`NXP SE05X secure element <ref-secure-elements>`
  * A Factory registered with EdgeLock 2GO. Please `contact our support team <https://foundriesio.atlassian.net/servicedesk/customer/portal/1/group/1/create/3>`_.
- * Access to your Factory PKI :ref:`root of trust <Root-of-trust>`.
+ * Access to your Factory :term:`PKI` :ref:`root of trust <Root-of-trust>`.
 
 Enabling Auto-connect to Your Factory
 -------------------------------------
 
-Fioctl® can configure EdgeLock 2GO to give out credentials that automatically connect aktualizr-lite to the device gateway, removing the need to run ``lmp-device-register``:
+Fioctl® can configure EdgeLock 2GO to give out credentials that automatically connect :term:`aktualizr-lite` to the device gateway, removing the need to run ``lmp-device-register``:
 
 .. prompt:: bash host:~$, auto
 
@@ -66,18 +66,18 @@ Configure the integration by running:
 
    host:~$ fioctl el2g config-aws-iot
 
-This command uses your local AWS credentials and awscli to get a Certificate Authority (CA) registration code: ``aws iot get-registration-code``.
+Next run ``aws iot get-registration-code``.
+This command uses your local AWS credentials and ``awscli`` to get a Certificate Authority (CA) registration code.
 The registration code is a randomly generated number by AWS.
 A new intermediate CA will be created in Edgelock 2Go and will be used to sign this code.
 New secure objects will then be created and assigned to your device group(s).
-The signed verification code and CA certificate are uploaded to AWS
-IoT.
-AWS IoT can verify the registration code was signed properly and
-complete the process.
+The signed verification code and CA certificate are uploaded to AWS IoT.
+AWS IoT can verify the registration code was signed properly and complete the process.
 
 .. note::
 
-  If this command is run **after** a device has been initially provisioned, you need to perform a manual step on the device to pick up the change:
+  If this command is run **after** a device has been initially provisioned,
+  you need to perform a manual step on the device to pick up the change:
 
   .. prompt:: bash device:~$, auto
 
@@ -87,6 +87,7 @@ At this point you have two options: Manual device registration or Just-In-Time-P
 
 Manual Registration
 ~~~~~~~~~~~~~~~~~~~
+
 Manual registration is the easier path, but not as scalable.
 You add devices one-by-one via the AWS WebUI.
 Here you will need you to provide the client certificate of the device.
@@ -94,6 +95,7 @@ This can be done by looking for the ``aws-iot-ca`` in the output of the device's
 
 JITP
 ~~~~
+
 JITP automates the device registration process with AWS IoT.
 Setting up JITP is specific to a user's AWS deployment, requiring an IAM policy template to define what a device may do.
 `Integrating with AWS IoT using Just-in-Time Provisioning`_ shows one way to do this, and includes a template_ that *can* be used here.
@@ -101,7 +103,8 @@ With a policy in-hand, enable JITP using the CA created above with ``fioctl el2g
 
 .. code-block:: bash
 
-   host:~$ aws iot update-ca-certificate --certificate-id <CERT ID FROM ABOVE> --registration-config='{"templateBody": "{\"Parameters\": {\"AWS::IoT::Certificate::Id\": {\"Type\": \"String\"}, \"AWS::IoT::Certificate::CommonName\": {\"Type\": \"String\"}, \"AWS::IoT::Certificate::SerialNumber\": {\"Type\": \"String\"}}, \"Resources\": {\"thing\": {\"Type\": \"AWS::IoT::Thing\", \"Properties\": {\"ThingName\": {\"Ref\": \"AWS::IoT::Certificate::CommonName\"}, \"AttributePayload\": {\"SerialNumber\": {\"Ref\": \"AWS::IoT::Certificate::SerialNumber\"}}}}, \"certificate\": {\"Type\": \"AWS::IoT::Certificate\", \"Properties\": {\"CertificateId\": {\"Ref\": \"AWS::IoT::Certificate::Id\"}, \"Status\": \"ACTIVE\"}}, \"policy\": {\"Type\": \"AWS::IoT::Policy\", \"Properties\": {\"PolicyName\": \"<YOUR POLICY NAME>\"}}}}", "roleArn": "<YOUR ROLE ARN>"}'
+   host:~$ aws iot update-ca-certificate --certificate-id <CERT ID FROM ABOVE> \
+   --registration-config='{"templateBody": "{\"Parameters\": {\"AWS::IoT::Certificate::Id\": {\"Type\": \"String\"}, \"AWS::IoT::Certificate::CommonName\": {\"Type\": \"String\"}, \"AWS::IoT::Certificate::SerialNumber\": {\"Type\": \"String\"}}, \"Resources\": {\"thing\": {\"Type\": \"AWS::IoT::Thing\", \"Properties\": {\"ThingName\": {\"Ref\": \"AWS::IoT::Certificate::CommonName\"}, \"AttributePayload\": {\"SerialNumber\": {\"Ref\": \"AWS::IoT::Certificate::SerialNumber\"}}}}, \"certificate\": {\"Type\": \"AWS::IoT::Certificate\", \"Properties\": {\"CertificateId\": {\"Ref\": \"AWS::IoT::Certificate::Id\"}, \"Status\": \"ACTIVE\"}}, \"policy\": {\"Type\": \"AWS::IoT::Policy\", \"Properties\": {\"PolicyName\": \"<YOUR POLICY NAME>\"}}}}", "roleArn": "<YOUR ROLE ARN>"}'
 
 .. _template:
    https://gist.github.com/doanac/b380d1c905f5110ebc5eceb283663ccf#file-setup-py-L68
@@ -126,7 +129,7 @@ For example::
   # conf/machine/include/lmp-factory-custom.inc
   EL2GO_HOSTNAME = "XXXXXXXXXXXXX.device-link.edgelock2go.com"
 
-You'll now need to enable the device auto registration recipe_.
+You will now need to enable the device auto registration recipe_.
 First, include the package in your factory image with::
 
   # recipes-samples/images/lmp-factory-image.bb
@@ -144,7 +147,7 @@ Now create a file ``recipes-support/lmp-el2go-auto-register/lmp-el2go-auto-regis
   host:~$ fioctl keys ca show --just-root > recipes-support/lmp-el2go-auto-register/lmp-el2go-auto-register/root.crt
 
 
-Finally, override the main recipe with::
+Override the main recipe with::
 
   # recipes-support/lmp-el2go-auto-register/lmp-el2go-auto-register.bbappend
   FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
@@ -205,6 +208,7 @@ If needed, you can troubleshoot this by running:
 
 Testing AWS IoT
 ---------------
+
 If your devices are configured to use AWS IoT, you can test using our example container, which publishes an MQTT message to your instance::
 
   device:~$ docker run --rm -it \
@@ -234,13 +238,14 @@ EdgeLock 2GO Concepts
 Installing Additional Secure Objects
 ------------------------------------
 
-Additional Secure Objects can be defined in EdgeLock 2GO through the API.
+You can define Additional Secure Objects in EdgeLock 2GO through the API.
 These objects are provisioned into the Secure Element when the device registers.
-On top of this, keypairs and certificates are loaded into PKCS#11 so they are accessible, e.g., OpenSSL.
-The convention is that the keypair secure object has an even-numbered OID (e.g. 0x10000010) and the corresponding certificate has an OID one higher (e.g. 0x10000011).
-To enable automatic loading of the keypair and certificate, the ``GENERIC_KEYPAIRS`` variable must be set in ``/etc/default/lmp-el2go-auto-register`` e.g.,
+On top of this, keypairs and certificates are loaded into PKCS#11 so that they are accessible, e.g., OpenSSL.
+The convention is that the keypair secure object has an even-numbered OID (e.g. ``0x10000010``),
+and the corresponding certificate has an OID one higher (e.g. ``0x10000011``).
+To enable automatic loading of the keypair and certificate,
+set the ``GENERIC_KEYPAIRS`` variable in ``/etc/default/lmp-el2go-auto-register`` ::
 
-::
   # recipes-support/lmp-el2go-auto-register/lmp-el2go-auto-register/default.env
   REPOID=<YOUR ID FROM fioctl factories>
   GENERIC_KEYPAIRS="0x10000010"
@@ -250,8 +255,8 @@ To enable automatic loading of the keypair and certificate, the ``GENERIC_KEYPAI
 Further Details
 ---------------
 
-FoundriesFactory includes a convenient APIs for working with EdgeLock 2GO, which are used by fioctl.
-They are documented at https://api.foundries.io/ota/
+FoundriesFactory includes convenient APIs for working with EdgeLock 2GO, which Fioctl uses.
+These are documented at https://api.foundries.io/ota/
 
 You may also access the full EdgeLock 2GO API via a reverse proxy:
 
@@ -263,6 +268,6 @@ API documentation links:
  * `OpenAPI Swagger <https://cdn.foundries.io/el2go/el2go-managed-api-gateway-api-58.45.0.yaml>`_
 
 The default FoundriesFactory EdgeLock 2GO implementation provides a free of charge evaluation for 30 days.
-Once enabled for commercial use, the standard package limits usage to 50,000 devices per subscription year and 2x key pairs and 2x X.509 certificates per device.
+After enabling for commercial use, the standard package limits usage to 50,000 devices per subscription year, and 2x key pairs and 2x X.509 certificates per device.
 This covers the FoundriesFactory key pair and certificate and one additional set for authentication to a third-party service such as AWS.
 If you require additional devices, or more key pairs per device, please contact us.
