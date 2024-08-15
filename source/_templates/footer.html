@@ -1,0 +1,10 @@
+{% extends "!footer.html" %}
+{%-block contentinfo %}
+{{ super }}
+
+<div class="download" data-toggle="link" role="note" aria-label="Link">
+  <a href="https://github.com/foundriesio/docs/{{ gh_release }}/" target="_blank" rel="noreferrer noopener" Link>
+   <button type="button" button style="margin:10px;"> Offline Version </button>
+   </a>
+</div>
+{% endblock %}
