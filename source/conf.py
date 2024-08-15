@@ -94,10 +94,18 @@ else:
         else:
             search_version = 'default'
 
-# pass to template engine's context
+# Used for link in footer to the GitHub releases page.
+
+if mp_version.startswith('git-'):
+    gh_release = 'releases'
+else:
+    gh_release = 'releases/tag/mp-' + mp_version
+
+# pass vars to template engine's context
 html_context = {'search_version': search_version,
                 'meilisearch_host': meilisearch_host,
                 'meilisearch_search_key': meilisearch_search_key,
+                'gh_release': gh_release,
 }
 
 # -- General configuration ------------------------------------------------
@@ -114,7 +122,7 @@ else:
 # a repository and checking out master, but it works for subscriber
 # updates.)
 if mp_version.startswith('git-'):
-    git_tag = 'master'
+    git_tag = 'main'
 else:
     git_tag = 'mp-' + mp_version + mp_tags
 
@@ -186,6 +194,16 @@ linkcheck_timeout = 10
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+simplepdf_vars = {
+        'primary': '#2C1256',
+        'secondary': '#000000',
+        'cover': '#2C1256',
+        'cover-bg': 'white',
+        'links': '#2980B9',
+        }
+
+simplepdf_file_name = 'FoundriesFactory_' + mp_version + '.pdf'
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:

@@ -7,7 +7,7 @@ customize open source software projects including U-Boot, OP-TEE,
 OE/Yocto Project, the Linux microPlatform™ and Docker®.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Getting started
    :name: sec-learn
 
@@ -19,7 +19,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    getting-started/building-deploying-app/index
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Tutorials
    :name: sec-tutorials
 
@@ -32,7 +32,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    tutorials/working-with-tags/working-with-tags
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
    :caption: User Guide
    :name: sec-user-guide
@@ -53,7 +53,6 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/lmp-device-auto-register/lmp-device-auto-register
    user-guide/custom-sota-client
    user-guide/offline-update/offline-update
-   porting-guide/pg
    reference-manual/linux/linux-disk-encryption
    reference-manual/linux/factory-device-reset
    reference-manual/linux/linux-update
@@ -68,7 +67,7 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    user-guide/troubleshooting/troubleshooting
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Reference Manual
    :name: sec-manual
   
@@ -83,21 +82,19 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    reference-manual/testing/testing
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Porting Guide
    :name: sec-porting-guide
 
    porting-guide/pg.rst
 
 .. toctree::
-   :maxdepth: 2
    :caption: Glossary
    :name: sec-glossary
 
    glossary/index
 
 .. toctree::
-   :maxdepth: 2
    :caption: Release Notes
    :name: sec-release-notes
 
