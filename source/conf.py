@@ -299,7 +299,12 @@ html_theme = 'sphinx_rtd_theme'
 # than canonical_url
 html_theme_options = {
     'logo_only': True,
-    'canonical_url': 'https://docs.foundries.io/latest/'
+    'canonical_url': 'https://docs.foundries.io/latest/',
+    'collapse_navigation': False,
+    'sticky_navigation': False,
+    'navigation_depth': -1,
+    'style_external_links': True,
+    'style_nav_header_background': '#2C1256',
 }
 
 
