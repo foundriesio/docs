@@ -102,3 +102,6 @@ li {
 html.writer-html5 .rst-content dl.field-list>dt:after {
     content: initial;
 }
+.wy-nav-side {
+      background: #2C1256;
+    }
