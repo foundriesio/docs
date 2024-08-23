@@ -49,7 +49,7 @@ Commit and push the changes.
     host:~$ git commit -m "Adding config file with Dockerfile"
     host:~$ git push
 
-Wait for the FoundriesFactory® CI job to finish and for your device to receive the new target.
+Wait for the FoundriesFactory™ Platform's CI job to finish and for your device to receive the new target.
 
 To check if your device is up-to-date, from your Factory page check :guilabel:`Devices`.
 You should see a new number at the end of the **Target** name. For example, ``raspberrypi3-64-lmp-5``.

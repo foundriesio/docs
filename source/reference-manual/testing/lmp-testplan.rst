@@ -4,7 +4,7 @@
 Test Plan
 #########
 
-Below you will find the test plan Foundries.io uses for FoundriesFactory®.
+Below you will find the test plan Foundries.io uses for the FoundriesFactory™ Platform.
 Test results for each release can be found in the `release notes <https://github.com/foundriesio/docs/tree/main/release-notes>`_.
 
 What to Test

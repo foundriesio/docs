@@ -8,7 +8,7 @@ A device receives an x509 client certificate during device registration that is 
 This validity period is common in IoT, but security bodies like NIST_ recommend changing such keys on a yearly basis.
 Certificate rotation is the process you can use to do this.
 
-The FoundriesFactory® process for rotating device certificates is based on the industry standard `RFC 7030`_ Enrollment over Secure Transport (EST).
+The FoundriesFactory™ Platform's process for rotating device certificates is based on the industry standard `RFC 7030`_ Enrollment over Secure Transport (EST).
 
 .. _NIST:
    https://www.nist.gov/

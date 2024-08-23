@@ -3,7 +3,7 @@
 Custom CI To Build Compose App Targets
 ======================================
 
-FoundriesFactory® includes all you need to build a containerized application and securely deploy it on devices.
+The FoundriesFactory™ Platform includes all you need to build a containerized application and securely deploy it on devices.
 This includes: 
 
 * a git repository

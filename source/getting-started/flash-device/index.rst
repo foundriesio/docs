@@ -5,8 +5,8 @@ Flashing Your Device
 
 .. note::
 
-  The initial FoundriesFactory® set up and build is finished very quick. Follow
-  its status with steps listed in :ref:`gs-watch-build` page.
+  The initial Factory setup and build is finished very quick.
+  Follow its status with steps listed in :ref:`gs-watch-build` page.
 
 Prerequisites and Pre-Work
 --------------------------
@@ -31,7 +31,7 @@ Prerequisites and Pre-Work
 Downloading the System Image
 ----------------------------
 
-After a successful build, FoundriesFactory produces build artifacts which can be downloaded from the :guilabel:`Targets` tab of your :term:`Factory`.
+After a successful build, the FoundriesFactory™ Platform produces build artifacts which can be downloaded from the :guilabel:`Targets` tab of your :term:`Factory`.
 
 #. Navigate to the :guilabel:`Targets` section of your Factory.
 
@@ -42,7 +42,9 @@ After a successful build, FoundriesFactory produces build artifacts which can be
         :align: center
         :alt: Targets tab showing prebuilt-target
 
-#. Expand the :guilabel:`Targets` tab clicking on it. This shows a link to the Factory image artifact. Download the Factory image for your machine:
+#. Expand the :guilabel:`Targets` tab clicking on it.
+   This shows a link to the Factory image artifact.
+   Download the Factory image for your machine:
 
     | E.g: ``lmp-base-console-image-<machine_name>.wic.gz``
 

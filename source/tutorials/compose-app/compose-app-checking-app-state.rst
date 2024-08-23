@@ -17,7 +17,7 @@ It is responsible for the App state inquiry interval as well.
 - directly after device reboot
 - when ``aktualizr-lite`` restarts.
 
-.. Important:: The FoundriesFactory® backend stores just the last 10 states.
+.. Important:: The FoundriesFactory™ Platform's backend stores just the last 10 states.
 
 If enabled, container health is determined by a `health check`_ script.
 Otherwise, container health is deduced from a container state and exit code.

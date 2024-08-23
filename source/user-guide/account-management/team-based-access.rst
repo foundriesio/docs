@@ -9,7 +9,7 @@ Team Based Factory Access
    * :ref:`API Scopes <ref-scopes>` for available token scopes.
 
 .. tip::
-   The FoundriesFactory® :ref:`API documentation<ref-scopes>` covers available scopes.
+   The FoundriesFactory™ Platform :ref:`API documentation<ref-scopes>` covers available scopes.
 
 Larger organizations often need to restrict the access level a user has to the Factory.
 For example, some users might only need access for managing devices,

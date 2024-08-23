@@ -3,7 +3,7 @@
 Working With Git Submodules
 ===========================
 
-This section shows how to add a git submodule to your FoundriesFactory® repository.
+This section shows how to add a git submodule to your FoundriesFactory™ Platform repository.
 This is used when you want an external Git repository, such as GitHub, connected to a Factory repository as a submodule.
 
 Submodules can be used to isolate two different application teams, allowing work to take place in separate repositories.

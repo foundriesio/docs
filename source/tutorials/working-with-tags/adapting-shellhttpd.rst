@@ -138,5 +138,5 @@ Check what Target your device is running:
      ----           -------     ------                 ------  ----                                        ----------
      <device-name>  <factory>   raspberrypi3-64-lmp-10 OK      flask-mqtt-nginx,mosquitto,shellhttpd-mqtt  true
 
-Whenever you push changes to the ``devel`` branch, FoundriesFactory® CI will build and generate a new Target tagged with ``devel``.
+Whenever you push changes to the ``devel`` branch, the CI will build and generate a new Target tagged with ``devel``.
 As a result, devices following ``devel`` will update to the latest Target.

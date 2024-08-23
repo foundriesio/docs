@@ -29,7 +29,7 @@ The same ``shellhttpd`` application used in other tutorials is now being added t
 .. tip::
 
   If you are not familiar with the Yocto Project/OpenEmbedded you can still follow this tutorial. 
-  The FoundriesFactory® CI helps simplify this process by building the platform in the cloud.
+  The FoundriesFactory™ Platform CI helps simplify this process by building the platform in the cloud.
 
 .. note::
 

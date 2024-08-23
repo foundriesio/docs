@@ -24,7 +24,7 @@ to configure the keys used by the Yocto Project.
 .. note::
 
     The device RoT key (the key used for secure boot, for example) is shown in the diagrams.
-    However it is not an online key and is not used during the FoundriesFactory® build.
+    However it is not an online key and is not used during the Factory build.
 
 i.MX Secure Boot Flow
 """""""""""""""""""""
@@ -196,7 +196,7 @@ recommended to rotate the keys as needed. The suggestion is to rotate them every
   the used keys often. So, it is highly recommended to rotate the keys each 6 to 24
   months.
 
-  Please note that, depending on the key, it may be required to trigger a :ref:`ref-boot-software-updates` to correctly change the FoundriesFactory keys used. A mismatch in used keys could lead to devices failing to boot, which would then rollback to the previous stable version using the old keys.
+  Please note that, depending on the key, it may be required to trigger a :ref:`ref-boot-software-updates` to correctly change the Factory keys used. A mismatch in used keys could lead to devices failing to boot, which would then rollback to the previous stable version using the old keys.
 
 In the following sections, the command line is shown on how to create the key pair for U-Boot,
 OP-TEE and Linux Kernel Modules. This is assuming the ``lmp-manifest`` repository is

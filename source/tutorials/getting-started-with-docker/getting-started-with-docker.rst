@@ -3,7 +3,7 @@
 Getting Started With Docker
 ===========================
 
-FoundriesFactory® gives you the ability to update ``docker-compose`` applications Over The Air (OTA).
+The FoundriesFactory™ Platform gives you the ability to update ``docker-compose`` applications Over The Air (OTA).
 This tutorial gets you started with Docker and ``docker-compose``,
 with the basic commands and concepts that will help you create your own apps.
 

@@ -3,7 +3,7 @@
 Testing
 =======
 
-This section provides an overview of FoundriesFactory testing.
+This section provides an overview of the testing done for the FoundriesFactory™ Platform.
 
 :ref:`ref-lmp-testplan` describes the *internal* testing process we follow to help ensure the quality of our releases.
 

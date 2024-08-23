@@ -3,7 +3,7 @@
 Overview
 ========
 
-The FoundriesFactory® Reference Manual provides technical details, command options, and API calls, as well as instructions for some advanced use cases.
+The FoundriesFactory™ Platform Reference Manual provides technical details, command options, and API calls, as well as instructions for some advanced use cases.
 See the User Guide or Tutorial sections for instructional focused content.
 
 .. tip::

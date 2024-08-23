@@ -41,7 +41,7 @@ If a boot on a new version of rootfs fails three times then:
 Rollback Driven by a Bootloader Update Failure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The FoundriesFactory® OTA update service supports bootloader update.
+The FoundriesFactory™ Platform OTA update service supports bootloader update.
 Effectively, boot artifacts are included into `OSTree`_ — managed rootfs.
 Therefore, a rollback procedure in the case of a bootloader update failure, is the same as in the case of the ostree update failure.
 The only difference is how and when the rollback is triggered.

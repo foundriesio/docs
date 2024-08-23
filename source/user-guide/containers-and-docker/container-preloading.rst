@@ -92,7 +92,7 @@ Check the latest Target you just created:
 
    New Target
 
-When the FoundriesFactory® CI finishes, click Target.
+When the FoundriesFactory™ Platform CI finishes, click Target.
 Find :guilabel:`Runs` and download the image from ``assemble-system-image``.
 Flash the image and boot the device.
 

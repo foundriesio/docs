@@ -4,7 +4,7 @@ Factory Reset
 =============
 
 In this context, Factory reset means restoring a device to the original state.
-This is a feature of LmP, rather than of FoundriesFactory®.
+This is a feature of LmP, rather than of the FoundriesFactory™ Platform.
 A reset is performed as a script in ramdisk during boot.
 It is triggered by the presence of specific files.
 Presence of the files is specified in the following order:

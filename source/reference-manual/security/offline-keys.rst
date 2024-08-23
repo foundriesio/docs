@@ -3,7 +3,7 @@
 Offline Factory TUF Keys
 ========================
 
-FoundriesFactory® uses `The Update Framework (TUF) <TUF_>`_
+The FoundriesFactory™ Platform uses `The Update Framework (TUF) <TUF_>`_
 for multi-level key management strategy to secure software updates.
 Part of this strategy utilizes roles to separate software update responsibilities.
 By restricting each role's responsibilities or actions it is trusted to perform,

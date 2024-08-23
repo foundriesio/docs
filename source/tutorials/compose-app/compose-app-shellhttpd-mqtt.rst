@@ -59,12 +59,13 @@ Check the content of ``shellhttpd-mqtt/docker-compose.yml``:
 The ``shellhttpd-mqtt/docker-compose.yml`` file has the configuration for the ``shellhttpd-mqtt`` app: 
 
 - ``httpd-mqtt``: Name of the first service.
-- ``image``: Specifies the Docker container image from ``hub.foundries.io/${FACTORY}/shellhttpd-mqtt:latest``. This was created by the FoundriesFactory CI based on the Dockerfile in ``shellhttpd-mqtt``. In this case, the same folder.
+- ``image``: Specifies the Docker container image from ``hub.foundries.io/${FACTORY}/shellhttpd-mqtt:latest``.
+  This was created by the FoundriesFactory™ Platform CI based on the Dockerfile in ``shellhttpd-mqtt``. In this case, the same folder.
 - ``extra_hosts``: Map the container to access the device ``localhost`` over the address ``host.docker.internal``.
 
 ``Dockerfile`` contains the commands to assemble the ``hub.foundries.io/${FACTORY}/shellhttpd-mqtt:latest`` Docker container image. 
 
-The FoundriesFactory® CI will build and publish the image.
+The CI will build and publish the image.
 Finally, the Docker Compose Application above will specify it.
 
 Check the content of ``shellhttpd-mqtt/Dockerfile``:

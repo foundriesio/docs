@@ -4,7 +4,7 @@ Dynamic Configuration File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 In a production environment, you may have a fleet of devices. 
 Configuring each device would be frustrating. 
-FoundriesFactory® adds management capabilities to your product configuration. 
+The FoundriesFactory™ Platform adds management capabilities to your product configuration. 
 With Fioctl®, the configuration file is encrypted with the devices’ public key.
 
 When the device receives the encrypted file, ``fioconfig`` stores it to a persistent volume at ``/var/sota/config.encrypted``.

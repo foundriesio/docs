@@ -1,7 +1,7 @@
 i.MX 8M Quad Evaluation Kit with SE050ARD
 =========================================
 
-This page walks through walk installing a FoundriesFactory® image with SE050 hardware enabled onto the NXP® ``imx8mqevk``,
+This page walks through walk installing a FoundriesFactory™ Platform image with SE050 hardware enabled onto the NXP® ``imx8mqevk``,
 connected to the NXP OM-SE050ARD development platform.
 
 .. note::

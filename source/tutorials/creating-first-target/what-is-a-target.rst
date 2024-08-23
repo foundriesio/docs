@@ -3,7 +3,7 @@
 Targets
 ^^^^^^^
 
-The FoundriesFactory® CI created your first **Target** triggered by changes to the ``containers.git``.
+The FoundriesFactory™ Platform's CI created your first **Target** triggered by changes to the ``containers.git``.
 
 .. hint::
 

@@ -6,7 +6,7 @@ Factory Porting Guide
 Introduction
 ------------
 
-This section provides guidelines and suggestions on how to add support for a machine not already supported by FoundriesFactory.
+This section provides guidelines and suggestions on how to add support for a machine not already supported by the FoundriesFactory™ Platform.
 The list of currently supported machines can be found under :ref:`ref-linux-supported`.
 
 Needing to port a board could be due to:
@@ -17,7 +17,7 @@ Needing to port a board could be due to:
 
 Another possible reason is to customize hardware aspects of well known hardware, but with another machine file.
 
-The strategy used in this guide is to add support on top of the existing structure provided by the Linux® micro Platform (LmP).
+The strategy used in this guide is to add support on top of the existing structure provided by the Linux® microPlatform (LmP).
 The LmP  provides the needed configuration for the packages, images, and classes.
 Also provided is the container runtime and OTA infrastructure integration.
 

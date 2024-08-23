@@ -6,7 +6,7 @@ Emulation With QEMU
 .. note::
 
   This tutorial is designed to assist you in getting started with using :term:`QEMU` to emulate devices on your desktop.
-  Please note that we are selecting a specific machine to establish an environment for experimenting with FoundriesFactory®.
+  Please note that we are selecting a specific machine to establish an environment for experimenting with the FoundriesFactory™ Platform.
   This approach will enable you to engage with subsequent tutorials and enhance your skills.
 
 Prerequisites and Pre-Work

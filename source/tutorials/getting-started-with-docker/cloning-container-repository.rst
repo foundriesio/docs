@@ -17,7 +17,7 @@ Your ``containers.git`` repository is initialized with a simple application exam
 
 .. tip::
 
-  Directory names ending with ``.disabled`` in ``containers.git`` are **ignored** by the FoundriesFactory® CI.
+  Directory names ending with ``.disabled`` in ``containers.git`` are **ignored** by the FoundriesFactory™ Platform CI.
 
 For better understanding, it is best to go through the files in  ``shellhttpd.disabled`` gradually.
 Create a new folder with the name ``shellhttpd``:

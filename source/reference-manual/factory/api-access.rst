@@ -3,7 +3,7 @@
 API Access
 ==========
 
-FoundriesFactory® APIs can be accessed via two methods:
+The FoundriesFactory™ Platform APIs can be accessed via two methods:
 
  #. `OAuth2`_ tokens managed in the `Application Credentials`_ interface.
  #. API Tokens managed in the `API tokens`_ interface.

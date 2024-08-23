@@ -53,7 +53,7 @@ Webhook data sent by the CI looks like::
     "completed": "2021-07-26T18:19:24+00:00"
   }
 
-This message includes an `HMAC-SHA256`_ HTTP header from the FoundriesFactory® `CI engine`_, ``X-JobServ-Sig`` to help authenticate the sender.
+This message includes an `HMAC-SHA256`_ HTTP header from the FoundriesFactory™ Platform `CI engine`_, ``X-JobServ-Sig`` to help authenticate the sender.
 
 .. _HMAC-SHA256:
    https://en.wikipedia.org/wiki/HMAC

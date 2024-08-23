@@ -3,7 +3,7 @@
 Custom CI
 =========
 
-FoundriesFactory® is a Swiss Army knife.
+The FoundriesFactory™ Platform is a Swiss Army knife.
 It includes everything you need to manage the lifecycle of a Linux®-based OS with containerized applications running on it:
 
    - Git repositories for your operating system (OE layers/recipes) and containerized applications.

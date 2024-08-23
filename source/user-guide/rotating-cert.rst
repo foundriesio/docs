@@ -16,12 +16,12 @@ There are two ways to then run an Enrollment over Secure Transport (EST) server.
 FoundriesFactory Managed
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Running ``fioctl keys est authorize`` will allow FoundriesFactory® to run an EST server for you at ``<repoid>.est.foundries.io``.
+Running ``fioctl keys est authorize`` will allow the FoundriesFactory™ service to run an EST server for you at ``<repoid>.est.foundries.io``.
 This command will sign a CSR created in the backend with your Factory's root key.
 The resulting TLS certificate will be used by the FoundriesFactory EST server.
 
 .. note::
-   This option requires the FoundriesFactory® backend to have a certificate authority to sign renewal requests.
+   This option requires the FoundriesFactory backend to have a certificate authority to sign renewal requests.
    This "online-ca" is configured when running ``fioctl keys ca create``.
    Please note that ``fioctl keys ca create`` can **only** be run once;
    see :ref:`ref-device-gateway-pki-details` for more information.

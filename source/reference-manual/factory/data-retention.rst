@@ -3,7 +3,7 @@
 Data Retention Policies
 =======================
 
-Understanding data retention policies for Foundries.io™ FoundriesFactory® can help with the compliance processes for a product.
+Understanding data retention policies for the Foundries.io™ FoundriesFactory™ Platform can help with the compliance processes for a product.
 This page explains how data is managed within a Factory.
 FoundriesFactory consists of several tightly integrated projects:
 

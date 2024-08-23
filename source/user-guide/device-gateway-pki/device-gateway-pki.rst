@@ -28,7 +28,7 @@ The PKI for Device Gateway and Factory Devices is vital for the secure communica
 It is important to understand exactly what the given command does.
 
 Before a user sets up the PKI, their Devices and Device Gateway talk to each other by utilizing a so-called "shared PKI".
-This is the default PKI that FoundriesFactory® sets up as part of new Factory provisioning.
+This is the default PKI that the FoundriesFactory™ service sets up as part of new Factory provisioning.
 The ``fioctl`` command communicates with the end point ``https://api.foundries.io/ota/factories/$FACTORY/certs/`` to create and update Factory specific PKI keys and certificates.
 As long as the Factory uses the "shared PKI", the endpoint returns an empty response, as no Factory PKI is set::
 
