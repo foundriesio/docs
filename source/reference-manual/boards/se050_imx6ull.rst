@@ -1,7 +1,7 @@
 i.MX 6ULL Evaluation kit With SE050ARD
 =======================================
 
-This page walks through installing a FoundriesFactory® image with SE050 hardware enabled onto the NXP® ``imx6ullevk``,
+This page walks through installing a FoundriesFactory™ Platform image with SE050 hardware enabled onto the NXP® ``imx6ullevk``,
 connected to the NXP OM-SE050ARD development platform.
 
 .. note::

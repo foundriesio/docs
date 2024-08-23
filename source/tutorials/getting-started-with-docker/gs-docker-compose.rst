@@ -41,7 +41,7 @@ Review the ``docker-compose.yml`` file:
 Most of the parameters were already used in the previous commands. 
 The only thing to change is the image parameter.
 
-In the next tutorial, you will build and deploy with FoundriesFactory®, where ``hub.foundries.io`` will be necessary.
+In the next tutorial, you will build and deploy using the FoundriesFactory™ Platform, where ``hub.foundries.io`` will be necessary.
 
 As you are still developing locally, edit the image parameter to use the image and tag from the previous steps, ``shellhttpd:1.0``:
 

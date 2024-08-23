@@ -1,7 +1,7 @@
 i.MX 8M Plus Evaluation Kit With SE050ARD
 =========================================
 
-This document walks through the steps of installing a FoundriesFactory® image with SE050 hardware enabled onto the NXP® ``imx8mp-lpddr4-evk``,
+This document walks through the steps of installing a FoundriesFactory™ Platform image with SE050 hardware enabled onto the NXP® ``imx8mp-lpddr4-evk``,
 connected to the NXP OM-SE050ARD development platform.
 
 .. note::

@@ -3,7 +3,7 @@
 Custom CI for RootFS 
 ====================
 
-FoundriesFactory® includes all you need to build a Linux®-based operating system and securely deploy it.
+The FoundriesFactory™ Platform includes all you need to build a Linux®-based operating system and securely deploy it.
 In particular, it provides you with a git repo and a CI service that handles building the kernel and :term:`rootfs`, and delivering them to devices.
 This is done while leveraging the TUF compliant OTA service.
 You can learn more in the :ref:`reference <ref-linux>` section.

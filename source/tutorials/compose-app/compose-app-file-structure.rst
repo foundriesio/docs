@@ -4,7 +4,7 @@ File Structure
 ^^^^^^^^^^^^^^
 
 Pay attention to the file structure in the ``containers.git`` repo. 
-It defines when the FoundriesFactory® CI creates a Docker image or creates a Docker Compose App.
+It defines when the FoundriesFactory™ Platform CI creates a Docker image or creates a Docker Compose App.
 
 Most Docker Compose App structures will be similar to the ``shellhttpd`` example provided in ``containers.git``.
 This is the same example used in the previous tutorials.

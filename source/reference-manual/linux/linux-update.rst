@@ -3,7 +3,7 @@
 Updating the Linux microPlatform Core
 =====================================
 
-The FoundriesFactory® platform manifest is tailored to make consuming core platform updates easily.
+The FoundriesFactory™ Platform manifest is tailored to make consuming core platform updates easily.
 At Foundries.io™, we often `release`_ Linux® microPlatform (LmP) updates as an effort to get the latest features and security fixes out to users.
 
 .. _release:

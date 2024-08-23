@@ -2,7 +2,7 @@ OSS Compliance With FoundriesFactory
 ====================================
 
 The Yocto Project provides a set of tools to help with Open Source Software (OSS) compliance.
-FoundriesFactory® is configured to use some of them by default.
+The FoundriesFactory™ Platform is configured to use some of them by default.
 These provide a good starting point when working with license requirements.
 
 There are several OSS licenses.

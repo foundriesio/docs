@@ -3,7 +3,7 @@
 Signing Up
 ==========
 
-To begin using FoundriesFactory®, start with `creating an account <signup_>`_ with us.
+To begin using the FoundriesFactory™ Platform, start with `creating an account <signup_>`_ with us.
 
 .. figure:: /_static/signup/signup.png
    :width: 380

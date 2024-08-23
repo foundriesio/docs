@@ -5,7 +5,7 @@ In :ref:`tutorial-gs-with-docker`, you moved most of the files from the ``shellh
 You then built and tested a local version of the container.
 
 In this chapter, you will work on the final adjustments before sending your changes to the remote repository.
-This triggers the FoundriesFactory® CI to start a new build, which compiles and publishes your application to `Foundries.io™ hub <https://hub-ui.foundries.io/>`_.
+This triggers the FoundriesFactory™ Platform CI to start a new build, which compiles and publishes your application to `Foundries.io™ hub <https://hub-ui.foundries.io/>`_.
 
 Open a terminal on your host machine and navigate to the container folder used in the previous tutorial.
 

@@ -8,7 +8,7 @@ This page provides a brief summary of cryptographic keys used by your Factory.
 Secure Connection to Cloud Services
 -----------------------------------
 
-The following certificates are required to access the FoundriesFactory® CI servers.
+The following certificates are required to access the FoundriesFactory™ Platform CI servers.
 For detailed information, check :ref:`ref-secure-cloud-services`.
 
 .. list-table:: Device Gateway Certificates Summary

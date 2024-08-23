@@ -4,8 +4,8 @@ Managing Your Subscription
 ==========================
 
 .. hint::
-   FoundriesFactory® is a DevSecOps platform subscription service.
-   Per month or annual plan choices,
+   The FoundriesFactory™ Platform is a DevSecOps subscription service.
+   Per month or annual plan choices are available.
    both provide access to all FoundriesFactory features and support.
 
 Subscriptions apply per Factory;

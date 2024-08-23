@@ -3,7 +3,7 @@
 Factory Source Code
 ===================
 
-FoundriesFactory® provides you with a private git sandbox, allowing you to maintain and customize your platform.
+The FoundriesFactory™ Platform provides you with a private git sandbox, allowing you to maintain and customize your platform.
 Navigate to ``https://source.foundries.io/factories/<factory>/``:
 
 .. figure:: /_static/factory-cgit.png

@@ -1,7 +1,7 @@
 i.MX 8M Mini/Nano Evaluation Kit with SE050ARD
 ==============================================
 
-This page walks through installing a SE050 hardware enabled FoundriesFactory® image onto an NXP® ``imx8mm-lpddr4-evk`` or ``imx8mn-ddr4-evk``, 
+This page walks through installing a SE050 hardware enabled FoundriesFactory™ Platform image onto an NXP® ``imx8mm-lpddr4-evk`` or ``imx8mn-ddr4-evk``, 
 connected to the NXP OM-SE050ARD development platform.
 
 .. note::

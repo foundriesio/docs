@@ -114,7 +114,7 @@ Authenticating Fioctl
 #####################
 
 With :ref:`ref-fioctl` installed, authenticate it with our backend.
-For this, you will generate OAuth2 application credentials for interacting with the FoundriesFactory® API:
+For this, you will generate OAuth2 application credentials for interacting with the FoundriesFactory™ Platform API:
 
 .. prompt:: bash host:~$, auto
 

@@ -3,7 +3,8 @@
 Intellectual Property Protection
 ================================
 
-Protecting your Intellectual Property (IP) is important to us. Foundries.io™ follows best practices to make sure your code is protected while using FoundriesFactory®.
+Protecting your Intellectual Property (IP) is important to us.
+Foundries.io™ follows best practices to make sure your code is protected while using the FoundriesFactory™ Platform.
 
 .. seealso::
    :ref:`ref-data-retention`

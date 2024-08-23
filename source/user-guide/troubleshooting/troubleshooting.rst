@@ -248,7 +248,7 @@ Once the ``spldev.key`` and ``spldev.crt`` are created, add them to the reposito
     git add factory-keys/spldev.crt
     git commit
 
-Once the commit is pushed upstream, the FoundriesFactory® CI will generate a build that fixes the issue.
+Once the commit is pushed upstream, the FoundriesFactory™ Platform CI will generate a build that fixes the issue.
 
 .. _ref-troubleshooting_request-entity-too-large:
 

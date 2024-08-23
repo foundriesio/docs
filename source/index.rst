@@ -1,7 +1,7 @@
 FoundriesFactory_ Documentation
 ===============================
 
-FoundriesFactory is a cloud service to build, test, deploy,
+The FoundriesFactory™ Platform is a cloud service to build, test, deploy,
 and maintain secure, updatable IoT and Edge products. It is used to
 customize open source software projects including U-Boot, OP-TEE,
 OE/Yocto Project, the Linux microPlatform™ and Docker®.

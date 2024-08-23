@@ -97,7 +97,7 @@ Before pushing, check locally:
 - lint: `vale <path_to_file(s)>`
 
 When opening a PR, add "documentation team" for your reviewer.
-For any changes that reflect changes to how FoundriesFactory is used/interacted with—the majority—please add the Customer Success team.
+For any changes that reflect changes to how the FoundriesFactory™ Platform is used/interacted with—the majority—please add the Customer Success team.
 Someone from the documentation team will merge it once reviews are in and suggestions considered.
 The [PR template](.github/pull_request_template.md) has additional steps that can speed up the process.
 

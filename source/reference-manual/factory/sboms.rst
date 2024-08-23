@@ -10,7 +10,7 @@ SBOMs are foundational to understanding:
  * License compliance—the software licenses of the packages.
  * Vulnerability management—the package versions.
 
-The FoundriesFactory® SBOM feature extracts the SBOM data and analyzes it according to your needs.
+The FoundriesFactory™ Platform's SBOM feature extracts the SBOM data and analyzes it according to your needs.
 
 .. important::
    `Per our terms and conditions <https://foundries.io/company/terms/>`_:

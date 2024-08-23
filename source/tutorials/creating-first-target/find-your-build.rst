@@ -1,7 +1,7 @@
 Find Your Build
 ^^^^^^^^^^^^^^^
 
-Once your changes to the :term:`containers.git` repository were pushed, the FoundriesFactory® CI automatically started a new ``container-main`` build.
+Once your changes to the :term:`containers.git` repository were pushed, the FoundriesFactory™ Platform CI automatically started a new ``container-main`` build.
 Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targets`:
 
 The latest **Target** named :guilabel:`containers-main` should be the CI job you just created.

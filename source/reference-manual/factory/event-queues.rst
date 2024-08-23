@@ -3,7 +3,7 @@
 Event Queues
 ============
 
-The FoundriesFactory® API_ exposes everything about a Factory.
+The FoundriesFactory™ Platform API_ exposes everything about a Factory.
 In fact, ``app.foundries.io`` and Fioctl_ ® are both built on top of that API.
 While this API is fully functional, it can be difficult to build custom tooling for a large numbers of devices if constantly polling the API.
 Event queues were designed to solve this issue.

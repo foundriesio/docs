@@ -24,7 +24,7 @@ However, the general approach to getting these secrets securely into your contai
 Overview of CI Secrets
 -----------------------
 
-The FoundriesFactory® CI System, **JobServ**, has a mechanism for configuring secrets for a project—a Factory's LmP build in this case.
+The FoundriesFactory™ Platform CI System, **JobServ**, has a mechanism for configuring secrets for a project—a Factory's LmP build in this case.
 These secrets are placed under ``/secrets/`` when a CI Run is executed.
 For example, if a Factory has the following secrets:
 

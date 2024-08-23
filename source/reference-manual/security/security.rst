@@ -8,7 +8,7 @@ Overview
 
 Security has multiple layers and dimensions.
 It starts at booting the device, and goes all the way to running software on it, and connecting to cloud services.
-A FoundriesFactory® Factory provides a set of features to target each aspect.
+Your Factory provides a set of features to target each aspect.
 
 The following sections focus on how to securely:
 
@@ -34,7 +34,7 @@ A brief summary of the crypto keys used in a Factory can be found in:
 Secure Connection to Cloud Services
 -----------------------------------
 
-Your devices communicate with a set of FoundriesFactory cloud services,
+Your devices communicate with a set of FoundriesFactory™ Platform cloud services,
 the central of which is the :ref:`Device Gateway <ref-ota-architecture>`.
 The `Device Gateway` enforces Factory devices establishing the `Mutual TLS (mTLS) <mTLS_>`_ connection to it.
 During the `TLS Handshake <TLS_>`_ phase in `Mutual TLS`,

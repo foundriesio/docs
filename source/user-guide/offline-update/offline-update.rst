@@ -229,7 +229,7 @@ Offline Update Considerations
 
 * **Offline Update for Unregistered Devices**
 
-  When dealing with devices not registered in FoundriesFactory® or :ref:`a custom registration server <ref-fully-detached>`,
+  When dealing with devices not registered with the FoundriesFactory™ service or :ref:`a custom registration server <ref-fully-detached>`,
   several considerations arise:
 
   * Production Status: The distinction between production and non-production status of the device remains undetermined.

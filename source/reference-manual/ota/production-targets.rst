@@ -9,7 +9,7 @@ This is set at the :ref:`device registration time <ref-factory-registration-ref>
 If the attribute is absent, it designates a **test device**.
 
 As noted in the :ref:`offline keys documentation <ref-offline-keys>`,
-FoundriesFactory® leverages The Update Framework (TUF) to deliver Over-the-Air (OTA) software updates to devices.
+The FoundriesFactory™ Platform leverages The Update Framework (TUF) to deliver Over-the-Air (OTA) software updates to devices.
 Production versus test devices receive different copies of the TUF metadata:
 
 - Test devices receive :ref:`CI targets <ref-ci-targets>`.

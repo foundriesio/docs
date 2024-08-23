@@ -3,7 +3,7 @@
 Configuring Automatic Git Mirroring
 ===================================
 
-This page shows how to configure source code mirroring to the FoundriesFactory® repos.
+This page shows how to configure source code mirroring to the FoundriesFactory™ Platform repos.
 This is useful when using external Git repositories, hosted on services such as GitHub_ or Bitbucket_.
 While the focus is on setting up GitHub Actions and Bitbucket pipelines, the steps can be adapted for other hosting services.
 

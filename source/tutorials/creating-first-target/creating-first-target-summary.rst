@@ -3,7 +3,7 @@ Summary
 
 You explored what a **Target** is and the steps for creating one.
 The commands used in this tutorial, together with ":ref:`tutorial-gs-with-docker`",
-make up a large part of the FoundriesFactory® development flow.
+make up a large part of the FoundriesFactory™ Platform's development flow.
 
 To summarize this workflow:
 

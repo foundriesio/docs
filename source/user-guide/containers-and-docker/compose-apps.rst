@@ -3,7 +3,7 @@
 Compose Apps
 ============
 
-Docker-compose applications, or "Compose Apps", are how application development is approached with FoundriesFactory®.
+Docker-compose applications, or "Compose Apps", are how application development is approached with the FoundriesFactory™ Platform.
 However, Docker-compose does not specify how to **distribute** applications.
 Compose Apps fill in this gap for Factory devices.
 

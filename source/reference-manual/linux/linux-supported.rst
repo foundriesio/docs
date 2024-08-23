@@ -7,7 +7,7 @@ The :ref:`ref-factory-definition` (``ci-scripts.git``) contains a ``machines:`` 
 The table below shows the corresponding ``MACHINE`` for a device.
 
 .. warning::
-   Do not change this value, as it will be declined by the FoundriesFactory® CI.
+   Do not change this value, as it will be declined by the FoundriesFactory™ Platform CI.
    If needed, please ask a `support engineer <https://support.foundries.io>`_. 
 
 
