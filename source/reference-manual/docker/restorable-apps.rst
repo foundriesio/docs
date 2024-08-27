@@ -6,7 +6,7 @@ Restorable Apps
 Restorable Apps are Compose Apps that can be restored in case of any Docker store damages, without needing to be re-downloaded from the Registry.
 This is achieved by a distinct way images can pulled and stored on a device.
 
-#. Images are pulled from registries by the `skopeo <https://github.com/containers/skopeo>`_ utility,
+#. Images are pulled from registries by the `composectl <https://github.com/foundriesio/composeapp>`_ utility,
    rather than pulling them by utilizing the Docker daemon's regular functionality normally used for Compose Apps;
 #. Images are stored in two places on a device.
    In addition to the regular Docker daemon's image store (``/var/lib/docker/image/overlay2`` and ``/var/lib/overlay2``),
