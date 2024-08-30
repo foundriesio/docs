@@ -124,12 +124,6 @@ When a Factory is created, by default, two sets of keys are created under
 * ``factory-keys``: The key set is created during the Factory's creation
   and is unique for that Factory.
 
-.. warning::
-
-        FoundriesFactories created prior to **v83** do not have the ``factory-keys``
-        directory with the set of keys and certificates. In this case, the commands
-        can be used to create the files.
-
 A pair comprises a certificate (``*.crt``) and a key (``*.key``) file.
 
 The name of the key indicates by which component the **public** part of the key is used.
