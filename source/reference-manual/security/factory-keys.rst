@@ -134,8 +134,6 @@ A pair comprises a certificate (``*.crt``) and a key (``*.key``) file.
 
 The name of the key indicates by which component the **public** part of the key is used.
 
-The **dev** pair is a generic ``RSA`` 2048 key pair and is not in use.
-
 The **opteedev** pair is a ``RSA`` 2048 key pair by ``OP-TEE`` to validate trusted
 applications run by ``OP-TEE``. This is used by configuring the variable ``OPTEE_TA_SIGN_KEY``.
 
@@ -152,37 +150,44 @@ This is used by configuring the variable ``MODSIGN_PRIVKEY``.
 
 The **UEFI** certificates are detailed in :ref:`ref-secure-boot-uefi`.
 
+The **TF-A** certificates are detailed in :ref:`ref-factory-key-tfa`.
+
 The directory structure is shown below:
 
    .. parsed-literal::
-        lmp-manifest/
-        ├── conf
-        │   ├── keys
-        │   │   ├── dev.crt
-        │   │   ├── dev.key
-        │   │   ├── opteedev.crt
-        │   │   ├── opteedev.key
-        │   │   ├── privkey_modsign.pem
-        │   │   ├── spldev.crt
-        │   │   ├── spldev.key
-        │   │   ├── tf-a
-        │   │   ├── ubootdev.crt
-        │   │   ├── ubootdev.key
-        │   │   ├── uefi
-        │   │   ├── x509.genkey
-        │   │   └── x509_modsign.crt
-        │   └── local.conf
-        ├── factory-keys
-        │   ├── opteedev.crt
-        │   ├── opteedev.key
-        │   ├── privkey_modsign.pem
-        │   ├── spldev.crt
-        │   ├── spldev.key
-        │   ├── tf-a
-        │   ├── ubootdev.crt
-        │   ├── ubootdev.key
-        │   ├── uefi
-        │   └── x509_modsign.crt
+        lmp-manifest/factory-keys
+        ├── opteedev.crt
+        ├── opteedev.key
+        ├── privkey_modsign.pem
+        ├── spldev.crt
+        ├── spldev.key
+        ├── tf-a
+        │   └── privkey_ec_prime256v1.pem
+        ├── ubootdev.crt
+        ├── ubootdev.key
+        ├── uefi
+        │   ├── DB.auth
+        │   ├── DB.cer
+        │   ├── DB.crt
+        │   ├── DB.esl
+        │   ├── DB.key
+        │   ├── DBX.auth
+        │   ├── DBX.cer
+        │   ├── DBX.crt
+        │   ├── DBX.esl
+        │   ├── DBX.key
+        │   ├── KEK.auth
+        │   ├── KEK.cer
+        │   ├── KEK.crt
+        │   ├── KEK.esl
+        │   ├── KEK.key
+        │   ├── PK.auth
+        │   ├── PK.cer
+        │   ├── PK.crt
+        │   ├── PK.esl
+        │   ├── PK.key
+        │   └── PKnoauth.auth
+        └── x509_modsign.crt
 
 How to Rotate the FoundriesFactory Keys
 """""""""""""""""""""""""""""""""""""""
