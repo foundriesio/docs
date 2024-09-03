@@ -1,10 +1,11 @@
 FoundriesFactory_ Documentation
 ===============================
 
-The FoundriesFactory™ Platform is a cloud service to build, test, deploy,
-and maintain secure, updatable IoT and Edge products. It is used to
-customize open source software projects including U-Boot, OP-TEE,
-OE/Yocto Project, the Linux microPlatform™ and Docker®.
+The FoundriesFactory™ platform is a comprehensive tool set for building, testing, deploying,
+and maintaining updatable, security focused IoT and Edge products.
+
+Combined with the :term:`Linux microPlatform` (LmP) and utilizing open source software projects including U-Boot, OP-TEE, OE/Yocto Project, and Docker®,
+The FoundriesFactory Platform brings together key features and functions for developing professional embedded devices.
 
 .. toctree::
    :maxdepth: 2
@@ -102,12 +103,4 @@ OE/Yocto Project, the Linux microPlatform™ and Docker®.
    v93 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v93.md>
    v92 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v92.md>
 
-.. ifconfig:: todo_include_todos is True
-
-   **Documentation-wide TODO List**
-   -------------------------------------------
-
-   (This only appears when ``todo_include_todos`` is True.)
-
-.. todolist::
-.. _FoundriesFactory: https://foundries.io
+.. _FoundriesFactory: https://foundries.io/products/
