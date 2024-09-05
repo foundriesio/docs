@@ -162,7 +162,13 @@ Glossary
      * :ref:`EdgeLock™ SE05x Reference Manual, Importing Secure Objects into PKCS #11 Tokens <ref-secure-element>`
      * :ref:`Linux Disk Encryption Reference Manual, PKCS #11 Tokens <howto-linux-disk-encryption>`
      * `TEE PKCS #11 Implementation (external) <https://github.com/OP-TEE/optee_os/tree/master/ta/pkcs11>`_
-       
+
+   PXE
+    Preboot eXecution Environment,
+       Specification that describes a standardized client–server environment that boots a software assembly, retrieved from a network, on PXE-enabled clients.
+
+     * :ref:`Security, UEFI Secure Boot <ref-secure-boot-uefi>`
+
    PKI
    Public Key Infrastructure
      How digital certificates and keys relate to their owners and can be trusted.
