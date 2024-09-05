@@ -132,6 +132,57 @@ The signing process in LmP is controlled by the following Yocto Project variable
 * ``UEFI_SIGN_ENABLE``
     * If set to ``1`` the systemd-boot bootloader and Linux kernel binaries will be signed by with the DB key (``DB.key`` at ``UEFI_SIGN_KEYDIR``)
 
+.. _ref-secure-boot-uefi-provisioning:
+
+UEFI Secure Boot Provisioning
+-----------------------------
+
+LmP includes and distributes ``LockDown.efi``, a UEFI application from the ``efitools`` suite. This application contains the necessary certificates to configure and activate Secure Boot. When executed, it validates and installs the certificates into non-volatile memory, enables Secure Boot, and restarts the system.
+
+LmP provides access to the application through a systemd-boot menu. Simply selecting it during boot initiates the provisioning process. After the reboot, the system will verify image signatures, and booting will be blocked if the signature verification fails.
+
+.. figure:: secure-boot-uefi/uefi-lockdown-provisioning.png
+   :alt: UEFI Secure Boot Provisioning
+
+
+Testing UEFI Secure Boot Provisioning With QEMU
+-----------------------------------------------
+
+The ``LockDown.efi`` application can be tested in a virtual environment using QEMU.
+
+An easy way to do this, as QEMU includes PXE support, is to run the application standalone in the UEFI environment.
+
+In the snippet below, QEMU fetches `LockDown.efi` from the `/tmp` directory using its PXE capabilities.
+
+.. prompt::
+
+	qemu-system-x86_64 \
+		-device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
+		-netdev user,id=net0,tftp=/tmp/,bootfile=/LockDown.efi \
+		-object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
+		-drive if=pflash,format=qcow2,file=/tmp/ovmf.secboot.qcow2 --no-reboot\
+		-nographic -m 4096  \
+		-boot nc
+
+You can also boot a wic image in QEMU and select the Secure Boot Provisioning menu using the following command:
+
+.. prompt::
+
+	qemu-system-x86_64 -device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
+		-netdev user,id=net0,hostfwd=tcp::5522-:22 \
+		-object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
+		-drive if=none,id=hd,file=/tmp/lmp-mini-image-intel-corei7-64.wic,format=raw \
+		-drive if=pflash,format=qcow2,file=/tmp/ovmf.secboot.qcow2 -no-reboot \
+		-drive if=pflash,format=qcow2,file=/tmp/ovmf.vars.qcow2
+
+After selecting the menu, you can expect the following output, after which the system will reset.
+
+.. figure:: secure-boot-uefi/uefi-lockdown-wic-qemu-trace.png
+   :alt: UEFI Secure Boot Provisioning Image QEMU trace.
+
+Running the command again will boot the system with Secure Boot enabled, just as it would do on real hardware.
+
+
 Backup Current UEFI Secure Boot Certificates
 --------------------------------------------
 
@@ -159,7 +210,6 @@ Enrolling Custom UEFI Secure Boot Certificates
 ----------------------------------------------
 
 It is possible to enroll custom UEFI Secure Boot Certificates using your firmware's built-in setup utility, ``KeyTool`` (from ``efitools``).
-You could also create a custom ``LockDown`` efi program with the certificates embedded into it.
 
 By default, LmP installs the required certificates (via ``UEFI_SIGN_KEYDIR``) into the ESP image partition (under ``ESP/uefi_certs``).
 This can be used when enrolling via the firmware's built-in setup utility.

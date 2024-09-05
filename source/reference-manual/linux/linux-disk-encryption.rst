@@ -140,10 +140,6 @@ Make sure LUKS support is enabled for your x86 target:
   $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
   DISTRO_FEATURES:append:intel-corei7-64 = " luks"
 
-Then make sure to enroll the :ref:`UEFI Secure Boot Certificates <ref-secure-boot-uefi>`
-to enable secure boot support. This is required as the LUKS2 TPM 2.0 token
-leverages **PCR 7**, which tracks the secure boot state.
-
 Now install ``swtpm`` on the host machine, and start the ``swtpm`` daemon.
 This will be consumed by QEMU and act as the hardware TPM.
 
@@ -166,7 +162,12 @@ Run QEMU with the required extra TPM 2.0 related commands:
       -chardev socket,id=chrtpm,path=/tmp/mytpm/swtpm-sock \
       -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0
 
-You should see the following during the first boot:
+
+On the first boot, enroll the :ref:`UEFI Secure Boot Certificates <ref-secure-boot-uefi>` to enable secure boot support. This is required as the LUKS2 TPM 2.0 token leverages **PCR 7**, which tracks the secure boot state.
+
+To do this, select the UEFI Secure Boot systemd-boot menu as described in :ref:`UEFI Secure Boot Provisioning <ref-secure-boot-uefi-provisioning>`. The system will reset. Then run **the same command** again.
+
+You should see the following during this second boot:
 
 .. code-block:: none
 
