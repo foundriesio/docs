@@ -3,12 +3,23 @@
 Disk Encryption Support
 =======================
 
-To enhance the security of system deployments before manufacturing
-provisions the Targets, LmP takes the approach detailed here.
+To strengthen the security of system deployments prior to manufacturing,
+LmP uses LUKS disk encryption.
 
-During the image creation process in CI, LmP uses LUKS to construct a
-symmetrically encrypted root file-system. The master key used for
-data encryption is locked/unlocked via a passphrase.
+During the image creation process in CI, LmP can be configured to use
+LUKS to construct a symmetrically encrypted root file-system. The master
+key used for data encryption is protected and unlocked using a
+passphrase.
+
+.. code-block:: console
+
+  OSTREE_OTA_EXT4_LUKS = "1"
+
+The LmP default configuration is to have this feature disabled.
+
+Regardless of whether the file system was originally encrypted by CI or
+not, this passphrase will be discarded. The file system will then be
+re-encrypted on the target device as follows.
 
 Upon the initial boot, during initramfs, the passphrase used for
 accessing the master key is discarded and replaced by a cryptographic
