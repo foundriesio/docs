@@ -137,9 +137,14 @@ The signing process in LmP is controlled by the following Yocto Project variable
 UEFI Secure Boot Provisioning
 -----------------------------
 
-LmP includes and distributes ``LockDown.efi``, a UEFI application from the ``efitools`` suite. This application contains the necessary certificates to configure and activate Secure Boot. When executed, it validates and installs the certificates into non-volatile memory, enables Secure Boot, and restarts the system.
+LmP includes and distributes ``LockDown.efi``, a UEFI application from the ``efitools`` suite. This application contains the necessary certificates to configure and activate Secure Boot. When executed, it validates and installs the certificates into non-volatile memory, attempts to enable Secure Boot, and restarts the system.
 
-LmP provides access to the application through a systemd-boot menu. Simply selecting it during boot initiates the provisioning process. After the reboot, the system will verify image signatures, and booting will be blocked if the signature verification fails.
+Be aware that some OEMs (Original Equipment Manufacturers) may require users to access the **Setup utility** to enable **Secure Boot** after programming the certificates.
+
+.. note::
+    LockDown.efi requires that the platform be booted in Setup Mode. The method for entering this mode depends on the OEM.
+    
+LmP provides access to the application through a systemd-boot menu. Simply selecting it during boot initiates the provisioning process. After the reboot, the system will verify image signatures, and booting will be blocked if the signature verification fails.     
 
 .. figure:: secure-boot-uefi/uefi-lockdown-provisioning.png
    :alt: UEFI Secure Boot Provisioning
@@ -152,7 +157,7 @@ The ``LockDown.efi`` application can be tested in a virtual environment using QE
 
 An easy way to do this, as QEMU includes PXE support, is to run the application standalone in the UEFI environment.
 
-In the snippet below, QEMU fetches `LockDown.efi` from the `/tmp` directory using its PXE capabilities.
+In the snippet below, QEMU fetches `LockDown.efi` from the `/tmp` directory using its PXE capabilities. Note that **OVMF** boots directly in **Setup Mode**, so it does not require initialization for this mode. This is in accordance with what is described in section 32.3, `Creating Trust Relationships`_, of the UEFI specification.
 
 .. prompt::
 
@@ -160,20 +165,32 @@ In the snippet below, QEMU fetches `LockDown.efi` from the `/tmp` directory usin
 		-device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
 		-netdev user,id=net0,tftp=/tmp/,bootfile=/LockDown.efi \
 		-object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
-		-drive if=pflash,format=qcow2,file=/tmp/ovmf.secboot.qcow2 --no-reboot\
+		-drive if=pflash,format=qcow2,file=/tmp/ovmf.secboot.qcow2 --no-reboot \
+		-drive if=pflash,format=qcow2,file=/tmp/ovmf.vars.qcow2 \
 		-nographic -m 4096  \
 		-boot nc
+
+After provisioning the system using PXE boot with QEMU, you can boot the secure image. Ensure that you set ``bootindex=0`` on the device from which you want to boot.
+
+.. prompt::
+
+	-drive if=none,id=hd,file=/tmp/lmp-mini-image-intel-corei7-64.wic,format=raw \
+	-device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd,bootindex=0 \
 
 You can also boot a wic image in QEMU and select the Secure Boot Provisioning menu using the following command:
 
 .. prompt::
 
-	qemu-system-x86_64 -device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
+	qemu-system-x86_64 \
+		-device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
 		-netdev user,id=net0,hostfwd=tcp::5522-:22 \
 		-object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
 		-drive if=none,id=hd,file=/tmp/lmp-mini-image-intel-corei7-64.wic,format=raw \
+		-device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd \
 		-drive if=pflash,format=qcow2,file=/tmp/ovmf.secboot.qcow2 -no-reboot \
-		-drive if=pflash,format=qcow2,file=/tmp/ovmf.vars.qcow2
+		-drive if=pflash,format=qcow2,file=/tmp/ovmf.vars.qcow2 \
+		-nographic -m 4096
+
 
 After selecting the menu, you can expect the following output, after which the system will reset.
 
@@ -317,3 +334,6 @@ Additional Documentation and References
 
 .. _systemd-boot:
    https://www.freedesktop.org/wiki/Software/systemd/systemd-boot/
+
+.. _Creating Trust Relationships:
+   https://uefi.org/specs/UEFI/2.10_A/32_Secure_Boot_and_Driver_Signing.html#firmware-os-key-exchange-creating-trust-relationships
