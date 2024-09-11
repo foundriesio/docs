@@ -27,7 +27,7 @@ Install dependencies:
 
 .. prompt:: bash
 
-     sudo apt install git wireguard wireguard-tools python3 python3-requests
+     sudo apt install git wireguard wireguard-tools python3 python3-requests iptables
 
 Clone the VPN server code:
 
