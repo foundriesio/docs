@@ -106,18 +106,18 @@ In addition to the default daemon mode, users can run it as a CLI utility and pe
 Command Line Interface - CLI (Aktualizr-lite Manual Mode)
 ---------------------------------------------------------
 
-The `aktualizr-lite` executable can be invoked to perform individual operations allowing more control over the update flow.
+The ``aktualizr-lite`` executable can be invoked to perform individual operations allowing more control over the update flow.
 
-.. warning:: The Command Line Interface is on beta stage,
+.. warning:: The Command Line Interface is in beta stage,
     and is subject to change over the next releases.
 
 .. note:: In order to use the run individual `aktualizr-lite` commands,
-    the `aktualizr-lite` service needs to be stopped with ``sudo systemctl stop aktualizr-lite``
+    the ``aktualizr-lite`` service needs to be stopped with ``sudo systemctl stop aktualizr-lite``
     and/or disabled with ``sudo systemctl disable aktualizr-lite``.
 
 .. note:: If lmp-device-register is used,
-    the `--start-daemon 0` is recommended
-    in order to avoid starting aktualizr-lite daemon automatically.
+    Using ``--start-daemon 0`` is recommended
+    in order to avoid starting the aktualizr-lite daemon automatically.
 
 .. prompt::
 
@@ -151,8 +151,8 @@ To view the current status of the device::
 
     sudo aktualizr-lite status
 
-Fetch TUF Metadata and List Updates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Fetch :term:`TUF` Metadata and List Updates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``check`` command will refresh the Targets metadata from the OTA server,
 and present you with a list of available Targets::
@@ -178,7 +178,7 @@ This includes both OSTree and Docker app Targets::
 
    sudo aktualizr-lite update
 
-To update to a specific build number or target name,
+To update to a specific build number or Target name,
 the ``--update-name`` option can be used::
 
    sudo aktualizr-lite update --update-name <build_number_or_name>
