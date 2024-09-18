@@ -104,4 +104,11 @@ html.writer-html5 .rst-content dl.field-list>dt:after {
 }
 .wy-nav-side {
       background: #2C1256;
-    }
+}
+
+.wy-menu-vertical li button.toctree-expand{
+  color: #ffffff;
+}
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+  color: #e4960b;
+}
