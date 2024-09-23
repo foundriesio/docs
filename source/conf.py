@@ -298,7 +298,7 @@ html_theme = 'sphinx_rtd_theme'
 # Note that for Sphinx-RTD v0.6.0 or newer, 'html_baseurl' is used rather
 # than canonical_url
 html_theme_options = {
-    'logo_only': True,
+    'logo_only': False,
     'canonical_url': 'https://docs.foundries.io/latest/',
     'collapse_navigation': False,
     'sticky_navigation': False,
