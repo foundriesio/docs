@@ -5,9 +5,11 @@ Supported Boards
 
 Select your board below to view flashing instructions.
 
+
 .. toctree::
    :maxdepth: 1
 
+   RB3G2 <https://github.com/foundriesio/meta-partner/blob/qualcomm/README.md#qualcomm-robotics-rb3g2-development-kit>
    beagleboneblack
    raspberrypi
    portenta-x8
