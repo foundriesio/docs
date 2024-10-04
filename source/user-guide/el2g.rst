@@ -3,6 +3,10 @@
 Integrating NXP EdgeLock 2GO
 ============================
 
+.. warning::
+
+   The content on this page is not supported by the current LmP. This page will be deleted with the next release (v96).
+
 EdgeLock® 2GO is an add-on service from NXP®, integrated into the FoundriesFactory™ Platform to simplify the securing of devices during manufacturing.
 The service enables the automated installation and secure storage of required keys, certificates, and credentials when the end device first connects to the internet.
 
