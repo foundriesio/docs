@@ -61,7 +61,7 @@ The most commonly found modes are:
 **Standard Mode**
 
   Signature and hash checks are enforced on boot time executables.
-  Microsoft KEK and DB certificates usually available.
+  Microsoft KEK and DB certificates are usually available.
   System vendors may include their own KEK and/or DB certificates.
 
 **User/Custom Mode**
@@ -123,7 +123,8 @@ Custom keys can be added to the ``lmp-manifest`` repo directory ``factory-keys/u
 Enabling UEFI Secure Boot Usage in LmP
 --------------------------------------
 
-The signing process in LmP is controlled by the following Yocto Project variables:
+The signing process in LmP is controlled by the following Yocto Project variables,
+set in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``:
 
 * ``UEFI_SIGN_KEYDIR``
     * Path for the directory containing the DB private key (``DB.key`` and ``DB.crt``),
@@ -131,6 +132,12 @@ The signing process in LmP is controlled by the following Yocto Project variable
       and auth files (``PK.auth``, ``KEK.auth``, ``DB.auth``, and ``DBX.auth``)
 * ``UEFI_SIGN_ENABLE``
     * If set to ``1`` the systemd-boot bootloader and Linux kernel binaries will be signed by with the DB key (``DB.key`` at ``UEFI_SIGN_KEYDIR``)
+
+
+.. tip::
+
+   Setting these may not be required in cases where they are inherited from ``meta-lmp-bsp``.
+   This can be seen in ``meta-lmp/meta-lmp-bsp/conf/machine/include/lmp-machine-custom.inc``
 
 .. _ref-secure-boot-uefi-provisioning:
 
