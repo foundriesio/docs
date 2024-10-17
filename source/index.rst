@@ -40,6 +40,7 @@ The FoundriesFactory Platform brings together key features and functions for dev
 
    user-guide/fioctl/index
    user-guide/qemu/qemu
+   user-guide/personas/personas
    user-guide/account-management/account-management
    user-guide/ip-protection/ip-protection
    user-guide/custom-ci/custom-ci
