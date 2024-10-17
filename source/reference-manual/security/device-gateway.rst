@@ -20,7 +20,7 @@ Benefits of owning your Factory PKI are two-fold:
    The Factory :ref:`Root of Trust <Root-of-Trust>` **can only be set once**; subsequent attempts will fail.
    Other Factory PKI certificates can be updated at any time; having that you own your Factory Root of Trust.
 
-   `Contact customer support <https://support.foundries.io>` if you need your Factory PKI being reset.
+   `Contact customer support <https://support.foundries.io>`_ if you need your Factory PKI being reset.
    Once a reset was performed, all connected devices will lose their connection.
    These devices will not be able to connect to the Device Gateway until they are re-provisioned with a new Root of Trust.
    On practice that usually means that these devices need to be re-flashed (after the Factory PKI reset).
@@ -238,7 +238,7 @@ We recommend the following workflow:
    FoundriesFactory advices you to also prepare a separate plan how to deal with already compromised devices.
 
 3. Rotate client certificates on your devices which have a client certificate issued by a Device CA you are revoking.
-   You may use Foundries.io hosted ref:`ref-cert-rotation` service, or use your own certificate rotation workflow.
+   You may use Foundries.io hosted :ref:`ref-cert-rotation` service, or use your own certificate rotation workflow.
    Make sure that new device client certificates are issued by one of Device CAs enabled at your Factory.
 
 4. Revoke the Device CA.
