@@ -18,10 +18,10 @@ However, the same cryptographic functions can be implemented using `OpenSSL <htt
    The Factory :ref:`Root of Trust <Root-of-Trust>` **can only be set once**; subsequent attempts will fail.
    Other Factory PKI certificates can be updated at any time; having that you own your Factory Root of Trust.
 
-   `Contact customer support <https://support.foundries.io>` if you need your Factory PKI being reset.
-   Once a reset was performed, all connected devices will lose their connection.
+   `Contact customer support <https://support.foundries.io>`_ if you need your Factory PKI being reset.
+   Once you perform a reset, all connected devices will lose their connections.
    These devices will not be able to connect to the Device Gateway until they are re-provisioned with a new Root of Trust.
-   On practice that usually means that these devices need to be re-flashed (after the Factory PKI reset).
+   In practice this usually means that these devices need to be re-flashed after the Factory PKI reset.
 
 
 Taking Ownership of Factory PKI Using the API
@@ -39,9 +39,9 @@ This command communicates with the FoundriesFactory API to create and update Fac
 First, a command calls the API to initialize a Factory PKI, which performs the following actions:
 
 - Verify if the Factory PKI was already initialized, and fail if a user attempts to initialize an already initialized PKI.
-- Generates a server-side crypto-key for the ref:`tls-crt` and returns a Certificate Signing Request (CSR) for it.
-- Optionally generates a server-side crypto-key for the ref:`online-ca` and returns a CSR for it.
-- Optionally generates a server-side crypto-key for the ref:`est-tls-crt` and returns a CSR for it.
+- Generates a server-side crypto-key for the :ref:`tls-crt` and returns a Certificate Signing Request (CSR) for it.
+- Optionally generates a server-side crypto-key for the :ref:`online-ca` and returns a CSR for it.
+- Optionally generates a server-side crypto-key for the :ref:`est-tls-crt` and returns a CSR for it.
 
 Once the ``fioctl keys ca create`` command receives a response, it performs the following actions:
 
