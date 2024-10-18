@@ -3,11 +3,11 @@
 Managing Factory PKI
 ====================
 
-LmP devices connect to OTA services via a :ref:`Device Gateway <ref-ota-architecture>` configured with mutual TLS.
-A set of Digital Certificates used to establish trust between Factory devices and Device Gateway is a Factory Public Key Infrastructure (PKI).
+LmP devices connect to OTA services via a :ref:`Device Gateway <ref-ota-architecture>` configured with :term:`mutual TLS <mTLS>`.
+A set of digital certificates used to establish trust between Factory devices and the Device Gateway is a Factory Public Key Infrastructure (PKI).
 
-When a new Factory is created, it is configured to use the default shared PKI with Certificates owned by Foundries.io™.
-This provides a faster engagement with the FoundriesFactory®, allowing streamlined product development.
+When a new Factory is created, it is configured to use the default shared :term:`PKI` with certificates owned by Foundries.io™.
+This provides a faster engagement with the FoundriesFactory™ Platform, allowing streamlined product development.
 
 FoundriesFactory supports setting up your own Factory PKI via either :ref:`Fioctl® <ref-fioctl>` commands or the API integration.
 We recommend setting up your own Factory PKI **before** going to production.
@@ -18,12 +18,12 @@ Benefits of owning your Factory PKI are two-fold:
 
 .. warning::
    The Factory :ref:`Root of Trust <Root-of-Trust>` **can only be set once**; subsequent attempts will fail.
-   Other Factory PKI certificates can be updated at any time; having that you own your Factory Root of Trust.
+   Other Factory PKI certificates can be updated at any time; provided that you own your Factory Root of Trust.
 
    `Contact customer support <https://support.foundries.io>`_ if you need your Factory PKI being reset.
    Once a reset was performed, all connected devices will lose their connection.
    These devices will not be able to connect to the Device Gateway until they are re-provisioned with a new Root of Trust.
-   On practice that usually means that these devices need to be re-flashed (after the Factory PKI reset).
+   In practice this means that these devices need to be re-flashed (after the Factory PKI reset).
 
 Terminology
 -----------
@@ -37,7 +37,7 @@ An X.509 certificate used as a Root Certificate Authority (RCA) for your Factory
 You own the private key (NIST P-256 by default), and share the corresponding certificate with Foundries.io.
 
 All intermediate Certificate Authorities (CAs) and TLS certificates configured in your Factory must be signed by its Root of Trust.
-The Root of Trust is preloaded to factory devices, so that they can use it to verify the FoundriesFactory web APIs TLS certificates.
+The Root of Trust is preloaded to Factory devices so that they can use it to verify the FoundriesFactory web APIs TLS certificates.
 
 .. warning::
     Never lose the private key of your Factory Root of Trust.
@@ -46,7 +46,7 @@ The Root of Trust is preloaded to factory devices, so that they can use it to ve
 
     We recommend storing your Factory Root of Trust in a cloud-based HSM solution of your choice.
     For example, we verified that the `AWS Cloud HSM <https://aws.amazon.com/cloudhsm/>`_ supports `importing EC private keys`_.
-    That way you get an increased safety of your highly important secret through their redundancy and backup policies.
+    That way you get increased safety of your highly important secret through their redundancy and backup policies.
 
     Additionally, we recommend printing the private key of your Root of Trust on paper and storing it in multiple fire and waterproof safes.
 
@@ -68,16 +68,16 @@ That temporary symmetric key is used to encrypt all session traffic between the 
 Device Client Certificate
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An X.509 certificate was issued to your Factory device during the registration process.
+An X.509 certificate that is issued to your Factory device during the registration process.
 The device owns the private key (NIST P-256 by default) and the certificate.
 
 This certificate must be signed by either a :ref:`Local Device CA <local-ca>` or an :ref:`Online Device CA <online-ca>` (see below).
 For example, when using the `lmp-device-register`_ to register your device, it generates the Device Client Certificate Signing Request (CSR).
-That CSR is then signed by an appropriate Device CA at the registration server (either your own or Foundries.io), and stored on the device.
+The CSR is then signed by an appropriate Device CA at the registration server (either your own or Foundries.io), and stored on the device.
 
 When connecting to the :ref:`Device Gateway <ref-ota-architecture>`, a device must present its Client Certificate during a TLS handshake.
 The device identity is verified at the Device Gateway, and the device is either allowed or denied to connect based on its certificate validity.
-Once the mutual trust is established, device uses its Client Certificate to setup a session symmetric key.
+Once mutual trust is established, device uses its Client Certificate to setup a session symmetric key.
 
 .. _lmp-device-register: https://github.com/foundriesio/lmp-device-register/
 
@@ -86,8 +86,8 @@ Once the mutual trust is established, device uses its Client Certificate to setu
 Online Device CA: ``online-ca``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An X.509 certificate used as a CA issuing certificates to devices registered via the FoundriesFactory API.
-Foundries.io owns the private key (NIST P-256 by default), and you sign the certificate by the Factory Root of Trust.
+An X.509 certificate used as a :term:`CA` for issuing certificates to devices registered via the FoundriesFactory API.
+Foundries.io owns the private key (NIST P-256 by default), and you sign the certificate using the Factory Root of Trust.
 
 When using the "shared" Factory PKI, this is the only CA used to issue Client Certificates to your Factory devices.
 Once you take ownership of your Factory PKI, you may opt out of using the Online Device CA.
@@ -97,12 +97,12 @@ Once you take ownership of your Factory PKI, you may opt out of using the Online
 Local Device CA: ``local-ca``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An X.509 certificate used as a CA issuing certificates to devices registered via your offline registration process.
+An X.509 certificate used as a :term:`CA`, issuing certificates to devices registered via your offline registration process.
 You own the private key (NIST P-256 by default), and share the corresponding certificate with Foundries.io.
 It must be signed by the Root of Trust, so that Foundries.io may verify if a user is entitled to upload a Device CA.
 
 At creation, your Factory only has an Online Device CA and no Local Device CAs.
-Your factory may be configured to have one or more Local Device CAs only after you took ownership of your Factory PKI.
+Your Factory may be configured to have one or more Local Device CAs only after you take ownership of your Factory PKI.
 You may use the Local Device CA with our :ref:`ref-factory-registration-ref` to register your devices offline.
 
   .. figure:: /_static/ca_certs.png
@@ -116,7 +116,7 @@ EST Server TLS Certificate: ``est-tls-crt``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An X.509 certificate used by FoundriesFactory hosted :ref:`ref-cert-rotation` during a mutual TLS handshake and session setup.
-Foundries.io owns the private key (NIST P-256 by default), and you sign the certificate by the Factory Root of Trust.
+Foundries.io owns the private key (NIST P-256 by default), and you sign the certificate using the Factory Root of Trust.
 
 The FoundriesFactory process for rotating device certificates is based on the industry standard `RFC 7030`_ Enrollment over Secure Transport (EST).
 Your Factory may be configured to use a FoundriesFactory hosted EST service, your own EST service, or no EST service.
@@ -235,11 +235,11 @@ We recommend the following workflow:
 
 2. Inspect your fleet of already registered devices, and delete those devices which you think are not legitimate.
    After this point, you can be sure that an attacker can no longer steal your new Intellectual Property (provided by OTA updates).
-   FoundriesFactory advices you to also prepare a separate plan how to deal with already compromised devices.
+   FoundriesFactory advises you to also prepare a separate plan for how to deal with already compromised devices.
 
 3. Rotate client certificates on your devices which have a client certificate issued by a Device CA you are revoking.
    You may use Foundries.io hosted :ref:`ref-cert-rotation` service, or use your own certificate rotation workflow.
-   Make sure that new device client certificates are issued by one of Device CAs enabled at your Factory.
+   Make sure that new device client certificates are issued by one of the Device CAs enabled for your Factory.
 
 4. Revoke the Device CA.
    At this point a reference to a given Device CA is completely removed from our servers, hence becomes untrusted.
