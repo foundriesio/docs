@@ -3,7 +3,7 @@
 Details Of Device Gateway PKI Settings
 ======================================
 
-The PKI for Device Gateway and Factory Devices is vital for the secure communication between them.
+The :term:`PKI` for Device Gateway and Factory Devices is vital for the secure communication between them.
 It is important to understand exactly what the Factory PKI related commands do.
 The :ref:`Factory PKI <ref-device-gateway>` reference manual describes core concepts of your Factory PKI.
 It also provides examples to configure your Factory PKI using the :ref:`Fioctl® <ref-fioctl>` commands.
@@ -27,13 +27,13 @@ However, the same cryptographic functions can be implemented using `OpenSSL <htt
 Taking Ownership of Factory PKI Using the API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before setting up your Factory PKI, your Devices and Device Gateway talk to each other by utilizing a so-called "shared PKI".
-This is the default PKI that FoundriesFactory® sets up as part of provisioning a new Factory.
+Before setting up your Factory PKI, your devices and Device Gateway talk to each other by utilizing a so-called "shared PKI".
+This is the default PKI that the FoundriesFactory™ Platform, sets up as part of provisioning a new Factory.
 
-You can always check your Factory PKI settings using the ``fioctl keys ca show``.
-In case of a shared PKI that command would tell you that your Factory PKI is not configured yet.
+You can always check your Factory PKI settings using the ``fioctl keys ca show`` command.
+In the case of a shared PKI, the command tells you that your Factory PKI is not configured yet.
 
-In order to take ownership of your Factory PKI, run a ``fioctl keys ca create`` command.
+To take ownership of your Factory PKI, run the ``fioctl keys ca create`` command.
 This command communicates with the FoundriesFactory API to create and update Factory specific PKI keys and certificates.
 
 First, a command calls the API to initialize a Factory PKI, which performs the following actions:
@@ -46,7 +46,7 @@ First, a command calls the API to initialize a Factory PKI, which performs the f
 Once the ``fioctl keys ca create`` command receives a response, it performs the following actions:
 
     - Generates the Factory Root CA on either your local file system or an HSM device.
-    - Optionally generates a Local Device CA on your local file system, and signs it using the Factory Root CA.
+    - Optionally generates a Local Device CA on your local file system, and signs it using the Factory Root :term:`CA`.
     - Signs all CSRs received from the above API call.
     - Finally, that command uploads all generated certificates to the API; private keys are not uploaded.
 
