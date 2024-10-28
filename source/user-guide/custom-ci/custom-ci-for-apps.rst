@@ -66,7 +66,7 @@ The workflow does the following:
 
 1. Builds and pushes images to the registry.
 2. Stores the built image URIs (must be digest/hashed references) for the App compose project to reference.
-3. Builds and pushes the Compose App by utilizing the `compose-publish`_ utility.
+3. Builds and pushes the Compose App by utilizing the `publish` command of the `composectl`_ utility.
 4. Composes and posts the new Target(s) that reference the App built in step 3.
    It accomplishes this with the  ``fioctl targets add`` command.
 
@@ -85,7 +85,7 @@ Reference container images **not** hosted in the given repo (``external``) *with
 
 FoundriesFactory Utilities: Usage Details
 -----------------------------------------
-The `compose-publish`_ CLI utility does the following:
+The `publish` command of the `composectl`_ CLI utility does the following:
 
 1. Pins images referenced from the App compose file.
 
@@ -145,5 +145,5 @@ Use ``fioctl targets list`` and ``fioctl targets show`` to check whether the new
 .. _The sample GitHub actions workflow:
     https://github.com/foundriesio/custom-ci-app/blob/custom-ci-devel/.github/workflows/fio-app-ci.yml
 
-.. _compose-publish:
-    https://github.com/foundriesio/compose-publish
+.. _composectl:
+    https://github.com/foundriesio/composeapp
