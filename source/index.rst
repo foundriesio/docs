@@ -61,7 +61,6 @@ The FoundriesFactory Platform brings together key features and functions for dev
    reference-manual/security/offline-keys
    reference-manual/security/factory-keys
    reference-manual/factory/sboms
-   user-guide/el2g
    reference-manual/ota/production-targets
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/rotating-cert
