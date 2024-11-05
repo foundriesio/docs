@@ -11,8 +11,7 @@ LUKS to construct a symmetrically encrypted root file-system. The master
 key used for data encryption is protected and unlocked using a
 passphrase.
 
-Users can choose their own passphrase; if they don't, LmP will generate
-one for them.
+You can choose your own passphrase; if you do not, LmP will generate one for you.
 
 .. code-block:: console
 
