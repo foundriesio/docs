@@ -11,9 +11,13 @@ LUKS to construct a symmetrically encrypted root file-system. The master
 key used for data encryption is protected and unlocked using a
 passphrase.
 
+Users can choose their own passphrase; if they don't, LmP will generate
+one for them.
+
 .. code-block:: console
 
   OSTREE_OTA_EXT4_LUKS = "1"
+  OSTREE_OTA_EXT4_LUKS_PASSPHRASE = "fiopassphrase"
 
 The LmP default configuration is to have this feature disabled.
 
