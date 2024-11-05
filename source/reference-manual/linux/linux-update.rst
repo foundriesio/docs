@@ -37,7 +37,7 @@ Updating Your Factory
 ``lmp-manifest``
 ^^^^^^^^^^^^^^^^
 
-We provide the helper script, ``update-factory-manifest``, to update your ,Factory to a new LmP release.
+We provide the helper script ``update-factory-manifest`` to update your Factory to a new LmP release.
 This script tries to update your manifest to the latest LmP version available:
 
 .. code-block::
