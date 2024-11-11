@@ -11,7 +11,7 @@ This is not always the desired operation. There are a couple ways to control thi
 
 #. Callbacks
 #. Custom Update Agent
-#. Command Line Interface - CLI (Aktualizr-lite Manual Mode) **Available in future release, v95**
+#. Command Line Interface - CLI (Aktualizr-lite Manual Mode)
 
 Callbacks
 ---------
@@ -56,7 +56,7 @@ Later, this can serve as an example to copy/paste into a Factory specific recipe
    https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-sota/custom-sota-client
 
 .. _SOTA client:
-   https://github.com/foundriesio/aktualizr-lite/tree/v94/examples/custom-client-cxx
+   https://github.com/foundriesio/sotactl
 
 Users can build this custom client into their LmP image with a small addition to ``meta-subscriber-overrides.git``:
 
@@ -72,14 +72,11 @@ Forking the Custom SOTA Client
 Producing a factory-specific SOTA client can be done by:
 
  #. Creating a Git repository for your custom code.
-    Copying the `examples/custom-client-cxx`_ directory is a good place to start.
+    Cloning the `sotactl`_ repository and adding your repository as the remote is a good place to start.
 
  #. Copying the `custom-sota-client`_ recipe from ``meta-lmp`` into ``meta-subscriber-overrides/recipes-sota``.
 
  #. Changing the ``custom-sota-client_git.bb`` Git references (``SRC_URI``, ``BRANCH``, ``SRCREV``) to point at your new sources.
-
-.. _examples/custom-client-cxx:
-   https://github.com/foundriesio/aktualizr-lite/tree/v94/examples/custom-client-cxx
 
 .. _sotactl:
    https://github.com/foundriesio/sotactl
@@ -89,12 +86,13 @@ Producing a factory-specific SOTA client can be done by:
 
 Custom SOTA Client Work Modes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 By default, the example `SOTA client`_ works as a daemon updating a device to the latest version once it becomes available.
 In addition to the default daemon mode, users can run it as a CLI utility and perform specific steps of the update process separately.
 
 .. prompt:: bash
 
-    /build-custom/custom-sota-client --help
+    sotactl --help
     Usage:
         sotactl [cmd] [options]
     Supported commands: check install run pull daemon
@@ -108,10 +106,6 @@ In addition to the default daemon mode, users can run it as a CLI utility and pe
 
 Command Line Interface - CLI (Aktualizr-lite Manual Mode)
 ---------------------------------------------------------
-
-.. attention::
-   The Aktualizr-lite CLI feature will be available for v95.
-   The content below is a preview.
 
 The ``aktualizr-lite`` executable can be invoked to perform individual operations allowing more control over the update flow.
 
