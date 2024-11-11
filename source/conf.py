@@ -187,6 +187,7 @@ linkcheck_ignore = [
     r'https://www.st.com/.*', #slow, very slow.
     r'https://wiki.st.com/.*',
     'https://ngrok.com', # ssl cert expired, will likely want to remove from docs if this persists
+    'https://www.nxp.com/docs/en/application-note/AN12312.pdf',
 ]
 
 # Time in seconds to wait for a response. May result in false errors, but also keeps things from timing out
