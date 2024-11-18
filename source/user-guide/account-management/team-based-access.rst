@@ -77,15 +77,15 @@ The member then has a combined list of scopes:
 
  * From read-only-users:
 
-   * ci:read
-   * source:read
-   * devices:read
-   * targets:read
-   * containers:read
+   * ``ci:read``
+   * ``source:read``
+   * ``devices:read``
+   * ``targets:read``
+   * ``containers:read``
 
  * From read-write-ci
 
-   * ci:read-update
+   * ``ci:read-update``
 
 The user now has read **and** write (update) access to the CI,
 while retaining the read-only scopes for the other resources.
@@ -95,6 +95,10 @@ while retaining the read-only scopes for the other resources.
 
 Team Based Access to Device Groups
 ----------------------------------
+
+.. important::
+   The Device view is available for all Factory users.
+
 By default, a user can access:
 
     1. device groups they created,
@@ -104,36 +108,40 @@ By default, a user can access:
 A factory admin can grant a user access to any device groups.
 To do so, an admin should:
 
-    1. add a user to a team if is not a team member yet;
+    1. add a user to a team if they are not yet a team member;
     2. add a device group to the team;
-    3. set ``devices:*`` scopes for the team.
+    3. set the ``devices:*`` scopes for the team.
 
-As a result, the user will get a permission to perform the set actions over the group and its devices.
+As a result, the user will get permission to perform the set actions over the group and its devices.
 
 .. note::
 
-    The ``devices:*`` scopes determine actions team members can perform over device groups and their devices.
+    The ``devices:*`` scopes determine the actions team members can perform over device groups and their devices.
 
-    *  ``devices:read`` - view device/group details and its configuration.
-    *  ``devices:read-update`` - view and modify device/group details and its configuration, including config file deletion.
-    *  ``devices:delete`` - delete device/group.
+    *  ``devices:read`` - permission to view the details and configuration of a device/group; set to all members of a Factory.
+    *  ``devices:read-update`` - permission to modify device/group details and configuration, including config file deletion.
+    *  ``devices:delete`` - Ability to delete device/group.
 
     See :ref:`API Scopes <ref-scopes>` for more details on the scopes.
 
 Example
 ^^^^^^^
 
-A Factory has two teams in place and one device group, ``test-lab-devices``.
+.. tip::
+   Members who in no teams can **view** all devices and ci/Targets information.
+   By default, they can **only modify devices created by them**.
 
-Members of the "read-only-users" team have read-only access to all factory resources with one exception—device groups and devices.
-They can see only the ``test-lab-devices`` group and devices included into it.
+The members of the "read-only-users" team have read-only access to all Factory resources.
+This includes access for viewing all devices in a Factory.
+They cannot make changes to the devices as their scope includes ``devices:read``.
 
 .. figure:: /_static/userguide/account-management/team-with-group-and-read-access.png
    :align: center
    :alt: "read-only-users" scopes: read-only team with a device group
 
-The "lab-dev-users" team includes ``devices:read-update`` scope.
+The "lab-dev-users" team includes the ``devices:read-update`` scope.
 Therefore, members of this team can modify the ``test-lab-devices`` group and its devices.
+They can also view all devices in a Factory, even if they are assigned to other device groups.
 
 .. figure:: /_static/userguide/account-management/team-with-group-and-write-access.png
    :align: center
