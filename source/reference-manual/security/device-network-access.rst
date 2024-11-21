@@ -3,6 +3,9 @@
 Device Network Access
 =====================
 
+.. important::
+   IPv6 is not supported for cloud services/device-gateway
+
 LmP devices have no ingress network requirements.
 However, they do need to connect to external services for device management:
 
