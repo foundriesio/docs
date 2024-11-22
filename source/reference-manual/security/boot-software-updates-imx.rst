@@ -5,6 +5,9 @@
 Boot Software Updates on iMX
 ============================
 
+.. note::
+    The boot software update feature on iMX depends on having the WDOG_B signal of the SoC connected to the PMIC.
+
 Boot Artifacts
 --------------
 
