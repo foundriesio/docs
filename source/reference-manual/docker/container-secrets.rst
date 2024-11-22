@@ -68,10 +68,6 @@ Update ``factory-config.yml`` from ci-scripts.git to instruct the build scripts 
 
 Update the Dockerfile for the container with something like::
 
- # syntax=docker/dockerfile:1.0.0-experimental
- # NOTE: - the first line must be this "syntax=" to enable this feature.
- FROM alpine
-
  # Docker places secrets under /run/secrets/<id>
  RUN --mount=type=secret,id=secret_1 echo "secret_1 is here:" && cat /run/secrets/secret_1
  RUN --mount=type=secret,id=secret_2 echo "secret_2 is here:" && cat /run/secrets/secret_2
