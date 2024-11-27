@@ -81,7 +81,7 @@ Setup Work Environment
 Next, set up your work environment for building the source.
 
 The supported ``MACHINE`` target used by this guide is ``qemuarm64-secureboot``.
-For information on other hardware platforms, see:ref:`ref-linux-supported`.
+For information on other hardware platforms, see :ref:`ref-linux-supported`.
 
 The default distribution variable, ``DISTRO``, is automatically set to ``lmp``.
 This distro is provided by the `meta-lmp-base` layer (see :ref:`ref-linux-layers` for more details).
