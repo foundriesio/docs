@@ -68,7 +68,7 @@ Preparation
 
 	   tar -xvf flashlayouts-stm32mp15-eval.tar.gz
 
-The file used for flashing is ``FlashLayout_stm32mp1-optee.tsv``
+The file used for flashing is ``FlashLayout_emmc.tsv``
 
 Hardware Preparation
 --------------------
@@ -125,7 +125,8 @@ Index`` from the previous step if needed:
 
 .. prompt:: bash host:~$, auto
 
-	host:~$ STM32_Programmer_CLI -c port=usb1 -w FlashLayout_stm32mp1-optee.tsv
+	host:~$ cd flashlayouts-stm32mp1
+	host:~$ STM32_Programmer_CLI -c port=usb1 -w flashlayout_lmp-factory-image/lmp/FlashLayout_emmc.tsv
 
 This can take a few minutes to complete. The process can be watched from the
 host console, UART output, or board display.
