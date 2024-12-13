@@ -142,7 +142,7 @@ Go to `Application Credentials <https://app.foundries.io/settings/credentials>`_
 
 Complete with a **Description** and the **Expiration date** and select :guilabel:`next`.
 
-For Fioctl®, check the :guilabel:`Use for tools like fioctl` box and select your **Factory**.
+Check the :guilabel:`Use for tools like fioctl` box and select your **Factory**.
 You can revoke this access and set up a new credential later once you are familiar with the :ref:`ref-api-access`.
 
 .. figure:: /_static/install-fioctl/fioctl_token.png

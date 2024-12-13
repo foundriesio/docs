@@ -17,6 +17,8 @@ Under :guilabel:`Preferences` is the :guilabel:`Offline device timeout` field.
    :align: center
    :alt: example image showing the device offline settings tab
 
+   Offline settings tab
+
 Here you can enter the value, and select minutes or hours.
 Click :guilabel:`Save`.
 

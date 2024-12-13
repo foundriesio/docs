@@ -20,6 +20,8 @@ This will be the option farthest to the right.
 .. figure:: /_static/userguide/account-management/plan-tab.png
    :alt: user interface plan tab
 
+   Factory plan tab
+
 Factory Upgrade
 ~~~~~~~~~~~~~~~
 
@@ -38,6 +40,8 @@ From here enter the required information:
    :width: 600
    :align: center
    :alt: add billing details for upgrading plan
+
+   Adding new billing details
 
 For using other forms of payment, please `contact us <https://foundriesio.atlassian.net/servicedesk/customer/portal/1/group/1/create/2>`_.
 

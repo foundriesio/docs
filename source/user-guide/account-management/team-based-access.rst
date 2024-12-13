@@ -62,15 +62,21 @@ Team "read-write-ci" can do CI read-write operations:
    :align: center
    :alt: Teams example
 
+   Teams example
+
 .. figure:: /_static/teams-example-read-only.png
    :align: center
    :scale: 80%
    :alt: Teams example: Team read-only users
 
+   Team read-only users
+
 .. figure:: /_static/teams-example-read-write-ci.png
    :align: center
    :scale: 80%
    :alt: Teams example: Team read-write CI users
+
+   Team read-write CI users
 
 A member is then added to both teams.
 The member then has a combined list of scopes:
@@ -139,6 +145,8 @@ They cannot make changes to the devices as their scope includes ``devices:read``
    :align: center
    :alt: "read-only-users" scopes: read-only team with a device group
 
+   read-only team with a device group
+
 The "lab-dev-users" team includes the ``devices:read-update`` scope.
 Therefore, members of this team can modify the ``test-lab-devices`` group and its devices.
 They can also view all devices in a Factory, even if they are assigned to other device groups.
@@ -147,6 +155,7 @@ They can also view all devices in a Factory, even if they are assigned to other 
    :align: center
    :alt: "lab-dev-users" scopes: read-update team with a device group
 
+   read-update team with a device group
 
 .. _team-based-access-tuf:
 

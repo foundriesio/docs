@@ -33,16 +33,16 @@ Downloading the System Image
 
 After a successful build, the FoundriesFactory™ Platform produces build artifacts which can be downloaded from the :guilabel:`Targets` tab of your :term:`Factory`.
 
-#. Navigate to the :guilabel:`Targets` section of your Factory.
-
-#. Click the Target with the ``prebuilt-target`` :guilabel:`Trigger`.
+#. Navigate to the :guilabel:`Targets` tab of your Factory.
 
     .. figure:: /_static/flash-device/devel.png
         :width: 769
         :align: center
         :alt: Targets tab showing prebuilt-target
 
-#. Expand the :guilabel:`Targets` tab clicking on it.
+        Target tab
+
+#. Expand the Target information by clicking on the one named ``prebuilt-target`` on it.
    This shows a link to the Factory image artifact.
    Download the Factory image for your machine:
 
@@ -52,6 +52,8 @@ After a successful build, the FoundriesFactory™ Platform produces build artifa
         :width: 769
         :align: center
         :alt: Targets tab displaying available artifacts
+
+        Target artifacts
 
 .. note::
     Most platforms require more than the ``lmp-base-console-image-<machine_name>.wic.gz`` artifact for flashing.
@@ -179,7 +181,3 @@ If the above methods to SSH into your board do not work, there are additional th
 
 .. _Rufus: https://rufus.ie
 
-.. todo::
-
-     Make a section dedicated to the i.MX platform to link to in the "Flash LmP
-     system image" section note, regarding flashing eMMC.
