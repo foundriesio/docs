@@ -18,17 +18,21 @@ Prerequisites and Pre-Work
 .. figure:: /_static/qemu/example_factory_arm64.png
    :width: 900
    :align: center
-   :alt: QEMU Arm 64 bit example factory
+   :alt: QEMU Arm 64 bit example Factory
+
+   QEMU ARM Example Factory
 
 Emulating Device
---------------------------
+----------------
 
-1. Go to the `Targets` tab of your Factory and download the ``lmp-base-console-image-qemuarm64-secureboot.wic.gz`` image and the ``flash.bin``:
+1. Go to the `Targets` tab of your Factory and download ``lmp-base-console-image-qemuarm64-secureboot.wic.gz`` and ``flash.bin``:
 
 .. figure:: /_static/qemu/example_required_artefacts.png
    :width: 900
    :align: center
    :alt: Artifacts which are required to run the image with QEMU
+
+   Required QEMU artifacts
 
 2. Make a directory for the artifacts and cd into it:
 
@@ -100,6 +104,8 @@ Once you’ve converted and resized the image, you can then use it with your QEM
       :width: 900
       :align: center
       :alt: Login
+
+      QEMU device login
 
 .. note::
 

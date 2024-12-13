@@ -72,7 +72,8 @@ This will be covered this in more detail later.
 
 When the container build finishes, the device will download and start the shellhttpd application.
 
-Check the device status on the :guilabel:`devices` page and wait the ``shellhttpd`` on :guilabel:`APPS` and the green light on :guilabel:`STATUS`.
+Check the device status on the :guilabel:`devices` page.
+Watch for the green light under :guilabel:`STATUS`.
 
 .. figure:: /_static/tutorials/deploying-first-app/tutorial-device.png
    :width: 900

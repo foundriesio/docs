@@ -49,6 +49,8 @@ The owner then sends invites via the :guilabel:`Member` tab on their Factory pag
    :align: center
    :alt: sending member invites
 
+   Inviting members to Factory
+
 .. tip::
    When inviting members, you can also select any teams to assign them automatically.
 
@@ -60,6 +62,8 @@ and assigns the desired role:
 .. figure:: /_static/userguide/account-management/member-list.png
    :align: center
    :alt: UI, changing member role
+
+   Changing member role
 
 From here, roles can be changed anytime.
 
