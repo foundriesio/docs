@@ -335,7 +335,7 @@ Additional Documentation and References
 ---------------------------------------
 
 * `Managing EFI Boot Loaders for Linux: Controlling Secure Boot <https://www.rodsbooks.com/efi-bootloaders/controlling-sb.html>`_
-* `Understanding UEFI Secure Boot Chain <https://edk2-docs.gitbook.io/understanding-the-uefi-secure-boot-chain/>`_
+* `Understanding UEFI Secure Boot Chain <https://edk2-docs.gitbook.io/understanding-the-uefi-secure-boot-chain>`_
 * `NSA UEFI Lockdown Quick Guidance <https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-uefi-lockdown.pdf>`_
 * `NSA UEFI Secure Boot Customization <https://media.defense.gov/2020/Sep/15/2002497594/-1/-1/0/CTR-UEFI-Secure-Boot-Customization-UOO168873-20.PDF>`_
 

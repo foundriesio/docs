@@ -4,12 +4,12 @@ triggers:
     type: github_pr
     runs:
       - name: docs
-        container: python:3.9-alpine
+        container: python:3.12-alpine
         host-tag: fio-internal-ci
         script: make-docs
 
       - name: link-check
-        container: python:3.9-alpine
+        container: python:3.12-alpine
         host-tag: fio-internal-ci
         script: link-check
 

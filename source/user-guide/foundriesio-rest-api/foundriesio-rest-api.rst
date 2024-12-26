@@ -264,7 +264,7 @@ Define the variable ``DEVICE_NAME`` and configure your device using curl_ with `
 Learning More About the REST API
 --------------------------------
 
-Logged into http://app.foundries.io, you may interact with the REST API from your browser at http://api.foundries.io/ota. 
+Logged into http://app.foundries.io, you may interact with the `REST API from your browser at <http://api.foundries.io/ota>`. 
 
 1. Click on the operation to test.
    This shows the :guilabel:`Try it out` option.

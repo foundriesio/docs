@@ -158,12 +158,14 @@ extensions = [
 
 copybutton_prompt_text = "$ "
 
-sphinx_tabs_valid_builders = ['linkcheck']
-linkcheck_retries = 3
-linkcheck_anchors_ignore = ['L189-L192']
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
+# Linkcheck config
+sphinx_tabs_valid_builders = ['linkcheck']
+linkcheck_retries = 3
+linkcheck_anchors_ignore = ['L189-L192']
+linkcheck_allow_unauthorized = True
 # Links that shouldn't get checked for validity
 linkcheck_ignore = [
     r'http://localhost:\d+/?',
@@ -172,7 +174,6 @@ linkcheck_ignore = [
     'http://.*[.]local',
     'http://your-device-ip-address/',
     'https://app.atsgarage.com/#/.*',        # requires login
-    # This site is causing false negatives:
     r'https://elinux.org/.*',
     r'https://blogs.msdn.microsoft.com/.*',  # temporary blacklist
     r'https://www.tcpdump.org/.*',           # ditto
@@ -188,8 +189,11 @@ linkcheck_ignore = [
     r'https://wiki.st.com/.*',
     'https://ngrok.com', # ssl cert expired, will likely want to remove from docs if this persists
     'https://www.nxp.com/docs/en/application-note/AN12312.pdf',
+    r'https://sourceforge.net/.*', # 403 error
+    'https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-uefi-lockdown.pdf', # 403 error
+    'https://www.xilinx.com/products/silicon-devices/acap/versal',
+    r'https://source.foundries.io/factories/.*',
 ]
-
 # Time in seconds to wait for a response. May result in false errors, but also keeps things from timing out
 linkcheck_timeout = 10
 
@@ -219,7 +223,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'FoundriesFactory'
-copyright = '2017-2024, Foundries.io, Ltd'
+copyright = '2017-%Y, Foundries.io, Ltd'
 author = 'Foundries.io, Ltd.'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -298,9 +302,9 @@ html_theme = 'sphinx_rtd_theme'
 
 # Note that for Sphinx-RTD v0.6.0 or newer, 'html_baseurl' is used rather
 # than canonical_url
+#html_baseurl = 'https://docs.foundries.io/latest/',
 html_theme_options = {
     'logo_only': False,
-    'canonical_url': 'https://docs.foundries.io/latest/',
     'collapse_navigation': False,
     'sticky_navigation': False,
     'navigation_depth': -1,
@@ -322,7 +326,6 @@ html_theme_options = {
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 html_logo = "_static/logo.png"
-
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
@@ -376,7 +379,7 @@ html_show_sourcelink = False
 #html_show_sphinx = True
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-#html_show_copyright = True
+html_show_copyright = True
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
@@ -404,7 +407,7 @@ html_show_sourcelink = False
 htmlhelp_basename = 'fiodoc'
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+#intersphinx_mapping = {'https://docs.python.org/': None}
 
 # Config for sphinx-reredirects, maps source: target, target path is relative to source.
 # TODO: troubleshooting sections redirecting to lmp-customization do not appear to be functional

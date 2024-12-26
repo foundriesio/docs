@@ -1,6 +1,5 @@
 {% extends "!footer.html" %}
 {%-block contentinfo %}
-{{ super }}
 
 <div class="download" data-toggle="link" role="note" aria-label="Link">
   <a href="https://github.com/foundriesio/docs/{{ gh_release }}/" target="_blank" rel="noreferrer noopener" Link>
@@ -11,5 +10,6 @@
 <div class="has-text-centered is-size-7 mb-2 px-6 mx-6">
   <p>Linux<sup>&reg;</sup> is the registered trademark of Linus Torvalds in the U.S. and other countries.</p>
 </div>
+{{ super() }}
 
 {% endblock %}
