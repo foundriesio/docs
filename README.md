@@ -12,15 +12,15 @@ Currently the docs are written in
 
 Before beginning any work, review the [contributing section](#contributing).
 
-To build the documentation, python3 and `pip3` are required.
+To build the documentation, python3 (3.11 or greater) and `pip3` are required.
 All required python modules are listed in `requirements.txt`.
-Install them with `pip3 install -r requirements.txt`.
+Install them with `pip3 install -r requirements.txt`. _virtual environment recommended_
 
 📌 **NOTE:** After run `pip3 install -r requirements.txt`, restart your terminal or use source to ensure Sphinx is set up.
 
-### Using Virtualenv to Provide Requirements
+### Using a Virtual Environment to Provide Requirements
 
-To avoid messing with your system-wide package storage, use `virtualenv`.
+To avoid messing with your system-wide package storage, use `virtualenv`, or the builtin `venv`.
 This will set up the necessary environment for sphinx packages and place them here:
 
 ```bash
@@ -31,6 +31,8 @@ $ . ./venv/bin/activate
 $ pip install -r requirements.txt
 
 ```
+
+**NOTE:** You may need to specify the python version when initializing the virtual environment.
 
 ## Building the Docs Locally
 

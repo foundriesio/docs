@@ -101,13 +101,13 @@ Targets
    https://app.foundries.io/settings/credentials
 
 .. _REST APIs:
-   https://api.foundries.io/ota/
+   https://api.foundries.io/ota
 
 .. _Git repositories:
-   https://source.foundries.io/
+   https://source.foundries.io
 
 .. _Factory containers:
-   https://hub.foundries.io/
+   https://hub.foundries.io
 
 .. _OAuth2:
-   https://oauth.net/2/
+   https://oauth.net/2
