@@ -60,6 +60,10 @@ Push:
 
    ``git push`` output will indicate the start of a new CI job.
 
+.. tip::
+   The CI builds from the most recent commit to ``meta-subscriber-overrides`` related branch at the time of the trigger.
+   A pinned manifest is produced to show you the exact code that produced the build.
+
 Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targets`:
 
 The latest **Target** named :guilabel:`platform-main` should be the CI job you just created.
