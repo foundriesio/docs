@@ -16,7 +16,7 @@ The contents of each config file gets encrypted with the device's public key, us
 This means only someone owning the device's private key, and the device itself, can decrypt the value;
 Foundries.io, without the symmetric key, can not.
 
-Your Factory tracksthe last 10 config changes made to both the fleet, and each device.
+Your Factory tracks the last 10 config changes made to both the fleet, and each device.
 Your Factory keeps track of the last 10 config changes made to each device or device group config.
 
 .. important::
