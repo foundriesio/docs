@@ -60,7 +60,7 @@ Parameters
 ~~~~~~~~~~
 
 The following are aktualizr-repo's configuration parameters that can be useful to modify.
-The presented values are the default one.
+The presented values are the default ones.
 
 .. code-block::
 
