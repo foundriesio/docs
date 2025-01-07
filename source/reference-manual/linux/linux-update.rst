@@ -38,6 +38,11 @@ Updating Your Factory
 ^^^^^^^^^^^^^^^^
 
 We provide the helper script ``update-factory-manifest`` to update your Factory to a new LmP release.
+
+.. important::
+    We highly recommend using our script to perform the LmP update rather than doing manual git operations.
+    Our script brings the `LmP tags <https://github.com/foundriesio/lmp-manifest/tags>`_ information, that are missed with git merges or cherry pick.
+
 This script tries to update your manifest to the latest LmP version available:
 
 .. code-block::
@@ -48,7 +53,7 @@ This script tries to update your manifest to the latest LmP version available:
     $ git checkout <branch to update>
     $ ../lmp-tools/scripts/update-factory-manifest
     New upstream release(s) have been found.
-    Merging local code with upstream release: 91
+    Merging local code with upstream release: 95
     Proceed ? (y/n): y
 
 If no merge conflicts are found, it merges your changes and pushes the updated manifest to your Factory, triggering a new platform build.
