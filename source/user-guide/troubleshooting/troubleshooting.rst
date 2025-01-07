@@ -710,3 +710,41 @@ There are some cases where this can happen:
   Running ``fioctl wave status`` in this case shows that some devices are running Target 42, which is not present in the Targets list, so it shows as an orphan Target.
 * A device runs an old Target that has been pruned from the Targets list.
 * A device switches from one tag to another and it is still running a Target version which is not present in the new tag.
+
+Recreating Previous Targets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, aktualizr-lite only installs Targets which are newer than the current one running on the device.
+
+A common requirement during development is to be able to downgrade to a previous stable Target.
+This can be easily achieved by reverting to the previous commit SHAs that generated this stable Target.
+However, this may not be ideal as it requires CI build time to actually rebuild the Target.
+
+Users can then use ``fioctl targets add`` to recreate a previous Target, using much less CI time than an actual build.
+This recreates the Target by re-downloading OSTree or apps contents.
+
+Unfortunately, ``fioctl targets add`` does not regenerate the whole target at once.
+Like the normal CI flow, apps and OSTree are built separately in a dedicated CI build.
+So two sets of commands are necessary to downgrade to a specific OSTree + apps hash.
+
+An example follows:
+
+* Device running Target A
+
+* New Target B > A is built in CI
+
+* Let the device OTA to Target B
+
+* Target B updated fine but I would like to go back to Target A
+
+* Create a new Target C > B based on A OStree, for example:
+
+.. code-block:: bash
+
+    $ fioctl targets add --type ostree --tags <new-tag> --src-tag <orig-tag> --targets-creator "Recreate Target A platform build" <machine> <target-a-ostree-hash>
+
+* Device then OTA to Target C, which goes back to A OSTree
+
+.. note::
+    Similar steps can be taken to recreate a container Target.
+    See ``fioctl targets add`` command usage for more information.
