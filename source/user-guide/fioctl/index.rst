@@ -3,13 +3,16 @@
 Fioctl
 ======
 
-This section provides details on using :ref:`Fioctl® <ref-fioctl>` by way of example.
+Fioctl is an Open Source CLI tool for managing your Factory by providing a way to interact with the FoundriesFactory REST API.
 
-Prerequisites
--------------
+.. tip::
+   Fioctl releases happen independently of LmP releases.
 
-* Completion of the getting started guide.
+* :ref:`Installing Fioctl <gs-install-fioctl>`
+* :ref:`Fioctl reference manual <ref-fioctl>`
+* `Fioctl source <https://github.com/foundriesio/fioctl>`_
 
+Below you will find examples of common tasks and commands.
 
 .. _ug-fioctl-auto-update:
 
@@ -17,7 +20,7 @@ Auto Updating
 -------------
 
 ``fioctl version --update-to <version>``
-  Fioctl v0.36 and later can be updated—rather securely, via TUF—without the need to manually reinstall the binary.
+  Fioctl can be updated—securely via TUF—without needing to manually reinstall the binary.
 
 .. code-block:: console
   
