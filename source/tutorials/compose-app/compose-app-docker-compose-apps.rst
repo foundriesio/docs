@@ -12,7 +12,9 @@ This is the file structure responsible for creating the Docker Compose App:
 The combination of a top-level directory containing ``docker-compose.yml``
 will end-up in a Docker Compose App.
 
-The ``docker-compose.yml`` file specifies one or more containers to run and their configurations. 
+The ``docker-compose.yml`` file specifies one or more containers to run and their configurations.
+In addition, the Compose App directory can contain complementary files, such as configuration files, volume data, scripts, etc.
+The overall maximum allowed size of the Compose App directory is 1 GB.
 
 Foundries.io Hub as Source
 --------------------------
