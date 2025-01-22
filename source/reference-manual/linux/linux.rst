@@ -23,7 +23,6 @@ The LmP is open source software, and maintained by Foundries.io on `GitHub`_.
    linux-supported
    linux-repo
    development-tags
-   linux-dev-container
    linux-kernel
    linux-lmp-fs
    linux-layers

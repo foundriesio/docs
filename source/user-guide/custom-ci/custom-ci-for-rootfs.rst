@@ -19,7 +19,7 @@ Prerequisites
 Bitbake
 -------
 
-Use the :ref:`lmp-sdk container<ref-linux-dev-container>` (aka dev container) to :term:`bitbake` a system image or an ostree repo that contains an OTA-updatable part for rootfs.
+Use the :ref:`lmp-sdk container <ref-linux-building>` (aka dev container) to :term:`bitbake` a system image or an ostree repo that contains an OTA-updatable part for rootfs.
 
 1. Disable FoundriesFactory CI specific steps.
    Add the following to ``conf/local.conf``:
@@ -49,7 +49,7 @@ You should now have an ostree repo that contains a rootfs to deliver to your dev
 Push OSTree Repo To Cloud
 -------------------------
 
-The :ref:`ref-linux-dev-container` includes utilities called ``fiopush`` and ``fiocheck``.
+The  Linux dev-container includes utilities called ``fiopush`` and ``fiocheck``.
 These are used to push an ostree repo to the multi-tenant storage based on GCS.
 
 .. important::
