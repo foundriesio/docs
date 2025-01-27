@@ -150,11 +150,35 @@ Be aware that some OEMs (Original Equipment Manufacturers) may require users to 
 
 .. note::
     LockDown.efi requires that the platform be booted in Setup Mode. The method for entering this mode depends on the OEM.
-    
-LmP provides access to the application through a systemd-boot menu. Simply selecting it during boot initiates the provisioning process. After the reboot, the system will verify image signatures, and booting will be blocked if the signature verification fails.     
+
+LmP provides access to the application through a systemd-boot menu. Simply selecting it during boot initiates the provisioning process. After the reboot, the system will verify image signatures, and booting will be blocked if the signature verification fails.
 
 .. figure:: secure-boot-uefi/uefi-lockdown-provisioning.png
    :alt: UEFI Secure Boot Provisioning
+
+UEFI Secure Boot Key Revocation
+-------------------------------
+
+LmP also includes and distributes ``UnLock.efi``, a custom UEFI application that can be used to disable Secure Boot and revoke the provisioned keys if Secure Boot has already been enabled. Access to the application is provided via a systemd-boot menu.
+
+.. note::
+    UnLock.efi is released with v95.
+
+For factories receiving updates prior to the v95 release, it is necessary to install the empty authentication files required to revoke the Secure Boot keys to prevent build issues.
+
+The following bash script can be used to generate these files (noPK.auth and noKEK.auth) provided the user has the required keys and certificates (PK.crt, PK.key, KEK.crt and KEK.key) in the same directory.
+
+.. code-block:: bash
+
+     #!/bin/bash
+     # Generate empty AUTH files (to disable SecureBoot by removing PK,KEK and db/dbx)
+     touch noKEK.esl
+     sign-efi-sig-list -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" -c KEK.crt -k KEK.key KEK noKEK.esl noKEK.auth
+
+     touch noPK.esl
+     sign-efi-sig-list -t "$(date --date='1 second' +'%Y-%m-%d %H:%M:%S')" -c PK.crt -k PK.key PK noPK.esl noPK.auth
+
+The generated files should then be copied to the ``UEFI_SIGN_KEYDIR`` directory.
 
 
 Testing UEFI Secure Boot Provisioning With QEMU
