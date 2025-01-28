@@ -154,8 +154,8 @@ You can revoke this access and set up a new credential later once you are famili
 .. tip::
 
    We recommend creating a new API token for each computer you plan to use our tools with.
-   For example, if you intend to develop on both a laptop and a desktop, create a new token for each, as you would with SSH keys.
-   This way you can revoke tokens for individual systems, should they be compromised.
+   For example, if you develop on both a laptop and a desktop, create a new token for each, as you would with SSH keys.
+   This way you can revoke tokens for individual systems should they be compromised.
 
 Use the Client ID and Secret to finish the Fioctl login.
 
@@ -178,7 +178,7 @@ Use the Client ID and Secret to finish the Fioctl login.
      Client secret:
      You are now logged in to Foundries.io services.
 
-The following command can be used to test the ``fioctl`` configuration.
+Use the following command to test the configuration:
 
 .. prompt:: bash host:~$, auto
 
@@ -199,7 +199,9 @@ The following command can be used to test the ``fioctl`` configuration.
 Configuring Git
 ###############
 
-After :ref:`Fioctl <ref-fioctl>` is properly setup, it can be leveraged as a Git credential helper to allow pushing to your repositories with :ref:`FoundriesFactory® <ref-factory-definition>`. With this, Git knows when you connect to ``source.foundries.io`` and uses Fioctl for authentication when utilizing ``git`` commands.
+After :ref:`Fioctl <ref-fioctl>` is setup, you can leverage it as a Git credential helper.
+This allows pushing to your :ref:`Factory <ref-factory-definition>` repositories.
+With this, Git knows when you connect to ``source.foundries.io`` and uses Fioctl for authentication when utilizing ``git`` commands.
 
 Setting Up Git
 ^^^^^^^^^^^^^^
@@ -208,14 +210,11 @@ Run the following command to add the relevant entries to the Git configuration:
 
 .. prompt:: bash host:~$, auto
 
-   host:~$ sudo fioctl configure-git
-
-.. important::
-   This must run as ``sudo`` instead of directly as the ``root`` user.
-   This is because it needs to have privileges to create a symlink in the same directory as where ``git`` is located.
+   host:~$ fioctl configure-git
 
 .. warning::
-   * If for some reason the command ``sudo fioctl configure-git`` fails with an error, manual steps can be taken to get the exact same result. For comprehensive instructions, please see the :ref:`Fioctl™ Errors <ref-ts-errors>` section.
+   * If for some reason the command ``fioctl configure-git`` fails with an error, manual steps can be taken to get the exact same result.
+     For comprehensive instructions, please see the :ref:`Fioctl™ Errors <ref-ts-errors>` section.
 
    * Existing users reconfiguring Git access may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility::
 
