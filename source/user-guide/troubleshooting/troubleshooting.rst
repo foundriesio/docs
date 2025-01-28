@@ -10,11 +10,10 @@ This page covers a variety of topics falling under addressing specific :ref:`err
 Errors and Solutions
 ---------------------
 
-Fioctl™ Errors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Fioctl Errors
+^^^^^^^^^^^^^
 
-If for some reason the command ``sudo fioctl configure-git`` fails with an error, the following manual steps can be
-taken to get the exact same result:
+If ``fioctl configure-git`` fails with an error, manual steps can be taken to get the exact same result:
 
 1. Configure Git with the necessary credentials:
 
@@ -29,7 +28,7 @@ taken to get the exact same result:
 
  .. code-block:: bash
 
-    $ sudo fioctl configure-git
+    fioctl configure-git
     Symlinking /usr/local/bin/fioctl to /opt/homebrew/bin/git-credential-fio
     ERROR: symlink /usr/local/bin/fioctl /opt/homebrew/bin/git-credential-fio: file exists
 
