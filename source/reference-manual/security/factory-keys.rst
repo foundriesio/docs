@@ -57,39 +57,6 @@ The following diagram shows the Secure Boot flow for i.MX machines (TF-A is pres
         "Linux kernel"    -> "Linux kernel modules"              [label = "MODSIGN_PRIVKEY"];
    }
 
-STM32MP15 Secure Boot Flow
-""""""""""""""""""""""""""
-
-The following diagram shows the Secure Boot flow for STM32MP15-based machines:
-
-.. graphviz::
-
-   digraph {
-        graph [
-            label = "Secure Boot flow for STM32MP15 based machines"
-        ];
-        node [
-            shape=box
-        ];
-        edge [
-            arrowhead=none
-        ];
-        "Boot ROM"           -> "TF-A (BL2)"            [label = "RoT key"];
-        "TF-A (BL2)"         -> "fip.bin"               [label = "TF_A_SIGN_KEY_PATH"];
-        "fip.bin"            -> "bootscr"               [label = "UBOOT_SIGN_KEYNAME"];
-        "fip.bin"            -> "OP-TEE core (BL32)"    [label = "UBOOT_SIGN_KEYNAME"];
-        "fip.bin"            -> "OP-TEE pager (BL32)"   [label = "UBOOT_SIGN_KEYNAME"];
-        "fip.bin"            -> "OP-TEE pageable (BL32)" [label = "UBOOT_SIGN_KEYNAME"];
-        "OP-TEE core (BL32)" -> "OP-TEE TAs"            [label = "OPTEE_TA_SIGN_KEY"];
-        "fip.bin"            -> "u-boot-dtb"            [label = "UBOOT_SIGN_KEYNAME"];
-        "fip.bin"            -> "U-Boot proper"         [label = "UBOOT_SIGN_KEYNAME"];
-        "U-Boot proper"      -> "kernel fitImage"       [label = "UBOOT_SIGN_KEYNAME"];
-        "kernel fitImage"    -> "DTB files"             [label = "UBOOT_SIGN_KEYNAME"];
-        "kernel fitImage"    -> "initrd"                [label = "UBOOT_SIGN_KEYNAME"];
-        "kernel fitImage"    -> "Linux kernel"          [label = "UBOOT_SIGN_KEYNAME"];
-        "Linux kernel"       -> "Linux kernel modules"  [label = "MODSIGN_PRIVKEY"];
-   }
-
 UEFI Secure Boot Flow
 """""""""""""""""""""
 

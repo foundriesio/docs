@@ -76,7 +76,6 @@ Secure Boot specifics of select hardware platforms are described below.
 
    secure-boot-imx-habv4
    secure-boot-imx-ahab
-   secure-boot-stm32mp1
    secure-boot-ti-am62x
    secure-boot-zynq
    secure-boot-uefi
@@ -140,7 +139,6 @@ Secure Boot Firmware update specifics for select hardware platforms are describe
    boot-software-updates-imx
    boot-software-updates-imx8qm
    boot-software-updates-zynqmp
-   boot-software-updates-stm32mp1
 
 Anti-rollback protection, which prevents downgrading of boot firmware,
 can be enabled by following the guide below.

@@ -42,7 +42,6 @@ Be aware that an image created with SE05X enabled does not boot on boards withou
     * ``imx8mn-ddr4-evk``
     * ``imx8mm-lpddr4-evk``
     * ``imx8mp-lpddr4-evk``
-    * ``stm32mp15-disco``
 
     support SE05X integration without extra changes in LmP.
 
@@ -70,8 +69,6 @@ Special Cases
     "
 
 Make sure to push the changes to the ``meta-subscriber-overrides`` repo, triggering a build with the new configurations.
-
-3. On STM32MP157 DK board, Arduino Uno V3 expansion is used for connecting the SE05X board.
 
 .. _SE050 configurations:
    https://www.nxp.com/docs/en/application-note/AN12436.pdf

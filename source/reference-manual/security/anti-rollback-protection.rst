@@ -32,7 +32,7 @@ global variable in your ``meta-subscriber-overrides`` layer. For example:
      # TF-A Trusted Boot
      TF_A_SIGN_KEY_PATH = "${TOPDIR}/conf/factory-keys/tf-a/privkey_ec_prime256v1.pem"
 
-    +LMP_BOOT_FIRMWARE_VERSION:stm32mp15-eval = "3"
+    +LMP_BOOT_FIRMWARE_VERSION:renesas-upd720201 = "3"
 
 
 
