@@ -114,7 +114,6 @@ Glossary
      This allows for smaller keys than otherwise, but with an equivalent security level.
 
      * :ref:`Security, Secure Element <ref-secure-element>`
-     * :ref:`Security, StM32MP1 Secure boot <ref-secure-boot-stm32mp1>`
      * :ref:`Security, OP-TEE on the Versal Adaptive Computer Acceleration Platform <ref-tee-on-versal-acap>`
 
    ECIES

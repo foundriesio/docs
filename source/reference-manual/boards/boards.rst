@@ -30,8 +30,6 @@ Select your board below to view flashing instructions.
    imx93evk
    am62xx-sk
    am64xx-sk
-   stm32mp15-disco
-   stm32mp15-eval
    jetson-agx-orin-devkit
    jetson-agx-xavier-devkit
    x86

@@ -344,7 +344,7 @@ Bring relevant changes from the reference machine to your machine code.
 * **Mfgtool** (if applicable)
 
 .. note::
-    Not all machines require/support ``mfgtool`` build. Currently, i.MX and STM32MP are supported.
+    Not all machines require/support ``mfgtool`` build. Currently, i.MX boards are supported.
 
 Check if the ``mfgtool-files`` from your reference machine have changed between the two releases. Mirror the changes to your machine.
 
@@ -359,8 +359,6 @@ For i.MX:
     $ cd meta-lmp
     $ git diff mp-88 mp-91 meta-lmp-bsp/recipes-support/mfgtool-files/mfgtool-files/imx8mm-lpddr4-evk/
 
-.. note::
-    For STM32MP, the ``mfgtool`` scripts are located in https://github.com/foundriesio/meta-lmp/tree/mp-91/meta-lmp-bsp/dynamic-layers/stm-st-stm32mp/recipes-support/stm32-mfgtool-files/stm32-mfgtool-files.
 
 For the i.MX SoCs, the update process of ``mfgtool`` hardware support recipes like ``u-boot-fio-mfgtool``, ``linux-lmp-dev-mfgtool`` and ``optee-os-fio-mfgtool`` is the same for each component as described in the previous sections.
 
