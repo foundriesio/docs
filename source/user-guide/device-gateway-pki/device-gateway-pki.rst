@@ -3,7 +3,7 @@
 Details Of Device Gateway PKI Settings
 ======================================
 
-The :term:`PKI` for Device Gateway and Factory Devices is vital for the secure communication between them.
+The :term:`Public Key Infrastructure (PKI) <PKI>` for Device Gateway and Factory Devices is vital for the secure communication between them.
 It is important to understand exactly what the Factory PKI related commands do.
 The :ref:`Factory PKI <ref-device-gateway>` reference manual describes core concepts of your Factory PKI.
 It also provides examples to configure your Factory PKI using the :ref:`Fioctl® <ref-fioctl>` commands.
@@ -45,7 +45,7 @@ First, a command calls the API to initialize a Factory PKI, which performs the f
 
 Once the ``fioctl keys ca create`` command receives a response, it performs the following actions:
 
-    - Generates the Factory Root CA on either your local file system or an HSM device.
+    - Generates the Factory Root CA on either your local file system or a Hardware Security Module (HSM) device.
     - Optionally generates a Local Device CA on your local file system, and signs it using the Factory Root :term:`CA`.
     - Signs all CSRs received from the above API call.
     - Finally, that command uploads all generated certificates to the API; private keys are not uploaded.

@@ -125,7 +125,7 @@ Avoiding the need to store new static keys reduces attack surface and simplifies
 To this end, the new set of keys will be derived in OP-TEE from its core secret: the Hardware Unique Key (HUK)
 
 .. warning::
-     Once the static SCP03 keys have been derived from the HUK and programmed into the device's NVM, the **HUK MUST NOT CHANGE**.
+     Once the static SCP03 keys have been derived from the HUK and programmed into the device's NVM, the **HUK must not change**.
      It is equally critical that the HUK remains a **secret**.
 
 There are two different ways of rotating the SCP03 key: with and without user intervention from the Normal World.

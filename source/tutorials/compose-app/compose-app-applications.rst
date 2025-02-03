@@ -5,7 +5,7 @@ This tutorial will now guide you through examples of three Docker Compose Apps.
 The ``containers.git`` repo will then have three different application folders:
 
 * ``shellhttpd-mqtt``: Based on ``shellhttpd``.
-  This app counts the number of requests and sends them over the MQTT network messaging protocol.
+  This app counts the number of requests and sends them over the Message Queuing Telemetry Tranport (MQTT) network messaging protocol.
 
 * ``flask-mqtt-nginx``: A python3 Flask app that implements a web app and receives the MQTT messages from ``shellhttpd-mqtt``.
   The Nginx reverse proxy forwards all the requests to the Flask application.

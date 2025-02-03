@@ -111,7 +111,7 @@ When the CI finishes, download and flash the image.
 Additional Configuration
 ------------------------
 
-Auto registration can use device tags and HSM.
+Auto registration can use device tags and or a Hardware Security Module (HSM).
 Additional configuration can be added by creating files in ``/etc/sota`` directory
 
 Registering the device with a tag can be done by creating ``/etc/sota/tag`` file.
