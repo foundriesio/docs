@@ -19,7 +19,7 @@ This section guides you through the steps of creating a custom CI pipeline in Gi
 
 - builds multi-arch container images and pushes them to the `FoundriesFactory Registry`_;
 - builds a `FoundriesFactory Compose App`_ and pushes it to the `FoundriesFactory Registry`_;
-- composes `TUF Targets role metadata`_ compliant with our TUF requirements;
+- composes `The Update Framework (TUF) Targets role metadata`_ compliant with our TUF requirements;
 - adds the composed TUF Targets to `FoundriesFactory Targets`_.
 
 Prerequisites
@@ -130,7 +130,7 @@ Use ``fioctl targets list`` and ``fioctl targets show`` to check whether the new
 .. _FoundriesFactory Compose App:
     https://docs.foundries.io/latest/tutorials/compose-app/compose-app.html
 
-.. _TUF Targets role metadata:
+.. _The Update Framework (TUF) Targets role metadata:
    https://theupdateframework.io/metadata/#targets-metadata-targetsjson
 
 .. _FoundriesFactory Targets:

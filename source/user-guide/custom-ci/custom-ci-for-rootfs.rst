@@ -5,7 +5,7 @@ Custom CI for RootFS
 
 The FoundriesFactory™ Platform includes all you need to build a Linux®-based operating system and securely deploy it.
 In particular, it provides you with a git repo and a CI service that handles building the kernel and :term:`rootfs`, and delivering them to devices.
-This is done while leveraging the TUF compliant OTA service.
+This is done while leveraging The Update Framework (TUF) compliant OTA service.
 You can learn more in the :ref:`reference <ref-linux>` section.
 
 In some cases, you want to build your system image and deploy it via the FoundriesFactory OTA service **without** using the CI service.
@@ -50,7 +50,7 @@ Push OSTree Repo To Cloud
 -------------------------
 
 The  Linux dev-container includes utilities called ``fiopush`` and ``fiocheck``.
-These are used to push an ostree repo to the multi-tenant storage based on GCS.
+These are used to push an ostree repo to the multi-tenant storage based on Google Cloud Storage.
 
 .. important::
    You need an auth token to run these commands.

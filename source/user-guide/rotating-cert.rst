@@ -9,7 +9,7 @@ This page explains how to configure your Factory for this functionality.
 Choosing an EST Server
 ----------------------
 
-Before you can perform certificate rotations, you must ensure you have taken control of your Factory's :ref:`PKI <ref-device-gateway>`.
+Before you can perform certificate rotations, you must ensure you have taken control of your Factory's :ref:` Public Key Infrastructure (PKI) <ref-device-gateway>`.
 Specifically, you'll need access to your ``factory_ca.key`` in order to complete these steps.
 There are two ways to then run an Enrollment over Secure Transport (EST) server.
 

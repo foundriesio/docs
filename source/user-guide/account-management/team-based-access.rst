@@ -162,7 +162,7 @@ They can also view all devices in a Factory, even if they are assigned to other 
 Changes to TUF Root
 -------------------
 
-With Fioctl® v0.35 and newer, if someone makes changes to TUF root, others will be required to upgrade to the same version if they wish to make changes.
+With Fioctl® v0.35 and newer, if someone makes changes to The Update Framework (TUF) root, others will be required to upgrade to the same version if they wish to make changes.
 This is to prevent accidental eraser of the TUF keys ownership information.
 
 

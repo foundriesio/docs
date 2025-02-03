@@ -3,7 +3,7 @@
 Customizing Over the Air Updates
 ================================
 
-By default, Secure Over The Air update (SOTA), operates as a daemon process (:ref:`ref-aktualizr-lite`) which
+By default, Secure Over The Air (SOTA) update operates as a daemon process (:ref:`ref-aktualizr-lite`) which
 periodically checks for updates. If an update is available, it will automatically download, and install
 it to a device that is following the update tag.
 
@@ -99,7 +99,7 @@ In addition to the default daemon mode, users can run it as a CLI utility and pe
     Default command is "daemon"
 
 
-* ``check`` - updates the device's TUF repo with the latest Factory's TUF metadata or with the TUF metadata specified in the offline update bundle, and checks if there is a newer than currently installed Target.
+* ``check`` - updates the device's repo for The Update Framework (TUF) with the latest Factory's TUF metadata or with the TUF metadata specified in the offline update bundle, and checks if there is a newer than currently installed Target.
 * ``pull`` - pulls the delta between the currently installed and the specified one.
 * ``install`` - installs the previously pulled Target; yields an error if the specified Target has not been pulled before.
 * ``run`` - finalizes the installed Target; confirms an update after reboot on a new rootfs version and/or starts the updated apps.
