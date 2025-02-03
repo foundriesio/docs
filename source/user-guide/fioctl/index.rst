@@ -20,7 +20,7 @@ Auto Updating
 -------------
 
 ``fioctl version --update-to <version>``
-  Fioctl can be updated—securely via TUF—without needing to manually reinstall the binary.
+  Fioctl can be updated—securely via The Update Framework (TUF)—without needing to manually reinstall the binary.
 
 .. code-block:: console
   

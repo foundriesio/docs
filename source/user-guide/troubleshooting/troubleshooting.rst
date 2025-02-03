@@ -3,7 +3,8 @@
 Troubleshooting and FAQ
 =======================
 
-This page covers a variety of topics falling under addressing specific :ref:`errors <ref-ts-errors>`, more :ref:`general how to <ref-ts-howto>`, and then :ref:`tips/about <ref-ts-tips>`.
+This page covers a variety of topics, from addressing specific :ref:`errors <ref-ts-errors>`,
+:ref:`general how to <ref-ts-howto>`, and :ref:`tips/about <ref-ts-tips>`.
 
 .. _ref-ts-errors:
 
@@ -22,7 +23,8 @@ If ``fioctl configure-git`` fails with an error, manual steps can be taken to ge
     git config --global credential.https://source.foundries.io.username fio-oauth2
     git config --global credential.https://source.foundries.io.helper fio
 
-2. Create the symbolic link manually. The correct path will be displayed in the `Fioctl` error message and may vary depending on your operating system and Git configuration environment.
+2. Create the symbolic link manually.
+   The correct path will be displayed in the ``fioctl`` error message and may vary depending on your operating system and Git configuration environment.
 
  **Example**:
 
@@ -77,9 +79,11 @@ This section shows some common returns from ``aktualizr-lite`` operations.
 
    curl error 3 (http code 0): URL using bad/illegal format or missing URL
 
-This could mean that the device is not properly registered, but there is a faulty ``/var/sota/sql.db`` file available. This file may be created when ``aktualizr-lite`` is manually run before registering the device.
+This could mean that the device is not properly registered, but there is a faulty ``/var/sota/sql.db`` file available.
+This file may be created when ``aktualizr-lite`` is run manually before registering the device.
 
-**Solution:** Re-flash or :ref:`ref-ts-re-register`. Make sure the device is properly registered before running ``aktualizr-lite``.
+**Solution:** Re-flash or :ref:`ref-ts-re-register`.
+Make sure the device is properly registered before running ``aktualizr-lite``.
 
 * **curl error 6 or 56**
 
@@ -93,9 +97,12 @@ Or:
 
    curl error 56 (http code 0): Failure when receiving data from the peer
 
-These could mean that there is no networking available and/or the device cannot talk to the device gateway. This could be due to a broken registration or a faulty ``/var/sota/sql.db`` file. These can also mean that the DNS is not working correctly (for instance, IPv6 only).
+These could mean that there is no networking available and/or the device cannot talk to the device gateway.
+This could be due to a broken registration or a faulty ``/var/sota/sql.db`` file.
+These can also mean that the DNS is not working correctly (for instance, IPv6 only).
 
-**Solution:** Re-flash or :ref:`ref-ts-re-register`. If you are :ref:`Setting up your Device Gateway PKI <ref-rm-pki>`, make sure all operations have succeeded.
+**Solution:** Re-flash or :ref:`ref-ts-re-register`.
+Check that all operations have succeeded before :ref:`setting up your Device Gateway Public Key Infrastructure (PKI) <ref-rm-pki>`.
 
 * **curl error 7 or 28**
 
@@ -111,16 +118,20 @@ Or:
 
 These could mean that a device cannot reach the server.
 
-**Solution:** Make sure your device has a good connection. Check for proxies or firewalls in the network. If you are :ref:`Setting up your Device Gateway PKI <ref-rm-pki>`, make sure all operations have succeeded.
+**Solution:** Make sure your device has a good connection.
+Check for proxies or firewalls in the network.
+If you are :ref:`Setting up your Device Gateway PKI <ref-rm-pki>`, make sure all operations have succeeded.
 
 .. tip::
-   The `openssl s_client <https://www.openssl.org/docs/man1.0.2/man1/openssl-s_client.html>`_ command can be very useful for troubleshooting network issues. For example::
+   The `openssl s_client <https://www.openssl.org/docs/man1.0.2/man1/openssl-s_client.html>`_ command is useful for troubleshooting network issues.
+   For example::
 
        openssl s_client -connect <dg>:8443 -cert client.pem -key pkey.pem -CAfile root.crt
 
    Where:
 
-   * ``<dg>``: Device gateway address, defaults to ``ota-lite.foundries.io``. The actual address can be found in ``/var/sota/sota.toml``, ``[tls].server`` field.
+   * ``<dg>``: Device gateway address, defaults to ``ota-lite.foundries.io``.
+     The actual address can be found in ``/var/sota/sota.toml``, ``[tls].server`` field.
 
 
 * **Failed to update Image repo metadata**
@@ -129,7 +140,7 @@ These could mean that a device cannot reach the server.
 
    Failed to update Image repo metadata: The root metadata was expired.
 
-This means your TUF root key has expired.
+This means The Update Framework (TUF) root key has expired.
 
 **Solution:** Rotate your :ref:`ref-offline-keys`.
 
@@ -156,7 +167,8 @@ This means the Target to update to has expired.
 
    Failed to update Image repo metadata: Failed to fetch role timestamp in image repository.
 
-This could mean that there is no Target available to update to. If this is a production device, it could mean that there are no :ref:`ref-production-targets`/waves available for that tag.
+This could mean that there is no Target available to update to.
+If this is a production device, it could mean that there are no :ref:`ref-production-targets`/waves available for that tag.
 
 .. tip::
    The Target metadata available for the device can be checked with the following commands:
@@ -172,7 +184,8 @@ This could mean that there is no Target available to update to. If this is a pro
    Where:
 
    * ``<tag>``: Device tag.
-   * ``<dg>``: Device gateway address, defaults to ``ota-lite.foundries.io``. The actual address can be found in ``/var/sota/sota.toml``, ``[tls].server`` field.
+   * ``<dg>``: Device gateway address, defaults to ``ota-lite.foundries.io``.
+     The actual address can be found in ``/var/sota/sota.toml``, ``[tls].server`` field.
    * ``<token>``: API Token with ``targets:read`` scope.
 
    Check :ref:`ref-troubleshooting_network-connectivity` for a reference on running ``curl`` commands on the device.
@@ -196,7 +209,9 @@ This means that the device cannot access the U-Boot environment.
 
    KeyId xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx is not valid to sign for this role (root).
 
-This is not an actual error. It only indicates that the TUF root key has been rotated. It can be shown more than once in the ``aktualizr-lite`` logs depending on how many times the TUF root key has been rotated.
+This is not an actual error.
+It only indicates that the TUF root key has been rotated.
+It can be shown more than once in the ``aktualizr-lite`` logs depending on how many times the TUF root key has been rotated.
 
 **Solution:** No fix needed, this log can be ignored as this is expected behavior.
 
@@ -221,7 +236,7 @@ It manifests as a failed boot attempt and error in the u-boot log:
     SPL_FIT_SIGNATURE_STRICT needs a valid config node in FIT
     ### ERROR ### Please RESET the board ###
 
-This suggests that the SPL key is missing from the factory.
+This suggests that the SPL key is missing from the Factory.
 The key is defined in the OE recipe and it defaults to ``spldev``.
 
 ::
@@ -527,17 +542,20 @@ Follow these steps to do so:
 Read Secure Variables from Containers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After a board is fused and closed, the secure storage (RPMB) becomes available and handles the necessary variables to perform the OTA logic.
+After a board is fused and closed, the secure storage—Replay Protected Memory Block (RPMB)—becomes available and handles the necessary variables to perform the OTA logic.
 Secure storage also can be leveraged to store custom device information, like MAC addresses, serial numbers, and other relevant values.
 
-You may wish to retrieve these values from the application. Please refer to the `fiovb-container <https://github.com/foundriesio/containers/tree/master/fiovb-container>`_ example, which brings a simple application to run ``fiovb_printenv`` from inside a container.
+You may wish to retrieve these values from the application.
+Please refer to the `fiovb-container <https://github.com/foundriesio/containers/tree/master/fiovb-container>`_ example,
+which brings a simple application to run ``fiovb_printenv`` from inside a container.
 
 .. _ref-ts-bootdelay:
 
 Enable U-Boot Boot Delay
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, LmP disables U-Boot's boot delay feature for security purposes. However, this is a powerful ally during the development phase, as it provides direct access to U-Boot's environment for debugging.
+By default, LmP disables U-Boot's boot delay feature for security purposes.
+However, this is a powerful ally during the development phase, as it provides direct access to U-Boot's environment for debugging.
 
 * **Secured/Closed Boards**
 
