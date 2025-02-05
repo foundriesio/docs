@@ -131,7 +131,7 @@ set in ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
       required certificates files (``PK.cer``, ``KEK.cer``, ``DB.cer`` and ``DBX.cer``),
       and auth files (``PK.auth``, ``KEK.auth``, ``DB.auth``, and ``DBX.auth``)
 * ``UEFI_SIGN_ENABLE``
-    * If set to ``1`` the systemd-boot bootloader and Linux kernel binaries will be signed by with the DB key (``DB.key`` at ``UEFI_SIGN_KEYDIR``)
+    * If set to ``"1"`` the systemd-boot bootloader and Linux kernel binaries will be signed by with the DB key (``DB.key`` at ``UEFI_SIGN_KEYDIR``)
 
 
 .. tip::
