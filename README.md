@@ -4,9 +4,8 @@ This repo contains the documentation source for: <https://docs.foundries.io>
 
 ## About
 
-Currently the docs are written in
-[reStucturedText](https://docutils.sourceforge.io/rst.html) with
-[Sphinx](https://www.sphinx-doc.org/en/master/) serving as the site generator.
+Our docs are written in[reStucturedText](https://docutils.sourceforge.io/rst.html),
+with [Sphinx](https://www.sphinx-doc.org/en/master/) serving as the site generator.
 
 ## Requirements
 
@@ -55,25 +54,28 @@ documentation.
 
 ### Before Working on Documentation
 
-While optional, before you begin working:
-
-- [ ] Check Jira
-
-> See if someone is working on it.
-If there is no open issue, should there be?
-If the fix is going to take more than 30 minutes, consider opening one.
-
-- [ ] Check the default branch to see the if the issue is still relevant.
-
-> The published pages reflect the documentation as of the latest release.
-The change may exist and will show up in the next release.
-
 You **must** use a fork rather than working on a `foundriesio/docs` branch.
 Branch names should be descriptive and in the imperative (what you *will* do):
 
 ```bash
 git checkout -b spell-check-everything
 ```
+
+Before you start, check the default branch to see the if the issue is still relevant.
+
+> The published pages reflect the documentation as of the latest release.
+The change may exist and will show up in the next release.
+
+#### Internal Contributions
+
+For internal contributions, check Jira to make sure someone else is not already working on the issue.
+
+> If there is no open issue, should there be one?
+If the fix is going to take more than 30 minutes, consider opening one.
+
+#### Public Contributions
+
+We recommend opening an issue on GitHub first; we will likely tell you to go for it!
 
 ### Working on Documentation
 
@@ -98,7 +100,7 @@ Before pushing, check locally:
 - html; `make html`
 - lint: `vale <path_to_file(s)>`
 
-When opening a PR, add "documentation team" for your reviewer.
+When opening a PR, add "documentation team" for your reviewer if possible.
 For any changes that reflect changes to how the FoundriesFactory™ Platform is used/interacted with—the majority—please add the Customer Success team.
 Someone from the documentation team will merge it once reviews are in and suggestions considered.
 The [PR template](.github/pull_request_template.md) has additional steps that can speed up the process.
