@@ -1,7 +1,7 @@
 .. _ref-device-gateway:
 
-Managing Factory PKI
-====================
+Factory PKI
+============
 
 LmP devices connect to OTA services via a :ref:`Device Gateway <ref-ota-architecture>` configured with :term:`mutual TLS <mTLS>`.
 A set of digital certificates used to establish trust between Factory devices and the Device Gateway is a Factory Public Key Infrastructure (PKI).
@@ -24,6 +24,128 @@ Benefits of owning your Factory PKI are two-fold:
    Once a reset was performed, all connected devices will lose their connection.
    These devices will not be able to connect to the Device Gateway until they are re-provisioned with a new Root of Trust.
    In practice this means that these devices need to be re-flashed (after the Factory PKI reset).
+
+Managing Your Factory PKI
+-------------------------
+
+Setting Up Your PKI
+~~~~~~~~~~~~~~~~~~~
+
+:ref:`ref-fioctl` includes a command to set up your PKI:
+
+.. warning::
+   The following command can only be used once.
+
+.. code-block::
+
+    fioctl keys ca create /absolute/path/to/certs/
+
+This creates a root of trust ``factory_ca`` keypair.
+
+A few important things to note about this command:
+
+ * Use a PKCS#11 compatible HSM.
+   This will ensure the safety of your Factory's Root of Trust private key.
+
+ * The "PKI Directory" is important, and should be securely backed up.
+
+ * As noted in the warning, it can only be set once.
+   A reset requires contacting `Customer Support <https://support.foundries.io>`_,
+   and will result in connected devices loosing connection.
+
+After running the above command, you can validate the outcome and view the configured certificates by using the following command:
+
+.. code-block::
+
+    fioctl keys ca show --pretty
+
+Rotating Server TLS Certificate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes, you may need to rotate the TLS certificate used by the Device Gateway to serve your Factory devices.
+For example, the corresponding TLS certificate might be near its expiration date, or it might be compromised.
+Foundries.io is not able to perform this task for you, as it requires access to your Factory Root of Trust.
+
+:ref:`ref-fioctl` includes a command to rotate your Server TLS Certificate:
+
+.. code-block::
+
+    fioctl keys ca rotate-tls /absolute/path/to/certs/
+
+Adding Device CA
+~~~~~~~~~~~~~~~~
+
+Sometimes, you might need to add more than one Device CA to your Factory.
+Some use cases when this is needed include (but are not limited to) the following situations:
+
+ * You have only initially set up an Online Device CA for your Factory,
+   and want to also configure a Local Device CA (or vice versa).
+
+ * You opened a new manufacturing site,
+   and want a dedicated Local Device CA to issue Client Certificates to devices manufactured at this site.
+
+ * One of your Device CAs was compromised,
+   and you need to replace it by a new Device CA (either Online or Local).
+
+:ref:`ref-fioctl` includes a command to add one more Device CA to your Factory:
+
+.. code-block::
+
+    fioctl keys ca add-device-ca /absolute/path/to/certs/ [--online-ca | --local-ca]
+
+Revoking Device CA
+~~~~~~~~~~~~~~~~~~
+
+You may need to revoke or disable a Device CA for your Factory.
+Some use cases when this is needed include the following situations:
+
+ * One of your Device CAs was compromised,
+   and you need to deny an ability to register new devices with client certificates issued by this CA.
+   You may also want to completely deny access to the Device Gateway for already registered devices with such certificates.
+
+ * You are closing a manufacturing site,
+   and want to make sure that a Device CA issued for that manufacturing site can no longer be used to issue new client certificates.
+
+:ref:`ref-fioctl` provides two separate commands: to disable and revoke an existing Device CA.
+
+There is an important difference between disabling and revoking a Device CA:
+
+- When you disable the Device CA,
+  new devices with client certificates issued by that CA cannot be registered.
+- When you revoke the Device CA, in addition to the above,
+  already registered devices with client certificates issued by that CA cannot connect to your Factory.
+
+Use the below command when you need to disable a Device CA:
+
+.. code-block::
+
+    fioctl keys ca disable-device-ca /absolute/path/to/certs/ [--ca-file <filename> | --ca-serial <serial>]
+
+Use the following command when you need to revoke a Device CA:
+
+.. code-block::
+
+    fioctl keys ca revoke-device-ca /absolute/path/to/certs/ [--ca-file <filename> | --ca-serial <serial>]
+
+After the Device CA is revoked, devices can no longer update their apps or config.
+Therefore, the revocation process needs to be planned properly.
+We recommend the following workflow:
+
+1. Disable the Device CA.
+   This action needs to be taken as soon as you notice that your Device CA was compromised.
+   This makes sure that an attacker is not able to register new devices with client certificates issued by that CA.
+
+2. Inspect your fleet of already registered devices, and delete those devices which you think are not legitimate.
+   After this point, you can be sure that an attacker can no longer steal your new Intellectual Property (provided by OTA updates).
+   FoundriesFactory advises you to also prepare a separate plan for how to deal with already compromised devices.
+
+3. Rotate client certificates on your devices which have a client certificate issued by a Device CA you are revoking.
+   You may use Foundries.io hosted :ref:`ref-cert-rotation` service, or use your own certificate rotation workflow.
+   Make sure that new device client certificates are issued by one of the Device CAs enabled for your Factory.
+
+4. Revoke the Device CA.
+   At this point a reference to a given Device CA is completely removed from our servers, hence becomes untrusted.
+
 
 Terminology
 -----------
@@ -125,129 +247,10 @@ Your Factory may be configured to use a FoundriesFactory hosted EST service, you
 
 .. _ref-rm-pki:
 
-Managing Your Factory PKI
--------------------------
-
-Setting Up Your PKI
-~~~~~~~~~~~~~~~~~~~
-
-:ref:`ref-fioctl` includes a command to set up your PKI:
-
-.. warning::
-   The following command can only be used once.
-
-.. code-block::
-
-    fioctl keys ca create /absolute/path/to/certs/
-
-A few important things to note about this command:
-
- * Use a PKCS#11 compatible HSM.
-   This will ensure the safety of your Factory's Root of Trust private key.
-
- * The "PKI Directory" is important, and should be securely backed up.
-
- * As noted in the warning, it can only be set once.
-   A reset requires contacting `Customer Support <https://support.foundries.io>`_,
-   and will result in connected devices loosing connection.
-
-After running the above command, you can validate the outcome and view the configured certificates by using the following command:
-
-.. code-block::
-
-    fioctl keys ca show --pretty
-
-Rotating Server TLS Certificate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Sometimes, you might need to rotate the TLS certificate used by the Device Gateway to serve your Factory devices.
-For example, the corresponding TLS certificate might be close to its expiration date, or it might be compromised.
-Foundries.io is not able to perform that task for you, as it requires access to your Factory Root of Trust.
-
-:ref:`ref-fioctl` includes a command to rotate your Server TLS Certificate:
-
-.. code-block::
-
-    fioctl keys ca rotate-tls /absolute/path/to/certs/
-
-Adding Device CA
-~~~~~~~~~~~~~~~~
-
-Sometimes, you might need to add more than one Device CA to your Factory.
-Some use cases when this is needed include (but are not limited to) the following situations:
-
- * You have only initially set up an Online Device CA for your Factory,
-   and want to also configure a Local Device CA (or vice versa).
-
- * You opened a new manufacturing site,
-   and want a dedicated Local Device CA to issue Client Certificates to devices manufactured at this site.
-
- * One of your Device CAs was compromised,
-   and you need to replace it by a new Device CA (either Online or Local).
-
-:ref:`ref-fioctl` includes a command to add one more Device CA to your Factory:
-
-.. code-block::
-
-    fioctl keys ca add-device-ca /absolute/path/to/certs/ [--online-ca | --local-ca]
-
-Revoking Device CA
-~~~~~~~~~~~~~~~~~~
-
-You may need to revoke or disable a Device CA for your Factory.
-Some use cases when this is needed include the following situations:
-
- * One of your Device CAs was compromised,
-   and you need to deny an ability to register new devices with client certificates issued by this CA.
-   You may also want to completely deny access to the Device Gateway for already registered devices with such certificates.
-
- * You are closing a manufacturing site,
-   and want to make sure that a Device CA issued for that manufacturing site can no longer be used to issue new client certificates.
-
-:ref:`ref-fioctl` provides two separate commands: to disable and revoke an existing Device CA.
-
-There is an important difference between disabling and revoking a Device CA:
-
-- When you disable the Device CA,
-  new devices with client certificates issued by that CA cannot be registered.
-- When you revoke the Device CA, in addition to the above,
-  already registered devices with client certificates issued by that CA cannot connect to your Factory.
-
-Use the below command when you need to disable a Device CA:
-
-.. code-block::
-
-    fioctl keys ca disable-device-ca /absolute/path/to/certs/ [--ca-file <filename> | --ca-serial <serial>]
-
-Use the following command when you need to revoke a Device CA:
-
-.. code-block::
-
-    fioctl keys ca revoke-device-ca /absolute/path/to/certs/ [--ca-file <filename> | --ca-serial <serial>]
-
-After the Device CA is revoked, devices can no longer update their apps or config.
-Therefore, the revocation process needs to be planned properly.
-We recommend the following workflow:
-
-1. Disable the Device CA.
-   This action needs to be taken as soon as you notice that your Device CA was compromised.
-   This makes sure that an attacker is not able to register new devices with client certificates issued by that CA.
-
-2. Inspect your fleet of already registered devices, and delete those devices which you think are not legitimate.
-   After this point, you can be sure that an attacker can no longer steal your new Intellectual Property (provided by OTA updates).
-   FoundriesFactory advises you to also prepare a separate plan for how to deal with already compromised devices.
-
-3. Rotate client certificates on your devices which have a client certificate issued by a Device CA you are revoking.
-   You may use Foundries.io hosted :ref:`ref-cert-rotation` service, or use your own certificate rotation workflow.
-   Make sure that new device client certificates are issued by one of the Device CAs enabled for your Factory.
-
-4. Revoke the Device CA.
-   At this point a reference to a given Device CA is completely removed from our servers, hence becomes untrusted.
-
 Related Topics
 --------------
 
 The Factory PKI is interwoven with the device manufacturing process and device registration.
-You can find out more details on this topic in this guide :ref:`ref-factory-registration-ref`.
+You can find out more details on this topic in :ref:`ref-factory-registration-ref`.
 
 More details on Factory PKI internals can be found in this :ref:`guide <ref-device-gateway-pki-details>`.
