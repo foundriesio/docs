@@ -7,6 +7,10 @@ and maintaining updatable, security focused IoT and Edge products.
 Combined with the :term:`Linux microPlatform` (LmP) and utilizing open source software projects including U-Boot, OP-TEE, OE/Yocto Project, and Docker®,
 The FoundriesFactory Platform brings together key features and functions for developing professional embedded devices.
 
+.. tip::
+   See a typo or notice something missing? We are grateful for any public contributions!
+   Fork our `repo <https://github.com/foundriesio/docs>`_ and checkout the README for contribution guidelines.
+
 .. toctree::
    :maxdepth: 2
    :caption: Getting started
