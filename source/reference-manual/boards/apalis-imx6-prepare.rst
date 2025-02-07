@@ -13,14 +13,14 @@ Preparation
 
    For example::
 
-        lmp-factory-image-<machine-name>.wic.gz
+        lmp-factory-image-<machine-name>.rootfs.wic.gz
         u-boot-<machine-name>.itb
         sit-<machine-name>.bin
         SPL-<machine-name>
 
-#. Extract the file ``lmp-factory-image-apalis-imx6.wic.gz``::
+#. Extract the file ``lmp-factory-image-apalis-imx6.rootfs.wic.gz``::
 
-      gunzip lmp-factory-image-apalis-imx6.wic.gz
+      gunzip lmp-factory-image-apalis-imx6.rootfs.wic.gz
 
 #. Expand the **run** in the :guilabel:`Runs` section which corresponds with the board's mfgtool-files.
    **Download the tools for that machine.**
@@ -34,7 +34,7 @@ Preparation
 
 #. Organize the files as in the tree below::
 
-      ├── lmp-factory-image-<machine-name>.wic.gz
+      ├── lmp-factory-image-<machine-name>.rootfs.wic.gz
       ├── u-boot-<machine-name>.itb
       ├── sit-<machine-name>.bin
       ├── SPL-<machine-name>

@@ -80,7 +80,7 @@ Add the ``factory-config.yml`` file, commit and push:
 Getting a New Image with Preloaded Containers
 ----------------------------------------------
 
-After these steps, a ``platform`` or ``containers`` build will generate a ``.wic.gz`` file with the preloaded Docker Images under
+After these steps, a ``platform`` or ``containers`` build will generate a ``.rootfs.wic.gz`` file with the preloaded Docker Images under
 :guilabel:`Runs`, ``assemble-system-image`` , ``<tag>``.
 
 For example, pushing to ``main`` triggers the usual build and an additional run called ``assemble-system-image``.

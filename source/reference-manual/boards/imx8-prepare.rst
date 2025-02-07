@@ -12,13 +12,13 @@ Preparation
         **Download the Factory image for that machine.**
         For example::
 
-             lmp-factory-image-<machine-name>.wic.gz
+             lmp-factory-image-<machine-name>.rootfs.wic.gz
              u-boot-<machine-name>.itb
              imx-boot-<machine-name>
 
-#. Extract the file ``lmp-factory-image-<machine-name>.wic.gz``::
+#. Extract the file ``lmp-factory-image-<machine-name>.rootfs.wic.gz``::
 
-      gunzip lmp-factory-image-<machine-name>.wic.gz
+      gunzip lmp-factory-image-<machine-name>.rootfs.wic.gz
 
 #. Expand the **run** in the :guilabel:`Runs` section which corresponds with the name of the board.
    Download the **mfgtools** for that machine, e.g., ``mfgtool-files-<machine-name>.tar.gz``.
@@ -31,7 +31,7 @@ Preparation
 
 #. Organize all the files, mirroring the tree below::
 
-      ├── lmp-factory-image-<machine-name>.wic.gz
+      ├── lmp-factory-image-<machine-name>.rootfs.wic.gz
       ├── u-boot-<machine-name>.itb
       ├── imx-boot-<machine-name>
       └── mfgtool-files-<machine-name>

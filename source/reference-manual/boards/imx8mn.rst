@@ -46,7 +46,7 @@ i.MX 8M Nano Evaluation Kit
 
 .. |imx_file_list| prompt:: text
 
-          ├── lmp-factory-image-imx8mn-ddr4-evk.wic.gz
+          ├── lmp-factory-image-imx8mn-ddr4-evk.rootfs.wic.gz
           ├── u-boot-imx8mn-ddr4-evk.itb
           ├── sit-imx8mn-ddr4-evk.bin
           ├── imx-boot-imx8mn-ddr4-evk

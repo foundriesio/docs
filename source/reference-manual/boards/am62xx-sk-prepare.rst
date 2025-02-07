@@ -27,7 +27,7 @@ The following changes the default to ``gp``, so that the image produced boots th
 
 #. Extract the file::
 
-      gunzip lmp-factory-image-am62xx-evm.wic.gz
+      gunzip lmp-factory-image-am62xx-evm.rootfs.wic.gz
 
 #. Expand the **run** in the :guilabel:`Runs` section corresponding with the name of the board.
    Download ``ti-mfgtool-files-am62xx-evm.tar.gz``.

@@ -45,7 +45,7 @@ i.MX 8M Quad Evaluation Kit
 
 .. |imx_file_list| prompt:: text
 
-          ├── lmp-factory-image-imx8mq-evk.wic.gz
+          ├── lmp-factory-image-imx8mq-evk.rootfs.wic.gz
           ├── u-boot-imx8mq-evk.itb
           ├── sit-imx8mq-evk.bin
           ├── imx-boot-imx8mq-evk or imx-boot-imx8mq-evk-nohdmi

@@ -51,7 +51,7 @@ Follow the steps from :ref:`ref-boards` to prepare the hardware and download the
 The list of artifacts downloaded should be:
 
 * ``mfgtool-files-<machine-sec>.tar.gz``
-* ``lmp-factory-image-<machine-sec>.wic.gz``
+* ``lmp-factory-image-<machine-sec>.rootfs.wic.gz``
 * ``SPL-<machine-sec>``
 * ``sit-<machine-sec>.bin``
 * ``u-boot-<machine-sec>.itb``
@@ -64,7 +64,7 @@ Expand the tarballs:
 
 .. prompt:: bash host:~$
 
-    gunzip lmp-factory-image-<machine-sec>.wic.gz
+    gunzip lmp-factory-image-<machine-sec>.rootfs.wic.gz
     tar -zxvf mfgtool-files-<machine-sec>.tar.gz
 
 The resultant directory tree should look like the following::

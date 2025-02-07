@@ -123,7 +123,7 @@ Run:
            "hardwareIds": [
              "raspberrypi3-64"
            ],
-           "image-file": "lmp-factory-image-raspberrypi3-64.wic.gz",
+           "image-file": "lmp-factory-image-raspberrypi3-64.rootfs.wic.gz",
            "lmp-manifest-sha": "b7d11e4f7d20f1fae63e1f54d8b5f48557fa40c1",
            "meta-subscriber-overrides-sha": "7de1123998c9b362df278132fde8fccb57215647",
            "name": "raspberrypi3-64-lmp",
@@ -148,7 +148,7 @@ Run:
            "hardwareIds": [
              "raspberrypi3-64"
            ],
-           "image-file": "lmp-factory-image-raspberrypi3-64.wic.gz",
+           "image-file": "lmp-factory-image-raspberrypi3-64.rootfs.wic.gz",
            "lmp-manifest-sha": "b6483a7b0bd666b5b871662fa46477cdeede80f2",
            "meta-subscriber-overrides-sha": "7de1123998c9b362df278132fde8fccb57215647",
            "name": "raspberrypi3-64-lmp",

@@ -170,7 +170,7 @@ Target metadata can be inspected by using 3 primary commands:
                         "updatedAt": "2020-10-21T02:20:18Z",
                         "lmp-manifest-sha": "f39a2e1d1f81523ce222270ed9ddb3a87ff3ca09",
                         "arch": "aarch64",
-                        "image-file": "lmp-factory-image-raspberrypi3-64.wic.gz",
+                        "image-file": "lmp-factory-image-raspberrypi3-64.rootfs.wic.gz",
                         "meta-subscriber-overrides-sha": "2cd6253273fc7de5ece8a45b9ec4247bcdd0556e",
                         "tags": [
                           "devel"

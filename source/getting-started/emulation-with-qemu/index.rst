@@ -25,7 +25,7 @@ Prerequisites and Pre-Work
 Emulating Device
 ----------------
 
-1. Go to the `Targets` tab of your Factory and download ``lmp-base-console-image-qemuarm64-secureboot.wic.gz`` and ``flash.bin``:
+1. Go to the `Targets` tab of your Factory and download ``lmp-base-console-image-qemuarm64-secureboot.rootfs.wic.gz`` and ``flash.bin``:
 
 .. figure:: /_static/qemu/example_required_artefacts.png
    :width: 900
@@ -45,14 +45,14 @@ Emulating Device
 
 .. code-block:: shell
 
-    cp <path-where-dir>/lmp-base-console-image-qemuarm64-secureboot.wic.gz .
+    cp <path-where-dir>/lmp-base-console-image-qemuarm64-secureboot.rootfs.wic.gz .
     cp <path-where-dir>/flash.bin .
 
 4. Decompress the image:
 
 .. code-block:: shell
 
-    gunzip lmp-base-console-image-qemuarm64-secureboot.wic.gz
+    gunzip lmp-base-console-image-qemuarm64-secureboot.rootfs.wic.gz
 
 5. Convert the Disk to QCOW2 Format:
 
@@ -61,7 +61,7 @@ This step can sometimes make the image more amenable to virtualization.
 
 .. code-block:: shell
 
-    qemu-img convert -f raw -O qcow2 lmp-base-console-image-qemuarm64-secureboot.wic lmp-base-console-image-qemuarm64-secureboot.qcow2
+    qemu-img convert -f raw -O qcow2 lmp-base-console-image-qemuarm64-secureboot.rootfs.wic lmp-base-console-image-qemuarm64-secureboot.qcow2
 
 6. Resize the Image:
 

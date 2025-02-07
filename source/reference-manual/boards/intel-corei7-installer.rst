@@ -11,7 +11,7 @@ Next, follow these instructions to flash the installer onto a USB stick/SD Card.
 Flashing
 --------
 
-Flash ``lmp-factory-image-intel-corei7-64.wic.gz`` onto a USB Stick/SD Card.
+Flash ``lmp-factory-image-intel-corei7-64.rootfs.wic.gz`` onto a USB Stick/SD Card.
 This contains the :term:`system image` installer.
 
 .. include:: generic-flashing.rst

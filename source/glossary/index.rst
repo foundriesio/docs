@@ -68,7 +68,7 @@ Glossary
 
    System Image
      The OS image produced by the Factory that is flashed to all devices.
-     The build artifact is commonly named ``lmp-factory-image-<hardware-id>.wic.gz``
+     The build artifact is commonly named ``lmp-factory-image-<hardware-id>.rootfs.wic.gz``
 
    ``factory-config.yml``
      A file in the :term:`ci-scripts.git` repository of the Factory which controls all configurable aspects of a Factory.

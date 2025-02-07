@@ -30,7 +30,7 @@ Set up the board for booting from MMC1–SDCard:
 Flashing
 --------
 
-Flash ``lmp-factory-image-am64xx-evm.wic.gz`` to an SD Card.
+Flash ``lmp-factory-image-am64xx-evm.rootfs.wic.gz`` to an SD Card.
 This contains the bootable :term:`system image`.
 
 .. include:: generic-flashing.rst

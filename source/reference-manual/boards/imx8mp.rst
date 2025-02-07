@@ -48,7 +48,7 @@ i.MX 8M Plus Evaluation Kit
 
 .. |imx_file_list| prompt:: text
 
-          ├── lmp-factory-image-imx8mp-lpddr4-evk.wic.gz
+          ├── lmp-factory-image-imx8mp-lpddr4-evk.rootfs.wic.gz
           ├── u-boot-imx8mp-lpddr4-evk.itb
           ├── sit-imx8mp-lpddr4-evk.bin
           ├── imx-boot-imx8mp-lpddr4-evk

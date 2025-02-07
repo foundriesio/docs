@@ -6,7 +6,7 @@
 .. parsed-literal::
 
      └── |ARCH|
-         ├── lmp-factory-image-|MACHINE|.wic.gz
+         ├── lmp-factory-image-|MACHINE|.rootfs.wic.gz
          └── |FIRMWARE_BLOB|
 
 Booting in QEMU
@@ -38,7 +38,7 @@ Booting in QEMU
 #. `Optional`. Create and resize a qcow2 image:
 
    .. parsed-literal::
-        qemu-img create -f qcow2 -F raw -b lmp-factory-image-|MACHINE|.wic |MACHINE|\_device1.qcow2
+        qemu-img create -f qcow2 -F raw -b lmp-factory-image-|MACHINE|.rootfs.wic |MACHINE|\_device1.qcow2
         qemu-img resize -f qcow2 |MACHINE|\_device1.qcow2 8G
    
    The above example creates and then resizes to 8G—set to meet your needs.

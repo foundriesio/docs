@@ -64,7 +64,7 @@
 
       .. note:: 
 
-           Your system image is in a compressed ``wic.gz`` format.
+           Your system image is in a compressed ``rootfs.wic.gz`` format.
            To follow these next steps, you must extract it using a tool like 7zip_ which will leave you with a ``.wic`` image file.
 
       **Using Rufus**:

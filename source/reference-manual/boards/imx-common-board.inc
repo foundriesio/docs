@@ -14,12 +14,12 @@ Preparation
         **Download the Factory image for that machine.**
         For example::
         
-             lmp-factory-image-<machine_name>.wic.gz
+             lmp-factory-image-<machine_name>.rootfs.wic.gz
              u-boot-<machine_name>.itb
              imx-boot-<machine_name>
 
       .. note::
-            The compressed image (``.wic.gz``) is used since LmP **v92**.
+            The compressed image (``rootfs.wic.gz``) is used since LmP **v92**.
             Before, the scripts required a compressed file image (``.wic``).
 
 #. Download and extract the file ``mfgtool-files-<machine_name>.tar.gz``:

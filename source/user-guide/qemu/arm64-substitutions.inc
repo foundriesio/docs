@@ -10,7 +10,7 @@
 .. |ARTIFACT_COMMANDS| replace::
 
      # Download and extract the Factory image
-     fioctl targets artifacts <target_number> |MACHINE|/lmp-factory-image-|MACHINE|.wic.gz | gunzip > lmp-factory-image-|MACHINE|.wic
+     fioctl targets artifacts <target_number> |MACHINE|/lmp-factory-image-|MACHINE|.rootfs.wic.gz | gunzip > lmp-factory-image-|MACHINE|.wic
      # Download ATF + OP-TEE + U-Boot binary
      fioctl targets artifacts <target_number> |MACHINE|/|FIRMWARE_BLOB| > |FIRMWARE_BLOB|
      # If resizing disk image, download the qcow2 file

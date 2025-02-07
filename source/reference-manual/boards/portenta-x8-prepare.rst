@@ -12,16 +12,16 @@ Preparation
      b. Expand the :guilabel:`Runs` section which corresponds with the board.
         **Download the Factory image for that machine**::
 
-          lmp-partner-arduino-image-<machine-name>.wic.gz
+          lmp-partner-arduino-image-<machine-name>.rootfs.wic.gz
           u-boot-<machine-name>.itb
           sit-<machine-name>.bin
           imx-boot-<machine-name>
 
-#. Extract ``lmp-partner-arduino-image-<machine-name>.wic.gz``:
+#. Extract ``lmp-partner-arduino-image-<machine-name>.rootfs.wic.gz``:
    
    .. prompt::
         
-      gunzip lmp-partner-arduino-image-<machine-name>.wic.gz
+      gunzip lmp-partner-arduino-image-<machine-name>.rootfs.wic.gz
 
 #. Expand the :guilabel:`Runs` section which corresponds with the board.
    **Download the corresponding mfgtool files**, e.g., ``mfgtool-files-<machine-name>.tar.gz``.

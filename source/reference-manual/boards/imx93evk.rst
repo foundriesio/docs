@@ -48,7 +48,7 @@ i.MX 93 Evaluation Kit
 
 .. |imx_file_list| prompt:: text
 
-          ├── lmp-factory-image-imx93-11x11-lpddr4x-evk.wic.gz
+          ├── lmp-factory-image-imx93-11x11-lpddr4x-evk.rootfs.wic.gz
           ├── u-boot-imx93-11x11-lpddr4x-evk.itb
           ├── imx-boot-imx93-11x11-lpddr4x-evk
           └── mfgtool-files-imx93-11x11-lpddr4x-evk

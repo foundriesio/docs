@@ -8,7 +8,7 @@ This section explains how to boot the :term:`system image` a USB stick or SD Car
 Flashing
 --------
 
-Flash ``lmp-factory-image-intel-corei7-64.wic.gz`` to a USB stick/SD Card.
+Flash ``lmp-factory-image-intel-corei7-64.rootfs.wic.gz`` to a USB stick/SD Card.
 This contains the bootable :term:`system image`.
 
 .. include:: generic-flashing.rst

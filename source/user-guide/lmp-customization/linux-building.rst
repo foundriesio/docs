@@ -105,7 +105,7 @@ To build the LmP base-console, run::
    Subsequent builds are much faster since some artifacts are cached.
 
 At the end of the build, your build artifacts will be under ``deploy/images/<MACHINE>``.
-The artifact you will use to flash your board will be something similar to ``lmp-base-console-image-<MACHINE>.wic.gz``.
+The artifact you will use to flash your board will be something similar to ``lmp-base-console-image-<MACHINE>.rootfs.wic.gz``.
 
 Install the Image
 ^^^^^^^^^^^^^^^^^
@@ -151,7 +151,7 @@ If you are already working with a Factory, you can instead download the source c
    The ``bitbake`` step can take a while.
 
 Your build artifacts will be under ``deploy/images/<machine-name>``.
-The artifact you use to flash your board is ``lmp-base-console-image-<machine-name>.wic.gz``.
+The artifact you use to flash your board is ``lmp-base-console-image-<machine-name>.rootfs.wic.gz``.
 
 .. important::
 

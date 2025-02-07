@@ -9,14 +9,14 @@ Preparation
      a. Click the latest :guilabel:`Target` with the ``platform`` trigger.
 
      b. Expand the :guilabel:`Runs` section corresponding with the board.
-        **Download the Factory image.** For example, ``lmp-factory-image-<machine-name>.wic.gz``.
+        **Download the Factory image.** For example, ``lmp-factory-image-<machine-name>.rootfs.wic.gz``.
         
         .. note::
            For reference on how to boot using the JTAG port, download ``boot.bin`` from the **other** folder.
 
-#. Extract the file ``lmp-factory-image-<machine-name>.wic.gz``::
+#. Extract the file ``lmp-factory-image-<machine-name>.rootfs.wic.gz``::
 
-      gunzip lmp-factory-image-<machine-name>.wic.gz
+      gunzip lmp-factory-image-<machine-name>.rootfs.wic.gz
 
 #. Write the file to an SD card::
 

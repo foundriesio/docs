@@ -46,7 +46,7 @@ After a successful build, the FoundriesFactory™ Platform produces build artifa
    This shows a link to the Factory image artifact.
    Download the Factory image for your machine:
 
-    | E.g: ``lmp-base-console-image-<machine_name>.wic.gz``
+    | E.g: ``lmp-base-console-image-<machine_name>.rootfs.wic.gz``
 
     .. figure:: /_static/flash-device/artifacts.png
         :width: 769
@@ -56,7 +56,7 @@ After a successful build, the FoundriesFactory™ Platform produces build artifa
         Target artifacts
 
 .. note::
-    Most platforms require more than the ``lmp-base-console-image-<machine_name>.wic.gz`` artifact for flashing.
+    Most platforms require more than the ``lmp-base-console-image-<machine_name>.rootfs.wic.gz`` artifact for flashing.
     The required artifacts are board specific and listed on respective pages under :ref:`ref-boards` or under :ref:`ref-qemu`.
     Targets publish all needed files for each platform under :guilabel:`Runs`.
 
