@@ -9,7 +9,6 @@ Qemu
    x86_64
    arm
    arm64
-   riscv64
 
 .. note::
 

@@ -46,7 +46,7 @@ Click :guilabel:`Create Factory` once your details are entered.
    Create a new Factory or `contact support <https://support.foundries.io>`_ if a mistake is made.
 
 The :ref:`ref-linux` supports a wide range of platforms out of the box.
-This includes QEMU_ images for ARM_ and RISC-V_ architectures.
+This includes QEMU_ images.
 To run an x86-64 image, select **Generic x86-64**, which works for ``intel-core-i7-64`` and can be used by QEMU.
 
 .. figure:: /_static/signup/create.png
@@ -61,8 +61,6 @@ To run an x86-64 image, select **Generic x86-64**, which works for ``intel-core-
    Your chosen platform determines the value for the ``machines:`` key for your builds.
 
 .. _QEMU: https://www.qemu.org/
-.. _ARM: https://www.arm.com/
-.. _RISC-V: https://riscv.org/
 
 .. _gs-watch-build:
 
