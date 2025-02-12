@@ -201,9 +201,9 @@ linkcheck_timeout = 10
 templates_path = ['_templates']
 
 simplepdf_vars = {
-        'primary': '#2C1256',
+        'primary': '#020B3F',
         'secondary': '#000000',
-        'cover': '#2C1256',
+        'cover': '#020B3F',
         'cover-bg': 'white',
         'links': '#2980B9',
         }
@@ -309,7 +309,7 @@ html_theme_options = {
     'sticky_navigation': False,
     'navigation_depth': -1,
     'style_external_links': True,
-    'style_nav_header_background': '#2C1256',
+    'style_nav_header_background': '#020B3F',
 }
 
 

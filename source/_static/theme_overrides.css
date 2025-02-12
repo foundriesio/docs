@@ -103,12 +103,20 @@ html.writer-html5 .rst-content dl.field-list>dt:after {
     content: initial;
 }
 .wy-nav-side {
-      background: #2C1256;
+      background: #020B3F;
 }
 
 .wy-menu-vertical li button.toctree-expand{
-  color: #ffffff;
+  color: #D2D7E1;
 }
 .wy-menu-vertical header, .wy-menu-vertical p.caption {
-  color: #e4960b;
+  color: #f5841f;
 }
+body {
+  font-family:Roboto Flex;
+  font-weight:400;
+  color:#404040;
+  min-height:100%;
+  background:#edf0f2
+}
+.wy-text-left {
