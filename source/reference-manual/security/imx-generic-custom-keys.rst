@@ -52,8 +52,6 @@ Where ``<soc>`` can be found in the table below:
      - imx6
    * - imx6ul, imx6ull
      - imx6ul
-   * - imx7ulp
-     - imx7ulp
    * - imx8mq, imx8mm
      - imx8m
    * - imx8mn, imx8mp

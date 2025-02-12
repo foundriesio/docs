@@ -2,10 +2,10 @@
 
 .. _ref-secure-boot-imx-habv4:
 
-Secure Boot on i.MX 6/7/8M Using HABv4
+Secure Boot on i.MX 6/8M Using HABv4
 ======================================
 
-On the i.MX 6/7/8M platforms, Secure Boot is implemented via the High Availability Boot (HABv4) component of the on-chip ROM.
+On the i.MX 6/8M platforms, Secure Boot is implemented via the High Availability Boot (HABv4) component of the on-chip ROM.
 The ROM is responsible for loading the initial program image, the bootloader; HABv4 then enables the ROM to authenticate it using digital signatures.
 
 HABv4 also provides a mechanism to establish a root of trust for the remaining software components and establishes a secure state—the close state—on the i.MX IC secure state machine in hardware.
@@ -22,11 +22,10 @@ This is used to store keys, firmware, and rollback information.
 
 OP-TEE also prepares the next stage bootloader—U-Boot—and generates an overlay DTS for the Linux® kernel consumption.
 U-Boot implements the ``fiovb`` command to validate the trusted application functionality.
-In the case of i.MX 7ULP, U-Boot also controls the M4 firmware upgrade process using the ``fiovb`` trusted application.
 
 U-Boot then jumps to the kernel entry point.
 
-A system like the one just described, which boots without TF-A (for example i.MX 7ULP), would look as follows:
+A system which boots without TF-A would look as follows:
 
    .. figure:: /_static/imx-secure-boot.png
       :align: center
@@ -91,81 +90,6 @@ The output should be::
 	0xA3AD024A
 
 The Security Reference Manual for your specific SoC will indicate which fuses need to be programmed with the SRK fuse information.
-
-
-i.MX 7ULP Fusing
-^^^^^^^^^^^^^^^^
-
-.. warning::
-	 The values shown in this section are just examples of our standard LmP HABv4 keys, and are not meant for production.
-	 Fuses cannot be changed after the first write.
-
-On the i.MX 7ULP the A7 fuses are stored in the fuse bank 5, words 0 to 7 and the M4 fuses are stored in the fuse bank 6, words 0 to 7.
-
-To program the A7 fuses you could use U-Boot's fuse command as follows::
-
-	=> fuse prog 5 0 0xEA2F0B50
-	=> fuse prog 5 1 0x871167F7
-	=> fuse prog 5 2 0xF5CECF5D
-	=> fuse prog 5 3 0x364727C3
-	=> fuse prog 5 4 0x8DD52832
-	=> fuse prog 5 5 0xF158F65F
-	=> fuse prog 5 6 0xA71BBE78
-	=> fuse prog 5 7 0xA3AD024A
-
-For the M4 fuses it would look like this::
-
-	=> fuse prog 6 0 0xEA2F0B50
-	=> fuse prog 6 1 0x871167F7
-	=> fuse prog 6 2 0xF5CECF5D
-	=> fuse prog 6 3 0x364727C3
-	=> fuse prog 6 4 0x8DD52832
-	=> fuse prog 6 5 0xF158F65F
-	=> fuse prog 6 6 0xA71BBE78
-	=> fuse prog 6 7 0xA3AD024A
-
-Alternatively, you can use the kernel to program the A7 fuses via SDP by using NXP's :term:`Universal Update Utility`.
-This is shown in the following script (replace ``@@MACHINE@@`` with your machine name)::
-
-	uuu_version 1.0.1
-
-	SDP: boot -f SPL-@@MACHINE@@
-
-	SDPU: delay 1000
-	SDPU: write -f u-boot-@@MACHINE@@.itb
-	SDPU: jump
-
-	FB: ucmd fuse prog -y 5 0 0xEA2F0B50
-	FB: ucmd fuse prog -y 5 1 0x871167F7
-	FB: ucmd fuse prog -y 5 2 0xF5CECF5D
-	FB: ucmd fuse prog -y 5 3 0x364727C3
-	FB: ucmd fuse prog -y 5 4 0x8DD52832
-	FB: ucmd fuse prog -y 5 5 0xF158F65F
-	FB: ucmd fuse prog -y 5 6 0xA71BBE78
-	FB: ucmd fuse prog -y 5 7 0xA3AD024A
-
-	FBK: DONE
-
-And the following script would work for setting the M4 fuses::
-
-	uuu_version 1.0.1
-
-	SDP: boot -f SPL-@@MACHINE@@
-
-	SDPU: delay 1000
-	SDPU: write -f u-boot-@@MACHINE@@.itb
-	SDPU: jump
-
-	FB: ucmd fuse prog -y 6 0 0xEA2F0B50
-	FB: ucmd fuse prog -y 6 1 0x871167F7
-	FB: ucmd fuse prog -y 6 2 0xF5CECF5D
-	FB: ucmd fuse prog -y 6 3 0x364727C3
-	FB: ucmd fuse prog -y 6 4 0x8DD52832
-	FB: ucmd fuse prog -y 6 5 0xF158F65F
-	FB: ucmd fuse prog -y 6 6 0xA71BBE78
-	FB: ucmd fuse prog -y 6 7 0xA3AD024A
-
-	FBK: DONE
 
 i.MX 8MM Fusing
 ^^^^^^^^^^^^^^^
@@ -278,7 +202,7 @@ Booting this signed SPL image and inspecting the HAB status should give no HAB e
    The next fuse instruction will close the board for unsigned images: make sure you can rebuild the signed images before programming that fuse.
 
 
-Now we can close the device — From here on only signed images can be booted on the platform. For the i.MX 7ULP, we need to fuse bit31 of word 6 from bank 29 (SEC_CONFIG[1] in the documentation)::
+Now we can close the device — From here on only signed images can be booted on the platform.
 
 	=> fuse prog 29 6 0x80000000
 
@@ -332,7 +256,7 @@ To comply with these requirements we need to sign the image adding the ``--fix-s
 	$ ls SPL.signed
 	SPL.signed
 
-2. On i.MX 7/8M and other i.MX 6 families, using the ``--fix-sdp-dcd`` parameter is not required.
+2. On i.MX 8M and i.MX 6 families, using the ``--fix-sdp-dcd`` parameter is not required.
 
 
 .. note::
@@ -359,7 +283,7 @@ A typical UUU boot script would be (replace ``@@MACHINE@@`` with your machine co
    SDPU: delay 1000
    SDPU: write -f u-boot-@@MACHINE@@.itb
 
-2) On i.MX 7/8M and other i.MX 6 families — those where SDP does not impose DCD restrictions — the UUU boot script will look like:
+2) On i.MX 8M and i.MX 6 families — those where SDP does not impose DCD restrictions — the UUU boot script will look like:
 
 .. code-block:: console
 
@@ -381,41 +305,6 @@ To that effect we need to make sure of UUU's polling period flag::
 	 These have  been contributed to the Universal Update Utility by Foundries.io.
 	 Make sure your UUU version is up-to-date with these changes.
 
-How to Sign an M4 Binary for HABv4 Validation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. note::
-   This applies to i.MX 7ULP which has the Cortex-M4 as the primary core.
-
-To use the i.MX HABv4 validation process when booting an M4 binary, it will also need to be signed in a similar manner.
-This is also true for SoCs such as i.MX7ULP which support "dual-boot" mode.
-The M4 bootrom loads the M4 binary at power on.
-If the device is in a closed state, the bootrom requires the M4 binary to be signed.
-
-Signing the M4 application image is nearly the same as before.
-Instead of the ``--spl`` parameter, use ``--m4app``::
-
-	$ cd security/imx_hab4/
-	$ ./sign-file.sh --cst ./cst --m4app sdk20-app_flash.img
-
-	SETTINGS FOR  : ./sign-file.sh
-	--------------:
-	CST BINARY    : ./cst
-	CSF TEMPLATE  : u-boot-spl-sign.csf-template
-	BINARY FILE   : sdk20-app_flash.img
-	KEYS DIRECTORY: .
-
-	4+0 records in
-	4+0 records out
-	4 bytes copied, 8.5903e-05 s, 46.6 kB/s
-	4+0 records in
-	4+0 records out
-	4 bytes copied, 0.000117146 s, 34.1 kB/s
-	FOUND HAB Blocks 0x1ffd1000 0x00001000 00015000
-	CSF Processed successfully and signed data available in sdk20-app_flash.img_csf.bin
-	$ ls sdk20-app_flash.img.signed
-	sdk20-app_flash.img.signed
-
 Booting a Closed System With a CAAM Device
 ------------------------------------------
 
@@ -427,7 +316,7 @@ Thus, any attempt to write to them will cause system **core fails**.
 
 .. note::
 	 The current NXP BSP implementation expects the CAAM registers to be unlocked when configuring the CAAM to operate in the non-secure TrustZone world.
-	 This applies when OP-TEE is enabled on the i.MX 6, i.MX 7, and i.MX 7ULP processors.
+	 This applies when OP-TEE is enabled on the i.MX 6 processor.
 
 Our ``u-boot-spl-sign.csf-template`` takes care of supporting CAAM on closed platforms by adding the following section::
 
