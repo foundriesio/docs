@@ -60,7 +60,7 @@ making sure to set the appropriate values for ``app_type`` and ``oe_builtin`` (s
   See :ref:`ug-restorable-apps`.
 - ``oe_builtin`` - *Optional*: Preload Apps during an OE build CI run. Should be left disabled/undefined for most machines.
 
-.. note::
+.. important::
    ``oe_builtin`` is a special preloading case where Apps are preloaded during an OE build, rather than by the `assemble` run of a LmP build.
    This is needed when the image produced is not a WIC image.
 
@@ -69,6 +69,8 @@ making sure to set the appropriate values for ``app_type`` and ``oe_builtin`` (s
    Only `Restorable` type of Apps (default) are supported by the OE builtin preloader.
 
    This option does not work with some advanced tagging cases, e.g. multiple container builds using the same platform (see :ref:`ref-advanced-tagging` for more details).
+
+   **The Apps must be validated and without conflict**.
 
 Add the ``factory-config.yml`` file, commit and push:
 
