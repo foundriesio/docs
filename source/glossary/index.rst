@@ -114,7 +114,6 @@ Glossary
      This allows for smaller keys than otherwise, but with an equivalent security level.
 
      * :ref:`Security, Secure Element <ref-secure-element>`
-     * :ref:`Security, OP-TEE on the Versal Adaptive Computer Acceleration Platform <ref-tee-on-versal-acap>`
 
    ECIES
    Elliptic Curve Integrated Encryption Scheme
@@ -124,8 +123,6 @@ Glossary
    Hardware Root of Trust
      The first step in a security process used to trust code; always trusted.
      Includes HSM/TPM and Secure Boot.
-
-     * :ref:`Security, OP-TEE on the Versal Adaptive Computer Acceleration Platform <ref-tee-on-versal-acap>`
 
    HSM
    Hardware Security Module
