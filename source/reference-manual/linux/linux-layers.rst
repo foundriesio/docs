@@ -61,9 +61,6 @@ Layer                                 Description
                                       (not officially supported by ``meta-freescale`` maintainers).
 `meta-tegra`_                         Board support layer for NVIDIA based devices.
 `meta-ti`_                            Board support layer for Texas Instruments based devices.
-`meta-xilinx`_                        Provides support for Xilinx BSPs (e.g. ZynqMP).
-`meta-xilinx-tools`_                  Provides support for using Xilinx tools on supported
-                                      architectures (e.g. ZynqMP).
 ==================================    ============================================================
 
 
@@ -174,7 +171,3 @@ An example for enabling only the ``meta-intel`` BSP layer::
    https://github.com/OE4T/meta-tegra
 .. _meta-Ti:
    https://git.yoctoproject.org/meta-ti/
-.. _meta-Xilinx:
-   https://github.com/Xilinx/meta-xilinx
-.. _meta-Xilinx-Tools:
-   https://github.com/Xilinx/meta-xilinx-tools

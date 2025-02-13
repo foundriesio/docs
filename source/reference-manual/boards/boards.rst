@@ -32,6 +32,3 @@ Select your board below to view flashing instructions.
    jetson-agx-orin-devkit
    jetson-agx-xavier-devkit
    x86
-   versal
-   uz3eg-iocc
-   kv260

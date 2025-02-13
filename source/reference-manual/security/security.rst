@@ -77,7 +77,6 @@ Secure Boot specifics of select hardware platforms are described below.
    secure-boot-imx-habv4
    secure-boot-imx-ahab
    secure-boot-ti-am62x
-   secure-boot-zynq
    secure-boot-uefi
 
 More information around the Secure Boot aspects supported by LmP can be found in:
@@ -87,7 +86,6 @@ More information around the Secure Boot aspects supported by LmP can be found in
 
    secure-machines
    revoke-imx-keys
-   tee-on-versal-acap
 
 See how to implement the `Secure Boot Firmware Updates`_ further below.
 
@@ -138,7 +136,6 @@ Secure Boot Firmware update specifics for select hardware platforms are describe
 
    boot-software-updates-imx
    boot-software-updates-imx8qm
-   boot-software-updates-zynqmp
 
 Anti-rollback protection, which prevents downgrading of boot firmware,
 can be enabled by following the guide below.

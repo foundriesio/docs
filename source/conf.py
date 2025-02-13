@@ -191,7 +191,6 @@ linkcheck_ignore = [
     'https://www.nxp.com/docs/en/application-note/AN12312.pdf',
     r'https://sourceforge.net/.*', # 403 error
     'https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-uefi-lockdown.pdf', # 403 error
-    'https://www.xilinx.com/products/silicon-devices/acap/versal',
     r'https://source.foundries.io/factories/.*',
 ]
 # Time in seconds to wait for a response. May result in false errors, but also keeps things from timing out
@@ -473,6 +472,12 @@ redirects = {
      "reference-manual/security/boot-software-updates-stm32mp1": "../boards/boards.html",
      "reference-manual/boards/stm32mp15-eval": "boards.html",
      "reference-manual/boards/stm32mp15-disco": "boards.html",
+     "reference-manual/boards/kv260": "boards.html",
+     "reference-manual/boards/uz3eg-iocc": "boards.html",
+     "reference-manual/boards/versal": "boards.html",
+     "reference-manual/security/secure-boot-zynq": "../boards/boards.html",
+     "reference-manual/security/boot-software-updates-zynqmp": "..boards/boards.html",
+     "reference-manual/security/tee-on-versal-acap": "../boards/boards.html",
      "howto/zephyr-mcuboot-keys": "../index.html",
      "howto/linux-net-debug": "../reference-manual/linux/linux-net-debug.html",
      "howto/": "index.html",
