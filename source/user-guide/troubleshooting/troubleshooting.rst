@@ -341,7 +341,7 @@ This indicates a problem with the token.
 .. code-block::
 
    Unable to create device: HTTP_403
-   message: A factory admin must add you to a team with one of these scopes: home-hub:devices:create
+   message: A factory admin must add you to a team with one of these scopes: devices:create
 
 This indicates no permission to create a device in the Factory.
 
