@@ -123,27 +123,40 @@ The ``aktualizr-lite`` executable can be invoked to perform individual operation
 .. prompt::
 
       $ aktualizr-lite --help
-      aktualizr-lite command line options:
-      -h [ --help ]         Print usage
-      -v [ --version ]      Prints current aktualizr-lite version
-      -c [ --config ] arg   Configuration file or directory path
-      --loglevel arg        Set log level 0-5 (trace, debug, info, warning, error,
-                            fatal)
-      --update-name arg     Name or version of the target to be used in pull,
-                            install, and update commands. default=latest
-      --install-mode arg    Optional install mode. Supported modes:
-                            [delay-app-install]. By default both ostree and apps
-                            are installed before reboot
-      --interval arg        Override uptane.polling_secs interval to poll for
-                            updates when in daemon mode
-      --json arg            Output targets information as json when running check
-                            and list commands
-      --src-dir arg         Directory that contains an offline update bundle.
-                            Enables offline mode for check, pull, install, and
-                            update commands
-      --command arg         Command to execute: run, status, finalize, check, list,
-                            install, pull, update, daemon
+      Usage:
+        aktualizr-lite [command] [flags]
 
+      Commands:
+        daemon      Start the update agent daemon
+        update      Update TUF metadata, download and install the selected target
+        pull        Download the selected target data to the device, to allow a install operation to be performed
+        install     Install a previously pulled target
+        list        List the available targets, using current TUF metadata information. No TUF update is performed
+        check       Update the device TUF metadata, and list the available targets
+        status      Show information of the target currently running on the device
+        finalize    Finalize installation by starting the updated apps
+        run         Alias for the finalize command
+        rollback    Rollback to the previous successfully installed target [experimental]
+
+      Flags:
+        -h [ --help ]         Print usage
+        -v [ --version ]      Prints current aktualizr-lite version
+        -c [ --config ] arg   Configuration file or directory path
+        --loglevel arg        Set log level 0-5 (trace, debug, info, warning, error,
+                              fatal)
+        --update-name arg     Name or version of the target to be used in pull,
+                              install, and update commands. default=latest
+        --install-mode arg    Optional install mode. Supported modes:
+                              [delay-app-install]. By default both ostree and apps
+                              are installed before reboot
+        --interval arg        Override uptane.polling_secs interval to poll for
+                              updates when in daemon mode
+        --json arg            Output targets information as json when running check
+                              and list commands
+        --src-dir arg         Directory that contains an offline update bundle.
+                              Enables offline mode for check, pull, install, and
+                              update commands
+        --command arg         Command to be executed
 
 View Current Status
 ^^^^^^^^^^^^^^^^^^^
