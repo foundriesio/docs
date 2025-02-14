@@ -83,7 +83,7 @@ If ``aktualizr-lite`` is configured for one of the new Target's tags, then it is
 
 .. prompt:: text
 
-    aktualizr-lite list
+    aktualizr-lite check
     ...
     info: 1589	sha256:094a6d77b7053f2fec1e5e4ccd83c38cb89174f644303c6bb09693648be98912
 
