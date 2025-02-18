@@ -109,9 +109,6 @@ Command Line Interface - CLI (Aktualizr-lite Manual Mode)
 
 The ``aktualizr-lite`` executable can be invoked to perform individual operations allowing more control over the update flow.
 
-.. warning:: The Command Line Interface is in beta stage,
-    and is subject to change over the following releases.
-
 .. note:: In order to use the run individual `aktualizr-lite` commands,
     the ``aktualizr-lite`` service needs to be stopped with ``sudo systemctl stop aktualizr-lite``
     and/or disabled with ``sudo systemctl disable aktualizr-lite``.
