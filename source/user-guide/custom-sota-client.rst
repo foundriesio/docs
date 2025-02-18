@@ -221,22 +221,32 @@ It yields an error if the specified Target has not been pulled before, and also 
 It is necessary to verify the return codes for each command to guarantee the correct update process flow,
 as detailed in the next section.
 
+Rollback to Previous Working Version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning:: The rollback command is in beta stage,
+    and is subject to change.
+
+The ``rollback`` command can be used to cancel the current installation and revert the system to the previous successfully installed Target.
+No download operation is done in that case.
+
+If there is no installation being done, the current running Target is marked as failing.
+This avoids having it automatically installed again,
+and an installation of the previous successful Target is performed.
+In that situation, the installation is preceded by a download (pull) operation.
+
+Like in a regular installation, the exit code can be used to identify if a reboot is required in to finalize the rollback.
+
 Exit Codes
 ^^^^^^^^^^
 
 The commands set exit codes (``echo $?``) that can be used by the caller to act accordingly.
 The possible return codes for the CLI commands are listed below:
 
-**Return codes for** ``check``, ``pull``, ``install``, **and** ``update`` **commands:**
+**Return codes for** ``check``, ``pull``, ``install``, ``update``, **and**  ``rollback`` **commands:**
 
 - *0*: Success
     - Operation executed successfully
-- *3*: Success
-    - Unable to fetch updated TUF metadata, but stored metadata is valid
-- *4*: Failure
-    - Failed to update TUF metadata
-- *6*: Failure
-    - There is no target in the device TUF repo that matches a device tag and/or hardware ID
 - *8*: Failure
     - Failed to find the ostree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
 - *11*: Failure
@@ -262,6 +272,15 @@ The possible return codes for the CLI commands are listed below:
     - Selected target not found
 - *1*: Failure
     - Unknown error
+
+**Return codes for** ``check``, ``pull``, ``install``, **and** ``update`` **commands:**
+
+- *3*: Success
+    - Unable to fetch updated TUF metadata, but stored metadata is valid
+- *4*: Failure
+    - Failed to update TUF metadata
+- *6*: Failure
+    - There is no target in the device TUF repo that matches a device tag and/or hardware ID
 
 **Return codes for** ``pull``, ``install``, **and** ``update`` **commands:**
 
