@@ -84,7 +84,7 @@ Documentation Overview
    reference-manual/security/offline-keys
    reference-manual/security/factory-keys
    reference-manual/factory/sboms
-   reference-manual/ota/production-targets
+   user-guide/waves/waves
    user-guide/device-gateway-pki/device-gateway-pki
    user-guide/rotating-cert
    user-guide/troubleshooting/troubleshooting

@@ -44,6 +44,8 @@ However, it does have a couple caveats:
     * ``fioctl devices list-denied``
     * ``fioctl devices delete-denied``
 
+.. _ref-production-registration:
+
 Registering Production Device by Default
 ----------------------------------------
 
