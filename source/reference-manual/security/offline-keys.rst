@@ -65,8 +65,10 @@ Onwards, use a shorter command to rotate your (offline) TUF root key::
 When rotating the TUF root key, the newly generated key is added to the keys tarball (``root.keys.tgz`` in examples).
 That file **must never be lost**.
 Otherwise, it will be impossible to make any future updates to the Factory TUF keys.
-That will lead to the inability to deliver new :ref:`Over-the-Air (OTA) updates <ref-ota>` to your Factory devices.
+After a root role expires, without a root key you will lose an ability to deliver new :ref:`Over-the-Air (OTA) updates <ref-ota>` to your Factory devices.
 Therefore, after each TUF root key rotation, we recommend that you `Backup Offline TUF Keys`_ as described below.
+
+.. _ref-offline-targets-keys:
 
 How to Rotate Offline TUF Targets Key
 -------------------------------------
