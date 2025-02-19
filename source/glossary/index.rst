@@ -290,8 +290,9 @@ Glossary
    Production Device
       A device with a flag in its certificate which enables it to receive production updates.
 
-      * :ref:`Factory Registration Reference Manual, Registering Proudction Devices by Default <ref-factory-registration-ref>`
+      * :ref:`Factory Registration Reference Manual, Registering Production Devices by Default <ref-factory-registration-ref>`
       * :ref:`Reference Manual, Production Targets for Production Devices <ref-production-targets>`
+      * :ref:`User Guide, Waves<ref-waves-ug>`
 
    Production Targets
       :term:`TUF` Targets delivered to production devices during an :term:`OTA Update`.
@@ -329,6 +330,7 @@ Glossary
       The FoundriesFactory method for adding a specific CI Targets version to production Targets.
       Provisions it to production devices in a controlled way.
 
+      * :ref:`User Guide, Waves<ref-waves-ug>`
       * :ref:`Production Targets Reference Manual, Wave <ref-production-targets>`
    
    Wave Rollout

@@ -105,7 +105,7 @@ Alternatively, you can provide the device UUIDs to update::
   fioctl waves rollout v2.0-update --uuids=ab8ecb00-8ed4-42ff-90b2-815b371c0f86,7a733e81-f948-43a9-a358-56f3deb5f184
 
 Check the ``fioctl waves rollout --help`` command for all available options,
-or look at the :ref:`Advanced Usage <ref-rm-wave-adv>` for more complex workflows.
+or look at the :ref:`Advanced Usage <ref-rm-prod-target-adv>` for more complex workflows.
 Hopefully, they should suit your specific production release lifecycle needs.
 
 To monitor the status of your Factory OTA updates, use the ``fioctl status`` command.
@@ -128,7 +128,7 @@ However, other production devices will not be updated, and will continue to run 
 
   We recommend using a production target after a validated and completed wave to flash new production devices.
 
-.. _ref-rm-wave-adv:
+.. _ref-rm-prod-target-adv:
 
 Advanced Usage
 --------------
