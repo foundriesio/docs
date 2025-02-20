@@ -114,7 +114,7 @@ If available, ``client.pem`` and ``pkey.pem`` can be stored in an HSM rather tha
 
 * ``/var/rootdirs/home/fio/``: Home directory.
 
-* ``/etc/os-release``: Brings valuable LmP information, including LmP Target, Tag, and LmP release.
+* ``/etc/os-release``: Provides LmP information, including platform Target number, Tag, and release.
   It does not include information on Target containers.
 
 .. prompt::
@@ -133,6 +133,10 @@ If available, ``client.pem`` and ``pkey.pem`` can be stored in an HSM rather tha
    LMP_FACTORY_TAG="<tag>"
    IMAGE_ID=lmp-factory-image
    IMAGE_VERSION=<os-target>
+
+.. hint::
+   Version information reads as ``VERSION=<Yocto Project version> - <Target number> - <LmP release tag>``
+
 
 Tips and Suggestions
 --------------------
