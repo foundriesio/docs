@@ -155,33 +155,12 @@ The ``aktualizr-lite`` executable can be invoked to perform individual operation
                               update commands
         --command arg         Command to be executed
 
-View Current Status
-^^^^^^^^^^^^^^^^^^^
 
-To view the current status of the device::
+Available commands for Command Line Interface (CLI)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    sudo aktualizr-lite status
-
-Fetch :term:`TUF` Metadata and List Updates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The ``check`` command will refresh the Targets metadata from the OTA server,
-and present you with a list of available Targets::
-
-   sudo aktualizr-lite check
-
-The ``list`` command will present the same output,
-but will **not** refresh the Targets metadata from the OTA server::
-
-   sudo aktualizr-lite list
-
-Both commands can be used in conjunction with the ``--json 1`` option,
-which will change the output format to JSON,
-and will by default omit other log outputs.
-
-
-Apply Update
-^^^^^^^^^^^^
+update
+""""""
 
 The ``update`` command pulls and installs the latest available update to the device,
 after updating the TUF metadata.
@@ -194,35 +173,241 @@ the ``--update-name`` option can be used::
 
    sudo aktualizr-lite update --update-name <build_number_or_name>
 
-A reboot command will be required after installing an update,
-followed by the execution on the  ``run`` command to finalize the update process::
-
-   sudo aktualizr-lite run
-
-
 .. warning::
    Downgrading to a older Target is neither recommended or supported by our team;
    doing so may lead to unverified corner cases.
    Only choose to do so mindfully.
    For any update, always test before rolling out to production devices.
 
+When the OSTree image was changed,
+a reboot command is required after installing the update,
+followed by the execution on the  ``run`` command to finalize the update process.
+The exit code can be used to identify if such reboot is or not required.
+
 The command line interface also allows the update steps to be performed individually,
 by calling the ``check``, ``pull`` and ``install`` commands individually.
 This allows for a higher level of control over the update process.
 
-The ``check`` command updates the Targets metadata.
+**Exit Codes**
 
-The ``pull`` command pulls the delta between the currently installed Target and the one specified with the ``--update-name`` option.
-If no target is specified, the latest one is used.
+- *0*: Success
+   - Installation successful. No reboot needed
+- *100*: Success
+   - Installation succeeded. Reboot to finalize
+- *5*: Success
+   - Installation succeeded. Reboot to finalize bootloader installation
+- *4*: Failure
+   - Failure to handle TUF metadata: Check logs for more information
+- *6*: Failure
+   - There is no Target in the device TUF repo that matches a device tag and/or hardware ID
+- *8*: Failure
+   - Failed to find the OSTree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
+- *11*: Failure
+   - Failed to update TUF metadata: TUF metadata is invalid
+- *12*: Failure
+   - Failed to update TUF metadata: TUF metadata is expired
+- *13*: Failure
+   - Failed to update TUF metadata: Download error
+- *14*: Failure
+   - Failed to update TUF metadata: TUF metadata not found in the provided path (offline mode only)
+- *15*: Failure
+   - The bundle metadata is invalid (:ref:`offline mode <ug-offline-update>` only).There are a few reasons why the metadata might be invalid:
+       1. One or more bundle signatures is/are invalid
+       2. The bundle Targets` type, whether CI or production, differs from the device`s type
+       3. The bundle Targets` tag differs from the device`s tag
+       4. The offline bundle has expired (its TUF meta has expired)
+- *20*: Failure
+   - There is no Target that matches the specified name or version
+- *21*: Failure
+   - Unable to find Target to rollback to after a failure to start Apps at boot on a new version of sysroot
+- *30*: Failure
+   - Unable to perform operation: there is an installation that needs completion
+- *50*: Failure
+   - Unable to download Target
+- *60*: Failure
+   - There is not enough free space to download the Target
+- *70*: Failure
+   - The pulled Target content is invalid: App compose file is invalid
+- *110*: Failure
+   - Installation failed, rollback done successfully
+- *120*: Failure
+   - Installation failed, rollback initiated but requires reboot to finalize
+- *130*: Failure
+   - Installation failed and rollback operation was not successful
+- *1*: Failure
+   - An error occurred while running the command. Check logs for more information
 
-The ``install``  command installs the Target, which should have been previously pulled.
-It yields an error if the specified Target has not been pulled before, and also supports the ``--update-name`` option.
+run
+"""
 
-It is necessary to verify the return codes for each command to guarantee the correct update process flow,
-as detailed in the next section.
+Finalize the installation or rollback when a reboot was required,
+starting the Target applications.
+It is possible that an error is detected at this stage,
+which may lead to a rollback being initiated. 
 
-Rollback to Previous Working Version
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Exit Codes**
+
+- *0*: Success
+   - Installation / rollback finalized successfully
+- *110*: Failure
+   - Finalization failed. A rollback was performed successfully
+- *120*: Failure
+   - Finalization failed. A rollback was started but requires a reboot to finalize
+- *130*: Failure
+   - Finalization failed. A rollback was attempted and failed
+- *40*: Failure
+   - There is no pending installation to be finished
+- *1*: Failure
+   - An error occurred while running the command. Check logs for more information
+
+check
+"""""
+
+The ``check`` command will refresh the Targets metadata from the OTA server,
+and present a list of available Targets::
+
+   sudo aktualizr-lite check
+
+It can used in conjunction with the ``--json 1`` option,
+which will change the output format to JSON,
+and will, by default, omit other log outputs.
+
+**Exit Codes**
+
+- *0*: Success
+   - TUF is up to date. No Target update required
+- *3*: Success
+   - Unable to update TUF metadata, using cached metadata
+- *16*: Success
+   - Update is required -- new Target version available
+- *17*: Success
+   - Update is required -- apps need synchronization
+- *4*: Failure
+   - Failure to handle TUF metadata: Check logs for more information
+- *6*: Failure
+   - There is no Target in the device TUF repo that matches a device tag and/or hardware ID
+- *8*: Failure
+   - Failed to find the OSTree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
+- *11*: Failure
+   - Failed to update TUF metadata: TUF metadata is invalid
+- *12*: Failure
+   - Failed to update TUF metadata: TUF metadata is expired
+- *13*: Failure
+   - Failed to update TUF metadata: Download error
+- *14*: Failure
+   - Failed to update TUF metadata: TUF metadata not found in the provided path (offline mode only)
+- *15*: Failure
+   - The bundle metadata is invalid (:ref:`offline mode <ug-offline-update>` only).There are a few reasons why the metadata might be invalid:
+       1. One or more bundle signatures is/are invalid
+       2. The bundle Targets` type, whether CI or production, differs from the device`s type
+       3. The bundle Targets` tag differs from the device`s tag
+       4. The offline bundle has expired (its TUF meta has expired)
+- *1*: Failure
+   - An error occurred while running the command. Check logs for more information
+
+list
+""""
+
+The ``list`` command works in a similar way as ``check``,
+presenting the same type of output,
+but will **not** refresh the Targets metadata from the OTA server::
+
+   sudo aktualizr-lite list
+
+This command also allows the use of the ``--json 1`` option.
+
+**Exit Codes**
+
+- *3*: Success
+   - Cached TUF metadata is valid. No Target update is required
+- *16*: Success
+   - Update is required -- new Target version available
+- *17*: Success
+   - Update is required -- apps need synchronization
+- *4*: Failure
+   - Failure to handle TUF metadata: Check logs for more information
+- *6*: Failure
+   - There is no Target in the device TUF repo that matches a device tag and/or hardware ID
+- *8*: Failure
+   - Failed to find the OSTree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
+- *1*: Failure
+   - An error occurred while running the command. Check logs for more information
+
+pull
+""""
+
+Download the update data to the device,
+allowing a ``install`` operation to be called next.
+
+**Exit Codes**
+
+- *0*: Success
+   - Target successfully downloaded
+- *4*: Failure
+   - Failure to handle TUF metadata: Check logs for more information
+- *6*: Failure
+   - There is no Target in the device TUF repo that matches a device tag and/or hardware ID
+- *8*: Failure
+   - Failed to find the OSTree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
+- *20*: Failure
+   - There is no Target that matches the specified name or version
+- *21*: Failure
+   - Unable to find Target to rollback to after a failure to start Apps at boot on a new version of sysroot
+- *30*: Failure
+   - Unable to perform operation: there is an installation that needs completion
+- *50*: Failure
+   - Unable to download Target
+- *60*: Failure
+   - There is not enough free space to download the Target
+- *70*: Failure
+   - The pulled Target content is invalid: App compose file is invalid
+- *1*: Failure
+   - An error occurred while running the command. Check logs for more information
+
+install
+"""""""
+
+Install a previously pulled Target.
+
+A reboot and finalization using the ``run`` is required when the OSTree image was changed.
+This is indicated by the command exit code.
+
+**Exit Codes**
+
+- *0*: Success
+   - Installation successful. No reboot needed
+- *100*: Success
+   - Installation succeeded. Reboot to finalize
+- *5*: Success
+   - Installation succeeded. Reboot to finalize bootloader installation
+- *4*: Failure
+   - Failure to handle TUF metadata: Check logs for more information
+- *6*: Failure
+   - There is no Target in the device TUF repo that matches a device tag and/or hardware ID
+- *8*: Failure
+   - Failed to find the OSTree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
+- *20*: Failure
+   - There is no Target that matches the specified name or version
+- *21*: Failure
+   - Unable to find Target to rollback to after a failure to start Apps at boot on a new version of sysroot
+- *30*: Failure
+   - Unable to perform operation: there is an installation that needs completion
+- *50*: Failure
+   - Target download data not found. Make sure to call pull operation first
+- *110*: Failure
+   - Installation failed, rollback done successfully
+- *120*: Failure
+   - Installation failed, rollback initiated but requires reboot to finalize
+- *130*: Failure
+   - Installation failed and rollback operation was not successful
+- *1*: Failure
+   - An error occurred while running the command. Check logs for more information
+
+
+.. _ref-aklite-command-line-interface-rollback:
+
+rollback
+""""""""
 
 .. warning:: The rollback command is in beta stage,
     and is subject to change.
@@ -237,96 +422,32 @@ In that situation, the installation is preceded by a download (pull) operation.
 
 Like in a regular installation, the exit code can be used to identify if a reboot is required in to finalize the rollback.
 
-Exit Codes
-^^^^^^^^^^
-
-The commands set exit codes (``echo $?``) that can be used by the caller to act accordingly.
-The possible return codes for the CLI commands are listed below:
-
-**Return codes for** ``check``, ``pull``, ``install``, ``update``, **and**  ``rollback`` **commands:**
+**Exit Codes**
 
 - *0*: Success
-    - Operation executed successfully
-- *8*: Failure
-    - Failed to find the ostree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
-- *11*: Failure
-    - Invalid TUF metadata
-- *12*: Failure
-    - TUF metadata is expired
-- *13*: Failure
-    - Unable to fetch TUF metadata
-- *14*: Failure
-    - TUF metadata not found in the provided path (offline mode only)
-- *15*: Failure
-    - The bundle metadata is invalid (offline mode only).There are a few reasons why the metadata might be invalid:
-        1. One or more bundle signatures is/are invalid.
-        2. The bundle targets' type, whether CI or production, differs from the device's type.
-        3. The bundle targets' tag differs from the device's tag.
-- *16*: Success
-    - Update is required: new target version available
-- *17*: Success
-    - Update is required: apps need synchronization
-- *18*: Success
-    - Update is required: rollback to a previous target
-- *20*: Failure
-    - Selected target not found
-- *1*: Failure
-    - Unknown error
-
-**Return codes for** ``check``, ``pull``, ``install``, **and** ``update`` **commands:**
-
-- *3*: Success
-    - Unable to fetch updated TUF metadata, but stored metadata is valid
-- *4*: Failure
-    - Failed to update TUF metadata
-- *6*: Failure
-    - There is no target in the device TUF repo that matches a device tag and/or hardware ID
-
-**Return codes for** ``pull``, ``install``, **and** ``update`` **commands:**
-
-- *21*: Failure
-    - Unable to find target to rollback to after a failure to start Apps at boot on a new version of sysroot
-- *30*: Failure
-    - Unable to pull/install: there is an installation that needs completion
-- *50*: Failure
-    - Unable to download target
-- *60*: Failure
-    - There is no enough free space to download the target
-- *70*: Failure
-    - The pulled target content is invalid, specifically App compose file is invalid
-- *75*: Failure
-    - Selected target is already installed
-- *102*: Failure
-    - Attempted to install a previous version
-
-**Return codes for** ``install``, **and** ``update`` **commands:**
-
-- *10*: Success
-    - Execute the `run` subcommand to finalize installation
-- *80*: Failure
-    - Unable read target data, make sure it was pulled
-- *90*: Failure
-    - Reboot is required to complete the previous boot firmware update. After reboot the update attempt must be repeated from the beginning
-
-**Return codes for** ``install``, ``run``,  **and** ``update`` **commands:**
-
+   - Rollback executed successfully. No reboot required
 - *100*: Success
-    - Reboot to finalize installation
+   - Rollback installation started successfully. Reboot required
 - *5*: Success
-    - Reboot to finalize bootloader installation
-- *120*: Failure
-    - Installation failed, rollback initiated but requires reboot to finalize
-
-**Return codes for** ``run`` **command:**
-
-- *40*: Failure
-    - No pending installation to run
-- *99*: Failure
-    - Offline installation failed, rollback performed
+   - Rollback installation started successfully. Reboot required to update bootloader
+- *8*: Failure
+   - Failed to find the OSTree commit and/or all Apps of the Target to be installed in the provided source bundle (offline mode only)
+- *21*: Failure
+   - Unable to find Target to rollback to after a failure to start Apps at boot on a new version of sysroot
+- *50*: Failure
+   - Unable to download Target
+- *60*: Failure
+   - There is not enough free space to download the Target
+- *70*: Failure
+   - The pulled Target content is invalid: App compose file is invalid
 - *110*: Failure
-    - Online installation failed, rollback performed
+   - Rollback failed, reverted back to previous running version
+- *120*: Failure
+   - Rollback failed, reverting back to previous running version. A reboot is required
 - *130*: Failure
-    - Installation failed and rollback operation was not successful
+   - Rollback failed, and failed to revert back to previous running version
+- *1*: Failure
+   - An error occurred while running the command. Check logs for more information
 
 Automating the use of CLI Operations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
