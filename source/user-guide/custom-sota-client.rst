@@ -460,3 +460,163 @@ while allowing for limited customizations.
 This `sample bash script
 <https://raw.githubusercontent.com/foundriesio/sotactl/main/scripts/aklite-cli-example.sh>`_
 illustrates the usage of CLI operations and proper return codes handling.
+
+Creating Custom Logic for Update Decision
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The exit code of ``check`` and ``list`` commands
+can be used to decide if an ``update`` should be performed,
+as exemplified in the previous section.
+By using this code,
+a script can easily use the same decision logic that is employed by aktualizr-lite daemon.
+
+If a custom decision process is required,
+the use of the JSON output of both commands is recommended, enabled with ``--json 1``.
+When enabling this command line option,
+additional output is suppressed by default,
+and the standard output text of the command can be parsed directly.
+The format of the JSON output can be relied upon when creating a custom script.
+Future versions will keep compatibility with the current format.
+
+Here is an example of JSON output.
+
+.. code-block:: json
+
+    [
+        {
+            {
+                "apps" :
+                [
+                        {
+                                "name" : "app_100",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_100@sha256:<value>"
+                        }
+                ],
+                "name" : "intel-corei7-64-lmp-92",
+                "version" : 92
+        },
+        {
+                "apps" :
+                [
+                        {
+                                "name" : "app_100",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_100@sha256:<value>"
+                        },
+                        {
+                                "name" : "app_200",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_200@sha256:<value>"
+                        },
+                        {
+                                "name" : "app_300",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_300@sha256:<value>"
+                        }
+                ],
+                "current" : true,
+                "name" : "intel-corei7-64-lmp-93",
+                "version" : 93
+        },
+        {
+                "apps" :
+                [
+                        {
+                                "name" : "app_100",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_100@sha256:<value>"
+                        },
+                        {
+                                "name" : "app_200",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_200@sha256:<value>"
+                        },
+                        {
+                                "name" : "app_300",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_300@sha256:<value>"
+                        }
+                ],
+                "name" : "intel-corei7-64-lmp-94",
+                "newer" : true,
+                "version" : 94
+        },
+        {
+                "apps" :
+                [
+                        {
+                                "name" : "app_100",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_100@sha256:<value>"
+                        },
+                        {
+                                "name" : "app_200",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_200@sha256:<value>"
+                        },
+                        {
+                                "name" : "app_300",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_300@sha256:<value>"
+                        }
+                ],
+                "failed" : true,
+                "name" : "intel-corei7-64-lmp-99",
+                "newer" : true,
+                "version" : 99
+        },
+        {
+                "apps" :
+                [
+                        {
+                                "name" : "app_100",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_100@sha256:<value>"
+                        },
+                        {
+                                "name" : "app_200",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_200@sha256:<value>"
+                        },
+                        {
+                                "name" : "app_300",
+                                "on" : true,
+                                "uri" : "hub.foundries.io/my-factory/app_300@sha256:<value>"
+                        }
+                ],
+                "name" : "intel-corei7-64-lmp-100",
+                "newer" : true,
+                "reason" : "Updating from intel-corei7-64-lmp-93 to intel-corei7-64-lmp-100",
+                "selected" : true,
+                "version" : 100
+        }
+    ]
+
+
+In this scenario, the ``intel-corei7-64-lmp-93`` Target is running.
+Its entry is marked with ``"current" : true``.
+The exit code for the command would be ``16 - Update is required -- new Target version available``,
+as Target ``intel-corei7-64-lmp-100`` is available.
+If we look into the Target ``intel-corei7-64-lmp-100`` entry, we can notice that is has ``"selected" : true``,
+meaning this is the Target that would be selected by default by ``aktualizr-lite`` to be installed.
+A ``selected`` Target always has has a ``reason`` field set as well,
+which describes why this Target is supposed to be installed.
+All targets with ``version`` higher than the current one
+are marked as ``"newer": true``.
+
+One additional information that the JSON output presents is if the Target is a failing Target.
+I.e., the installation of this Target was attempted, but led to a rollback.
+This is the case of Target ``intel-corei7-64-lmp-99``,
+with  ``"failed" : true``.
+A custom script could, for example, retry the installation of a failed Target,
+according to arbitrary criteria.
+
+When customizing the selection of which Target has to be installed,
+the Target name, or its version, needs to be passed as a parameter.
+For example, in order to attempt to install Target ``intel-corei7-64-lmp-99``,
+``aktualizr-lite update intel-corei7-64-lmp-99`` or ``aktualizr-lite update 99`` would be used.
+
+Alternatively, to have the download and install operations be performed as separate steps,
+``aktualizr-lite pull 99`` followed by ``aktualizr-lite install 99``
+could also be used.
