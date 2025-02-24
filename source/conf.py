@@ -174,6 +174,7 @@ linkcheck_ignore = [
     'http://.*[.]local',
     'http://your-device-ip-address/',
     'https://app.atsgarage.com/#/.*',        # requires login
+    r'https://source.foundries.io/*',
     r'https://elinux.org/.*',
     r'https://blogs.msdn.microsoft.com/.*',  # temporary blacklist
     r'https://www.tcpdump.org/.*',           # ditto
