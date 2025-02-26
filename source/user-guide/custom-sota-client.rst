@@ -179,6 +179,18 @@ the ``--update-name`` option can be used::
    Only choose to do so mindfully.
    For any update, always test before rolling out to production devices.
 
+.. note::
+   Since LmP v95, aktualizr-lite will not automatically do a downgrade
+   when all available targets have a version lower than the current one.
+   This applies to the aktualizr-lite ``daemon``
+   as long as ``update``, ``install``, and ``pull`` commands
+   if no Target name or version is explicitly specified.
+   In order to allow an automatic downgrade to occur in such situations,
+   the ``auto-downgrade`` package option has to be set in the aktualizr recipe::
+
+      $ cat meta-subscriber-overrides.git/recipes-sota/aktualizr/aktualizr_%.bbappend
+      PACKAGECONFIG:append = " auto-downgrade"
+
 When the OSTree image was changed,
 a reboot command is required after installing the update,
 followed by the execution on the  ``run`` command to finalize the update process.
