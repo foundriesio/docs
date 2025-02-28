@@ -16,7 +16,6 @@ Device Name,MACHINE
 :ref:`Toradex Apalis iMX8QM <ref-rm_boards_apalis-imx8>`,apalis-imx8
 :ref:`QEMU AARCH32 <ref-rm_qemu_arm>`,qemuarm
 :ref:`QEMU AARCH64 <ref-rm_qemu_arm64>`,qemuarm64-secureboot
-:ref:`Raspberry Pi3 (32 bit) <ref-rm_board_rasbperrypi>`,raspberrypi3
 :ref:`Raspberry Pi3/3B (64 bit) <ref-rm_board_rasbperrypi>`,raspberrypi3-64
 :ref:`Raspberry Pi4 (and CM) <ref-rm_board_rasbperrypi>`,raspberrypi4-64
 :ref:`Jetson AGX Orin Developer Kit <ref-rm_board_jetson-agx-orin-devkit>`,jetson-agx-orin-devkit
