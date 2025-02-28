@@ -90,6 +90,13 @@ If a new Target installation includes only App updates, and the new version fail
 2. ``Aktualizr-lite`` prunes unused Compose Apps data (container images/layers of the failed new version).
 
 
+Rollback Driven by User (Experimental)
+______________________________________
+
+The ``Aktualizr-lite`` command line interface allow a rollback to be explicitly initiated.
+It is meant to be used in scenarios where additional logic is required to determine if the Target was successfully installed and started.
+:ref:`User Initiated Rollback<ref-aklite-command-line-interface-rollback>` for more information.
+
 .. _OSTree:
   https://github.com/ostreedev/ostree
 .. _OSTree Deployment Doc:
