@@ -68,6 +68,8 @@ Otherwise, it will be impossible to make any future updates to the Factory TUF k
 That will lead to the inability to deliver new :ref:`Over-the-Air (OTA) updates <ref-ota>` to your Factory devices.
 Therefore, after each TUF root key rotation, we recommend that you `Backup Offline TUF Keys`_ as described below.
 
+.. _ref-offline-targets-keys:
+
 How to Rotate Offline TUF Targets Key
 -------------------------------------
 
