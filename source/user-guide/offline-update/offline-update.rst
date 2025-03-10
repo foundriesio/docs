@@ -270,7 +270,7 @@ Controlling the Expiration Time of the Offline Update Bundle
 ------------------------------------------------------------
 
 The bundle obtained through the ``fioctl targets offline-update`` command comes with an expiration time.
-If the expiration time of the bundle has passed, the offline update will fail.
+**If the expiration time of the bundle has passed, the offline update will fail.**
 
 Use the ``--expires-in-days`` parameter of the ``fioctl targets offline-update`` command to set the desired expiration time of the bundle.
 If the command fails with the one of the errors below, then it means the root or
@@ -308,7 +308,50 @@ Root and/or CI/wave/production targets refreshing serves as the secondary mechan
 It should be applied if the desired expiration time occurs later than
 the root's and/or the targets' expiration, respectively.
 
-More details on FoundriesFactory TUF metadata expiration time can be found in :ref:`the following section <Math Behind the Offline Update Bundle Expiration Time>`.
+More details on FoundriesFactory TUF metadata expiration time can be found in :ref:`Math Behind the Offline Update Bundle Expiration Time`.
+
+Considerations About Offline Update Bundle Validity and TUF Rotation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are some particularities on the offline update bundle validity after TUF rotations.
+This depends on the versions of the TUF root and targets keys at the time of generating the bundle and whether the device is online, hybrid or fully offline.
+
+The table below shows practical cases to deliver long term offline updates to your fleet. Here, ``Old TUF Meta`` means the old TUF metadata used prior to a TUF root key rotation, while ``New TUF Meta`` means the TUF metadata used after a TUF root key rotation. The table points which set of keys were used to generate the device image and offline update bundle.
+
+.. list-table:: Offline Update Validity x TUF Rotation x Device State
+   :header-rows: 1
+   :align: center
+   :widths: 1 1 1 3
+
+   * - Device Image
+     - TUF State
+     - Offline Bundle
+     - Behavior
+   * - Old TUF Meta
+     - Keys not rotated
+     - Old TUF Meta
+     - Default state (1):
+
+         * If the offline update bundle is not expired, the update client **will accept** the offline update bundle installation.
+         * After the offline update bundle is expired, the update client **will decline** the offline update bundle installation.
+   * - Old TUF Meta
+     - Keys rotated
+     - Old TUF Meta
+     - * Fully offline devices: Same as (1).
+       * Online/hybrid devices: Once the device gets online and fetches new TUF metadata after the TUF keys rotation, the update client **will decline** the offline update bundle generated with old TUF metadata.
+   * - Old TUF Meta
+     - Keys rotated
+     - New TUF Meta
+     - If the offline update bundle is not expired, the update client **will accept** the offline update bundle installation. From this point on, the update client will only install bundles generated with the new TUF metadata. This is valid for online, hybrid and fully offline devices.
+   * - New TUF Meta
+     - Keys rotated
+     - Old TUF Meta
+     - The update client **will decline** the offline update bundle installation in any cases.
+
+.. note::
+   You can check your offline update bundle expiration with: ``fioctl targets offline-update show <bundle>``.
+
+For the cases where the update client **will decline** the offline update bundle installation, you should regenerate the offline update bundle with new validity, or refresh the TUF metadata in the existing bundle with: ``fioctl targets offline-update --tuf-only``.
 
 .. _Math Behind the Offline Update Bundle Expiration Time:
 
