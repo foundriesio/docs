@@ -106,5 +106,17 @@ See `fioconfig_git.bb <https://github.com/foundriesio/meta-lmp/blob/main/meta-lm
       }
       EOF
 
+.. note::
+
+   In case there are configuration conflicts in a device, the priority order is: device specific configuration, which takes precedence over device group specific configuration, which takes precedence over fleet-wide configuration.
+
+   For example:
+
+   * Fleet-wide configuration sets App A
+   * Device group specific configuration sets Apps A and B
+   * Device specific configuration sets Apps A, B and C
+
+   By default, the device runs the Apps A, B and C. In case the device specific configuration is removed, then the device will run the device group configuration, with Apps A and B. If this device specific configuration gets deleted, the configuration will fall back to the fleet-wide settings, then running App A only.
+
 .. seealso::
    :ref:`ref-fioconfig`
