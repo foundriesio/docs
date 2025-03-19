@@ -1,7 +1,9 @@
 FoundriesFactory_ Documentation
 ===============================
 
-The FoundriesFactory™ platform is a comprehensive tool set for building, testing, deploying,
+The FoundriesFactory™ SaaS platform puts you in full control to simplify and reduce time to market for Linux based IoT and Edge devices on your choice of hardware, with lowered costs and code that remains yours.
+
+The platform provides a comprehensive tool set for building, testing, deploying,
 and maintaining updatable, security focused IoT and Edge products.
 
 Combined with the :term:`Linux microPlatform` (LmP) and utilizing open source software projects including U-Boot, OP-TEE, OE/Yocto Project, and Docker®,
@@ -10,6 +12,21 @@ The FoundriesFactory Platform brings together key features and functions for dev
 .. tip::
    See a typo or notice something missing? We are grateful for any public contributions!
    Fork our `repo <https://github.com/foundriesio/docs>`_ and checkout the README for contribution guidelines.
+
+Documentation Overview
+----------------------
+
+* Getting Started will guide you from :ref:`gs-signup` and creating your :term:`Factory`, to :ref:`gs-flash-device`,
+  installing the CLI tool :term:`Fioctl` for interacting with your Factory, and the basics of building and deploying an App.
+
+* :ref:`Tutorials <tutorials>` will familiarize you with the workflow you will need to get the most from your Factory.
+
+* :ref:`User Guide <user-guide>` walks you through common tasks and settings for your Factory.
+
+* Advanced use cases and technical details are in the :ref:`Reference Manual <ref-manual>`.
+
+* For adding support for a machine not already supported by the FoundriesFactory platform,
+  see the :ref:`ref-pg`.
 
 .. toctree::
    :maxdepth: 2
@@ -28,6 +45,7 @@ The FoundriesFactory Platform brings together key features and functions for dev
    :caption: Tutorials
    :name: sec-tutorials
 
+   tutorials/index
    tutorials/getting-started-with-docker/getting-started-with-docker
    tutorials/creating-first-target/creating-first-target
    tutorials/deploying-first-app/deploying-first-app
@@ -42,6 +60,7 @@ The FoundriesFactory Platform brings together key features and functions for dev
    :caption: User Guide
    :name: sec-user-guide
 
+   user-guide/index
    user-guide/fioctl/index
    user-guide/qemu/qemu
    user-guide/account-management/account-management
