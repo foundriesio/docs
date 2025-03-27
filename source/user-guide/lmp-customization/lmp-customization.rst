@@ -241,13 +241,15 @@ LmP Users and Groups
 
 Users and groups can be added and configured prior to building an image.
 
+.. tip::
+   Default LmP group and password tables can be found in ``meta-lmp/meta-lmp-base/files``.
+   This includes ``lmp-passwd-table``, ``lmp-group-table``, and for the default user,
+   ``lmp-passwd-table-default`` and ``lmp-group-default``.
+
 .. _ref-troubleshooting_user-groups:
 
 Extending User Groups
 ^^^^^^^^^^^^^^^^^^^^^
-
-.. tip::
-   The default LmP group and password tables can be found in ``meta-lmp/meta-lmp-base/files``.
 
 To define a new user group in a Factory:
 
@@ -282,12 +284,12 @@ To define a new user group in a Factory:
 
 .. _ref-troubleshooting_lmp-user:
 
-Adding LmP Users
-^^^^^^^^^^^^^^^^
+Adding New LmP Users
+^^^^^^^^^^^^^^^^^^^^
 
-#. To create a new LmP user or replace the default ``fio`` user, first add the new user to the system.
+#. To create a new LmP user, first add the new user to the system.
    The steps are similar to the ones described in :ref:`ref-troubleshooting_user-groups`.
-   However normal users need a valid shell and ``user-id`` higher than ``1000`` for adding a new user, or equal to ``1000`` if replacing the ``fio`` user.
+   Normal users need a valid shell and ``user-id`` **higher** than ``1000``.
    For example:
    
    **group-table:**
@@ -301,10 +303,10 @@ Adding LmP Users
    .. code-block:: none
         
       test-user:x:1001:1001::/home/test-user:/bin/sh
-
-#. To create the password for this new user, run from a host computer ``mkpasswd -m sha512crypt``.
-   When prompted for password, enter the desired password for the user.
-   This returns the hashed password. For example:
+    
+#. To create the password, run ``mkpasswd -m sha512crypt`` from a host computer.
+   When prompted, enter the desired password for the user.
+   This returns the hashed password:
 
    .. prompt:: bash host:~$
 
@@ -312,13 +314,7 @@ Adding LmP Users
        Password:
        $6$OJHEGl4Dk5nEwG6k$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E.
 
-#. Edit the result from the previous command to escape any ``$`` characters, for example:
-
-   .. code-block:: none
-
-       \$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E.
-
-#. You can also escape any special characters by using the ``printf`` command in bash:
+#. Escape special characters by editing manually or by using the ``printf`` command from your shell, instead of the above:
 
    .. code-block:: none
 
@@ -327,7 +323,7 @@ Adding LmP Users
 
    This is the ``USER_PASSWD``/``LMP_PASSWORD`` to be added to the build as the new user password.
 
-#. If including a new user, add the following block to ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb``:
+#. Add the following block to ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb``:
 
    .. code-block:: none
 
@@ -339,18 +335,26 @@ Adding LmP Users
        usermod -a -G sudo,users,plugdev <user>; \
        "
 
-   **Or** if replacing the ``fio`` user, add the following to ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``:
+After these changes, the files ``/usr/lib/passwd`` and ``/usr/lib/group`` should include the configuration for the new user.
+
+.. _replace-default-user:
+
+Replacing Default ``fio`` User
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. tip::
+   See ``lmp-passwd-table-default`` and ``lmp-group-table-default`` for ``fio`` user defaults.
+
+To replacing the default user ``fio``, follow the steps for :ref:`ref-troubleshooting_lmp-user`;
+For the ``user-id``, the value should be ``1000``. 
+
+Add the following to ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``,
+replacing the values for your user and password as appropriate:
 
    .. code-block:: none
         
         LMP_USER = "<user>"
         LMP_PASSWORD = "\$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E."
-
-   .. note::
-
-      Remember to replace ``USER_PASSWD``, ``<user>`` and ``LMP_PASSWORD`` accordingly.
-
-After these changes, the files ``/usr/lib/passwd`` and ``/usr/lib/group`` should include the configuration for the new user.
 
 LmP Time Servers
 ----------------
