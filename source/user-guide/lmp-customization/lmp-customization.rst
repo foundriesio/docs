@@ -241,13 +241,15 @@ LmP Users and Groups
 
 Users and groups can be added and configured prior to building an image.
 
+.. tip::
+   Default LmP group and password tables can be found in ``meta-lmp/meta-lmp-base/files``.
+   This includes ``lmp-passwd-table``, ``lmp-group-table``, and for the default user,
+   ``lmp-passwd-table-default`` and ``lmp-group-default``.
+
 .. _ref-troubleshooting_user-groups:
 
 Extending User Groups
 ^^^^^^^^^^^^^^^^^^^^^
-
-.. tip::
-   The default LmP group and password tables can be found in ``meta-lmp/meta-lmp-base/files``.
 
 To define a new user group in a Factory:
 
@@ -285,6 +287,9 @@ To define a new user group in a Factory:
 Adding LmP Users
 ^^^^^^^^^^^^^^^^
 
+.. tip::
+   **If replacing the default user**, see ``lmp-passwd-table-default`` and ``lmp-group-table-default`` for values.
+
 #. To create a new LmP user or replace the default ``fio`` user, first add the new user to the system.
    The steps are similar to the ones described in :ref:`ref-troubleshooting_user-groups`.
    However normal users need a valid shell and ``user-id`` higher than ``1000`` for adding a new user, or equal to ``1000`` if replacing the ``fio`` user.
@@ -301,7 +306,7 @@ Adding LmP Users
    .. code-block:: none
         
       test-user:x:1001:1001::/home/test-user:/bin/sh
-
+    
 #. To create the password for this new user, run from a host computer ``mkpasswd -m sha512crypt``.
    When prompted for password, enter the desired password for the user.
    This returns the hashed password. For example:
@@ -339,7 +344,7 @@ Adding LmP Users
        usermod -a -G sudo,users,plugdev <user>; \
        "
 
-   **Or** if replacing the ``fio`` user, add the following to ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``:
+If replacing the default user— ``fio`` —add the following to ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``:
 
    .. code-block:: none
         
