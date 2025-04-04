@@ -43,7 +43,7 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 
 .. note::
 
-    After registration devices will run **all** applications that are available in the latest Target.
+    After registration, devices will run **all** applications that are available in the latest Target.
     This default behavior can be changed by enabling only specific applications.
     Read :ref:`ug-fioctl-enable-apps` to learn how.
 
