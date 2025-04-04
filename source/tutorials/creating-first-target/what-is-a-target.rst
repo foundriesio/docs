@@ -7,7 +7,11 @@ The FoundriesFactory™ Platform's CI created your first **Target** triggered by
 
 .. hint::
 
-   A **Target** is a description of the software a device should run.
+   Within FoundriesFactory, a **Target** is a description of the software a device should run.
+   This mirrors the usage of Target as used by :term:`TUF`.
+
+   A Target **is not** a machine or platform being targeted for development,
+   as how the term is frequently used in embedded development. 
 
 You previously pushed changes to your ``containers.git`` repository. 
 Your Factory automatically triggered a ``containers-main`` CI job to build these changes.
