@@ -176,7 +176,7 @@ At the time of this writing, the code is only available in the vendor's reposito
 Compiling U-Boot will take care of signing not only the binaries it generates,
 but the rest of the firmware images that need to be included in the final images.
 
-As a user, you will need to **replace** U-Boot's ``board/ti/keys/custMpk.pem`` with the RSA-4096 key that was fused during provisioning.
+As a user, you will need to **replace** U-Boot's ``arch/arm/mach-k3/keys/custMpk.pem`` with the RSA-4096 key that was fused during provisioning.
 This will sign all other binaries and firmwares, including the externally generated TF-A, OP-TEE.
 
 .. _documentation:
