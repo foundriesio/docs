@@ -23,7 +23,7 @@ QEMU CLI
        -chardev null,id=virtcon -machine virt,secure=on -nographic
 
 .. note::
-    A |FIRMWARE_BLOB| artifact is usally in the same location where you downloaded the ``.wic.gz`` image.
+    A |FIRMWARE_BLOB| artifact is usually in the same location where you downloaded the ``.wic.gz`` image.
     If you are unable to locate |FIRMWARE_BLOB|, consider checking for other artifacts such as ``QEMU_EFI.fd`` and ``QEMU_VARS.fd``.
     Use these to boot the image with the ``-drive`` flag.
     Example:

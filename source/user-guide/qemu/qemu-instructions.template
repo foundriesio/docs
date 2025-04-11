@@ -35,6 +35,11 @@ Booting in QEMU
 #. :ref:`Download the artifacts <gs-download>` needed for |ARCH|.
    These can be found under the :guilabel:`Targets` tab for your Factory.
 
+#. Decompress the ``lmp-factory-image-|MACHINE|.wic.gz`` image file.
+
+   .. parsed-literal::
+        gunzip lmp-factory-image-|MACHINE|.wic.gz
+
 #. `Optional`. Create and resize a qcow2 image:
 
    .. parsed-literal::
