@@ -1,10 +1,9 @@
-.. _ref-boards:
+.. _ug-flashing:
 
-Supported Boards
-================
+Flashing Instructions
+=====================
 
 Select your board below to view flashing instructions.
-
 
 .. toctree::
    :maxdepth: 1

@@ -61,6 +61,7 @@ Documentation Overview
    :name: sec-user-guide
 
    user-guide/index
+   user-guide/flashing/flashing
    user-guide/fioctl/index
    user-guide/qemu/qemu
    user-guide/account-management/account-management
@@ -96,7 +97,6 @@ Documentation Overview
   
    reference-manual/index
    reference-manual/docker/docker
-   reference-manual/boards/boards
    reference-manual/factory/factory
    reference-manual/linux/linux
    reference-manual/ota/ota
