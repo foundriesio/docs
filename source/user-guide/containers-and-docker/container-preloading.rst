@@ -100,7 +100,7 @@ Flash the image and boot the device.
 
     Some devices require additional artifacts to be flashed.
     In this case, download the files from the latest ``platform`` build and only use the ``image`` from ``assembly-system-image``. 
-    For more information about how to flash your device, read :ref:`ref-boards`.
+    For more information about how to flash your device, read :ref:`ug-flashing`.
 
 Checking the Preloaded Image
 ----------------------------

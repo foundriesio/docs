@@ -46,7 +46,7 @@ Using the Secure Machine
 
 Trigger a platform build and wait until the Target is created.
 
-Follow the steps from :ref:`ref-boards` to prepare the hardware and download the same artifacts.
+Follow the steps from :ref:`ug-flashing` to prepare the hardware and download the same artifacts.
 
 The list of artifacts downloaded should be:
 

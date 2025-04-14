@@ -57,7 +57,7 @@ After a successful build, the FoundriesFactory™ Platform produces build artifa
 
 .. note::
     Most platforms require more than the ``lmp-base-console-image-<machine_name>.wic.gz`` artifact for flashing.
-    The required artifacts are board specific and listed on respective pages under :ref:`ref-boards` or under :ref:`ref-qemu`.
+    The required artifacts are board specific and listed on respective pages under :ref:`ug-flashing` or under :ref:`ref-qemu`.
     Targets publish all needed files for each platform under :guilabel:`Runs`.
 
 .. important::
@@ -68,7 +68,7 @@ After a successful build, the FoundriesFactory™ Platform produces build artifa
 Flashing the Image
 ------------------
 
-The flashing procedure is board specific and we cover separate steps in :ref:`ref-boards`.
+The flashing procedure is board specific and we cover separate steps in :ref:`ug-flashing`.
 Please refer to this section for specifics on flashing your system image using the vendor provided tools.
 See :ref:`ref-qemu` for booting Qemu images.
 
@@ -100,7 +100,7 @@ After flashing and booting the board with the respective steps for your hardware
       LmP uses ``nmcli`` and ``NetworkManager`` to manage network connectivity.
 
       If you are starting without any network connectivity that would give you shell access to your device (like SSH), you will need to **connect via UART serial** before setting up a WiFi connection.
-      You may need to refer to your hardware vendor's documentation on UART serial access. We cover the steps to access UART serial for some platforms in :ref:`ref-boards`.
+      You may need to refer to your hardware vendor's documentation on UART serial access. We cover the steps to access UART serial for some platforms in :ref:`ug-flashing`.
 
       Once you have gained shell access to the device, log in with ``fio``/``fio`` username and password. After logged, you can add a new WiFi SSID by using ``nmcli``:
 
@@ -144,7 +144,7 @@ If the above methods to SSH into your board do not work, there are additional th
 
 1. Get the IP address of your device:
 
-- Temporarily enable and connect to the UART serial (detailed steps for some platforms can be found in :ref:`ref-boards`) and determine available IP addresses with:
+- Temporarily enable and connect to the UART serial (detailed steps for some platforms can be found in :ref:`ug-flashing`) and determine available IP addresses with:
 
   * Ethernet:
 

@@ -250,9 +250,9 @@ language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['reference-manual/boards/*flashing.rst',
-                    'reference-manual/boards/*-prepare.rst',
-                    'reference-manual/boards/*note.rst',
+exclude_patterns = ['user-guide/flashing/*-flashing.rst',
+                    'user-guide/flashing/*-prepare.rst',
+                    'user-guide/flashing/*note.rst',
                     'reference-manual/security/imx-generic-custom-keys.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
@@ -412,6 +412,7 @@ htmlhelp_basename = 'fiodoc'
 # Config for sphinx-reredirects, maps source: target, target path is relative to source.
 # TODO: troubleshooting sections redirecting to lmp-customization do not appear to be functional
 redirects = {
+     "reference-manual/boards": "../user-guide/flashing/flashing.html",
      "user-guide/cert-rotation": "rotating-cert.html",
      "reference-manual/docker/compose-apps": "../../user-guide/containers-and-docker/compose-apps.html",
      "reference-manual/docker/configure-docker-helper": "../../user-guide/containers-and-docker/configure-docker-helper.html",
@@ -468,17 +469,17 @@ redirects = {
      "reference-manual/security/secure-boot-imx6ullevk-sec.html": "secure-machines.html",
      "reference-manual/security/secure-boot-imx": "security.html",
      "reference-manual/linux/linux-targets": "linux.html",
-     "reference-manual/boards/stm32mp1": "boards.html",
-     "reference-manual/security/secure-boot-stm32mp1": "../boards/boards.html",
-     "reference-manual/security/boot-software-updates-stm32mp1": "../boards/boards.html",
-     "reference-manual/boards/stm32mp15-eval": "boards.html",
-     "reference-manual/boards/stm32mp15-disco": "boards.html",
-     "reference-manual/boards/kv260": "boards.html",
-     "reference-manual/boards/uz3eg-iocc": "boards.html",
-     "reference-manual/boards/versal": "boards.html",
-     "reference-manual/security/secure-boot-zynq": "../boards/boards.html",
-     "reference-manual/security/boot-software-updates-zynqmp": "..boards/boards.html",
-     "reference-manual/security/tee-on-versal-acap": "../boards/boards.html",
+     "reference-manual/boards/stm32mp1": "../linux/linux-supported.html#id1",
+     "reference-manual/security/secure-boot-stm32mp1": "../linux/linux-supported.html#id1",
+     "reference-manual/security/boot-software-updates-stm32mp1": "../linux/linux-supported.html#id1",
+     "reference-manual/boards/stm32mp15-eval": "../linux/linux-supported.html#id1",
+     "reference-manual/boards/stm32mp15-disco": "../linux/linux-supported.html#id1",
+     "reference-manual/boards/kv260": "../linux/linux-supported.html#id1",
+     "reference-manual/boards/uz3eg-iocc": "../linux/linux-supported.html#id1",
+     "reference-manual/boards/versal": "../linux/linux-supported.html#id1",
+     "reference-manual/security/secure-boot-zynq": "../linux/linux-supported.html#id1",
+     "reference-manual/security/boot-software-updates-zynqmp": "../linux/linux-supported.html#id1",
+     "reference-manual/security/tee-on-versal-acap": "../linux/linux-supported.html#id1",
      "howto/zephyr-mcuboot-keys": "../index.html",
      "howto/linux-net-debug": "../reference-manual/linux/linux-net-debug.html",
      "howto/": "index.html",

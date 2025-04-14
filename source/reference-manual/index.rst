@@ -12,8 +12,6 @@ See the User Guide or Tutorial sections for instructional focused content.
 :ref:`ref-docker` covers topics related to Factory containers and Compose Apps.
 This includes an architecture overview, how third party registries such as those from Amazon, Google, and Azure are configured, and Restorable Apps.
 
-:ref:`ref-boards` covers flashing instructions.
-
 :ref:`ref-factory` provides details on the tools and services that you have access to for working with and customizing your Factory. 
 
 :ref:`Linux microPlatform (LmP) <ref-linux>` covers supported machines, OpenEmbedded/Yocto Project layers and tools such as building a Yocto Project Software Development Kit (SDK), and working with the kernel.
