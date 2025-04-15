@@ -94,6 +94,20 @@ vale <PATH/FILE>
 
 :exclamation: make sure you are using Vale 2.16.0 or greater
 
+#### Screenshots and Diagrams
+
+Visual assets can be found in `source/_static`.
+Directory structure is `<section>/<subsection>/<image.png>`.
+Depth should be limited to one nested header. For example:
+`getting-started/signup/build.png`
+
+Any image used by the theme, such as the logo, go directly under `_static`.
+
+If an image is used more than once, it should be placed in the section folder which appears first in the ToC.
+
+
+#### Opening a Pull Request
+
 Before pushing, check locally:
 
 - links; `make linkcheck`
