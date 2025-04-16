@@ -94,7 +94,7 @@ Documentation Overview
    :maxdepth: 2
    :caption: Reference Manual
    :name: sec-manual
-  
+
    reference-manual/index
    reference-manual/docker/docker
    reference-manual/factory/factory
@@ -121,6 +121,7 @@ Documentation Overview
    :caption: Release Notes
    :name: sec-release-notes
 
+   v95 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v95.md>
    v94 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v94.md>
    v93 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v93.md>
    v92 <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v92.md>
