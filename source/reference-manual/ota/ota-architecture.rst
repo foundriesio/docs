@@ -18,7 +18,7 @@ At a high level, the system consists of three entities:
  * The Rest API
    - tooling like Fioctl and ``app.foundries.io`` use.
 
-  .. figure:: /_static/ota-arch.png
+  .. figure:: /_static/reference-manual/ota/ota-arch.png
      :align: center
      :scale: 70 %
      :alt: OTA architecture diagram
@@ -43,7 +43,7 @@ An LmP device uses Hardware Security Modules (HSM), Trusted Platform Module (TPM
 They provide the guarantee that secrets will not be leaked and that communications will be secure.
 Certain keys will be provisioned during device manufacturing.
 
-  .. figure:: /_static/lmp-device-arch.png
+  .. figure:: /_static/reference-manual/ota/lmp-device-arch.png
      :align: center
      :alt: LmP Device architecture diagram
 

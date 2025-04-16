@@ -58,20 +58,20 @@ A Factory has two teams in place.
 Team "read-only-users" is restricted to read-only access; members can see everything, but can not make changes.
 Team "read-write-ci" can do CI read-write operations:
 
-.. figure:: /_static/teams-example.png
+.. figure:: /_static/user-guide/account-management/teams-example.png
    :align: center
    :alt: Teams example
 
    Teams example
 
-.. figure:: /_static/teams-example-read-only.png
+.. figure:: /_static/user-guide/account-management/teams-example-read-only.png
    :align: center
    :scale: 80%
    :alt: Teams example: Team read-only users
 
    Team read-only users
 
-.. figure:: /_static/teams-example-read-write-ci.png
+.. figure:: /_static/user-guide/account-management/teams-example-read-write-ci.png
    :align: center
    :scale: 80%
    :alt: Teams example: Team read-write CI users
@@ -141,7 +141,7 @@ The members of the "read-only-users" team have read-only access to all Factory r
 This includes access for viewing all devices in a Factory.
 They cannot make changes to the devices as their scope includes ``devices:read``.
 
-.. figure:: /_static/userguide/account-management/team-with-group-and-read-access.png
+.. figure:: /_static/user-guide/account-management/team-with-group-and-read-access.png
    :align: center
    :alt: "read-only-users" scopes: read-only team with a device group
 
@@ -151,7 +151,7 @@ The "lab-dev-users" team includes the ``devices:read-update`` scope.
 Therefore, members of this team can modify the ``test-lab-devices`` group and its devices.
 They can also view all devices in a Factory, even if they are assigned to other device groups.
 
-.. figure:: /_static/userguide/account-management/team-with-group-and-write-access.png
+.. figure:: /_static/user-guide/account-management/team-with-group-and-write-access.png
    :align: center
    :alt: "lab-dev-users" scopes: read-update team with a device group
 

@@ -86,7 +86,7 @@ After these steps, a ``platform`` or ``containers`` build will generate a ``.wic
 For example, pushing to ``main`` triggers the usual build and an additional run called ``assemble-system-image``.
 Check the latest Target you just created:
 
-.. figure:: /_static/userguide/container-preloading/container-preloading-new-target.png
+.. figure:: /_static/user-guide/containers-and-docker/container-preloading-new-target.png
    :width: 900
    :align: center
 
@@ -195,7 +195,7 @@ Add the ``recipes-samples/images/lmp-factory-image.bb`` file, commit and push:
 
 The latest Target should be the CI job you just created.
 
-.. figure:: /_static/userguide/container-preloading/container-preloading-platform.png
+.. figure:: /_static/user-guide/containers-and-docker/container-preloading-platform.png
    :width: 900
    :align: center
 

@@ -17,7 +17,7 @@ Create a new `API Token <https://app.foundries.io/settings/tokens/>`_ by clickin
 Complete with a **Description** and the **Expiration date** and select :guilabel:`Next`.
 Check the :guilabel:`Use for source code access` box and select your **Factory**.
 
-.. figure:: /_static/userguide/mirror-action/mirror-action.png
+.. figure:: /_static/user-guide/mirror-action/mirror-action.png
    :width: 500
    :align: center
 
@@ -46,7 +46,7 @@ Go to GitHub and find the repository you want to mirror.
 
 Click on :guilabel:`Settings`:
 
-.. figure:: /_static/userguide/mirror-action/mirror-action-github-setting.png
+.. figure:: /_static/user-guide/mirror-action/mirror-action-github-setting.png
    :width: 900
    :align: center
 
@@ -54,7 +54,7 @@ Click on :guilabel:`Settings`:
 
 Click on :guilabel:`Secrets` and create a new **secret** by clicking on :guilabel:`New repository secret`.
 
-.. figure:: /_static/userguide/mirror-action/mirror-action-github-secrets.png
+.. figure:: /_static/user-guide/mirror-action/mirror-action-github-secrets.png
    :width: 900
    :align: center
 
@@ -66,7 +66,7 @@ However, complete the **Name** with ``GIT_ACCESS_TOKEN``, and on **Value** paste
 
 Finally, click on :guilabel:`Add secret`.
 
-.. figure:: /_static/userguide/mirror-action/mirror-action-github-new-secret.png
+.. figure:: /_static/user-guide/mirror-action/mirror-action-github-new-secret.png
    :width: 900
    :align: center
 
@@ -176,7 +176,7 @@ Once ``mirror.yml`` is in place, every change to the configured branch will trig
 
 You can find the GitHub_ Action by clicking on :guilabel:`Actions`:
 
-.. figure:: /_static/userguide/mirror-action/mirror-action-github-action.png
+.. figure:: /_static/user-guide/mirror-action/mirror-action-github-action.png
    :width: 900
    :align: center
 
@@ -184,7 +184,7 @@ You can find the GitHub_ Action by clicking on :guilabel:`Actions`:
 
 There, you can find a list of Actions as well as inspect each one.
 
-.. figure:: /_static/userguide/mirror-action/mirror-action-github-action-list.png
+.. figure:: /_static/user-guide/mirror-action/mirror-action-github-action-list.png
    :width: 900
    :align: center
 
@@ -192,7 +192,7 @@ There, you can find a list of Actions as well as inspect each one.
 
 Your FoundriesFactory and GitHub hosted repos should look the same.
 
-.. figure:: /_static/userguide/mirror-action/mirror-action-github-compare.png
+.. figure:: /_static/user-guide/mirror-action/mirror-action-github-compare.png
    :width: 900
    :align: center
 
@@ -203,14 +203,14 @@ Configuring Bitbucket
 
 Go to the source repo on Bitbucket and click on :guilabel:`Pipelines`:
 
-.. figure:: /_static/userguide/mirror-action/bitbucket-pipelines.png
+.. figure:: /_static/user-guide/mirror-action/bitbucket-pipelines.png
    :align: center
 
    Bitbucket Pipelines
 
 Select the ``Starter pipeline``:
 
-.. figure:: /_static/userguide/mirror-action/bitbucket-pipelines-start.png
+.. figure:: /_static/user-guide/mirror-action/bitbucket-pipelines-start.png
    :align: center
 
    Bitbucket Starter Pipeline

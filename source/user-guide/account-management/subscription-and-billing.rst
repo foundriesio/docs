@@ -17,7 +17,7 @@ Changing Your Plan
 From your Factory's page, navigate to the :guilabel:`Plan` tab.
 This will be the option farthest to the right.
 
-.. figure:: /_static/userguide/account-management/plan-tab.png
+.. figure:: /_static/user-guide/account-management/plan-tab.png
    :alt: user interface plan tab
 
    Factory plan tab
@@ -36,7 +36,7 @@ To continue after the trial has expired,
 go to your Factory page's plan tab and click on "Upgrade" under available plans. 
 From here enter the required information:
 
-.. figure:: /_static/userguide/account-management/upgrade-plan.png
+.. figure:: /_static/user-guide/account-management/upgrade-plan.png
    :width: 600
    :align: center
    :alt: add billing details for upgrading plan

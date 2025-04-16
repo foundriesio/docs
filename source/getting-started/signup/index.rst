@@ -5,13 +5,13 @@ Signing Up
 
 To begin using the FoundriesFactory™ Platform, start with `creating an account <signup_>`_ with us.
 
-.. figure:: /_static/signup/signup.png
+.. figure:: /_static/getting-started/signup/signup.png
    :width: 380
    :align: center
    :target: signup_
    :alt: signup form
 
-   This is the beginning  of your journey.
+   This is the beginning of your journey.
 
 .. _signup: https://app.foundries.io/signup
 
@@ -25,7 +25,7 @@ This generates an unmodified :ref:`ref-linux` OS Image, which is from this point
 When your account is created, it is not associated with any factories.
 Create one by clicking :guilabel:`New Factory`.
 
-.. figure:: /_static/signup/no-factories.png
+.. figure:: /_static/getting-started/signup/no-factories.png
    :width: 900
    :align: center
    :alt: no Factories screen
@@ -48,7 +48,7 @@ Click :guilabel:`Create Factory` once your details are entered.
 The :ref:`ref-linux` supports a wide range of platforms out of the box.
 This includes QEMU_ images.
 
-.. figure:: /_static/signup/create.png
+.. figure:: /_static/getting-started/signup/create.png
    :width: 450
    :align: center
    :alt: platform selection and factory name 
@@ -71,7 +71,7 @@ This is the base to build your product.
 You can monitor the progress in the :guilabel:`Targets` tab of your Factory.
 Additionally, you will receive an email once the Factory initial setup is complete.
 
-.. figure:: /_static/signup/build.png
+.. figure:: /_static/getting-started/signup/build.png
    :width: 900
    :align: center
    :alt: Targets view showing prebuilt target

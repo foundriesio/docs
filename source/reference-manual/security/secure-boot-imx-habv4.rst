@@ -27,14 +27,14 @@ U-Boot then jumps to the kernel entry point.
 
 A system which boots without TF-A would look as follows:
 
-   .. figure:: /_static/imx-secure-boot.png
+   .. figure:: /_static/reference-manual/security/imx-secure-boot.png
       :align: center
       :width: 6in
 
 Systems using TF-A (ie, i.MX 8M*) are slightly different.
 The following diagrams describes the secure boot sequence with a succinct description of the Yocto Project meta-layer's configuration for i.MX 8MM based platforms with TF-A:
 
-   .. figure:: /_static/imx8-secure-boot.png
+   .. figure:: /_static/reference-manual/security/imx8-secure-boot.png
       :align: left
       :width: 8in
 
@@ -43,7 +43,7 @@ Userland uses ``libteec`` to issue an ioctl call to the Linux TEE driver, which 
 
 With this in mind, ``fiovb`` is implemented as a secured user application instead of a PTA.
 
-   .. figure:: /_static/optee-pta-access.png
+   .. figure:: /_static/reference-manual/security/optee-pta-access.png
       :align: center
       :width: 6in
 

@@ -33,7 +33,7 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 
 3. Your device is now registered and should be visible by navigating to the `web interface <https://app.foundries.io/factories>`_ and selecting the :guilabel:`Devices` tab for your Factory:
 
-.. figure:: /_static/registering-device/tutorial-device-no-app.png
+.. figure:: /_static/getting-started/register-device/tutorial-device-no-app.png
    :width: 900
    :align: center
    :alt: Devices view

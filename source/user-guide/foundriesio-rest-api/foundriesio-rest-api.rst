@@ -28,7 +28,7 @@ Complete with a **Description** and **Expiration date**, and select :guilabel:`n
 
 Check the :guilabel:`Use for tools like fioctl` box and select your **Factory**.
 
-.. figure:: /_static/userguide/foundriesio-rest-api/token.png
+.. figure:: /_static/user-guide/foundriesio-rest-api/token.png
    :width: 500
    :align: center
 
@@ -277,7 +277,7 @@ Logged into http://app.foundries.io, you may interact with the `REST API from yo
 
 5. Check the response:
 
-.. figure:: /_static/userguide/foundriesio-rest-api/api_example.png
+.. figure:: /_static/user-guide/foundriesio-rest-api/api_example.png
    :width: 900
    :align: center
 

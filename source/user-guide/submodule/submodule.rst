@@ -24,7 +24,7 @@ You can choose to use a private or public repository, each involves separate ste
 
       Select :guilabel:`Private` and :guilabel:`Create repository`.
 
-      .. figure:: /_static/userguide/submodule/private.png
+      .. figure:: /_static/user-guide/submodule/private.png
          :width: 800
          :align: center
       
@@ -46,7 +46,7 @@ You can choose to use a private or public repository, each involves separate ste
 
       Select :guilabel:`Public` and :guilabel:`Create repository`.
 
-      .. figure:: /_static/userguide/submodule/public.png
+      .. figure:: /_static/user-guide/submodule/public.png
          :width: 800
          :align: center
       
@@ -159,7 +159,7 @@ Click anywhere on the Target’s line to see more details.
 
 After the CI Job finishes, refresh the page and find your application in Apps:
 
-.. figure:: /_static/userguide/submodule/app.png
+.. figure:: /_static/user-guide/submodule/app.png
    :width: 500
    :align: center
      
@@ -167,7 +167,7 @@ After the CI Job finishes, refresh the page and find your application in Apps:
   
 In your Factory, click on :guilabel:`Source` and select the ``container.git`` repository:
 
-.. figure:: /_static/userguide/submodule/source.png
+.. figure:: /_static/user-guide/submodule/source.png
    :width: 600
    :align: center
      
@@ -205,7 +205,7 @@ Complete with a **Description** and the **Expiration date** and select :guilabel
 
 For GitHub, check the :guilabel:`Use for source code access` box and select your **Factory**.
 
-.. figure:: /_static/userguide/mirror-action/mirror-action.png
+.. figure:: /_static/user-guide/mirror-action/mirror-action.png
    :width: 500
    :align: center
 
@@ -213,7 +213,7 @@ For GitHub, check the :guilabel:`Use for source code access` box and select your
 
 Copy the token, go to the GitHub repo and find :guilabel:`Settings`.
 
-.. figure:: /_static/userguide/submodule/reposetting.png
+.. figure:: /_static/user-guide/submodule/reposetting.png
    :width: 800
    :align: center
      
@@ -223,7 +223,7 @@ Select :guilabel:`Secrets` in the left menu and :guilabel:`New repository secret
 
 Name it with ``FOUNDRIES_API_TOKEN``, paste your ``<Token>`` on Value and click on :guilabel:`Add Secret`:
 
-.. figure:: /_static/userguide/submodule/actiontoken.png
+.. figure:: /_static/user-guide/submodule/actiontoken.png
    :width: 800
    :align: center
      
