@@ -16,7 +16,7 @@
     - [Testing](#testing-1)
   - [General Updates](#general-updates)
     - [Deprecation list](#deprecation-list)
-      - [Removed machines:](#removed-machines)
+  - [Plans for the FUture](#plans-for-the-future)
   - [Known Issues](#known-issues)
 
 ## Attention Points for Migration
@@ -25,9 +25,6 @@ Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference
 > - v95 is the first LmP release based on Yocto Project Scarthgap (5.0.8). So, when updating a FoundriesFactory from previous LmP versions the line `LAYERSERIES_COMPAT_meta-subscriber-overrides = "scarthgap"`  on `meta-subscriber-overrides/conf/layer.conf` will be required.
 > - When using the `lmp-tools/blob/master/scripts/update-factory-manifest` script to update from v94.y to v95 a merge conflict is expected due to mismatch on the `conf/keys` directory structure. The certificates files are expected to be present at `lmp-manifest/conf/keys` directory from the FoundriesFactory.
 > - The default directory expected for the DTB files for Linux Kernel 6.6 has changed. Remove the `dir` from `KERNEL_DEVICETREE` items `<dir>/<dtb-name>`
-> - TI BSP updated to the 11.00.01 release, without major changes
-> - NVIDIA Tegra BSP updated to the L4T R35.6.0 release, without major changes
-> - NXP BSP updated to the lf-6.6.52-2.2.0 release, including updates to U-Boot and Kernel, which could cause patch conflicts
 > - Aktualizr-Lite: Change in downgrade behavior, now downgrades are not allowed by default for the daemon
 > - u-boot-scr: Vendor prefix was removed from kernel-lmp-fitimage, so make sure to align the boot scripts to also remove the vendor prefix in the `fdtfile` variable.
 > - Jailhouse support in LmP is removed. In some rare cases, when a factory is created during a specific period of time, it might face the following error during the migration:
@@ -35,7 +32,10 @@ Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference
 > Parsing recipes...ERROR: ParseError at /srv/oe/build/conf/../../layers/meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb:30: Could not include required file recipes-samples/images/lmp-feature-jailhouse.inc
 > ERROR: Parsing halted due to errors, see error messages above
 > ```
->
+> - BSP Updates
+>   - TI BSP updated to the 11.00.01 release, without major changes
+>   - NVIDIA Tegra BSP updated to the L4T R35.6.0 release, without major changes
+>   - NXP BSP updated to the lf-6.6.52-2.2.0 release, including updates to U-Boot and Kernel, which could cause patch conflicts
 
 Please also check the respective vendor BSP release notes for more
 information.
@@ -81,36 +81,37 @@ information.
 
 ## General Updates
 
-> - LMP release based on the OE/Yocto 5.0.8 Scarthgap release
-> - Bitbake updated to the 2.8.8 release
-> - Linux-lmp updated to the v6.6.74 stable release
-> - Linux-lmp-rt updated to the v6.6.65-rt47 stable release
-> - Linux-lmp-ti-staging: updated to the 10.01.10 tag
-> - Go updated to the 1.22.12 stable release
-> - Rust updated to the 1.75 stable release
-> - OpenSSL updated to the 3.2.4 stable release
-> - Linux-firmware updated to the 20240909 snapshot
-> - TI BSP updated to the 11.00.01 release
-> - NVIDIA Tegra BSP updated to the L4T R35.6.0 release
-> - NXP BSP updated to the lf-6.6.52-2.2.0 release
-> - u-boot-fio_imx: imx8mn and imx8mp now require CONFIG_SPL_MXC_OCOTP=y
-> - The license for package `gmp` prefers GPLv2-or-later instead of dual license
+> - Yocto Project
+>   - LMP release based on the OE/Yocto 5.0.8 **Scarthgap** release
+>   - **BitBake** updated to the 2.8.8 release
+>   - **Go** updated to the 1.22.12 stable release
+>   - **Rust** updated to the 1.75 stable release
+>   - **OpenSSL** updated to the 3.2.4 stable release
+>   - **Linux-firmware** updated to the 20240909 snapshot
+>   - The license for package `gmp` prefers **GPLv2-or-later** instead of dual license
+> - BSP Updates
+>   - Linux-lmp updated to the v6.6.74 stable release
+>   - Linux-lmp-rt updated to the v6.6.65-rt47 stable release
+>   - Linux-lmp-ti-staging: updated to the 10.01.10 tag
+>   - TI BSP updated to the 11.00.01 release
+>   - NVIDIA Tegra BSP updated to the L4T R35.6.0 release
+>   - NXP BSP updated to the lf-6.6.52-2.2.0 release
+>   - u-boot-fio_imx: imx8mn and imx8mp now require CONFIG_SPL_MXC_OCOTP=y
 
 ### Deprecation list
-> - Xilinx BSP: Support was moved from `meta-lmp` to `meta-partner`
-> - STM32 BSP: Support was moved from `meta-lmp` to `meta-partner`
-> - iMX 8ULP: Support for this SoC was removed from LmP
-> - iMX 7D/ULP: Support for this SoC was removed from LmP
-> - Jailhouse: Support for this package was removed from LmP (check the respective vendor BSP support)
-> - Xenomai4: Support for this kernel feature was removed from LmP (check the respective vendor BSP support)
-> - FIT_NODE_SEPARATOR: This variable is not used by LmP anymore
-> - NEXT (**v96**) TI BSP: Support will be moved from `meta-lmp` to `meta-partner`
-> - NEXT (**v96**) NVidia BSP: Support will be moved from `meta-lmp` to `meta-partner`
+> - BSP
+>   - Xilinx BSP: Support was moved from `meta-lmp` to `meta-partner`
+>   - STM32 BSP: Support was moved from `meta-lmp` to `meta-partner`
+>   - iMX 8ULP: Support for this SoC was removed from LmP
+>   - iMX 7D/ULP: Support for this SoC was removed from LmP
+> - General
+>   - Jailhouse: Support for this package was removed from LmP (check the respective vendor BSP support)
+>   - Xenomai4: Support for this kernel feature was removed from LmP (check the respective vendor BSP support)
+>   - FIT_NODE_SEPARATOR: This variable is not used by LmP anymore
 
-#### Removed machines:
-
-> - imx8ulp-lpddr4-evk
-> - imx7ulpea-ucom
+## Plans for the FUture
+>   - TI BSP: Support will be moved from `meta-lmp` to `meta-partner` in **v96**
+>   - NVidia BSP: Support will be moved from `meta-lmp` to `meta-partner` in **v96**
 
 ## Known Issues
 
