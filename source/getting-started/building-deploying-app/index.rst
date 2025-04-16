@@ -58,7 +58,7 @@ Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targ
 
 The latest :term:`Target` named :guilabel:`containers-main` should be the CI job you just created.
 
-.. figure:: /_static/tutorials/creating-first-target/tutorial-find-build.png
+.. figure:: /_static/getting-started/building-deploying-app/tutorial-find-build.png
    :width: 900
    :align: center
 

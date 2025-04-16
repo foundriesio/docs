@@ -73,7 +73,7 @@ of either the **systemd-pkcs11** or **systemd-tpm2** plugins (refer to
 `systemd-cryptenroll`_ for additional details).
 
 
-.. figure:: /_static/systemd-luks.png
+.. figure:: /_static/reference-manual/linux/systemd-luks.png
     :width: 300
     :align: center
 

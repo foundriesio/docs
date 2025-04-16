@@ -84,7 +84,7 @@ Example file contents::
 
 Using the information and packages from the PyPi website, fill in the details about the new Python package
 
-.. figure:: /_static/pypi-package.png
+.. figure:: /_static/user-guide/lmp-customization/pypi-package.png
    :alt: Pypi package
    :align: center
    :width: 5in

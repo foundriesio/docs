@@ -17,7 +17,7 @@ Below you can find the standard flow to promote a target to a Production Target 
 .. note::
    This process can only be performed by Factory Owners and Admins owning the :ref:`Offline TUF Targets keys <ref-offline-targets-keys>`.
 
-.. image:: /_static/userguide/waves/waves-flow.png
+.. image:: /_static/user-guide/waves/waves-flow.png
    :width: 400
    :align: center
    :alt: Waves subcommands suggested flow

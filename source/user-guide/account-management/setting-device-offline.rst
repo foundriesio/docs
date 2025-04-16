@@ -13,7 +13,7 @@ How It Works: Walk Through
 From your Factory page, navigate to the :guilabel:`Settings` tab.
 Under :guilabel:`Preferences` is the :guilabel:`Offline device timeout` field.
 
-.. figure:: /_static/userguide/account-management/device-offline.png
+.. figure:: /_static/user-guide/account-management/device-offline.png
    :align: center
    :alt: example image showing the device offline settings tab
 

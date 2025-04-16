@@ -36,7 +36,7 @@ The way testing typically flows:
      * Tests are run and results are reported via the device gateway
        for the Target.
 
-.. figure:: /_static/testing-arch.png
+.. figure:: /_static/reference-manual/testing/testing-arch.png
      :align: center
      :scale: 70 %
      :alt: Testing architecture diagram

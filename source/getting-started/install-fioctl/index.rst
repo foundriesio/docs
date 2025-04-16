@@ -134,7 +134,7 @@ Adding Application Credentials
 
 Go to `Application Credentials <https://app.foundries.io/settings/credentials>`_ and click on :guilabel:`+ New Credentials`.
 
-.. figure:: /_static/install-fioctl/application_credentials.png
+.. figure:: /_static/getting-started/install-fioctl/application_credentials.png
    :width: 900
    :align: center
 
@@ -145,7 +145,7 @@ Complete with a **Description** and the **Expiration date** and select :guilabel
 Check the :guilabel:`Use for tools like fioctl` box and select your **Factory**.
 You can revoke this access and set up a new credential later once you are familiar with the :ref:`ref-api-access`.
 
-.. figure:: /_static/install-fioctl/fioctl_token.png
+.. figure:: /_static/getting-started/install-fioctl/fioctl_token.png
    :width: 500
    :align: center
 
@@ -159,7 +159,7 @@ You can revoke this access and set up a new credential later once you are famili
 
 Use the Client ID and Secret to finish the Fioctl login.
 
-.. figure:: /_static/install-fioctl/token.png
+.. figure:: /_static/getting-started/install-fioctl/token.png
    :width: 500
    :align: center
 

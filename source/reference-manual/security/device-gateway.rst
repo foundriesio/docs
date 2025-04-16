@@ -227,7 +227,7 @@ At creation, your Factory only has an Online Device CA and no Local Device CAs.
 Your Factory may be configured to have one or more Local Device CAs only after you take ownership of your Factory PKI.
 You may use the Local Device CA with our :ref:`ref-factory-registration-ref` to register your devices offline.
 
-  .. figure:: /_static/ca_certs.png
+  .. figure:: /_static/reference-manual/security/ca_certs.png
      :align: center
      :scale: 90 %
      :alt: PKI hierarchy

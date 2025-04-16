@@ -236,7 +236,7 @@ Be aware that in OP-TEE's PKCS#11 implementation, **each** PKCS#11 slot is indee
 
 The following diagram succintly details the overall design:
 
-   .. figure:: /_static/se050-import-keys.png
+   .. figure:: /_static/reference-manual/security/se050-import-keys.png
       :align: center
       :width: 6in
 

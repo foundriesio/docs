@@ -35,7 +35,7 @@ After a successful build, the FoundriesFactory™ Platform produces build artifa
 
 #. Navigate to the :guilabel:`Targets` tab of your Factory.
 
-    .. figure:: /_static/flash-device/devel.png
+    .. figure:: /_static/getting-started/flash-device/devel.png
         :width: 769
         :align: center
         :alt: Targets tab showing prebuilt-target
@@ -48,7 +48,7 @@ After a successful build, the FoundriesFactory™ Platform produces build artifa
 
     | E.g: ``lmp-base-console-image-<machine_name>.wic.gz``
 
-    .. figure:: /_static/flash-device/artifacts.png
+    .. figure:: /_static/getting-started/flash-device/artifacts.png
         :width: 769
         :align: center
         :alt: Targets tab displaying available artifacts

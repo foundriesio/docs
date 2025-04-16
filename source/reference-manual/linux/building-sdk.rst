@@ -33,7 +33,7 @@ Do this whenever a new SDK install script is needed:
 
 The SDK image is available under the ``SDK`` folder.
 
-.. figure:: /_static/reference/sdk-artifact.png
+.. figure:: /_static/reference-manual/linux/sdk-artifact.png
    :align: center
 
    Where to find the SDK install script

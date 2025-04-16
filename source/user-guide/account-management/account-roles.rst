@@ -45,7 +45,7 @@ How it Works: Walk Through
 Upon creating a Factory, the creator automatically gets assigned the role of owner.
 The owner then sends invites via the :guilabel:`Member` tab on their Factory page:
 
-.. figure:: /_static/userguide/account-management/invite-members.png
+.. figure:: /_static/user-guide/account-management/invite-members.png
    :align: center
    :alt: sending member invites
 
@@ -59,7 +59,7 @@ On creating an account and accepting the invitation, members have no account man
 From the :guilabel:`Member` tab, the owner selects members from the table, and clicks on :guilabel:`Role...`,
 and assigns the desired role:
 
-.. figure:: /_static/userguide/account-management/member-list.png
+.. figure:: /_static/user-guide/account-management/member-list.png
    :align: center
    :alt: UI, changing member role
 

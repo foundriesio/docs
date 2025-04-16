@@ -708,7 +708,7 @@ Orphan Targets
 
 In the Factory Overview page, you may notice the ``ORPHANED`` column:
 
-.. figure:: /_static/userguide/troubleshooting/orphaned-target.png
+.. figure:: /_static/user-guide/troubleshooting/orphaned-target.png
    :width: 700
    :align: center
 

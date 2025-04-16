@@ -7,7 +7,7 @@ The default OTA client shipped with the Linux® microPlatform is ``aktualizr-lit
 This client is a build variant of the Aktualizr project.
 It is for those who wish to have the security aspects of TUF, but without the complexity of Uptane.
 
-  .. figure:: /_static/diagrams/aktualizr-lite/aktualizr-lite.png
+  .. figure:: /_static/reference-manual/ota/aktualizr-lite.png
      :align: center
      :width: 8in
 

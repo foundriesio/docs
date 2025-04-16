@@ -32,7 +32,7 @@ Complete with a **Description** and the **Expiration date** and select :guilabel
 Select the :guilabel:`device:create` token and select your **Factory**.
 You can later revoke this access and set up a new token once you are familiar with the :ref:`ref-api-access`.
 
-.. figure:: /_static/userguide/lmp-device-auto-register/lmp-device-auto-register-token.png
+.. figure:: /_static/user-guide/lmp-device-auto-register/lmp-device-auto-register-token.png
    :width: 500
    :align: center
 
@@ -149,7 +149,7 @@ Testing Auto Register
 After booting the new image—if connected to the internet—the device will automatically register to your Factory.
 It should be visible by navigating to the `web interface <https://app.foundries.io/factories>`_ and selecting the **Devices** tab.
 
-.. figure:: /_static/userguide/lmp-device-auto-register/lmp-device-auto-register-device.png
+.. figure:: /_static/user-guide/lmp-device-auto-register/lmp-device-auto-register-device.png
    :width: 900
    :align: center
    :alt: FoundriesFactory Device Auto Registered
