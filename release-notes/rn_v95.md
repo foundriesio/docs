@@ -22,7 +22,7 @@
 ## Attention Points for Migration
 Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference-manual/linux/linux-update.html)from the v94.y release:
 
-1. **Scarthgap**: **v95** is the first LmP release based on Yocto Project Scarthgap (5.0.8).
+1. **Scarthgap**: **v95** is the first LmP release based on Yocto Project Scarthgap (5.0.9).
    So, when updating a FoundriesFactory from previous LmP versions the line
    `LAYERSERIES_COMPAT_meta-subscriber-overrides = "scarthgap"`
     on `meta-subscriber-overrides/conf/layer.conf` will be required.
@@ -41,11 +41,14 @@ Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference
       without major changes
    3. **NXP** BSP updated to the lf-6.6.52-2.2.0 release, including updates to
       U-Boot and Kernel, which could cause patch conflicts
-   4. **u-boot-scr**: Vendor prefix was removed from kernel-lmp-fitimage,
+   4. **u-boot-scr**: vendor prefix was removed from kernel-lmp-fitimage,
       so make sure to align the boot scripts to also remove the vendor prefix
       in the `fdtfile` variable.
    5. **Jailhouse** support in LmP is removed. An error might occur during the migration -
       [FAQ](https://docs.foundries.io/latest/user-guide/troubleshooting/troubleshooting.html#jailhousesupportin-lmp-is-removed)
+   6. **am64xx-evm**: when updating from **v94** serial has to be added in the
+      local boot entry conf -
+      [How to](https://docs.foundries.io/latest/user-guide/lmp-customization/lmp-customization.html#kernel-command-line-arguments)
 
 
 Please check the respective vendor BSP release notes for more
