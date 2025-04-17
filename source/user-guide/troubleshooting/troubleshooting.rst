@@ -765,3 +765,115 @@ An example follows:
 .. note::
     Similar steps can be taken to recreate a container Target.
     See ``fioctl targets add`` command usage for more information.
+
+Update FoundriesFactory Manifest Merge Conflict
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When updating an existing FoundriesFactory manifest using the
+``lmp-tools/scripts/update-factory-manifest`` script to **v95**,
+a merge conflict is expected.
+This is due to the fact that the certificates organization has changed.
+
+For example, the following error:
+
+.. code-block::
+
+   ~/lmp-tools/scripts/update-factory-manifest
+   New upstream release(s) have been found.
+   Merging local code with upstream release: <version>
+   Proceed ? (y/n): y
+   CONFLICT (modify/delete): conf/keys/uefi/DB.auth deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DB.auth left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DB.cer deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DB.cer left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DB.crt deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DB.crt left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DB.esl deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DB.esl left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DB.key deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DB.key left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DBX.auth deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DBX.auth left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DBX.cer deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DBX.cer left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DBX.crt deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DBX.crt left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DBX.esl deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DBX.esl left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/DBX.key deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/DBX.key left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/KEK.auth deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/KEK.auth left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/KEK.cer deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/KEK.cer left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/KEK.crt deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/KEK.crt left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/KEK.esl deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/KEK.esl left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/KEK.key deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/KEK.key left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/PK.auth deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/PK.auth left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/PK.cer deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/PK.cer left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/PK.crt deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/PK.crt left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/PK.esl deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/PK.esl left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/PK.key deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/PK.key left in tree.
+   CONFLICT (modify/delete): conf/keys/uefi/PKnoauth.auth deleted in HEAD and modified in <version>.  Version <version> of conf/keys/uefi/PKnoauth.auth left in tree.
+   Automatic merge failed; fix conflicts and then commit the result.
+
+   Unable to perform automatic update.  Restoring previous state.
+
+   One of these last few commits is probably causing a conflict:
+   72f5f8429baeeb39d3f7d2e365cd1b731b641cc0 (HEAD -> main) Add bblayers-factory conf
+   19fabe2c3eb041d19f07e9fac89106ce7afe4f46 Add overrides meta layer
+   5c5376a90509b319de376bc18637ab896a1f480a Add factory-keys
+
+For example, for a FoundriesFactory created with **v94.1** and updated to **v95**,
+the merge conflicts are:
+
+.. code-block::
+
+   Changes to be committed:
+      modified:   ../../Dockerfile
+      modified:   ../../conf/bblayers-base.inc
+      modified:   ../../conf/bblayers-bsp.inc
+      new file:   ../../conf/keys/uefi/noKEK.auth
+      new file:   ../../conf/keys/uefi/noKEK.esl
+      new file:   ../../conf/keys/uefi/noPK.auth
+      new file:   ../../conf/keys/uefi/noPK.esl
+      modified:   ../../lmp-base.xml
+      modified:   ../../lmp-bsp.xml
+      modified:   ../../setup-environment-internal
+
+   Unmerged paths:
+   (use "git add/rm <file>..." as appropriate to mark resolution)
+      deleted by us:   ../../conf/keys/uefi/DB.auth
+      deleted by us:   ../../conf/keys/uefi/DB.cer
+      deleted by us:   ../../conf/keys/uefi/DB.crt
+      deleted by us:   ../../conf/keys/uefi/DB.esl
+      deleted by us:   ../../conf/keys/uefi/DB.key
+      deleted by us:   ../../conf/keys/uefi/DBX.auth
+      deleted by us:   ../../conf/keys/uefi/DBX.cer
+      deleted by us:   ../../conf/keys/uefi/DBX.crt
+      deleted by us:   ../../conf/keys/uefi/DBX.esl
+      deleted by us:   ../../conf/keys/uefi/DBX.key
+      deleted by us:   ../../conf/keys/uefi/KEK.auth
+      deleted by us:   ../../conf/keys/uefi/KEK.cer
+      deleted by us:   ../../conf/keys/uefi/KEK.crt
+      deleted by us:   ../../conf/keys/uefi/KEK.esl
+      deleted by us:   ../../conf/keys/uefi/KEK.key
+      deleted by us:   ../../conf/keys/uefi/PK.auth
+      deleted by us:   ../../conf/keys/uefi/PK.cer
+      deleted by us:   ../../conf/keys/uefi/PK.crt
+      deleted by us:   ../../conf/keys/uefi/PK.esl
+      deleted by us:   ../../conf/keys/uefi/PK.key
+      deleted by us:   ../../conf/keys/uefi/PKnoauth.auth
+
+
+**Solution:**
+
+The solution is to manually merge the changes from ``lmp-manifest``
+with the following goals in mind:
+
+   - Removal of all ``lmp-manifest/conf/keys`` after the merge
+     (since that is done on new factories)
+   - Creation of the missing certificate files by hand and having them available
+     in the ``lmp-manifest/factory-keys`` folder.
+
+For the example above, the following steps solve the conflict:
+
+.. code-block:: bash
+
+   git rm -rf conf/keys/
+   git commit
+
+.. note::
+   You can use the script ``/lmp-tools/scripts/rotate_ci_keys.sh``
+   to re-generate all the keys.
+   If any key is missing, a new file will be created and
+   you can commit that file.
+
