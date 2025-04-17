@@ -23,7 +23,7 @@
 Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference-manual/linux/linux-update.html) from the v94.y release:
 
 > - v95 is the first LmP release based on Yocto Project Scarthgap (5.0.8). So, when updating a FoundriesFactory from previous LmP versions the line `LAYERSERIES_COMPAT_meta-subscriber-overrides = "scarthgap"`  on `meta-subscriber-overrides/conf/layer.conf` will be required.
-> - When using the `lmp-tools/blob/master/scripts/update-factory-manifest` script to update from v94.y to v95 a merge conflict is expected due to mismatch on the `conf/keys` directory structure. The certificates files are expected to be present at `lmp-manifest/conf/keys` directory from the FoundriesFactory.
+> - When using the `lmp-tools/blob/master/scripts/update-factory-manifest` script to update from v94.y to v95, a merge conflict is expected due to a mismatch in the `conf/keys` directory structure. The certificates files are expected to be in the `lmp-manifest/conf/keys` directory from the FoundriesFactory.
 > - The default directory expected for the DTB files for Linux Kernel 6.6 has changed. Remove the `dir` from `KERNEL_DEVICETREE` items `<dir>/<dtb-name>`
 > - Aktualizr-Lite: Change in downgrade behavior, now downgrades are not allowed by default for the daemon
 > - u-boot-scr: Vendor prefix was removed from kernel-lmp-fitimage, so make sure to align the boot scripts to also remove the vendor prefix in the `fdtfile` variable.
@@ -37,7 +37,7 @@ Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference
 >   - NVIDIA Tegra BSP updated to the L4T R35.6.0 release, without major changes
 >   - NXP BSP updated to the lf-6.6.52-2.2.0 release, including updates to U-Boot and Kernel, which could cause patch conflicts
 
-Please also check the respective vendor BSP release notes for more
+Please check the respective vendor BSP release notes for more
 information.
 
 
@@ -51,6 +51,7 @@ information.
 > - Added experimental support for user-initiated rollbacks.
 
 ### Improvements
+
 > - Integrated composectl for all operations involving Compose Apps, such as pruning, checking if running, etc.
 > - Optimized app management to minimize the number of actions performed on Compose Apps during the update cycle.
 > - Made app stopping before an update configurable.
@@ -60,22 +61,27 @@ information.
 > - Allow re-pulling of ostree commits marked as partial.
 
 ### Bug Fixes
-> - Fix rollback target selection on applications only update when using CLI delay-app-install install mode.
+
+> - Fix rollback Target selection on applications only update when using CLI delay-app-install install mode.
+
 
 ### Testing
-> - Added a Compose-based environment for developing and testing aktualizr-lite end-to-end in a containerized setup against a real factory.
+> - Added a Compose-based environment for developing and testing aktualizr-lite end-to-end in a containerized setup against a real Factory.
 
 ## Composectl Updates
 
 ### New Features
+
 > - Added the publish command to package a Compose App as a container image and upload it to a container registry.
 > - Added the show command to print app manifest and Compose project details.
 > - Introduced App bundle indexing, which includes hash generation for each item in the bundle. The hashes are verified during app OTA updates, installation, and starting. Additionally, the maximum app bundle size is now limited to 1GB.
 
 ### Bug Fixes
+
 > - Resolved minor issues, mainly related to app blob pruning and checking whether an app is installed and running.
 
 ### Testing
+
 > - Added a Compose-based environment for development and end-to-end testing of composectl in a containerized setup.
 > - Implemented a series of end-to-end tests, including tests for edge cases.
 
@@ -99,6 +105,7 @@ information.
 >   - u-boot-fio_imx: imx8mn and imx8mp now require CONFIG_SPL_MXC_OCOTP=y
 
 ### Deprecation list
+
 > - BSP
 >   - Xilinx BSP: Support was moved from `meta-lmp` to `meta-partner`
 >   - STM32 BSP: Support was moved from `meta-lmp` to `meta-partner`
@@ -107,9 +114,10 @@ information.
 > - General
 >   - Jailhouse: Support for this package was removed from LmP (check the respective vendor BSP support)
 >   - Xenomai4: Support for this kernel feature was removed from LmP (check the respective vendor BSP support)
->   - FIT_NODE_SEPARATOR: This variable is not used by LmP anymore
+>   - FIT_NODE_SEPARATOR: This variable is no longer used by LmP
 
-## Plans for the FUture
+## Plans for the Future
+
 >   - TI BSP: Support will be moved from `meta-lmp` to `meta-partner` in **v96**
 >   - NVidia BSP: Support will be moved from `meta-lmp` to `meta-partner` in **v96**
 
