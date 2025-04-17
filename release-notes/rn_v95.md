@@ -16,30 +16,36 @@
     - [Testing](#testing-1)
   - [General Updates](#general-updates)
     - [Deprecation list](#deprecation-list)
-  - [Plans for the FUture](#plans-for-the-future)
+  - [Plans for the Future](#plans-for-the-future)
   - [Known Issues](#known-issues)
 
 ## Attention Points for Migration
 Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference-manual/linux/linux-update.html) from the v94.y release:
 
-> - v95 is the first LmP release based on Yocto Project Scarthgap (5.0.8). So, when updating a FoundriesFactory from previous LmP versions the line `LAYERSERIES_COMPAT_meta-subscriber-overrides = "scarthgap"`  on `meta-subscriber-overrides/conf/layer.conf` will be required.
-> - When using the `lmp-tools/blob/master/scripts/update-factory-manifest` script to update from v94.y to v95, a merge conflict is expected due to a mismatch in the `conf/keys` directory structure. The certificates files are expected to be in the `lmp-manifest/conf/keys` directory from the FoundriesFactory.
-> - The default directory expected for the DTB files for Linux Kernel 6.6 has changed. Remove the `dir` from `KERNEL_DEVICETREE` items `<dir>/<dtb-name>`
-> - Aktualizr-Lite: Change in downgrade behavior, now downgrades are not allowed by default for the daemon
-> - u-boot-scr: Vendor prefix was removed from kernel-lmp-fitimage, so make sure to align the boot scripts to also remove the vendor prefix in the `fdtfile` variable.
-> - Jailhouse support in LmP is removed. In some rare cases, when a factory is created during a specific period of time, it might face the following error during the migration:
-> ```
-> Parsing recipes...ERROR: ParseError at /srv/oe/build/conf/../../layers/meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb:30: Could not include required file recipes-samples/images/lmp-feature-jailhouse.inc
-> ERROR: Parsing halted due to errors, see error messages above
-> ```
-> - BSP Updates
->   - TI BSP updated to the 11.00.01 release, without major changes
->   - NVIDIA Tegra BSP updated to the L4T R35.6.0 release, without major changes
->   - NXP BSP updated to the lf-6.6.52-2.2.0 release, including updates to U-Boot and Kernel, which could cause patch conflicts
+1. **v95** is the first LmP release based on Yocto Project Scarthgap (5.0.8). So,
+   when updating a FoundriesFactory from previous LmP versions the line
+   `LAYERSERIES_COMPAT_meta-subscriber-overrides = "scarthgap"`
+    on `meta-subscriber-overrides/conf/layer.conf` will be required.
+2. When using the `lmp-tools/scripts/update-factory-manifest` script to update
+   a previously created FoundriesFactory to **v95**, a merge conflict is
+   expected -
+   [FAQ](https://docs.foundries.io/latest/user-guide/troubleshooting/troubleshooting.html#update-foundriesfactory-fanifest-merge-conflict)
+1. The default directory expected for the DTB files for Linux Kernel 6.6 has changed.
+   Remove the `dir` from `KERNEL_DEVICETREE` items `<dir>/<dtb-name>`
+2. Aktualizr-Lite: Change in downgrade behavior, now downgrades are not allowed
+   by default for the daemon
+3. u-boot-scr: Vendor prefix was removed from kernel-lmp-fitimage, so make sure
+   to align the boot scripts to also remove the vendor prefix in the `fdtfile` variable.
+4. Jailhouse support in LmP is removed. An error might occur during the migration -
+   [FAQ](https://docs.foundries.io/latest/user-guide/troubleshooting/troubleshooting.html#jailhousesupportin-lmp-is-removed)
+5. BSP Updates
+   1. TI BSP updated to the 11.00.01 release, without major changes
+   2. NVIDIA Tegra BSP updated to the L4T R35.6.0 release, without major changes
+   3. NXP BSP updated to the lf-6.6.52-2.2.0 release, including updates to
+      U-Boot and Kernel, which could cause patch conflicts
 
 Please check the respective vendor BSP release notes for more
 information.
-
 
 ## Aktualizr-Lite Updates
 
