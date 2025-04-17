@@ -877,3 +877,21 @@ For the example above, the following steps solve the conflict:
    If any key is missing, a new file will be created and
    you can commit that file.
 
+Jailhouse support in LmP is removed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Jailhouse support in LmP is removed.
+In some rare cases, when a factory is created during a specific period of time,
+it might face the following error during the migration:
+
+```
+Parsing recipes...ERROR: ParseError at /srv/oe/build/conf/../../layers/meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb:30: Could not include required file recipes-samples/images/lmp-feature-jailhouse.inc
+ERROR: Parsing halted due to errors, see error messages above
+```
+
+**Solution:**
+Remove the following line from the ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb`` file.
+
+.. code-block::
+
+   require ${@bb.utils.contains('MACHINE_FEATURES', 'jailhouse', 'recipes-samples/images/lmp-feature-jailhouse.inc', '', d)}
