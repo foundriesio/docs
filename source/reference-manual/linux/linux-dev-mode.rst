@@ -41,4 +41,4 @@ The following can be added to the file,
       fully supported by the customer.
 
 .. _Yocto Project image features:
-   https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#image-features
+   https://docs.yoctoproject.org/scarthgap/ref-manual/features.html#image-features

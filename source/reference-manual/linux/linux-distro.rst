@@ -65,6 +65,6 @@ lmp-wayland/lmp-xwayland
 
 These distros provide Wayland and XWayland support on top of the ``lmp`` distro.
 
-.. _DISTRO: https://docs.yoctoproject.org/kirkstone/ref-manual/variables.html#term-DISTRO
+.. _DISTRO: https://docs.yoctoproject.org/scarthgap/ref-manual/variables.html#term-DISTRO
 
 .. _Poky: https://www.yoctoproject.org/software-overview/reference-distribution/

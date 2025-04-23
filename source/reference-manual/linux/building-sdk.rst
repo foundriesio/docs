@@ -92,4 +92,4 @@ In the example, we saw that the generated file can not be executed on the host m
 Using ``file``,  we learned that this is because the binary is for ``ARM aarch64`` architecture.
 
 For more information regarding the Standard SDK, follow the Yocto Project
-`instructions <https://docs.yoctoproject.org/kirkstone/singleindex.html#using-the-sdk-toolchain-directly>`_.
+`instructions <https://docs.yoctoproject.org/scarthgap/singleindex.html#using-the-sdk-toolchain-directly>`_.

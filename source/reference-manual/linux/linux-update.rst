@@ -114,9 +114,9 @@ Make sure ``meta-subscriber-overrides`` is compatible with the current OE releas
 .. code-block::
 
     $ cat meta-lmp/meta-lmp-bsp/conf/layer.conf | grep COMPAT
-    LAYERSERIES_COMPAT_meta-lmp-bsp = "kirkstone"
+    LAYERSERIES_COMPAT_meta-lmp-bsp = "scarthgap"
     $ cat meta-subscriber-overrides/conf/layer.conf | grep COMPAT
-    LAYERSERIES_COMPAT_meta-subscriber-overrides = "kirkstone"
+    LAYERSERIES_COMPAT_meta-subscriber-overrides = "scarthgap"
 
 * **Revert unecessary backports**
 
