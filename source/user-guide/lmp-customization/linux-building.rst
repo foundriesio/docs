@@ -180,9 +180,9 @@ We recommend the following reference material on OpenEmbedded and the Yocto Proj
 .. _Yocto Project main page:
    https://www.yoctoproject.org/
 .. _Yocto Project Quick Start Guide:
-   https://docs.yoctoproject.org/kirkstone/brief-yoctoprojectqs/
+   https://docs.yoctoproject.org/scarthgap/brief-yoctoprojectqs/
 .. _Yocto Project Reference Manual:
-   https://docs.yoctoproject.org/kirkstone/ref-manual/
+   https://docs.yoctoproject.org/scarthgap/ref-manual/
 .. _BitBake Manual:
    https://docs.yoctoproject.org/bitbake/
 .. _Docker Installed:

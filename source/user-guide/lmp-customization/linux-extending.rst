@@ -170,13 +170,13 @@ The LmP uses the ``MACHINE_FEATURES`` for a machine to determine if a package ge
 For example, the OP-Tee package is only included in an image if the target machine includes the feature ``optee`` within ``MACHINE_FEATURES``.
 
 .. _Yocto Project distro features:
-   https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#distro-features
+   https://docs.yoctoproject.org/scarthgap/ref-manual/features.html#distro-features
 
 .. _Yocto Project image features:
-   https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#image-features
+   https://docs.yoctoproject.org/scarthgap/ref-manual/features.html#image-features
 
 .. _Yocto Project machine features:
-   https://docs.yoctoproject.org/kirkstone/ref-manual/features.html#machine-features
+   https://docs.yoctoproject.org/scarthgap/ref-manual/features.html#machine-features
 
 .. _ref-ug-private-repo:
 
