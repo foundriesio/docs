@@ -155,6 +155,12 @@ The ``aktualizr-lite`` executable can be invoked to perform individual operation
                               update commands
         --command arg         Command to be executed
 
+      .. note::
+
+         You can find a containerized environment
+         for a custom sota client development in
+         https://github.com/foundriesio/sotactl?tab=readme-ov-file#development-in-the-development-container.
+
 
 Available commands for Command Line Interface (CLI)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -255,7 +261,7 @@ run
 Finalize the installation or rollback when a reboot was required,
 starting the Target applications.
 It is possible that an error is detected at this stage,
-which may lead to a rollback being initiated. 
+which may lead to a rollback being initiated.
 
 **Exit Codes**
 
