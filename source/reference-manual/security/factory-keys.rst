@@ -9,6 +9,9 @@ the software stack.
 It can handle U-Boot, OP-TEE—which is a Trusted Execution Environment (TEE)—as
 well as Linux® Kernel image and modules.
 
+.. tip::
+   see :ref:`ff-crypto-key-summary` for an overview of FoundriesFactory keys.
+
 Secure Boot Flow
 ------------------
 
