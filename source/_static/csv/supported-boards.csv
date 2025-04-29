@@ -1,6 +1,8 @@
 Device Name,MACHINE
 :ref:`Intel NUC8 <ref-rm_board_intel-corei7-64>`,intel-corei7-64
 :ref:`Intel x86-64 UEFI <ref-rm_board_intel-corei7-64>`,intel-corei7-64
+:ref:`Jetson AGX Orin Developer Kit <ref-rm_board_jetson-agx-orin-devkit>`,jetson-agx-orin-devkit
+:ref:`Jetson AGX Xavier Developer Kit <ref-rm_board_jetson-agx-xavier-devkit>`,jetson-agx-xavier-devkit
 :ref:`NXP i.MX6 UL EVK <ref-rm_board_imx6ulevk>`,imx6ulevk
 :ref:`NXP i.MX6 ULL EVK <ref-rm_board_imx6ullevk>`,imx6ullevk
 :ref:`NXP i.MX6 ULL EVK with secure boot enabled <ref-rm_board_imx6ullevk>`,imx6ullevk-sec
@@ -11,16 +13,15 @@ Device Name,MACHINE
 :ref:`NXP i.MX 8M Plus EVK with secure boot enabled <ref-rm_board_imx8mp-lpddr4-evk>`,imx8mp-lpddr4-evk-sec
 :ref:`NXP i.MX 8M Nano EVK <ref-rm_board_imx8mn-ddr4-evk>`,imx8mn-ddr4-evk
 :ref:`NXP i.MX 93 EVK <ref-rm_board_imx93evk>`,imx93-11x11-lpddr4x-evk
-:ref:`Toradex Apalis iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
-:ref:`Toradex Apalis iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
-:ref:`Toradex Apalis iMX8QM <ref-rm_boards_apalis-imx8>`,apalis-imx8
 :ref:`QEMU AARCH32 <ref-rm_qemu_arm>`,qemuarm
 :ref:`QEMU AARCH64 <ref-rm_qemu_arm64>`,qemuarm64-secureboot
+`Qualcomm RB3 Gen 2 <https://github.com/foundriesio/meta-partner/tree/qualcomm?tab=readme-ov-file#quick-start-guide>`_,qcs6490-rb3gen2-vision-kit
 :ref:`Raspberry Pi3/3B (64 bit) <ref-rm_board_rasbperrypi>`,raspberrypi3-64
 :ref:`Raspberry Pi4 (and CM) <ref-rm_board_rasbperrypi>`,raspberrypi4-64
-:ref:`Jetson AGX Orin Developer Kit <ref-rm_board_jetson-agx-orin-devkit>`,jetson-agx-orin-devkit
-:ref:`Jetson AGX Xavier Developer Kit <ref-rm_board_jetson-agx-xavier-devkit>`,jetson-agx-xavier-devkit
 :ref:`TI SK-AM62 <ref-rm_board_am62xx-sk>`,am62xx-evm
 :ref:`TI AM64x SKEVM <ref-rm_board_am64xx-sk>`,am64xx-evm
 :ref:`TI Beaglebone Black <ref-rm_board_beaglebone-yocto>`,beaglebone-yocto
 :ref:`TI Beaglebone Black Wireless <ref-rm_board_beaglebone-yocto>`,beaglebone-yocto
+:ref:`Toradex Apalis iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6
+:ref:`Toradex Apalis iMX6 with secure boot enabled <ref-rm_boards_apalis-imx6>`,apalis-imx6-sec
+:ref:`Toradex Apalis iMX8QM <ref-rm_boards_apalis-imx8>`,apalis-imx8
