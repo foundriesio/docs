@@ -20,7 +20,7 @@
   - [Known Issues](#known-issues)
 
 ## Attention Points for Migration
-Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference-manual/linux/linux-update.html)from the v94.y release:
+Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference-manual/linux/linux-update.html) from the v94.y release:
 
 1. **Scarthgap**: **v95** is the first LmP release based on Yocto Project Scarthgap (5.0.9).
    So, when updating a FoundriesFactory from previous LmP versions the line
@@ -119,7 +119,7 @@ information.
 ## General Updates
 
 > - Yocto Project
->   - LMP release based on the OE/Yocto 5.0.8 **Scarthgap** release
+>   - LMP release based on the OE/Yocto 5.0.9 **Scarthgap** release
 >   - **BitBake** updated to the 2.8.8 release
 >   - **Go** updated to the 1.22.12 stable release
 >   - **Rust** updated to the 1.75 stable release
