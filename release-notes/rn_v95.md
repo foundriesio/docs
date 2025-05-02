@@ -1,6 +1,6 @@
 # LmP V95 Release Notes
 
-[v95 Test Results]([https://](https://qa-reports.foundries.io/lmp/lmp-ci-testing/build/f004f66e5c09523819b92a465a2f044066f00e2c/))
+[v95 Test Results](https://qa-reports.foundries.io/lmp/lmp-ci-testing/build/f004f66e5c09523819b92a465a2f044066f00e2c/)
 
 **Table of Contents**
 - [LmP V95 Release Notes](#lmp-v95-release-notes)
