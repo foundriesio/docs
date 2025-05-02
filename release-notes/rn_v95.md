@@ -138,8 +138,8 @@ information.
 ### Deprecation list
 
 > - BSP
->   - Xilinx BSP: Support was moved from `meta-lmp` to `meta-partner`
->   - STM32 BSP: Support was moved from `meta-lmp` to `meta-partner`
+>   - Xilinx BSP: Support was moved from `meta-lmp` to [`meta-partner`](https://github.com/foundriesio/meta-partner/)
+>   - STM32 BSP: Support was moved from `meta-lmp` to [`meta-partner`](https://github.com/foundriesio/meta-partner/)
 >   - iMX 8ULP: Support for this SoC was removed from LmP
 >   - iMX 7D/ULP: Support for this SoC was removed from LmP
 > - General
@@ -151,8 +151,8 @@ information.
 
 ## Plans for the Future
 
->   - TI BSP: Support will be moved from `meta-lmp` to `meta-partner` in **v96**
->   - NVidia BSP: Support will be moved from `meta-lmp` to `meta-partner` in **v96**
+> - TI BSP: Support will be moved from `meta-lmp` to [`meta-partner`](https://github.com/foundriesio/meta-partner/) in **v96**.
+> - NVIDIA BSP: Support will be moved from `meta-lmp` to [`meta-partner`](https://github.com/foundriesio/meta-partner/) in **v96**.
 
 ## Known Issues
 
