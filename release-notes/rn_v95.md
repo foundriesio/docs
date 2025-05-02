@@ -45,7 +45,7 @@ Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference
       so make sure to align the boot scripts to also remove the vendor prefix
       in the `fdtfile` variable.
    5. **Jailhouse** support in LmP is removed. An error might occur during the migration -
-      [FAQ](https://docs.foundries.io/latest/user-guide/troubleshooting/troubleshooting.html#jailhousesupportin-lmp-is-removed)
+      [FAQ](https://docs.foundries.io/latest/user-guide/troubleshooting/troubleshooting.html#jailhouse-support-in-lmp-is-removed)
    6. **am64xx-evm**: when updating from **v94** serial has to be added in the
       local boot entry conf -
       [How to](https://docs.foundries.io/latest/user-guide/lmp-customization/lmp-customization.html#kernel-command-line-arguments)
