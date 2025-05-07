@@ -29,7 +29,7 @@ Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference
 2. **Merge conflict**: When using the `lmp-tools/scripts/update-factory-manifest`
    script to update a previously created FoundriesFactory to **v95**,
    a merge conflict is expected -
-   [FAQ](https://docs.foundries.io/latest/user-guide/troubleshooting/troubleshooting.html#update-foundriesfactory-fanifest-merge-conflict)
+   [FAQ](https://docs.foundries.io/latest/user-guide/troubleshooting/troubleshooting.html#update-foundriesfactory-manifest-merge-conflict)
 3. **Linux Kernel 6.6**: The default directory expected for the DTB files for
    Linux Kernel 6.6 has changed.
    Remove the `dir` from `KERNEL_DEVICETREE` items `<dir>/<dtb-name>`
