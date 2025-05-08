@@ -12,11 +12,20 @@ QEMU CLI
 
 .. code-block::
 
-     qemu-system-x86_64 -m 1024 -cpu kvm64 -enable-kvm -serial mon:stdio -serial null \
-       -drive file=lmp-factory-image-intel-corei7-64.wic,format=raw,if=none,id=hd \
-       -device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd -device virtio-rng-pci \
-       -drive if=pflash,format=qcow2,file=ovmf.secboot.qcow2 \
-       -net user,hostfwd=tcp::22223-:22 -net nic -nographic
+     qemu-system-x86_64 \ 
+     -m 1024 \
+     -cpu kvm64 \
+     -enable-kvm \ 
+     -serial mon:stdio \
+     -serial null \
+     -drive file=lmp-factory-image-intel-corei7-64.wic,format=raw,if=none,id=hd \
+     -device virtio-scsi-pci,id=scsi \
+     -device scsi-hd,drive=hd \
+     -device virtio-rng-pci \
+     -drive if=pflash,format=qcow2,file=ovmf.secboot.qcow2 \
+     -net user,hostfwd=tcp::22223-:22 \
+     -net nic \
+     -nographic
 
 .. include:: qemu-ssh.template
 

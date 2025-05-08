@@ -37,7 +37,6 @@ Documentation Overview
    getting-started/flash-device/index
    getting-started/register-device/index
    getting-started/install-fioctl/index
-   getting-started/emulation-with-qemu/index
    getting-started/building-deploying-app/index
 
 .. toctree::

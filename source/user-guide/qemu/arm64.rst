@@ -15,12 +15,21 @@ QEMU CLI
 
 .. code-block::
 
-    qemu-system-aarch64 -m 1024 -cpu cortex-a57 -machine acpi=off -bios flash.bin \
-       -device virtio-net-device,netdev=net0,mac=52:54:00:12:35:02 -device virtio-serial-device \
-       -drive id=disk0,file=lmp-factory-image-qemuarm64-secureboot.wic,if=none,format=raw \
-       -device virtio-blk-device,drive=disk0 -netdev user,id=net0,hostfwd=tcp::2222-:22 \
-       -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
-       -chardev null,id=virtcon -machine virt,secure=on -nographic
+    qemu-system-aarch64 \
+    -m 2048 \ 
+    -cpu cortex-a57 \
+    -smp 2 \
+    -machine acpi=off \
+    -bios flash.bin \
+    -device virtio-net-device,netdev=net0,mac=52:54:00:12:35:02 \
+    -device virtio-serial-device \
+    -drive id=disk0,file=lmp-factory-image-qemuarm64-secureboot.wic,if=none,format=raw \
+    -device virtio-blk-device,drive=disk0 -netdev user,id=net0,hostfwd=tcp::2222-:22 \
+    -object rng-random,filename=/dev/urandom,id=rng0 \
+    -device virtio-rng-pci,rng=rng0 \
+    -chardev null,id=virtcon \
+    -machine virt,secure=on 
+    -nographic
 
 .. note::
     A |FIRMWARE_BLOB| artifact is usually in the same location where you downloaded the ``.wic.gz`` image.
