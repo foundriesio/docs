@@ -7,7 +7,6 @@ Emulation With QEMU
 
   This tutorial is designed to assist you in getting started with using :term:`QEMU` to emulate devices on your desktop.
   Please note that we are selecting a specific machine to establish an environment for experimenting with the FoundriesFactory™ Platform.
-  This approach will enable you to engage with subsequent tutorials and enhance your skills.
 
 Prerequisites and Pre-Work
 ---------------------------
@@ -124,8 +123,3 @@ Once you’ve converted and resized the image, you can then use it with your QEM
    To emulate multiple devices, ensure that you convert to the QCOW2 format.
    Each image converted and subsequently run with QEMU will be recognized as a distinct device.
 
-Next Step
---------------------------
-
-At this point, you have successfully set up the device.
-You are now able to :ref:`gs-register` and proceed with the following tutorials.
