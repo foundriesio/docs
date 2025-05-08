@@ -22,9 +22,8 @@ Prerequisites and Pre-Work
       - Console access to your hardware via UART serial (if choosing WiFi)
 
 .. note::
-
-   If you're starting out and prefer emulation over a physical board, refer to the guide :ref:`gs-emulation-with-qemu`.
-   This guide will walk you through "Flashing the Image," allowing you to move on to :ref:`gs-register`.
+   If you’re starting out and prefer emulation over a physical board, refer to :ref:`ref-qemu`.
+   These pages will guide you through starting up a QEMU machine, allowing you to move on to :ref:`gs-register`.
 
 .. _gs-download:
 

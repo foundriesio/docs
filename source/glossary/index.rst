@@ -405,7 +405,6 @@ Glossary
       FoundriesFactory supports the QEMU machines covered in our User-Guide.
 
       * :ref:`User-Guide, QEMU <ref-qemu>`
-      * :ref:`Getting Started, Emulation with QEMU <gs-emulation-with-qemu>`
       * `Official QEMU Documentation <https://www.qemu.org/docs/master/>`_
 
    Recipe
