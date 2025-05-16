@@ -50,7 +50,8 @@ Things to be aware of when [updating LmP](https://docs.foundries.io/95/reference
       local boot entry conf -
       [How to](https://docs.foundries.io/latest/user-guide/lmp-customization/lmp-customization.html#kernel-command-line-arguments)
    7. **imx8mn-ddr4-evk-sec**: WiFi is not working
-
+6. **intel-corei7-64 build error**: A build error is expected when migrating a
+   `intel-corei7-64` Factory with Secure Boot enabled to v95 - [Workaround](https://docs.foundries.io/95/reference-manual/security/secure-boot-uefi.html#uefi-secure-boot-key-revocation)
 
 Please check the respective vendor BSP release notes for more
 information.
