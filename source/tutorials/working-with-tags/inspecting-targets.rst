@@ -5,7 +5,7 @@ At this point, your Factory could have a different number of builds/versions com
 
 To get started, inspect the Targets you have created:
 
-Use Fioctl® on your host machine to list all Target versions:
+Use ``fioctl`` on your host machine to list all Target versions:
 
 .. prompt:: bash host:~$, auto
 
@@ -25,12 +25,10 @@ Use Fioctl® on your host machine to list all Target versions:
      8        devel   shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi3-64
      9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
 
-You might not have the same number of versions as it depends on how many builds you have triggered.
-
 Note that though most versions are tagged with ``devel``, yours may be tagged as ``main``.
 This depends on if and when you created the ``devel`` branch.
 
-This tutorial assumes you have any applications from  ``containers.git`` on the ``devel`` branch successfully building.
+This tutorial assumes you have applications from  ``containers.git`` on the ``devel`` branch successfully building.
 
 Your device should also be following the ``devel`` tag and running its latest Target with the tag ``devel``. 
 
@@ -48,9 +46,9 @@ Use ``fioctl`` on your host machine to verify what Target the device is running.
      ----           -------     ------                 ------  ----                                        ----------
      <device-name>  <factory>   raspberrypi3-64-lmp-9  OK      flask-mqtt-nginx,mosquitto,shellhttpd-mqtt  true
 
-As you can see above, the device is running ``raspberrypi3-64-lmp-9``, which is the Target created for ``raspberrypi3-64`` in the build version ``9``.
+The device is running ``raspberrypi3-64-lmp-9``, which is the Target created for ``raspberrypi3-64`` in the build version ``9``.
 
-To make sure your device is configured to follow the ``devel`` tag, use ``fioctl`` to inspect the device:
+To check if your device is following the ``devel`` tag, use ``fioctl`` to inspect the device:
 
 .. prompt:: bash host:~$, auto
 
@@ -98,6 +96,5 @@ To make sure your device is configured to follow the ``devel`` tag, use ``fioctl
      /lQvPR8gJM+byg4zx4iu6TIFh0Xx+VkoYjhy0wnamEciV7VbuQZopP4Ffw==
      -----END PUBLIC KEY-----
 
-Note that the device is configured with tag: ``devel``.
 
-If your device is not following ``devel``, flash the latest ``platform-devel`` on your device and register the device again.  
+If your device is not following ``devel``, flash the latest ``platform-devel`` on your device and register the device again.

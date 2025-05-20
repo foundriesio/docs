@@ -1,12 +1,11 @@
 Creating Targets
 ^^^^^^^^^^^^^^^^
 
-Let's simulate  regular development on the branch ``devel``.
+Let's simulate regular development on the branch ``devel``.
 Recall that as you commit changes, it generates Targets tagged with ``devel``. 
 Then all devices following the ``devel`` tag receive updates.
 
-Imagine that—while you  will keep developing on ``devel`` —you want to decide which 
-Target your devices tagged with ``tutorial`` will receive.
+Imagine that—while you will keep developing on ``devel`` —you want to decide the Target your devices tagged with ``tutorial`` will receive.
 
 .. hint::
    On the previous page we tagged the latest ``devel`` Target with the additional tag, ``tutorial``.
@@ -25,14 +24,12 @@ Edit ``docker-compose.yml``:
      
      services:
        httpd:
-         image: hub.foundries.io/cavel/shellhttpd:latest
+         image: hub.foundries.io/<factory>/shellhttpd:latest
          restart: always
          ports:
            - 8080:${PORT-8080}
          environment:
-           MSG: "This is the TEST 02"
-
-Note that ``MSG`` is defined with ``This is the TEST 02``.
+           MSG: "Oi Mundo"
 
 Commit and push the changes:
 
@@ -40,12 +37,12 @@ Commit and push the changes:
 
     host:~$ git status
     host:~$ git add shellhttpd/docker-compose.yml
-    host:~$ git commit -m "This is the TEST 02"
+    host:~$ git commit -m "Update msg"
     host:~$ git push
 
 Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targets`:
 
-The latest Target named :guilabel:`containers-devel` should be the CI job you just created.
+The latest Target named :guilabel:`containers-devel` should be the CI job you created.
 
 Wait until it finishes and change your application again.
 
@@ -61,14 +58,12 @@ Edit ``docker-compose.yml``:
      
      services:
        httpd:
-         image: hub.foundries.io/cavel/shellhttpd:latest
+         image: hub.foundries.io/<factory>/shellhttpd:latest
          restart: always
          ports:
            - 8080:${PORT-8080}
          environment:
-           MSG: "This is the TEST 03"
-
-Note that ``MSG`` is defined with ``This is the TEST 03``.
+           MSG: "Hallo Welt"
 
 Commit and push the changes:
 
@@ -76,7 +71,7 @@ Commit and push the changes:
 
     host:~$ git status
     host:~$ git add shellhttpd/docker-compose.yml
-    host:~$ git commit -m "This is the TEST 03"
+    host:~$ git commit -m "Change msg again"
     host:~$ git push
 
 Keep watching your jobs on https://app.foundries.io and once it finishes, change your application one more time.
@@ -95,14 +90,12 @@ Keep watching your jobs on https://app.foundries.io and once it finishes, change
      
      services:
        httpd:
-         image: hub.foundries.io/cavel/shellhttpd:latest
+         image: hub.foundries.io/<factory>/shellhttpd:latest
          restart: always
          ports:
            - 8080:${PORT-8080}
          environment:
-           MSG: "This is the TEST 04"
-
-Note that ``MSG`` is defined with ``This is the TEST 04``.
+           MSG: "Howdy world"
 
 Commit and push the changes:
 
@@ -110,10 +103,10 @@ Commit and push the changes:
 
     host:~$ git status
     host:~$ git add shellhttpd/docker-compose.yml
-    host:~$ git commit -m "This is the TEST 04"
+    host:~$ git commit -m "Update msg once again"
     host:~$ git push
 
-Finally, you should have three new versions in the Targets version list.
+You now have three new versions in the Targets version list.
 
 .. note::
 

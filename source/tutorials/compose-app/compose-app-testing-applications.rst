@@ -30,10 +30,10 @@ Once ``aktualizr-lite`` finishes, check the running containers:
 ::
 
      CONTAINER ID   IMAGE                                    COMMAND                  CREATED          STATUS              PORTS                    NAMES
-     9c563d12b2c6   hub.foundries.io/cavel/shellhttpd-mqtt   "/usr/local/bin/http…"   9 minutes ago    Up 9 minutes        0.0.0.0:8082->8082/tcp   shellhttpd-mqtt_httpd-mqtt_1
+     9c563d12b2c6   hub.foundries.io/<factory>/shellhttpd-mqtt   "/usr/local/bin/http…"   9 minutes ago    Up 9 minutes        0.0.0.0:8082->8082/tcp   shellhttpd-mqtt_httpd-mqtt_1
      ab91fca6c88b   eclipse-mosquitto                        "/docker-entrypoint.…"   9 minutes ago    Up 9 minutes        0.0.0.0:1883->1883/tcp   mosquitto_mosquitto_1
      0b88c1dc7bbf   nginx                                    "/docker-entrypoint.…"   10 minutes ago   Up About a minute   0.0.0.0:80->80/tcp       flask-mqtt-nginx_nginx_1
-     129a54e5821b   hub.foundries.io/cavel/flask-mqtt        "python3 -m flask ru…"   10 minutes ago   Up 7 minutes                                 flask-mqtt-nginx_flask-mqtt_1
+     129a54e5821b   hub.foundries.io/<factory>/flask-mqtt        "python3 -m flask ru…"   10 minutes ago   Up 7 minutes                                 flask-mqtt-nginx_flask-mqtt_1
 
 On your device, follow the ``shellhttpd-mqtt_httpd-mqtt_1`` container logs:
 

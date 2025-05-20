@@ -19,7 +19,7 @@ Use ``fioctl`` on your host machine to list all Targets:
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
      2        devel                                                          raspberrypi3-64
-     3        master                                                         raspberrypi3-64
+     3        main                                                           raspberrypi3-64
      4        devel   shellhttpd                                             raspberrypi3-64
      5        devel   shellhttpd                                             raspberrypi3-64
      6        devel   shellhttpd                                             raspberrypi3-64
@@ -119,7 +119,7 @@ Use ``fioctl`` again to list all Target versions:
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
      2        devel                                                                   raspberrypi3-64
-     3        master                                                                  raspberrypi3-64
+     3        main                                                                    raspberrypi3-64
      4        devel            shellhttpd                                             raspberrypi3-64
      5        devel            shellhttpd                                             raspberrypi3-64
      6        devel            shellhttpd                                             raspberrypi3-64
