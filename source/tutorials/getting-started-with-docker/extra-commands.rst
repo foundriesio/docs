@@ -23,7 +23,7 @@ Add ``--all`` to see all containers on the device, even if they are not running.
 
 Docker Logs
 """""""""""
-Often, it is useful to watch Docker container logs.
+
 Use ``docker logs <container name>`` to see the container's logs.
 If you want the command to keep following the log, use the ``--follow`` parameter:
 
@@ -32,8 +32,6 @@ The log might be empty unless you tested the ``shellhttpd`` application with ``c
 .. prompt:: bash host:~$, auto
 
     host:~$ docker logs --follow shellhttpd
-
-**Example Output**:
 
 .. prompt:: text
 
@@ -82,8 +80,6 @@ To verify the files in the root file system of the container, use the following 
 
     host:~$ docker exec shellhttpd ls /usr/local/bin/
 
-**Example Output**:
-
 .. prompt:: text
 
      httpd.sh
@@ -93,8 +89,6 @@ To check what processes are running:
 .. prompt:: bash host:~$, auto
 
     host:~$ docker exec shellhttpd ps
-
-**Example Output**:
 
 .. prompt:: text
 
@@ -108,8 +102,6 @@ Finally, you can start a shell inside the container with:
 .. prompt:: bash host:~$, auto
 
     host:~$ docker exec -it shellhttpd sh
-
-**Example Output**:
 
 .. prompt:: bash docker:~$, auto
 
@@ -134,12 +126,13 @@ To stop and then remove the container, run the commands:
     host:~$ docker stop shellhttpd
     host:~$ docker rm shellhttpd
 
-During development, it is common to make and test changes to the Docker image.
+During development it is common to make and test changes to the Docker image.
 Let us give this a try.
-In the file ``httpd.sh``, we specify the MSG variable with ``${MSG-OK}``. 
+In ``httpd.sh`` we specify the MSG variable with ``${MSG-OK}``. 
 This means if ``MSG`` is not otherwise specified, it is set with the default value "OK".
 
-Using the text editor of your choice, change ``OK`` to ``FoundriesFactory``, then rebuild and run:
+Using a text editor, change ``OK`` to ``FoundriesFactory``.
+Rebuild and run:
 
 .. prompt:: bash host:~$, auto
 
@@ -174,13 +167,12 @@ Test the new change with curl:
 
     host:~$ curl 127.0.0.1:8080
 
-**Example Output**:
-
 .. prompt:: text
 
      FoundriesFactory
 
-The ``docker run`` command can accept many other parameters.  For example,
+The ``docker run`` command can accept other parameters.
+For example,
 the ``--env`` parameter which specifies an environment variable to the container. 
 Remove the previous image and launch it again with: ``--env MSG=MyFirstContainer``
 
@@ -192,8 +184,6 @@ Test the new change with curl:
     host:~$ docker rm shellhttpd
     host:~$ docker run --env MSG=MyFirstContainer --name shellhttpd -d -p 8080:8080 shellhttpd:1.0
     host:~$ curl 127.0.0.1:8080
-
-**Example Output**:
 
 .. prompt:: text
 
@@ -221,4 +211,4 @@ Remove the container:
     host:~$ docker rm shellhttpd
 
 All these commands are important in understanding how Docker containers work. 
-Next is going into how ``docker-compose`` works.
+Next we explore how ``docker-compose`` works.

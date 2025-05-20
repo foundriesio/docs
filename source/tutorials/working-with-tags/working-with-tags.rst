@@ -13,14 +13,14 @@ This means the Targets have the tag ``main``.
    See the :ref:`ref-factory-sources` reference manual on how to configure the CI with new branches.
 
 This helps keep the development flow fast.
-For example, you have  ``platform-devel``, a ``platform`` build based on ``devel`` branch, and install it on the device.
+For example: you start with  ``platform-devel``, a ``platform`` build based on ``devel`` branch to install on a device.
 
-Then you develop applications on ``containers.git`` from the ``devel`` branch.
-The  application is built by the CI with a ``containers-devel`` trigger name and produces a Target tagged with ``devel``.
+Next you develop an application on ``containers.git`` from the ``devel`` branch.
+The application is built by the CI with a ``containers-devel`` trigger name, producing a Target tagged with ``devel``.
 
 Finally, the device automatically updates to the latest Target tagged with ``devel``.
 
-There are some use cases that you might want to control what tag a device follows, and Targets are tagged:
+There are some use cases where you want to control what tag a device follows, and Targets are tagged:
 
 - Preventing a device from following a tag such as ``devel``, which is automatically created every time you change the ``devel`` branch.
 - Testing a specific Target on a specific device.

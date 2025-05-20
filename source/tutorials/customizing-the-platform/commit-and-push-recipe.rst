@@ -52,8 +52,8 @@ Push:
      Writing objects: 100% (3/3), 299 bytes | 299.00 KiB/s,      done.
      Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
      remote: Trigger CI job...
-     remote: CI job started: https://ci.foundries.io/projects/cavel/lmp/builds/71/
-     To https://source.foundries.io/factories/cavel/meta-subscriber-overrides.git/
+     remote: CI job started: https://ci.foundries.io/projects/<factory>/lmp/builds/71/
+     To https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git/
      7767e6a..ccebcb5  main -> main
 
 .. note::
@@ -70,6 +70,6 @@ The latest **Target** named :guilabel:`platform-main` should be the CI job you j
 
 .. note::
 
-   Yocto Project builds could take some time. Click on the building target and follow the live console for details.
+   Yocto Project builds could take some time. Click on the building Target and follow the live console for details.
 
 Wait until it finishes, then move on to the next step.

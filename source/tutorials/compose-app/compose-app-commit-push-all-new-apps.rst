@@ -58,8 +58,8 @@ Push all committed modifications to the remote repository:
      Writing objects: 100% (14/14), 2.48 KiB | 2.48 MiB/s, done.
      Total 14 (delta 0), reused 4 (delta 0), pack-reused 0
      remote: Trigger CI job...
-     remote: CI job started: https://ci.foundries.io/projects/cavel/lmp/builds/61/
-     To https://source.foundries.io/factories/cavel/containers.git/
+     remote: CI job started: https://ci.foundries.io/projects/<factory>/lmp/builds/61/
+     To https://source.foundries.io/factories/<factory>/containers.git/
         f358677..72a9da5  main -> main
 
 .. note::

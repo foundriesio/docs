@@ -5,16 +5,15 @@ Edit ``shellhttpd`` back to its original state.
 
 .. tip::
 
-  In case you do not have the ``shellhttpd`` application. Complete the tutorial: 
-  :ref:`tutorial-creating-first-target`
+  If you do not have the ``shellhttpd`` application, complete :ref:`tutorial-creating-first-target`.
 
-Open a new terminal on your host machine and go into your containers repo folder.
+Open a terminal on your host machine and go into your ``containers`` repo folder.
 
 .. prompt:: bash host:~$, auto
 
     host:~$ cd containers/
 
-Edit ``httpd.sh`` according to the example below:
+Edit ``httpd.sh``:
 
 .. prompt:: bash host:~$, auto
 
@@ -34,7 +33,7 @@ Edit ``httpd.sh`` according to the example below:
 	     echo "= $(date) ============================="
      done
 
-Edit the file ``Dockerfile`` according to the example below:
+Edit ``Dockerfile``:
 
 .. prompt:: bash host:~$, auto
 
@@ -48,7 +47,7 @@ Edit the file ``Dockerfile`` according to the example below:
      
      CMD ["/usr/local/bin/httpd.sh"]
 
-Edit the file ``docker-compose.yml`` according to the example below:
+Edit ``docker-compose.yml``:
 
 .. prompt:: bash host:~$, auto
 
@@ -60,14 +59,12 @@ Edit the file ``docker-compose.yml`` according to the example below:
      
      services:
        httpd:
-         image: hub.foundries.io/cavel/shellhttpd:latest
+         image: hub.foundries.io/<factory>/shellhttpd:latest
          restart: always
          ports:
            - 8080:${PORT-8080}
          environment:
-           MSG: "Tag devel, test:01"
-
-Note that ``MSG`` is defined with ``This is the TEST 01``.
+           MSG: "${MSG-Hello world}"
 
 Commit and push all changes:
 
@@ -77,11 +74,10 @@ Commit and push all changes:
     host:~$ git add shellhttpd/docker-compose.yml
     host:~$ git add shellhttpd/httpd.sh
     host:~$ git add shellhttpd/Dockerfile
-    host:~$ git commit -m "This is the TEST 02"
+    host:~$ git commit -m "Changes for adapting shellhttpd tutorial"
     host:~$ git push
 
-Wait for your build to finish by checking the latest Target on the :guilabel:`Devices` tab 
-for your Factory.
+Wait for your build to finish by checking the latest Target on the :guilabel:`Devices` tab.
 
 Use ``fioctl`` to configure your device to run just the ``shellhttpd`` application:
 
@@ -94,9 +90,9 @@ Use ``fioctl`` to configure your device to run just the ``shellhttpd`` applicati
      Changing apps from: [] -> [shellhttpd]
      Changing packagemanager to ostree+compose_apps
 
-In a few minutes, your device should receive an update.
+In a few minutes your device should receive an update.
 
-On your device, test the container again:
+Test the container on your device:
 
 .. prompt:: bash device:~$, auto
 
@@ -104,9 +100,9 @@ On your device, test the container again:
 
 ::
 
-     This is the TEST 01
+     Hello world
 
-Check again the Target version list with ``fioctl``
+Check the Target version list with ``fioctl``
 
 .. prompt:: bash host:~$, auto
 
@@ -117,7 +113,7 @@ Check again the Target version list with ``fioctl``
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
      2        devel                                                          raspberrypi3-64
-     3        master                                                         raspberrypi3-64
+     3        main                                                         raspberrypi3-64
      4        devel   shellhttpd                                             raspberrypi3-64
      5        devel   shellhttpd                                             raspberrypi3-64
      6        devel   shellhttpd                                             raspberrypi3-64

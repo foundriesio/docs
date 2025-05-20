@@ -95,7 +95,7 @@ In this case, ``app/docker-compose.yml`` file looks like this:
 Multiple Sources
 ----------------
 
-You can can also mix the examples for both single and multiple container applications.
+You can also mix the examples for both single and multiple container applications.
 For example:
 
 .. prompt:: text
