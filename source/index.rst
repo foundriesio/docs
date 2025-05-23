@@ -117,6 +117,12 @@ Documentation Overview
    glossary/index
 
 .. toctree::
+   :caption: Appendix
+   :name: sec-appendix
+
+   appendix/fioctl-command-reference/index
+
+.. toctree::
    :caption: Release Notes
    :name: sec-release-notes
 

@@ -23,7 +23,7 @@ scripts:
     export fv=$(wget -q -O-  https://api.github.com/repos/foundriesio/fioctl/releases/latest | grep tag_name | sed -E 's/.*"([^"]+)".*/\1/')
     wget -O /tmp/fioctl https://github.com/foundriesio/fioctl/releases/download/${fv}/fioctl-linux-amd64
     chmod +x /tmp/fioctl
-    /tmp/fioctl gen-rst ./source/reference-manual/factory/fioctl/
+    /tmp/fioctl gen-rst ./source/appendix/fioctl-command-reference/
 
     make OUTDIR=/archive SPHINXBUILD=sphinx-build singlehtml html
 
