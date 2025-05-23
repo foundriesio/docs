@@ -45,30 +45,5 @@ Be aware that an image created with SE05X enabled does not boot on boards withou
 
     support SE05X integration without extra changes in LmP.
 
-Special Cases
--------------
-
-1. For Factories created **before v85**, it is also necessary to add  ``se05x`` to the ``lmp-factory-image`` build:
-
-``recipes-samples/images/lmp-factory-image.bb``:
-
-.. prompt:: text
-
-    # Support for SE05X
-    require ${@bb.utils.contains('MACHINE_FEATURES', 'se05x', 'recipes-samples/images/lmp-feature-se05x.inc', '', d)}
-
-2. If working with a different i.MX machine without default SE05X LmP support (``imx6ullevk`` and ``imx8mm-lpddr4-evk``),
-   also provide which SoC I2C bus connects to the SE05X device:
-
-``recipes-security/optee/optee-os-fio_%.bbappend``:
-
-.. prompt:: text
-
-    EXTRA_OEMAKE:append:<machine> = " \
-        ${@bb.utils.contains('MACHINE_FEATURES', 'se05x', 'CFG_IMX_I2C=y CFG_CORE_SE05X_I2C_BUS=<i2c_bus>', '', d)} \
-    "
-
-Make sure to push the changes to the ``meta-subscriber-overrides`` repo, triggering a build with the new configurations.
-
 .. _SE050 configurations:
    https://www.nxp.com/docs/en/application-note/AN12436.pdf
