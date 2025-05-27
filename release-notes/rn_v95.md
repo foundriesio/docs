@@ -15,6 +15,8 @@
     - [Bug Fixes](#bug-fixes-1)
     - [Testing](#testing-1)
   - [General Updates](#general-updates)
+    - [v95.1](#v951)
+    - [v95](#v95)
     - [Deprecation list](#deprecation-list)
   - [Plans for the Future](#plans-for-the-future)
   - [Known Issues](#known-issues)
@@ -118,6 +120,20 @@ information.
 > - Implemented a series of end-to-end tests, including tests for edge cases.
 
 ## General Updates
+
+### v95.1
+
+> - Fix the `linux-firmware` installation for the `intel-corei7-64` machine.
+>   Instead of installing all the files from package `linux-firmware`, install
+>   only the sub-packages, reducing the size of the image
+> - Reduce the kernel and modules size by building it without the
+>   CONFIG_DEBUG_INFO, consequently reducing the image size.
+> - Fix the `raspberrypi3-64` kernel configuration file allowing the boot to
+>   complete
+> - intel-microcode: upgrade 20250211 -> 20250512
+> - `raspberrypi3-64` support will be deprecated in **v96**
+
+### v95
 
 > - Yocto Project
 >   - LMP release based on the OE/Yocto 5.0.9 **Scarthgap** release
