@@ -34,80 +34,75 @@ onerror="this.style.display='none'"/>
 {%- block extrahead %}
 {{ super() }}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap">
-  <link rel="stylesheet" href="https://cdn.foundries.io/cookie-consent/2.0.1/cookie-consent.css">
 
-  <script data-analytics="1" data-cookie-consent="analytics" type="text/plain" async src="https://www.googletagmanager.com/gtag/js?id=G-RQKGR35S47"></script>
-  <script data-analytics="1" data-cookie-consent="analytics" type="text/plain">
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+  {% if adobe_analytics_url %}
+    <script type="text/javascript">
+      const parts = (new URL(window.location.href)).pathname.split('/').filter(Boolean);
 
-    gtag('js', new Date());
-    gtag('config', 'G-RQKGR35S47');
-  </script>
+      if (parts.length === 0) {
+        parts.push('home page');
+      }
+
+      const page_name = '{{ adobe_analytics_base_section }}' + parts.join(':');
+
+      const accumulator = new Array(9);
+      for (let i = 0; i < accumulator.length; i++) {
+        accumulator[i] = ['sc_section_' + (i + 1), ''];
+      }
+
+      const siteSections = parts.reduce((acc, part, idx) => {
+        if (idx > 0) {
+          acc[idx] = ['sc_section_' + (idx + 1), [acc[acc.length - 1], part].join(':')];
+
+          return acc;
+        }
+
+        acc[idx] = ['sc_section_' + (idx + 1), '{{ adobe_analytics_base_section }}' + part];
+
+        return acc;
+      }, accumulator);
+
+      const orientation = window.matchMedia('(orientation: portrait)').matches ? 'portrait' : 'landscape';
+
+      let previousPage = '';
+
+      if (document.referrer) {
+        const referrer = new URL(document.referrer);
+        const isSameOrigin = referrer.origin === document.location.origin;
+        const parts = (new URL(document.referrer)).pathname.split('/').filter(Boolean);
+
+        if (isSameOrigin) {
+          if (parts.length) {
+            previousPage = '{{ adobe_analytics_base_section }}' + parts.join(':');
+          }
+        } else {
+          previousPage = document.referrer;
+        }
+      }
+
+      window.adobeDataLayer = window.adobeDataLayer || [];
+      window.adobeDataLayer.push({
+        event: 'page-load',
+        page: {
+          page_name,
+          device_orientation: orientation,
+          language_code: 'en',
+          previous_page_name: previousPage,
+          ...Object.fromEntries(siteSections),
+        }
+      });
+    </script>
+
+    <script src="{{ adobe_analytics_url }}" type="text/javascript"></script>
+  {% endif %}
 {% endblock %}
 
 {% block footer %}
-{{ super() }}
-  <script data-cookies="1" type="text/javascript" src="https://cdn.foundries.io/cookie-consent/2.0.1/cookie-consent.iife.js"></script>
-  <script data-cookies="1" type="text/javascript">
-    const FIO_COOKIE_NAME = 'fio_consent';
-    const COOKIE_CONSENT_NAME = 'cookie-consent-preferences';
+  {{ super() }}
 
-    const fioCookie = document.cookie.split('; ').find(row => row.startsWith(`${FIO_COOKIE_NAME}=`));
-
-    if (!fioCookie) {
-      if (window.localStorage && window.localStorage.getItem(COOKIE_CONSENT_NAME)) {
-        window.localStorage.removeItem(COOKIE_CONSENT_NAME);
-      }
+  <script type="text/javascript">
+    if (typeof window._satellite != 'undefined' & typeof window._satellite.pageBottom === 'function') {
+      window._satellite.pageBottom();
     }
-    const cookieConsent = window.CookieConsent({
-      acceptAllButton: false,
-      labels: {
-        description: `<p>This site makes use of third-party cookies as explained in our <a href="https://foundries.io/company/cookie-policy/">Cookie Policy</a>, <a href="https://foundries.io/company/privacy/">Privacy Policy</a> and <a href="https://foundries.io/company/terms/">Terms and Conditions</a>.</p>`
-      },
-      cookies: [
-        {
-          id: 'essential',
-          label: 'Essential',
-          required: true,
-          checked: true,
-          description: 'Technical cookies to enable a seamless experience while using Foundries.io websites and resources.',
-        },
-        {
-          id: 'analytics',
-          label: 'Analytics (non-essential)',
-          required: false,
-          checked: true,
-          description: 'Cookies needed to understand how users interact with Foundries.io websites and resources.',
-        }
-      ],
-      dialogTemplate: function (templateVars) {
-        const { PREFIX, config } = templateVars;
-        return `
-        <aside id="${PREFIX}" class="${PREFIX} js-cookie-bar" role="dialog" aria-live="polite" aria-describedby="${PREFIX}-description" aria-hidden="true" tabindex="0">
-          <div data-nosnippet>
-            <!--googleoff: all-->
-            <header class="${PREFIX}__header" id="${PREFIX}-description">
-              <p class="title is-4">${config.get('labels.title')}</p>
-              ${config.get('labels.description')}
-            </header>
-            <form>
-              <button class="${PREFIX}__button" aria-label="${config.get('labels.aria.button')}">
-                <span>${config.get('labels.button.default')}</span>
-              </button>
-            </form>
-            <!--googleon: all-->
-          </div>
-        </aside>
-      `.trim();
-      }
-    });
-
-    cookieConsent.on('update', (cookies) => {
-      const cookieStr = cookies.filter(cookie => cookie.accepted).map(cookie => `${cookie.id}:${cookie.accepted ? '1' : '0'}`).join(',');
-      document.cookie = `${FIO_COOKIE_NAME}=${cookieStr}; path=/; secure; max-age=31536000;`;
-    });
-
-    window.CookieConsent = cookieConsent;
   </script>
 {% endblock %}
