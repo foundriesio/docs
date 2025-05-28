@@ -344,6 +344,10 @@ html_css_files = [
     'theme_overrides.css'
 ]
 
+html_js_files = [
+    'analytics-events.js'
+]
+
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
