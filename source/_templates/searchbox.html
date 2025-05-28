@@ -1,6 +1,6 @@
 {% if search_version == 'default'  %}
 
-<div role="search">
+<div role="search" data-analytics-event="megamenu" data-analytics-action="click" data-analytics-label="search" class="wy-form">
   <form id="rtd-search-form" class="wy-form" action="{{ pathto('search') }}" method="get">
     <input type="text" name="q" placeholder="{{ _('Using builtin search') }}" aria-label="{{ _('Search docs') }}" />
     <input type="hidden" name="check_keywords" value="yes" />
@@ -10,7 +10,7 @@
 
 {% else %}
 
-<div id="search"></div>
+<div id="search" data-analytics-event="megamenu" data-analytics-action="click" data-analytics-label="search"></div>
 
 <script src="https://unpkg.com/meilisearch-docsearch@latest/dist/index.global.js"></script>
 <script>
