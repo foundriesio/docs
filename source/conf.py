@@ -102,10 +102,13 @@ else:
     gh_release = 'releases/tag/mp-' + mp_version
 
 # pass vars to template engine's context
-html_context = {'search_version': search_version,
-                'meilisearch_host': meilisearch_host,
-                'meilisearch_search_key': meilisearch_search_key,
-                'gh_release': gh_release,
+html_context = {
+    'search_version': search_version,
+    'meilisearch_host': meilisearch_host,
+    'meilisearch_search_key': meilisearch_search_key,
+    'gh_release': gh_release,
+    'adobe_analytics_url': os.environ.get('ADOBE_ANALYTICS_URL', ''),
+    'adobe_analytics_base_section': 'qc:foundries:',
 }
 
 # -- General configuration ------------------------------------------------
@@ -339,6 +342,10 @@ html_static_path = ['_static']
 # Add custom CSS files.
 html_css_files = [
     'theme_overrides.css'
+]
+
+html_js_files = [
+    'analytics-events.js'
 ]
 
 # Add any extra paths that contain custom files (such as robots.txt or
