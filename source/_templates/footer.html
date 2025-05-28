@@ -1,17 +1,77 @@
-{% extends "!footer.html" %}
-{%-block contentinfo %}
+<footer>
+  {%- if (theme_prev_next_buttons_location == 'bottom' or theme_prev_next_buttons_location == 'both') and (next or prev) %}
+    {#- Translators: This is an ARIA section label for the footer section of the page. -#}
+    <div class="rst-footer-buttons" role="navigation" aria-label="{{ _('Footer') }}">
+      {%- if prev %}
+        <a href="{{ prev.link|e }}" class="btn btn-neutral float-left" title="{{ prev.title|striptags|e }}" accesskey="p" rel="prev" data-analytics-event="footer" data-analytics-action="click" data-analytics-label="footer" data-analytics-detail="{{ prev.title|striptags|e }}" data-analytics-location="{{ prev.link|e }}"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> {{ _('Previous') }}</a>
+      {%- endif %}
+      {%- if next %}
+        <a href="{{ next.link|e }}" class="btn btn-neutral float-right" title="{{ next.title|striptags|e }}" accesskey="n" rel="next" data-analytics-event="footer" data-analytics-action="click" data-analytics-label="footer" data-analytics-detail="{{ next.title|striptags|e }}" data-analytics-location="{{ next.link|e }}">{{ _('Next') }} <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      {%- endif %}
+    </div>
+  {%- endif %}
 
-<div class="download" data-toggle="link" role="note" aria-label="Link">
-  <a href="https://github.com/foundriesio/docs/{{ gh_release }}/" target="_blank" rel="noreferrer noopener" Link>
-   <button type="button" button style="margin:10px;"> Offline Version </button>
-   </a>
+  <hr/>
 
-   <a class="ot-sdk-show-settings" id="ot-sdk-btn">Cookie Settings</a>
-</div>
+  <div role="contentinfo">
+  {%- block contentinfo %}
+    <p class="is-flex is-flex-direction-row has-gap-4">
+      <a href="https://github.com/foundriesio/docs/{{ gh_release }}/" target="_blank" rel="noreferrer noopener" data-analytics-event="footer" data-analytics-action="click" data-analytics-label="footer" data-analytics-action="click" data-analytics-label="footer" data-analytics-detail="offline version" data-analytics-location="https://github.com/foundriesio/docs/{{ gh_release }}/">
+        Offline Version
+      </a>
 
-<div class="has-text-centered is-size-7 mb-2 px-6 mx-6">
-  <p>Linux<sup>&reg;</sup> is the registered trademark of Linus Torvalds in the U.S. and other countries.</p>
-</div>
-{{ super() }}
+      {%- if adobe_analytics_url %}
+        {# Needed for Adobe analytics and OneTrust cookie choice to work, need to be kept as is with its ID and ot-sdk-* class. #}
+        <a class="ot-sdk-show-settings is-link" id="ot-sdk-btn">Cookie Settings</a>
+      {%- endif %}
+    </p>
 
-{% endblock %}
+    <p>
+      Linux<sup>&reg;</sup> is the registered trademark of Linus Torvalds in the U.S. and other countries.
+    </p>
+
+    <p>
+    {%- if show_copyright %}
+      {%- if hasdoc('copyright') %}
+        {%- trans path=pathto('copyright'), copyright=copyright|e %}&#169; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+      {%- else %}
+        {%- trans copyright=copyright|e %}&#169; Copyright {{ copyright }}.{% endtrans %}
+      {%- endif %}
+    {%- endif %}
+
+    {%- if build_id and build_url %}
+      <span class="build">
+        {#- Translators: Build is a noun, not a verb -#}
+        {%- trans %}Build{% endtrans -%}
+        <a href="{{ build_url }}">{{ build_id }}</a>.
+      </span>
+    {%- elif commit %}
+      <span class="commit">
+        {#- Translators: the phrase "revision" comes from Git, referring to a commit #}
+        {%- trans %}Revision{% endtrans %} <code>{{ commit }}</code>.
+      </span>
+    {%- endif %}
+    {%- if last_updated %}
+      <span class="lastupdated">
+        {%- trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+      </span>
+    {%- endif -%}
+
+    </p>
+  {%- endblock %}
+  </div>
+
+  {% if show_sphinx %}
+    {%- set sphinx_web = '<a href="https://www.sphinx-doc.org/" data-analytics-event="footer" data-analytics-action="click" data-analytics-label="footer" data-analytics-detail="Sphinx" data-analytics-location="https://www.sphinx-doc.org">Sphinx</a>' %}
+    {%- set readthedocs_web = '<a href="https://readthedocs.org" data-analytics-event="footer" data-analytics-action="click" data-analytics-label="footer" data-analytics-detail="Read the Docs" data-analytics-location="https://readthedocs.org">Read the Docs</a>'  %}
+    {#- Translators: the variable "sphinx_web" is a link to the Sphinx project documentation with the text "Sphinx" #}
+    {%- trans sphinx_web=sphinx_web, readthedocs_web=readthedocs_web %}Built with {{ sphinx_web }} using a{% endtrans %}
+    {#- Translators: "theme" refers to a theme for Sphinx, which alters the appearance of the generated documentation #}
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme" data-analytics-event="footer" data-analytics-action="click" data-analytics-label="footer" data-analytics-detail="theme" data-analytics-location="https://github.com/readthedocs/sphinx_rtd_theme">{% trans %}theme{% endtrans %}</a>
+    {#- Translators: this is always used as "provided by Read the Docs", and should not imply Read the Docs is an author of the generated documentation. #}
+    {% trans %}provided by {{ readthedocs_web }}{% endtrans %}.
+  {% endif %}
+
+  {%- block extrafooter %} {% endblock %}
+
+</footer>
