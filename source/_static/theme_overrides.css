@@ -119,3 +119,29 @@ body {
   min-height:100%;
   background:#edf0f2
 }
+
+.is-flex {
+    display: flex !important;
+}
+
+.is-flex-direction-row {
+    flex-direction: row !important;
+}
+
+.has-gap-4 {
+    gap: 1rem !important;
+}
+
+.is-link {
+    color: #2980b9 !important;
+    text-decoration: inherit;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+.is-link:hover {
+    color: #3091d1 !important;
+    outline: 0;
+}
