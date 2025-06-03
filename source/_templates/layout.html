@@ -52,7 +52,7 @@
 
       const siteSections = parts.reduce((acc, part, idx) => {
         if (idx > 0) {
-          acc[idx] = ['sc_section_' + (idx + 1), [acc[acc.length - 1], part].join(':')];
+          acc[idx] = ['sc_section_' + (idx + 1), [acc[idx - 1][1], part].join(':')];
 
           return acc;
         }
