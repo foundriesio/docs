@@ -101,14 +101,15 @@ if mp_version.startswith('git-'):
 else:
     gh_release = 'releases/tag/mp-' + mp_version
 
+adobe_analytics_url = os.environ.get('ADOBE_ANALYTICS_URL');
 # pass vars to template engine's context
 html_context = {
     'search_version': search_version,
     'meilisearch_host': meilisearch_host,
     'meilisearch_search_key': meilisearch_search_key,
     'gh_release': gh_release,
-    'adobe_analytics_url': os.environ.get('ADOBE_ANALYTICS_URL', ''),
-    'adobe_analytics_base_section': 'qc:foundries:',
+    'adobe_analytics_url': adobe_analytics_url,
+    'adobe_analytics_base_section': 'qc:foundriesdocs:',
 }
 
 # -- General configuration ------------------------------------------------
