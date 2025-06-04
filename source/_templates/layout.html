@@ -47,17 +47,17 @@
 
       const accumulator = new Array(9);
       for (let i = 0; i < accumulator.length; i++) {
-        accumulator[i] = ['sc_section_' + (i + 1), ''];
+        accumulator[i] = ['sc_site_section_' + (i + 1), ''];
       }
 
       const siteSections = parts.reduce((acc, part, idx) => {
         if (idx > 0) {
-          acc[idx] = ['sc_section_' + (idx + 1), [acc[idx - 1][1], part].join(':')];
+          acc[idx] = ['sc_site_section_' + (idx + 1), [acc[idx - 1][1], part].join(':')];
 
           return acc;
         }
 
-        acc[idx] = ['sc_section_' + (idx + 1), '{{ adobe_analytics_base_section }}' + part];
+        acc[idx] = ['sc_site_section_' + (idx + 1), '{{ adobe_analytics_base_section }}' + part];
 
         return acc;
       }, accumulator);
