@@ -30,8 +30,59 @@ Requirements
 * Minimum 50GB of storage for a complete LmP build
 * `Docker Installed`_.
 
+Build and Install the LmP for your Factory
+------------------------------------------
+
+If you are already working with a Factory, you can download the source code with the following steps:
+
+1. Make and enter an installation directory for the LmP with your ``<factory-name>``::
+
+     mkdir <factory-name> && cd <factory-name>
+
+2. Install the ``<factory-name>`` meta-layers using repo:
+
+    .. parsed-literal::
+  
+        repo init -u https://source.foundries.io/factories/<factory-name>/lmp-manifest.git -b main -m <factory-name>.xml
+        repo sync
+
+   The manifest ``<factory-name>.xml`` refers to all the LmP meta-layers and also to the ``<factory-name>`` specific repositories as described :ref:`ref-factory-sources`.
+
+3. Build the image for ``<factory-name>`` with :term:`bitbake`:
+
+   .. parsed-literal::
+
+      MACHINE=<machine-name> source setup-environment [BUILDDIR]
+      bitbake lmp-factory-image
+
+   Set ``MACHINE`` to a supported machine.
+   See the current available options in :ref:`ref-linux-supported`.
+
+   ``BUILDDIR`` is optional; the script defaults to ``build-lmp``.
+
+   ``lmp-factory-image`` is the suggested default image.
+   Customize it with the steps from :ref:`ref-adding-packages-image`.
+
+.. tip::
+   The ``bitbake`` step can take a while.
+
+Your build artifacts will be under ``deploy/images/<machine-name>``.
+The artifact you use to flash your board is ``lmp-base-console-image-<machine-name>.wic.gz``.
+
+.. important::
+
+   While the local build is great for developing and debugging,
+   the image is not visible for the OTA system, and is for local use.
+
+   When you push the changes to your Factory Git repos, it will trigger a new build.
+   You can then flash and register your device following the instructions of :ref:`gs-flash-device` and :ref:`gs-register`.
+   Then, you can take advantage of the OTA system.
+
+Build and Install Without a Factory
+-----------------------------------
+
 Setup
-------
+^^^^^
 
 #. Create local folders for ``sstate-cache``, ``downloads`` and ``build`` to save the build outside the container:
 
@@ -114,53 +165,6 @@ Install the Image
 * For other targets, see :ref:`ref-linux-supported` for their instructions.
 
 
-Build and Install the LmP for your Factory
-------------------------------------------
-
-If you are already working with a Factory, you can instead download the source code for that factory with the following steps.
-
-1. Make and enter an installation directory for the LmP using your ``<factory-name>``::
-
-     mkdir <factory-name> && cd <factory-name>
-
-2. Install the ``<factory-name>`` meta-layers using repo:
-
-    .. parsed-literal::
-  
-        repo init -u https://source.foundries.io/factories/<factory-name>/lmp-manifest.git -b main -m <factory-name>.xml
-        repo sync
-
-   The manifest ``<factory-name>.xml`` refers to all the LmP meta-layers and also to the ``<factory-name>`` specific repositories as described :ref:`ref-factory-sources`.
-
-3.  Build the image for ``<factory-name>`` with :term:`bitbake`:
-
-   .. parsed-literal::
-
-      MACHINE=<machine-name> source setup-environment [BUILDDIR]
-      bitbake lmp-factory-image
-
-   Set ``MACHINE`` to a supported machine.
-   See the current available options in :ref:`ref-linux-supported`.
-
-   ``BUILDDIR`` is optional; the script defaults to ``build-lmp``.
-
-   ``lmp-factory-image`` is the suggested default image.
-   Customize it with the steps from :ref:`ref-adding-packages-image`.
-
-.. tip::
-   The ``bitbake`` step can take a while.
-
-Your build artifacts will be under ``deploy/images/<machine-name>``.
-The artifact you use to flash your board is ``lmp-base-console-image-<machine-name>.wic.gz``.
-
-.. important::
-
-   While the local build is great for developing and debugging,
-   the image is not visible for the OTA system, and is for local use.
-
-   When you push the changes to your Factory Git repos, it will trigger a new build.
-   You can then flash and register your device following the instructions of :ref:`gs-flash-device` and :ref:`gs-register`.
-   Then, you can take advantage of the OTA system.
 
 .. _ref-linux-building-ref:
 
