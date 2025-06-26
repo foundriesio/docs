@@ -15,7 +15,7 @@ Device Name,MACHINE
 :ref:`NXP i.MX 93 EVK <ref-rm_board_imx93evk>`,imx93-11x11-lpddr4x-evk
 :ref:`QEMU AARCH32 <ref-rm_qemu_arm>`,qemuarm
 :ref:`QEMU AARCH64 <ref-rm_qemu_arm64>`,qemuarm64-secureboot
-`Qualcomm RB3 Gen 2 <https://github.com/foundriesio/meta-partner/tree/qualcomm?tab=readme-ov-file#quick-start-guide>`_,qcs6490-rb3gen2-vision-kit
+`Qualcomm RB3 Gen 2 <https://github.com/foundriesio/meta-partner/tree/qualcomm?tab=readme-ov-file#getting-started>`_,qcs6490-rb3gen2-vision-kit
 :ref:`Raspberry Pi3/3B (64 bit) <ref-rm_board_rasbperrypi>`,raspberrypi3-64
 :ref:`Raspberry Pi4 (and CM) <ref-rm_board_rasbperrypi>`,raspberrypi4-64
 :ref:`TI SK-AM62 <ref-rm_board_am62xx-sk>`,am62xx-evm
