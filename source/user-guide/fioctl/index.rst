@@ -268,6 +268,15 @@ Set device tag
      $ fioctl devices config updates ein --tag devel                                 
      Changing tag from: main -> devel  
 
+Reset device tag
+  ``fioctl devices config updates <device_name> --tag -``
+    This will reset the tag to whatever the device got flashed with.
+
+  .. code-block:: console
+
+     $ fioctl devices config updates ein --tag -
+     Changing tag from: feat -> prod
+
 Set app(s) to be enabled
   ``fioctl devices config updates <device_name> --apps <app_name1>,<app_name2>``
     Set the app(s) a device will run.
@@ -276,6 +285,40 @@ Set app(s) to be enabled
 
        $ fioctl devices config updates ein --apps simple-app                           
        Changing apps from: [netdata] -> [simple-app] 
+
+Set app(s) to be system default
+  ``fioctl devices config updates <device_name> --apps "-"``
+    Set the app(s) a device will run based on what it got flashed with.
+  
+    .. code-block:: console
+
+       $ fioctl devices config updates ein --apps -
+       Changing apps from: [] -> [netdata, simple-app] 
+
+Disable all apps
+  ``fioctl devices config updates <device_name> --apps ,``
+    No apps will run.
+  
+    .. code-block:: console
+
+       $ fioctl devices config updates ein --apps ,                           
+       Changing apps from: [netdata] -> [] 
+
+Show current config override
+  ``fioctl devices config updates <device_name> --apps "" --tags ""``
+    Will show current overrides.
+  
+    .. code-block:: console
+
+       $ fioctl devices config updates ein --apps "" --tags ""
+        = Reporting to server with
+        Tag:  feat
+        Apps:  netdata
+
+        = Configured overrides
+
+        [pacman]
+ 
 
 Enable :ref:`ref-wireguard`
   ``fioctl devices config wireguard <device_name> <enable|disable>``
