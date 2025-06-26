@@ -31,7 +31,7 @@ Devices configured to watch a tag and Hardware ID (``MACHINE``) that match your 
 
 .. tip::
 
-   Read the blog, `What is a Target? <https://foundries.io/insights/blog/2020/05/14/whats-a-target/>`_ 
+   Read the blog, `What is a Target? <https://foundries.io/insights/blog/whats-a-target/>`_ 
    to get a high-level overview of **Targets**.
    No need to follow the instructions, as we will replicate them for here.
 
