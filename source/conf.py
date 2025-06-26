@@ -197,7 +197,8 @@ linkcheck_ignore = [
     r'https://sourceforge.net/.*', # 403 error
     'https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-uefi-lockdown.pdf', # 403 error
     r'https://source.foundries.io/factories/.*',
-    r'https://media.defense.gov/2020/Sep/15/2002497594/-1/-1/0/CTR-UEFI-Secure-Boot-Customization-UOO168873-20.PDF', # 403 error but will work for end user
+    'https://media.defense.gov/2020/Sep/15/2002497594/-1/-1/0/CTR-UEFI-Secure-Boot-Customization-UOO168873-20.PDF', # 403 error but will work for end user
+    r'https://www.nxp.com/webapp/Download?colCode=.*' # timeouts
 ]
 # Time in seconds to wait for a response. May result in false errors, but also keeps things from timing out
 linkcheck_timeout = 10
