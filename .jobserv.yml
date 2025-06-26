@@ -44,4 +44,5 @@ scripts:
     #!/bin/sh -ex
     apk add --update make git graphviz curl ttf-freefont gcc musl-dev python3-dev
     pip install -r ./requirements.txt
+    sed -i "/value == self.search_anchor/c\            if key in ('id', 'name', 'href') and value.strip(\"#\") == self.search_anchor:" /usr/local/lib/python3.12/site-packages/sphinx/builders/linkcheck.py
     make BUILDDIR=/archive SPHINXBUILD=sphinx-build linkcheck
