@@ -155,7 +155,7 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx_copybutton',
     'sphinx_toolbox.confval',
-    'sphinx-prompt',
+    'sphinx_prompt',
     'sphinx_reredirects',
     'sphinx.ext.graphviz',
 ]
