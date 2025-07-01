@@ -203,6 +203,9 @@ After :ref:`Fioctl <ref-fioctl>` is setup, you can leverage it as a Git credenti
 This allows pushing to your :ref:`Factory <ref-factory-definition>` repositories.
 With this, Git knows when you connect to ``source.foundries.io`` and uses Fioctl for authentication when utilizing ``git`` commands.
 
+.. note::
+   Make sure ``git`` is installed on your host machine.
+
 Setting Up Git
 ^^^^^^^^^^^^^^
 
