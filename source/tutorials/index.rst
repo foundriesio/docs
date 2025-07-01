@@ -6,6 +6,12 @@ Tutorials Overview
 The following tutorials will help familiarize you with the workflow for your Factory.
 As the concepts build upon others, follow them sequentially.
 
+.. important::
+   The tutorials assume you have followed the Getting Started and that you have a :ref:`registered device <gs-register>`.
+
+   Make sure you have ``git`` and :ref:`Fioctl <gs-install-fioctl>` installed on your host machine.
+   ``QEMU`` is also required if it is set in your Factory.
+
 :ref:`tutorial-gs-with-docker` introduces ``docker-compose`` apps.
 Next is :ref:`tutorial-creating-first-target` —learning what a :term:`Target` is through experience is key to using your Factory.
 
