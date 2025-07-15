@@ -31,3 +31,7 @@ QEMU CLI
 
 .. tip::
     You can register your device following the steps from :ref:`gs-register`.
+
+.. include:: resize.template
+
+.. include:: booting-graphically.template

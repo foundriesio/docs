@@ -1,0 +1,26 @@
+Image Resizing
+^^^^^^^^^^^^^^
+
+If required, the Factory image can be resized for more space available.
+
+Create and resize a ``qcow2`` image:
+
+.. parsed-literal::
+   qemu-img create -f qcow2 -F raw -b lmp-factory-image-|MACHINE|.wic |MACHINE|\_device1.qcow2
+   qemu-img resize -f qcow2 |MACHINE|\_device1.qcow2 8G
+
+The above example creates and then resizes to 8G—set to meet your needs.
+
+This requires changes to the script so that:
+
+       * ``file=`` is set as the qcow2 image name, i.e., |MACHINE|\_device1.qcow2
+       * ``format=raw`` is replaced with ``format=qcow2``.
+
+So for example, the CLI command to run the resized image is:
+
+.. parsed-literal::
+   |QEMU_COW|
+
+.. important::
+    Use ``qcow2`` if you wish to change the QEMU disk size, or if you are looking to emulate multiple devices.
+    Each image converted and subsequently run with QEMU will be recognized as a distinct device.
