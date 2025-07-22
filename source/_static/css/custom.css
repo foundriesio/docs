@@ -1,0 +1,49 @@
+
+body {
+  font-family:Roboto Flex;
+  font-weight:400;
+  min-height:100%;
+}
+
+.is-flex {
+    display: flex !important;
+}
+
+.is-flex-direction-row {
+    flex-direction: row !important;
+}
+
+.has-gap-4 {
+    gap: 1rem !important;
+}
+
+.is-link {
+    color: #2980b9 !important;
+    text-decoration: inherit;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0;
+    margin: 0;
+}
+
+.is-link:hover {
+    color: #3091d1 !important;
+    outline: 0;
+}
+
+.bd-main .bd-content .bd-article-container {
+  max-width: 100%;  /* default is 60em */
+}
+
+html[data-theme="light"] {
+  --pst-color-primary: #020B3F;
+  --pst-color-secondary: #32b993;
+  --pst-color-accent: #f5841f;
+}
+
+html[data-theme="dark"] {
+  --pst-color-primary: #f5841f;
+  --pst-color-secondary:#32b993;
+  --pst-color-surface: #020B3F;
+  
+}

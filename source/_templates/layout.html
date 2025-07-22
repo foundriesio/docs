@@ -1,35 +1,5 @@
 {% extends "!layout.html" %}
 
-{% block content %}
-
-  {%- if pagename == 'index' %}
-
-    <div class="hs-cta-embed hs-cta-simple-placeholder hs-cta-embed-113594058449" style="max-width:100%; max-height:100%; width:210px;height:42.390625px; float: right;" data-hubspot-wrapper-cta-id="113594058449">
-      <a href="https://cta-eu1.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLJ8F1aVfdJXGetAauM2Ao0F5OyUVxl26wDf6atndTEvuSPXAPNybaSR1lDg7fHjQ0upUzchcnCBbAjN6hs4ELVxYhPsZ3H%2BA%2Bu2ew%2Ffw6dfR8GhK8cl%2FjZIakjELKQLCND8xmNpZopfIaLSnQruPA%2FaZfJ%2FvtqpwlEYolaj34hIu2AfSoX8SOXlq%2Fw%3D&webInteractiveContentId=113594058449&portalId=26493592" target="_blank" rel="noopener" crossorigin="anonymous" data-analytics-event="megamenu" data-analytics-action="click" data-analytics-label="book a demo" data-analytics-location="https://foundries.io/products/book-demo/">
-        <img alt="Book a Demo" loading="lazy" src="https://hubspot-no-cache-eu1-prod.s3.amazonaws.com/cta/default/26493592/interactive-113594058449.png" style="height: 100%; width: 100%; object-fit: fill" onerror="this.style.display='none'"/>
-      </a>
-    </div>
-
-  {%- endif %}
-
-  {{ super() }}
-
-{% endblock %}
-
-{% block sidebartitle %}
-
-  <a href="https://cta-eu1.hubspot.com/web-interactives/public/v1/track/redirect?encryptedPayload=AVxigLJoSaECsY7AgSp8%2B%2FzAJj9MjRdktrFWem7ZiLYUuwu9Ps5ktV52C%2Fp4Nxue86Go1wQ8PAPPjmbHy5hgIFaiHKCuH8%2BKOg1V2VD010z%2BH2jGMmM%3D&webInteractiveContentId=113594058467&portalId=26493592" target="_blank" rel="noopener" crossorigin="anonymous" data-analytics-event="megamenu" data-analytics-action="click" data-analytics-label="megamenu" data-analytics-detail="megamenu logo" data-analytics-location="https://foundries.io">
-    <img src="{{ logo_url }}" class="logo"/>
-  </a>
-
-  <div class="version" style="color: #32b993">
-    {{ version }}
-  </div>
-
-  {% include "searchbox.html" %}
-
-{% endblock %}
-
 {%- block extrahead %}
   {{ super() }}
 

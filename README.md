@@ -7,6 +7,8 @@ This repo contains the documentation source for: <https://docs.foundries.io>
 Our docs are written in[reStucturedText](https://docutils.sourceforge.io/rst.html),
 with [Sphinx](https://www.sphinx-doc.org/en/master/) serving as the site generator.
 
+We use the [Sphinx PyData Theme](https://pydata-sphinx-theme.readthedocs.io/en/stable/).
+
 ## Requirements
 
 Before beginning any work, review the [contributing section](#contributing).
@@ -35,7 +37,7 @@ $ pip install -r requirements.txt
 
 ## Building the Docs Locally
 
-To build the html from rst files, from the top directory run:
+To build just the html from rst files, from the top directory run:
 
 ```bash
 
@@ -49,6 +51,9 @@ specify the value via the environment variables `MP_UPDATE_VERSION`.
 
 You can then open `build/html/index.html` in your browser to view the
 documentation.
+
+Alternatively, you can run `sphinx-autobuild source build` which will start a server at `http://127.0.0.1:8000/index.html`,
+and will rebuild the docs whenever a change is detected.
 
 ## Contributing
 

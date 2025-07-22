@@ -10,14 +10,14 @@
 
 {% else %}
 
-<div id="search" data-analytics-event="megamenu" data-analytics-action="click" data-analytics-label="search"></div>
+<div id="docsearch" data-analytics-event="megamenu" data-analytics-action="click" data-analytics-label="search"></div>
 
 <script src="https://unpkg.com/meilisearch-docsearch@latest/dist/index.global.js"></script>
 <script>
     
     const { docsearch } = window.__docsearch_meilisearch__;
     docsearch({
-      container: "#search",
+      container: "#docsearch",
       host: "{{ meilisearch_host }}",
       apiKey: "{{ meilisearch_search_key }}",
       indexUid: "{{ search_version }}",
@@ -48,6 +48,9 @@
     background: none;
     color: rgb(245, 132, 31);
   }
+.docsearch-modal-container {
+  z-index: 10000;
+}
 </style>
 
 {% endif %}

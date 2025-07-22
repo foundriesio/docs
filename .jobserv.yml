@@ -29,6 +29,8 @@ scripts:
 
     urlbase="https://ci.foundries.io/projects/${H_PROJECT}/builds/${H_BUILD}/${H_RUN}/"
 
+    export PR="True" # used in conf.py to check if build is local or not 
+
     set +x   # cleaner output and don't leak the secret token below
     echo == $(date "+%F %T") HTML browsable at: ${urlbase}artifacts/html/index.html
     echo == $(date "+%F %T") Single HTML browsable at: ${urlbase}artifacts/singlehtml/index.html
