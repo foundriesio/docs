@@ -813,7 +813,7 @@ For example, the following error:
    5c5376a90509b319de376bc18637ab896a1f480a Add factory-keys
 
 For example, for a FoundriesFactory created with **v94.1** and updated to **v95**,
-the merge conflicts are:
+the merge conflicts might be such as:
 
 .. code-block::
 
@@ -864,18 +864,30 @@ with the following goals in mind:
    - Creation of the missing certificate files by hand and having them available
      in the ``lmp-manifest/factory-keys`` folder.
 
-For the example above, the following steps solve the conflict:
+As the error may vary, there is no set of command lines to fit all the cases.
+For the example above, the following steps were used to solve the conflict:
 
 .. code-block:: bash
 
    git rm -rf conf/keys/
    git commit
 
+But remember the list of goals: no ``conf/keys`` folder should be present after
+the merge; all missing keys should be created.
+
 .. note::
    You can use the script ``/lmp-tools/scripts/rotate_ci_keys.sh``
-   to re-generate all the keys.
+   to re-generate **all the keys**.
    If any key is missing, a new file will be created and
-   you can commit that file.
+   you can commit only that file.
+   But remember to not override any existing key without the additional steps!
+
+For example, if you decide to use the ``/lmp-tools/scripts/rotate_ci_keys.sh``
+to generate a new file for each key, you can `git add` any freshely created file
+and `git restore` any modified file.
+
+When rotating an existing key, it is critical to make sure the boot sequence is
+updated accordingly as the new key value might impact the whole system.
 
 Jailhouse support in LmP is removed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
