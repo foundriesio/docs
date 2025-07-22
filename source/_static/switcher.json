@@ -1,0 +1,15 @@
+[
+  {
+    "name": "v95 (stable)",
+    "version": "95",
+    "url": "https://docs.foundries.io/latest/",
+    "preferred": true
+  },
+  {
+    "name": "v94",
+    "version": "94",
+    "url": "https://docs.foundries.io/94/"
+  }
+]
+
+

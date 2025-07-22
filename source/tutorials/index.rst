@@ -1,7 +1,7 @@
 .. _tutorials:
 
-Tutorials Overview
-==================
+Tutorials
+=========
 
 The following tutorials will help familiarize you with the workflow for your Factory.
 As the concepts build upon others, follow them sequentially.
@@ -30,3 +30,13 @@ For further instructional reading,
 the :ref:`User Guide <user-guide>` covers common tasks and settings for your Factory.
 
 For advanced use cases and technical details, see the :ref:`Reference Manual <ref-manual>`.
+
+.. toctree::
+  
+   getting-started-with-docker/getting-started-with-docker
+   creating-first-target/creating-first-target
+   deploying-first-app/deploying-first-app
+   configuring-and-sharing-volumes/configuring-and-sharing-volumes
+   compose-app/compose-app
+   customizing-the-platform/customizing-the-platform
+   working-with-tags/working-with-tags
