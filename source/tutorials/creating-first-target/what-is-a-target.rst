@@ -73,8 +73,8 @@ Before inspecting your latest **Target**, list all the **Targets**:
 
      VERSION  TAGS    APPS        HARDWARE IDs
      -------  ----    ----        ------------
-     1        main                raspberrypi3-64
-     2        main   shellhttpd  raspberrypi3-64
+     1        main                raspberrypi4-64
+     2        main   shellhttpd  raspberrypi4-64
 
 When you pushed your ``containers.git`` changes, it resulted in a new version, i.e.,  Target 3. 
 
@@ -100,15 +100,15 @@ Fioctl® can provide an overview of **Target**:
      
      TARGET NAME            OSTREE HASH - SHA256
      -----------            --------------------
-     raspberrypi3-64-lmp-4  3abd308ea6d4caffcdf250c7170e0dc9c8ff9082c64538bf14ca07c2df1beeff
+     raspberrypi4-64-lmp-4  3abd308ea6d4caffcdf250c7170e0dc9c8ff9082c64538bf14ca07c2df1beeff
      
      COMPOSE APP  VERSION
      -----------  -------
      shellhttpd   hub.foundries.io/<factory>/shellhttpd@sha256:3ce57a22faa2484ce602c86f522b72b1b105ce85a14fc5b2a9a12eb12de4ec7f
 
-The example above, shows a **Target Name** named ``raspberrypi3-64-lmp-4`` that:
+The example above, shows a **Target Name** named ``raspberrypi4-64-lmp-4`` that:
 
 - Is tagged with the ``main`` tag.
 - Specifies the OStree HASH corresponding to the latest ``platform-main`` build.
 - Lists all the container apps available, which in this case is just the ``shellhttpd`` app.
-- Based on the MACHINE ``raspberrypi3-64``.
+- Based on the MACHINE ``raspberrypi4-64``.

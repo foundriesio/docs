@@ -26,7 +26,7 @@ Use Fioctl on your host machine to remember your device name:
 
      NAME             FACTORY   TARGET                 STATUS   APPS        UP-TO-DATE
      ----             -------   ------                 ------   ----        ----------
-     <device-name>  <factory>  raspberrypi3-64-lmp-8  ONLINE   shellhttpd  true
+     <device-name>  <factory>  raspberrypi4-64-lmp-8  ONLINE   shellhttpd  true
 
 Now use Fioctl to set a configuration file:
 

@@ -27,14 +27,14 @@ You can also use ``fioctl`` to read information about your device.
      Owner:         6025791fd93b37d33e03b349
      Factory:	    <factory>
      Up to date:    true
-     Target:        raspberrypi3-64-lmp-4 / sha256(3abd308ea6d4caffcdf250c7170e0dc9c8ff9082c64538bf14ca07c2df1beeff)
+     Target:        raspberrypi4-64-lmp-4 / sha256(3abd308ea6d4caffcdf250c7170e0dc9c8ff9082c64538bf14ca07c2df1beeff)
      Ostree Hash:   3abd308ea6d4caffcdf250c7170e0dc9c8ff9082c64538bf14ca07c2df1beeff
      Created:       2021-04-20T20:54:37+00:00
      Last Seen:     2021-04-20T22:42:53+00:00
      Tags:          main
      Docker Apps:   shellhttpd
      Network Info:
-	     Hostname:  raspberrypi3-64
+	     Hostname:  raspberrypi4-64
 	     IP:        192.168.15.11
 	     MAC:       b8:27:eb:07:42:04
      Hardware Info:    (hidden, use --hwinfo)

@@ -11,18 +11,18 @@ Use Fioctl® on your host machine to list all Target versions:
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
-     2        devel                                                                   raspberrypi3-64
-     3        main                                                                  raspberrypi3-64
-     4        devel            shellhttpd                                             raspberrypi3-64
-     5        devel            shellhttpd                                             raspberrypi3-64
-     6        devel            shellhttpd                                             raspberrypi3-64
-     7        devel            shellhttpd                                             raspberrypi3-64
-     8        devel            shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi3-64
-     9        devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
-     10       devel,tutorial   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
-     11       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
-     12       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
-     13       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
+     2        devel                                                                   raspberrypi4-64
+     3        main                                                                  raspberrypi4-64
+     4        devel            shellhttpd                                             raspberrypi4-64
+     5        devel            shellhttpd                                             raspberrypi4-64
+     6        devel            shellhttpd                                             raspberrypi4-64
+     7        devel            shellhttpd                                             raspberrypi4-64
+     8        devel            shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi4-64
+     9        devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
+     10       devel,tutorial   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
+     11       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
+     12       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
+     13       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
 
 If you have any device following the ``devel`` tag, it should be running the latest Target.
 In the example above, this is version 13.
@@ -53,7 +53,7 @@ Use Fioctl to tag version you want, making sure to use the version you want from
 ::
 
      [devel tutorial]
-     Changing tags of raspberrypi3-64-lmp-12 from [devel] -> [devel tutorial]
+     Changing tags of raspberrypi4-64-lmp-12 from [devel] -> [devel tutorial]
      CI URL: https://ci.foundries.io/projects/<factory>/lmp/builds/12
      # Waiting for worker with tag: amd64-partner.
      --- Status change: QUEUED -> RUNNING

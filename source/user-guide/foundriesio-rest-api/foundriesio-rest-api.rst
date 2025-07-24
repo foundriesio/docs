@@ -72,10 +72,10 @@ Run:
           "owner": "5e13232f73927550af883e7b",
           "factory": "getting-started",
           "name": "device-01",
-          "created-at": "2021-11-11T14:17:50+00:00",
-          "last-seen": "2021-11-11T14:17:57+00:00",
+          "created-at": "2024-11-11T14:17:50+00:00",
+          "last-seen": "2024-11-11T14:17:57+00:00",
           "ostree-hash": "cfacf42873aa06fbf53d7b1bfcb72032f21631b068620e575696ab2ab0670efd",
-          "target-name": "raspberrypi3-64-lmp-2",
+          "target-name": "raspberrypi4-64-lmp-2",
           "current-update": "",
           "device-tags": [
             "devel"
@@ -83,7 +83,7 @@ Run:
           "tag": "devel",
           "docker-apps": [],
           "network-info": {
-            "hostname": "raspberrypi3-64",
+            "hostname": "raspberrypi4-64",
             "local_ipv4": "192.168.15.13",
             "mac": "b8:27:eb:ca:78:75"
           },
@@ -115,23 +115,23 @@ Run:
 .. code-block:: json
 
      {
-       "raspberrypi3-64-lmp-3": {
+       "raspberrypi4-64-lmp-3": {
          "custom": {
            "arch": "aarch64",
            "cliUploaded": false,
-           "createdAt": "2021-07-28T20:40:39Z",
+           "createdAt": "2025-07-28T20:40:39Z",
            "hardwareIds": [
-             "raspberrypi3-64"
+             "raspberrypi4-64"
            ],
-           "image-file": "lmp-factory-image-raspberrypi3-64.wic.gz",
+           "image-file": "lmp-factory-image-raspberrypi4-64.wic.gz",
            "lmp-manifest-sha": "b7d11e4f7d20f1fae63e1f54d8b5f48557fa40c1",
            "meta-subscriber-overrides-sha": "7de1123998c9b362df278132fde8fccb57215647",
-           "name": "raspberrypi3-64-lmp",
+           "name": "raspberrypi4-64-lmp",
            "tags": [
              "main"
            ],
            "targetFormat": "OSTREE",
-           "updatedAt": "2021-07-28T20:40:39Z",
+           "updatedAt": "2025-07-28T20:40:39Z",
            "uri": "https://ci.foundries.io/projects/getting-started/lmp/builds/3",
            "version": "3"
          },
@@ -140,23 +140,23 @@ Run:
          },
          "length": 0
        },
-       "raspberrypi3-64-lmp-2": {
+       "raspberrypi4-64-lmp-2": {
          "custom": {
            "arch": "aarch64",
            "cliUploaded": false,
-           "createdAt": "2021-07-28T20:15:29Z",
+           "createdAt": "2025-07-28T20:15:29Z",
            "hardwareIds": [
-             "raspberrypi3-64"
+             "raspberrypi4-64"
            ],
-           "image-file": "lmp-factory-image-raspberrypi3-64.wic.gz",
+           "image-file": "lmp-factory-image-raspberrypi4-64.wic.gz",
            "lmp-manifest-sha": "b6483a7b0bd666b5b871662fa46477cdeede80f2",
            "meta-subscriber-overrides-sha": "7de1123998c9b362df278132fde8fccb57215647",
-           "name": "raspberrypi3-64-lmp",
+           "name": "raspberrypi4-64-lmp",
            "tags": [
              "devel"
            ],
            "targetFormat": "OSTREE",
-           "updatedAt": "2021-07-28T20:15:29Z",
+           "updatedAt": "2025-07-28T20:15:29Z",
            "uri": "https://ci.foundries.io/projects/getting-started/lmp/builds/2",
            "version": "2"
          },
@@ -204,7 +204,7 @@ To send a configuration file named ``app.config`` to your device.
 .. code-block:: json
 
      {
-       "created-at": "2021-11-11T15:59:07",
+       "created-at": "2024-11-11T15:59:07",
        "applied-at": null,
        "reason": "API test",
        "files": [
@@ -259,7 +259,7 @@ Define the variable ``DEVICE_NAME`` and configure your device using curl_ with `
 
 .. code-block:: text
 
-     {"created-at": "2021-11-10T19:02:30", "applied-at": null, "reason": "API test", "files": [{"name": "wireguard-client", "value": "enabled=0\n\npubkey=J0H7CMG10TsTEai2Ui35KV0fb5oaJ8qd+mnWgIu091s=", "unencrypted": true}, {"name": "z-50-fioctl.toml", "on-changed": ["/usr/share/fioconfig/handlers/aktualizr-toml-update"], "value": "\n[pacman]\n  compose_apps = \"shellhttpd\"\n", "unencrypted": true}]}
+     {"created-at": "2024-11-10T19:02:30", "applied-at": null, "reason": "API test", "files": [{"name": "wireguard-client", "value": "enabled=0\n\npubkey=J0H7CMG10TsTEai2Ui35KV0fb5oaJ8qd+mnWgIu091s=", "unencrypted": true}, {"name": "z-50-fioctl.toml", "on-changed": ["/usr/share/fioconfig/handlers/aktualizr-toml-update"], "value": "\n[pacman]\n  compose_apps = \"shellhttpd\"\n", "unencrypted": true}]}
 
 Learning More About the REST API
 --------------------------------

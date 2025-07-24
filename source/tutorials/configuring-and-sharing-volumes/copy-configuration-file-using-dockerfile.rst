@@ -52,7 +52,7 @@ Commit and push the changes.
 Wait for the FoundriesFactory™ Platform's CI job to finish and for your device to receive the new target.
 
 To check if your device is up-to-date, from your Factory page check :guilabel:`Devices`.
-You should see a new number at the end of the **Target** name. For example, ``raspberrypi3-64-lmp-5``.
+You should see a new number at the end of the **Target** name. For example, ``raspberrypi4-64-lmp-5``.
 
 When the device is up-to-date, the **Status** icon will change to green.
 
