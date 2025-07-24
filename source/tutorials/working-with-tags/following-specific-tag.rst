@@ -18,15 +18,15 @@ Use ``fioctl`` on your host machine to list all Targets:
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
-     2        devel                                                          raspberrypi3-64
-     3        main                                                           raspberrypi3-64
-     4        devel   shellhttpd                                             raspberrypi3-64
-     5        devel   shellhttpd                                             raspberrypi3-64
-     6        devel   shellhttpd                                             raspberrypi3-64
-     7        devel   shellhttpd                                             raspberrypi3-64
-     8        devel   shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi3-64
-     9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
-     10       devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
+     2        devel                                                          raspberrypi4-64
+     3        main                                                           raspberrypi4-64
+     4        devel   shellhttpd                                             raspberrypi4-64
+     5        devel   shellhttpd                                             raspberrypi4-64
+     6        devel   shellhttpd                                             raspberrypi4-64
+     7        devel   shellhttpd                                             raspberrypi4-64
+     8        devel   shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi4-64
+     9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
+     10       devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
 
 Use ``fioctl`` to Tag version 10:
 
@@ -37,7 +37,7 @@ Use ``fioctl`` to Tag version 10:
 ::
 
      [devel tutorial]
-     Changing tags of raspberrypi3-64-lmp-10 from [devel] -> [devel tutorial]
+     Changing tags of raspberrypi4-64-lmp-10 from [devel] -> [devel tutorial]
      CI URL: https://ci.foundries.io/projects/<factory>/lmp/builds/10
      # Waiting for worker with tag: amd64-partner.
      --- Status change: QUEUED -> RUNNING
@@ -118,15 +118,15 @@ Use ``fioctl`` again to list all Target versions:
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
-     2        devel                                                                   raspberrypi3-64
-     3        main                                                                    raspberrypi3-64
-     4        devel            shellhttpd                                             raspberrypi3-64
-     5        devel            shellhttpd                                             raspberrypi3-64
-     6        devel            shellhttpd                                             raspberrypi3-64
-     7        devel            shellhttpd                                             raspberrypi3-64
-     8        devel            shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi3-64
-     9        devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
-     10       devel,tutorial   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
+     2        devel                                                                   raspberrypi4-64
+     3        main                                                                    raspberrypi4-64
+     4        devel            shellhttpd                                             raspberrypi4-64
+     5        devel            shellhttpd                                             raspberrypi4-64
+     6        devel            shellhttpd                                             raspberrypi4-64
+     7        devel            shellhttpd                                             raspberrypi4-64
+     8        devel            shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi4-64
+     9        devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
+     10       devel,tutorial   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
 
 Note that version 10 is now tagged with ``devel`` and ``tutorial``.
 

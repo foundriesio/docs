@@ -115,23 +115,23 @@ You can also check ``/etc/hostname`` to confirm the new hostname.
 
    .. group-tab:: Serial
       
-      .. prompt:: bash fio@raspberrypi3-64-51ca7875:~$
+      .. prompt:: bash fio@raspberrypi4-64-51ca7875:~$
       
           cat /etc/hostname 
       
       ::
       
-           raspberrypi3-64-51ca7875
+           raspberrypi4-64-51ca7875
       
    .. group-tab:: MAC
       
-      .. prompt:: bash fio@raspberrypi3-64-b827ebca7875:~$
+      .. prompt:: bash fio@raspberrypi4-64-b827ebca7875:~$
       
           cat /etc/hostname 
       
       ::
       
-          raspberrypi3-64-b827ebca7875
+          raspberrypi4-64-b827ebca7875
 
 .. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/main
 .. _lmp-auto-hostname: https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-support/lmp-auto-hostname

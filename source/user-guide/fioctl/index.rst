@@ -119,9 +119,9 @@ Target metadata can be inspected by using 3 primary commands:
            $ fioctl targets list
            VERSION  TAGS    APPS                             HARDWARE IDs
            -------  ----    ----                             ------------
-           1        main    simple-app,netdata               raspberrypi3-64
-           2        devel   mosquitto,simple-app,netdata     raspberrypi3-64
-           3        devel   simple-app,netdata,mosquitto     raspberrypi3-64
+           1        main    simple-app,netdata               raspberrypi4-64
+           2        devel   mosquitto,simple-app,netdata     raspberrypi4-64
+           3        devel   simple-app,netdata,mosquitto     raspberrypi4-64
 
 ``fioctl targets list -r``
     Lists the Targets a Factory has produced in ``-r`` (raw) json format.
@@ -150,27 +150,27 @@ Target metadata can be inspected by using 3 primary commands:
                 ],
                 "signed": {
                   "_type": "Targets",
-                  "expires": "2020-11-21T02:20:20Z",
+                  "expires": "2025-11-21T02:20:20Z",
                   "targets": {
-                    "raspberrypi3-64-lmp-57": {
+                    "raspberrypi4-64-lmp-58": {
                       "hashes": {
                         "sha256": "2d1655fb1e04e2ed39536dd96485687945ac87d6f9e7d79a01f06ec6e5d161b1"
                       },
                       "length": 0,
                       "custom": {
                         "cliUploaded": false,
-                        "name": "raspberrypi3-64-lmp",
-                        "version": "57",
+                        "name": "raspberrypi4-64-lmp",
+                        "version": "58",
                         "hardwareIds": [
-                          "raspberrypi3-64"
+                          "raspberrypi4-64"
                         ],
                         "targetFormat": "OSTREE",
-                        "uri": "https://ci.foundries.io/projects/cowboy/lmp/builds/53",
-                        "createdAt": "2020-10-21T02:20:18Z",
-                        "updatedAt": "2020-10-21T02:20:18Z",
+                        "uri": "https://ci.foundries.io/projects/cowboy/lmp/builds/58",
+                        "createdAt": "2025-10-21T02:20:18Z",
+                        "updatedAt": "2025-10-21T02:20:18Z",
                         "lmp-manifest-sha": "f39a2e1d1f81523ce222270ed9ddb3a87ff3ca09",
                         "arch": "aarch64",
-                        "image-file": "lmp-factory-image-raspberrypi3-64.wic.gz",
+                        "image-file": "lmp-factory-image-raspberrypi4-64.wic.gz",
                         "meta-subscriber-overrides-sha": "2cd6253273fc7de5ece8a45b9ec4247bcdd0556e",
                         "tags": [
                           "devel"
@@ -215,7 +215,7 @@ Target metadata can be inspected by using 3 primary commands:
 
            TARGET NAME             OSTREE HASH - SHA256
            -----------             --------------------
-           raspberrypi3-64-lmp-58  2d1655fb1e04e2ed39536dd96485687945ac87d6f9e7d79a01f06ec6e5d161b1
+           raspberrypi4-64-lmp-58  2d1655fb1e04e2ed39536dd96485687945ac87d6f9e7d79a01f06ec6e5d161b1
 
            COMPOSE APP   VERSION
            -----------   -------
@@ -237,14 +237,14 @@ View Targets
        $ fioctl targets list -f bebop
        VERSION  TAGS    APPS        HARDWARE IDs
        -------  ----    ----        ------------
-       2        devel               raspberrypi3-64
-       3        main                raspberrypi3-64
-       4        main    shellhttpd  raspberrypi3-64
-       5        main    shellhttpd  raspberrypi3-64
-       6        main                raspberrypi3-64
-       7        main                raspberrypi3-64
-       8        main    httpd       raspberrypi3-64
-       11       main    octofio     raspberrypi3-64
+       2        devel               raspberrypi4-64
+       3        main                raspberrypi4-64
+       4        main    shellhttpd  raspberrypi4-64
+       5        main    shellhttpd  raspberrypi4-64
+       6        main                raspberrypi4-64
+       7        main                raspberrypi4-64
+       8        main    httpd       raspberrypi4-64
+       11       main    octofio     raspberrypi4-64
 
 List devices
   ``fioctl devices list -f <factory>``
@@ -255,7 +255,7 @@ List devices
      $ fioctl devices list -f bebop                                                  
      NAME  FACTORY  OWNER           TARGET                  STATUS  APPS     UP TO DATE                                                                              
      ----  -------  -----           ------                  ------  ----     ----------                                                                              
-     ein   bebop    <unconfigured>  raspberrypi3-64-lmp-49  OK      netdata  true    
+     ein   bebop    <unconfigured>  raspberrypi4-64-lmp-49  OK      netdata  true    
 
 Set device tag
   ``fioctl devices config updates <device_name> --tag <tag>``

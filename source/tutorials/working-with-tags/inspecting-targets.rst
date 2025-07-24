@@ -15,15 +15,15 @@ Use ``fioctl`` on your host machine to list all Target versions:
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
-     2        devel                                                          raspberrypi3-64
-     3        main                                                           raspberrypi3-64
-     3        main                                                           raspberrypi3-64
-     4        devel   shellhttpd                                             raspberrypi3-64
-     5        devel   shellhttpd                                             raspberrypi3-64
-     6        devel   shellhttpd                                             raspberrypi3-64
-     7        devel   shellhttpd                                             raspberrypi3-64
-     8        devel   shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi3-64
-     9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
+     2        devel                                                          raspberrypi4-64
+     3        main                                                           raspberrypi4-64
+     3        main                                                           raspberrypi4-64
+     4        devel   shellhttpd                                             raspberrypi4-64
+     5        devel   shellhttpd                                             raspberrypi4-64
+     6        devel   shellhttpd                                             raspberrypi4-64
+     7        devel   shellhttpd                                             raspberrypi4-64
+     8        devel   shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi4-64
+     9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
 
 Note that though most versions are tagged with ``devel``, yours may be tagged as ``main``.
 This depends on if and when you created the ``devel`` branch.
@@ -44,9 +44,9 @@ Use ``fioctl`` on your host machine to verify what Target the device is running.
 
      NAME           FACTORY     TARGET                 STATUS  APPS                                        UP-TO-DATE
      ----           -------     ------                 ------  ----                                        ----------
-     <device-name>  <factory>   raspberrypi3-64-lmp-9  OK      flask-mqtt-nginx,mosquitto,shellhttpd-mqtt  true
+     <device-name>  <factory>   raspberrypi4-64-lmp-9  OK      flask-mqtt-nginx,mosquitto,shellhttpd-mqtt  true
 
-The device is running ``raspberrypi3-64-lmp-9``, which is the Target created for ``raspberrypi3-64`` in the build version ``9``.
+The device is running ``raspberrypi4-64-lmp-9``, which is the Target created for ``raspberrypi4-64`` in the build version ``9``.
 
 To check if your device is following the ``devel`` tag, use ``fioctl`` to inspect the device:
 
@@ -60,14 +60,14 @@ To check if your device is following the ``devel`` tag, use ``fioctl`` to inspec
      Owner:		5e13232f73927550af883e7b
      Factory:	<factory>
      Up to date:	true
-     Target:		raspberrypi3-64-lmp-9 / sha256(aa7bd4fd638dc1de1459d2d53bcd06887365483e270fb98b84cc8f9f61c44246)
+     Target:		raspberrypi4-64-lmp-9 / sha256(aa7bd4fd638dc1de1459d2d53bcd06887365483e270fb98b84cc8f9f61c44246)
      Ostree Hash:	aa7bd4fd638dc1de1459d2d53bcd06887365483e270fb98b84cc8f9f61c44246
      Created:	2021-05-25T14:36:44+00:00
      Last Seen:	2021-05-25T23:09:33+00:00
      Tags:		devel
      Docker Apps:	flask-mqtt-nginx,mosquitto,shellhttpd-mqtt
      Network Info:
-	     Hostname:	raspberrypi3-64
+	     Hostname:	raspberrypi4-64
 	     IP:		192.168.15.11
          MAC:		b8:27:eb:07:42:04
      Hardware Info: (hidden, use --hwinfo)

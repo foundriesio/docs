@@ -112,15 +112,15 @@ Check the Target version list with ``fioctl``
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
-     2        devel                                                          raspberrypi3-64
-     3        main                                                         raspberrypi3-64
-     4        devel   shellhttpd                                             raspberrypi3-64
-     5        devel   shellhttpd                                             raspberrypi3-64
-     6        devel   shellhttpd                                             raspberrypi3-64
-     7        devel   shellhttpd                                             raspberrypi3-64
-     8        devel   shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi3-64
-     9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
-     10       devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi3-64
+     2        devel                                                          raspberrypi4-64
+     3        main                                                           raspberrypi4-64
+     4        devel   shellhttpd                                             raspberrypi4-64
+     5        devel   shellhttpd                                             raspberrypi4-64
+     6        devel   shellhttpd                                             raspberrypi4-64
+     7        devel   shellhttpd                                             raspberrypi4-64
+     8        devel   shellhttpd-mqtt,mosquitto,shellhttpd,flask-mqtt-nginx  raspberrypi4-64
+     9        devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
+     10       devel   mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
 
 Check what Target your device is running:
 
@@ -132,7 +132,7 @@ Check what Target your device is running:
 
      NAME           FACTORY     TARGET                 STATUS  APPS                                        UP-TO-DATE
      ----           -------     ------                 ------  ----                                        ----------
-     <device-name>  <factory>   raspberrypi3-64-lmp-10 OK      flask-mqtt-nginx,mosquitto,shellhttpd-mqtt  true
+     <device-name>  <factory>   raspberrypi4-64-lmp-10 OK      flask-mqtt-nginx,mosquitto,shellhttpd-mqtt  true
 
 Whenever you push changes to the ``devel`` branch, the CI will build and generate a new Target tagged with ``devel``.
 As a result, devices following ``devel`` will update to the latest Target.

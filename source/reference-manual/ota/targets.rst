@@ -10,7 +10,7 @@ A Target defines a cryptographically verifiable description of the software a de
 
 For a simplified example::
 
- "raspberrypi3-64-lmp-42" : {
+ "raspberrypi4-64-lmp-42" : {
     "hashes" : {"sha256" : "0xdeadbeef"},
     "custom" : {
       "version" : "42"
@@ -19,7 +19,7 @@ For a simplified example::
           "uri" : "hub.foundries.io/andy-corp/shellhttpd@sha256:0xdeadbeef"
         }
       },
-      "hardwareIds" : ["raspberrypi3-64"],
+      "hardwareIds" : ["raspberrypi4-64"],
       "tags" : ["master"],
     }
   }

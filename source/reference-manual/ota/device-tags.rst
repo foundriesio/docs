@@ -14,11 +14,11 @@ Let us look at an example ``targets.json``::
   ...
   "signed": {
     "targets": {
-      "raspberrypi3-64-lmp-143" : {
+      "raspberrypi4-64-lmp-143" : {
         "custom" : {
           "createdAt" : "2019-08-12T22:18:16Z",
-          "hardwareIds" : ["raspberrypi3-64"],
-          "name" : "raspberrypi3-64-lmp",
+          "hardwareIds" : ["raspberrypi4-64"],
+          "name" : "raspberrypi4-64-lmp",
           "targetFormat" : "OSTREE",
           "updatedAt" : "2019-08-12T22:18:16Z",
           "version" : "143",
@@ -29,11 +29,11 @@ Let us look at an example ``targets.json``::
        },
        "length" : 0
       },
-      "raspberrypi3-64-lmp-144" : {
+      "raspberrypi4-64-lmp-144" : {
         "custom" : {
           "createdAt" : "2019-08-12T22:18:16Z",
-          "hardwareIds" : ["raspberrypi3-64"],
-          "name" : "raspberrypi3-64-lmp",
+          "hardwareIds" : ["raspberrypi4-64"],
+          "name" : "raspberrypi4-64-lmp",
           "targetFormat" : "OSTREE",
           "updatedAt" : "2019-08-12T22:18:16Z",
           "version" : "144",
@@ -70,7 +70,7 @@ Managing Tags
 By default, LmP builds are triggered for your Factory after code has been merged to main will be tagged with "postmerge".
 After doing QA on this build, it can be "promoted" using the Fioctl_ tool::
 
- fioctl targets tag -Tpostmerge,promoted raspberrypi3-64-lmp-144
+ fioctl targets tag -Tpostmerge,promoted raspberrypi4-64-lmp-144
 
 This will kick off a CI job that will tag build 144 as promoted.
 This would result in Device 2 (from the above example) in updating.

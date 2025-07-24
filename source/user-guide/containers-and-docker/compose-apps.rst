@@ -76,7 +76,7 @@ The interesting part of the Target in this case is::
   ...
   "signed": {
     "targets": {
-      "raspberrypi3-64-lmp-144" : {
+      "raspberrypi4-64-lmp-144" : {
         "custom" : {
           "docker_compose_apps" : {
              "httpd" : {

@@ -168,12 +168,6 @@ If the above methods to SSH into your board do not work, there are additional th
 .. _zeroconf:
    https://en.wikipedia.org/wiki/Zero-configuration_networking
 
-.. _Adafruit USB to TTL Serial Cable:
-   https://www.adafruit.com/product/954
-
-.. _the Adafruit guide:
-   https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/connect-the-lead
-
 .. _Win32 Disk Imager: https://sourceforge.net/projects/win32diskimager/files/Archive/
 
 .. _7zip: https://www.7-zip.org/download.html

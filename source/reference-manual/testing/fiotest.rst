@@ -16,7 +16,7 @@ The API is built around a generic model for recording test results::
 
   Test:
     Name: string - "ltp"
-    Target: string - "raspberrypi3-64-lmp-8"
+    Target: string - "raspberrypi4-64-lmp-8"
     Device: string - device uuid
     Status: string - PASS/FAIL/RUNNING
     CreatedOn: timestamp - when the test was started
@@ -44,7 +44,7 @@ The API
     # Content-type: application/json
     {
       "name": "test-name",
-      "target": "raspberrypi3-64-lmp-8"
+      "target": "raspberrypi4-64-lmp-8"
     }
     # The CreatedOn value will be auto-populated by the server.
 
