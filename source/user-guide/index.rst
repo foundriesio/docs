@@ -17,6 +17,7 @@ For in depth details and specific use cases, see the :ref:`Reference Manual <ref
    fioctl/index
    qemu/qemu
    account-management/account-management
+   developer-workflow/developer-workflow
    ip-protection/ip-protection
    custom-ci/custom-ci
    mirror-action/mirror-action

@@ -142,6 +142,9 @@ Waves Considerations
      fioctl waves init -k ~/path/to/keys/targets.only.key.tgz <new-wave> <target-number> <tag> --prune <target-to-prune>
      fioctl waves complete <new-wave>
 
+
+.. _ref-ug-production-workflow:
+
 Production Workflow
 -------------------
 
