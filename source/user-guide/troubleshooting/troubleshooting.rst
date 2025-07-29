@@ -864,7 +864,7 @@ with the following goals in mind:
    - Creation of the missing certificate files by hand and having them available
      in the ``lmp-manifest/factory-keys`` folder.
 
-As the error may vary, there is no set of command lines to fit all the cases.
+As the error may vary, there is no set of commands to fit all the cases.
 For the example above, the following steps were used to solve the conflict:
 
 .. code-block:: bash
@@ -872,7 +872,7 @@ For the example above, the following steps were used to solve the conflict:
    git rm -rf conf/keys/
    git commit
 
-But remember the list of goals: no ``conf/keys`` folder should be present after
+However, remember the list of goals: no ``conf/keys`` folder should be present after
 the merge; all missing keys should be created.
 
 .. note::
@@ -880,11 +880,11 @@ the merge; all missing keys should be created.
    to re-generate **all the keys**.
    If any key is missing, a new file will be created and
    you can commit only that file.
-   But remember to not override any existing key without the additional steps!
+   Please remember to not override any existing key without the additional steps!
 
-For example, if you decide to use the ``/lmp-tools/scripts/rotate_ci_keys.sh``
-to generate a new file for each key, you can `git add` any freshely created file
-and `git restore` any modified file.
+For example, if you decide to use ``/lmp-tools/scripts/rotate_ci_keys.sh``
+to generate a new file for each key, you can ``git add`` any freshly created file
+and ``git restore`` any modified file.
 
 When rotating an existing key, it is critical to make sure the boot sequence is
 updated accordingly as the new key value might impact the whole system.
