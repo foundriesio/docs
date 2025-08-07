@@ -12,10 +12,10 @@ The ``meta-subscriber-overrides.git`` repo allows you to customize the packages 
 To do this, you add packages as a list to the variable ``CORE_IMAGE_BASE_INSTALL`` in ``recipes-samples/images/lmp-factory-image.bb``.
 For a quick example let us add the ``stress-ng`` utility package to the build:
 
-.. code-block:: bash
+.. code-block:: console
 
-  git clone https://source.foundries.io/factories/<myfactory>/meta-subscriber-overrides.git
-  vi meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb
+   $ git clone https://source.foundries.io/factories/<myfactory>/meta-subscriber-overrides.git
+   $ vi meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb
 
 Add "stress-ng" to the package list::
 
@@ -23,18 +23,20 @@ Add "stress-ng" to the package list::
   stress-ng \
   ...
 
-Then::
+Then:
 
-  git add meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb
-  git commit -m "add stress-ng package to device image"
-  git push
+.. code-block:: console
+
+   $ git add meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb
+   $ git commit -m "add stress-ng package to device image"
+   $ git push
 
 Go and get a coffee—your Factory is generating a new image with this package.
 This can take a half an hour or more.
 
 You can check the status at:
 
- ``https://ci.foundries.io/projects/<myfactory>/lmp/``
+``https://ci.foundries.io/projects/<myfactory>/lmp/``
 
 Once completed and the update is applied, the device will reboot.
 This behavior is customizable; you can apply rules to determine when devices should restart.
@@ -191,14 +193,18 @@ The ci-scripts_ repo has logic to handle this when a Factory has secrets created
 
 Secrets matching the pattern ``ssh-*.key`` are loaded into an ssh-agent, and ``ssh-known_hosts`` is used to sets the trusted host keys for the Git server(s).
 
-To generate ``ssh-known_hosts``::
+To generate ``ssh-known_hosts``:
 
-  $ ssh-keyscan github.com > /tmp/ssh-known_hosts
+.. code-block:: console
 
-An example for accessing a private GitHub repo::
+   $ ssh-keyscan github.com > /tmp/ssh-known_hosts
 
-  $ fioctl secrets update ssh-github.key==/tmp/ssh-github.key
-  $ fioctl secrets update ssh-known_hosts==/tmp/ssh-known_hosts
+An example for accessing a private GitHub repo:
+
+.. code-block:: console
+
+   $ fioctl secrets update ssh-github.key==/tmp/ssh-github.key
+   $ fioctl secrets update ssh-known_hosts==/tmp/ssh-known_hosts
 
 At this point new CI jobs will be able to access recipes that have ``SRC_URI`` items like::
 

@@ -55,30 +55,30 @@ Validating TPM 2 PKCS#11
 
 The TPM2 PKCS#11 library is available at ``/usr/lib/pkcs11/libtpm2_pkcs11.so``.
 
-.. code-block:: shell
+.. code-block:: console
 
     # Clear TPM and erase tpm2_pkcs11 database
-    tpm2_clear -c p
-    rm -f /var/tpm2_pkcs11/tpm2_pkcs11.sqlite3
+    $ tpm2_clear -c p
+    $ rm -f /var/tpm2_pkcs11/tpm2_pkcs11.sqlite3
 
     PTOOL='pkcs11-tool --module /usr/lib/pkcs11/libtpm2_pkcs11.so'
 
     # Initialize the pkcs11 token
-    $PTOOL --init-token --label tpm2token --so-pin 12345678
-    $PTOOL --init-pin --token-label tpm2token --so-pin 12345678 --pin 87654321
+    $ PTOOL --init-token --label tpm2token --so-pin 12345678
+    $ PTOOL --init-pin --token-label tpm2token --so-pin 12345678 --pin 87654321
 
     # Generate 2 ECDSA keypairs
-    $PTOOL --keypairgen --key-type EC:prime256v1 --token-label tpm2token --id 01 --label eckey --pin 87654321
-    $PTOOL --keypairgen --key-type EC:prime256v1 --token-label tpm2token --id 02 --label eckey2 --pin 87654321
+    $ PTOOL --keypairgen --key-type EC:prime256v1 --token-label tpm2token --id 01 --label eckey --pin 87654321
+    $ PTOOL --keypairgen --key-type EC:prime256v1 --token-label tpm2token --id 02 --label eckey2 --pin 87654321
 
     # Perform sign & verify
     openssl dgst -binary -sha256 /usr/lib/pkcs11/libtpm2_pkcs11.so > file.sha
-    $PTOOL --sign --id 01 --label eckey --token-label tpm2token --pin 87654321 --mechanism ECDSA --input-file file.sha --output-file file.sha.sig
-    $PTOOL --verify --id 01 --label eckey --token-label tpm2token --pin 87654321 --mechanism ECDSA --input-file file.sha --signature-file file.sha.sig
+    $ PTOOL --sign --id 01 --label eckey --token-label tpm2token --pin 87654321 --mechanism ECDSA --input-file file.sha --output-file file.sha.sig
+    $ PTOOL --verify --id 01 --label eckey --token-label tpm2token --pin 87654321 --mechanism ECDSA --input-file file.sha --signature-file file.sha.sig
 
     # ECDH1 derive
-    $PTOOL --read-object --type pubkey --id 02 --token-label tpm2token --pin 87654321 -o /tmp/pub.der
-    $PTOOL --derive -m ECDH1-DERIVE --id 01 --label eckey --token-label tpm2token --pin 87654321 --input-file /tmp/pub.der --output-file /tmp/bytes
+    $ PTOOL --read-object --type pubkey --id 02 --token-label tpm2token --pin 87654321 -o /tmp/pub.der
+    $ PTOOL --derive -m ECDH1-DERIVE --id 01 --label eckey --token-label tpm2token --pin 87654321 --input-file /tmp/pub.der --output-file /tmp/bytes
 
 For more information, please check `pkcs11 tool configuration guide`_ and the `OPTIGA TPM Application Note`_.
 
@@ -91,9 +91,9 @@ PKCS#11 module path and pins (needed by ``aktualizr-lite`` and ``fioconfig``).
 
 To register with support for TPM 2 PKCS#11:
 
-.. code-block:: shell
+.. code-block:: console
 
-    lmp-device-register -n <device-name> -m /usr/lib/pkcs11/libtpm2_pkcs11.so -S <so-pin> -P <user-pin>
+    $ lmp-device-register -n <device-name> -m /usr/lib/pkcs11/libtpm2_pkcs11.so -S <so-pin> -P <user-pin>
 
 .. seealso::
    :ref:`howto-linux-disk-encryption`

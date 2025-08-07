@@ -13,10 +13,10 @@ Adding the Recipe
 
 Clone your ``meta-subscriber-overrides.git`` repo and enter its directory:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
-    cd meta-subscriber-overrides
+    $ git clone https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
+    $ cd meta-subscriber-overrides
 
 Edit ``recipes-samples/images/lmp-factory-image.bb``, adding the recipe to the ``CORE_IMAGE_BASE_INSTALL`` list:
 
@@ -66,39 +66,42 @@ Configuring the LmP Auto Hostname
 
 Select the Serial or MAC tab below, according to your needs.
 
-.. tabs::
+.. tab-set::
+    :sync-group: connection
 
-   .. group-tab:: Serial
+    .. tab-item:: Serial
+        :sync: serial
       
-      Serial is configured by default in the ``lmp-auto-hostname`` recipe, no need for extra changes.
-      Add the ``recipes-samples/images/lmp-factory-image.bb`` file, commit, and push:
+        Serial is configured by default in the ``lmp-auto-hostname`` recipe, no need for extra changes.
+        Add the ``recipes-samples/images/lmp-factory-image.bb`` file, commit, and push:
 
-      .. prompt:: bash host:~$, auto
+        .. code-block:: console
 
-          host:~$ git commit -m "lmp-auto-hostname: Adding recipe" recipes-samples/images/lmp-factory-image.bb
-          host:~$ git push
+           $ git commit -m "lmp-auto-hostname: Adding recipe" recipes-samples/images/lmp-factory-image.bb
+           $ git push
 
-   .. group-tab:: MAC
+    .. tab-item:: MAC
+        :sync: mac
 
-      Edit ``conf/machine/include/lmp-factory-custom.inc``, adding the variables:
+        Edit ``conf/machine/include/lmp-factory-custom.inc``, adding the variables:
       
-      .. prompt:: bash host:~$, auto
+        .. code-block:: console
       
-          host:~$ vi recipes-samples/images/lmp-factory-image.bb
+           $ vi recipes-samples/images/lmp-factory-image.bb
       
-      ::
+        .. code-block:: none
       
-           LMP_HOSTNAME_MODE = "mac"
-           LMP_HOSTNAME_NETDEVICE = "eth0"
+             LMP_HOSTNAME_MODE = "mac"
+             LMP_HOSTNAME_NETDEVICE = "eth0"
       
-      Add the changed files, commit, and push:
+        Add the changed files, commit, and push:
 
-      .. prompt:: bash host:~$, auto
+        .. code-block:: console
 
-          host:~$ git add recipes-samples/images/lmp-factory-image.bb
-          host:~$ git add conf/machine/include/lmp-factory-custom.inc
-          host:~$ git commit -m "lmp-auto-hostname: Adding recipe"
-          host:~$ git push
+           $ git add recipes-samples/images/lmp-factory-image.bb
+           $ git add conf/machine/include/lmp-factory-custom.inc
+           $ git commit -m "lmp-auto-hostname: Adding recipe"
+           $ git push
 
 The latest Target named ``platform-devel`` should be the CI job you just created.
 
@@ -111,27 +114,24 @@ Testing Auto Hostname
 Log in to the device via SSH and check the new hostname (right after ``fio@``).
 You can also check ``/etc/hostname`` to confirm the new hostname.
 
-.. tabs::
+.. tab-set::
+    :sync-group: connection
 
-   .. group-tab:: Serial
+    .. tab-item:: Serial
+        :sync: serial
       
-      .. prompt:: bash fio@raspberrypi4-64-51ca7875:~$
+        .. code-block:: console
       
-          cat /etc/hostname 
-      
-      ::
-      
+           $ cat /etc/hostname 
            raspberrypi4-64-51ca7875
       
-   .. group-tab:: MAC
+    .. tab-item:: MAC
+        :sync: mac
       
-      .. prompt:: bash fio@raspberrypi4-64-b827ebca7875:~$
+        .. code-block:: console
       
-          cat /etc/hostname 
-      
-      ::
-      
-          raspberrypi4-64-b827ebca7875
+           $ cat /etc/hostname 
+           raspberrypi4-64-b827ebca7875
 
 .. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/main
 .. _lmp-auto-hostname: https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-support/lmp-auto-hostname

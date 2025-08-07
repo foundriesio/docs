@@ -15,9 +15,9 @@ Preparation
 
 3. Unzip the file:
 
-   .. prompt:: bash host:~$, auto
-
-         host:~$ tar -xvf lmp-factory-image-jetson-agx-orin-devkit.tegraflash.tar.gz
+   .. code-block:: console
+   
+   $ tar -xvf lmp-factory-image-jetson-agx-orin-devkit.tegraflash.tar.gz
 
 The script used for flashing is ``doflash.sh``.
 
@@ -38,9 +38,11 @@ Set the board to boot into recovery mode:
    Release both buttons.
 
    To check if the board is in recovery mode, ``lsusb`` can be used.
-   Check if a device from vendor ``0955`` (NVIDIA) is available::
+   Check if a device from vendor ``0955`` (NVIDIA) is available
 
-       host:~$ lsusb | grep 0955
+   .. code-block:: console
+
+       $ lsusb | grep 0955
        Bus 001 Device 014: ID 0955:7023 NVIDIA Corp. APX
 
    This device is only available when the board successfully boots in recovery mode.
@@ -52,9 +54,9 @@ Flashing
 
 1. With the board powered in recovery mode, flash the board:
 
-  .. prompt:: bash host:~$, auto
+  .. code-block:: console
 
-     host:~$ sudo ./doflash.sh
+     $ sudo ./doflash.sh
 
   This can take a few minutes to complete. The process can be watched from the host console or UART output.
 

@@ -11,7 +11,7 @@ The recommendation is to use the reference board OP-TEE support for the ``OPTEEM
 
 ``recipes-security/optee/optee-os-fio_3.10.0.bbappend``:
 
-.. prompt:: text
+.. code-block:: none
 
     OPTEEMACHINE:<machine> = "imx-mx8mmevk"
     EXTRA_OEMAKE:append:<machine> = " \

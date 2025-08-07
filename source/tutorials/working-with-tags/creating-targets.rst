@@ -14,11 +14,11 @@ Now to change the ``shellhttpd`` application to create new Target.
 
 Edit ``docker-compose.yml``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ vi shellhttpd/docker-compose.yml
+    $ vi shellhttpd/docker-compose.yml
 
-.. prompt:: text
+.. code-block:: yaml
 
      version: '3.2'
      
@@ -33,12 +33,12 @@ Edit ``docker-compose.yml``:
 
 Commit and push the changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git status
-    host:~$ git add shellhttpd/docker-compose.yml
-    host:~$ git commit -m "Update msg"
-    host:~$ git push
+    $ git status
+    $ git add shellhttpd/docker-compose.yml
+    $ git commit -m "Update msg"
+    $ git push
 
 Go to https://app.foundries.io, select your Factory and click on :guilabel:`Targets`:
 
@@ -48,11 +48,11 @@ Wait until it finishes and change your application again.
 
 Edit ``docker-compose.yml``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ vi shellhttpd/docker-compose.yml
+    $ vi shellhttpd/docker-compose.yml
 
-.. prompt:: text
+.. code-block:: yaml
 
      version: '3.2'
      
@@ -67,24 +67,20 @@ Edit ``docker-compose.yml``:
 
 Commit and push the changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git status
-    host:~$ git add shellhttpd/docker-compose.yml
-    host:~$ git commit -m "Change msg again"
-    host:~$ git push
+    $ git status
+    $ git add shellhttpd/docker-compose.yml
+    $ git commit -m "Change msg again"
+    $ git push
 
 Keep watching your jobs on https://app.foundries.io and once it finishes, change your application one more time.
 
-``docker-compose.yml``:
+.. code-block:: console
 
-.. prompt:: bash host:~$, auto
+    $ vi shellhttpd/docker-compose.yml
 
-    host:~$ vi shellhttpd/docker-compose.yml
-
-**shellhttpd/docker-compose.yml**:
-
-.. prompt:: text
+.. code-block:: yaml
 
      version: '3.2'
      
@@ -99,12 +95,12 @@ Keep watching your jobs on https://app.foundries.io and once it finishes, change
 
 Commit and push the changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git status
-    host:~$ git add shellhttpd/docker-compose.yml
-    host:~$ git commit -m "Update msg once again"
-    host:~$ git push
+    $ git status
+    $ git add shellhttpd/docker-compose.yml
+    $ git commit -m "Update msg once again"
+    $ git push
 
 You now have three new versions in the Targets version list.
 

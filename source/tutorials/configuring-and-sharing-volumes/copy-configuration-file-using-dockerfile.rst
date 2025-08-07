@@ -5,28 +5,22 @@ Copy the Configuration File with Dockerfile
 
 Create ``shellhttpd.conf`` in your local container repository in the ``shellhttpd`` folder, which holds your ``Dockerfile``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ echo -e 'PORT=8080\nMSG="Hello from the file copied in the Dockerfile"' > shellhttpd/shellhttpd.conf
+    $ echo -e 'PORT=8080\nMSG="Hello from the file copied in the Dockerfile"' > shellhttpd/shellhttpd.conf
 
 Verify the ``shellhttpd.conf`` file:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat shellhttpd/shellhttpd.conf
-
-::
+    $ cat shellhttpd/shellhttpd.conf
 
      PORT=8080
      MSG="Hello from the file copied in the Dockerfile"
 
 Edit the ``Dockerfile`` to create the ``shellhttpd`` folder and copy ``shellhttpd.conf`` to it:
 
-.. prompt:: bash host:~$, auto
-
-    host:~$ vi shellhttpd/Dockerfile
-
-::
+.. code-block:: docker
 
     FROM alpine
     
@@ -40,14 +34,14 @@ Edit the ``Dockerfile`` to create the ``shellhttpd`` folder and copy ``shellhttp
 
 Commit and push the changes.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git status
-    host:~$ git add shellhttpd/shellhttpd.conf
-    host:~$ git add shellhttpd/httpd.sh
-    host:~$ git add shellhttpd/Dockerfile
-    host:~$ git commit -m "Adding config file with Dockerfile"
-    host:~$ git push
+    $ git status
+    $ git add shellhttpd/shellhttpd.conf
+    $ git add shellhttpd/httpd.sh
+    $ git add shellhttpd/Dockerfile
+    $ git commit -m "Adding config file with Dockerfile"
+    $ git push
 
 Wait for the FoundriesFactory™ Platform's CI job to finish and for your device to receive the new target.
 
@@ -64,10 +58,8 @@ When the device is up-to-date, the **Status** icon will change to green.
 
 Test the container from an external device connected to the same network, such as your computer:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ curl <Device IP>:8080
-
-::
+    $ curl <Device IP>:8080
 
      Hello from the file copied in the Dockerfile

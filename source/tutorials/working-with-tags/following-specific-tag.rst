@@ -10,11 +10,9 @@ Let's start tagging all Targets in the latest version with the tag ``devel`` *an
 
 Use ``fioctl`` on your host machine to list all Targets:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets list
-
-::
+    $ fioctl targets list
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
@@ -30,11 +28,9 @@ Use ``fioctl`` on your host machine to list all Targets:
 
 Use ``fioctl`` to Tag version 10:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets tag --by-version 10 -T devel,tutorial
-
-::
+    $ fioctl targets tag --by-version 10 -T devel,tutorial
 
      [devel tutorial]
      Changing tags of raspberrypi4-64-lmp-10 from [devel] -> [devel tutorial]
@@ -46,7 +42,7 @@ Use ``fioctl`` to Tag version 10:
      ==  Steps to recreate inside simulator
      
          wget -O simulate.sh https://api.foundries.io/projects/<factory>/lmp/builds/10/runs/UpdateTargets//.simulate.sh
-         # wget'ing the file may require the --header flag if the
+         # wget-ing the file may require the --header flag if the
          # jobserv API requires authentication.
          sh ./simulate.sh
      ==  Pulling container: hub.foundries.io/aktualizr
@@ -110,11 +106,9 @@ Use ``fioctl`` to Tag version 10:
 
 Use ``fioctl`` again to list all Target versions:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets list
-
-::
+    $ fioctl targets list
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
@@ -132,11 +126,9 @@ Note that version 10 is now tagged with ``devel`` and ``tutorial``.
 
 Change the device configuration to start following the ``tutorial`` tag:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl devices config updates --tags tutorial <device-name>
-
-::
+    $ fioctl devices config updates --tags tutorial <device-name>
 
      Changing tags from: [] -> [tutorial]
      Changing packagemanager to ostree+compose_apps

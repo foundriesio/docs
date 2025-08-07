@@ -20,10 +20,10 @@ i.MX 8M Mini Evaluation Kit
 .. |imx_usb_type_sdp| replace:: USB-C
 .. |imx_power_jack_type| replace:: USB-C
 
-.. |imx_lsusb| prompt:: bash $, auto
+.. |imx_lsusb| replace::
 
-     $ lsusb | grep NXP
-       Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
+   $ lsusb | grep NXP
+   Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
 
 .. |image_board_top| image:: /_static/boards/imx8mmevk.png
      :width: 600
@@ -33,30 +33,33 @@ i.MX 8M Mini Evaluation Kit
      :width: 600
      :align: middle
 
-.. |imx_tty_list| prompt:: bash $, auto
+.. |imx_tty_list| replace::
 
-          $ ls -l /dev/serial/by-id/
-            total 0
-            lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if00-port0 -> ../../ttyUSB0
-            lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if01-port0 -> ../../ttyUSB1
+   $ ls -l /dev/serial/by-id/
+   total 0
+   lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if00-port0 -> ../../ttyUSB0
+   lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_Dual_RS232-if01-port0 -> ../../ttyUSB1
 
 
 .. |usb_device_windows| image:: /_static/boards/windows_verify.png
           :width: 600
           :align: middle
 
-.. |imx_file_list| prompt:: text
+.. |imx_file_list| replace::
 
-          ├── lmp-factory-image-imx8mm-lpddr4-evk.wic.gz
-          ├── u-boot-imx8mm-lpddr4-evk.itb
-          ├── sit-imx8mm-lpddr4-evk.bin
-          ├── imx-boot-imx8mm-lpddr4-evk
-          └── mfgtool-files-imx8mm-lpddr4-evk
-               ├── bootloader.uuu
-               ├── full_image.uuu
-               ├── imx-boot-mfgtool
-               ├── uuu
-               └── uuu.exe
+      ├── lmp-factory-image-imx8mm-lpddr4-evk.wic.gz
+      ├── u-boot-imx8mm-lpddr4-evk.itb
+      ├── sit-imx8mm-lpddr4-evk.bin
+      ├── imx-boot-imx8mm-lpddr4-evk
+      └── mfgtool-files-imx8mm-lpddr4-evk
+
+.. |imx_mfgtool_file_list| replace::
+
+         ├── bootloader.uuu
+         ├── full_image.uuu
+         ├── imx-boot-mfgtool
+         ├── uuu
+         └── uuu.exe
 
 .. |secure_boot_preparation_note| replace::
     The instructions in this section also apply to those boards with secure boot enabled.

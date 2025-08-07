@@ -90,28 +90,28 @@ To create a custom set of UEFI Secure Boot keys and certificates, use `lmp-tools
 
 1. Clone the ``lmp-tools`` repository from GitHub
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone https://github.com/foundriesio/lmp-tools.git
+   $ git clone https://github.com/foundriesio/lmp-tools.git
 
 2. Create the directory for storing the keys and certificates
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    mkdir custom_uefi_keys_and_certs
+   $ mkdir custom_uefi_keys_and_certs
 
 3. Install the prerequisite packages to use ``gen_uefi_certs.sh``
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    sudo apt install openssl, efitools, uuid-runtime
+   $ sudo apt install openssl, efitools, uuid-runtime
 
 4. Run ``gen_uefi_certs.sh``
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd custom_uefi_keys_and_certs
-    ../lmp-tools/security/uefi/gen_uefi_certs.sh
+    $ cd custom_uefi_keys_and_certs
+    $ ../lmp-tools/security/uefi/gen_uefi_certs.sh
 
 The generated certificates must be enrolled into your target UEFI implementation.
 The DB private key must be made available to LmP during build time for signing the required bootloader and kernel boot images.
@@ -190,9 +190,9 @@ An easy way to do this, as QEMU includes PXE support, is to run the application 
 
 In the snippet below, QEMU fetches `LockDown.efi` from the `/tmp` directory using its PXE capabilities. Note that **OVMF** boots directly in **Setup Mode**, so it does not require initialization for this mode. This is in accordance with what is described in section 32.3, `Creating Trust Relationships`_, of the UEFI specification.
 
-.. prompt::
+.. code-block:: console
 
-	qemu-system-x86_64 \
+	$ qemu-system-x86_64 \
 		-device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
 		-netdev user,id=net0,tftp=/tmp/,bootfile=/LockDown.efi \
 		-object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
@@ -203,16 +203,16 @@ In the snippet below, QEMU fetches `LockDown.efi` from the `/tmp` directory usin
 
 After provisioning the system using PXE boot with QEMU, you can boot the secure image. Ensure that you set ``bootindex=0`` on the device from which you want to boot.
 
-.. prompt::
+.. code-block::
 
 	-drive if=none,id=hd,file=/tmp/lmp-mini-image-intel-corei7-64.wic,format=raw \
 	-device virtio-scsi-pci,id=scsi -device scsi-hd,drive=hd,bootindex=0 \
 
 You can also boot a wic image in QEMU and select the Secure Boot Provisioning menu using the following command:
 
-.. prompt::
+.. code-block:: console
 
-	qemu-system-x86_64 \
+	$ qemu-system-x86_64 \
 		-device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
 		-netdev user,id=net0,hostfwd=tcp::5522-:22 \
 		-object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
@@ -245,12 +245,12 @@ It is advisable to backup the current UEFI Secure Boot values—created and incl
 1. Boot LmP with UEFI Secure Boot disabled
 2. Dump the UEFI Secure Boot variables (EFI Signature List format)
 
-.. prompt:: bash $
+.. code-block:: console
 
-    efi-readvar -v PK -o PK.old.esl
-    efi-readvar -v KEK -o KEK.old.esl
-    efi-readvar -v db -o DB.old.esl
-    efi-readvar -v dbx -o DBX.old.esl
+    $ efi-readvar -v PK -o PK.old.esl
+    $ efi-readvar -v KEK -o KEK.old.esl
+    $ efi-readvar -v db -o DB.old.esl
+    $ efi-readvar -v dbx -o DBX.old.esl
 
 The ``sig-list-to-certs`` utility (from efitools) can be used to break from ESL into hashes and certificates.
 
@@ -301,7 +301,7 @@ Verifying the UEFI Secure Boot State
 
 To check if UEFI Secure Boot is enabled and used at runtime, execute the ``bootctl`` tool:
 
-.. prompt::
+.. code-block:: console
 
 	root@intel-corei7-64:~# bootctl
 	System:
@@ -349,7 +349,7 @@ To check if UEFI Secure Boot is enabled and used at runtime, execute the ``bootc
 
 Another quick method is to check for the **Secure boot** kernel boot log message:
 
-.. prompt::
+.. code-block:: console
 
 	root@intel-corei7-64:~# dmesg | grep "Secure boot"
 	[    0.002984] Secure boot enabled

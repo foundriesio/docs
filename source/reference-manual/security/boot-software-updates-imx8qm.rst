@@ -337,7 +337,7 @@ Boot firmware version information will be automatically added to ``${osroot}/usr
 
 Example:
 
-::
+.. code-block:: diff
 
     diff --git a/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend
     new file mode 100644

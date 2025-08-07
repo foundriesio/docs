@@ -22,17 +22,17 @@ The patches can be copied to the appropriate directory under ``meta-subscriber-o
 `Devtool <https://docs.yoctoproject.org/ref-manual/devtool-reference.html>`_ can be used during the process.
 As described in the Yocto Project documentation:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    devtool modify u-boot-fio
-    devtool finish --force-patch-refresh u-boot-fio <layer_path>
+    $ devtool modify u-boot-fio
+    $ devtool finish --force-patch-refresh u-boot-fio <layer_path>
 
 The resultant source code from the merge of ``u-boot-fio`` and board-specific patches can now be compiled and tested on a target.
 In some cases, the user may need to create additional patches in order to align their board support with the ``u-boot-fio`` tree.
 
 For example:
 
-.. prompt:: text
+.. code-block:: none
 
     recipes-bsp/u-boot/
     ├── u-boot-fio

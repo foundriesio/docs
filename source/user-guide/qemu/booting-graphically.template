@@ -14,19 +14,22 @@ To check the available options for your system, use the ``-display help`` flag:
 
 In general, adding the following flags to the QEMU CLI should work:
 
-.. tabs::
+.. tab-set::
+    :sync-group: os
 
-   .. group-tab:: Linux
+    .. tab-item:: Linux
+        :sync: linux
 
-      .. parsed-literal::
+        .. parsed-literal::
 
-         |QEMU_GUI_FLAGS_LINUX|
+           |QEMU_GUI_FLAGS_LINUX|
 
-   .. group-tab:: macOS
+    .. tab-item:: macOS
+        :sync: macos
 
-      .. parsed-literal::
+        .. parsed-literal::
 
-         |QEMU_GUI_FLAGS_MAC|
+           |QEMU_GUI_FLAGS_MAC|
 
 Also, do not copy the ``-nographic`` flag at the end of the QEMU CLI below.
 

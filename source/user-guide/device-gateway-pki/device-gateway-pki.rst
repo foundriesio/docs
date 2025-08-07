@@ -56,9 +56,11 @@ You can replay what the ``fioctl keys ca create`` command does using the followi
 ''''''''''''''''''''''''''''''''
 
 You may use `Curl <https://curl.se/>`_ to play with the Factory PKI APIs.
-The following command calls the API to generate CSRs for the server TLS certificate and the Online Device CA::
+The following command calls the API to generate CSRs for the server TLS certificate and the Online Device CA:
 
-    curl "https://api.foundries.io/ota/factories/${FACTORY}/certs/" \
+.. code-block:: console
+
+    $ curl "https://api.foundries.io/ota/factories/${FACTORY}/certs/" \
         -s -X POST -H "Content-Type: application/json" -H "OSF-Token: $TOKEN" \
         -d '{"first-time-init": true, "tls-csr": true, "ca-csr": true, "est-tls-csr": false}'
 
@@ -99,18 +101,22 @@ First, you need to create the following certificate configuration file on your f
     It is important that the Organization Unit (OU) of your Factory Root CA Subject field is set to your Factory name.
     That information is used by the API to validate that you upload a Root CA for a correct Factory.
 
-Next, use the following OpenSSL command to generate the private key for your Factory Root CA::
+Next, use the following OpenSSL command to generate the private key for your Factory Root CA:
 
-    openssl ecparam -genkey -name prime256v1 | openssl ec -out factory_ca.key
+.. code-block:: console
+
+   $ openssl ecparam -genkey -name prime256v1 | openssl ec -out factory_ca.key
 
 The above command stores the private key in a ``factory_ca.key`` file on your local file system.
 If you want to store in on an HSM device, look at the `Fioctl Bash based PKI implementation`_ for an example.
 
 .. _Fioctl Bash based PKI implementation: https://github.com/foundriesio/fioctl/blob/main/x509/bash.go
 
-Once you have a configuration and private key files, use the following OpenSSL command to generate the Factory Root CA::
+Once you have a configuration and private key files, use the following OpenSSL command to generate the Factory Root CA:
 
-    openssl req -new -x509 -days 7300 -sha256 -config factory_ca.cnf -key factory_ca.key -out factory_ca.pem
+.. code-block:: console
+
+   $ openssl req -new -x509 -days 7300 -sha256 -config factory_ca.cnf -key factory_ca.key -out factory_ca.pem
 
 The above command stores your Factory Root CA certificate in a ``factory_ca.pem`` file on your local file system.
 In this example, the Factory Root CA is self-signed by its own private key.
@@ -149,17 +155,23 @@ First, you need to create the following certificate configuration files on your 
     A user ID can be determined from the ``fioctl users`` command output or your Factory Users page.
     A user specified in this field becomes an owner of all devices auto-registered using client certificates issued by this CA.
 
-Next, use the following OpenSSL command to generate the private key for your Factory Root CA::
+Next, use the following OpenSSL command to generate the private key for your Factory Root CA:
 
-    openssl ecparam -genkey -name prime256v1 | openssl ec -out local_ca.key
+.. code-block:: console
 
-Then, generate a CSR for your Local Device CA using the following OpenSSL command::
+    $ openssl ecparam -genkey -name prime256v1 | openssl ec -out local_ca.key
 
-    openssl req -new -config local_ca.cnf -key local_ca.key -out local_ca.csr
+Then, generate a CSR for your Local Device CA using the following OpenSSL command:
 
-Finally, use OpenSSL to generate your Factory Local Device CA, and sign it by your Factory Root CA::
+.. code-block:: console
 
-    openssl x509 -req -days 3650 -sha256 -CAcreateserial -in local_ca.csr \
+    $ openssl req -new -config local_ca.cnf -key local_ca.key -out local_ca.csr
+
+Finally, use OpenSSL to generate your Factory Local Device CA, and sign it by your Factory Root CA:
+
+.. code-block:: console
+
+   $ openssl x509 -req -days 3650 -sha256 -CAcreateserial -in local_ca.csr \
         -extfile ca.ext -CAkey factory_ca.key -CA factory_ca.pem -out local_ca.pem
 
 These commands will store your Factory Local Device CA private key and certificate in ``local_ca.key`` and ``local_ca.pem`` files.
@@ -179,20 +191,26 @@ First, you need to create the following certificate configuration files on your 
         keyUsage=critical, keyCertSign
         basicConstraints=critical, CA:TRUE, pathlen:0
 
-Next, use OpenSSL to determine the DNS names from the server TLS CSR, and append it to the server configuration file::
+Next, use OpenSSL to determine the DNS names from the server TLS CSR, and append it to the server configuration file:
 
-    echo "subjectAltName=$(openssl req -text -noout -verify -in tls.csr | grep DNS:)" >> server.ext
+.. code-block:: console
 
-Finally, use OpenSSL to generate the server TLS certificate, and sign it by your Factory Root CA::
+   $ echo "subjectAltName=$(openssl req -text -noout -verify -in tls.csr | grep DNS:)" >> server.ext
 
-    openssl x509 -req -days 3650 -sha256 -CAcreateserial -in tls.csr \
+Finally, use OpenSSL to generate the server TLS certificate, and sign it by your Factory Root CA:
+
+.. code-block:: console
+
+    $ openssl x509 -req -days 3650 -sha256 -CAcreateserial -in tls.csr \
         -extfile server.ext -CAkey factory_ca.key -CA factory_ca.pem -out tls.pem
 
 Similarly, you may generate and sign a server TLS certificate for Foundries.io hosted EST server if you need it.
 
-If you also want to have a Factory Online Device CA, generate and sign using the following OpenSSL command::
+If you also want to have a Factory Online Device CA, generate and sign using the following OpenSSL command:
 
-    openssl x509 -req -days 3650 -sha256 -CAcreateserial -in online_ca.csr \
+.. code-block:: console
+
+   $ openssl x509 -req -days 3650 -sha256 -CAcreateserial -in online_ca.csr \
         -extfile ca.ext -CAkey factory_ca.key -CA factory_ca.pem -out online_ca.pem
 
 5. Upload Generated Certificates to the API
@@ -201,18 +219,22 @@ If you also want to have a Factory Online Device CA, generate and sign using the
 Once you have generated all the necessary certificates, you may upload them to the Factory PKI API.
 
 You might have generated more than one Device CA (for example both Local and Online Device CAs, or several Local Device CAs).
-In this case, you need to contatenate them into a single file before the upload, e.g. using this command::
+In this case, you need to concatenate them into a single file before the upload, e.g. using this command:
 
-    cat online_ca.pem local_ca.pem >> device_ca_list.pem
+.. code-block:: console
 
-Your Factory PKI certificates may be uploaded to the API using this Curl command::
+   $ cat online_ca.pem local_ca.pem >> device_ca_list.pem
 
-    ROOT_CA_CRT=$(cat factory_ca.pem | awk -v ORS='\\n' '1') \
-    DEVICE_CA_CRT=$(cat device_ca_list.pem | awk -v ORS='\\n' '1') \
-    TLS_CRT=$(cat tls.pem | awk -v ORS='\\n' '1') \
-    curl "https://api.foundries.io/ota/factories/${FACTORY}/certs/" \
-        -s -X PATCH -H "Content-Type: application/json" -H "OSF-Token: $TOKEN" \
-        -d '{"root-crt": "'"${ROOT_CA_CRT}"'", "tls-crt": "'"${TLS_CRT}"'", "ca-crt": "'"${DEVICE_CA_CRT}"'"}'
+Your Factory PKI certificates may be uploaded to the API using this Curl command:
+
+.. code-block:: console
+
+    $ ROOT_CA_CRT=$(cat factory_ca.pem | awk -v ORS='\\n' '1') \
+    $ DEVICE_CA_CRT=$(cat device_ca_list.pem | awk -v ORS='\\n' '1') \
+    $ TLS_CRT=$(cat tls.pem | awk -v ORS='\\n' '1') \
+    $ curl "https://api.foundries.io/ota/factories/${FACTORY}/certs/" \
+         -s -X PATCH -H "Content-Type: application/json" -H "OSF-Token: $TOKEN" \
+         -d '{"root-crt": "'"${ROOT_CA_CRT}"'", "tls-crt": "'"${TLS_CRT}"'", "ca-crt": "'"${DEVICE_CA_CRT}"'"}'
 
 After this command your Factory PKI is ready to use.
 
@@ -245,33 +267,43 @@ First, you need to create the following certificate configuration files on your 
         keyUsage=critical, digitalSignature
         basicConstraints=critical, clientAuth
 
-Next, use the following OpenSSL command to generate the private key for your device client certificate::
+Next, use the following OpenSSL command to generate the private key for your device client certificate:
 
-    openssl ecparam -genkey -name prime256v1 | openssl ec -out client.key
+.. code-block:: console
 
-Then, generate a CSR for your device client certificate using the following OpenSSL command::
+    $ openssl ecparam -genkey -name prime256v1 | openssl ec -out client.key
 
-    openssl req -new -config client.cnf -key client.key -out client.csr
+Then, generate a CSR for your device client certificate using the following OpenSSL command:
 
-Finally, use OpenSSL to generate your device client certificate, and sign it by your Factory Local Device CA::
+.. code-block:: console
 
-    openssl x509 -req -days 3650 -sha256 -CAcreateserial -in client.csr \
-        -extfile ca.ext -CAkey local_ca.key -CA local_ca.pem -out client.pem
+    $ openssl req -new -config client.cnf -key client.key -out client.csr
+
+Finally, use OpenSSL to generate your device client certificate, and sign it by your Factory Local Device CA:
+
+.. code-block:: console
+
+    $ openssl x509 -req -days 3650 -sha256 -CAcreateserial -in client.csr \
+         -extfile ca.ext -CAkey local_ca.key -CA local_ca.pem -out client.pem
 
 At this point, the device should be ready to connect to your Factory Device Gateway to fetch updates.
-Optionally, you might register your device with the API using this Curl command::
+Optionally, you might register your device with the API using this Curl command:
 
-    DEVICE_CRT=$(cat client.pem | awk -v ORS='\\n' '1') \
-    curl "https://api.foundries.io/ota/devices/" \
-        -s -X PUT -H "Content-Type: application/json" -H "OSF-Token: $TOKEN" \
-        -d '{"client.pem": "'"${DEVICE_CRT}"'", "name": "<optional-device-name>"}'
+.. code-block:: console
 
-You may run the following commands to verify that your device can connect to your Factory Device Gateway::
+    $ DEVICE_CRT=$(cat client.pem | awk -v ORS='\\n' '1') \
+    $ curl "https://api.foundries.io/ota/devices/" \
+         -s -X PUT -H "Content-Type: application/json" -H "OSF-Token: $TOKEN" \
+         -d '{"client.pem": "'"${DEVICE_CRT}"'", "name": "<optional-device-name>"}'
+
+You may run the following commands to verify that your device can connect to your Factory Device Gateway:
+
+.. code-block:: console
 
     # Run this command first to see the device gateway host name (which looks like <device-gateway-ID>.ota-lite.foundries.io):
-    openssl x509 -noout -in tls.pem -ext subjectAltName
+    $ openssl x509 -noout -in tls.pem -ext subjectAltName
 
     # Then, substitute the <device-gateway-ID> in the below command with your findings.
-    curl --cacert factory_ca.pem --cert client.pem --key client.key https://<device-gateway-ID>.ota-lite.foundries.io:8443/repo/1.root.json | jq
+    $ curl --cacert factory_ca.pem --cert client.pem --key client.key https://<device-gateway-ID>.ota-lite.foundries.io:8443/repo/1.root.json | jq
 
 If you did not register your device with the API, it will be auto-registered on the first call to the Device Gateway.

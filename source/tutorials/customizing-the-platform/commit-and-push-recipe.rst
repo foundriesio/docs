@@ -3,11 +3,9 @@ Commit and Push All New Applications
 
 Use ``git status`` within ``meta-subscriber-overrides`` to verify the changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$  git status
-
-::
+    $ git status
 
     On branch main
     Your branch is up to date with 'origin/main'.
@@ -18,32 +16,30 @@ Use ``git status`` within ``meta-subscriber-overrides`` to verify the changes:
     	new file:   recipes-support/shellhttpd/shellhttpd/shellhttpd.service
     	new file:   recipes-support/shellhttpd/shellhttpd_0.1.bb
     	Changes not staged for commit:
-    	  (use "git add <file>..." to update what will be     	committed)
+    	  (use "git add <file>..." to update what will be committed)
     	  (use "git restore <file>..." to discard changes in working directory)
-	    modified:   recipes-samples/images/lmp-factory-image.bb
+        modified:   recipes-samples/images/lmp-factory-image.bb
 
 Add all new files and changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git add recipes-support/shellhttpd/shellhttpd/httpd.sh
-    host:~$ git add recipes-support/shellhttpd/shellhttpd/shellhttpd.service
-    host:~$ git add recipes-support/shellhttpd/shellhttpd_0.1.bb
-    host:~$ git add recipes-samples/images/lmp-factory-image.bb
+    $ git add recipes-support/shellhttpd/shellhttpd/httpd.sh
+    $ git add recipes-support/shellhttpd/shellhttpd/shellhttpd.service
+    $ git add recipes-support/shellhttpd/shellhttpd_0.1.bb
+    $ git add recipes-samples/images/lmp-factory-image.bb
 
 Commit your changes with the message:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git commit -m "Adding shellhttpd recipe"
+    $ git commit -m "Adding shellhttpd recipe"
 
 Push:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git push
-
-::
+   $ git push
 
      Enumerating objects: 5, done.
      Counting objects: 100% (5/5), done.

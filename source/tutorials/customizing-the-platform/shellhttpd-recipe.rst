@@ -9,26 +9,24 @@ name: ``shellhttpd_0.1.bb``.
 
 In ``meta-subscriber-overrides``, create the ``recipes-support`` folder.
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    mkdir recipes-support
+    $ mkdir recipes-support
 
 In the ``recipes-support`` folder, use git to download the ``shellhttpd`` recipe from the ``extra-meta-subscriber-overrides`` repo:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cd recipes-support
-    host:~$ git remote add fio https://github.com/foundriesio/extra-meta-subscriber-overrides.git
-    host:~$ git remote update
-    host:~$ git checkout remotes/fio/main -- shellhttpd
+    $ cd recipes-support
+    $ git remote add fio https://github.com/foundriesio/extra-meta-subscriber-overrides.git
+    $ git remote update
+    $ git checkout remotes/fio/main -- shellhttpd
 
 The ``shellhttpd`` recipe should be inside the ``recipes-support`` folder:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ tree -L 3 .
-
-.. prompt:: text
+    $ tree -L 3 .
 
      └── shellhttpd
          ├── shellhttpd
@@ -38,11 +36,11 @@ The ``shellhttpd`` recipe should be inside the ``recipes-support`` folder:
 
 Check the content of your ``shellhttpd/shellhttpd_0.1.bb`` file:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat shellhttpd/shellhttpd_0.1.bb
+    $ cat shellhttpd/shellhttpd_0.1.bb
 
-.. prompt:: text
+.. code-block::
 
      SUMMARY = "Start up Shellhttpd Application"
      LICENSE = "MIT"
@@ -85,12 +83,12 @@ However, note the following variables:
 
 Check the content of ``shellhttpd/shellhttpd/httpd.sh``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
+   
+   $ cat shellhttpd/shellhttpd/httpd.sh
 
-     host:~$ cat shellhttpd/shellhttpd/httpd.sh
 
-
-.. prompt:: text
+.. code-block:: bash
 
      #!/bin/sh -e
 
@@ -110,11 +108,11 @@ This is the shell script executed by ``shellhttpd.service``.
 
 Check the content of ``shellhttpd/shellhttpd/shellhttpd.service``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat shellhttpd/shellhttpd/shellhttpd.service
+    $ cat shellhttpd/shellhttpd/shellhttpd.service
 
-.. prompt:: text
+.. code-block:: systemd
 
      [Unit]
      Description=Shellhttpd Minimal Web Server

@@ -15,7 +15,7 @@ However, it is almost always originally created by the CI when:
 
 The online Targets signing key ID can be seen in the TUF root metadata:
 
-.. code-block:: bash
+.. code-block:: console
 
   $ fioctl get https://api.foundries.io/ota/repo/<FACTORY>/api/v1/user_repo/root.json \
   | jq '.signed.roles.targets.keyids[0]'

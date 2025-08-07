@@ -43,10 +43,10 @@ Enabling Recipe
 
 Clone your ``meta-subscriber-overrides.git`` and enter its directory:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
-    cd meta-subscriber-overrides
+   $ git clone https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
+   $ cd meta-subscriber-overrides
 
 Edit ``recipes-samples/images/lmp-factory-image.bb``, adding the recipe to the ``CORE_IMAGE_BASE_INSTALL`` list:
 
@@ -69,9 +69,9 @@ Configuring the LmP Auto Register
 
 Create the required directory structure for the recipe:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
    
-   host:~$ mkdir -p recipes-support/lmp-device-auto-register/lmp-device-auto-register
+   $ mkdir -p recipes-support/lmp-device-auto-register/lmp-device-auto-register
 
 Create the ``api-token`` file and replace ``<YOUR_API_TOKEN>`` with the scoped token created in the previous steps:
 
@@ -91,13 +91,13 @@ Create ``lmp-device-auto-register.bbappend`` in order to give the recipe access 
 
 Add the changed files, commit and push:
 
-      .. prompt:: bash host:~$, auto
+      .. code-block:: console
 
-          host:~$ git add recipes-samples/images/lmp-factory-image.bb
-          host:~$ git add recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token
-          host:~$ git add recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend
-          host:~$ git commit -m "lmp-device-auto-register: Adding recipe"
-          host:~$ git push
+          $ git add recipes-samples/images/lmp-factory-image.bb
+          $ git add recipes-support/lmp-device-auto-register/lmp-device-auto-register/api-token
+          $ git add recipes-support/lmp-device-auto-register/lmp-device-auto-register.bbappend
+          $ git commit -m "lmp-device-auto-register: Adding recipe"
+          $ git push
 
 The latest Target should be the CI job you just created.
 
@@ -154,29 +154,25 @@ It should be visible by navigating to the `web interface <https://app.foundries.
    :align: center
    :alt: FoundriesFactory Device Auto Registered
 
-On your device, use the following command to list the ``lmp-device-auto-register`` service:
+**On your device**, use the following command to list the ``lmp-device-auto-register`` service:
 
-.. prompt:: bash device:~$
+.. code-block:: console
 
     device:~$ systemctl list-unit-files | grep enabled | grep lmp-device-auto-register
-
-::
 
     lmp-device-auto-register.service           enabled         enabled
 
 Verify the ``lmp-device-auto-register`` application status:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
-    device:~$  systemctl status lmp-device-auto-register
+    device:~$ systemctl status lmp-device-auto-register
 
-::
-
-     lmp-device-auto-register.service - Script to auto-register device into Factory
-     Loaded: loaded (/usr/lib/systemd/system/lmp-device-auto-register.service; enabled; vendor preset: enabled)
-     Active: active (exited) since Sun 2021-09-12 17:34:06 UTC; 5min ago
-     Process: 774 ExecStart=/usr/bin/lmp-device-auto-register (code=exited, status=0/SUCCESS)
-     Main PID: 774 (code=exited, status=0/SUCCESS)
+    lmp-device-auto-register.service - Script to auto-register device into Factory
+    Loaded: loaded (/usr/lib/systemd/system/lmp-device-auto-register.service; enabled; vendor preset: enabled)
+    Active: active (exited) since Sun 2021-09-12 17:34:06 UTC; 5min ago
+    Process: 774 ExecStart=/usr/bin/lmp-device-auto-register (code=exited, status=0/SUCCESS)
+    Main PID: 774 (code=exited, status=0/SUCCESS)
 
 .. _meta-lmp: https://github.com/foundriesio/meta-lmp/tree/main
 .. _lmp-device-auto-register: https://github.com/foundriesio/meta-lmp/tree/main/meta-lmp-base/recipes-support/lmp-device-auto-register

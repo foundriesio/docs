@@ -3,24 +3,19 @@ Testing Applications
 
 Once your build is successful, wait until your device reboots.
 
-On your device, use the following command to list the ``shellhttpd`` service:
+**On your device**, use the following command to list the ``shellhttpd`` service:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ systemctl list-unit-files | grep enabled | grep shellhttpd
-
-
-::
 
     shellhttpd.service                         enabled         enabled
 
 Verify the status of ``shellhttpd``:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ systemctl status shellhttpd
-
-::
 
       shellhttpd.service - Start up Shellhttpd Application
          Loaded: loaded (/usr/lib/systemd/system/shellhttpd.service; enabled; vendor preset: enabled)
@@ -35,22 +30,15 @@ Verify the status of ``shellhttpd``:
 Using a second terminal, test your application using ``curl`` from any external device connected to the same network,
 such as your computer.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ #Example curl 192.168.15.11:8090
-    host:~$ curl <device IP>:8090
+    $ #Example curl 192.168.15.11:8090
+    $ curl <device IP>:8090
+      Hello from Shellhttpd Recipe
 
+Finally, from your device, try to use ``curl`` instead of ``wget``:
 
-::
-
-     Hello from Shellhttpd Recipe
-
-Finally, from the same device, try to use ``curl`` instead of ``wget``:
-
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ curl localhost:8090
-
-::
-
-     Hello from Shellhttpd Recipe
+    Hello from Shellhttpd Recipe

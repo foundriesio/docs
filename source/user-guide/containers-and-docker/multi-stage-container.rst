@@ -36,11 +36,11 @@ Both examples use the same file structure:
 
 Create the file structure:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ mkdir example
-    host:~$ cd example
-    host:~$ mkdir single multi
+    $ mkdir example
+    $ cd example
+    $ mkdir single multi
 
 Create the ``helloworld.c`` file:
 
@@ -68,9 +68,9 @@ Create the ``start.sh`` file:
 
 Add execute permission to ``start.sh``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ chmod +x start.sh
+   $ chmod +x start.sh
 
 Single Stage Container
 ----------------------
@@ -106,24 +106,18 @@ then compiles ``helloworld.c`` and sets the entrypoint to start the ``start.sh``
 
 Build the Docker image and check the image size:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker build --tag single:1.0 -f single/Dockerfile .
-    host:~$ docker image ls
-
-::
-
-     docker image ls
-     REPOSITORY                         TAG             IMAGE ID       CREATED          SIZE
-     single                             1.0             ba94763b6fe4   25 seconds ago   351MB
+    $ docker build --tag single:1.0 -f single/Dockerfile .
+    $ docker image ls
+    REPOSITORY                         TAG             IMAGE ID       CREATED          SIZE
+    single                             1.0             ba94763b6fe4   25 seconds ago   351MB
 
 Run the image and open a second terminal:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker run -it --rm --name single single:1.0
-
-::
+    $ docker run -it --rm --name single single:1.0
 
      hello, world!
      hello, world!
@@ -131,23 +125,18 @@ Run the image and open a second terminal:
 
 In the second terminal, inspect the image and note that the spare files are present in the image:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker exec -it single ls /app
-
-::
-
-     helloworld  helloworld.c  start.sh
+   $ docker exec -it single ls /app
+   
+   helloworld  helloworld.c  start.sh
 
 Note that the GCC compiler is present in the image:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker exec -it single sh -c 'type gcc'
-
-::
-
-     gcc is /usr/bin/gcc
+    $ docker exec -it single sh -c 'type gcc'
+    gcc is /usr/bin/gcc
 
 Multi-Stage Container
 ---------------------
@@ -200,38 +189,33 @@ Finally, ``COPY`` get the ``helloworld`` binary from the first stage using the p
 
 Build the Docker image and check the image size:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker build --tag multi:1.0 -f multi/Dockerfile .
-    host:~$ docker image ls
+    $ docker build --tag multi:1.0 -f multi/Dockerfile .
+    $ docker image ls
 
-::
-
-     docker image ls
-     REPOSITORY                         TAG             IMAGE ID       CREATED          SIZE
-     single                             1.0             ba94763b6fe4   25 seconds ago   351MB
-     multi                              1.0             bdeac19070ea   50 minutes ago   80.4MB
+    REPOSITORY                         TAG             IMAGE ID       CREATED          SIZE
+    single                             1.0             ba94763b6fe4   25 seconds ago   351MB
+    multi                              1.0             bdeac19070ea   50 minutes ago   80.4MB
 
 Note the difference between the `single` and `multi` images.
 
 Run the image and open a second terminal:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker run -it --rm --name multi multi:1.0
+   $ docker run -it --rm --name multi multi:1.0
 
-::
-
-     hello, world!
-     hello, world!
-     hello, world!
+    hello, world!
+    hello, world!
+    hello, world!
 
 In the second terminal, inspect the image.
 Note that only the required files are present in the image (``helloworld.c`` is not installed in the final stage):
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker exec -it multi ls /app
+   $ docker exec -it multi ls /app
 
 ::
 
@@ -239,12 +223,9 @@ Note that only the required files are present in the image (``helloworld.c`` is 
 
 Notice how ``gcc`` is not installed in the final stage:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker exec -it multi sh -c 'type gcc'
-
-::
-
-     gcc: not found
+   $ docker exec -it multi sh -c 'type gcc'
+   gcc: not found
 
 .. _multi-stage builds: https://docs.docker.com/build/building/multi-stage/

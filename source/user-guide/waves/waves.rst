@@ -29,9 +29,9 @@ Waves Init
   * No updates delivered at this point.
   * Wave Status: ``Active``.
 
-.. code-block::
+.. code-block:: console
 
-   fioctl waves init -k ~/path/to/keys/targets.only.key.tgz <wave> <target-number> <tag>
+   $ fioctl waves init -k ~/path/to/keys/targets.only.key.tgz <wave> <target-number> <tag>
 
 Waves Rollout
 ~~~~~~~~~~~~~
@@ -43,9 +43,9 @@ Waves Rollout
   * Options for granular control are available at this stage, please check command helper and :ref:`ref-production-targets`.
   * Wave Status: ``Active``.
 
-.. code-block::
+.. code-block:: console
 
-   fioctl waves rollout <wave> [flags]
+   $ fioctl waves rollout <wave> [flags]
 
 Waves Complete
 ~~~~~~~~~~~~~~
@@ -54,9 +54,9 @@ Waves Complete
   * Only after Wave Complete, this Target becomes a Production Target.
   * Wave Status: ``Complete``.
 
-.. code-block::
+.. code-block:: console
 
-   fioctl waves complete <wave>
+   $ fioctl waves complete <wave>
 
 Waves Cancel
 ~~~~~~~~~~~~
@@ -66,9 +66,9 @@ Waves Cancel
   * This Target does not become a Production Target.
   * Wave Status: ``Canceled``.
 
-.. code-block::
+.. code-block:: console
 
-   fioctl waves cancel <wave>
+   $ fioctl waves cancel <wave>
 
 Waves Status Summary
 ~~~~~~~~~~~~~~~~~~~~
@@ -108,9 +108,9 @@ Waves Considerations
 
   * You can get the list of Production Targets with:
 
-  .. code-block::
+  .. code-block:: console
 
-     fioctl targets list --production --by-tag <tag>
+     $ fioctl targets list --production --by-tag <tag>
 
 * You may create as many waves as you need for your release strategy.
   But, there may be only one active wave per device tag at a time.
@@ -137,10 +137,10 @@ Waves Considerations
 * It is not possible to Cancel a Wave after it has been Completed, but its Target can be removed from the Production Targets list by pruning it.
   To achieve this, Init then Complete a new Wave for this particular Tag with the `--prune <target-number>` parameter:
 
-  .. code-block::
+.. code-block:: console
 
-     fioctl waves init -k ~/path/to/keys/targets.only.key.tgz <new-wave> <target-number> <tag> --prune <target-to-prune>
-     fioctl waves complete <new-wave>
+   $ fioctl waves init -k ~/path/to/keys/targets.only.key.tgz <new-wave> <target-number> <tag> --prune <target-to-prune>
+   $ fioctl waves complete <new-wave>
 
 Production Workflow
 -------------------

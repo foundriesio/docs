@@ -39,14 +39,19 @@ The FoundriesFactory API provides a thin, multi-tenant friendly wrapper to manag
 
 Creating a Pull Queue
 ---------------------
-A pull queue can be created using Fioctl::
 
-  fioctl event-queues mk-pull <name> <where to save creds-file>
-  fioctl event-queues mk-pull docs-example $HOME/.fio-pull-queue.creds
+A pull queue can be created using Fioctl:
 
-Fioctl can also monitor this queue::
+.. code-block:: console
 
-  fioctl event-queues listen docs-example $HOME/.fio-pull-queue.creds
+   $ fioctl event-queues mk-pull <name> <where to save creds-file>
+   $ fioctl event-queues mk-pull docs-example $HOME/.fio-pull-queue.creds
+
+Fioctl can also monitor this queue:
+
+.. code-block:: console
+
+   $ fioctl event-queues listen docs-example $HOME/.fio-pull-queue.creds
 
 This command also serves as a reference example_ on implementing a pull queue listener.
 
@@ -65,29 +70,33 @@ A great way to prototype a push queue is by using ngrok_.
 This tool allows a service running on your laptop to be exposed via an ngrok reverse proxy.
 With ngrok installed, you can play with the :download:`example push queue <../../_static/reference-manual/factory/push_queue_example.py>` code from your computer:
 
-.. code-block:: bash
+.. code-block:: console
 
- # Start ngrok
- ngrok http 8080
- # make note of the "Forwarding https:..."
- # This URL is required for the JWT_AUDIENCE below
+   # Start ngrok
+   $ ngrok http 8080
+   # make note of the "Forwarding https:..."
+   # This URL is required for the JWT_AUDIENCE below
 
- # From another terminal:
- # Install required python dependencies:
- python3 -m venv /tmp/venv
- /tmp/venv/bin/pip3 install cryptography requests pyjwt
- JWT_AUDIENCE=<ngrok url> /tmp/venv/bin/python3 push_queue_example.py
+   # From another terminal:
+   # Install required python dependencies:
+   $ python3 -m venv /tmp/venv
+   $ /tmp/venv/bin/pip3 install cryptography requests pyjwt
+   $ JWT_AUDIENCE=<ngrok url> /tmp/venv/bin/python3 push_queue_example.py
 
-Once the server is running, you can create a push queue with::
+Once the server is running, you can create a push queue with:
 
- fioctl event-queues mk-push docs-push <ngrok URL from above>
+.. code-block:: console
+
+   $ fioctl event-queues mk-push docs-push <ngrok URL from above>
 
 At this point events will start showing up in the example server.
 
 Push Queue Payloads
 ~~~~~~~~~~~~~~~~~~~
 
-Incoming HTTP requests will look similar to::
+Incoming HTTP requests will look similar to:
+
+.. code-block:: yaml
 
   {
    "message": {

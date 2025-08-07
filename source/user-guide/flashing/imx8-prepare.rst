@@ -25,9 +25,9 @@ Preparation
 
 #. Extract the file
    
-   .. prompt:: auto
+   .. code-block:: console
       
-         tar -zxvf mfgtool-files-<machine-name>.tar.gz
+         $ tar -zxvf mfgtool-files-<machine-name>.tar.gz
 
 #. Organize all the files, mirroring the tree below::
 

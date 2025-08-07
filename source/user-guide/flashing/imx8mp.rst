@@ -20,10 +20,10 @@ i.MX 8M Plus Evaluation Kit
 .. |imx_usb_type_sdp| replace:: USB-C
 .. |imx_power_jack_type| replace:: USB-C
 
-.. |imx_lsusb| prompt:: bash $, auto
+.. |imx_lsusb| replace::
 
-     $ lsusb | grep NXP
-       Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
+   $ lsusb | grep NXP
+   Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
 
 .. |image_board_top| image:: /_static/boards/imx8mp-lpddr4-evk.png
      :width: 600
@@ -33,7 +33,7 @@ i.MX 8M Plus Evaluation Kit
      :width: 600
      :align: middle
 
-.. |imx_tty_list| prompt:: bash $, auto
+.. |imx_tty_list| replace::
 
           $ ls -l /dev/serial/by-id/
           total 0
@@ -46,13 +46,16 @@ i.MX 8M Plus Evaluation Kit
           :width: 600
           :align: middle
 
-.. |imx_file_list| prompt:: text
+.. |imx_file_list| replace::
 
           ├── lmp-factory-image-imx8mp-lpddr4-evk.wic.gz
           ├── u-boot-imx8mp-lpddr4-evk.itb
           ├── sit-imx8mp-lpddr4-evk.bin
           ├── imx-boot-imx8mp-lpddr4-evk
           └── mfgtool-files-imx8mp-lpddr4-evk
+
+.. |imx_mfgtool_file_list| replace::
+
                ├── bootloader.uuu
                ├── full_image.uuu
                ├── imx-boot-mfgtool

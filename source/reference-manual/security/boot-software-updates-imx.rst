@@ -302,8 +302,8 @@ This consists of two steps:
 
 To test cold/warm resets and booting primary/secondary boot path, use these two U-Boot commands ``imx\_secondary\_boot`` and ``reset``\ ``reset -w`` (warm reset).
 
-   .. tip::
-      For regular reset, usually it does ``POR``.
+.. tip::
+   For regular reset, usually it does ``POR``.
 
 Example of test:
 
@@ -344,7 +344,7 @@ which contains all SoC agnostic ``DEFINE`` statements and common functionality, 
 Example of board ``boot.cmd``
 (``./meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8mm-lpddr4-evk/boot.cmd``):
 
-::
+.. code-block:: shell
 
     echo "Using freescale_${fdt_file}"
 
@@ -397,7 +397,7 @@ Boot firmware version information will be automatically added to ``${osroot}/usr
 
 Example:
 
-::
+.. code-block:: diff
 
     diff --git a/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend b/recipes-bsp/lmp-boot-firmware/lmp-boot-firmware.bbappend
     new file mode 100644

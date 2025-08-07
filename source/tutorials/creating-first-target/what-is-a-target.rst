@@ -40,13 +40,9 @@ To help you understand What a **Target** is, the instructions below will guide y
 To list the devices registered to your Factory and the tag they are following, use ``fioctl status``
 It also lists the **Target** they have installed .
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl status
-
-**Example Output**:
-
-.. prompt:: text
+    $ fioctl status
 
      Total number of devices: 1
      
@@ -57,19 +53,15 @@ It also lists the **Target** they have installed .
      Orphan target versions below are marked with a star (*)
 
      ## CI Tag: main
-	        TARGET  DEVICES  INSTALLING  DETAILS
-	        ------  -------  ----------  -------
-	        3       1        0           `fioctl targets show 4`
+            TARGET  DEVICES  INSTALLING  DETAILS
+            ------  -------  ----------  -------
+            3       1        0           `fioctl targets show 4`
 
 Before inspecting your latest **Target**, list all the **Targets**:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets list
-
-**Example Output**:
-
-.. prompt:: text
+    $ fioctl targets list
 
      VERSION  TAGS    APPS        HARDWARE IDs
      -------  ----    ----        ------------
@@ -81,22 +73,18 @@ When you pushed your ``containers.git`` changes, it resulted in a new version, i
 The new  **Target** was created by combining the latest 
 container build  with the latest platform build.
 
-Fioctl® can provide an overview of **Target**:
+:term:`Fioctl` can provide an overview of **Target**:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets show 3
-
-**Example Output**:
-
-.. prompt:: text
+   $ fioctl targets show 3
 
      Tags:	main
      CI:	https://ci.foundries.io/projects/<factory>/lmp/builds/4/
      Source:
-	     https://source.foundries.io/factories/<factory>/lmp-manifest.git/commit/?id=fb119f5
-	     https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git/commit/?id=d89efb2
-	     https://source.foundries.io/factories/<factory>/containers.git/commit/?id=0bec425
+       https://source.foundries.io/factories/<factory>/lmp-manifest.git/commit/?id=fb119f5
+       https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git/commit/?id=d89efb2
+       https://source.foundries.io/factories/<factory>/containers.git/commit/?id=0bec425
      
      TARGET NAME            OSTREE HASH - SHA256
      -----------            --------------------

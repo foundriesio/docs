@@ -10,7 +10,7 @@ Also covered here are some related tips about LmP structure, and OTA behavior.
 OSTree File System Structure
 ----------------------------
 
-.. prompt::
+.. code-block:: console
 
    # ls -l /
    total 17
@@ -71,7 +71,7 @@ Important Files and Folders
 
 * ``/var/sota``: Stores critical OTA files.
 
-.. prompt::
+.. code-block:: console
 
    # ls -l /var/sota/
    total 208
@@ -95,7 +95,7 @@ It holds preloaded apps if Compose Apps are used.
 ``/var/sota/current-target``: Brings valuable information about the current Target running on the device, including LmP and containers information.
 This is populated after the first OTA.
 
-.. prompt::
+.. code-block:: console
 
    # cat /var/sota/current-target  
    TARGET_NAME="qemuarm64-secureboot-lmp-116"
@@ -117,9 +117,9 @@ If available, ``client.pem`` and ``pkey.pem`` can be stored in an HSM rather tha
 * ``/etc/os-release``: Provides LmP information, including platform Target number, Tag, and release.
   It does not include information on Target containers.
 
-.. prompt::
+.. code-block:: console
 
-   # cat /etc/os-release 
+   $ cat /etc/os-release 
    ID=lmp
    NAME="Linux-microPlatform"
    VERSION="4.0.11-116-91"
@@ -148,7 +148,7 @@ Tips and Suggestions
 
 * The full initial Target information (includes containers and LmP) just after the provisioning of a device can be checked with:
 
-.. prompt::
+.. code-block:: console
 
    # cat /var/sota/import/installed_versions | grep "\"version\""
       "version": "102",

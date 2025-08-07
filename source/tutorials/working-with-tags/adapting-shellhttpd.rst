@@ -9,17 +9,17 @@ Edit ``shellhttpd`` back to its original state.
 
 Open a terminal on your host machine and go into your ``containers`` repo folder.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cd containers/
+    $ cd containers/
 
 Edit ``httpd.sh``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ vi shellhttpd/httpd.sh
+    $ vi shellhttpd/httpd.sh
 
-.. prompt:: text
+.. code-block:: shell
 
      #!/bin/sh -e
      
@@ -35,11 +35,11 @@ Edit ``httpd.sh``:
 
 Edit ``Dockerfile``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ vi shellhttpd/Dockerfile
+    $ vi shellhttpd/Dockerfile
 
-.. prompt:: text
+.. code-block:: dockerfile
 
      FROM alpine
      
@@ -49,11 +49,11 @@ Edit ``Dockerfile``:
 
 Edit ``docker-compose.yml``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ vi shellhttpd/docker-compose.yml
+    $ vi shellhttpd/docker-compose.yml
 
-.. prompt:: text
+.. code-block:: yaml
 
      version: '3.2'
      
@@ -68,47 +68,41 @@ Edit ``docker-compose.yml``:
 
 Commit and push all changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git status
-    host:~$ git add shellhttpd/docker-compose.yml
-    host:~$ git add shellhttpd/httpd.sh
-    host:~$ git add shellhttpd/Dockerfile
-    host:~$ git commit -m "Changes for adapting shellhttpd tutorial"
-    host:~$ git push
+    $ git status
+    $ git add shellhttpd/docker-compose.yml
+    $ git add shellhttpd/httpd.sh
+    $ git add shellhttpd/Dockerfile
+    $ git commit -m "Changes for adapting shellhttpd tutorial"
+    $ git push
 
 Wait for your build to finish by checking the latest Target on the :guilabel:`Devices` tab.
 
 Use ``fioctl`` to configure your device to run just the ``shellhttpd`` application:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl devices config updates --apps shellhttpd <device-name>
-
-::
+    $ fioctl devices config updates --apps shellhttpd <device-name>
 
      Changing apps from: [] -> [shellhttpd]
      Changing packagemanager to ostree+compose_apps
 
 In a few minutes your device should receive an update.
 
-Test the container on your device:
+Test the container **on your device**:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ wget -qO- 127.0.0.1:8080
-
-::
 
      Hello world
 
 Check the Target version list with ``fioctl``
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets list
-
-::
+    $ fioctl targets list
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
@@ -124,11 +118,9 @@ Check the Target version list with ``fioctl``
 
 Check what Target your device is running:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl device list
-
-::
+    $ fioctl device list
 
      NAME           FACTORY     TARGET                 STATUS  APPS                                        UP-TO-DATE
      ----           -------     ------                 ------  ----                                        ----------

@@ -25,22 +25,22 @@ Actions on VPN Server
 
 Install dependencies:
 
-.. prompt:: bash
+.. code-block:: console
 
-     sudo apt install git wireguard wireguard-tools python3 python3-requests iptables
+   $ sudo apt install git wireguard wireguard-tools python3 python3-requests iptables
 
 Clone the VPN server code:
 
-.. prompt:: bash
+.. code-block:: console
 
-     git clone https://github.com/foundriesio/factory-wireguard-server/
-     cd factory-wireguard-server
+   $ git clone https://github.com/foundriesio/factory-wireguard-server/
+   $ cd factory-wireguard-server
 
 Configure your Factory with this new service, and enable the daemon:
 
-.. code:: bash
+.. code-block:: console
 
-     sudo ./factory-wireguard.py \
+   $ sudo ./factory-wireguard.py \
        --oauthcreds /root/fiocreds.json \ # oauth2 credentials will be written here
        --factory <factory> \
        --privatekey /root/wgpriv.key \ # where to store generated private key
@@ -70,16 +70,22 @@ This is so they can be easily referenced from the server.
 Enabling Remote Access to a Device
 ----------------------------------
 
-A device can be configured to connect to the VPN server using the Fioctl® utility::
+A device can be configured to connect to the VPN server using the Fioctl® utility:
 
-  $ fioctl devices config wireguard <device> enable
+.. code-block:: console
+
+   $ fioctl devices config wireguard <device> enable
 
 This setting can take up to 5 minutes to be applied by ``fioconfig`` on the device.
-Once active, it can be reached from the VPN server using SSH::
+Once active, it can be reached from the VPN server using SSH:
 
-  $ ssh <device>
+.. code-block:: console
 
-Remote access can be disabled from Fioctl with::
+   $ ssh <device>
+
+Remote access can be disabled from Fioctl with:
+
+.. code-block:: console
 
   $ fioctl devices config wireguard <device> disable
 
@@ -91,7 +97,9 @@ It is sometimes necessary to change the WireGuard server's private VPN address.
 For example, when initial setup is done on a developer's laptop, the default ``factory-wireguard.py`` settings are used.
 Later on, when more developers need to have remote access to the devices, the server should be moved (such as to a cloud hosted VM).
 When such a move happens, it may be necessary to change WireGuard's address (the default might already be in use).
-This is easy on the server side, as it is just a command line parameter::
+This is easy on the server side, as it is just a command line parameter:
+
+.. code-block:: console
 
    $ sudo ./factory-wireguard.py \
        --apitoken <api token> \  # https://app.foundries.io/settings/tokens
@@ -151,7 +159,7 @@ A common problem arises when the VPN server has a firewall blocking traffic to t
 
 .. note::
 
-  When configuring a server behind a firewall, make sure the desired port is passed through to the host running the server.
+   When configuring a server behind a firewall, make sure the desired port is passed through to the host running the server.
 
 When activating the Wireguard server, you may get::
 
@@ -230,17 +238,19 @@ Further Debug
 ~~~~~~~~~~~~~
 
 On a client, it is also possible to setup firewall rules that would prevent WireGuard from working correctly.
-In this case, you will need to add something like this::
+In this case, you will need to add something like this:
 
-  sudo iptables -I INPUT -p udp -m udp --sport 5555 -j ACCEPT
-  sudo iptables -I OUTPUT -p udp -m udp --dport 5555 -j ACCEPT
+.. code-block:: console
+
+   $ sudo iptables -I INPUT -p udp -m udp --sport 5555 -j ACCEPT
+   $ sudo iptables -I OUTPUT -p udp -m udp --dport 5555 -j ACCEPT
 
 When troubleshooting Wireguard issues after rebooting your host,
 running the following ``systemctl`` commands can help determine if the 1-shot service is running.
 Note that you will have needed to run the ``factory-wireguard.py`` script.
 
-::
+.. code-block:: console
 
- sudo systemctl status factory-vpn-<factory>
- sudo systemctl enable factory-vpn-<factory>
- sudo systemctl start factory-vpn-<factory>
+   $ sudo systemctl status factory-vpn-<factory>
+   $ sudo systemctl enable factory-vpn-<factory>
+   $ sudo systemctl start factory-vpn-<factory>

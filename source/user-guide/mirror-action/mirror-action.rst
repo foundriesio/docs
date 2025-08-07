@@ -26,13 +26,13 @@ Check the :guilabel:`Use for source code access` box and select your **Factory**
 If Bitbucket is used, the token generated in the previous step is used as the ``<GIT_ACCESS_TOKEN>`` value.
 If GitHub is used, convert the token value to a base64 string and save the output of this command. This is your ``<BASE64_FIO_TOKEN>`` value.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ echo -n <FIO_TOKEN> | base64 -w0
+   $ echo -n <FIO_TOKEN> | base64 -w0
 
 .. code-block:: console
 
-   host:~$ echo -n SQMD1Gx860mPI6jZFlLJLwaCXT5CqAaQi6nEfIfH | base64 -w0
+   $ echo -n SQMD1Gx860mPI6jZFlLJLwaCXT5CqAaQi6nEfIfH | base64 -w0
    U1FNRDFHeDg2MG1QSTZqWkZsTEpMd2FDWFQ1Q3FBYVFpNm5FZklmSA==
 
 .. tip::
@@ -111,22 +111,22 @@ Clone your GitHub repository and enter its directory:
 
     Make sure to update the clone command with your repository URL.
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone https://github.com/<host>/<repo_name>
-    cd <repo_name>
+    $ git clone https://github.com/<host>/<repo_name>
+    $ cd <repo_name>
 
 Check out the ``main`` branch.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git checkout main
+    $ git checkout main
 
 You must store workflow files in the ``.github/workflows/`` directory of your repository.
+.. code-block:: console
 
-.. prompt:: bash host:~$, auto
 
-    host:~$ mkdir -p .github/workflows/
+    $ mkdir -p .github/workflows/
 
 Finally, create the file ``mirror.yml`` and make sure you update the ``<FACTORY-NAME>`` with your Factory Name.
 
@@ -163,11 +163,11 @@ Finally, create the file ``mirror.yml`` and make sure you update the ``<FACTORY-
 
 Add the changed files, commit and push to your GitHub_ repository:
 
-      .. prompt:: bash host:~$, auto
+      .. code-block:: console
 
-          host:~$ git add .github/workflows/mirror.yml
-          host:~$ git commit -m "Adding Mirror Action"
-          host:~$ git push
+          $ git add .github/workflows/mirror.yml
+          $ git commit -m "Adding Mirror Action"
+          $ git push
 
 GitHub Action
 ^^^^^^^^^^^^^

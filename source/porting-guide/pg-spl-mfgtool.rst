@@ -27,7 +27,7 @@ To enable a custom ``mfgtool-files`` package, you must provide the following con
 -  ``mfgtool-files``: The ``bootloader.uuu.in`` and ``full_image.uuu.in`` input files to generate the MFGTool scripts.
    You can provide the same files as the reference board support in LmP.
 
-.. prompt:: text
+.. code-block:: none
 
 	├── recipes-bsp
 	│   └── u-boot

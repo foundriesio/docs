@@ -27,26 +27,25 @@ U-Boot then jumps to the kernel entry point.
 
 A system which boots without TF-A would look as follows:
 
-   .. figure:: /_static/reference-manual/security/imx-secure-boot.png
-      :align: center
-      :width: 6in
+.. figure:: /_static/reference-manual/security/imx-secure-boot.png
+   :align: center
+   :width: 6in
 
 Systems using TF-A (ie, i.MX 8M*) are slightly different.
 The following diagrams describes the secure boot sequence with a succinct description of the Yocto Project meta-layer's configuration for i.MX 8MM based platforms with TF-A:
 
-   .. figure:: /_static/reference-manual/security/imx8-secure-boot.png
-      :align: left
-      :width: 8in
+.. figure:: /_static/reference-manual/security/imx8-secure-boot.png
+   :align: left
+   :width: 8in
 
 The communication path to gain access from userland to RPMB via the pseudo trusted application (PTA) follows the OP-TEE standard convention for PTAs (as the image below describes).
 Userland uses ``libteec`` to issue an ioctl call to the Linux TEE driver, which in turn transitions the processor to its secure state and calls the application entrypoint.
 
 With this in mind, ``fiovb`` is implemented as a secured user application instead of a PTA.
 
-   .. figure:: /_static/reference-manual/security/optee-pta-access.png
-      :align: center
-      :width: 6in
-
+.. figure:: /_static/reference-manual/security/optee-pta-access.png
+   :align: center
+   :width: 6in
 
 HABv4 Architecture Overview
 ---------------------------
@@ -71,8 +70,8 @@ How to Secure the Platform
 
 The first step is to generate the PKI tree, and commit the fuse table to the hardware.
 
- .. warning::
-    Once the fuses have been programmed they can not be modified.
+.. warning::
+   Once the fuses have been programmed they can not be modified.
 
 Please refer to the NXP® `Secure Boot Using HABv4 Guide`_ for a detailed description on how to generate the PKI tree.
 
@@ -171,7 +170,9 @@ It is also required that the IVT and DCD regions are signed. HAB will verify the
 
 In the case of the SPL, you must enable **CONFIG_IMX_HAB** to include the IVT and DCD information.
 
-The ``lmp-tools/security/imx_hab4/sign-file.sh`` script executes NXP's Code Signing Tool after preparing the CSF information based on the template::
+The ``lmp-tools/security/imx_hab4/sign-file.sh`` script executes NXP's Code Signing Tool after preparing the CSF information based on the template:
+
+.. code-block:: shell
 
 	$ cd security/imx_hab4/
 	$ ./sign-file.sh --cst ./cst --spl SPL
@@ -202,7 +203,7 @@ Booting this signed SPL image and inspecting the HAB status should give no HAB e
    The next fuse instruction will close the board for unsigned images: make sure you can rebuild the signed images before programming that fuse.
 
 
-Now we can close the device — From here on only signed images can be booted on the platform.
+Now we can close the device — From here on only signed images can be booted on the platform::
 
 	=> fuse prog 29 6 0x80000000
 
@@ -231,7 +232,9 @@ Once the device has been closed, only signed images will be able to run on the p
 * SDP requires that the CSF is modified to include a check for the DCD table
 * SDP requires that the DCD address of the image is cleared from the header
 
-To comply with these requirements we need to sign the image adding the ``--fix-sdp-dcd`` parameter::
+To comply with these requirements we need to sign the image adding the ``--fix-sdp-dcd`` parameter:
+
+.. code-block:: console
 
 	$ cd security/imx_hab4/
 	$ ./sign-file.sh --cst ./cst --spl SPL --fix-sdp-dcd
@@ -285,7 +288,7 @@ A typical UUU boot script would be (replace ``@@MACHINE@@`` with your machine co
 
 2) On i.MX 8M and i.MX 6 families — those where SDP does not impose DCD restrictions — the UUU boot script will look like:
 
-.. code-block:: console
+.. code-block:: none
 
    uuu_version 1.0.1
 
@@ -295,7 +298,9 @@ A typical UUU boot script would be (replace ``@@MACHINE@@`` with your machine co
    SDPU: write -f u-boot-@@MACHINE@@.itb
 
 In both cases, if the device has been closed and is only accepting signed images, **it is recommended that UUU be started before powering the board, and before connecting it to the host PC, so that UUU polls for the connection and responds to it as soon as possible**.
-To that effect we need to make sure of UUU's polling period flag::
+To that effect we need to make sure of UUU's polling period flag:
+
+.. code-block:: console
 
 	$ uuu -pp 1 file.uuu
 

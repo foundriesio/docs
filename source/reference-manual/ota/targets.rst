@@ -8,7 +8,9 @@ This is achieved by using the `The Update Framework`_ (TUF).
 The central piece to TUF is the notion of a Target.
 A Target defines a cryptographically verifiable description of the software a device should run.
 
-For a simplified example::
+For a simplified example:
+
+.. code-block:: yaml
 
  "raspberrypi4-64-lmp-42" : {
     "hashes" : {"sha256" : "0xdeadbeef"},
@@ -63,7 +65,7 @@ Start with ``factory-config.yml``.
 The ``tagging`` and ``ref_options`` stanzas describe the intent.
 Then take a high-level view of the fleet:
 
-.. code-block:: bash
+.. code-block:: console
 
   $ fioctl status
   Total number of devices: 2
@@ -81,7 +83,7 @@ Then take a high-level view of the fleet:
 This will show all Targets active in the field.
 Now take a look at a specific Target:
 
-.. code-block:: bash
+.. code-block:: console
 
  $ fioctl targets show 46
  CI:    https://ci.foundries.io/projects/andy-corp/lmp/builds/46/

@@ -1,20 +1,18 @@
 Testing Applications
 ^^^^^^^^^^^^^^^^^^^^
 
-You will use Fioctl® to enable your new apps,
-but first follow the ``aktualizr-lite`` logs on your device with the following command:
+You will use :term:`Fioctl` to enable your new apps,
+but first follow the ``aktualizr-lite`` logs **on your device** with the following command:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console 
 
-    device:~$  sudo journalctl --follow --unit aktualizr-lite
+    device:~$ sudo journalctl --follow --unit aktualizr-lite
 
-On your host machine, enable all the new apps:
+On your **host machine**, enable all the new apps:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl devices config updates --apps mosquitto,shellhttpd-mqtt,flask-mqtt-nginx <device-name>
-
-::
+    $ fioctl devices config updates --apps mosquitto,shellhttpd-mqtt,flask-mqtt-nginx <device-name>
 
     Changing apps from: [] -> [mosquitto,shellhttpd-mqtt,flask-mqtt-nginx]
     Changing packagemanager to ostree+compose_apps
@@ -23,11 +21,9 @@ You should shortly see ``aktualizr-lite`` add the apps.
 
 Once ``aktualizr-lite`` finishes, check the running containers:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ docker ps
-
-::
 
      CONTAINER ID   IMAGE                                    COMMAND                  CREATED          STATUS              PORTS                    NAMES
      9c563d12b2c6   hub.foundries.io/<factory>/shellhttpd-mqtt   "/usr/local/bin/http…"   9 minutes ago    Up 9 minutes        0.0.0.0:8082->8082/tcp   shellhttpd-mqtt_httpd-mqtt_1
@@ -35,19 +31,19 @@ Once ``aktualizr-lite`` finishes, check the running containers:
      0b88c1dc7bbf   nginx                                    "/docker-entrypoint.…"   10 minutes ago   Up About a minute   0.0.0.0:80->80/tcp       flask-mqtt-nginx_nginx_1
      129a54e5821b   hub.foundries.io/<factory>/flask-mqtt        "python3 -m flask ru…"   10 minutes ago   Up 7 minutes                                 flask-mqtt-nginx_flask-mqtt_1
 
-On your device, follow the ``shellhttpd-mqtt_httpd-mqtt_1`` container logs:
+**On your device**, follow the ``shellhttpd-mqtt_httpd-mqtt_1`` container logs:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ docker logs -f shellhttpd-mqtt_httpd-mqtt_1
 
 In a second terminal, test your apps using ``curl``.
-Use any external device connected to the same network, such as your computer.
+Use any **external** device connected to the same network, such as your computer.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ #Example curl 192.168.15.11:8082
-    host:~$ curl <device IP>:8082
+    $ #Example curl 192.168.15.11:8082
+    $ curl <device IP>:8082
 
 ::
 
@@ -64,19 +60,17 @@ the ``shellhttpd-mqtt_httpd-mqtt_1`` logs should show:
 Now, test ``flask-mqtt-nginx_flask-mqtt_1``.
 First, follow the container log on your device with the command:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ docker logs -f flask-mqtt-nginx_flask-mqtt_1
 
 In a second terminal, test your apps using ``curl``.
 Use any external device connected to the same network, such as your computer.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ #Example curl 192.168.15.11:80
-    host:~$ curl <device IP>:80
-
-::
+    $ #Example curl 192.168.15.11:80
+    $ curl <device IP>:80
 
      Number of Access on shellhttpd Container 1
 
@@ -93,15 +87,13 @@ The total count will be displayed when you check port 80.
 
 Access ``shellhttpd-mqtt_httpd-mqtt_1`` a few more times:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ #Example curl 192.168.15.11:8082
-    host:~$ curl <device IP>:8082
-    host:~$ curl <device IP>:8082
-    host:~$ curl <device IP>:8082
-    host:~$ curl <device IP>:8082
-
-::
+    $ #Example curl 192.168.15.11:8082
+    $ curl <device IP>:8082
+    $ curl <device IP>:8082
+    $ curl <device IP>:8082
+    $ curl <device IP>:8082
 
      Number of Access = 1
      Number of Access = 2
@@ -110,11 +102,9 @@ Access ``shellhttpd-mqtt_httpd-mqtt_1`` a few more times:
 
 Verify ``flask-mqtt-nginx_flask-mqtt_1`` received all messages and updated the flask page:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ #Example curl 192.168.15.11:8082
-    host:~$ curl <device IP>:80
-
-::
+    $ #Example curl 192.168.15.11:8082
+    $ curl <device IP>:80
 
      Number of Access on shellhttpd Container 4

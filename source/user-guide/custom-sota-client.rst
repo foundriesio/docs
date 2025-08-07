@@ -60,11 +60,11 @@ Later, this can serve as an example to copy/paste into a Factory specific recipe
 
 Users can build this custom client into their LmP image with a small addition to ``meta-subscriber-overrides.git``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone -b devel https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
-    cd meta-subscriber-overrides
-    echo 'SOTA_CLIENT = "custom-sota-client"' >> conf/machine/include/lmp-factory-custom.inc
+    $ git clone -b devel https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
+    $ cd meta-subscriber-overrides
+    $ echo 'SOTA_CLIENT = "custom-sota-client"' >> conf/machine/include/lmp-factory-custom.inc
 
 Forking the Custom SOTA Client
 """"""""""""""""""""""""""""""
@@ -90,9 +90,9 @@ Custom SOTA Client Work Modes
 By default, the example `SOTA client`_ works as a daemon updating a device to the latest version once it becomes available.
 In addition to the default daemon mode, users can run it as a CLI utility and perform specific steps of the update process separately.
 
-.. prompt:: bash
+.. code-block:: console
 
-    sotactl --help
+    $ sotactl --help
     Usage:
         sotactl [cmd] [options]
     Supported commands: check install run pull daemon
@@ -117,7 +117,7 @@ The ``aktualizr-lite`` executable can be invoked to perform individual operation
     Using ``--start-daemon 0`` is recommended
     in order to avoid starting the aktualizr-lite daemon automatically.
 
-.. prompt::
+.. code-block:: console
 
       $ aktualizr-lite --help
       Usage:
@@ -170,14 +170,18 @@ update
 
 The ``update`` command pulls and installs the latest available update to the device,
 after updating the TUF metadata.
-This includes both OSTree and Docker app Targets::
+This includes both OSTree and Docker app Targets:
 
-   sudo aktualizr-lite update
+.. code-block:: console
+
+   $ sudo aktualizr-lite update
 
 To update to a specific build number or Target name,
-the ``--update-name`` option can be used::
+the ``--update-name`` option can be used:
 
-   sudo aktualizr-lite update --update-name <build_number_or_name>
+.. code-block:: console
+
+   $ sudo aktualizr-lite update --update-name <build_number_or_name>
 
 .. warning::
    Downgrading to a older Target is neither recommended or supported by our team;
@@ -282,9 +286,11 @@ check
 """""
 
 The ``check`` command will refresh the Targets metadata from the OTA server,
-and present a list of available Targets::
+and present a list of available Targets:
 
-   sudo aktualizr-lite check
+.. code-block:: console
+
+   $ sudo aktualizr-lite check
 
 It can used in conjunction with the ``--json 1`` option,
 which will change the output format to JSON,
@@ -328,9 +334,11 @@ list
 
 The ``list`` command works in a similar way as ``check``,
 presenting the same type of output,
-but will **not** refresh the Targets metadata from the OTA server::
+but will **not** refresh the Targets metadata from the OTA server:
 
-   sudo aktualizr-lite list
+.. code-block:: console
+   
+   $ sudo aktualizr-lite list
 
 This command also allows the use of the ``--json 1`` option.
 

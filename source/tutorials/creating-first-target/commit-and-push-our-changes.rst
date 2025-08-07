@@ -11,7 +11,7 @@ Open a terminal on your host machine and navigate to the container folder used i
 
 Edit ``shellhttpd/docker-compose.yml``, changing the image back to ``hub.foundries.io``:
 
-.. prompt:: text
+.. code-block:: yaml
 
      version: '3.2'
      
@@ -28,9 +28,9 @@ Edit ``shellhttpd/docker-compose.yml``, changing the image back to ``hub.foundri
 There should be one file left in the ``shellhttpd.disabled`` folder: ``docker-build.conf``.
 Move it to the ``shellhttpd`` folder:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ mv shellhttpd.disabled/docker-build.conf shellhttpd/
+    $ mv shellhttpd.disabled/docker-build.conf shellhttpd/
 
 This file adds advanced configuration for a FoundriesFactory CI build.
 Without adding too much detail, one of the tasks of the FoundriesFactory CI is to execute commands after the container image is built.
@@ -38,13 +38,13 @@ These commands verify that your container functions correctly.
 
 Check the content of ``docker-build.conf``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat shellhttpd/docker-build.conf 
+    $ cat shellhttpd/docker-build.conf 
 
 ``docker-build.conf``:
 
-.. prompt:: text
+.. code-block:: none
 
      # Allow CI loop to unit test the container by running a command inside it
      TEST_CMD="/bin/true"
@@ -54,13 +54,9 @@ If this command fails for some reason, it will mark the container build as faile
 
 Use ``git status`` to verify all the changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git status
-
-**Example Output**:
-
-.. prompt:: text
+    $ git status
 
      On branch main
      Your branch is up to date with 'origin/main'.
@@ -68,26 +64,22 @@ Use ``git status`` to verify all the changes:
      Changes not staged for commit:
        (use "git add/rm <file>..." to update what will be committed)
        (use "git restore <file>..." to discard changes in working directory)
-	     deleted:    shellhttpd.disabled/Dockerfile
-	     deleted:    shellhttpd.disabled/docker-build.conf
-	     deleted:    shellhttpd.disabled/docker-compose.yml
-	     deleted:    shellhttpd.disabled/httpd.sh
+       deleted:    shellhttpd.disabled/Dockerfile
+       deleted:    shellhttpd.disabled/docker-build.conf
+       deleted:    shellhttpd.disabled/docker-compose.yml
+       deleted:    shellhttpd.disabled/httpd.sh
      Untracked files:
        (use "git add <file>..." to include in what will be committed)
-	     shellhttpd/
+       shellhttpd/
      no changes added to commit (use "git add" and/or "git commit -a")
 
 
 Remove ``shellhttpd.disabled`` from git:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git rm -r shellhttpd.disabled/
-
-**Example Output**:
-
-.. prompt:: text
-
+    $ git rm -r shellhttpd.disabled/
+     
      rm 'shellhttpd.disabled/Dockerfile'
      rm 'shellhttpd.disabled/docker-build.conf'
      rm 'shellhttpd.disabled/docker-compose.yml'
@@ -95,44 +87,36 @@ Remove ``shellhttpd.disabled`` from git:
 
 Add the ``shellhttpd`` folder:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git add shellhttpd/
+    $ git add shellhttpd/
     
 Check the status again before we commit:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git status
-
-**Example Output**:
-
-.. prompt:: text
+    $ git status
 
      On branch main
      Your branch is up to date with 'origin/main'.
      Changes to be committed:
        (use "git restore --staged <file>..." to unstage)
-	     renamed:    shellhttpd.disabled/Dockerfile -> shellhttpd/Dockerfile
-	     renamed:    shellhttpd.disabled/docker-build.conf -> shellhttpd/docker-build.conf
-	     renamed:    shellhttpd.disabled/docker-compose.yml -> shellhttpd/docker-compose.yml
-	     renamed:    shellhttpd.disabled/httpd.sh -> shellhttpd/httpd.sh
+       renamed:    shellhttpd.disabled/Dockerfile -> shellhttpd/Dockerfile
+       renamed:    shellhttpd.disabled/docker-build.conf -> shellhttpd/docker-build.conf
+       renamed:    shellhttpd.disabled/docker-compose.yml -> shellhttpd/docker-compose.yml
+       renamed:    shellhttpd.disabled/httpd.sh -> shellhttpd/httpd.sh
 
 Commit your changes with a message:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git commit -m "shellhttpd: add application"
+    $ git commit -m "shellhttpd: add application"
 
 Push all committed modifications to the remote repository:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git push
-
-**Example Output**:
-
-.. prompt:: text
+    $ git push
 
      Enumerating objects: 6, done.
      Counting objects: 100% (6/6), done.

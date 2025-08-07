@@ -4,10 +4,10 @@ Dockerfile
 The first file we will look at is ``Dockerfile``.
 Enter the ``shellhttpd`` folder and move ``Dockerfile`` from ``shellhttpd.disabled`` to ``shellhttpd``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd shellhttpd
-    mv ../shellhttpd.disabled/Dockerfile .
+    $ cd shellhttpd
+    $ mv ../shellhttpd.disabled/Dockerfile .
 
 This file contains all the commands a user would call on the command line to assemble a container image.
 
@@ -22,13 +22,11 @@ Think of the ``Dockerfile`` as your way of customizing the base image.
 
 Check the content of your ``Dockerfile``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat Dockerfile
+    $ cat Dockerfile
 
-**Dockerfile**:
-
-.. prompt:: text
+.. code-block:: dockerfile
 
       FROM alpine
       COPY httpd.sh /usr/local/bin/

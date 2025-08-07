@@ -18,11 +18,9 @@ This means only the ``fioctl`` user—you—and the device will know the configu
 
 Use Fioctl on your host machine to remember your device name:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl devices list
-
-::
+    $ fioctl devices list
 
      NAME             FACTORY   TARGET                 STATUS   APPS        UP-TO-DATE
      ----             -------   ------                 ------   ----        ----------
@@ -30,29 +28,25 @@ Use Fioctl on your host machine to remember your device name:
 
 Now use Fioctl to set a configuration file:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl devices config set <device-name> shellhttpd.conf="MSG=\"Hello from fioctl\""
+    $ fioctl devices config set <device-name> shellhttpd.conf="MSG=\"Hello from fioctl\""
 
-On your device, check the folder ``/var/run/secrets``.
+**On your device**, check the folder ``/var/run/secrets``.
 It may take a few minutes to receive the configuration file.
 If you changed the ``fioconfig`` interval as suggested in :ref:`tutorial-deploying-first-app`,
 it could take up to a minute.
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ sudo ls /var/run/secrets/
-
-::
 
      shellhttpd.conf  wireguard-client
 
 Read the file content:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ sudo cat /var/run/secrets/shellhttpd.conf
-
-::
 
      MSG="Hello from fioctl"

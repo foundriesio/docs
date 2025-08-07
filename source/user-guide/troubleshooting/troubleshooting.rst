@@ -18,39 +18,39 @@ If ``fioctl configure-git`` fails with an error, manual steps can be taken to ge
 
 1. Configure Git with the necessary credentials:
 
- .. code-block:: bash
+.. code-block:: console
 
-    git config --global credential.https://source.foundries.io.username fio-oauth2
-    git config --global credential.https://source.foundries.io.helper fio
+   $ git config --global credential.https://source.foundries.io.username fio-oauth2
+   $ git config --global credential.https://source.foundries.io.helper fio
 
 2. Create the symbolic link manually.
    The correct path will be displayed in the ``fioctl`` error message and may vary depending on your operating system and Git configuration environment.
 
  **Example**:
 
- .. code-block:: bash
+.. code-block:: console
 
-    fioctl configure-git
+    $ fioctl configure-git
     Symlinking /usr/local/bin/fioctl to /opt/homebrew/bin/git-credential-fio
     ERROR: symlink /usr/local/bin/fioctl /opt/homebrew/bin/git-credential-fio: file exists
 
  In the above example, the symbolic link command would be:
 
- .. code-block:: bash
+ .. code-block:: console
 
-    sudo ln -sf /usr/local/bin/fioctl /usr/local/bin/git-credential-fio
+    $ sudo ln -sf /usr/local/bin/fioctl /usr/local/bin/git-credential-fio
 
  However, for Linux environments, it is usually:
 
- .. code-block:: bash
+ .. code-block:: console
 
-    sudo ln -s /usr/local/bin/fioctl /usr/bin/git-credential-fio
+    $ sudo ln -s /usr/local/bin/fioctl /usr/bin/git-credential-fio
 
 3. Configure Git to use the correct `git-credential-fio` helper by specifying its path:
 
- .. code-block:: bash
+ .. code-block:: console
 
-    git config --global credential.helper /path/to/symlinking/git-credential-fio
+    $ git config --global credential.helper /path/to/symlinking/git-credential-fio
 
 .. tip::
 
@@ -69,9 +69,11 @@ Aktualizr-Lite Common Reports
 This section shows some common returns from ``aktualizr-lite`` operations.
 
 .. tip::
-   To get the ``aktualizr-lite`` logs, run::
+   To get the ``aktualizr-lite`` logs, run:
 
-      sudo journalctl -fu aktualizr-lite
+   .. code-block:: console
+
+      $ sudo journalctl -fu aktualizr-lite
 
 * **curl error 3**
 
@@ -124,9 +126,11 @@ If you are :ref:`Setting up your Device Gateway PKI <ref-rm-pki>`, make sure all
 
 .. tip::
    The `openssl s_client <https://www.openssl.org/docs/man1.0.2/man1/openssl-s_client.html>`_ command is useful for troubleshooting network issues.
-   For example::
+   For example:
 
-       openssl s_client -connect <dg>:8443 -cert client.pem -key pkey.pem -CAfile root.crt
+   .. code-block:: console
+
+       $ openssl s_client -connect <dg>:8443 -cert client.pem -key pkey.pem -CAfile root.crt
 
    Where:
 
@@ -151,9 +155,11 @@ This means The Update Framework (TUF) root key has expired.
 This means the Target to update to has expired.
 
 .. tip::
-   The Target metadata freshness can be checked on the host with::
+   The Target metadata freshness can be checked on the host with:
 
-      curl -H "osf-token: <token>" "https://api.foundries.io/ota/repo/<factory>/api/v1/user_repo/timestamp.json?tag=<tag>[&production=1]" | jq ."signed"."expires"
+   .. code-block:: console
+
+      $ curl -H "osf-token: <token>" "https://api.foundries.io/ota/repo/<factory>/api/v1/user_repo/timestamp.json?tag=<tag>[&production=1]" | jq ."signed"."expires"
 
    Where:
 
@@ -173,13 +179,17 @@ If this is a production device, it could mean that there are no :ref:`ref-produc
 .. tip::
    The Target metadata available for the device can be checked with the following commands:
 
-   On the device::
+   On the device:
 
-      curl -H "x-ats-tags: <tag>" https://<dg>:8443/repo/targets.json --cert client.pem --key pkey.pem --cacert root.crt
+   .. code-block:: console
+
+      $ curl -H "x-ats-tags: <tag>" https://<dg>:8443/repo/targets.json --cert client.pem --key pkey.pem --cacert root.crt
 
    Or on the host::
 
-      fioctl targets list --by-tag <tag> --production
+   .. code-block:: console
+
+      $ fioctl targets list --by-tag <tag> --production
 
    Where:
 
@@ -248,19 +258,19 @@ If so, the easiest fix is to generate the keys and add them to the repository.
 
 .. code-block:: console
 
-    cd factory-keys
-    openssl genpkey -algorithm RSA -out spldev.key \
+    $ cd factory-keys
+    $ openssl genpkey -algorithm RSA -out spldev.key \
           -pkeyopt rsa_keygen_bits:2048 \
           -pkeyopt rsa_keygen_pubexp:65537
-    openssl req -batch -new -x509 -key spldev.key -out spldev.crt
+    $ openssl req -batch -new -x509 -key spldev.key -out spldev.crt
 
 Once the ``spldev.key`` and ``spldev.crt`` are created, add them to the repository.
 
 .. code-block:: console
 
-    git add factory-keys/spldev.key
-    git add factory-keys/spldev.crt
-    git commit
+    $ git add factory-keys/spldev.key
+    $ git add factory-keys/spldev.crt
+    $ git commit
 
 Once the commit is pushed upstream, the FoundriesFactory™ Platform CI will generate a build that fixes the issue.
 
@@ -302,24 +312,32 @@ This removes outdated Targets from your Factory's :term:`targets.json`, allowing
    Ensure there are no important devices running on a Target that is about to be pruned.
    If you are intending on pruning production tags, be cautious and mindful of what you are doing.
 
-You can prune/delete individual Targets by using their TUF Target name::
+You can prune/delete individual Targets by using their TUF Target name:
 
-  fioctl targets prune <TUF_Target_name>
+.. code-block:: console
 
-Or, you can prune by tag, such as ``devel`` or ``experimental``::
+   $ fioctl targets prune <TUF_Target_name>
 
-  fioctl targets prune --by-tag <tag>
+Or, you can prune by tag, such as ``devel`` or ``experimental``:
+
+.. code-block:: console 
+
+   $ fioctl targets prune --by-tag <tag>
 
 We do not recommend nor support pruning all Targets from a tag.
 Doing so can lead to container builds failing from the lack of platform builds for the tag.
-To keep the last ``<number>`` of the Targets from a tag, use::
+To keep the last ``<number>`` of the Targets from a tag, use:
 
-  fioctl targets prune --by-tag <tag> --keep-last <number>
+.. code-block:: console
+
+  $ fioctl targets prune --by-tag <tag> --keep-last <number>
 
 There is also the ``--dryrun`` option.
-This lets you can check the pruned targets before running the actual command::
+This lets you can check the pruned targets before running the actual command:
 
-  fioctl targets prune --by-tag <tag> --keep-last <number> --dryrun
+.. code-block:: console
+
+   $ fioctl targets prune --by-tag <tag> --keep-last <number> --dryrun
 
 Device Registration Common Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -373,23 +391,23 @@ Option A: Changing Interval in Runtime
 
 1. On your device, create a settings file in the ``/etc/sota/conf.d/`` folder to configure ``aktualizr-lite``.
 
-   .. prompt:: bash device:~$
+   .. code-block:: console
 
-       sudo mkdir -p /etc/sota/conf.d/
-       sudo sh -c 'printf "[uptane]\npolling_sec = <time-sec>" > /etc/sota/conf.d/90-sota-fragment.toml'
+       device:~$ sudo mkdir -p /etc/sota/conf.d/
+       device:~$ sudo sh -c 'printf "[uptane]\npolling_sec = <time-sec>" > /etc/sota/conf.d/90-sota-fragment.toml'
 
 2. Next, create a settings file in the ``/etc/default/`` folder to configure ``fioconfig``.
 
-   .. prompt:: bash device:~$
+   .. code-block:: console
 
-       sudo sh -c 'printf "DAEMON_INTERVAL=<time-sec>" > /etc/default/fioconfig'
+       device:~$ sudo sh -c 'printf "DAEMON_INTERVAL=<time-sec>" > /etc/default/fioconfig'
 
 3. Restart both services:
 
-   .. prompt:: bash device:~$
+   .. code-block:: console
 
-       sudo systemctl restart aktualizr-lite
-       sudo systemctl restart fioconfig
+       device:~$ sudo systemctl restart aktualizr-lite
+       device:~$ sudo systemctl restart fioconfig
 
 .. note::
     Make sure to replace ``<time-sec>`` with the expected poll interval in seconds.
@@ -401,20 +419,20 @@ First, configure the **aktualizr-lite** polling interval:
 
 1. Create the ``sota-fragment`` folder in ``meta-subscriber-overrides`` repo:
 
-   .. prompt:: bash host:~$
+   .. code-block:: console
 
-       cd meta-subscriber-overrides
-       mkdir -p recipes-sota/sota-fragment
+       $ cd meta-subscriber-overrides
+       $ mkdir -p recipes-sota/sota-fragment
 
 2. Add a new file under this directory:
 
-   .. prompt:: bash host:~$
+   .. code-block:: console
 
-        touch recipes-sota/sota-fragment/sota-fragment_0.1.bb
+      $ touch recipes-sota/sota-fragment/sota-fragment_0.1.bb
 
 3. Include the content below to the file created in the last step:
 
-   .. code-block:: none
+   .. code-block::
 
        SUMMARY = "SOTA configuration fragment"
        SECTION = "base"
@@ -438,14 +456,14 @@ First, configure the **aktualizr-lite** polling interval:
 
 4. Create another directory under the one we just created so we can supply the source file (``90-sota-fragment.toml``) for the recipe above:
 
-   .. prompt:: bash host:~$
+   .. code-block:: console
 
-       cd meta-subscriber-overrides
-       mkdir -p recipes-sota/sota-fragment/sota-fragment
+      $ cd meta-subscriber-overrides
+      $ mkdir -p recipes-sota/sota-fragment/sota-fragment
 
 5. Create ``90-sota-fragment.toml`` under this new directory:
 
-   .. code-block::
+   .. code-block:: none
 
        [uptane]
        polling_sec = <time-sec>
@@ -470,14 +488,14 @@ First, configure the **aktualizr-lite** polling interval:
 7. Next, we configure the ``fioconfig`` daemon interval.
    Create the ``fioconfig`` folder in ``meta-subscriber-overrides`` repo
 
-   .. prompt:: bash host:~$
+   .. code-block:: console
 
-       cd meta-subscriber-overrides
-       mkdir -p recipes-support/fioconfig
+       $ cd meta-subscriber-overrides
+       $ mkdir -p recipes-support/fioconfig
 
 8. Add a new recipe file, ``fioconfig_git.bbappend``, under this directory and include the following:
 
-   .. code-block:: none
+   .. code-block::
 
        FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
        SRC_URI:append = " \
@@ -490,19 +508,19 @@ First, configure the **aktualizr-lite** polling interval:
 
 9. Create another directory under the one we just created so we can supply the source file (``fioconfig.conf``) for the recipe above:
 
-   .. prompt:: bash host:~$
+   .. code-block:: console
 
-       cd meta-subscriber-overrides
-       mkdir -p recipes-support/fioconfig/fioconfig
+       $ cd meta-subscriber-overrides
+       $ mkdir -p recipes-support/fioconfig/fioconfig
 
 10. Create the ``fioconfig.conf`` file under this new directory including:
 
-   .. code-block::
+    .. code-block:: none
 
-       DAEMON_INTERVAL=<time-sec>
+        DAEMON_INTERVAL=<time-sec>
 
-.. note::
-    Make sure to replace ``<time-sec>`` with the expected poll interval in seconds.
+    .. note::
+       Make sure to replace ``<time-sec>`` with the expected poll interval in seconds.
 
 Commit and trigger a new build to include these new changes and have a new polling interval.
 
@@ -516,24 +534,24 @@ Follow these steps to do so:
 
 1. Delete the device from the UI ``Devices`` tab or with:
 
-   .. prompt:: bash host:~$
+   .. code-block:: console
 
-       fioctl device delete <device-name>
+       $ fioctl device delete <device-name>
 
 2. Stop ``aktualizr-lite`` and ``fioconfig`` on the device:
 
-   .. prompt:: bash device:~#
+   .. code-block:: console
 
-       systemctl stop aktualizr-lite
-       systemctl stop fioconfig.path
-       systemctl stop fioconfig.service
+        device:~$ systemctl stop aktualizr-lite
+        device:~$ systemctl stop fioconfig.path
+        device:~$ systemctl stop fioconfig.service
 
 3. Delete both ``sql.db`` and ``client.pem`` on the device:
 
-   .. prompt:: bash device:~#
+   .. code-block:: console
 
-       rm /var/sota/sql.db
-       rm /var/sota/client.pem
+       device:~$ rm /var/sota/sql.db
+       device:~$ rm /var/sota/client.pem
 
 4. Lastly, perform the registration again.
 
@@ -559,41 +577,41 @@ However, this is a powerful ally during the development phase, as it provides di
 
 * **Secured/Closed Boards**
 
-This requires changing the ``lmp.cfg`` U-Boot config fragment in order to override ``CONFIG_BOOTDELAY=-2`` set by default in LmP.
+  This requires changing the ``lmp.cfg`` U-Boot config fragment in order to override ``CONFIG_BOOTDELAY=-2`` set by default in LmP.
 
-1. Create ``bootdelay.cfg`` configuration fragment:
+  1. Create ``bootdelay.cfg`` configuration fragment:
 
-**meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-fio/<machine>/bootdelay.cfg:**
+     **meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-fio/<machine>/bootdelay.cfg:**
 
-.. code-block::
+     .. code-block::
 
-   CONFIG_BOOTDELAY=3
+        CONFIG_BOOTDELAY=3
 
-2. Append it to the U-Boot source:
+  2. Append it to the U-Boot source:
 
-**meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-fio_%.bbappend**
+     **meta-subscriber-overrides/recipes-bsp/u-boot/u-boot-fio_%.bbappend**
 
-.. code-block::
+     .. code-block::
 
-   FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+         FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-   SRC_URI:append = " \
-       file://bootdelay.cfg \
-   "
+         SRC_URI:append = " \
+         file://bootdelay.cfg \
+         "
 
-After pushing to the Factory, it is necessary to trigger :ref:`ref-boot-software-updates` for the devices to take the update, or re-flash the device entirely to include this change.
+  After pushing to the Factory, it is necessary to trigger :ref:`ref-boot-software-updates` for the devices to take the update, or re-flash the device entirely to include this change.
 
 * **Open Boards**
 
-Open/non-secured boards also benefit from the procedure detailed for secured boards, however as they rely on U-Boot env support, there is a handier way on enabling boot delay during runtime:
+  Open/non-secured boards also benefit from the procedure detailed for secured boards, however as they rely on U-Boot env support, there is a handier way on enabling boot delay during runtime:
 
-.. prompt::
+  .. code-block:: console
 
-   $ sudo su
-   # fw_setenv bootdelay 3
-   # reboot
+     $ sudo su
+     # fw_setenv bootdelay 3
+     # reboot
 
-After reboot, the device shows the U-Boot bootdelay prompt.
+  After reboot, the device shows the U-Boot bootdelay prompt.
 
 .. _ref-ts-tips:
 
@@ -645,9 +663,11 @@ Debugging Network Connectivity
 When debugging network connectivity and access issues, it can be helpful to use ``curl``.
 However, LmP does not ship with the command.
 
-Rather than including ``curl`` on the host device, a simple approach is to run it via a Alpine Linux® container::
+Rather than including ``curl`` on the host device, a simple approach is to run it via a Alpine Linux® container:
 
-    docker run --rm -it alpine
+.. code-block:: console
+
+    $ docker run --rm -it alpine
     / # apk add curl
     / # curl
 
@@ -662,24 +682,24 @@ This shows steps to help troubleshooting unexpected permission problems.
 
 * Get user ID:
 
-.. prompt::
+  .. code-block:: console
 
-   $ fioctl users
+     $ fioctl users
 
 * Get user information:
 
-.. prompt::
+  .. code-block:: console
 
-   $ fioctl users <ID>
-   ID                        NAME                  ROLE
-   --                        ----                  ----
-   XXXXXXXXXXXXXXXXXXXXXXXX  User Name             User Role
+     $ fioctl users <ID>
+     ID                        NAME                  ROLE
+     --                        ----                  ----
+     XXXXXXXXXXXXXXXXXXXXXXXX  User Name             User Role
 
-   TEAMS
-   -----
+     TEAMS
+     -----
 
-   EFFECTIVE SCOPES
-   ----------------
+     EFFECTIVE SCOPES
+     ----------------
 
 This returns the combination of scopes allowed to this particular user based on their teams.
 
@@ -756,7 +776,7 @@ An example follows:
 
 * Create a new Target C > B based on A OStree, for example:
 
-.. code-block:: bash
+.. code-block:: console
 
     $ fioctl targets add --type ostree --tags <new-tag> --src-tag <orig-tag> --targets-creator "Recreate Target A platform build" <machine> <target-a-ostree-hash>
 
@@ -776,7 +796,7 @@ This is due to the fact that the certificates organization has changed.
 
 For example, the following error:
 
-.. code-block::
+.. code-block:: none
 
    ~/lmp-tools/scripts/update-factory-manifest
    New upstream release(s) have been found.
@@ -815,7 +835,7 @@ For example, the following error:
 For example, for a FoundriesFactory created with **v94.1** and updated to **v95**,
 the merge conflicts might be such as:
 
-.. code-block::
+.. code-block:: none
 
    Changes to be committed:
       modified:   ../../Dockerfile
@@ -853,7 +873,6 @@ the merge conflicts might be such as:
       deleted by us:   ../../conf/keys/uefi/PK.key
       deleted by us:   ../../conf/keys/uefi/PKnoauth.auth
 
-
 **Solution:**
 
 The solution is to manually merge the changes from ``lmp-manifest``
@@ -867,10 +886,10 @@ with the following goals in mind:
 As the error may vary, there is no set of commands to fit all the cases.
 For the example above, the following steps were used to solve the conflict:
 
-.. code-block:: bash
+.. code-block:: console
 
-   git rm -rf conf/keys/
-   git commit
+   $ git rm -rf conf/keys/
+   $ git commit
 
 However, remember the list of goals: no ``conf/keys`` folder should be present after
 the merge; all missing keys should be created.
@@ -904,6 +923,6 @@ ERROR: Parsing halted due to errors, see error messages above
 **Solution:**
 Remove the following line from the ``meta-subscriber-overrides/recipes-samples/images/lmp-factory-image.bb`` file.
 
-.. code-block::
+.. code-block:: none
 
    require ${@bb.utils.contains('MACHINE_FEATURES', 'jailhouse', 'recipes-samples/images/lmp-feature-jailhouse.inc', '', d)}

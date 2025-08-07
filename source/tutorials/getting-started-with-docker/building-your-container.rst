@@ -5,13 +5,9 @@ Now that you have a ``Dockerfile``, you can build it locally to make sure it is 
 
 From the same folder containing the ``Dockerfile``, run the command:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker build --tag shellhttpd:1.0 .
-
-**Example Output**:
-
-.. prompt:: text
+    $ docker build --tag shellhttpd:1.0 .
 
      Sending build context to Docker daemon  3.072kB
      Step 1/3 : FROM alpine
@@ -31,9 +27,9 @@ From the same folder containing the ``Dockerfile``, run the command:
 
 Next, start the container on your host PC:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    docker run -d -p 8080:8080 --name shellhttpd shellhttpd:1.0
+    $ docker run -d -p 8080:8080 --name shellhttpd shellhttpd:1.0
 
 
 - ``-d`` - run the container in detached mode (in the background).
@@ -44,12 +40,8 @@ Next, start the container on your host PC:
 
 To test your container, open a browser window to ``http://127.0.0.1:8080/`` or use the ``curl`` command:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ curl 127.0.0.1:8080
-
-**Example Output**:
-
-.. prompt:: text
+    $ curl 127.0.0.1:8080
 
      OK

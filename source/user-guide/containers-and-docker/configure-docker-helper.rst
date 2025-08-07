@@ -15,9 +15,11 @@ This enables the use of Docker commands from a personal computer, such as a lapt
    Git attempts to use this for authentication before ``git-credential-fio``.
 
    The solution is to remove Keychain Access entries from your git config file.
-   Locate the git config by running::
+   Locate the git config by running:
 
-    git config -l --show-origin | grep credential
+   .. code-block:: console
+
+      $ git config -l --show-origin | grep credential
   
    Edit the gitconfig file with ``credential.helper=osxkeychain``, commenting out the line.
 
@@ -25,9 +27,9 @@ This enables the use of Docker commands from a personal computer, such as a lapt
 
 To do this, run:
 
-.. code:: bash
+   .. code-block:: console
 
-   sudo fioctl configure-docker
+      $ sudo fioctl configure-docker
 
 This creates a symlink named ``docker-credential-fio`` in the directory of the docker client binary, pointing to ``fioctl``.
 
@@ -44,9 +46,9 @@ Now, Docker commands will just work.
 
 Example:
 
-::
+.. code-block:: console
 
-   docker pull hub.foundries.io/FACTORY/shellhttpd
+   $ docker pull hub.foundries.io/FACTORY/shellhttpd
 
 .. important::
    To run Docker commands without sudo, you will need to gain access to ``/var/run/docker.sock``.

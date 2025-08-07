@@ -19,7 +19,9 @@ At the time of this writing, provisioning the RoT keys requires software only av
 The non-secure component of this software executes on the R5 core and handles the certificate for the secure binary running on one of the M4 cores.
 The secure binary will perform the writing of the fuses.
 
-The software accepts either one or two private RSA 4096 keys to generate a PEM certificate::
+The software accepts either one or two private RSA 4096 keys to generate a PEM certificate:
+
+.. code-block:: console
 
   gen_keywr_cert.sh -t tifek/ti_fek_public.pem       \ # TI SoC specific key
                     --msv 0xC0FFE                    \ #
@@ -48,9 +50,11 @@ As described below, this header file can be distributed to non-secure environmen
 Building the boot-able image requires standard development tools publicly available from Texas Instruments:  Code Composer Studio, Sysconfig, and the SDK.
 
 On boot, this image will program the SoC fuses required to enable secured boot.
-As the am62x supports DFU boot, fusing a board only requires a single command::
+As the am62x supports DFU boot, fusing a board only requires a single command:
 
-  $ dfu-util -R -a bootloader -D fuse.bin
+.. code-block:: console
+
+   $ dfu-util -R -a bootloader -D fuse.bin
 
 The following strings should be displayed on your host when the device is plugged in with DFU mode::
 

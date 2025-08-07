@@ -20,11 +20,11 @@ Set up the board for updating using the manufacturing tools:
 
 #. **OPTIONAL**: Only required if you have problems and/or want to see the boot console output.
 
-.. figure:: /_static/boards/portenta-x8-uart.png
-     :width: 600
-     :align: center
+   .. figure:: /_static/boards/portenta-x8-uart.png
+       :width: 600
+       :align: center
 
-     UART 2 Pins
+       UART 2 Pins
 
 #. You may need to solder a six pin header to the **UART2** pad.
 
@@ -34,25 +34,27 @@ Set up the board for updating using the manufacturing tools:
 
 #. A UART connection will appear on the PC.
 
-     On a Linux® host for example::
+   On a Linux host for example:
 
-          $ ls -l /dev/serial/by-id/
-          total 0
-          lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_TTL_RS232-if00-port0 -> ../../ttyUSB0
+   .. code-block:: console
 
-     Using a serial terminal program like minicom, connect to the port
-     with ``if00`` in the name (in this example ttyUSB0) and apply the
-     following configuration
+      $ ls -l /dev/serial/by-id/
+      total 0
+      lrwxrwxrwx 1 root root 13 Dec 18 11:09 usb-FTDI_TTL_RS232-if00-port0 -> ../../ttyUSB0
 
-          - Baud rate: 115200
-          - Data bits: 8
-          - Stop bit: 1
-          - Parity: None
-          - Flow control: None
+   Using a serial terminal program like minicom, connect to the port
+   with ``if00`` in the name (in this example ttyUSB0) and apply the
+   following configuration:
 
-    .. tip::
-        If you are not receiving console output to swap the TX and RX pins. Most TTL
-        USB to UART adaptors do not provide the cross over function.
+      - Baud rate: 115200
+      - Data bits: 8
+      - Stop bit: 1
+      - Parity: None
+      - Flow control: None
+
+   .. tip::
+      If you are not receiving console output to swap the TX and RX pins. Most TTL
+      USB to UART adaptors do not provide the cross over function.
 
 #. Ensure that the power is off—no power input connected.
 

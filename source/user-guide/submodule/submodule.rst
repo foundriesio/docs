@@ -18,9 +18,9 @@ Create a GitHub Repository
 Go to GitHub_ and create a new repo.
 You can choose to use a private or public repository, each involves separate steps:
 
-.. tabs::
+.. tab-set::
 
-   .. group-tab:: Private
+   .. tab-item:: Private
 
       Select :guilabel:`Private` and :guilabel:`Create repository`.
 
@@ -38,11 +38,11 @@ You can choose to use a private or public repository, each involves separate ste
       Now Configure your Factory with the personal access token.
       Use ``fioctl`` to configure the ``githubtok`` variable:
 
-      .. prompt:: bash host:~$, auto
+      .. code-block:: console
 
-          host:~$ fioctl secrets update githubtok=<PERSONAL_TOKEN>
+          $ fioctl secrets update githubtok=<PERSONAL_TOKEN>
    
-   .. group-tab:: Public
+   .. tab-item:: Public
 
       Select :guilabel:`Public` and :guilabel:`Create repository`.
 
@@ -59,43 +59,40 @@ For this guide, the GitHub repo will be used to specify a Docker Compose Applica
 The requirements for the FoundriesFactory CI to build this is to have a folder with a ``Dockerfile`` and a ``docker-compose.yml``
 If you are not familiar with the ``containers.git`` file structure, see the section on :ref:`tutorial-compose-app-file-structure`.
 
-Create a folder to initialize the repo.
+Create a folder to initialize the repo:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ mkdir myapp
-    host:~$ cd myapp/
-    host:~$ git init
-    host:~$ git remote add origin git@github.com:munoz0raul/myapp.git
+    $ mkdir myapp
+    $ cd myapp/
+    $ git init
+    $ git remote add origin git@github.com:munoz0raul/myapp.git
     
 Add the ``shellhttpd`` files as reference:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git remote add fio https://github.com/foundriesio/extra-containers.git
-    host:~$ git remote update
-    host:~$ git checkout remotes/fio/tutorials -- shellhttpd
+    $ git remote add fio https://github.com/foundriesio/extra-containers.git
+    $ git remote update
+    $ git checkout remotes/fio/tutorials -- shellhttpd
 
 Your repository folder should be the folder containing the application files. 
 Move it from the ``shellhttpd`` folder to the repo root directory:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git mv shellhttpd/Dockerfile shellhttpd/docker-compose.yml shellhttpd/httpd.sh .
-    host:~$ git rm -r shellhttpd/
+    $ git mv shellhttpd/Dockerfile shellhttpd/docker-compose.yml shellhttpd/httpd.sh .
+    $ git rm -r shellhttpd/
 
 You have the files required for a Docker Compose Application:
 
-.. prompt:: bash host:~$, auto
-
-    host:~$ tree ../myapp/
-
 .. code-block:: console
-    
-     ../myapp/
-     ├── docker-compose.yml
-     ├── Dockerfile
-     └── httpd.sh
+
+    $ tree ../myapp/
+    ../myapp/
+    ├── docker-compose.yml
+    ├── Dockerfile
+    └── httpd.sh
 
 Update the image url in ``docker-compose.yml`` with your repo's name.
 This example uses ``myapp``:
@@ -118,21 +115,21 @@ This example uses ``myapp``:
 
 Add all new files, changes and commit and push:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git add docker-compose.yml Dockerfile httpd.sh
-    host:~$ git commit -m "Adding App Structure"
-    host:~$ git push
+    $ git add docker-compose.yml Dockerfile httpd.sh
+    $ git commit -m "Adding App Structure"
+    $ git push
 
 Adding the Submodule
 --------------------
 
 Clone your ``containers.git`` repo and enter its directory:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone https://source.foundries.io/factories/<factory>/containers.git
-    cd containers
+    $ git clone https://source.foundries.io/factories/<factory>/containers.git
+    $ cd containers
 
 .. tip::
 
@@ -141,17 +138,17 @@ Clone your ``containers.git`` repo and enter its directory:
 
 Inside the ``containers`` directory, adapt the command below using your GitHub repo:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git submodule add git@github.com:<user>/<repository>.git
+    $ git submodule add git@github.com:<user>/<repository>.git
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git submodule add -b devel git@github.com:munoz0raul/myapp.git
-    host:~$ cd myapp
-    host:~$ git add myapp/
-    host:~$ git commit -m "Adding myapp submodule"
-    host:~$ git push
+    $ git submodule add -b devel git@github.com:munoz0raul/myapp.git
+    $ cd myapp
+    $ git add myapp/
+    $ git commit -m "Adding myapp submodule"
+    $ git push
 
 Go to the `web app <https://app.foundries.io>`_, select your Factory and click on :guilabel:`Targets`.
 The latest Target should be the CI job you just created.
@@ -184,13 +181,13 @@ It is possible to do it manually or using GitHub Actions.
 
 To update it manually, go to your ``containers`` folder, inside the submodule and run:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cd containers/
-    host:~$ git submodule update --remote ./myapp
-    host:~$ git add myapp
-    host:~$ git commit -m "Updating submodule hash"
-    host:~$ git push
+    $ cd containers/
+    $ git submodule update --remote ./myapp
+    $ git add myapp
+    $ git commit -m "Updating submodule hash"
+    $ git push
 
 Updating the Submodule Automatically
 ------------------------------------
@@ -232,11 +229,11 @@ Name it with ``FOUNDRIES_API_TOKEN``, paste your ``<Token>`` on Value and click 
 Create ``.github/workflows/source-fio-update.yml`` inside your GitHub application repo.
 Follow the example below and make sure you update ``<FACTORY_NAME>`` with your Factory, and ``<SUBMODULE_FOLDER>`` with your submodule folder.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cd myapp/
-    host:~$ mkdir -p .github/workflows/ 
-    host:~$ vi .github/workflows/source-fio-update.yml
+    $ cd myapp/
+    $ mkdir -p .github/workflows/ 
+    $ vi .github/workflows/source-fio-update.yml
 
 .. code-block:: yaml
 
@@ -263,11 +260,11 @@ Follow the example below and make sure you update ``<FACTORY_NAME>`` with your F
 
 Add then commit your GitHub Action:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git add .github/workflows/source-fio-update.yml
-    host:~$ git commit -m "Adding Action"
-    host:~$ git push
+    $ git add .github/workflows/source-fio-update.yml
+    $ git commit -m "Adding Action"
+    $ git push
 
 After this commit, the submodule should be automatically updated inside the ``containers.git`` repo.
 As a result, it will automatically trigger a new CI Job to build your application.

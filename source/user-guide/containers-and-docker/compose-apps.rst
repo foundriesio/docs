@@ -19,7 +19,7 @@ Here is an example source layout::
         docker-compose.yml
         nginx.conf
 
-::
+.. code-block:: yaml
 
   # httpd/docker-compose.yml
   version: "3"
@@ -39,7 +39,9 @@ Here is an example source layout::
     }
   }
 
-When changes are made in ``containers.git``, the Factory will produce a new Target that includes the updated ``httpd`` compose app::
+When changes are made in ``containers.git``, the Factory will produce a new Target that includes the updated ``httpd`` compose app
+
+.. code-block:: console
 
   $ fioctl targets show 77
 
@@ -70,10 +72,11 @@ How Does It Fit Together?
 -------------------------
 
 Changes to containers produce new TUF Targets that aktualizr-lite can install.
-The interesting part of the Target in this case is::
+The interesting part of the Target in this case is
+
+.. code-block:: json
 
  {
-  ...
   "signed": {
     "targets": {
       "raspberrypi4-64-lmp-144" : {
@@ -82,7 +85,6 @@ The interesting part of the Target in this case is::
              "httpd" : {
                 "uri" : "hub.foundries.io/<factory>/httpd@sha256:deadbeef"
              }
-             ....
 
 Examples
 --------
@@ -91,7 +93,9 @@ Single Container Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Many Factories can build their entire application as a single container.
-In this scenario ``containers.git`` layout might look like::
+In this scenario ``containers.git`` layout might look like:
+
+.. code-block:: dockerfile
 
   # simple-app/Dockerfile
   FROM alpine
@@ -99,23 +103,23 @@ In this scenario ``containers.git`` layout might look like::
   COPY ./app.py /usr/local/bin
   CMD ["python3", "/usr/local/bin/app.py"]
 
-::
+.. code-block:: python
 
-  # simple-app/app.py
-  import os, time
-  while True:
-      print(os.environ['FROM_COMPOSE'])
-      time.sleep(60)
+   # simple-app/app.py
+   import os, time
+   while True:
+       print(os.environ['FROM_COMPOSE'])
+       time.sleep(60)
 
-::
+.. code-block:: yaml
 
-  # simple-app/docker-compose.yml
-  version: "3"
-  services:
-    app:
-      image: hub.foundries.io/<factory>/simple-app:latest
-      environment:
-        FROM_COMPOSE: "this came from docker-compose.yml"
+   # simple-app/docker-compose.yml
+   version: "3"
+   services:
+     app:
+       image: hub.foundries.io/<factory>/simple-app:latest
+       environment:
+         FROM_COMPOSE: "this came from docker-compose.yml"
 
 ::
 
@@ -139,41 +143,43 @@ The CI logic does this automatically.
 A Flask Web App
 ~~~~~~~~~~~~~~~
 
-This example uses multiple containers to build a typical Python3 Flask application::
+This example uses multiple containers to build a typical Python3 Flask application
 
-  # hello-world/Dockerfile
-  FROM alpine
-  RUN apk --no-cache add py3-flask
-  ENV FLASK_APP=app.py
-  ENV PYTHONPATH=/srv
-  COPY ./app.py /srv/app.py
-  CMD ["python3", "-m", "flask", "run"]
+.. code-block:: dockerfile
 
-::
+   # hello-world/Dockerfile
+   FROM alpine
+   RUN apk --no-cache add py3-flask
+   ENV FLASK_APP=app.py
+   ENV PYTHONPATH=/srv
+   COPY ./app.py /srv/app.py
+   CMD ["python3", "-m", "flask", "run"]
 
-  # hello-world/app.py
-  from flask import Flask
-  app = Flask(__name__)
+.. code-block:: python
 
-  @app.route('/')
-  def hello_world():
-      return 'Hello, World!'
+   # hello-world/app.py
+   from flask import Flask
+   app = Flask(__name__)
 
-::
+   @app.route('/')
+   def hello_world():
+       return 'Hello, World!'
 
-  # hello-world-app/docker-compose.yml
-  version: "3"
-  services:
-    app:
-      image: hub.foundries.io/<factory>/hello-world:latest
-    nginx:
-      image: nginx:alpine
-      volumes:
-        - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      ports:
-        - 80:80
-      depends_on:
-        - app
+.. code-block:: yaml
+
+   # hello-world-app/docker-compose.yml
+   version: "3"
+   services:
+     app:
+       image: hub.foundries.io/<factory>/hello-world:latest
+     nginx:
+       image: nginx:alpine
+       volumes:
+         - ./nginx.conf:/etc/nginx/conf.d/default.conf
+       ports:
+         - 80:80
+       depends_on:
+         - app
 
 ::
 

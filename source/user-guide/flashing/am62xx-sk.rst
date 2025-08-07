@@ -30,9 +30,9 @@ Flashing
    With ``--mmc-id 0`` param explicitly specify eMMC (id = 0) as a boot media,
    where wic image will be flashed.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ sudo ./ti-mfgtool-files-am62xx-evm/flash.sh --wic lmp-factory-image-am62xx-evm.wic --mmc-id 0
+     $ sudo ./ti-mfgtool-files-am62xx-evm/flash.sh --wic lmp-factory-image-am62xx-evm.wic --mmc-id 0
      Load U-Boot via DFU...
      ------------------------------------------
      DFU BOOT TIBOOT3: TIFS and R5

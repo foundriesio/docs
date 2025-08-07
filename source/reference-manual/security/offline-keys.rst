@@ -43,9 +43,11 @@ Thereafter, that (offline) TUF root key must be rotated regularly (at the least 
   Factory owners who received it and have not yet downloaded/rotated the initial keys,
   can proceed with the initial rotation as described in this section.
 
-To take your TUF root key offline by performing its first time rotation, use this Fioctl_ command::
+To take your TUF root key offline by performing its first time rotation, use this Fioctl_ command
 
-  fioctl keys tuf rotate-offline-key --role=root --first-time \
+.. code-block:: console
+
+   $ fioctl keys tuf rotate-offline-key --role=root --first-time \
     --keys=/absolute/path/to/root.keys.tgz
 
 This will perform the following steps:
@@ -56,12 +58,14 @@ This will perform the following steps:
   - and finally upload it to Foundries.io servers.
 
 The above command only needs to be run **once**.
-Onwards, use a shorter command to rotate your (offline) TUF root key::
+Onwards, use a shorter command to rotate your (offline) TUF root key:
 
-  fioctl keys tuf rotate-offline-key --role=root --keys=/absolute/path/to/root.keys.tgz
+.. code-block:: console
+
+   $ fioctl keys tuf rotate-offline-key --role=root --keys=/absolute/path/to/root.keys.tgz
 
 .. note::
-  Here and below the ``root.keys.tgz`` file is the one created during the first offline TUF root key rotation.
+   Here and below the ``root.keys.tgz`` file is the one created during the first offline TUF root key rotation.
 
 When rotating the TUF root key, the newly generated key is added to the keys tarball (``root.keys.tgz`` in examples).
 That file **must never be lost**.
@@ -87,9 +91,11 @@ To achieve this, it requires production ``targets.json`` files to be signed by t
   - The Foundries.io owned `online` target signing key, stored on the server side.
   - The Factory admin owned `offline` target signing key, stored on their storage of choice.
 
-To generate your first offline TUF targets key, or rotate an existing key, use the following Fioctl_ command::
+To generate your first offline TUF targets key, or rotate an existing key, use the following Fioctl_ command:
 
-  fioctl keys tuf rotate-offline-key --role=targets \
+.. code-block:: console
+
+  $ fioctl keys tuf rotate-offline-key --role=targets \
     --keys=/absolute/path/to/root.keys.tgz --targets-keys=/absolute/path/to/targets.keys.tgz
 
 This will perform the following steps:
@@ -120,14 +126,16 @@ However, losing this key may be inconvenient if more than one Factory admin can 
 How to View Offline TUF Keys
 ----------------------------
 
-The Factory's TUF metadata can be viewed using this Fioctl_ command::
+The Factory's TUF metadata can be viewed using this Fioctl_ command:
+
+.. code-block:: console
 
   # The normal "CI" root:
-  fioctl keys tuf show-root
+  $ fioctl keys tuf show-root
 
   # The production root. Note the target key role has:
   #   "threshold" : 2
-  fioctl keys tuf show-root --prod
+  $ fioctl keys tuf show-root --prod
 
 It prints the full ``root.json`` file to your console, where you can examine individual fields.
 
@@ -144,10 +152,12 @@ The initial contents of the offline TUF root keys tarball (after the first rotat
 
 The most critical file here is ``fioctl-root-<keyid>.sec``,
 e.g. ``fioctl-root-5d7397a7a9d62d4f89a39b77903831af12172abb8b9f483e7ad9638bacbc93b1.sec``.
-The ``<keyid>`` part can be verified with the current ``root.json`` using this command::
+The ``<keyid>`` part can be verified with the current ``root.json`` using this command:
 
-  $ fioctl keys tuf show-root | jq '.signed.roles.root.keyids[0]'
-  "5d7397a7a9d62d4f89a39b77903831af12172abb8b9f483e7ad9638bacbc93b1"
+.. code-block:: console
+
+   $ fioctl keys tuf show-root | jq '.signed.roles.root.keyids[0]'
+   "5d7397a7a9d62d4f89a39b77903831af12172abb8b9f483e7ad9638bacbc93b1"
 
 
 The TUF targets keys tarball have a similar structure.
@@ -158,10 +168,12 @@ For example, after the first (offline) TUF targets key rotation, it will look li
         |-- fioctl-targets-<keyid>.pub
         `-- fioctl-targets-<keyid>.sec
 
-Similarly, the ``<keyid>`` part can be verified using this command::
+Similarly, the ``<keyid>`` part can be verified using this command:
 
-  $ fioctl keys tuf show-root | jq '.signed.roles.targets.keyids[1]'
-  "cb58f6b83e1e16276c64b19aef7fb07afe3227818f8511ac3ceb288965afdb65"
+.. code-block:: console
+
+   $ fioctl keys tuf show-root | jq '.signed.roles.targets.keyids[1]'
+   "cb58f6b83e1e16276c64b19aef7fb07afe3227818f8511ac3ceb288965afdb65"
 
 See the section `How to Backup Offline TUF Keys`_ below, how the internal structure of these tarballs can be used.
 
@@ -214,7 +226,9 @@ one should use the ``fioctl keys tuf updates`` subcommands.
 They require making transactional changes distributed across several machines,
 thus they cannot be executed using shortcut ``fioctl keys tuf`` subcommands.
 
-In order to add a new offline signing key to your TUF root, you would start with the below command::
+In order to add a new offline signing key to your TUF root, you would start with the below command:
+
+.. code-block:: console
 
     $ fioctl keys tuf updates init -m 'Your TUF root changes summary'
     A new transaction to update TUF root keys started.
@@ -238,9 +252,11 @@ So, an admin initiating the transaction, should share the transaction ID from ab
 There are many ways to share it, either by in-person talk, or encrypted peer-to-peer communication mediums.
 It is safe if the transaction ID is leaked after the transaction finishes, as it is only temporal.
 
-Having the transaction ID, a user who needs to add a new key would run the below command (e.g. for the TUF root role)::
+Having the transaction ID, a user who needs to add a new key would run the below command (e.g. for the TUF root role):
 
-    $ fioctl keys tuf updates add-offline-key --role=targets --keys path/to/tuf-targets-keys.tgz --txid ELNOADKR
+.. code-block:: console
+
+   $ fioctl keys tuf updates add-offline-key --role=targets --keys path/to/tuf-targets-keys.tgz --txid ELNOADKR
 
 This command generates a new offline signing key for the TUF targets, and adds it to the TUF root.
 These changes are not committed yet, they are only staged for commit within the scope of the transaction.
@@ -251,22 +267,28 @@ These changes are not committed yet, they are only staged for commit within the 
     It still allows to keep previous (already inactive) keys in the same file as a backup.
 
 Now that the user added their key, an admin who owns the offline TUF root signing key, needs to sign these changes.
-If it is the same admin who initiated the transaction, they can run the below command::
+If it is the same admin who initiated the transaction, they can run the below command:
+
+.. code-block:: console
 
     $ fioctl keys tuf updates sign --keys path/to/tuf-root-keys.tgz
 
 If it is a different admin, they would also need to supply the transaction ID to that command.
 
-Once all the desired changes have been done, an admin can apply them (commit the transaction) using the below command::
+Once all the desired changes have been done, an admin can apply them (commit the transaction) using the below command:
+
+.. code-block:: console
 
     $ fioctl keys tuf updates apply
 
 .. note::
     Before applying the TUF root updates, it is a good habit to review them using ``fioctl keys tuf updates review``.
 
-At any moment before applying the changes, and admin can cancel the transaction by the below command::
+At any moment before applying the changes, and admin can cancel the transaction by the below command:
 
-    $ fioctl keys tuf updates cancel
+.. code-block:: console
+
+   $ fioctl keys tuf updates cancel
 
 Any user with admin rights can cancel the TUF root updates transaction, not only the one who initiated it.
 
@@ -277,7 +299,9 @@ Requiring more than 1 offline signature for any TUF root changes greatly improve
 In some use cases you might also require more than 1 offline signature for :ref:`production TUF targets <ref-production-targets>`.
 
 For that, you would start a new transaction (as :ref:`above <ref-offline-keys-more-than-1-root>`),
-and set the signature threshold using the below commands::
+and set the signature threshold using the below commands:
+
+.. code-block:: console
 
     $ fioctl keys tuf updates init -m 'Your TUF root changes summary'
     $ fioctl keys tuf updates set-threshold 2 --role=<role>
@@ -288,7 +312,9 @@ These two operations can also be combined into one TUF root updates transaction.
 
 When you increase the signature threshold for the production TUF targets,
 you also need to sign existing production targets by additional offline signing key.
-This can be done within the same transaction using the below command::
+This can be done within the same transaction using the below command
+
+.. code-block:: console
 
     $ fioctl keys tuf updates sign-prod-target --keys path/to/tuf-targets-keys.tgz
 

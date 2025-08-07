@@ -3,53 +3,47 @@ Commit and Push New Applications
 
 Use ``git status`` in the ``containers`` folder to verify the changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$  git status
-
-**Example Output**:
-
-.. prompt:: text
+    $  git status
 
     On branch main
     Your branch is up to date with 'origin/main'.
     
     Changes to be committed:
       (use "git restore --staged <file>..." to unstage)
-	    new file:   flask-mqtt-nginx/docker-compose.yml
-	    new file:   flask-mqtt-nginx/nginx.conf
-	    new file:   flask-mqtt/Dockerfile
-	    new file:   flask-mqtt/app.py
-	    new file:   mosquitto/docker-compose.yml
-	    new file:   shellhttpd-mqtt/Dockerfile
-	    new file:   shellhttpd-mqtt/docker-compose.yml
-	    new file:   shellhttpd-mqtt/httpd.sh
+      new file:   flask-mqtt-nginx/docker-compose.yml
+      new file:   flask-mqtt-nginx/nginx.conf
+      new file:   flask-mqtt/Dockerfile
+      new file:   flask-mqtt/app.py
+      new file:   mosquitto/docker-compose.yml
+      new file:   shellhttpd-mqtt/Dockerfile
+      new file:   shellhttpd-mqtt/docker-compose.yml
+      new file:   shellhttpd-mqtt/httpd.sh
     
     Changes not staged for commit:
       (use "git add <file>..." to update what will be committed)
       (use "git restore <file>..." to discard changes in working directory)
-	    modified:   flask-mqtt-nginx/docker-compose.yml
-	    modified:   shellhttpd-mqtt/docker-compose.yml
+      modified:   flask-mqtt-nginx/docker-compose.yml
+      modified:   shellhttpd-mqtt/docker-compose.yml
 
 Add the new files and changes:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git add mosquitto shellhttpd-mqtt flask-mqtt-nginx flask-mqtt
+    $ git add mosquitto shellhttpd-mqtt flask-mqtt-nginx flask-mqtt
 
 Commit your changes with the message:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git commit -m "Adding Flask, Mosquitto and shellhttpd-MQTT apps"
+    $ git commit -m "Adding Flask, Mosquitto and shellhttpd-MQTT apps"
 
 Push all committed modifications to the remote repository:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git push
-
-.. prompt:: text
+    $ git push
 
      Enumerating objects: 15, done.
      Counting objects: 100% (15/15), done.

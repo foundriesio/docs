@@ -20,9 +20,11 @@ Configuring for CI Azure Container Registry (ACR)
 -------------------------------------------------
 
 The CI can be configured to use an ACR `service principal`_ with read-only access to a private ACR instance.
-First, the CI must be configured with the service principal's ID and password::
+First, the CI must be configured with the service principal's ID and password:
 
- $ fioctl secrets update azprincipal='<ID>:<PASSWORD>'
+.. code-block:: console
+
+   $ fioctl secrets update azprincipal='<ID>:<PASSWORD>'
 
 The Factory :ref:`configuration <ref-factory-definition>` is then updated accordingly:
 
@@ -58,9 +60,11 @@ Configuring CI for AWS ECR
 --------------------------
 
 CI uses the `aws ecr get-login-password`_ command to authenticate.
-A Factory can be configured to use this by first providing an AWS credentials file to CI::
+A Factory can be configured to use this by first providing an AWS credentials file to CI:
 
- $ fioctl secrets update aws_creds="$(cat $HOME/.aws/credentials)"
+.. code-block:: console
+
+   $ fioctl secrets update aws_creds="$(cat $HOME/.aws/credentials)"
 
 .. note::
 
@@ -106,36 +110,42 @@ Configuring for CI Google Artifact Registry (GAR)
 -------------------------------------------------
 
 The CI can be configured to use a Google Compute Platform(GCP) `service account`_ with read-only access to a private GAR instance.
-A service account can be created that may only do Docker pull operations::
+A service account can be created that may only do Docker pull operations:
 
- # Create the service account
- $ NAME=<user name, eg "fio-ci">
- $ gcloud iam service-accounts create ${NAME}
+.. code-block:: console
 
- # Grant it minimal access to your GCP account:
- $ GAR_NAME=<Registry name, eg "fio-containers">
- $ LOCATION=<GCP region, eg "us-central-1">
- $ PROJ_ID=<GCP project ID>
- $ gcloud artifacts repositories add-iam-policy-binding \
-     ${GAR_NAME} --location=us-central1 \
-     --member=serviceAccount:${NAME}@${PROJ_ID}.iam.gserviceaccount.com \
-     --role=roles/artifactregistry.reader
+   # Create the service account
+   $ NAME=<user name, eg "fio-ci">
+   $ gcloud iam service-accounts create ${NAME}
 
- # Create the service account key file required by CI:
- $ gcloud iam service-accounts keys create \
-   application_default_credentials.json \
-   --iam-account=${NAME}@${PROJ_ID}.iam.gserviceaccount.com
+   # Grant it minimal access to your GCP account:
+   $ GAR_NAME=<Registry name, eg "fio-containers">
+   $ LOCATION=<GCP region, eg "us-central-1">
+   $ PROJ_ID=<GCP project ID>
+   $ gcloud artifacts repositories add-iam-policy-binding \
+       ${GAR_NAME} --location=us-central1 \
+       --member=serviceAccount:${NAME}@${PROJ_ID}.iam.gserviceaccount.com \
+       --role=roles/artifactregistry.reader
 
-The service account key file created above then needs to be configured for CI::
+   # Create the service account key file required by CI:
+   $ gcloud iam service-accounts keys create \
+     application_default_credentials.json \
+     --iam-account=${NAME}@${PROJ_ID}.iam.gserviceaccount.com
 
- $ fioctl secrets update gcp_creds==application_default_credentials.json
+The service account key file created above then needs to be configured for CI:
 
-The Factory :ref:`configuration <ref-factory-definition>` is then updated accordingly::
+.. code-block:: console
 
-  # factory-config.yml
-  container_registries:
-  - type: gar
-    gar_creds_secret_name: gcp_creds
+   $ fioctl secrets update gcp_creds==application_default_credentials.json
+
+The Factory :ref:`configuration <ref-factory-definition>` is then updated accordingly:
+
+.. code-block:: yaml
+
+   # factory-config.yml
+   container_registries:
+   - type: gar
+     gar_creds_secret_name: gcp_creds
 
 .. _service account:
    https://cloud.google.com/iam/docs/service-account-overview
