@@ -31,10 +31,10 @@ Booting the Installer
 
 After boot, wait until the message:
 
-.. prompt::
+.. code-block:: console
 
     Please select an install target or press n to exit (sda sdc)
-    sda
+    $ sda
 
 Type the name of the device you want to install the :term:`system image`. 
 In the example above, the device used was ``sda``.
@@ -42,7 +42,7 @@ In the example above, the device used was ``sda``.
 After selecting the device, you will be asked if you want to proceed.
 Type `y` to continue the installation.
 
-.. prompt::
+.. code-block:: console
 
     Installation successful. Remove your installation media and press Enter to reboot.
 

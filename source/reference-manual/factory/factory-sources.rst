@@ -67,7 +67,7 @@ Platform Branches
 To create new buildable platform branches, first enable the new branch in ``ci-scripts``.
 For example, if you wanted to add a development branch named ``feature1``:
 
-.. code-block:: YAML
+.. code-block:: yaml
 
     lmp:
       tagging:
@@ -79,25 +79,25 @@ For example, if you wanted to add a development branch named ``feature1``:
 Then branch out from the wanted branches in ``meta-subscriber-overrides`` and ``lmp-manifest``.
 For example, using ``main`` as a base for the new branch:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd meta-subscriber-overrides
-    git checkout main
-    git checkout -b feature1
-    git commit -m "[skip ci] create devel branch" --allow-empty
-    git push --set-upstream origin feature1
+    $ cd meta-subscriber-overrides
+    $ git checkout main
+    $ git checkout -b feature1
+    $ git commit -m "[skip ci] create devel branch" --allow-empty
+    $ git push --set-upstream origin feature1
 
 The ``lmp-manifest`` repo change is similar as above, but includes an additional change to point to the correct ``meta-subscriber-overrides`` branch:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd lmp-manifest
-    git checkout main
-    git checkout -b feature1
-    sed -i 's/main/feature1/' <factory_name>.xml
-    git add <factory_name>.xml
-    git commit -m "point meta-subscriber-overrides to correct branch"
-    git push --set-upstream origin feature1
+    $ cd lmp-manifest
+    $ git checkout main
+    $ git checkout -b feature1
+    $ sed -i 's/main/feature1/' <factory_name>.xml
+    $ git add <factory_name>.xml
+    $ git commit -m "point meta-subscriber-overrides to correct branch"
+    $ git push --set-upstream origin feature1
 
 After the last step, a platform build for the ``feature1`` branch is triggered for your Factory.
 
@@ -106,7 +106,7 @@ Container Branches
 
 To create new buildable container branches, first enable the new branch in ``ci-scripts``, for example:
 
-.. code-block::
+.. code-block:: yaml
 
     containers:
       tagging:
@@ -117,11 +117,11 @@ To create new buildable container branches, first enable the new branch in ``ci-
 
 Then branch out from the wanted branch in ``containers``, for example using ``main``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd containers
-    git checkout main
-    git checkout -b feature1
-    git push --set-upstream origin feature1
+    $ cd containers
+    $ git checkout main
+    $ git checkout -b feature1
+    $ git push --set-upstream origin feature1
 
 After the last step, a container build for the ``feature1`` is triggered for your Factory.

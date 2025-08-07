@@ -41,17 +41,19 @@ The question is then how to make these accessible to the Dockerfile's build cont
 Defining Factory Secrets
 ------------------------
 
-`Fioctl®`_ includes support for managing secrets for a factory::
+`Fioctl®`_ includes support for managing secrets for a factory:
+
+.. code-block:: console
 
   # List secrets defined in the factory:
-  fioctl secrets list
+  $ fioctl secrets list
 
   # Add/Update secrets defined in the factory:
   # NOTE: quotes are needed for arguments with spaces or multi-line files
-  fioctl secrets update secret_1=blah secret_2="$(cat $HOME/.ssh/id_rsa)"
+  $ fioctl secrets update secret_1=blah secret_2="$(cat $HOME/.ssh/id_rsa)"
 
   # Remove secrets defined in the factory:
-  fioctl secrets update secret_1= secret_2=
+  $ fioctl secrets update secret_1= secret_2=
 
 .. _Fioctl®:
    https://github.com/foundriesio/fioctl
@@ -61,7 +63,7 @@ Passing Secrets to Docker's Build Context
 
 Update ``factory-config.yml`` from ci-scripts.git to instruct the build scripts to pass Factory secrets to Docker:
 
-.. code-block:: YAML
+.. code-block:: yaml
 
     containers:
       docker_build_secrets: true

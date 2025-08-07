@@ -28,9 +28,9 @@ Preparation
 
 #. Extract ``mfgtool-files-apalis-imx6.tar.gz``:
 
-   .. prompt::
+   .. code-block:: console
 
-         tar -zxvf mfgtool-files-apalis-imx6.tar.gz
+         $ tar -zxvf mfgtool-files-apalis-imx6.tar.gz
 
 #. Organize the files as in the tree below::
 

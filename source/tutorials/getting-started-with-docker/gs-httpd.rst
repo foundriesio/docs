@@ -4,19 +4,18 @@ Shell Script
 The ``Dockerfile`` instructs Docker to copy the shell script ``httpd.sh`` to the Docker image. 
 Move that file from ``shellhttpd.disabled`` to the ``shellhttpd`` folder:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    mv ../shellhttpd.disabled/httpd.sh .
+    $ mv ../shellhttpd.disabled/httpd.sh .
 
 Check the content of ``httpd.sh``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat httpd.sh
+    $ cat httpd.sh
 
-**httpd.sh**:
 
-.. prompt::
+.. code-block:: shell
 
      #!/bin/sh -e
      
@@ -30,4 +29,4 @@ Check the content of ``httpd.sh``:
       echo "= $(date) ============================="
      done
 
-This script responds to a request on the port defined by ``PORT``(defaults to ``8080``) with the message defined by ``MSG``(defaults to ``OK``).
+This script responds to a request on the port defined by ``PORT`` (defaults to ``8080``) with the message defined by ``MSG`` (defaults to ``OK``).

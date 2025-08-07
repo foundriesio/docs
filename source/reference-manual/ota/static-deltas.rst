@@ -24,9 +24,11 @@ Understanding Why Static Deltas are Needed
 
 An operator will be planning an update to a new Target.
 This Target will have been produced by CI and already have a tag that was used by CI devices.
-For example, the ``targets.json`` might include::
+For example, the ``targets.json`` might include:
 
-  "raspberrypi4-64-lmp-9" : {
+.. code-block::
+
+  "raspberrypi4-64-lmp-9": {
     "custom" : {
       "version": "9",
       "tags" : ["main"],
@@ -35,9 +37,9 @@ For example, the ``targets.json`` might include::
 In this example, Target #9 has passed CI and needs to be deployed to devices following the ``promoted`` tag.
 The operator can determine what static deltas are needed by running:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ fioctl targets static-deltas --dryrun --by-tag promoted 9
+    $ fioctl targets static-deltas --dryrun --by-tag promoted 9
     Dry run: Would generated static deltas for target versions:
     7 -> 9
     5 -> 9
@@ -49,15 +51,15 @@ Creating Static Deltas
 ~~~~~~~~~~~~~~~~~~~~~~
 Running the same command without ``--dryrun`` will produce the static deltas via a CI Job:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ fioctl targets static-deltas --by-tag promoted 9
+   $ fioctl targets static-deltas --by-tag promoted 9
 
 Once the static deltas are in place, Target #9 can be re-tagged so that "promoted" devices will apply the update:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ fioctl targets tag --tags main,promoted --by-version 9
+   $ fioctl targets tag --tags main,promoted --by-version 9
 
 When the CI job completes, devices on the promoted tag will start performing OTA updates that will use the static deltas.
 

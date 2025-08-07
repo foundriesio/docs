@@ -33,7 +33,7 @@ Changing the Toolchain
 To change the default values, disable the ``clang`` compiler globally.
 Instead, use ``gcc`` by changing the ``TOOLCHAIN`` value:
 
-.. prompt:: text
+.. code-block:: none
 
   TOOLCHAIN = "gcc"
 
@@ -41,7 +41,7 @@ Changing the compiler per recipe is also possible.
 To do this, we add the line above in a  recipe ``.bbappend``.
 This can also be done in the Factory, changing the file ``conf/machine/include/non-clangable.inc``, in ``meta-subscriber-overrides``:
 
-.. prompt:: text
+.. code-block:: none
 
   TOOLCHAIN:pn-<recipe> = "gcc"
 
@@ -54,7 +54,7 @@ This can be used to do the customization, and will only take effect when clang i
 All of these customizations can be placed in the Factory.
 Once again, do this by changing the file ``conf/machine/include/non-clangable.inc``, in ``meta-subscriber-overrides``:
 
-.. prompt:: text
+.. code-block:: none
 
   STRIP:pn-<recipe>:toolchain-clang = "${HOST_PREFIX}strip"
   OBJCOPY:pn-<recipe>:toolchain-clang = "${HOST_PREFIX}objcopy"

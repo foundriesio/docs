@@ -10,25 +10,23 @@ Instead of different devices communicating, two different containers will use MQ
 
 Open a new terminal on your host machine and find the container folder used previously.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cd containers/
+    $ cd containers/
 
 While in the containers folder, use git to download ``mosquitto`` from the ``extra-containers`` repo:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git remote add fio https://github.com/foundriesio/extra-containers.git
-    host:~$ git remote update
-    host:~$ git checkout remotes/fio/tutorials -- mosquitto
+    $ git remote add fio https://github.com/foundriesio/extra-containers.git
+    $ git remote update
+    $ git checkout remotes/fio/tutorials -- mosquitto
 
 The ``mosquitto`` app with ``docker-compose.yml`` should now be inside your ``containers`` folder:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ tree -L 2 .
-
-.. prompt:: text
+    $ tree -L 2 .
 
      .
      ├── mosquitto
@@ -43,11 +41,11 @@ The ``mosquitto`` app with ``docker-compose.yml`` should now be inside your ``co
 
 Check the content of ``mosquitto/docker-compose.yml``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat mosquitto/docker-compose.yml
+    $ cat mosquitto/docker-compose.yml
 
-.. prompt:: text
+.. code-block:: yaml
 
      # mosquitto/docker-compose.yml
      version: '3.2'

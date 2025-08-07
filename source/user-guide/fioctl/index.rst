@@ -25,13 +25,13 @@ Auto Updating
 .. code-block:: console
   
    # check if an update is available:
-   host:~$ fioctl version
+   $ fioctl version
    v0.37-24-gd450f5b
    Update available: 0.38.0
 	 https://github.com/foundriesio/fioctl/releases/download/v0.38/fioctl-linux-amd64
 
    # update by running:
-   host:~$ fioctl version --update-to 0.38.0
+   $ fioctl version --update-to 0.38.0
    v0.37-24-gd450f5b
    Downloading update: https://github.com/foundriesio/fioctl/releases/download/v0.38/fioctl-linux-amd64
    Saving new version to /var/code/vs-code-server-config/fioctl/bin/fioctl-linux-amd64
@@ -111,8 +111,7 @@ Target metadata can be inspected by using 3 primary commands:
 ``fioctl targets list``
     Lists the Targets a Factory has produced so far.
 
-      .. toggle-header::
-         :header: **Click to show command output**
+      .. dropdown:: Click to show command output
 
          .. code-block::
 
@@ -132,8 +131,7 @@ Target metadata can be inspected by using 3 primary commands:
 
     Additionally, the **OSTree Hash** for the Target has been highlighted.
 
-      .. toggle-header::
-         :header: **Click to show command output**
+      .. dropdown:: Click to show command output
 
          .. code-block::
             :linenos:
@@ -200,8 +198,7 @@ Target metadata can be inspected by using 3 primary commands:
     * The **OSTree Hash** for the Target.
     * The **Docker-Compose App URI** for each available app at the time the Target was produced.
 
-      .. toggle-header::
-         :header: **Click to show command output**
+      .. dropdown:: Click to show command output
 
          .. code-block::
 

@@ -14,9 +14,11 @@ Booting in QEMU
 
 .. important:: These instructions require QEMU 5.2 or later.
 
-#. List available Targets and decide on which to boot::
+#. List available Targets and decide on which to boot:
 
-     fioctl targets list
+   .. code-block:: console
+
+     $ fioctl targets list
 
 .. note::
     Make sure to set the FIOCTL_FACTORY environment variable so that you can list the target of the specified factory:

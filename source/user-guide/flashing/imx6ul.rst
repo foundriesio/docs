@@ -21,10 +21,10 @@ i.MX 6UL Evaluation Kit
 .. |imx_usb_type_sdp| replace:: micro-B
 .. |imx_power_jack_type| replace:: 5V
 
-.. |imx_lsusb| prompt:: bash $, auto
+.. |imx_lsusb| replace::
 
-                $ lsusb | grep NXP
-                  Bus 002 Device 052: ID 15a2:0080 Freescale Semiconductor, Inc.
+    $ lsusb | grep NXP
+    Bus 002 Device 052: ID 15a2:0080 Freescale Semiconductor, Inc.
 
 .. |image_board_top| image:: /_static/boards/imx6ulevk.png
      :width: 600
@@ -34,23 +34,26 @@ i.MX 6UL Evaluation Kit
      :width: 600
      :align: middle
 
-.. |imx_tty_list| prompt:: bash $, auto
+.. |imx_tty_list| replace::
 
         $ ls -l /dev/serial/by-id/
-          total 0
-          lrwxrwxrwx 1 root root 13 Dec  3 13:09 usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 -> ../../ttyUSB2
+        total 0
+        lrwxrwxrwx 1 root root 13 Dec  3 13:09 usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 -> ../../ttyUSB2
 
 .. |usb_device_windows| image:: /_static/boards/imx6_windows.png
           :width: 600
           :align: middle
 
-.. |imx_file_list| prompt:: text
+.. |imx_file_list| replace::
 
           ├── lmp-factory-image-imx6ulevk.wic.gz
           ├── u-boot-imx6ulevk.itb
           ├── sit-imx6ulevk.bin
           ├── SPL-imx6ulevk
           └── mfgtool-files-imx6ulevk
+
+.. |imx_mfgtool_file_list| replace::
+
                ├── bootloader.uuu
                ├── full_image.uuu
                ├── SPL-mfgtool

@@ -28,7 +28,7 @@ of tests. Unfortunately, many tests require unbinding the eMMC card from
 the kernel. In such cases, you can boot the system over NFS, unbind the
 eMMC, and run the tests. Here's an example executing eMMC tuning tests:
 
-.. prompt:: text
+.. code-block::
 
       $ echo 'mmc0:0001' >  /sys/bus/mmc/drivers/mmcblk/unbind
       $ echo 'mmc0:0001' > /sys/bus/mmc/drivers/mmc_test/bind
@@ -44,9 +44,12 @@ To configure the ramdisk for NFS boot using Yocto requires enabling the
 This is not enabled by default in the factory. If you are building LmP
 locally, you could modify ``meta-lmp`` as follows:
 
-.. prompt:: text
+.. code-block:: console
 
-     diff --git a/meta-lmp-base/recipes-core/images/initramfs-ostree-lmp-image.bb b/meta-lmp-base/recipes-core/images/initramfs-ostree-lmp-image.bb
+     $ diff --git a/meta-lmp-base/recipes-core/images/initramfs-ostree-lmp-image.bb b/meta-lmp-base/recipes-core/images/initramfs-ostree-lmp-image.bb
+
+.. code-block:: diff
+
      index f4f2e505..99b801ca 100644
      --- a/meta-lmp-base/recipes-core/images/initramfs-ostree-lmp-image.bb
      +++ b/meta-lmp-base/recipes-core/images/initramfs-ostree-lmp-image.bb
@@ -63,9 +66,12 @@ locally, you could modify ``meta-lmp`` as follows:
 Or if you prefer building your factory under CI control, you could apply
 the following patch to your ``meta-subscriber-override`` repository:
 
-.. prompt:: text
+.. code-block:: console
 
      diff --git a/recipes-core/images/initramfs-ostree-lmp-image.bbappend b/recipes-core/images/initramfs-ostree-lmp-image.bbappend
+
+.. code-block:: diff
+
      new file mode 100644
      index 0000000..49de5cf
      --- /dev/null
@@ -91,13 +97,13 @@ To mount the WIC, use ``fdisk`` to determine the start sector
 and length of the rootfs image in the file (i.e., the number of
 sectors).
 
-.. prompt:: text
+.. code-block:: console
 
     $ fdisk -l lmp-base-console-image-${platform-name}.wic
 
 Then create the ``rootfs`` directory and mount it:
 
-.. prompt:: text
+.. code-block:: bash
 
     #!/bin/bash
     mkdir rootfs
@@ -114,7 +120,7 @@ directories - what you should export via NFS.
 Inspecting the ``ostree/`` directory and in this particular case, you should
 expect something as follows:
 
-.. prompt:: text
+.. code-block:: console
 
     ostree/boot.1/lmp/180c0adc612a144a262f15e6c124cc3ac22260b7b2897832a1228da2d3e359a5/0
 
@@ -139,7 +145,7 @@ contents of the FIT file.
 
 The file should be named  ``fitImage-${platform-name}.bin``
 
-.. prompt:: text
+.. code-block:: console
 
     $ dumpimage -l fitImage-uz3cg-dwg-sec.bin
     FIT description: Kernel fitImage for Linux-microPlatform/5.15.64+gitAUTOINC+0d5ce62585_35bc6145aa/uz3cg-dwg-sec
@@ -180,7 +186,7 @@ The file should be named  ``fitImage-${platform-name}.bin``
 Then to extract the bootable kernel image (position 0 in the FIT) to a
 file named ``Image`` use the dumpimage utility
 
-.. prompt:: text
+.. code-block:: console
 
     $ dumpimage -T flat_dt -p 0 -o Image fitImage-uz3cg-dwg-sec.bin
     Extracted:
@@ -200,7 +206,7 @@ file named ``Image`` use the dumpimage utility
 
 And to extract the device tree blob (position 1 in the FIT) to a file named ``system.dtb``:
 
-.. prompt:: text
+.. code-block:: console
 
     $ dumpimage -T flat_dt -p 1 -o system.dtb fitImage-uz3cg-dwg-sec.bin
     Extracted:
@@ -223,7 +229,7 @@ image. For that, U-boot provides the mkimage Linux utility.
 
 Run the following command to generate the ``ramdisk`` file:
 
-.. prompt:: text
+.. code-block:: console
 
     $ mkimage -A arm -O linux -T ramdisk -d initramfs-ostree-lmp-image-uz3cg-dwg-sec.cpio.gz ramdisk
 
@@ -237,7 +243,7 @@ Using U-boot to Boot the NFS
 For the first boot you will have to flash the WIC image as per the LmP
 instructions. Then boot the system and dump the command line:
 
-.. prompt:: text
+.. code-block:: console
 
     root@uz3cg-dwg-sec:~# cat /proc/cmdline
     earlycon console=ttyPS0,115200 clk_ignore_unused root=/dev/mmcblk0p2 rootfstype=ext4 ostree=/ostree/boot.1/lmp/180c0adc612a144a262f15e6c124cc3ac22260b7b2897832a1228da2d3e359a5/0
@@ -260,14 +266,14 @@ environment variable with the NFS enabled command line. Also use the
    Replace the pointers to persistent storage in the previous command line with the NFS information.
    ``root=/dev/nfs nfsroot=192.168.1.8:/srv/nfs/rootfs rootwait rw ip=dhcp``
 
-.. prompt:: text
+.. code-block:: console
 
     uboot> setenv bootargs "earlycon console=ttyPS0,115200 clk_ignore_unused root=/dev/nfs rootfstype=ext4 ostree=/ostree/boot.1/lmp/180c0adc612a144a262f15e6c124cc3ac22260b7b2897832a1228da2d3e359a5/0 nfsroot=192.168.1.99:/srv/nfs/rootfs rootwait rw ip=dhcp"
 
 2. tftp server at 192.168.1.7 and various memory addresses for the
    different files to download.
 
-.. prompt:: text
+.. code-block:: console
 
     uboot> setenv tftpserverip 192.168.1.7; setenv ipaddr=dhcp;
     uboot> setenv initrd 0x10A00000; setenv imgaddr 0x800000000; setenv dtaddr 0x10000000;
@@ -278,6 +284,6 @@ environment variable with the NFS enabled command line. Also use the
 
 3. Finally boot the image:
 
-.. prompt:: text
+.. code-block:: console
 
     uboot> booti ${imgaddr} ${initrd} ${dtaddr}

@@ -7,11 +7,9 @@ To get started, inspect the Targets you have created:
 
 Use ``fioctl`` on your host machine to list all Target versions:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets list
-
-::
+    $ fioctl targets list
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
@@ -36,11 +34,9 @@ Based on the Target version listed above, the device should be running version `
 
 Use ``fioctl`` on your host machine to verify what Target the device is running.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl device list
-
-::
+    $ fioctl device list
 
      NAME           FACTORY     TARGET                 STATUS  APPS                                        UP-TO-DATE
      ----           -------     ------                 ------  ----                                        ----------
@@ -50,11 +46,9 @@ The device is running ``raspberrypi4-64-lmp-9``, which is the Target created for
 
 To check if your device is following the ``devel`` tag, use ``fioctl`` to inspect the device:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl device show <device-name>
-
-::
+    $ fioctl device show <device-name>
 
      UUID:		2b7f3164-b288-4c7e-b4e9-2c75c9943dd1
      Owner:		5e13232f73927550af883e7b

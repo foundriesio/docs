@@ -34,80 +34,81 @@ We use `GitHub Releases`_ to distribute static golang binaries.
    Run ``fioctl version`` to check for an update, then run ``fioctl version --update-to <version>``.
    For more details checkout the :ref:`Fioctl user guide <ug-fioctl>`.
 
-.. tabs::
+.. tab-set::
+    :sync-group: os
 
-   .. group-tab:: Linux
+    .. tab-item:: Linux
+        :sync: linux
 
-      .. attention::
-        Make sure you have ``curl`` installed.
+        .. attention:: Make sure you have ``curl`` installed.
 
-      1. Download a Linux binary to a directory on your ``PATH``.
+        1. Download a Linux binary to a directory on your ``PATH``.
+           For example, to download version |fioctl_version| on Linux, define the version:
 
-         For example, to download version |fioctl_version| on Linux, define the version:
-
-         .. parsed-literal::
-
-              FIOCTL_VERSION="|fioctl_version|"
-
-         Download the binary with curl:
-
-         .. prompt:: bash host:~$, auto
-
-            host:~$ sudo curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-linux-amd64
-
-      2. Make the :ref:`ref-fioctl` binary executable:
-
-         .. prompt:: bash host:~$, auto
-
-            host:~$ sudo chmod +x /usr/local/bin/fioctl
-
-   .. group-tab:: macOS
-
-      .. attention::
-        Make sure you have ``curl`` installed.
-
-      1. Download a Darwin binary from the `GitHub Releases`_ page to a directory on your ``PATH``.
-
-         For example, to download version |fioctl_version| on macOS, define the version:
-
-         .. parsed-literal::
+           .. parsed-literal::
 
               FIOCTL_VERSION="|fioctl_version|"
 
-         Download the binary with curl:
+           Download the binary with curl:
 
-         .. prompt:: bash host:~$, auto
+           .. code-block:: console
 
-            host:~$ sudo curl -o /usr/local/bin/fioctl -L https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64
+              $ sudo curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-linux-amd64
 
-         .. important::
+        2. Make the :ref:`ref-fioctl` binary executable:
 
-            For MacOS running on a Apple M1 processor, replace ``fioctl-darwin-amd64`` with ``fioctl-darwin-arm64``, and set ``FIOCTL_VERSION`` to v0.21 or newer.
+           .. code-block:: console
 
-      2. Make the :ref:`ref-fioctl` binary executable:
+              $ sudo chmod +x /usr/local/bin/fioctl
 
-         .. prompt:: bash host:~$, auto
+    .. tab-item:: macOS
+        :sync: macos
 
-            host:~$ sudo chmod +x /usr/local/bin/fioctl
+        .. attention::
+          Make sure you have ``curl`` installed.
 
+        1. Download a Darwin binary from the `GitHub Releases`_ page to a directory on your ``PATH``.
 
-   .. group-tab:: Windows
+           For example, to download version |fioctl_version| on macOS, define the version:
 
-      1. Download a Windows binary from the `GitHub Releases`_ page.
-      2. Put it in a folder of your choosing and rename it to ``fioctl.exe``
-      3. Press ``Win + R`` and type ``SystemPropertiesAdvanced``
-      4. Press ``enter`` or click ``OK``.
-      5. Click "Environment Variables..." in the resultant menu..
-      6. Click the ``Path`` **system** variable, then click ``Edit...``
-      7. Click ``New`` in the "Edit environment variable" menu.
-      8. Enter the path to the folder in which you have placed :ref:`ref-fioctl`.
+           .. parsed-literal::
 
-         An example path string if installing to a folder on the desktop would look like this.
+                FIOCTL_VERSION="|fioctl_version|"
 
-         ``C:\Users\Gavin\Desktop\fio\bin``
+           Download the binary with curl:
 
-      You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
-      ``fioctl``.
+           .. code-block:: console
+
+              $ sudo curl -o /usr/local/bin/fioctl -L https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64
+
+           .. important::
+
+              For MacOS running on a Apple M1 processor, replace ``fioctl-darwin-amd64`` with ``fioctl-darwin-arm64``, and set ``FIOCTL_VERSION`` to v0.21 or newer.
+
+        2. Make the :ref:`ref-fioctl` binary executable:
+
+           .. code-block:: console
+
+              $ sudo chmod +x /usr/local/bin/fioctl
+
+    .. tab-item:: Windows
+        :sync: windows
+
+        1. Download a Windows binary from the `GitHub Releases`_ page.
+        2. Put it in a folder of your choosing and rename it to ``fioctl.exe``
+        3. Press ``Win + R`` and type ``SystemPropertiesAdvanced``
+        4. Press ``enter`` or click ``OK``.
+        5. Click "Environment Variables..." in the resultant menu..
+        6. Click the ``Path`` **system** variable, then click ``Edit...``
+        7. Click ``New`` in the "Edit environment variable" menu.
+        8. Enter the path to the folder in which you have placed :ref:`ref-fioctl`.
+
+        An example path string if installing to a folder on the desktop would look like:
+
+        ``C:\Users\Gavin\Desktop\fio\bin``
+
+        You should now be able to open ``cmd.exe`` or ``powershell.exe`` and type
+        ``fioctl``.
 
 
 Authenticating Fioctl
@@ -116,9 +117,9 @@ Authenticating Fioctl
 With :ref:`ref-fioctl` installed, authenticate it with our backend.
 For this, you will generate OAuth2 application credentials for interacting with the FoundriesFactory™ Platform API:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ fioctl login
+   $ fioctl login
      Please visit:
 
      https://app.foundries.io/settings/credentials/
@@ -165,9 +166,9 @@ Use the Client ID and Secret to finish the Fioctl login.
 
    Client ID and Secret
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ fioctl login
+   $ fioctl login
      Please visit:
 
      https://app.foundries.io/settings/credentials/
@@ -180,9 +181,9 @@ Use the Client ID and Secret to finish the Fioctl login.
 
 Use the following command to test the configuration:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ fioctl -f <factory> status
+   $ fioctl -f <factory> status
       Total number of devices: 0
       TAG  LATEST TARGET  DEVICES  ON LATEST  ONLINE
       ---  -------------  -------  ---------  ------
@@ -211,29 +212,33 @@ Setting Up Git
 
 Run the following command to add the relevant entries to the Git configuration:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ fioctl configure-git
+   $ fioctl configure-git
 
 .. warning::
    * If for some reason the command ``fioctl configure-git`` fails with an error, manual steps can be taken to get the exact same result.
      For comprehensive instructions, please see the :ref:`Fioctl™ Errors <ref-ts-errors>` section.
 
-   * Existing users reconfiguring Git access may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility::
+   * Existing users reconfiguring Git access may need to remove the following lines from ``.gitconfig`` to use ``fioctl configure-git`` utility:
+
+   .. code-block:: none
 
       [http "https://source.foundries.io"]
       extraheader = Authorization: basic <TOKEN>
 
-   * If editing scopes on existing tokens, the user should refresh the local ``fioctl`` credentials with::
+   * If editing scopes on existing tokens, the user should refresh the local ``fioctl`` credentials with:
 
-      fioctl login --refresh-access-token
+   .. code-block:: console
+
+      $ fioctl login --refresh-access-token
 
 Verify this has succeeded by cloning a repository from your Factory, such as your ``containers.git`` repo.
 Replace ``<factory>`` with your Factory's name:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ git clone https://source.foundries.io/factories/<factory>/containers.git
+   $ git clone https://source.foundries.io/factories/<factory>/containers.git
 
 .. tip::
 

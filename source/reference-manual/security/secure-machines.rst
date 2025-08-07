@@ -62,10 +62,10 @@ The list of artifacts downloaded should be:
 
 Expand the tarballs:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    gunzip lmp-factory-image-<machine-sec>.wic.gz
-    tar -zxvf mfgtool-files-<machine-sec>.tar.gz
+    $ gunzip lmp-factory-image-<machine-sec>.wic.gz
+    $ tar -zxvf mfgtool-files-<machine-sec>.tar.gz
 
 The resultant directory tree should look like the following::
 
@@ -110,13 +110,17 @@ You can extend this to store custom variables that need to be made secure, like 
 Writing to Secure Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. prompt:: bash device:~#, auto
+From the device: 
+
+.. code-block:: console
 
    device:~# fiovb_setenv <variable> <value>
 
 Reading From Secure Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. prompt:: bash device:~#, auto
+From the device: 
+
+.. code-block:: console
 
    device:~# fiovb_printenv <variable>

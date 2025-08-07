@@ -17,11 +17,9 @@ To check your device configuration, click on the Factory tab :guilabel:`devices`
 
 You can also use ``fioctl`` to read information about your device.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl device show <device-name>
-
-::
+    $ fioctl device show <device-name>
 
      UUID:          a06b0bab-38be-409b-b7f8-f1125231a91e
      Owner:         6025791fd93b37d33e03b349
@@ -61,11 +59,9 @@ In this case, ``shellhttpd``.
 
 Another way to verify the apps running on a device is with ``docker ps``:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ docker ps
-
-::
 
      CONTAINER ID   IMAGE                                  COMMAND                  CREATED       STATUS       PORTS                    NAMES
      48f467ea2461   hub.foundries.io/<factory>/shellhttpd   "/usr/local/bin/http…"   6 hours ago   Up 6 hours   0.0.0.0:8080->8080/tcp   shellhttpd_httpd_1

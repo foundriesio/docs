@@ -5,10 +5,10 @@ Building and Deploying Application
 
 Clone and enter your ``containers.git``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone https://source.foundries.io/factories/<factory>/containers.git
-    cd containers
+   $ git clone https://source.foundries.io/factories/<factory>/containers.git
+   $ cd containers
 
 Your ``containers.git`` repository is initialized with a simple application example in ``shellhttpd.disabled``.
 
@@ -18,25 +18,21 @@ Your ``containers.git`` repository is initialized with a simple application exam
 
 Move the entire application folder ``shellhttpd.disabled`` to ``shellhttpd``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git mv shellhttpd.disabled/ shellhttpd
+    $ git mv shellhttpd.disabled/ shellhttpd
 
 Commit your changes with a message:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git commit -m "shellhttpd: add application"
+    $ git commit -m "shellhttpd: add application"
 
 Push all committed modifications to the remote repository:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git push
-
-**Example Output**:
-
-.. prompt:: text
+    $ git push
 
      Enumerating objects: 6, done.
      Counting objects: 100% (6/6), done.
@@ -86,24 +82,19 @@ Testing the Container
 
 ``curl`` is not available on your device, instead run ``wget`` to test the container like so:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ wget -qO- 127.0.0.1:8080
-
-::
 
      Hello world
 
 You can also test the container from an external device connected to the same network, such as your computer.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ #Example curl 192.168.15.11:8080
-    host:~$ curl <device IP>:8080
-
-::
-
-     Hello world
+    $ #Example curl 192.168.15.11:8080
+    $ curl <device IP>:8080
+      Hello world
 
 You can get a more detailed guide by following the next section, **Tutorials**, starting with :ref:`tutorial-gs-with-docker`.
 

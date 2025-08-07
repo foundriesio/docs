@@ -15,9 +15,9 @@ Preparation
 
 3. Unzip the downloaded file:
 
-   .. prompt:: bash host:~$, auto
+   .. code-block:: console
 
-         host:~$ tar -xvf lmp-factory-image-jetson-agx-xavier-devkit.tegraflash.tar.gz
+         $ tar -xvf lmp-factory-image-jetson-agx-xavier-devkit.tegraflash.tar.gz
 
 The script used for flashing is ``doflash.sh``.
 
@@ -52,9 +52,9 @@ Flashing
 
 1. With the board powered in recovery mode, flash the board:
    
-   .. prompt:: bash host:~$, auto
+   .. code-block:: console
     
-      host:~$ sudo ./doflash.sh
+      $ sudo ./doflash.sh
 
    This can take a few minutes to complete.
    The process can be watched from the host console or UART output.

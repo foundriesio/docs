@@ -33,15 +33,16 @@ The prerequisites will look like:
 
 1. A Factory (``lmp-demo``) with a built Target. It has the tag ``custom-ci-devel`` and the hardware ID ``raspberrypi4-64``.
 
-    .. code-block:: bash
+    .. code-block:: console
 
-        Fioctl targets show 1 -f lmp-demo
-            APP  HASH
-            ---  ----
+        $fioctl targets show 1 -f lmp-demo
+            
+        APP  HASH
+        ---  ----
         ## Target: raspberrypi4-64-lmp-1
-           Created:       2022-11-30T00:20:31Z
-           Tags:          custom-ci-devel
-           OSTree Hash:   fe15cf8ad5e09136725ef996c93299d70fa0d20bfa2f10651437b8860b9edcdb
+        Created:       2022-11-30T00:20:31Z
+        Tags:          custom-ci-devel
+        OSTree Hash:   fe15cf8ad5e09136725ef996c93299d70fa0d20bfa2f10651437b8860b9edcdb
 
 2. `The GitHub repo`_ that contains a working App implementation.
 

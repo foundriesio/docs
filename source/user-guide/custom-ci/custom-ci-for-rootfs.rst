@@ -24,27 +24,28 @@ Use the :ref:`lmp-sdk container <ref-linux-building>` (aka dev container) to :te
 1. Disable FoundriesFactory CI specific steps.
    Add the following to ``conf/local.conf``:
 
-   .. prompt:: text
+   .. code-block:: python
+      :caption: conf/local.conf
 
        IMAGE_FSTYPES:remove = "ostreepush garagesign garagecheck"
 
 2. Run the following to build a system image (if flashing of a device is needed) and the ostree repo:
 
-   .. prompt:: text
+   .. code-block:: console
 
-       bitbake lmp-factory-image
+       $ bitbake lmp-factory-image
 
 3. To bitbake just the ostree repo:
 
-   .. prompt:: text
+   .. code-block:: console
 
-       bitbake lmp-factory-image -c do_image_ostreecommit
+       $ bitbake lmp-factory-image -c do_image_ostreecommit
 
 You should now have an ostree repo that contains a rootfs to deliver to your devices via the OTA service. For example:
 
-   .. code-block:: bash
+   .. code-block:: console
 
-       ./deploy/images/intel-corei7-64/ostree_repo
+       $ ./deploy/images/intel-corei7-64/ostree_repo
 
 Push OSTree Repo To Cloud
 -------------------------
@@ -70,9 +71,9 @@ or ``ostree --repo ./deploy/images/intel-corei7-64/ostree_repo rev-parse <machin
 
 Run ``fioctl targets add`` ato add the new Target referencing the given ostree-based rootfs, e.g.,
 
-.. code-block:: bash
+.. code-block:: console
 
-    fioctl targets add --type ostree --tags master,devel --src-tag master intel-corei7-64 094a6d77b7053f2fec1e5e4ccd83c38cb89174f644303c6bb09693648be98912
+    $ fioctl targets add --type ostree --tags master,devel --src-tag master intel-corei7-64 094a6d77b7053f2fec1e5e4ccd83c38cb89174f644303c6bb09693648be98912
 
 Check the OSTree Target
 -----------------------
@@ -81,15 +82,15 @@ and whether the content is correct.
 
 If ``aktualizr-lite`` is configured for one of the new Target's tags, then it is able to enlist and install the Target.
 
-.. prompt:: text
+.. code-block:: console
 
-    aktualizr-lite check
+    $ aktualizr-lite check
     ...
     info: 1589	sha256:094a6d77b7053f2fec1e5e4ccd83c38cb89174f644303c6bb09693648be98912
 
 During the update, the log can show that aklite is downloading the expected ostree commit:
 
-.. prompt:: text
+.. code-block:: console
 
     info: Fetching ostree commit 094a6d77b7053f2fec1e5e4ccd83c38cb89174f644303c6bb09693648be98912 from https://storage.googleapis.com/ota-lite-ostree-eu/094a6d77b7053f2fec1e5e4ccd83c38cb89174f644303c6bb09693648be98912
     ...

@@ -1,52 +1,60 @@
-.. tabs::
+.. tab-set::
+    :sync-group: os
 
-   .. group-tab:: Linux
+    .. tab-item:: Linux
+        :sync: linux
 
-      1. Verify target is present::
+        #. Verify target is present:
 
-           $ lsusb | grep NXP
-           Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
+           .. code-block:: console
 
-         .. highlight:: none
-
-         In this mode, you will use the ``uuu`` tools to program the images to the eMMC.
-         The ``USB ID`` may differ if a different SoC is used.
-
-      #. To program the LmP to the EMMC, run::
-
-           $ sudo mfgtool-files-<machine-name>/uuu -pp 1 mfgtool-files-<machine-name>/full_image.uuu
-           uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.43-0-ga9c099a
-
-           Success 1    Failure 0
+              $ lsusb | grep NXP
+              Bus 001 Device 023: ID 1fc9:012b NXP Semiconductors i.MX 8M Dual/8M QuadLite/8M Quad Serial Downloader
 
 
-           1:31     3/ 3 [=================100%=================] SDPV: jump
-           2:31     8/ 8 [Done                                  ] FB: done
+           In this mode, you will use the ``uuu`` tools to program the images to the eMMC.
+           The ``USB ID`` may differ if a different SoC is used.
 
-      #. Turn off the power
-      #. Put the board into run mode.
+        #. To program the LmP to the EMMC, run:
 
-   .. group-tab:: Windows
+           .. code-block:: console
 
-      #. Start the ``Device Manager``
-      #. Select ``View``
-      #. Select ``Devices by container``
-      #. Verify a device as in the following:
+              $ sudo mfgtool-files-<machine-name>/uuu -pp 1 mfgtool-files-<machine-name>/full_image.uuu
+              uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.43-0-ga9c099a
 
-      .. figure:: /_static/boards/windows_verify.png
-          :width: 600
-          :align: center
-
-      #. To program the LmP to the EMMC, run::
-
-           C:\Users\Someone> mfgtool-files-<machine-name>\uuu.exe -pp 1 mfgtool-files-<machine-name>\full_image.uuu
-           uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.43-0-ga9c099a
-
-           Success 1    Failure 0
+              Success 1    Failure 0
 
 
-           1:31     3/ 3 [=================100%=================] SDPV: jump
-           2:31     8/ 8 [Done                                  ] FB: done
+               1:31     3/ 3 [=================100%=================] SDPV: jump
+               2:31     8/ 8 [Done                                  ] FB: done
 
-      #. Turn off the power
-      #. Put the board into run mode.
+        #. Turn off the power
+        #. Put the board into run mode.
+
+    .. tab-item:: Windows
+        :sync: windows
+
+        #. Start the ``Device Manager``
+        #. Select ``View``
+        #. Select ``Devices by container``
+        #. Verify a device as in the following:
+
+           .. figure:: /_static/boards/windows_verify.png
+              :width: 600
+              :align: center
+
+        #. To program the LmP to the EMMC, run:
+
+           .. code-block:: powershell
+
+              PS C:\Users\Someone> mfgtool-files-<machine-name>\uuu.exe -pp 1 mfgtool-files-<machine-name>\full_image.uuu
+              uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.43-0-ga9c099a
+
+              Success 1    Failure 0
+
+
+              1:31     3/ 3 [=================100%=================] SDPV: jump
+              2:31     8/ 8 [Done                                  ] FB: done
+
+        #. Turn off the power
+        #. Put the board into run mode.

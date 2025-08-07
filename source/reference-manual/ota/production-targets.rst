@@ -39,10 +39,12 @@ First define a process to select CI builds which need to be delivered to product
 Every user performing production OTAs should generate their personal :ref:`offline TUF targets key <ref-offline-keys>` to sign production Targets.
 
 Let us assume you selected CI build version 42 as ready to be run in production.
-To start the production release process, create a new wave using the below command::
+To start the production release process, create a new wave using the below command:
 
-  # fioctl waves init <wave-name> <target number> <tag> -k <keys.tgz>
-  fioctl waves init -k /absolute/path/to/targets.only.key.tgz v2.0-update 42 production
+.. code-block:: console
+
+   # fioctl waves init <wave-name> <target number> <tag> -k <keys.tgz>
+   $ fioctl waves init -k /absolute/path/to/targets.only.key.tgz v2.0-update 42 production
 
 This creates a new TUF targets role version for production devices which listen to OTA updates for the ``production`` tag.
 That TUF targets role only includes a single Target from CI build (in the above example, that Target version is 42).
@@ -70,39 +72,49 @@ There are several ways how a wave can be rolled out:
 We recommend that you first roll out a wave to a dedicated device group, which contains a small number of production devices.
 Another good option is to roll out a wave to a small subset of devices in a bigger device group.
 Let us assume you want to first roll out a new ``v2.0-update`` wave to a device group called ``canary``.
-This can be done using the below command::
+This can be done using the below command:
 
-  fioctl waves rollout v2.0-update canary
+.. code-block:: console
+
+   $ fioctl waves rollout v2.0-update canary
 
 You can roll out a wave in as many phases as your workflow requires,
 before making the software update generally available.
 For example, you may decide to roll out a wave to device group ``us-east-1`` in several chunks,
 after enough devices in group ``canary`` were updated successfully.
-To do that, you would run the below command sequence::
+To do that, you would run the below command sequence:
 
-  fioctl waves rollout v2.0-update us-east-1 --limit=10
-  fioctl waves rollout v2.0-update us-east-1 --limit=50
-  fioctl waves rollout v2.0-update us-east-1
+.. code-block:: console
+
+  $ fioctl waves rollout v2.0-update us-east-1 --limit=10
+  $ fioctl waves rollout v2.0-update us-east-1 --limit=50
+  $ fioctl waves rollout v2.0-update us-east-1
 
 The above command chain rolls out a wave to 10 devices in the ``us-east-1`` group,
 then to 50 more devices (60 total), and finally to all remaining devices in that group.
 
-You may also want to roll out a wave to a subset of devices in entire fleet, across several device groups::
+You may also want to roll out a wave to a subset of devices in entire fleet, across several device groups:
 
-  fioctl waves rollout v2.0-update --limit=5
+.. code-block:: console
 
-It is possible to examine a list of devices that *would* be updated by a rollout command, without actually performing it::
+   $ fioctl waves rollout v2.0-update --limit=5
 
-  fioctl waves rollout v2.0-update --limit=5 --dry-run --print-uuids
+It is possible to examine a list of devices that *would* be updated by a rollout command, without actually performing it:
+
+.. code-block:: console
+
+   $ fioctl waves rollout v2.0-update --limit=5 --dry-run --print-uuids
 
 .. note::
 
     Keep in mind that the device selection is pseudo-random, and can vary from one command run to another.
 
 You can then inspect and amend that list of devices, and pass it back to the rollout command.
-Alternatively, you can provide the device UUIDs to update::
+Alternatively, you can provide the device UUIDs to update:
 
-  fioctl waves rollout v2.0-update --uuids=ab8ecb00-8ed4-42ff-90b2-815b371c0f86,7a733e81-f948-43a9-a358-56f3deb5f184
+.. code-block:: console
+
+   $ fioctl waves rollout v2.0-update --uuids=ab8ecb00-8ed4-42ff-90b2-815b371c0f86,7a733e81-f948-43a9-a358-56f3deb5f184
 
 Check the ``fioctl waves rollout --help`` command for all available options,
 or look at the :ref:`Advanced Usage <ref-rm-prod-target-adv>` for more complex workflows.
@@ -113,13 +125,17 @@ FoundriesFactory also provides a dedicated command to monitor the wave status �
 
 Eventually, you may decide that a new software release (represented by a wave) is fit be generally available.
 In this case, wave TUF targets need to be copied into production TUF targets for a specific tag.
-In our example that is accomplished by using the below command::
+In our example that is accomplished by using the below command:
 
-  fioctl waves complete v2.0-update
+.. code-block:: console
 
-Alternatively, if a wave progresses badly, you can cancel it using the below command (unless a wave is already completed)::
+   $ fioctl waves complete v2.0-update
 
-  fioctl waves cancel v2.0-update
+Alternatively, if a wave progresses badly, you can cancel it using the below command (unless a wave is already completed):
+
+.. code-block:: console
+
+   $ fioctl waves cancel v2.0-update
 
 Those devices that were successfully updated to Target 42 will continue to run it.
 However, other production devices will not be updated, and will continue to run the previous version.
@@ -152,11 +168,13 @@ Using device groups, a typical setup would look this way.
 Assume you have a fleet of 100 devices.
 We recommend splitting up 2 device groups out of that fleet: e.g. "canary" having 5 devices, "beta" having 20 devices.
 Canary devices would be those that are easier to reach out to in case of any issues during an update.
-Having done that, a regular update rollout process would look like this::
+Having done that, a regular update rollout process would look like this:
 
-    fioctl waves rollout v2.0-update --group canary
-    fioctl waves rollout v2.0-update --group beta
-    fioctl waves complete
+.. code-block:: console
+
+    $ fioctl waves rollout v2.0-update --group canary
+    $ fioctl waves rollout v2.0-update --group beta
+    $ fioctl waves complete
 
 .. note::
 
@@ -166,20 +184,24 @@ Having done that, a regular update rollout process would look like this::
     There must be a *wait and watch* period after each rollout command before proceeding to the next one.
 
 For the same example, you might opt to not use device groups, but still rollout the update in phases.
-An equivalent way of doing this using randomized device fleet partitions may look like this::
+An equivalent way of doing this using randomized device fleet partitions may look like this:
 
-    fioctl waves rollout v2.0-update --limit 5
-    fioctl waves rollout v2.0-update --limit 20
-    fioctl waves complete
+.. code-block:: console
+
+    $ fioctl waves rollout v2.0-update --limit 5
+    $ fioctl waves rollout v2.0-update --limit 20
+    $ fioctl waves complete
 
 Alternatively, you may create a file containing a comma-separated list of "canary" device UUIDs.
 For example, assume you created a file ``canary-devices.lst``,
 and you prefer to keep the next rollout phase randomized.
-This way is even closer to the use of device groups, but does not necessitate their management::
+This way is even closer to the use of device groups, but does not necessitate their management:
 
-    fioctl waves rollout v2.0-update --uuids @/path/to/canary-devices.lst
-    fioctl waves rollout v2.0-update --limit 20
-    fioctl waves complete
+.. code-block:: console
+
+    $ fioctl waves rollout v2.0-update --uuids @/path/to/canary-devices.lst
+    $ fioctl waves rollout v2.0-update --limit 20
+    $ fioctl waves complete
 
 When using dynamic randomized device partitions for the rollout process,
 Foundries.io APIs prioritize recently active devices over the offline devices.
@@ -199,12 +221,14 @@ Some—or all—of these device groups would still contain a large number of dev
 From a safety perspective, it is risky to deliver an update to the entirety of any group like that.
 
 A usual practice would be to apply the "canary" approach (described above) to every individual device group.
-For example, commands below would roll out a wave to the ``us-east`` group in 4 incremental chunks::
+For example, commands below would roll out a wave to the ``us-east`` group in 4 incremental chunks:
 
-    fioctl waves rollout v2.0-update --group us-east --limit 5
-    fioctl waves rollout v2.0-update --group us-east --limit 20
-    fioctl waves rollout v2.0-update --group us-east --limit 100
-    fioctl waves rollout v2.0-update --group us-east
+.. code-block:: console
+
+    $ fioctl waves rollout v2.0-update --group us-east --limit 5
+    $ fioctl waves rollout v2.0-update --group us-east --limit 20
+    $ fioctl waves rollout v2.0-update --group us-east --limit 100
+    $ fioctl waves rollout v2.0-update --group us-east
 
 You can then use the same technique to roll out an update to other device groups.
 
@@ -216,19 +240,21 @@ For example, let us assume that your ``eu-emea`` device group is the biggest, co
 You might use your device management system to split that fleet into several partitions.
 For that, you would export the appropriate subsets of device UUIDs into one or more files in a Comma Separated Values (CSV) format.
 We support various characters as separators: a comma, a semicolon, and all sorts of newlines and white space.
-For example, let's assume a user prepared the following lists of device UUIDs::
+For example, let's assume a user prepared the following lists of device UUIDs:
 
 - 4 equal partitions ``phase1.lst, phase2.lst, phase3.lst, phase4.lst``, containing 10'000 devices each.
 - a partition ``canary.lst``, containing 20 carefully pre-selected "canary" devices, that may intersect with the above partitions.
 
-That would allow you to roll out an update to the device group "eu-emea" in an even more controlled way::
+That would allow you to roll out an update to the device group ``eu-emea`` in an even more controlled way
 
-    fioctl waves rollout v2.0-update --group eu-emea --uuids @/path/to/canary.lst
-    fioctl waves rollout v2.0-update --group eu-emea --limit 100 --uuids @/path/to/phase1.lst
-    fioctl waves rollout v2.0-update --group eu-emea --limit 100 --uuids @/path/to/phase2.lst
-    fioctl waves rollout v2.0-update --group eu-emea --limit 100 --uuids @/path/to/phase3.lst
-    fioctl waves rollout v2.0-update --group eu-emea --limit 100 --uuids @/path/to/phase4.lst
-    fioctl waves rollout v2.0-update --group eu-emea
+.. code-block:: console
+
+    $ fioctl waves rollout v2.0-update --group eu-emea --uuids @/path/to/canary.lst
+    $ fioctl waves rollout v2.0-update --group eu-emea --limit 100 --uuids @/path/to/phase1.lst
+    $ fioctl waves rollout v2.0-update --group eu-emea --limit 100 --uuids @/path/to/phase2.lst
+    $ fioctl waves rollout v2.0-update --group eu-emea --limit 100 --uuids @/path/to/phase3.lst
+    $ fioctl waves rollout v2.0-update --group eu-emea --limit 100 --uuids @/path/to/phase4.lst
+    $ fioctl waves rollout v2.0-update --group eu-emea
 
 The above commands roll out to "canary" devices, then to 100 random devices in each "phase",
 and finally, to the remainder of the device group.
@@ -258,17 +284,21 @@ Going Beyond Limits
 
 The techniques described above can be applied without using the ``--group`` argument.
 In this case, the rollout command will be applied to a subset of the entire device fleet.
-For example, the below commands roll out a wave to 5'000 devices in a ``pre-selected.lst`` file across the entire fleet in 4 incremental chunks::
+For example, the below commands roll out a wave to 5'000 devices in a ``pre-selected.lst`` file across the entire fleet in 4 incremental chunks:
 
-    fioctl waves rollout v2.0-update --limit 100 --uuids @/path/to/pre-selected.lst
-    fioctl waves rollout v2.0-update --limit 400 --uuids @/path/to/pre-selected.lst
-    fioctl waves rollout v2.0-update --limit 1000 --uuids @/path/to/pre-selected.lst
-    fioctl waves rollout v2.0-update --limit 3500 --uuids @/path/to/pre-selected.lst
+.. code-block:: console
 
-You can also dump a pre-selected device list into a file; then inspect, amend, and push it back to the rollout command::
+    $ fioctl waves rollout v2.0-update --limit 100 --uuids @/path/to/pre-selected.lst
+    $ fioctl waves rollout v2.0-update --limit 400 --uuids @/path/to/pre-selected.lst
+    $ fioctl waves rollout v2.0-update --limit 1000 --uuids @/path/to/pre-selected.lst
+    $ fioctl waves rollout v2.0-update --limit 3500 --uuids @/path/to/pre-selected.lst
 
-    fioctl waves rollout v2.0-update --limit 1000 --print-uuids >/path/to/pre-selected.lst
+You can also dump a pre-selected device list into a file; then inspect, amend, and push it back to the rollout command:
+
+.. code-block:: console
+
+    $ fioctl waves rollout v2.0-update --limit 1000 --print-uuids >/path/to/pre-selected.lst
     # Open and edit /path/to/pre-selected.lst using your editor of choice.
-    fioctl waves rollout v2.0-update --uuids @/path/to/pre-selected.lst
+    $ fioctl waves rollout v2.0-update --uuids @/path/to/pre-selected.lst
 
-One way or another, Fioctl® allows you to implement various processes to roll out updates to your Factory's device fleet.
+One way or another, :term:`fioctl` allows you to implement various processes to roll out updates to your Factory's device fleet.

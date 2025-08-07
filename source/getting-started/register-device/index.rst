@@ -5,21 +5,20 @@ Registering Your Device
 
 Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool that manages device registration for your device via the Foundries.io™ REST API.
 
-1. To register a device with your Factory, run the following from the device console:
+1. To register a device with your Factory, run the following **from the device console**:
 
- .. prompt:: bash device:~$, auto
+   .. code-block:: console
 
-      device:~$ sudo lmp-device-register -n <device-name> -f <factory>
+       device:~$ sudo lmp-device-register -n <device-name> -f <factory>
 
-.. note::
-    The parameter ``-f <factory>`` is only needed for the first target.
+   .. note::
+      The parameter ``-f <factory>`` is only needed for the first target.
 
 2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API.
    Follow the instruction prompts:
 
-   .. highlight:: none
 
-   .. prompt:: text
+   .. code-block:: none
 
      Registering device, test, to factory gavin.
      Device UUID: df1295df-ba58-40a0-9239-542ded5ab934
@@ -33,12 +32,12 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 
 3. Your device is now registered and should be visible by navigating to the `web interface <https://app.foundries.io/factories>`_ and selecting the :guilabel:`Devices` tab for your Factory:
 
-.. figure:: /_static/getting-started/register-device/tutorial-device-no-app.png
-   :width: 900
-   :align: center
-   :alt: Devices view
+   .. figure:: /_static/getting-started/register-device/tutorial-device-no-app.png
+      :width: 900
+      :align: center
+      :alt: Devices view
 
-   Device List
+      Device List
 
 
 .. note::

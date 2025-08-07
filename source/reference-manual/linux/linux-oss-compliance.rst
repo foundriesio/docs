@@ -31,8 +31,6 @@ All the image's packages source code under the GPLv2 or GPLv3 license family can
 
 ``https://app.foundries.io/factories/<factory>/targets/<version>/artifacts/<machine>/other/<machine>-source-release.tar``
 
-.. todo: * How to get the license text files
-
 Where:
 
 * ``<factory>`` is the FoundriesFactory name
@@ -61,13 +59,13 @@ INCOMPATIBLE_LICENSE
 
 Add to the ``build/conf/local.conf`` or to the distro the following line [2]_:
 
-.. prompt:: text
+.. code-block:: none
 
    INCOMPATIBLE_LICENSE = "GPL-3.0* LGPL-3.0* AGPL-3.0*"
 
 Using this configuration to build ``lmp-factory-image`` results in the following error:
 
-.. prompt:: text
+.. code-block:: console
 
    ERROR: lmp-factory-image-1.0-r0 do_rootfs: Package bash cannot be installed into the image because it has incompatible license(s): GPL-3.0+
 
@@ -96,7 +94,7 @@ Add to the LmP Factory customization file ``meta-subscriber-overrides/conf/machi
 
 Using this configuration to build ``lmp-factory-image`` results in the following error:
 
-::
+.. code-block:: console
 
   ERROR: lmp-factory-image-1.0-r0 do_rootfs: Packages have denylisted licenses:
   libunistring (LGPLv3+ | GPLv2), bash (GPLv3+), time (GPLv3), mc (GPLv3),
@@ -121,7 +119,7 @@ Only a single change is needed to avoid using packages under GPL-3.0, LGPL-3.0 o
 Change the file ``ci-scripts/factory-config.yml`` to include the variable ``DISABLE_GPLV3: "1"`` in the desired branches,
 with the goal of disabling the GPLv3 packages.
 
-.. prompt:: text
+.. code-block:: yaml
 
   lmp:
     ref_options:

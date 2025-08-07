@@ -19,7 +19,7 @@ The list of supported boards and their ``.cfg`` files can be found in the ``meta
 
 For example, see ``imx8mmevk/lmp-base.cfg``:
 
-.. prompt:: text
+.. code-block:: shell
 
     CONFIG_SPL_DM=y
     CONFIG_SPL_OF_CONTROL=y
@@ -53,7 +53,7 @@ Most of the configuration is generic to all boards.
 You will need to pay attention to board-specific configuration.
 In this case:
 
-.. prompt:: text
+.. code-block:: shell
 
   CONFIG_ENV_FAT_DEVICE_AND_PART="2:1"
 

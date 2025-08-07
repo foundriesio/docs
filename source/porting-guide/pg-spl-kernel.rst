@@ -12,7 +12,7 @@ You need to append patches only to include features or drivers that are not upst
 The device tree files can be deployed to the ``lmp-device-tree`` directory in ``meta-subscriber-overrides``.
 The build generates the output ``.dtb`` file.
 
-.. prompt:: text
+.. code-block:: none
 
     recipes-bsp/device-tree/
     ├── lmp-device-tree
@@ -40,7 +40,7 @@ The ``bsp`` directory is where fragments related to the BSP are stored.
 The goal is to create a ``.bbappend`` to include the fragments which define the target machine.
 The set of files should look like the following:
 
-.. prompt:: text
+.. code-block:: none
 
     ├── linux-<name>
     │   ├── patch-file.patch
@@ -66,7 +66,7 @@ with features and configurations being organized between the other files.
 
 The ``linux-<name>_%.bbappend`` looks like:
 
-.. prompt:: text
+.. code-block:: none
 
     FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
     SRC_URI += " \
@@ -88,7 +88,7 @@ Adding a New Kernel Driver
 
 The recommended way to add a driver or module to the Linux kernel source is by creating a recipe file under ``recipes-kernel/kernel-modules/``:
 
-.. prompt:: text
+.. code-block:: none
 
     recipes-kernel/kernel-modules/
     └── <module>
@@ -101,7 +101,7 @@ The recommended way to add a driver or module to the Linux kernel source is by c
 
 Where ``<module>_<pv>.bb`` is:
 
-.. prompt:: text
+.. code-block:: none
 
     SUMMARY = "Module summary"
     LICENSE = "GPLv2"

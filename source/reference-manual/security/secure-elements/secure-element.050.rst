@@ -112,11 +112,11 @@ All data received is decrypted in the TEE, using a set of session specific keys.
 These keys are derived from predefined keys which are shipped with the devices.
 
 .. note::
-       You can select whether to enable SCP03 during the secure world initialization,
-       or at a later time, using the `scp03`_ command::
+      You can select whether to enable SCP03 during the secure world initialization,
+      or at a later time, using the `scp03`_ command::
 
-	CFG_CORE_SE05X_SCP03_EARLY=y : enables SCP03 before the Normal World has booted
-	CFG_SCP03_PTA=y              : allows SCP03 to be enabled from the Normal World.
+	    CFG_CORE_SE05X_SCP03_EARLY=y : enables SCP03 before the Normal World has booted
+	    CFG_SCP03_PTA=y              : allows SCP03 to be enabled from the Normal World.
 
 The predefined factory keys stored on the SE05X NVM (**static keys** from here on) are public.
 Therefore, they should  be rotated to a secret set from which session keys can be derived. 
@@ -148,7 +148,9 @@ External keys used by the SE05x to perform other cryptographic operations are no
 
             CFG_CORE_SE05X_INIT_NVM=y
 
-      Alternatively, the SE05x NVM can also be cleared by issuing the following command on the target::
+      Alternatively, the SE05x NVM can also be cleared by issuing the following command on the target:
+      
+      .. code-block:: console
 
             $ ssscli se05x reset
         
@@ -180,8 +182,8 @@ Storing handles in the pkcs#11 database does not impose restrictions.
       For example, to import the data-sheet documented 32 bit 0xF7000001 RSA 4096 bit key into the pkcs#11 database,
       issue the following command:
 
-      .. code-block:: none
-	 
+      .. code-block:: console
+
           $ pkcs11-tool --module /usr/lib/libckteec.so.0.1 --keypairgen --key-type RSA:4096 --id 01 --token-label fio --pin 87654321 --label SE_7F000001 
 
 
@@ -204,41 +206,41 @@ Be aware that in OP-TEE's PKCS#11 implementation, **each** PKCS#11 slot is indee
 .. note::
       Import NXP SE051 Certficate with the id 0xf0000123 into OP-TEE pkcs#11'aktualizr' token storage:
       
-      .. code-block:: none
+      .. code-block:: console
 		      
           $ fio-se05x-cli --token-label aktualizr --import-cert 0xf0000123 --id 45 --label fio
 
       Show NXP SE050 Certficate with the id 0xf0000123 on the console:
       
-      .. code-block:: none
+      .. code-block:: console
 		      
           $ fio-se05x-cli --show-cert 0xf0000123 --se050
       
       Import NXP SE051 RSA:2048 bits key with the id 0xf0000123 into OP-TEE pkcs#11 'aktualizr' token storage:
       
-      .. code-block:: none
+      .. code-block:: console
 		      
           $ fio-se05x-cli --token-label aktualizr --import-key 0xf0000123 --id 45 --key-type RSA:2048 --pin 87654321
 
       List all objects in the device's Non Volatile Memory:
       
-      .. code-block:: none
+      .. code-block:: console
 
           $ fio-se05x-cli --list-objects
 
       Delete OP-TEE created objects from the device's Non Volatile Memory (one specific object or all):
 
-      .. code-block:: none
+      .. code-block:: console
 
           $ fio-se05x-cli --delete-object 0x123456a1
           $ fio-se05x-cli --delete-object all
 
 
-The following diagram succintly details the overall design:
+The following diagram succinctly details the overall design:
 
-   .. figure:: /_static/reference-manual/security/se050-import-keys.png
-      :align: center
-      :width: 6in
+.. figure:: /_static/reference-manual/security/se050-import-keys.png
+   :align: center
+   :width: 6in
 
 
 A python application that also uses the APDU interface is `ssscli`_.
@@ -247,7 +249,7 @@ While it can serve a purpose during development, it is not required on a deploye
 We advise deploying with ``fio-se05x-cli`` and the standard pkcs#11 tools instead.
 
 
-.. code-block:: none
+.. code-block:: console
 
     fio@imx8mm-lpddr4-evk:~/$ ssscli
     Usage: ssscli [OPTIONS] COMMAND [ARGS]...

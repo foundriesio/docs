@@ -16,13 +16,15 @@ There are three types of configuration supported:
 Fleet-Wide Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Configuration common to all Factory devices can be set with ``fioctl config`` subcommands::
+Configuration common to all Factory devices can be set with ``fioctl config`` subcommands:
+
+.. code-block:: console
 
   # View log of config changes (similar to "git log")
-  fioctl config log
+  $ fioctl config log
 
   # Add a config file to the entire fleet
-  fioctl config set --reason "for docs" AWS_REGION="us-east-2"
+  $ fioctl config set --reason "for docs" AWS_REGION="us-east-2"
 
 The configuration reason specified via ``--reason`` is visible in the output of ``fioctl config log``::
 
@@ -36,24 +38,28 @@ The configuration reason specified via ``--reason`` is visible in the output of 
 Device Group Specific Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Similar to fleet-wide configurations, device group specific configuration is managed with the ``fioctl config`` subcommands using the ``--group`` parameter::
+Similar to fleet-wide configurations, device group specific configuration is managed with the ``fioctl config`` subcommands using the ``--group`` parameter:
+
+.. code-block:: console
 
   # View log of config changes made to the device group
-  fioctl config log --group <group-name>
+  $ fioctl config log --group <group-name>
 
   # Add a config file to the device group
-  fioctl config set --group <group-name> --reason "for docs" secret="doc-secret"
+  $ fioctl config set --group <group-name> --reason "for docs" secret="doc-secret"
 
 Device Specific Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Device configuration is managed with the ``fioctl devices config`` subcommands::
+Device configuration is managed with the ``fioctl devices config`` subcommands:
+
+.. code-block:: console
 
   # View log of config changes made to device
-  fioctl devices config log <device-name>
+  $ fioctl devices config log <device-name>
 
   # Add a config file to device
-  fioctl devices config set <device-name> --reason "for docs" \
+  $ fioctl devices config set <device-name> --reason "for docs" \
     githubapitoken="really secure value"
 
 "Raw" Configuration

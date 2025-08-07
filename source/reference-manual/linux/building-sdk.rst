@@ -25,7 +25,7 @@ This configuration increases the build time, so enable it only when a new SDK in
 Change ``ci-scripts/factory-config.yml`` to include the variable ``BUILD_SDK: "1"``.
 Do this whenever a new SDK install script is needed:
 
-.. prompt:: text
+.. code-block:: yaml
 
    lmp:
      params:
@@ -44,7 +44,7 @@ Installation
 After downloading the SDK install script, you can install it in any folder.
 In this example, we use ``/usr/local/cortexa53-crypto``.
 
-.. prompt:: text
+.. code-block:: console
 
   $ ./lmp-x86_64-cortexa53-crypto-toolchain-4.0.3-22-88-13-gacdf0df.sh
   Linux-microPlatform SDK installer version 4.0.3-22-88-13-gacdf0df
@@ -59,7 +59,7 @@ In this example, we use ``/usr/local/cortexa53-crypto``.
 After installation, the resultant folder has the ``sysroots`` for the host and target architecture.
 It also contains the script used to setup the environment to work with the SDK:
 
-.. prompt:: text
+.. code-block:: console
 
     $ tree -L 2
     .
@@ -75,7 +75,7 @@ It also contains the script used to setup the environment to work with the SDK:
 To use the toolchain and the ``sysroots`` from the newly installed SDK,
 source the script as in the following instructions:
 
-.. prompt:: text
+.. code-block:: console
 
   $ source /usr/local/cortexa53-crypto/environment-setup-cortexa53-crypto-lmp-linux
   $ cd helloworld/

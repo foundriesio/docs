@@ -118,7 +118,7 @@ The **TF-A** certificates are detailed in :ref:`ref-factory-key-tfa`.
 
 The directory structure is shown below:
 
-   .. parsed-literal::
+.. parsed-literal::
         lmp-manifest/factory-keys
         ├── opteedev.crt
         ├── opteedev.key
@@ -178,38 +178,38 @@ U-Boot Keys
 
 For ``ubootdev``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd <factory>/lmp-manifest/factory-keys
-    openssl genpkey -algorithm RSA -out ubootdev.key \
+    $ cd <factory>/lmp-manifest/factory-keys
+    $ openssl genpkey -algorithm RSA -out ubootdev.key \
             -pkeyopt rsa_keygen_bits:2048 \
             -pkeyopt rsa_keygen_pubexp:65537
-    openssl req -batch -new -x509 -key ubootdev.key -out ubootdev.crt
+    $ openssl req -batch -new -x509 -key ubootdev.key -out ubootdev.crt
 
 .. _ref-factory-key-spldev:
 
 For ``spldev``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd <factory>/lmp-manifest/factory-keys
-    openssl genpkey -algorithm RSA -out spldev.key \
+    $ cd <factory>/lmp-manifest/factory-keys
+    $ openssl genpkey -algorithm RSA -out spldev.key \
            -pkeyopt rsa_keygen_bits:2048 \
            -pkeyopt rsa_keygen_pubexp:65537
-    openssl req -batch -new -x509 -key spldev.key -out spldev.crt
+    $ openssl req -batch -new -x509 -key spldev.key -out spldev.crt
 
 .. _ref-factory-key-opteedev:
 
 OP-TEE Keys
 ~~~~~~~~~~~
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd <factory>/lmp-manifest/factory-keys
-    openssl genpkey -algorithm RSA -out opteedev.key \
+    $ cd <factory>/lmp-manifest/factory-keys
+    $ openssl genpkey -algorithm RSA -out opteedev.key \
             -pkeyopt rsa_keygen_bits:2048 \
             -pkeyopt rsa_keygen_pubexp:65537
-    openssl req -batch -new -x509 -key opteedev.key -out opteedev.crt
+    $ openssl req -batch -new -x509 -key opteedev.key -out opteedev.crt
 
 
 .. _ref-factory-key-tfa:
@@ -219,10 +219,10 @@ TrustedFirmware-A Keys
 
 For TF-A keys:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd <factory>/lmp-manifest/factory-keys/tf-a
-    openssl ecparam -name prime256v1 -genkey -noout -out privkey_ec_prime256v1.pem
+    $ cd <factory>/lmp-manifest/factory-keys/tf-a
+    $ openssl ecparam -name prime256v1 -genkey -noout -out privkey_ec_prime256v1.pem
 
 .. tip::
         Remember to push the new keys to get them included in the next CI
@@ -240,7 +240,7 @@ for the configuration file.
 For example, create a new text file with the following content, or customize it as
 needed:
 
-.. prompt::
+.. code-block::
 
         [ req ]
         default_bits = 4096
@@ -264,10 +264,10 @@ Or use the provided configuration file from
 ``<factory>/lmp-manifest/conf/keys/x509.genkey``
 as shown in the following command:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    cd <factory>/lmp-manifest/factory-keys
-    openssl req -new -nodes -utf8 -sha256 -days 36500 -batch -x509 \
+    $ cd <factory>/lmp-manifest/factory-keys
+    $ openssl req -new -nodes -utf8 -sha256 -days 36500 -batch -x509 \
             -config ../conf/keys/x509.genkey -outform PEM \
             -out x509_modsign.crt \
             -keyout privkey_modsign.pem
@@ -281,7 +281,7 @@ as shown in the following command:
   ``<factory>/meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``
   as shown below:
 
-  .. prompt::
+  .. code-block:: none
 
      #filename for the key/certificate for kernel modules
      MODSIGN_PRIVKEY = "${MODSIGN_KEY_DIR}/privkey_modsign.pem"

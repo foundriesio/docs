@@ -19,16 +19,18 @@ Preparation
 
 #. Extract ``lmp-partner-arduino-image-<machine-name>.wic.gz``:
    
-   .. prompt::
+   .. code-block:: console
         
-      gunzip lmp-partner-arduino-image-<machine-name>.wic.gz
+      $ gunzip lmp-partner-arduino-image-<machine-name>.wic.gz
 
 #. Expand the :guilabel:`Runs` section which corresponds with the board.
    **Download the corresponding mfgtool files**, e.g., ``mfgtool-files-<machine-name>.tar.gz``.
 
-#. Extract the files::
+#. Extract the files:
 
-      tar -zxvf mfgtool-files-<machine-name>.tar.gz
+   .. code-block:: console
+
+      $ tar -zxvf mfgtool-files-<machine-name>.tar.gz
 
 #. Organize the files, mirroring the tree below::
 

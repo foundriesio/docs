@@ -51,9 +51,9 @@ The first step is to make sure there are other SRK keys available for the boot.
 A key can only be revoked after a secure boot with a different key is executed, with the permission to unlock ``SRK_REVOKE`` write access.
 After that a fuse is burned. In short:
 
-    * boot with an available SRK key, different from the one to revoke
-    * unlock ``SRK_REVOKE``
-    * fuse a register according to the SRK key being revoked.
+* boot with an available SRK key, different from the one to revoke
+* unlock ``SRK_REVOKE``
+* fuse a register according to the SRK key being revoked.
 
 The signing process is based on the commands from :ref:`ref-secure-boot`, adding two parameters:
 
@@ -70,7 +70,9 @@ The parameter ``--enable-revoke`` brings the configuration needed by CST to unlo
     After revoking a SRK key, it cannot be used to boot the board again.
     A board with no remaining reliable SRK keys does not boot.
 
-For example, for a ``imx6ullevk-sec`` SPL image to be signed with SRK1, use the following command::
+For example, for a ``imx6ullevk-sec`` SPL image to be signed with SRK1, use the following command:
+
+.. code-block:: console
 
     #Sign the MFGTool SPL file
     ./sign-file.sh --engine SW --key-dir $KEY_PATH \

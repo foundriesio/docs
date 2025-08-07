@@ -21,11 +21,11 @@ The following is an example on how to build a new Target with :ref:`LmP XWayland
 
 1. Update your factory config:
 
-   .. code-block:: shell
+   .. code-block:: console
 
-       git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
-       cd ci-scripts
-       vi factory-config.yml
+      $ git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
+      $ cd ci-scripts
+      $ vi factory-config.yml
 
 2. Add the distro under ``LmP``:
 
@@ -39,20 +39,20 @@ The following is an example on how to build a new Target with :ref:`LmP XWayland
 
 3. Commit and push the changes:
 
-   .. code-block:: shell
+   .. code-block:: console
 
-       git add .
-       git commit -m "Adding lmp-xwayland as base for my factory"
-       git push
+       $ git add .
+       # git commit -m "Adding lmp-xwayland as base for my factory"
+       # git push
 
 4. Changes to the ``ci-script`` repository do not auto-trigger builds.
    To do so, push a commit in ``lmp-manifest`` or ``meta-subscriber-overrides``:
 
-   .. code-block:: shell
+   .. code-block:: console
 
-       git clone https://source.foundries.io/factories/<factory>/lmp-manifest.git
-       cd lmp-manifest
-       git commit -m "trigger build" --allow-empty
+       $ git clone https://source.foundries.io/factories/<factory>/lmp-manifest.git
+       $ cd lmp-manifest
+       $ git commit -m "trigger build" --allow-empty
 
 Kernel Command Line Arguments
 -----------------------------
@@ -116,9 +116,11 @@ You should first be familiar with editing the ``meta-subscribers-overrides`` lay
 
     Make sure to replace ``<service-name>`` accordingly throughout the instructions below.
 
-#. Create a directory for your service in ``meta-subscriber-overrides`` repo::
+#. Create a directory for your service in ``meta-subscriber-overrides`` repo:
 
-    mkdir -p recipes-support/<service-name>
+   .. code-block:: console
+
+      $ mkdir -p recipes-support/<service-name>
 
 #. Add a new file named ``<service-name>.bb`` under this directory, with the following content::
 
@@ -155,35 +157,39 @@ You should first be familiar with editing the ``meta-subscribers-overrides`` lay
 
     recipes-support/<service-name>/<service-name>
 
-#. Create the systemd service file ``<service-name>.service`` under this new directory, configuring it to meet your needs::
+#. Create the systemd service file ``<service-name>.service`` under this new directory, configuring it to meet your needs:
 
-    [Unit]
-    Description=A description of your service
-    After=rc-local.service
+   .. code-block:: systemd
 
-    [Service]
-    Type=oneshot
-    LimitNOFILE=1024
-    ExecStart=/usr/bin/<service-name>.sh
-    RemainAfterExit=true
-    Environment=HOME=/home/root
+      [Unit]
+      Description=A description of your service
+      After=rc-local.service
 
-#. Add the ``<service-name>.sh`` script to run at startup under this new directory::
+      [Service]
+      Type=oneshot
+      LimitNOFILE=1024
+      ExecStart=/usr/bin/<service-name>.sh
+      RemainAfterExit=true
+      Environment=HOME=/home/root
 
-    #!/bin/sh
-    #
-    # SPDX-License-Identifier: Apache 2.0
-    #
-    # Copyright (c) 2021, Foundries.io Ltd.
+#. Add the ``<service-name>.sh`` script to run at startup under this new directory
 
-    # NOTE: This script will always exit with 0 result as other services
-    # are dependent on it.
+   .. code-block:: shell
 
-    # break on errors
-    set -e
+      #!/bin/sh
+      #
+      # SPDX-License-Identifier: Apache 2.0
+      #
+      # Copyright (c) 2021, Foundries.io Ltd.
 
-    echo "Hello World"
-    exit 0
+      # NOTE: This script will always exit with 0 result as other services
+      # are dependent on it.
+
+      # break on errors
+      set -e
+
+      echo "Hello World"
+      exit 0
 
    .. note::
        If testing script locally, remember to make it executable.
@@ -215,7 +221,9 @@ While this example shows how to configure the ``eth1`` interface, the steps can 
         install -d ${D}${sysconfdir}/NetworkManager/system-connections
         install -m 0600 ${WORKDIR}/eth1.nmconnection ${D}${sysconfdir}/NetworkManager/system-connections
 
-#. Now add the configuration fragment in ``recipes-connectivity/networkmanager/networkmanager/eth1.nmconnection``::
+#. Now add the configuration fragment in ``recipes-connectivity/networkmanager/networkmanager/eth1.nmconnection``
+   
+   .. code-block:: none
 
     [connection]
     id=Wired connection 1
@@ -258,7 +266,7 @@ To define a new user group in a Factory:
 
    .. code-block:: none
 
-       systemd-coredump:x:998:
+      systemd-coredump:x:998:
 
 2. Define a custom passwd table in ``meta-subscriber-overrides/files/custom-passwd-table`` for the new user group: ``<username>:x:<user-id>:<group-id>::<home-dir>:<command>``.
    For example:
@@ -308,9 +316,9 @@ Adding New LmP Users
    When prompted, enter the desired password for the user.
    This returns the hashed password:
 
-   .. prompt:: bash host:~$
+   .. code-block:: console
 
-       mkpasswd -m sha512crypt
+       $ mkpasswd -m sha512crypt
        Password:
        $6$OJHEGl4Dk5nEwG6k$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E.
 
@@ -351,10 +359,10 @@ For the ``user-id``, the value should be ``1000``.
 Add the following to ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``,
 replacing the values for your user and password as appropriate:
 
-   .. code-block:: none
+.. code-block:: none
         
-        LMP_USER = "<user>"
-        LMP_PASSWORD = "\$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E."
+   LMP_USER = "<user>"
+   LMP_PASSWORD = "\$6\$OJHEGl4Dk5nEwG6k\$z19R1jc7cCfcQigX78cUH1Qzf2HINfB6dn6WgKmMLWgg967AV3s3tuuJE7uhLmBK.bHDpl8H5Ab/B3kNvGE1E."
 
 LmP Time Servers
 ----------------

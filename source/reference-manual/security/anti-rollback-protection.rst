@@ -22,7 +22,8 @@ Store Boot Firmware Version in Boot Firmware Artifacts
 
 To define the boot firmware version number, set the ``LMP_BOOT_FIRMWARE_VERSION``
 global variable in your ``meta-subscriber-overrides`` layer. For example:
-::
+
+.. code-block:: diff
 
     diff --git a/conf/machine/include/lmp-factory-custom.inc b/conf/machine/include/lmp-factory-custom.inc
     index 0fe26b8..2a9815d 100644
@@ -40,7 +41,8 @@ When ``LMP_BOOT_FIRMWARE_VERSION`` is defined, an additional
 node, which contains information about boot firmware version, is automatically
 added to U-Boot Device Tree BLOB during compilation.
 Example of a node (added to ``/firmware``):
-::
+
+.. code-block::
 
     bootloader {
         bootfirmware-version = "3";
@@ -65,9 +67,10 @@ Enable Anti-Rollback Protection
 When the board is flashed with a LmP Factory image, anti-rollback protection
 is disabled by default. To enable it, use ``fiovb_setenv`` (closed boards) or
 ``fw_setenv`` (open board) cmds in the Linux shell:
-::
 
-    $ fiovb_setenv rollback_protection 1
+.. code-block:: console
+
+   $ fiovb_setenv rollback_protection 1
 
 During the next OTA update, aktualizr-lite will report in logs
 that anti-rollback protection for boot firmware is activated:

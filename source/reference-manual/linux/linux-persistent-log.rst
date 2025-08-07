@@ -38,19 +38,23 @@ Add ``systemd-journald-persistent`` to ``meta-subscriber-overrides/recipes-sampl
 Optional: Customize systemd-journald Options
 --------------------------------------------
 
- .. note::
+.. note::
 
-  Special attention is required when defining your own ``systemd-journald`` configuration file.
-  A high ``SystemMaxUse`` value may cause the logging to consume a substantial amount of disk space.
+   Special attention is required when defining your own ``systemd-journald`` configuration file.
+   A high ``SystemMaxUse`` value may cause the logging to consume a substantial amount of disk space.
 
 Create your own ``systemd-journald`` configuration file by overriding ``10-persistent-journal.conf``.
 This is used by the ``systemd-journald-persistent`` recipe.
-Within your ``meta-subscriber-overrides`` layer::
+Within your ``meta-subscriber-overrides`` layer:
+
+.. code-block:: console
 
   $ cat recipes-support/systemd-journald-persistent/systemd-journald-persistent.bbappend
   FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-And::
+And:
+
+.. code-block:: console
 
   $ cat recipes-support/systemd-journald-persistent/files/10-persistent-journal.conf
   [Journal]

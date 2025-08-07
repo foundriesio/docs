@@ -17,8 +17,7 @@ This is the base OS image.
 **Target**: An entry in a Factory's TUF ``targets.json``.
 It represents an immutable combination of the Platform build's OSTree hash with the output of a container build.
 
-**Tag**: A Target has a "custom" section where with a list of Tags.
-**Tag:**: A user defined attribute of a Target designating its intended usage.
+**Tag**: A user defined attribute of a Target designating its intended usage.
 Tags are defined in the "custom" section of a Target.
 They can be used to e.g. distinguish between "development" versus "production" builds.
 
@@ -135,7 +134,9 @@ This will produce ``main`` tagged builds that have no containers, but can be gen
 Then, each ``containers.git`` branch will build Targets and grab the latest ``main`` tag to base its platform on.
 
 It is important to note that changes to ``main`` do not cause new container builds.
-In order to get a container's branch updated to the latest ``main``, push an empty commit to ``containers.git`` to trigger a new build::
+In order to get a container's branch updated to the latest ``main``, push an empty commit to ``containers.git`` to trigger a new build:
 
- # from branch qa
- git commit --allow-empty -m 'Pull in latest platform changes from main'
+.. code-block:: console
+
+   # from branch qa
+   $ git commit --allow-empty -m 'Pull in latest platform changes from main'

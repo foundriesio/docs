@@ -13,19 +13,17 @@ In the following example, we will launch a single image, but keep in mind that a
 
 Move the default ``docker-compose.yml`` from ``shellhttpd.disabled`` to your folder:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ mv ../shellhttpd.disabled/docker-compose.yml .
+    $ mv ../shellhttpd.disabled/docker-compose.yml .
 
 Review the ``docker-compose.yml`` file:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat docker-compose.yml
-     
-**docker-compose.yml**:
+    $ cat docker-compose.yml
 
-.. prompt:: text
+.. code-block:: yaml
 
      version: '3.2'
      
@@ -45,13 +43,12 @@ In the next tutorial, you will build and deploy using the FoundriesFactory™ Pl
 
 As you are still developing locally, edit the image parameter to use the image and tag from the previous steps, ``shellhttpd:1.0``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ vi docker-compose.yml
+    $ vi docker-compose.yml
 
-**docker-compose.yml**:
 
-.. prompt:: text
+.. code-block:: yaml
 
      version: '3.2'
      
@@ -69,34 +66,25 @@ Notice that the MSG variable is configured to use ``Hello world`` as default.
 
 To run your ``docker-compose`` application, execute the ``docker-compose up --detach`` command. 
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker-compose up --detach
+    $ docker-compose up --detach
 
 Using ``--detach`` or ``-d`` runs containers in the background.
 
 To verify the running containers:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker ps
-
-**Example Output**:
-
-.. prompt:: text
+    $ docker ps
 
      CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
      dbc969a5487d        shellhttpd:1.0       "/usr/local/bin/http…"   3 minutes ago       Up 3 minutes        0.0.0.0:8080->8080/tcp   shellhttpd_httpd_1
 
 Test the container with ``curl``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ curl 127.0.0.1:8080
-
-**Example Output**:
-
-.. prompt:: text
+    $ curl 127.0.0.1:8080
 
      Hello world
-

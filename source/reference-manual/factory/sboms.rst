@@ -56,11 +56,13 @@ APIs exist that allow Fioctl® to work with Factory SBOMs.
 Like other Factory concepts, SBOMs revolve around :ref:`Targets <tutorial-what-is-a-target>`.
 You can find out available SBOMs for a Target by running:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ fioctl targets show sboms <target name or version>
+   $ fioctl targets show sboms <target name or version>
 
-For example::
+For example
+
+.. code-block:: console
 
   $ fioctl targets show sboms 262
   BUILD/RUN            BOM ARTIFACT
@@ -88,7 +90,9 @@ Notice how:
    * The  nginx and Alpine containers come from a ``hub.docker.io``.
    * The shellhttpd container comes from the Factory ``hub.foundries.io``.
 
-You can then query each SBOM for more details::
+You can then query each SBOM for more details
+
+.. code-block:: console
 
    $ fioctl targets show sboms 262 222/build-aarch64 alpine:latest/arm64.spdx.json
    PACKAGE                 VERSION      LICENSE
@@ -112,7 +116,9 @@ While the native storage format for Factory SBOMs is SPDX,
 the Foundries.io™ API provides a best-effort conversion to both CycloneDX and CSV.
 This allows users to export data from their Factory and into their tool of choice.
 
-To view an SBOM in a given format::
+To view an SBOM in a given format:
+
+.. code-block:: console
 
  # View as cyclonedx
  $ fioctl targets show sboms 262 222/build-aarch64 alpine:latest/arm64.spdx.json --format cyclonedx
@@ -122,7 +128,9 @@ To view an SBOM in a given format::
     "version": 1,
  ...
 
-You can download all SBOMs for a Target locally::
+You can download all SBOMs for a Target locally:
+
+.. code-block:: console
 
   # Download everything as SPDX:
   $ mkdir /tmp/sboms

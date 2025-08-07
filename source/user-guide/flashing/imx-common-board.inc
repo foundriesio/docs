@@ -8,29 +8,39 @@ Preparation
 
 #. Download the necessary files from ``https://app.foundries.io/factories/<factory>/targets``:
 
-     a. Click the latest Target with the :guilabel:`platform` trigger.
+   a. Click the latest Target with the :guilabel:`platform` trigger.
+   b. Expand the **run** in the :guilabel:`Runs` section which corresponds with the name of the board.
+      **Download the Factory image for that machine.**
+      For example:
 
-     b. Expand the **run** in the :guilabel:`Runs` section which corresponds with the name of the board.
-        **Download the Factory image for that machine.**
-        For example::
+      .. code-block:: none
         
-             lmp-factory-image-<machine_name>.wic.gz
-             u-boot-<machine_name>.itb
-             imx-boot-<machine_name>
+         lmp-factory-image-<machine_name>.wic.gz
+         u-boot-<machine_name>.itb
+         imx-boot-<machine_name>
 
       .. note::
-            The compressed image (``.wic.gz``) is used since LmP **v92**.
-            Before, the scripts required a compressed file image (``.wic``).
+         The compressed image (``.wic.gz``) is used since LmP **v92**.
+         Before, the scripts required a compressed file image (``.wic``).
 
 #. Download and extract the file ``mfgtool-files-<machine_name>.tar.gz``:
 
      .. parsed-literal::
 
       tar -zxvf mfgtool-files-|machine_name|.tar.gz
+   
+     Contents of mfgtool-files-|machine_name| :
 
-#. Organize all the files, mirroring the tree below:
+     .. parsed-literal::
 
-     |imx_file_list|
+        |imx_mfgtool_file_list|
+
+#. You should now have the following:
+   
+    .. parsed-literal::
+
+       |imx_file_list|
+      
 
 Hardware Preparation
 --------------------
@@ -47,7 +57,9 @@ Top view of |board_name|
      Connect the other end of the cable to a PC acting as a host terminal.
      |imx_n_consoles| UART connections will appear on the PC. For example, on a Linux host:
 
-     |imx_tty_list|
+     .. parsed literal::
+     
+        |imx_tty_list|
 
      Using a serial terminal program like `minicom <https://salsa.debian.org/minicom-team/minicom>`_,
      connect to the port with |imx_tty_port| in the name (in this example |imx_tty_device|).
@@ -82,52 +94,57 @@ Once in serial downloader mode and connected to your PC, the evaluation board sh
 
 |secure_boot_pre_flash_note|
 
-.. tabs::
+.. tab-set::
+    :sync-group: os
 
-   .. group-tab:: Linux
+    .. tab-item:: Linux
+        :sync: linux
 
-      #. Verify target is present:
+        #. Verify target is present:
+           
+           .. parsed-literal::
 
-         |imx_lsusb|
+              |imx_lsusb|
 
-         In this mode you will use the ``uuu`` tools to program the images to the eMMC. 
-         The ``USB ID`` may differ if a different SoC is used.
+           In this mode you will use the ``uuu`` tools to program the images to the eMMC. 
+           The ``USB ID`` may differ if a different SoC is used.
 
-      #. To program the LmP to the EMMC run
+        #. To program the LmP to the EMMC run
 
-          .. parsed-literal::
+           .. parsed-literal::
 
-           $ sudo mfgtool-files-|machine_name|/uuu mfgtool-files-|machine_name|/full_image.uuu
-             uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.243-0-ged48c51
+              $ sudo mfgtool-files-|machine_name|/uuu mfgtool-files-|machine_name|/full_image.uuu
+              uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.243-0-ged48c51
 
-             Success 1    Failure 0
-
-
-             1:92     6/ 6 [Done                                  ] FB: done
-
-      #. Turn off the power
-      #. Put the board into run mode
-
-   .. group-tab:: Windows
-
-      #. Start the ``Device Manager``
-      #. Select ``View``
-      #. Select ``Devices by container``
-      #. Verify a device like the following:  |usb_device_windows|
-      #. Run the command below to program the LmP to the EMMC:
-
-          .. parsed-literal::
-
-           C:\\Users\\Someone> mfgtool-files-|machine_name|\\uuu.exe mfgtool-files-|machine_name|\\full_image.uuu
-             uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.243-0-ged48c51
-
-             Success 1    Failure 0
+               Success 1    Failure 0
 
 
-             1:92     6/ 6 [Done                                  ] FB: done
+               1:92     6/ 6 [Done                                  ] FB: done
 
-      #. Turn off the power.
-      #. Put the board into run mode
+        #. Turn off the power
+        #. Put the board into run mode
+
+    .. tab-item:: Windows
+        :sync: windows
+
+        #. Start the ``Device Manager``
+        #. Select ``View``
+        #. Select ``Devices by container``
+        #. Verify a device like the following:  |usb_device_windows|
+        #. Run the command below to program the LmP to the EMMC:
+
+            .. parsed-literal::
+
+               PS C:\\Users\\Someone> mfgtool-files-|machine_name|\\uuu.exe mfgtool-files-|machine_name|\\full_image.uuu
+               uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.4.243-0-ged48c51
+
+               Success 1    Failure 0
+
+
+               1:92     6/ 6 [Done                                  ] FB: done
+
+        #. Turn off the power
+        #. Put the board into run mode.
 
 Put the |board_name| into run mode by switching |boot_mode_switch|
 to |boot_mode_emmc| to set the board to boot from eMMC.

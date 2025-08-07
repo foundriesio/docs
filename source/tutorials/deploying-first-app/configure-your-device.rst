@@ -23,25 +23,25 @@ During this tutorial, you will configure both ``aktualizr-lite`` and ``fioconfig
 
 This configuration will only apply to the device where the commands below are run. 
 To change the timing for the entire fleet, you will need to customize your Factory image.
-On your device, create a settings file in the ``/etc/sota/conf.d/`` folder to configure ``aktualizr-lite``:
+**On your device**, create a settings file in the ``/etc/sota/conf.d/`` folder to configure ``aktualizr-lite``:
 
-.. prompt:: bash device:~$
+.. code-block:: console
 
-    sudo mkdir -p /etc/sota/conf.d/
-    sudo bash -c 'printf "[uptane]\npolling_sec = 60" > /etc/sota/conf.d/z-01-polling.toml'
+    device:~$ sudo mkdir -p /etc/sota/conf.d/
+    device:~$ sudo bash -c 'printf "[uptane]\npolling_sec = 60" > /etc/sota/conf.d/z-01-polling.toml'
 
 Next, create a settings file in the ``/etc/default/`` folder to configure ``fioconfig``:
 
-.. prompt:: bash device:~$
+.. code-block:: console
 
-    sudo bash -c 'printf "DAEMON_INTERVAL=60" > /etc/default/fioconfig'
+    device:~$ sudo bash -c 'printf "DAEMON_INTERVAL=60" > /etc/default/fioconfig'
 
 Restart both services:
 
-.. prompt:: bash device:~$
+.. code-block:: console
 
-    sudo systemctl restart aktualizr-lite
-    sudo systemctl restart fioconfig
+    device:~$ sudo systemctl restart aktualizr-lite
+    device:~$ sudo systemctl restart fioconfig
 
 .. tip::
 
@@ -51,8 +51,8 @@ Restart both services:
    To watch the ``aktualizr-lite`` logs for updates, leave a device 
    terminal open running the command:
 
-   .. prompt:: bash device:~$
+   .. code-block:: console
 
-       sudo journalctl --follow --unit aktualizr-lite
+       device:~$ sudo journalctl --follow --unit aktualizr-lite
 
 .. _TUF: https://theupdateframework.com/

@@ -33,10 +33,10 @@ Configure the CI
 
 Clone your ``ci-scripts`` repo and enter its directory:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
-    cd ci-scripts
+    $ git clone https://source.foundries.io/factories/<factory>/ci-scripts.git
+    $ cd ci-scripts
 
 Add the following to ``factory-config.yml``,
 making sure to set the appropriate values for ``app_type`` and ``oe_builtin`` (see below):
@@ -72,10 +72,10 @@ making sure to set the appropriate values for ``app_type`` and ``oe_builtin`` (s
 
 Add the ``factory-config.yml`` file, commit and push:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git commit -m "Configure shellhttpd as preload app" factory-config.yml
-    host:~$ git push
+    $ git commit -m "Configure shellhttpd as preload app" factory-config.yml
+    $ git push
 
 Getting a New Image with Preloaded Containers
 ----------------------------------------------
@@ -112,48 +112,44 @@ Restorable apps are enabled by default on LmP v85+.
 
 On your device, switch to root and list the files in the folder ``/var/sota/reset-apps``.
 
-.. prompt:: bash device:~$
+.. code-block:: console
 
-    sudo su
-    ls /var/sota/reset-apps/apps
-
-.. code-block:: text
-
-     app-05 app-07 app-08
+    device:~$ sudo su
+    # ls /var/sota/reset-apps/apps
+    
+    app-05 app-07 app-08
 
 Preloaded Restorable Apps are listed in the output, provided that the preloading was successful.
 In this case, the preloaded apps are ``app-05``, ``app-07`` and ``app-08``.
 
 Another option to verify whether Restorable Apps are preloaded is to use the `aklite-apps` utility.
 
-.. prompt:: bash device:~$
+.. code-block:: console
 
-    sudo su
-    aklite-apps ls
+    device:~$ sudo su
+    # aklite-apps ls
 
-.. code-block:: text
-
-     app-05
-     app-07
-     app-08
+    app-05
+    app-07
+    app-08
 
 Try to start the preloaded Restorable Apps manually using `aklite-apps`:
 
-.. prompt:: bash device:~$
+.. code-block:: console
 
-    sudo su
-    aklite-apps run [--apps <a comma separated list of Apps>]
+    device:~$ sudo su
+    # aklite-apps run [--apps <a comma separated list of Apps>]
 
 .. note::
     ``app_type`` is set to ``restorable`` by default since LmP **v85**.
     If ``compose`` app type is set, then the preloaded apps are located under ``/var/sota/compose-apps/<app>``.
     Here is an example using ``shellhttpd`` preloaded app:
 
-    .. prompt:: bash device:~$
+    .. code-block:: console
 
-        sudo su
-        ls /var/sota/compose-apps/shellhttpd
-        Dockerfile  docker-build.conf  docker-compose.yml  httpd.sh
+        device:~$ sudo su
+        # ls /var/sota/compose-apps/shellhttpd
+        # Dockerfile  docker-build.conf  docker-compose.yml  httpd.sh
 
 Starting Compose Apps Automatically
 -----------------------------------
@@ -165,10 +161,10 @@ meta-lmp_ provides a recipe that launches preloaded apps after the device boots.
 
 Clone your ``meta-subscriber-overrides.git`` repo and enter its directory:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
-    cd meta-subscriber-overrides
+    $ git clone https://source.foundries.io/factories/<factory>/meta-subscriber-overrides.git
+    $ cd meta-subscriber-overrides
 
 Edit the ``recipes-samples/images/lmp-factory-image.bb`` file and add the recipe to the ``CORE_IMAGE_BASE_INSTALL`` list:
 
@@ -188,10 +184,10 @@ Edit the ``recipes-samples/images/lmp-factory-image.bb`` file and add the recipe
 
 Add the ``recipes-samples/images/lmp-factory-image.bb`` file, commit and push:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git commit -m "compose-apps-early-start: Adding recipe" recipes-samples/images/lmp-factory-image.bb
-    host:~$ git push
+    $ git commit -m "compose-apps-early-start: Adding recipe" recipes-samples/images/lmp-factory-image.bb
+    $ git push
 
 The latest Target should be the CI job you just created.
 
@@ -208,28 +204,25 @@ Flash the image and boot the device.
 Testing Auto Start
 ------------------
 
-On your device, list the ``compose-apps-early-start`` service:
+**On your device**, list the ``compose-apps-early-start`` service:
 
-.. prompt:: bash device:~$
+.. code-block:: console
 
-    systemctl list-unit-files | grep enabled | grep compose-apps-early-start
+   $ systemctl list-unit-files | grep enabled | grep compose-apps-early-start
 
-.. code-block:: text
-
-    compose-apps-early-start.service           enabled         enabled
+   compose-apps-early-start.service           enabled         enabled
 
 Verify the ``compose-apps-early-start`` application status:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
-    device:~$  systemctl status compose-apps-early-start
+   $ systemctl status compose-apps-early-start
 
-.. code-block:: text
 
-     compose-apps-early-start.service - Ensure apps are configured and running as early>
-          Loaded: loaded (/usr/lib/systemd/system/compose-apps-early-start.service; enabl>
-          Active: active (exited) since Wed 2021-03-24 10:25:43 UTC; 5 months 17 days ago
-         Process: 750 ExecStart=/usr/bin/compose-apps-early-start (code=exited, status=0/>
+   compose-apps-early-start.service - Ensure apps are configured and running as early>
+       Loaded: loaded (/usr/lib/systemd/system/compose-apps-early-start.service; enabl>
+        Active: active (exited) since Wed 2021-03-24 10:25:43 UTC; 5 months 17 days ago
+        Process: 750 ExecStart=/usr/bin/compose-apps-early-start (code=exited, status=0/>
         Main PID: 750 (code=exited, status=0/SUCCESS)
 
 After the ``compose-apps-early-start`` service has been successfully run, ``docker ps`` will show that the preloaded apps are running.

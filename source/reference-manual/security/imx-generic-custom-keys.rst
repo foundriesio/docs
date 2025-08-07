@@ -23,22 +23,22 @@ This will configure the board to only boot signed images.
 
 1. Clone ``lmp-tools`` from GitHub
 
-.. prompt:: bash host:~$
+   .. code-block:: console
 
-      git clone git://github.com/foundriesio/lmp-tools.git
+      $ git clone git://github.com/foundriesio/lmp-tools.git
 
 2. Export the path to where keys are stored
 
-.. prompt:: bash host:~$
+   .. code-block:: console
 
-    export KEY_FILE=/path-to-key-files/<efusefile>
+      $ export KEY_FILE=/path-to-key-files/<efusefile>
 
 3. Generate the scripts to fuse and close the board
 
-.. prompt:: bash host:~$
+   .. code-block:: console
 
-      ./lmp-tools/security/<soc>/gen_fuse.sh -s $KEY_FILE -d ./fuse.uuu
-      ./lmp-tools/security/<soc>/gen_close.sh -s $KEY_FILE -d ./close.uuu
+      $ ./lmp-tools/security/<soc>/gen_fuse.sh -s $KEY_FILE -d ./fuse.uuu
+      $ ./lmp-tools/security/<soc>/gen_close.sh -s $KEY_FILE -d ./close.uuu
 
 Where ``<soc>`` can be found in the table below:
 
@@ -62,24 +62,26 @@ Where ``<soc>`` can be found in the table below:
 
 4. Install the scripts to the ``meta-subscriber-overrides``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-      mkdir -p <factory>/meta-subscriber-overrides/recipes-support/mfgtool-files/mfgtool-files/<machine>
-      cp fuse.uuu <factory>/meta-subscriber-overrides/recipes-support/mfgtool-files/mfgtool-files/<machine>
-      cp close.uuu <factory>/meta-subscriber-overrides/recipes-support/mfgtool-files/mfgtool-files/<machine>
-      cat <factory>/meta-subscriber-overrides/recipes-support/mfgtool-files/mfgtool-files_%.bbappend
+      $ mkdir -p <factory>/meta-subscriber-overrides/recipes-support/mfgtool-files/mfgtool-files/<machine>
+      $ cp fuse.uuu <factory>/meta-subscriber-overrides/recipes-support/mfgtool-files/mfgtool-files/<machine>
+      $ cp close.uuu <factory>/meta-subscriber-overrides/recipes-support/mfgtool-files/mfgtool-files/<machine>
+      $ cat <factory>/meta-subscriber-overrides/recipes-support/mfgtool-files/mfgtool-files_%.bbappend
 
 The content of ``mfgtool-files_%.bbappend`` should be::
 
     FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-5. Inspect the changes, and push accordingly
+5. Inspect the changes, and push accordingly…
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-      git status
+      $ git status
 
-The result of ``git status`` should look like::
+The result of ``git status`` should look like:
+
+.. code-block:: console
 
       On branch devel
       Your branch is up to date with 'origin/devel'.

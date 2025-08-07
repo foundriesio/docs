@@ -19,12 +19,12 @@ As the Linux® microPlatform does not include ``curl``, let us include ``curl`` 
 
 Edit ``recipes-samples/images/lmp-factory-image.bb`` and append ``CORE_IMAGE_BASE_INSTALL``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cd ..
-    host:~$ vi recipes-samples/images/lmp-factory-image.bb
+    $ cd ..
+    $ vi recipes-samples/images/lmp-factory-image.bb
 
-.. prompt:: text
+.. code-block:: text
 
      SUMMARY = "Minimal factory image which includes OTA Lite, Docker, and OpenSSH support"
      

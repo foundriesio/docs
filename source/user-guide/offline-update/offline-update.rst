@@ -13,15 +13,15 @@ Prerequisites
 
 1. Enable Offline Update support, i.e. add ``aklite-offline`` to ``PACKAGECONFIG`` of ``aktualizr``. For example:
 
-    .. prompt:: bash
+    .. code-block:: console
 
-        cat meta-subscriber-overrides.git/recipes-sota/aktualizr/aktualizr_%.bbappend
+        $ cat meta-subscriber-overrides.git/recipes-sota/aktualizr/aktualizr_%.bbappend
         PACKAGECONFIG:append = " aklite-offline"
 
 2. Enable Apps fetching if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
    To do so, add the following configuration snippet to the ``containers`` section of :ref:`your Factory definition <ref-factory-definition>`:
 
-    .. prompt:: bash
+    .. code-block:: yaml
 
 
         containers:
@@ -115,7 +115,7 @@ The CLI utility supports two commands:
 1. ``aklite-offline install [--config <config file/dir>] --src-dir <update-content-dir>``
 2. ``aklite-offline run [--config <config file/dir>]``
 
-.. prompt:: text
+.. code-block:: text
 
     ``--config`` -  Path to a directory that contains one of more ``*.toml`` configuration snippets or a path to a ``*.toml`` file. It may be omitted at all so the command collects config from the snippets found in the default directories/files, as ``aktualizr-lite`` does:
 
@@ -196,7 +196,7 @@ Configuration Details
 
 The minimum required configuration is:
 
-.. prompt:: text
+.. code-block:: none
 
     [provision]
     primary_ecu_hardware_id = <>
@@ -245,7 +245,7 @@ Offline Update Considerations
   We recommend implementing this solution through a new recipe in the factory's ``meta-subscriber-overrides.git`` repository.
   The snippet should contain the following content:
 
-.. prompt:: text
+.. code-block:: none
 
     [pacman]
     tags = "<tag>"

@@ -1,13 +1,11 @@
 Tagging a Specific Version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use Fioctl® on your host machine to list all Target versions:
+Use :term:`Fioctl` on your host machine to list all Target versions:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets list
-
-::
+    $ fioctl targets list
 
      VERSION  TAGS    APPS                                                   HARDWARE IDs
      -------  ----    ----                                                   ------------
@@ -24,7 +22,7 @@ Use Fioctl® on your host machine to list all Target versions:
      12       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
      13       devel            mosquitto,shellhttpd,flask-mqtt-nginx,shellhttpd-mqtt  raspberrypi4-64
 
-If you have any device following the ``devel`` tag, it should be running the latest Target.
+If you have any device following a ``devel`` tag, it should be running the latest Target.
 In the example above, this is version 13.
 
 Because your device is configured to follow ``tutorial``, it should be stuck in the last version that was tagged with ``tutorial``.
@@ -46,11 +44,9 @@ Looking at the Target list above, you would tag version 12 with ``tutorial``.
 
 Use Fioctl to tag version you want, making sure to use the version you want from your Factory:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ fioctl targets tag --by-version -T devel,tutorial 12
-
-::
+    $ fioctl targets tag --by-version -T devel,tutorial 12
 
      [devel tutorial]
      Changing tags of raspberrypi4-64-lmp-12 from [devel] -> [devel tutorial]
@@ -62,7 +58,7 @@ Use Fioctl to tag version you want, making sure to use the version you want from
      ==  Steps to recreate inside simulator
      
          wget -O simulate.sh https://api.foundries.io/projects/<factory>/lmp/builds/12/runs/UpdateTargets//.simulate.sh
-         # wget'ing the file may require the --header flag if the
+         # wget-ing the file may require the --header flag if the
          # jobserv API requires authentication.
          sh ./simulate.sh
      ==  Pulling container: hub.foundries.io/aktualizr
@@ -128,10 +124,8 @@ Within a few minutes, your device should receive an update.
 
 On your device, test the container:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ wget -qO- 127.0.0.1:8080
-
-.. prompt:: text
 
      This is the TEST 03

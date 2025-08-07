@@ -9,22 +9,22 @@ LmP—via aktualizr-lite—runs Docker Compose projects as defined in a device's
 :ref:`ref-compose-apps` were created as a way for a Factory to distribute the contents of a compose project.
 A good way to understand how things fit together is by starting with what a typical Target looks like:
 
-.. code-block:: YAML
+.. code-block:: yaml
 
-  "intel-corei7-64-lmp-101" : {
-    "hashes" : {
-      "sha256" : "cb681331941af5cf688b7bf5d362b67a2583fde3f844898fad9bad05c61a2b04"
-    },
-    "custom" : {
-      "docker_compose_apps" : {
-        "fiotest" : {
-          "uri" : "hub.foundries.io/andy-corp/fiotest@sha256:deadbeef"
-        },
-        "shellhttpd" : {
-          "uri" : "hub.foundries.io/andy-corp/shellhttpd@sha256:f00"
-        }
-      }
-    ...
+   "intel-corei7-64-lmp-101" : {
+     "hashes" : {
+       "sha256" : "cb681331941af5cf688b7bf5d362b67a2583fde3f844898fad9bad05c61a2b04"
+     },
+     "custom" : {
+       "docker_compose_apps" : {
+         "fiotest" : {
+           "uri" : "hub.foundries.io/andy-corp/fiotest@sha256:deadbeef"
+         },
+         "shellhttpd" : {
+           "uri" : "hub.foundries.io/andy-corp/shellhttpd@sha256:f00"
+         }
+       }
+     ...
 
 This Target includes two compose apps, ``fiotest`` and ``shellhttpd``. 
 These apps are coming from the Factory's containers.git repository.

@@ -36,9 +36,9 @@ Setting Up Your PKI
 .. warning::
    The following command can only be used once.
 
-.. code-block::
+.. code-block:: console
 
-    fioctl keys ca create /absolute/path/to/certs/
+   $ fioctl keys ca create /absolute/path/to/certs/
 
 This creates a root of trust ``factory_ca`` keypair.
 
@@ -55,9 +55,9 @@ A few important things to note about this command:
 
 After running the above command, you can validate the outcome and view the configured certificates by using the following command:
 
-.. code-block::
+.. code-block:: console
 
-    fioctl keys ca show --pretty
+   $ fioctl keys ca show --pretty
 
 Rotating Server TLS Certificate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,9 +68,9 @@ Foundries.io is not able to perform this task for you, as it requires access to 
 
 :ref:`ref-fioctl` includes a command to rotate your Server TLS Certificate:
 
-.. code-block::
+.. code-block:: console
 
-    fioctl keys ca rotate-tls /absolute/path/to/certs/
+   $ fioctl keys ca rotate-tls /absolute/path/to/certs/
 
 Adding Device CA
 ~~~~~~~~~~~~~~~~
@@ -89,9 +89,9 @@ Some use cases when this is needed include (but are not limited to) the followin
 
 :ref:`ref-fioctl` includes a command to add one more Device CA to your Factory:
 
-.. code-block::
+.. code-block:: console
 
-    fioctl keys ca add-device-ca /absolute/path/to/certs/ [--online-ca | --local-ca]
+   $ fioctl keys ca add-device-ca /absolute/path/to/certs/ [--online-ca | --local-ca]
 
 Revoking Device CA
 ~~~~~~~~~~~~~~~~~~
@@ -117,15 +117,15 @@ There is an important difference between disabling and revoking a Device CA:
 
 Use the below command when you need to disable a Device CA:
 
-.. code-block::
+.. code-block:: console
 
-    fioctl keys ca disable-device-ca /absolute/path/to/certs/ [--ca-file <filename> | --ca-serial <serial>]
+   $ fioctl keys ca disable-device-ca /absolute/path/to/certs/ [--ca-file <filename> | --ca-serial <serial>]
 
 Use the following command when you need to revoke a Device CA:
 
-.. code-block::
+.. code-block:: console
 
-    fioctl keys ca revoke-device-ca /absolute/path/to/certs/ [--ca-file <filename> | --ca-serial <serial>]
+   $ fioctl keys ca revoke-device-ca /absolute/path/to/certs/ [--ca-file <filename> | --ca-serial <serial>]
 
 After the Device CA is revoked, devices can no longer update their apps or config.
 Therefore, the revocation process needs to be planned properly.

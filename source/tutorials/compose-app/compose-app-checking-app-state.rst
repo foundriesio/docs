@@ -27,9 +27,9 @@ An App state is *healthy* only if each container/service is *healthy*.
 View a summary of App state using the ``fioctl devices show <device name>`` command.
 The output lists *healthy* and *unhealthy* Apps. For example:
 
-.. prompt:: text
+.. code-block:: console
 
-        fioctl devices show 58e6e47d-3d2c-415b-afa4-cdc5e0229355
+        $ fioctl devices show 58e6e47d-3d2c-415b-afa4-cdc5e0229355
 
         UUID:		58e6e47d-3d2c-415b-afa4-cdc5e0229355
         Owner:		5e9dc69d7407c5010eed1c5a
@@ -74,9 +74,9 @@ The output uses the following template:
 
 For example:
 
-.. prompt:: text
+.. code-block:: console
 
-        fioctl devices apps-states 58e6e47d-3d2c-415b-afa4-cdc5e0229355
+        $ fioctl devices apps-states 58e6e47d-3d2c-415b-afa4-cdc5e0229355
 
         Time:	2022-08-12T13:02:29Z
         Hash:	d6c101e33e6403f8c9aac18b8f8b1393a6b6866eead53631756c90f97b2838eb

@@ -17,11 +17,11 @@ If optional test results are missing, release can be announced.
 
 Testing focuses on the mandatory features of each FoundriesFactory release:
 
- * Linux microPlatform
- * Base OS running with OSTree based root filesystem
- * Aktualizr-lite daemon
- * Docker engine running Docker compose apps
- * Fioconfig
+* Linux microPlatform
+* Base OS running with OSTree based root filesystem
+* Aktualizr-lite daemon
+* Docker engine running Docker compose apps
+* Fioconfig
 
 This includes the open source Linux® microPlatform (LmP) builds on supported SoC vendor reference development evaluation kits (:term:`EVK`).
 
@@ -35,27 +35,27 @@ LmP Test Plan
 
 Linux® microPlatform testing must at least cover:
 
- * Boot testing
+* Boot testing
 
-     * Ensure kernel boots and mounts root filesystem
+  * Ensure kernel boots and mounts root filesystem
 
- * Network testing
+* Network testing
 
-     * Ensure that networking works correctly
-     * Ensure NetworkManager works correctly
-       (as it’s a part of default OS installation)
+  * Ensure that networking works correctly
+  * Ensure NetworkManager works correctly
+    (as it’s a part of default OS installation)
 
- * Mandatory services testing
+* Mandatory services testing
 
-     * Ensure that systemd runs and all mandatory services are started
-       as required.
+  * Ensure that systemd runs and all mandatory services are started
+    as required.
 
-         * Ensure that aktualizr daemon runs
-         * Ensure that fioconfig daemon runs
-         * Ensure that NetworkManager runs
+    * Ensure that aktualizr daemon runs
+    * Ensure that fioconfig daemon runs
+    * Ensure that NetworkManager runs
 
-     * Ensure that Docker engine runs
-     * Ensure that example Docker app runs
+  * Ensure that Docker engine runs
+  * Ensure that example Docker app runs
 
 OS Features
 -----------
@@ -63,27 +63,27 @@ OS Features
 Boot Test and Smoke Test
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
- * Mandatory:
+* Mandatory:
 
-     * Check kernel version
-     * Check block devices
-     * Check network devices
-     * Ping test
-     * Optee test — xtest (binaries built into the OS image)
-     * Timesyncd
+  * Check kernel version
+  * Check block devices
+  * Check network devices
+  * Ping test
+  * Optee test — xtest (binaries built into the OS image)
+  * Timesyncd
 
-         * Ensure NTP is synchronized correctly
+    * Ensure NTP is synchronized correctly
 
- * Optional
+* Optional
 
-     * Check device presence (i2c, spi, video, audio, gpio, …)
-       depending on HW capabilities
-     * Check driver presence
+  * Check device presence (i2c, spi, video, audio, gpio, …)
+    depending on HW capabilities
+  * Check driver presence
 
 OSTree
 ~~~~~~
 
- * Optional
+* Optional
 
    OSTree has a runtime test suite.
    It is used for validation after building libostree, but can potentially be used to test a live system.
@@ -92,38 +92,34 @@ OSTree
 Docker
 ~~~~~~
 
- * Mandatory
+* Mandatory
 
-     * Docker smoke test
-       This includes running example docker containers (hello-world)
+  * Docker smoke test
+    This includes running example docker containers (hello-world)
 
- * Optional
+* Optional
 
-     * Docker-compose integration test
-     * Docker networking
+  * Docker-compose integration test
+  * Docker networking
 
-        * Default bridge
-        * User-defined bridge
-        * Host
+    * Default bridge
+    * User-defined bridge
+    * Host
 
 Networking on Host
 ~~~~~~~~~~~~~~~~~~
 
- * Mandatory
+* Mandatory
 
-    * DHCP
+  * DHCP
 
-       * Check if IPv4 address is assigned properly
-       * Check if IPv6 address is assigned properly
-       * Check for
-         wired
-         and wireless interfaces
-         (requires external hardware)
+    * Check if IPv4 address is assigned properly
+    * Check if IPv6 address is assigned properly
+    * Check for wired and wireless interface (requires external hardware)
 
-    * DNS
+  * DNS
 
-       * Check if name resolution works with default settings
-         (default DNS must be validated before running tests)
+    * Check if name resolution works with default settings (default DNS must be validated before running tests)
 
 Interface Testing (Optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -131,7 +127,7 @@ Interface Testing (Optional)
 Various interfaces are tested depending on the hardware and customer requirements.
 Current plan is to execute the following tests:
 
- * HDMI (HDMI capture device)
+* HDMI (HDMI capture device)
 
 Device Update
 -------------
@@ -139,32 +135,32 @@ Device Update
 Aktualizr (OTA API)
 ~~~~~~~~~~~~~~~~~~~
 
- * Mandatory
+* Mandatory
 
-    * Update
+  * Update
 
-        * Update of Docker compose apps (new Target)
+    * Update of Docker compose apps (new Target)
 
-           * *From* previous Target
+      * *From* previous Target
 
-        * Update of base OS
+    * Update of base OS
 
-           * From previous platform Target
-           * From previous *release* platform Target
+      * From previous platform Target
+      * From previous *release* platform Target
 
-    * Rollback
+  * Rollback
 
-        * Rollback of base OS
+    * Rollback of base OS
 
 Device Config (Fioconfig)
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
- * Mandatory, to test whether:
+* Mandatory, to test whether:
 
-    * Factory specific configs are applied properly
-    * Group specific configs are applied properly
-    * Device specific configs are applied properly
-    * Both encrypted and non-encrypted configs are available on the device
+  * Factory specific configs are applied properly
+  * Group specific configs are applied properly
+  * Device specific configs are applied properly
+  * Both encrypted and non-encrypted configs are available on the device
 
 How To Test
 ===========
@@ -180,7 +176,7 @@ Basic boot test should be mandatory for all subsequent tests.
 If the boot test fails all other testing should be abandoned.
 There are 2 scenarios for boot testing:
 
- * Initial provisioning
+* Initial provisioning
 
    This happens when the software is delivered to the board for the first time.
    Since the aktualizr is not yet running on the board,
@@ -191,16 +187,16 @@ There are 2 scenarios for boot testing:
    Both of these provisioning methods are supported by LAVA.
    Therefore, it is proposed to use LAVA for initial provisioning, boot, and reboot testing in this scenario.
 
- * Software update (OS update)
+* Software update (OS update)
 
    Booting after a software update can be checked in 2 ways:
    with either aktualizr-lite or a container running on the board, or with an external tool.
    
    When checking reboot after update testing rig needs to know:
 
-    * When the test starts (on old Target)
-    * What are the starting (old) and ending (new) Targets and OSTree hashes
-    * When the test is finished (aktualizr performs update, system is rebooted)
+   * When the test starts (on old Target)
+   * What are the starting (old) and ending (new) Targets and OSTree hashes
+   * When the test is finished (aktualizr performs update, system is rebooted)
 
 Basic Tests
 ~~~~~~~~~~~
@@ -209,13 +205,13 @@ Basic tests are executed on the target either using the fiotest container (runni
 Which tool depends on the tested scenario.
 We are currently testing 2 scenarios:
 
- * *Manufacturing* scenario
+* *Manufacturing* scenario
 
    LAVA can execute tests in Linux shell on the Target and parse results from the serial console.
    Tests are executed after flashing an image to the board.
    DUT always starts fresh without any previously running software.
 
- * *Rolling update* scenario
+* *Rolling update* scenario
 
    ``Test-runner.py`` is a script from test-definitions repository.
    It is able to run tests on the remote OS using SSH as a connection medium.
@@ -226,7 +222,7 @@ We are currently testing 2 scenarios:
    Test plan executed in the “rolling update” scenario is limited.
    Tests disabling networking and potentially corrupting the OS are disabled.
 
- * Docker apps update
+* Docker apps update
 
    Testing of Docker apps update should be done using a container registered for aktualizr-lite callbacks.
    This way we are as close as possible to testing a production setup.

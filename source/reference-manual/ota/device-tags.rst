@@ -68,9 +68,11 @@ Managing Tags
 -------------
 
 By default, LmP builds are triggered for your Factory after code has been merged to main will be tagged with "postmerge".
-After doing QA on this build, it can be "promoted" using the Fioctl_ tool::
+After doing QA on this build, it can be "promoted" using the Fioctl_ tool:
 
- fioctl targets tag -Tpostmerge,promoted raspberrypi4-64-lmp-144
+.. code-block:: console
+
+   $ fioctl targets tag -Tpostmerge,promoted raspberrypi4-64-lmp-144
 
 This will kick off a CI job that will tag build 144 as promoted.
 This would result in Device 2 (from the above example) in updating.

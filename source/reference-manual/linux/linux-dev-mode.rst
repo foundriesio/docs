@@ -6,7 +6,9 @@ Development Mode
 LmP provides the variable ``DEV_MODE`` that enables a development mode defined by the Factory source code.
 
 The variable is defined as ``lmp:params:DEV_MODE``,
-and can be configured by updating the :ref:`factory-config.yml <def-lmp>` in ``ci-scripts.git`` with::
+and can be configured by updating the :ref:`factory-config.yml <def-lmp>` in ``ci-scripts.git`` with:
+
+.. code-block:: yaml
 
   lmp:
     params:
@@ -15,7 +17,9 @@ and can be configured by updating the :ref:`factory-config.yml <def-lmp>` in ``c
 The ``DEV_MODE`` param is set using the ``ref_options`` stanza in :ref:`factory-config.yml <def-lmp>`
 for specified testing and debugging branches.
 Conditional appends can then control the source code.
-For example, if trying to enable systemd coredump::
+For example, if trying to enable systemd coredump:
+
+.. code-block:: console
 
   $ cat  meta-subscriber-overrides/meta-subrecipes-core/systemd/systemd_%.bbappend
   PACKAGECONFIG += "${@bb.utils.contains('DEV_MODE', '1', 'coredump', '', d)}"

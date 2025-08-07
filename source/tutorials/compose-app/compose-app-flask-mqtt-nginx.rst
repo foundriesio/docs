@@ -15,17 +15,15 @@ The ``depends_on`` stanza specifies what service it is dependent on.
 
 In the containers folder, use git to download  ``flask-mqtt-nginx`` from the ``extra-containers`` repo:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git checkout remotes/fio/tutorials -- flask-mqtt-nginx
+    $ git checkout remotes/fio/tutorials -- flask-mqtt-nginx
 
 The ``flask-mqtt-nginx`` application should now be inside your containers folder:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ tree -L 2 .
-
-.. prompt:: text
+    $ tree -L 2 .
 
      .
      ├── flask-mqtt-nginx
@@ -47,11 +45,11 @@ The ``flask-mqtt-nginx`` application should now be inside your containers folder
 
 Check the content ``flask-mqtt-nginx/docker-compose.yml``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat flask-mqtt-nginx/docker-compose.yml
+    $ cat flask-mqtt-nginx/docker-compose.yml
 
-.. prompt:: text
+.. code-block:: yaml
 
      version: "3"
      services:
@@ -83,17 +81,15 @@ The ``flask-mqtt-nginx/docker-compose.yml`` file has the configuration for ``fla
 
 In the containers folder, use git to download ``flask-mqtt`` from the ``extra-container`` repo:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git checkout remotes/fio/tutorials -- flask-mqtt
+    $ git checkout remotes/fio/tutorials -- flask-mqtt
 
 The ``flask-mqtt`` application should be inside your containers folder:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ tree -L 2 .
-
-.. prompt:: text
+    $ tree -L 2 .
 
      .
      ├── flask-mqtt
@@ -118,11 +114,11 @@ The ``flask-mqtt`` application should be inside your containers folder:
 
 Check the content of your ``flask-mqtt/Dockerfile`` file:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat flask-mqtt/Dockerfile
+    $ cat flask-mqtt/Dockerfile
 
-.. prompt:: text
+.. code-block:: dockerfile
 
      # flask-mqtt/Dockerfile
      FROM alpine
@@ -148,19 +144,19 @@ The command to execute python3 with flask parameters is configured.
 
 Check the content of ``flask-mqtt/app.py``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat flask-mqtt/app.py
+    $ cat flask-mqtt/app.py
 
-.. prompt:: text
+.. code-block:: python
 
      # flask-mqtt/app.py
      import time
      import sys
-     
+    
      from flask import Flask
      from flask_mqtt import Mqtt
-     
+ 
      access = 0
      app = None
      mqtt = None

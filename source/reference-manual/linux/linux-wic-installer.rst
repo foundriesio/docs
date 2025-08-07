@@ -9,7 +9,9 @@ WIC Image Installer
 
   Only EFI compatible systems are currently supported by the image installer (e.g. ``intel-corei7-64``, ``generic-arm64``).
 
-To generate a WIC based image installer, switch the default ``WKS_FILE:sota`` definition for your target machine to ``image-efi-installer.wks``::
+To generate a WIC based image installer, switch the default ``WKS_FILE:sota`` definition for your target machine to ``image-efi-installer.wks``:
+
+.. code-block:: console
 
   $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
   # WIC-based installer for the intel-corei7-64 target
@@ -35,12 +37,16 @@ It can also be done by removing ``console=tty0`` from the image installer by app
 
     APPEND:remove:intel-corei7-64 = "console=tty0"
 
-Create the virtual disk device that will be used as the target with ``qemu-img``::
+Create the virtual disk device that will be used as the target with ``qemu-img``:
+
+.. code-block:: console
 
   $ qemu-img create -f raw disk.img 4G
 
 Download ``lmp-factory-image-intel-corei7-64.wic`` and ``ovmf.secboot.qcow2`` from your Factory CI run.
-Run QEMU with the following arguments::
+Run QEMU with the following arguments:
+
+.. code-block:: console
 
   $ qemu-system-x86_64 -device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
       -netdev user,id=net0,hostfwd=tcp::2222-:22 \
@@ -53,7 +59,9 @@ Run QEMU with the following arguments::
 
 Follow the instructions provided by the installer to install the LmP image into ``disk.img``.
 After completed, hit enter to stop QEMU. 
-Restart using ``disk.img`` as the primary block device::
+Restart using ``disk.img`` as the primary block device:
+
+.. code-block:: console
 
   $ qemu-system-x86_64 -device virtio-net-pci,netdev=net0,mac=52:54:00:12:35:02 \
       -netdev user,id=net0,hostfwd=tcp::2222-:22 \

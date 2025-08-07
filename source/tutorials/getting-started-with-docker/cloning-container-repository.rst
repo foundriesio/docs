@@ -8,10 +8,10 @@ Cloning Container Repository
 
 Clone and enter your ``containers.git``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    git clone -b devel https://source.foundries.io/factories/<factory>/containers.git
-    cd containers
+    $ git clone -b devel https://source.foundries.io/factories/<factory>/containers.git
+    $ cd containers
 
 Your ``containers.git`` repository is initialized with a simple application example in ``shellhttpd.disabled``.
 
@@ -22,13 +22,13 @@ Your ``containers.git`` repository is initialized with a simple application exam
 For better understanding, it is best to go through the files in  ``shellhttpd.disabled`` gradually.
 Create a new folder with the name ``shellhttpd``:
 
-.. prompt:: bash host:~$
+.. code-block:: console
 
-    mkdir shellhttpd
+    $ mkdir shellhttpd
 
 Your ``containers.git`` repository should look like this:
 
-.. prompt::
+.. code-block:: none
 
     containers/
     ├── README.md

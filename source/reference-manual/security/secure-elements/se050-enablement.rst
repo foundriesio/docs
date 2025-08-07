@@ -13,7 +13,7 @@ The OEFID value can be found in `SE050 configurations`_.
 
 ``conf/machine/include/lmp-factory-custom.inc``:
 
-.. prompt:: text
+.. code-block:: none
 
     SE05X_OEFID:<machine> = "0xA1F4"
     MACHINE_FEATURES:append:<machine> = " se05x"

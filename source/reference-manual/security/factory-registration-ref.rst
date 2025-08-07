@@ -53,10 +53,10 @@ After the development cycle, when every device to be registered is a :term:`prod
 
 Create or modify the ``lmp-device-register_%.bbappend`` file in the Factory's ``meta-subscriber-overrides``:
 
-.. code-block:: shell
+.. code-block:: console
 
-   mkdir -p meta-subscriber-overrides/recipes-sota/lmp-device-register/
-   echo 'PACKAGECONFIG += "production"' >> meta-subscriber-overrides/recipes-sota/lmp-device-register/lmp-device-register_%.bbappend
+   $ mkdir -p meta-subscriber-overrides/recipes-sota/lmp-device-register/
+   $ echo 'PACKAGECONFIG += "production"' >> meta-subscriber-overrides/recipes-sota/lmp-device-register/lmp-device-register_%.bbappend
 
 Images created with this configuration include ``PRODUCTION=on`` for the command ``lmp-device-register``.
 
@@ -71,7 +71,8 @@ This is needed in order for a device to automatically run ``lmp-device-register`
 Copy `lmp-device-auto-register`_ into your Factory's ``meta-subscriber-overrides.git`` production branch as:
 ``recipes-support/lmp-device-auto-register/lmp-device-auto-register/lmp-device-auto-register``.
 Add the following two environment variables at the top of the file:
-::
+
+.. code-block:: shell
 
   #!/bin/sh -e
 
@@ -103,38 +104,39 @@ Partially Detached ``lmp-device-auto-register`` Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A factory can also customize ``lmp-device-auto-register`` as is explained in :ref:`ug-lmp-device-auto-register`.
+For example:
 
-For example::
+.. code-block:: shell
 
- #!/bin/sh -e
+    #!/bin/sh -e
 
- if [ -f /var/sota/sql.db ] ; then
- 	echo "$0: ERROR: Device appears to already be registered"
- 	exit 1
- fi
+    if [ -f /var/sota/sql.db ] ; then
+    echo "$0: ERROR: Device appears to already be registered"
+    exit 1
+    fi
 
- # Done in 2 parts. This first part will remove trailing \n's and make
- # the output all space separated. The 2nd part makes it comma separated.
- [ -d /var/sota/compose-apps ] && APPS=$(ls /var/sota/compose-apps)
- APPS=$(echo ${APPS} | tr ' ' ',')
- if [ -n "${APPS}" ] ; then
- 	echo "$0: Registering with default apps = ${APPS}"
- 	APPS="-a ${APPS}"
- else
- 	echo "$0: Registering with all available apps"
- fi
+    # Done in 2 parts. This first part will remove trailing \n's and make
+    # the output all space separated. The 2nd part makes it comma separated.
+    [ -d /var/sota/compose-apps ] && APPS=$(ls /var/sota/compose-apps)
+    APPS=$(echo ${APPS} | tr ' ' ',')
+    if [ -n "${APPS}" ] ; then
+    echo "$0: Registering with default apps = ${APPS}"
+    APPS="-a ${APPS}"
+    else
+    echo "$0: Registering with all available apps"
+    fi
 
- # Register the device but don't start the daemon:
- DEVICE_API="http://example.com/sign" \
- PRODUCTION=1 \
- 	/usr/bin/lmp-device-register --start-daemon=0 -T na ${APPS}
+    # Register the device but don't start the daemon:
+    DEVICE_API="http://example.com/sign" \
+    PRODUCTION=1 \
+    /usr/bin/lmp-device-register --start-daemon=0 -T na ${APPS}
+    
+    # Pull down the device's initial configuration
+    fioconfig check-in
 
- # Pull down the device's initial configuration
- fioconfig check-in
-
- # Optionally start services, or maybe just power off the device
- #systemctl start aktualizr-lite
- #systemctl start fioconfig
+    # Optionally start services, or maybe just power off the device
+    #systemctl start aktualizr-lite
+    #systemctl start fioconfig
 
 Partially Detached Registration Reference Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

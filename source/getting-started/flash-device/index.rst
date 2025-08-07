@@ -11,15 +11,15 @@ Flashing Your Device
 Prerequisites and Pre-Work
 --------------------------
 
-   - A :ref:`supported board <ref-linux-supported>` which is either:
+- A :ref:`supported board <ref-linux-supported>` which is either:
 
-      - Capable of booting from eMMC **(supported by default if available)**
-      - **Or** capable of booting from a suitable `microSD Card <https://elinux.org/RPi_SD_cards>`_
+  - Capable of booting from eMMC **(supported by default if available)**
+    - **Or** capable of booting from a suitable `microSD Card <https://elinux.org/RPi_SD_cards>`_
 
-   - Wired or WiFi network with internet access.
+- Wired or WiFi network with internet access.
 
-      - Ethernet cable (if choosing Wired)
-      - Console access to your hardware via UART serial (if choosing WiFi)
+  - Ethernet cable (if choosing Wired)
+  - Console access to your hardware via UART serial (if choosing WiFi)
 
 .. note::
    If you’re starting out and prefer emulation over a physical board, refer to :ref:`ref-qemu`.
@@ -34,25 +34,25 @@ After a successful build, the FoundriesFactory™ Platform produces build artifa
 
 #. Navigate to the :guilabel:`Targets` tab of your Factory.
 
-    .. figure:: /_static/getting-started/flash-device/devel.png
-        :width: 769
-        :align: center
-        :alt: Targets tab showing prebuilt-target
+   .. figure:: /_static/getting-started/flash-device/devel.png
+      :width: 769
+      :align: center
+      :alt: Targets tab showing prebuilt-target
 
-        Target tab
+   Target tab
 
 #. Expand the Target information by clicking on the one named ``prebuilt-target`` on it.
    This shows a link to the Factory image artifact.
    Download the Factory image for your machine:
 
-    | E.g: ``lmp-base-console-image-<machine_name>.wic.gz``
+   | E.g: ``lmp-base-console-image-<machine_name>.wic.gz``
 
-    .. figure:: /_static/getting-started/flash-device/artifacts.png
-        :width: 769
-        :align: center
-        :alt: Targets tab displaying available artifacts
+   .. figure:: /_static/getting-started/flash-device/artifacts.png
+      :width: 769
+      :align: center
+      :alt: Targets tab displaying available artifacts
 
-        Target artifacts
+      Target artifacts
 
 .. note::
     Most platforms require more than the ``lmp-base-console-image-<machine_name>.wic.gz`` artifact for flashing.
@@ -84,17 +84,15 @@ After flashing and booting the board with the respective steps for your hardware
 .. note::
     By default, the ``username`` and ``password`` to log in your device after boot are ``fio``/``fio``. We recommend changing them once you are in development.
 
-.. content-tabs::
+.. tab-set::
 
-   .. tab-container:: ethernet
-      :title: Ethernet (Recommended)
+   .. tab-item:: Ethernet (Recommended)
 
       Ethernet works out of the box if a DHCP server is available on the local network.
 
       Connect an Ethernet cable to the board. Your board will connect to the network via Ethernet soon after booting.
 
-   .. tab-container:: wifi
-      :title: WiFi
+   .. tab-item:: WiFi
 
       LmP uses ``nmcli`` and ``NetworkManager`` to manage network connectivity.
 
@@ -103,7 +101,7 @@ After flashing and booting the board with the respective steps for your hardware
 
       Once you have gained shell access to the device, log in with ``fio``/``fio`` username and password. After logged, you can add a new WiFi SSID by using ``nmcli``:
 
-      .. prompt:: bash device:~$, auto
+      .. code-block:: console
 
          device:~$ sudo nmcli device wifi connect NETWORK_SSID password NETWORK_PASSWORD
 
@@ -114,9 +112,9 @@ Logging in via SSH
 
 To login via SSH, run:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-   host:~$ ssh fio@<machine-name>.local
+   $ ssh fio@<machine-name>.local
 
 Where ``fio`` is the username and ``<machine-name>`` is the hostname of your device. The default password is ``fio``.
 
@@ -143,34 +141,27 @@ If the above methods to SSH into your board do not work, there are additional th
 
 1. Get the IP address of your device:
 
-- Temporarily enable and connect to the UART serial (detailed steps for some platforms can be found in :ref:`ug-flashing`) and determine available IP addresses with:
+   - Temporarily enable and connect to the UART serial (detailed steps for some platforms can be found in :ref:`ug-flashing`) and determine available IP addresses with:
 
-  * Ethernet:
+     * Ethernet:
 
-    .. prompt:: bash device:~$, auto
+       .. code-block:: console
 
-       device:~$ ip addr show eth0 scope global
+          device:~$ ip addr show eth0 scope global
 
-  * WiFi:
+     * WiFi:
 
-    .. prompt:: bash device:~$, auto
+       .. code-block:: console
 
-       device:~$ ip addr show wlan0 scope global
+          device:~$ ip addr show wlan0 scope global
 
-- **Or** list the connected devices and their local IP addresses on your network router's administrative interface.
+   - **Or** list the connected devices and their local IP addresses on your network router's administrative interface.
 
 2. Connect to the device by IP address:
 
- .. prompt:: bash host:~$, auto
+   .. code-block:: console
 
-    host:~$ ssh fio@<ip-address>
+      $ ssh fio@<ip-address>
 
 .. _zeroconf:
    https://en.wikipedia.org/wiki/Zero-configuration_networking
-
-.. _Win32 Disk Imager: https://sourceforge.net/projects/win32diskimager/files/Archive/
-
-.. _7zip: https://www.7-zip.org/download.html
-
-.. _Rufus: https://rufus.ie
-

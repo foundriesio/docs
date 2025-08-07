@@ -49,7 +49,9 @@ Building LmP with linux-lmp-rt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``,
-set ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-rt`` ::
+set ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-rt`` :
+
+.. code-block:: console
 
     $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
     PREFERRED_PROVIDER_virtual/kernel:intel-corei7-64 = "linux-lmp-rt"
@@ -58,7 +60,9 @@ Building LmP With linux-lmp-fslc-imx-rt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``,
-set ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-fslc-imx-rt``  ::
+set ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-fslc-imx-rt`` :
+
+.. code-block:: console
 
     $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
     PREFERRED_PROVIDER_virtual/kernel:mx6ull-nxp-bsp = "linux-lmp-fslc-imx-rt"
@@ -73,7 +77,9 @@ Building LmP With linux-lmp-dev
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``,
-set ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-dev`` ::
+set ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-dev`` :
+
+.. code-block:: console
 
     $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
     PREFERRED_PROVIDER_virtual/kernel = "linux-lmp-dev"

@@ -4,17 +4,13 @@ Modify Shellhttpd
 To change the environment values on the fly without restarting the app, you will edit ``httpd.sh``.
 Open a new terminal on your host and find the container folder used previously.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cd containers/
+    $ cd containers/
 
 Edit ``httpd.sh`` as below:
 
-.. prompt:: bash host:~$, auto
-
-    host:~$ vi shellhttpd/httpd.sh
-
-.. prompt:: shell
+.. code-block:: shell
 
      #!/bin/sh -e
      
@@ -22,12 +18,12 @@ Edit ``httpd.sh`` as below:
      MSG="${MSG-FoundriesFactory}"
      
      while true; do
-	     [ -f /home/shellhttpd/shellhttpd.conf ] && . /home/shellhttpd/shellhttpd.conf
-	     echo "PORT=$PORT"
-	     echo "MSG=$MSG"
-	     RESPONSE="HTTP/1.1 200 OK\r\n\r\n${MSG}\r\n"
-	     echo -en "$RESPONSE" | nc -w 5 -l -p "${PORT}" || true
-	     echo "= $(date) ============================="
+     [ -f /home/shellhttpd/shellhttpd.conf ] && . /home/shellhttpd/shellhttpd.conf
+       echo "PORT=$PORT"
+       echo "MSG=$MSG"
+       RESPONSE="HTTP/1.1 200 OK\r\n\r\n${MSG}\r\n"
+       echo -en "$RESPONSE" | nc -w 5 -l -p "${PORT}" || true
+       echo "= $(date) ============================="
      done
 
 The first line in the ``while`` loop will check for the file ``/home/shellhttpd/shellhttpd.conf``.

@@ -11,7 +11,7 @@ This is the same example used in the previous tutorials.
 
 Let’s recap the ``shellhttpd`` app structure:
 
-.. prompt:: text
+.. code-block:: none
 
      └── containers
          └── shellhttpd

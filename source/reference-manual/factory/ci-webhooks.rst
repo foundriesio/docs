@@ -75,9 +75,11 @@ HTTPS is recommended, but the HMAC signing also helps prevent malicious 3rd part
 Configuring Webhooks
 --------------------
 
-Define a webhook secret for HMAC signing::
+Define a webhook secret for HMAC signing:
 
-  $ fioctl secrets update webhook-docs-example=UseSomethingGoodHere
+.. code-block:: console
+
+   $ fioctl secrets update webhook-docs-example=UseSomethingGoodHere
 
 This informs the FoundriesFactory backend about a new CI related secret.
 
@@ -109,7 +111,7 @@ This example uses Ngrok_ so that it can be tested behind firewalls.
 Prepare the App
 ~~~~~~~~~~~~~~~
 
-::
+.. code-block:: console
 
  $ git clone https://github.com/foundriesio/jobserv-webhook-example
  $ cd jobserv-webhook-example
@@ -118,7 +120,7 @@ Prepare the App
 Create the Secret
 ~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: console
 
   # Set secret in backend:
   $ fioctl secrets update webhook-docs-example=UseSomethingGoodHere
@@ -128,7 +130,7 @@ Create the Secret
 Launch the App
 ~~~~~~~~~~~~~~
 
-::
+.. code-block:: console
 
   $ docker-compose up
 
@@ -143,7 +145,9 @@ the factory-config.yml's ``notify.webhooks[0].url`` value.
 Push a Change
 ~~~~~~~~~~~~~
 
-Go to a branch in ``containers.git``  such as ``devel`` if you have it, and push an empty change with::
+Go to a branch in ``containers.git``  such as ``devel`` if you have it, and push an empty change with:
+
+.. code-block:: console
 
   $ git commit --allow-empty -m "bump to test webhooks"
 

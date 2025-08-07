@@ -10,7 +10,7 @@ For the ``lmp-base`` distro, provide the boot environment input file ``uEnv.txt.
 
 ``u-boot-base-scr/imx8mmevk/uEnv.txt.in``:
 
-.. prompt:: text
+.. code-block:: none
 
     devnum=2
     devtype=mmc
@@ -28,7 +28,7 @@ This loads this environment and boots to kernel:
 
 ``u-boot-base-scr/imx8mmevk/boot.cmd``:
 
-.. prompt:: text
+.. code-block:: console
 
     fatload mmc ${emmc_dev}:1 ${loadaddr} /uEnv.txt
     env import -t ${loadaddr} ${filesize}
@@ -36,7 +36,7 @@ This loads this environment and boots to kernel:
 
 For the ``lmp-base`` distro, these files live in ``u-boot-base-scr``:
 
-.. prompt:: text
+.. code-block:: none
 
     recipes-bsp/u-boot/
     ├── u-boot-base-scr
@@ -50,7 +50,7 @@ Note that in this case, it handles both the environment and the boot command:
 
 ``u-boot-ostree-scr-fit/imx8mmevk/boot.cmd``:
 
-.. prompt:: text
+.. code-block:: shell
 
     echo "Using freescale_${fdt_file}"
 
@@ -90,7 +90,7 @@ Otherwise you may need to set the ``initrd_addr`` (as well as any other missing 
 
 The boot.cmd for the ``lmp`` distro lives in:
 
-.. prompt:: text
+.. code-block:: none
 
     recipes-bsp/u-boot/
     ├── u-boot-ostree-scr-fit

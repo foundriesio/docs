@@ -9,18 +9,15 @@ This app also uses MQTT to broadcast the total access count of ``shellhttpd`` in
 
 While in the containers folder, use git to download ``shellhttpd-mqtt`` from the ``extra-containers`` repo:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git checkout remotes/fio/tutorials -- shellhttpd-mqtt
+    $ git checkout remotes/fio/tutorials -- shellhttpd-mqtt
 
 The ``shellhttpd-mqtt`` app should now be inside your containers folder:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ tree -L 2 .
-
-.. prompt:: text
-
+    $ tree -L 2 .
      .
      ├── mosquitto
      │   └── docker-compose.yml
@@ -38,11 +35,11 @@ The ``shellhttpd-mqtt`` app should now be inside your containers folder:
 
 Check the content of ``shellhttpd-mqtt/docker-compose.yml``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat shellhttpd-mqtt/docker-compose.yml
+    $ cat shellhttpd-mqtt/docker-compose.yml
 
-.. prompt:: text
+.. code-block:: yaml
 
      # shellhttpd-mqtt/docker-compose.yml
      version: '3.2'
@@ -70,11 +67,11 @@ Finally, the Docker Compose Application above will specify it.
 
 Check the content of ``shellhttpd-mqtt/Dockerfile``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat shellhttpd-mqtt/Dockerfile
+    $ cat shellhttpd-mqtt/Dockerfile
 
-.. prompt:: text
+.. code-block:: dockerfile
 
      # shellhttpd-mqtt/Dockerfile
      FROM alpine
@@ -88,24 +85,24 @@ Check the content of ``shellhttpd-mqtt/Dockerfile``:
 Notice that this image adds the ``mosquitto-clients`` app to the image.
 Finally, check the content of ``shellhttpd-mqtt/httpd.sh``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ cat shellhttpd-mqtt/httpd.sh
+    $ cat shellhttpd-mqtt/httpd.sh
 
-.. prompt:: text
+.. code-block:: shell
 
      #!/bin/sh
      PORT="${PORT-8082}"
      ACCESS=1
      while true; do
-	     RESPONSE="HTTP/1.1 200 OK\r\n\r\nNumber of Access = ${ACCESS}\r\n"
-	     echo -en "$RESPONSE" | nc -l -p "${PORT}" > ./tmp.log || true
-	     if grep -q "GET / HTTP/1.1" ./tmp.log; then
-		     echo "Number of Access = $ACCESS"
-		     mosquitto_pub -h host.docker.internal -t "containers/requests" -m "ACCESS=$ACCESS"
-		     ACCESS=$((ACCESS+1))
-		     echo "----------------------"
-	     fi
+       RESPONSE="HTTP/1.1 200 OK\r\n\r\nNumber of Access = ${ACCESS}\r\n"
+       echo -en "$RESPONSE" | nc -l -p "${PORT}" > ./tmp.log || true
+       if grep -q "GET / HTTP/1.1" ./tmp.log; then
+         echo "Number of Access = $ACCESS"
+         mosquitto_pub -h host.docker.internal -t "containers/requests" -m "ACCESS=$ACCESS"
+         ACCESS=$((ACCESS+1))
+         echo "----------------------"
+       fi
      done
 
 This ``httpd.sh`` script is similar to the one used in :ref:`tutorial-gs-with-docker`.

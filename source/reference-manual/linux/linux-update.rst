@@ -45,7 +45,7 @@ We provide the helper script ``update-factory-manifest`` to update your Factory 
 
 This script tries to update your manifest to the latest LmP version available:
 
-.. code-block::
+.. code-block:: console
 
     $ git clone https://source.foundries.io/factories/<myfactory>/lmp-manifest.git
     $ git clone https://github.com/foundriesio/lmp-tools
@@ -68,7 +68,7 @@ Common Pitfalls
 Usually at this stage, the problems are related to changes to ``lmp-manifest``.
 For example, if you have bumped only ``meta-lmp`` in order to bring in new changes, it causes a merge conflict:
 
-.. code-block::
+.. code-block:: console
 
     $ ../lmp-tools/scripts/update-factory-manifest
     Auto-merging lmp-base.xml
@@ -82,7 +82,7 @@ For example, if you have bumped only ``meta-lmp`` in order to bring in new chang
 
 In this case, you need to identify the conflicting commit and revert this change before proceeding:
 
-.. code-block::
+.. code-block:: console
 
     $ git revert f54f9f9939b6c1548f838e9bd85b98bb01a6a42f
     $ ../lmp-tools/scripts/update-factory-manifest
@@ -91,7 +91,7 @@ In this case, you need to identify the conflicting commit and revert this change
 .. tip::
     If something goes wrong, do not fret! This is why we use version control!
 
-    .. code-block::
+    .. code-block:: console
 
         $ git revert HEAD
 
@@ -111,7 +111,7 @@ It is expected that, during the migration, this initial build often fails as ``m
 
 Make sure ``meta-subscriber-overrides`` is compatible with the current OE release.
 
-.. code-block::
+.. code-block:: console
 
     $ cat meta-lmp/meta-lmp-bsp/conf/layer.conf | grep COMPAT
     LAYERSERIES_COMPAT_meta-lmp-bsp = "scarthgap"
@@ -145,7 +145,7 @@ These commits are tagged with ``[REVERTME-vXX]``, that indicates the first LmP v
 
 During the migration, these commits need to be identified and reverted so they do not conflict with ``meta-lmp`` defaults.
 
-.. code-block::
+.. code-block:: console
 
     $ git log --oneline | grep REVERT
     aaaaaaa [REVERTME-v91] sota: device register: bump lmp-device-register
@@ -158,7 +158,7 @@ During the migration, these commits need to be identified and reverted so they d
 To debug U-Boot issues, it is important to understand the U-Boot sources.
 You can get the necessary information from the local build:
 
-.. code-block::
+.. code-block:: console
 
     # Getting the U-Boot recipe name
     $ bitbake -e lmp-factory-image | grep PREFERRED_PROVIDER_virtual/bootloader
@@ -205,7 +205,7 @@ For example, if migrating a custom i.MX 8MMini custom board (reference machine `
 
 A ``diff`` between these two files brings which configs were dropped/added to the new release:
 
-.. code-block::
+.. code-block:: console
 
     $ cd meta-lmp
     $ git diff <old-tag> <new-tag> <path-to-file>
@@ -229,7 +229,7 @@ Similar to U-Boot configs, `boot.cmd` changes can be easily spotted by comparing
 
     * `boot.cmd` for v91: https://github.com/foundriesio/meta-lmp/blob/mp-91/meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8mm-lpddr4-evk/boot.cmd
 
-.. code-block::
+.. code-block:: console
 
     $ cd meta-lmp
     $ git diff mp-88 mp-91 meta-lmp-bsp/recipes-bsp/u-boot/u-boot-ostree-scr-fit/imx8mm-lpddr4-evk/boot.cmd
@@ -241,7 +241,7 @@ Similar to U-Boot configs, `boot.cmd` changes can be easily spotted by comparing
 Like U-Boot, it is important to understand the kernel sources when bringing up a new kernel version.
 You can get the necessary information from the local build:
 
-.. code-block::
+.. code-block:: console
 
     # Getting the Kernel recipe name
     $ bitbake -e lmp-factory-image | grep PREFERRED_PROVIDER_virtual/kernel
@@ -258,7 +258,7 @@ You can get the necessary information from the local build:
 
 Now syncing Linux kernel to the proper revision:
 
-.. code-block::
+.. code-block:: console
 
     $ git clone git://github.com/Freescale/linux-fslc.git # SRC_URI
     $ cd linux-fslc
@@ -283,7 +283,7 @@ The suggestion is to compare the changes between releases for the refence hardwa
 
     * Config fragments for v91: https://github.com/foundriesio/lmp-kernel-cache/blob/mp-91-linux-v6.1.y/bsp/imx/imx8mmevk.cfg
 
-.. code-block::
+.. code-block:: console
 
     $ git diff mp-88-linux-v5.10.y mp-91-linux-v6.1.y bsp/imx/imx8mmevk.cfg
 
@@ -307,14 +307,14 @@ The suggestion is to compare the changes between releases for the refence hardwa
 
 You can get the reference hardware device tree name by running in the local build:
 
-.. code-block::
+.. code-block:: console
 
     $ MACHINE=<reference-machine> source setup-environment
     $ bitbake -e lmp-base-console-image | grep ^KERNEL_DEVICETREE
 
 Use this information to find the proper ``.dts`` file in the kernel tree, for example:
 
-.. code-block::
+.. code-block:: console
 
     KERNEL_DEVICETREE=" freescale/imx8mm-evk.dtb ...
     $ cd linux
@@ -334,7 +334,7 @@ OP-TEE config differences can be spotted by diffing the two releases:
 
     * OP-TEE configs in v91: https://github.com/foundriesio/meta-lmp/blob/mp-91/meta-lmp-bsp/recipes-security/optee/optee-os-fio-bsp.inc
 
-.. code-block::
+.. code-block:: console
 
     $ cd meta-lmp
     $ git diff mp-88 mp-91 meta-lmp-bsp/recipes-security/optee/optee-os-fio-bsp.inc
@@ -354,7 +354,7 @@ For i.MX:
 
     * Mfgtool scripts in v91: https://github.com/foundriesio/meta-lmp/tree/mp-91/meta-lmp-bsp/recipes-support/mfgtool-files/mfgtool-files/imx8mm-lpddr4-evk
 
-.. code-block::
+.. code-block:: console
 
     $ cd meta-lmp
     $ git diff mp-88 mp-91 meta-lmp-bsp/recipes-support/mfgtool-files/mfgtool-files/imx8mm-lpddr4-evk/
@@ -365,7 +365,7 @@ For the i.MX SoCs, the update process of ``mfgtool`` hardware support recipes li
 .. tip::
     For Factory sources synced locally, the command line to set the build environment to enable ``bitbake -e`` commands for ``lmp-mfgtool`` is:
 
-    .. code-block::
+    .. code-block:: console
 
         MACHINE=<machine> DISTRO=lmp-mfgtool source setup-environment
 
@@ -389,9 +389,9 @@ Once you are happy with the software, you can then try an OTA from your latest r
 
 2. Register it to the Factory to the tag which brings the new LmP version, for example ``next`` (e.g. v91):
 
-    .. code-block::
+   .. code-block:: console
 
-        $ lmp-device-register -n test-lmp-update -t next
+      $ lmp-device-register -n test-lmp-update -t next
 
 3. After the registration, the board updates from the **old** LmP version (v88) to the latest one available for the ``next`` tag (v91).
 
@@ -405,36 +405,36 @@ Here, the development branch is called ``devel``.
 
 1. Clone all 3 required repos:
 
-    .. code-block::
+   .. code-block:: console
 
-        $ git clone https://github.com/foundriesio/lmp-tools
-        $ git clone https://source.foundries.io/factories/<YOUR FACTORY>/lmp-manifest
-        $ git clone https://source.foundries.io/factories/<YOUR FACTORY>/meta-subscriber-overrides
+      $ git clone https://github.com/foundriesio/lmp-tools
+      $ git clone https://source.foundries.io/factories/<YOUR FACTORY>/lmp-manifest
+      $ git clone https://source.foundries.io/factories/<YOUR FACTORY>/meta-subscriber-overrides
 
 2. Update ``meta-subscriber-overrides``:
 
-    .. code-block::
+   .. code-block:: console
 
-        $ cd meta-subscriber-overrides
-        $ git checkout next
-        $ git pull --rebase
-        $ git checkout devel
-        $ git pull --rebase
-        $ git merge --ff-only next
-        $ git commit --allow-empty -m "[skip ci] Update to LmP v91"
-        $ git push
+      $ cd meta-subscriber-overrides
+      $ git checkout next
+      $ git pull --rebase
+      $ git checkout devel
+      $ git pull --rebase
+      $ git merge --ff-only next
+      $ git commit --allow-empty -m "[skip ci] Update to LmP v91"
+      $ git push
 
 3. Update ``lmp-manifest``:
 
-    .. code-block::
+   .. code-block:: console
 
-        $ cd lmp-manifest
-        $ git checkout devel
-        $ git pull --rebase
-        $ ../lmp-tools/scripts/update-factory-manifest
-        New upstream release(s) have been found.
-        Merging local code with upstream release: 91
-        Proceed ? (y/n):
+      $ cd lmp-manifest
+      $ git checkout devel
+      $ git pull --rebase
+      $ ../lmp-tools/scripts/update-factory-manifest
+      New upstream release(s) have been found.
+      Merging local code with upstream release: 91
+      Proceed ? (y/n):
 
 4. Proceed by typing ``y``. This updates the ``lmp-manifest/devel`` branch and trigger a build for the new release.
 
@@ -453,7 +453,7 @@ Common Errors and Tips
 
 For example:
 
-.. code-block::
+.. code-block:: console
 
     $ tree recipes-bsp/u-boot
     ├── u-boot-fio
@@ -489,7 +489,7 @@ For example:
 
 * You can find the list of patches appended to the sources by grepping ``SRC_URI``, for example Linux kernel:
 
-.. code-block::
+.. code-block:: console
 
     $ bitbake -e linux-lmp-fslc-imx | grep SRC_URI
     SRC_URI="git://github.com/Freescale/linux-fslc.git;protocol=https;branch=5.10-2.1.x-imx;name=machine; \
@@ -503,14 +503,14 @@ For example:
 
 * Sometimes, a core recipe gets renamed between releases. In this case, old `.bbappends` may fail to override this recipe, for example:
 
-.. code-block::
+.. code-block:: console
 
     ERROR: No recipes in default available for:
       /build-lmp/conf/../../layers/meta-subscriber-overrides/recipes-kernel/linux/linux-lmp-dev-mfgtool.bbappend
 
 To fix this, go through the ``layers`` folder to understand the change to the core recipe, for example:
 
-.. code-block::
+.. code-block:: console
 
     # v88
     $ find ../layers/ -iname linux-lmp-dev-mfgtool*

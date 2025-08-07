@@ -42,10 +42,10 @@ Getting Started
 The `Foundries.io API`_  includes a complete `OpenAPI <https://swagger.io/specification/>`_ definition.
 To get started, configure your host terminal with the variables below:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ export FACTORY=<FACTORY>
-    host:~$ export TOKEN=<API_TOKEN>
+   $ export FACTORY=<FACTORY>
+   $ export TOKEN=<API_TOKEN>
 
 .. note::
 
@@ -60,44 +60,44 @@ Documentation can be found at `Foundries.io API`_ under ``devices``.
 
 Run:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ curl -H "OSF-TOKEN: $TOKEN" https://api.foundries.io/ota/devices/
+   $ curl -H "OSF-TOKEN: $TOKEN" https://api.foundries.io/ota/devices/
 
 .. code-block:: json
 
-  "devices": [
-    {
-          "uuid": "f4120660-ffbf-483f-b2ca-a6186da467f4",
-          "owner": "5e13232f73927550af883e7b",
-          "factory": "getting-started",
-          "name": "device-01",
-          "created-at": "2024-11-11T14:17:50+00:00",
-          "last-seen": "2024-11-11T14:17:57+00:00",
-          "ostree-hash": "cfacf42873aa06fbf53d7b1bfcb72032f21631b068620e575696ab2ab0670efd",
-          "target-name": "raspberrypi4-64-lmp-2",
-          "current-update": "",
-          "device-tags": [
-            "devel"
-          ],
-          "tag": "devel",
-          "docker-apps": [],
-          "network-info": {
-            "hostname": "raspberrypi4-64",
-            "local_ipv4": "192.168.15.13",
-            "mac": "b8:27:eb:ca:78:75"
-          },
-          "up-to-date": true,
-          "public-key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE2l3TY/Gu8W+euAA8bVufhxmCK0YR\ngt3B8XPXGS4rVRD3jfjjf7cCJQ4GLtvs+phTgeLiRJwTyWzsFZGYxqN1aA==\n-----END PUBLIC KEY-----\n",
-          "is-prod": false,
-          "is-wave": false
-        }
-      ],
-      "page": 1,
-          "pages": 1,
-          "limit": 1000,
-      "total": 1
-    }
+   "devices": [
+     {
+           "uuid": "f4120660-ffbf-483f-b2ca-a6186da467f4",
+           "owner": "5e13232f73927550af883e7b",
+           "factory": "getting-started",
+           "name": "device-01",
+           "created-at": "2024-11-11T14:17:50+00:00",
+           "last-seen": "2024-11-11T14:17:57+00:00",
+           "ostree-hash": "cfacf42873aa06fbf53d7b1bfcb72032f21631b068620e575696ab2ab0670efd",
+           "target-name": "raspberrypi4-64-lmp-2",
+           "current-update": "",
+           "device-tags": [
+             "devel"
+           ],
+           "tag": "devel",
+           "docker-apps": [],
+           "network-info": {
+             "hostname": "raspberrypi4-64",
+             "local_ipv4": "192.168.15.13",
+             "mac": "b8:27:eb:ca:78:75"
+           },
+           "up-to-date": true,
+           "public-key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE2l3TY/Gu8W+euAA8bVufhxmCK0YR\ngt3B8XPXGS4rVRD3jfjjf7cCJQ4GLtvs+phTgeLiRJwTyWzsFZGYxqN1aA==\n-----END PUBLIC KEY-----\n",
+           "is-prod": false,
+           "is-wave": false
+         }
+       ],
+       "page": 1,
+           "pages": 1,
+           "limit": 1000,
+       "total": 1
+     }
 
 Targets List
 ------------
@@ -108,9 +108,9 @@ You can find documentation at `Foundries.io API`_ under ``factories``.
 
 Run:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ curl -H "OSF-TOKEN: $TOKEN" https://api.foundries.io/ota/factories/$FACTORY/targets/
+    $ curl -H "OSF-TOKEN: $TOKEN" https://api.foundries.io/ota/factories/$FACTORY/targets/
  
 .. code-block:: json
 
@@ -175,14 +175,14 @@ To send a configuration file named ``app.config`` to your device.
 
 ``app.config``:
 
-.. prompt:: text
+.. code-block:: none
 
      [page]
      url = "https://foundries.io/"
 
 #. Convert the file contents into properly escaped JSON string:
 
-  .. code-block:: text
+    .. code-block:: none
 
        [page]\nurl = \"https://foundries.io/\"\n"
 
@@ -190,42 +190,42 @@ To send a configuration file named ``app.config`` to your device.
 
    Note that ``value`` is set with the file content, and ``name`` with the file name.
 
-   .. prompt:: bash host:~$, auto
+   .. code-block:: console
 
-      host:~$ export API_DATA='{ "reason": "API test", "files": [{"name":"app.config","unencrypted":true,"value":"[page]\nurl = \"https://foundries.io/\"\n"}]}'
+      $ export API_DATA='{ "reason": "API test", "files": [{"name":"app.config","unencrypted":true,"value":"[page]\nurl = \"https://foundries.io/\"\n"}]}'
 
 #. Define ``DEVICE_NAME`` and configure your device using curl_ with ``-X PATCH``:
 
-   .. prompt:: bash host:~$, auto
+   .. code-block:: console
 
-      host:~$ export DEVICE_NAME=<DEVICE_NAME>
-      host:~$ curl --data "$API_DATA" -H "Content-Type: application/json" -H "OSF-TOKEN: $TOKEN" -X PATCH https://api.foundries.io/ota/devices/$DEVICE_NAME/config/
+      $ export DEVICE_NAME=<DEVICE_NAME>
+      $ curl --data "$API_DATA" -H "Content-Type: application/json" -H "OSF-TOKEN: $TOKEN" -X PATCH https://api.foundries.io/ota/devices/$DEVICE_NAME/config/
 
-.. code-block:: json
+   .. code-block:: json
 
-     {
-       "created-at": "2024-11-11T15:59:07",
-       "applied-at": null,
-       "reason": "API test",
-       "files": [
-         {
-           "name": "app.config",
-           "value": "[page]\nurl = \"https://foundries.io/\"\n",
-           "unencrypted": true
-         }
-       ]
-     }
+      {
+        "created-at": "2024-11-11T15:59:07",
+        "applied-at": null,
+        "reason": "API test",
+        "files": [
+          {
+            "name": "app.config",
+            "value": "[page]\nurl = \"https://foundries.io/\"\n",
+            "unencrypted": true
+          }
+        ]
+      }
 
 After a moment, ``fioconfig`` receives the changes, and you can find the configuration file on your device under ``/var/run/secrets/``.
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ sudo cat /var/run/secrets/app.config
 
-.. prompt:: text
+.. code-block:: none
 
-     [page]
-     url = "https://foundries.io/"
+    [page]
+    url = "https://foundries.io/"
 
 Enabling/Disabling Application
 ------------------------------
@@ -246,18 +246,16 @@ For example, to enable the ``shellhttpd`` application, you send a JSON file simi
 
 The command below adds the JSON to the ``API_DATA`` variable:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ export API_DATA='{ "reason": "API test", "files": [{"name":"z-50-fioctl.toml","on-changed":["/usr/share/fioconfig/handlers/aktualizr-toml-update"],"unencrypted":true,"value":"\n[pacman]\n  compose_apps = \"shellhttpd\"\n"}]}'
+    $ export API_DATA='{ "reason": "API test", "files": [{"name":"z-50-fioctl.toml","on-changed":["/usr/share/fioconfig/handlers/aktualizr-toml-update"],"unencrypted":true,"value":"\n[pacman]\n  compose_apps = \"shellhttpd\"\n"}]}'
 
 Define the variable ``DEVICE_NAME`` and configure your device using curl_ with ``-X PATCH``:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ export DEVICE_NAME=<DEVICE_NAME>
-    host:~$ curl --data "$API_DATA" -H "Content-Type: application/json" -H "OSF-TOKEN: $TOKEN" -X PATCH https://api.foundries.io/ota/devices/$DEVICE_NAME/config/
-
-.. code-block:: text
+    $ export DEVICE_NAME=<DEVICE_NAME>
+    $ curl --data "$API_DATA" -H "Content-Type: application/json" -H "OSF-TOKEN: $TOKEN" -X PATCH https://api.foundries.io/ota/devices/$DEVICE_NAME/config/
 
      {"created-at": "2024-11-10T19:02:30", "applied-at": null, "reason": "API test", "files": [{"name": "wireguard-client", "value": "enabled=0\n\npubkey=J0H7CMG10TsTEai2Ui35KV0fb5oaJ8qd+mnWgIu091s=", "unencrypted": true}, {"name": "z-50-fioctl.toml", "on-changed": ["/usr/share/fioconfig/handlers/aktualizr-toml-update"], "value": "\n[pacman]\n  compose_apps = \"shellhttpd\"\n", "unencrypted": true}]}
 
@@ -277,11 +275,11 @@ Logged into http://app.foundries.io, you may interact with the `REST API from yo
 
 5. Check the response:
 
-.. figure:: /_static/user-guide/foundriesio-rest-api/api_example.png
-   :width: 900
-   :align: center
+   .. figure:: /_static/user-guide/foundriesio-rest-api/api_example.png
+      :width: 900
+      :align: center
 
-   Foundries.io REST API page illustration
+      Foundries.io REST API page illustration
 
 This allows you to explore the Foundries.io REST API and its possibilities.
 

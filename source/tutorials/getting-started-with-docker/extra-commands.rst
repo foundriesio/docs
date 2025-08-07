@@ -10,13 +10,9 @@ The first command to learn is: ``docker ps``.
 This displays the running containers on the device.
 Add ``--all`` to see all containers on the device, even if they are not running.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
     host:~$ docker ps
-
-**Example Output**:
-
-.. prompt:: text
 
      CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
      244a84742697        shellhttpd:1.0       "/usr/local/bin/http…"   6 minutes ago       Up 6 minutes        0.0.0.0:8080->8080/tcp   shellhttpd
@@ -29,11 +25,9 @@ If you want the command to keep following the log, use the ``--follow`` paramete
 
 The log might be empty unless you tested the ``shellhttpd`` application with ``curl`` or the browser:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker logs --follow shellhttpd
-
-.. prompt:: text
+    $ docker logs --follow shellhttpd
 
      GET / HTTP/1.1
      Host: 127.0.0.1:8080
@@ -76,21 +70,17 @@ The ``docker exec`` command runs a new command in a running container.
 
 To verify the files in the root file system of the container, use the following command:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker exec shellhttpd ls /usr/local/bin/
-
-.. prompt:: text
+    $ docker exec shellhttpd ls /usr/local/bin/
 
      httpd.sh
 
 To check what processes are running:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker exec shellhttpd ps
-
-.. prompt:: text
+    $ docker exec shellhttpd ps
 
      PID   USER     TIME  COMMAND
      1 root      0:00 {httpd.sh} /bin/sh -e /usr/local/bin/httpd.sh
@@ -99,11 +89,9 @@ To check what processes are running:
 
 Finally, you can start a shell inside the container with:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker exec -it shellhttpd sh
-
-.. prompt:: bash docker:~$, auto
+    $ docker exec -it shellhttpd sh
 
      docker:~$ ls
      bin    dev    etc    home   lib    media  mnt    opt    proc   root   run    sbin   srv    sys    tmp    usr    var
@@ -121,10 +109,10 @@ Docker Remove
 
 To stop and then remove the container, run the commands:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker stop shellhttpd
-    host:~$ docker rm shellhttpd
+    $ docker stop shellhttpd
+    $ docker rm shellhttpd
 
 During development it is common to make and test changes to the Docker image.
 Let us give this a try.
@@ -134,13 +122,11 @@ This means if ``MSG`` is not otherwise specified, it is set with the default val
 Using a text editor, change ``OK`` to ``FoundriesFactory``.
 Rebuild and run:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ vi httpd.sh
+    $ vi httpd.sh
 
-**httpd.sh**:
-
-.. prompt:: text
+.. code-block:: shell
 
      #!/bin/sh -e
      
@@ -156,18 +142,16 @@ Rebuild and run:
 
 Build and run the container again:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker build --tag shellhttpd:1.0 .
-    host:~$ docker run --name shellhttpd -d -p 8080:8080 shellhttpd:1.0
+    $ docker build --tag shellhttpd:1.0 .
+    $ docker run --name shellhttpd -d -p 8080:8080 shellhttpd:1.0
 
 Test the new change with curl:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ curl 127.0.0.1:8080
-
-.. prompt:: text
+    $ curl 127.0.0.1:8080
 
      FoundriesFactory
 
@@ -178,37 +162,31 @@ Remove the previous image and launch it again with: ``--env MSG=MyFirstContainer
 
 Test the new change with curl:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker stop shellhttpd
-    host:~$ docker rm shellhttpd
-    host:~$ docker run --env MSG=MyFirstContainer --name shellhttpd -d -p 8080:8080 shellhttpd:1.0
-    host:~$ curl 127.0.0.1:8080
-
-.. prompt:: text
+    $ docker stop shellhttpd
+    $ docker rm shellhttpd
+    $ docker run --env MSG=MyFirstContainer --name shellhttpd -d -p 8080:8080 shellhttpd:1.0
+    $ curl 127.0.0.1:8080
 
      MyFirstContainer
 
 Use ``docker exec`` to echo the MSG variable inside the container:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker exec -it shellhttpd sh
+    $ docker exec -it shellhttpd sh
      
-**Inside the Container**:
-
-.. prompt:: bash docker:~$, auto
-
      docker:~$ echo $MSG
       MyFirstContainer
      docker:~$ exit
 
 Remove the container:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ docker stop shellhttpd
-    host:~$ docker rm shellhttpd
+    $ docker stop shellhttpd
+    $ docker rm shellhttpd
 
 All these commands are important in understanding how Docker containers work. 
 Next we explore how ``docker-compose`` works.

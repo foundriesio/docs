@@ -137,8 +137,8 @@ manifest_tag = ('refs/tags/' + docker_tag if docker_tag != 'latest'
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-parent_dir = dirname(dirname(abspath(__file__)))
-sys.path.insert(0, join(parent_dir, 'extensions'))
+#parent_dir = dirname(dirname(abspath(__file__)))
+#sys.path.insert(0, join(parent_dir, 'extensions'))
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -149,28 +149,23 @@ version = mp_version
 # The full version, including alpha/beta/rc tags.
 release = mp_version + mp_tags
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
+# -- Include Sphinx extensions ------------------------------------------------
 extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.ifconfig',
-    'sphinx.ext.todo',
     'sphinx_design',
-    'sphinxcontrib.contentui',
-    'lmp_sphinx_ext',
-    'sphinxemoji.sphinxemoji',
-    'sphinx_tabs.tabs',
     'sphinx_copybutton',
     'sphinx_toolbox.confval',
-    'sphinx_prompt',
     'sphinx_reredirects',
     'sphinx.ext.graphviz',
+    'sphinx_new_tab_link',
 ]
 
-copybutton_prompt_text = "$ "
+#-- copy button config ---------------------------------------------------------
 
-#-- Linkcheck config ----------------------------------------------------------
+copybutton_exclude = '.linenos, .gp, .go'
+
+#-- Linkcheck config -----------------------------------------------------------
 
 sphinx_tabs_valid_builders = ['linkcheck']
 linkcheck_retries = 3
@@ -183,28 +178,15 @@ linkcheck_ignore = [
     'http://YOUR_WORKSTATION_IP:8000',
     'http://.*[.]local',
     'http://your-device-ip-address/',
-    'https://app.atsgarage.com/#/.*',        # requires login
     r'https://source.foundries.io/*',
     r'https://elinux.org/.*',
-    r'https://blogs.msdn.microsoft.com/.*',  # temporary blacklist
     r'https://www.tcpdump.org/.*',           # ditto
     r'https://www.wireshark.org/.*',         # ddos protection
-    r'https://redbear.cc/product/ble-nano-kit-2.html',  # before deprecating
-    r'https://mgmt.foundries.io/leshan/#/clients',  # I have no idea, it works
-    r'https://github.com/foundriesio/lmp-manifest/releases/download/.*',  # Release artifacts done show up until *after* this runs
-    r'https://github.com/foundriesio/fioctl/releases/download/.*',  # ditto
-    'https://mgmt.foundries.io/leshan/#/security',
-    'https://github.com/foundriesio/fiotest#testing-specification',
-    'https://github.com/foundriesio/jobserv/blob/72935348e902cdf318cfee6ab00acccee1438a7c/jobserv/notify.py#L141-L146',
-    r'https://www.st.com/.*', #slow, very slow.
-    r'https://wiki.st.com/.*',
-    'https://ngrok.com', # ssl cert expired, will likely want to remove from docs if this persists
-    'https://www.nxp.com/docs/en/application-note/AN12312.pdf',
+    r'https://github.com/foundriesio/*', # rate limits, other issues
+    r'https://www.nxp.com/*', # slow, frequently leads to time outs
     r'https://sourceforge.net/.*', # 403 error
     'https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-uefi-lockdown.pdf', # 403 error
-    r'https://source.foundries.io/factories/.*',
     'https://media.defense.gov/2020/Sep/15/2002497594/-1/-1/0/CTR-UEFI-Secure-Boot-Customization-UOO168873-20.PDF', # 403 error but will work for end user
-    r'https://www.nxp.com/webapp/Download?colCode=.*' # timeouts
 ]
 # Time in seconds to wait for a response. May result in false errors, but also keeps things from timing out
 linkcheck_timeout = 10
@@ -459,53 +441,6 @@ redirects = {
      "reference-manual/qemu/qemu": "../../user-guide/qemu/qemu.html",
      "reference-manual/linux/preloaded-images": "../../user-guide/containers-and-docker/container-preloading.html"
       }
-
-# Make external links open in a new tab.
-# https://stackoverflow.com/questions/25583581/add-open-in-new-tab-links-in-sphinx-restructuredtext
-#------------------------------------------------------------------------------
-
-from sphinx.writers.html import HTMLTranslator
-from docutils import nodes
-from docutils.nodes import Element
-
-class PatchedHTMLTranslator(HTMLTranslator):
-
-    def visit_reference(self, node: Element) -> None:
-        atts = {'class': 'reference'}
-        if node.get('internal') or 'refuri' not in node:
-            atts['class'] += ' internal'
-        else:
-            atts['class'] += ' external'
-            # ---------------------------------------------------------
-            # Customize behavior (open in new tab, secure linking site)
-            atts['target'] = '_blank'
-            atts['rel'] = 'noopener noreferrer'
-            # ---------------------------------------------------------
-        if 'refuri' in node:
-            atts['href'] = node['refuri'] or '#'
-            if self.settings.cloak_email_addresses and atts['href'].startswith('mailto:'):
-                atts['href'] = self.cloak_mailto(atts['href'])
-                self.in_mailto = True
-        else:
-            assert 'refid' in node, \
-                   'References must have "refuri" or "refid" attribute.'
-            atts['href'] = '#' + node['refid']
-        if not isinstance(node.parent, nodes.TextElement):
-            assert len(node) == 1 and isinstance(node[0], nodes.image)
-            atts['class'] += ' image-reference'
-        if 'reftitle' in node:
-            atts['title'] = node['reftitle']
-        if 'target' in node:
-            atts['target'] = node['target']
-        self.body.append(self.starttag(node, 'a', '', **atts))
-
-        if node.get('secnumber'):
-            self.body.append(('%s' + self.secnumber_suffix) %
-                             '.'.join(map(str, node['secnumber'])))
-
-def setup(app):
-    app.set_translator('html', PatchedHTMLTranslator)
-
 
 # Enable numref
 numfig = True

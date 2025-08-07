@@ -12,11 +12,7 @@ In, :ref:`tutorial-configuring-and-sharing-volumes-using-docker`, you created an
 Keep the changes because you will share the same folder to see what happens.
 Edit ``docker-compose.yml``, adding the ``volumes`` stanza:
 
-.. prompt:: bash host:~$, auto
-
-    host:~$ vi shellhttpd/docker-compose.yml
-
-::
+.. code-block:: yaml
 
      version: '3.2'
      
@@ -39,64 +35,58 @@ Thus, as the host machine folder is empty, the ``shellhttpd.conf`` you copied in
 
 Check your changes, add, commit, and push:
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ git status
-    host:~$ git add shellhttpd/docker-compose.yml
-    host:~$ git commit -m "Adding shared folder"
-    host:~$ git push
+    $ git status
+    $ git add shellhttpd/docker-compose.yml
+    $ git commit -m "Adding shared folder"
+    $ git push
 
 Make sure you received your update by checking the latest **Target** on the :guilabel:`Devices` tab in your Factory.
 
-Open a terminal connected to your device and check the running containers:
+Open a terminal **connected to your device** and check the running containers:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ docker ps
-
-::
 
      CONTAINER ID   IMAGE                               COMMAND                  CREATED          STATUS          PORTS                    NAMES
      a2d425490201   hub.foundries.io/<factory>/shellhttpd   "/usr/local/bin/http…"   20 minutes ago   Up 20 minutes   0.0.0.0:8080->8080/tcp   shellhttpd_httpd_1
 
 Monitor the docker logs:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ docker logs --follow shellhttpd_httpd_1
-
-::
 
      PORT=8080
      MSG=Hello world
 
-Open a second terminal connected to your device and check for ``/var/rootdirs/home/fio/shellhttpd``:
+Open a second terminal connection to your device and check for ``/var/rootdirs/home/fio/shellhttpd``:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ ls /var/rootdirs/home/fio/shellhttpd/
 
 The folder is empty and was automatically created when the Docker image was launched. 
 Create a new configuration file inside that folder and follow the logs from the first terminal:
 
-.. prompt:: bash device:~$, auto
+.. code-block:: console
 
     device:~$ sudo bash -c 'echo -e "MSG=\"Hello from shared folder\"" > /var/rootdirs/home/fio/shellhttpd/shellhttpd.conf'
               
 In the first terminal you should see the new ``MSG`` value:
 
-::
+.. code-block:: none
 
      PORT=8080
      MSG=Hello from shared folder
 
-To confirm the change, test the container from an external device connected to the same network, such as your computer.
+To confirm the change, test the container from an **external** device connected to the same network, such as your computer.
 
-.. prompt:: bash host:~$, auto
+.. code-block:: console
 
-    host:~$ curl <device IP>:8080
-
-::
+    $ curl <device IP>:8080
 
      Hello from shared folder
 
