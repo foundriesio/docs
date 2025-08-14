@@ -13,7 +13,7 @@ Edit ``shellhttpd/docker-compose.yml``, changing the image back to ``hub.foundri
 
 .. code-block:: yaml
 
-     version: '3.2'
+#     version: '3.2'
      
      services:
        httpd:
