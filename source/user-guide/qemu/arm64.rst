@@ -28,7 +28,7 @@ QEMU CLI
     -object rng-random,filename=/dev/urandom,id=rng0 \
     -device virtio-rng-pci,rng=rng0 \
     -chardev null,id=virtcon \
-    -machine virt,secure=on 
+    -machine virt,secure=on \ 
     -nographic
 
 .. note::
