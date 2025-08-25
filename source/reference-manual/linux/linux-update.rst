@@ -43,7 +43,12 @@ We provide the helper script ``update-factory-manifest`` to update your Factory 
     We highly recommend using our script to perform the LmP update rather than doing manual git operations.
     Our script brings the `LmP tags <https://github.com/foundriesio/lmp-manifest/tags>`_ information, that are missed with git merges or cherry pick.
 
-This script tries to update your manifest to the latest LmP version available:
+This script tries to update your manifest to the **highest** LmP version/tag available:
+
+.. dropdown:: Highest vs Latest
+
+    The script updates to the highest version/tag, not the latest.
+    This means even if v97.3 is released *after* v100, v100 will still be selected.
 
 .. code-block:: console
 
