@@ -15,6 +15,7 @@
     - [Bug Fixes](#bug-fixes-1)
     - [Testing](#testing-1)
   - [General Updates](#general-updates)
+    - [v95.2](#v952)
     - [v95.1](#v951)
     - [v95](#v95)
     - [Deprecation list](#deprecation-list)
@@ -120,6 +121,15 @@ information.
 > - Implemented a series of end-to-end tests, including tests for edge cases.
 
 ## General Updates
+
+### v95.2
+
+> - LmP release based on the OE/Yocto 5.0.11 **Scarthgap** release and BitBake 2.8.11
+> - NXP BSP: update support of LmP to the `LF6.6.52_2.2.1`
+> - `raspberrypi5`: support in LmP is added
+> - `raspberrypi3-64`: support in LmP is removed
+> - `meta-ti`: support in LmP is removed (it will be added to `meta-partner`)
+> - `meta-tegra`: support in LmP is removed (it will be added to `meta-partner`)
 
 ### v95.1
 
