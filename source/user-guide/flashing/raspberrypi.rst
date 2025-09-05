@@ -1,7 +1,7 @@
 .. _ref-rm_board_rasbperrypi:
 
-Raspberry Pi 4
-================
+Raspberry Pi 4 or 5
+===================
 
 .. include:: generic-prepare.rst
 
