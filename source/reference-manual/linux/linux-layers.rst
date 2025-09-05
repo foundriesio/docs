@@ -60,7 +60,6 @@ Layer                                 Description
 `meta-freescale-3rdparty`_            Additional board support layer for Freescale platforms
                                       (not officially supported by ``meta-freescale`` maintainers).
 `meta-tegra`_                         Board support layer for NVIDIA based devices.
-`meta-ti`_                            Board support layer for Texas Instruments based devices.
 ==================================    ============================================================
 
 
@@ -169,5 +168,3 @@ An example for enabling only the ``meta-intel`` BSP layer::
    https://github.com/Freescale/meta-freescale-3rdparty
 .. _meta-Tegra:
    https://github.com/OE4T/meta-tegra
-.. _meta-Ti:
-   https://git.yoctoproject.org/meta-ti/
