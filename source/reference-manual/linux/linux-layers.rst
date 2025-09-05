@@ -59,7 +59,6 @@ Layer                                 Description
 `meta-freescale`_                     Board support layer for the Freescale platforms.
 `meta-freescale-3rdparty`_            Additional board support layer for Freescale platforms
                                       (not officially supported by ``meta-freescale`` maintainers).
-`meta-tegra`_                         Board support layer for NVIDIA based devices.
 ==================================    ============================================================
 
 
@@ -166,5 +165,3 @@ An example for enabling only the ``meta-intel`` BSP layer::
    https://git.yoctoproject.org/meta-freescale/
 .. _meta-Freescale-3rdparty:
    https://github.com/Freescale/meta-freescale-3rdparty
-.. _meta-Tegra:
-   https://github.com/OE4T/meta-tegra

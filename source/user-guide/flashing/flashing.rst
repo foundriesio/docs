@@ -26,6 +26,4 @@ Select your board below to view flashing instructions.
    apalis-imx8
    imx8qm-mek
    imx93evk
-   jetson-agx-orin-devkit
-   jetson-agx-xavier-devkit
    x86
