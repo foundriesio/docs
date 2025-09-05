@@ -17,8 +17,6 @@ Device Name,MACHINE
 :ref:`QEMU AARCH64 <ref-rm_qemu_arm64>`,qemuarm64-secureboot
 `Qualcomm RB3 Gen 2 <https://github.com/foundriesio/meta-partner/tree/qualcomm?tab=readme-ov-file#getting-started>`_,qcs6490-rb3gen2-vision-kit
 :ref:`Raspberry Pi4 (and CM) <ref-rm_board_rasbperrypi>`,raspberrypi4-64
-:ref:`TI SK-AM62 <ref-rm_board_am62xx-sk>`,am62xx-evm
-:ref:`TI AM64x SKEVM <ref-rm_board_am64xx-sk>`,am64xx-evm
 :ref:`TI Beaglebone Black <ref-rm_board_beaglebone-yocto>`,beaglebone-yocto
 :ref:`TI Beaglebone Black Wireless <ref-rm_board_beaglebone-yocto>`,beaglebone-yocto
 :ref:`Toradex Apalis iMX6 <ref-rm_boards_apalis-imx6>`,apalis-imx6

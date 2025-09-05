@@ -76,7 +76,6 @@ Secure Boot specifics of select hardware platforms are described below.
 
    secure-boot-imx-habv4
    secure-boot-imx-ahab
-   secure-boot-ti-am62x
    secure-boot-uefi
 
 More information around the Secure Boot aspects supported by LmP can be found in:
