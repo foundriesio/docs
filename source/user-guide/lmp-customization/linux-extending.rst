@@ -151,15 +151,13 @@ Use the command ``bitbake-getvar`` to see the value of some variables, and all t
   #     [doc] "The features enabled for the distribution."
   #   set? /lmp/source/main/build-lmp/conf/../../layers/openembedded-core/meta/conf/bitbake.conf:884
   #     ""
-  #   :append[tegra] /lmp/source/main/build-lmp/conf/../../layers/meta-lmp/meta-lmp-bsp/conf/machine/include/lmp-machine-custom.inc:690
-  #     " opengl"
   # pre-expansion value:
   #   "${DISTRO_FEATURES_DEFAULT} pam usrmerge virtualization ptest alsa sota systemd"
   DISTRO_FEATURES="acl argp bluetooth ext2 ipv4 ipv6 largefile usbgadget usbhost wifi xattr zeroconf pci vfat modsign efi security tpm integrity seccomp pam usrmerge virtualization ptest
   alsa sota systemd"
 
 Using ``DISTRO="lmp"`` generates the log.
-``DISTRO_FEATURES`` can be changed by seven operations, and one of them is for an override (``tegra``).
+``DISTRO_FEATURES`` can be changed by seven operations, for example line 18 of ``lmp.conf`` appends the feature ``sota``.
 The log also shows file path and line for each operation.
 
 The line starting with ``DISTRO_FEATURES=`` show the variable value.
