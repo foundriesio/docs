@@ -131,7 +131,20 @@ DEVICE_FIRST_SEEN
 
  {
    "Uuid": <string: DEVICE_UUID>,
+   "DeviceGroupId": <id>,
    "Time": <integer: unix seconds>
+ }
+
+DEVICE_LAST_SEEN
+~~~~~~~~~~~~~~~~~
+
+::
+
+ {
+   "Uuid": <string: DEVICE_UUID>,
+   "DeviceGroupId": <id>,
+   "Time": <integer: unix seconds>
+   "Changes": <dictionary of device attributes that have changed>
  }
 
 DEVICE_CONFIG_APPLIED
@@ -141,6 +154,7 @@ DEVICE_CONFIG_APPLIED
 
  {
    "Uuid": <string: DEVICE_UUID>,
+   "DeviceGroupId": <id>,
    "Time": <integer: unix seconds>
  }
 
@@ -152,6 +166,7 @@ DEVICE_OTA_STARTED
 
  {
    "Uuid": <string: DEVICE_UUID>,
+   "DeviceGroupId": <id>,
    "Time": <integer: unix seconds>,
    "Target": <string: target name>,
    "Id": <string: update correlation-id> # works with `fioctl devices updates show <id>`
@@ -164,6 +179,7 @@ DEVICE_OTA_COMPLETED
 
  {
    "Uuid": <string: DEVICE_UUID>,
+   "DeviceGroupId": <id>,
    "Time": <integer: unix seconds>,
    "Target": <string: target name>,
    "Id": <string: update correlation-id>,
@@ -177,6 +193,7 @@ DEVICE_OTA_APPS_STATE_CHANGED
 
  {
    "Uuid": <string: DEVICE_UUID>,
+   "DeviceGroupId": <id>,
    "Time": <integer: unix seconds>,
    "Ostree": <string: the device's OSTree commit hash>,
    "DeviceTime": <string: timestamp when an Apps state was captured on device, in RFC3339 format>,
@@ -205,6 +222,7 @@ DEVICE_PUBKEY_CHANGE
 
  {
    "Uuid": <string: DEVICE_UUID>,
+   "DeviceGroupId": <id>,
    "Time": <integer: unix seconds>,
    "NewPubKey": <string: New PEM encoded public key>,
    "OldPubKey": <string: Old PEM encoded public key>
