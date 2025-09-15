@@ -31,13 +31,13 @@ In the example above, version 10.
 We had just created 4 different Targets.
 Each one with a different message.
 
-Your device is currently running a version with the ``MSG``:  ``This is the TEST 01``.
+Your device is currently running a version with the ``MSG``:  ``Hello world``.
 
-Let's imagine you do not want to deploy the second version, the one with the ``MSG``: ``This is the TEST 02``.
+Let's imagine you do not want to deploy the second version, the one with the ``MSG``: ``Oi Mundo``.
 
-Also, you do not want to deploy the latest version you created with the ``MSG``: ``This is the TEST 04``.
+Also, you do not want to deploy the latest version you created with the ``MSG``: ``Howdy world``.
 
-There is something special in the third change you did with the ``MSG``:``This is the TEST 03``.
+There is something special in the third change you did with the ``MSG``:``Hallo Welt``.
 You want to deploy this version.
 
 Looking at the Target list above, you would tag version 12 with ``tutorial``.
@@ -128,4 +128,4 @@ On your device, test the container:
 
     device:~$ wget -qO- 127.0.0.1:8080
 
-     This is the TEST 03
+     Hallo Welt
