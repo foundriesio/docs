@@ -252,7 +252,7 @@ if "dev" in release:
     if mp_tags == 'local-dev':
         json_url = '_static/local-dev-switcher.json'
     if mp_tags == 'dev':
-        json_url = 'https://raw.githubusercontent.com/foundriesio/docs/refs/heads/next/source/_static/switcher.json'
+        json_url = 'https://raw.githubusercontent.com/foundriesio/docs/refs/main/next/source/_static/switcher.json'
 
 # Pydata Theme options
 html_theme_options = {
