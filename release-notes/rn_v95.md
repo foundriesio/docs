@@ -124,6 +124,7 @@ information.
 
 ### v95.2
 
+> - See [changelog](https://github.com/foundriesio/docs/blob/main/release-notes/changelog_v95.2.md)
 > - LmP release based on the OE/Yocto 5.0.11 **Scarthgap** release and BitBake 2.8.11
 > - NXP BSP: update support of LmP to the `LF6.6.52_2.2.1`
 > - `raspberrypi5`: support in LmP is added
