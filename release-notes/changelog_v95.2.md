@@ -1,0 +1,330 @@
+
+### meta-lmp
+- base: distro: Include wayland-cdi recipe in Wayland images
+- base: Introduce wayland-cdi service
+- base: docker: Enable CDI feature
+- base: lmp: bump version for the 5.0.11 yocto release
+- bsp: wlconf: drop local bbappend
+- bsp: beaglebone-yocto: drop bt / wl firmware and related scripts
+- base: drop image-efi-installer-grub.wks.in
+- bsp: lmp-machine-custom: generic-arm64: switch to systemd-boot
+- bsp: lmp-machine-custom: generic-arm64 add tpm2 as machine feature
+- base/bsp: drop TI bsp
+- base/bsp: drop TEGRA bsp
+- base/bsp: drop RISCV bsp
+- bsp: Remove raspberrypi3 support
+- bsp: linux-lmp-fslc-imx: drop local patch
+- bsp: optee-os-fio: imx: update to include lf-6.6.52-2.2.1
+- base: u-boot-fio: imx: update to lf-6.6.52-2.2.1-fio
+- base: linux-lmp: 6.6: bump to v6.6.102
+- bsp: linux-lmp-fslc-imx: update to L6.6.52_2.2.1
+- bsp: linux-lmp-fslc-imx-rt: bump to latest commit
+- base: docker-moby: drop unused patch
+- base: lmp: bump version for the 5.0.10 yocto release
+
+### meta-openembedded
+- mbedtls: drop tag parameter from SRC_URI.
+- poco: patch CVE-2025-6375
+- poco: ignore additional failing tests
+- minifi-cpp: patch spdlog CVE-2025-6140
+- spdlog: patch CVE-2025-6140
+- libcoap: patch CVE-2024-31031
+- poppler: fix CVE-2025-52886
+- open-vm-tools: fix CVE-2025-22247
+- mariadb: File conflicts for multilib
+- kmsxx: Revert to using original name for kmstest
+- mariadb: upgrade 10.11.9 -> 10.11.12
+- libssh: fix CVE-2025-5351 & CVE-2025-5372
+- mbedtls: upgrade 3.6.3.1 -> 3.6.4
+- mbedtls: upgrade 3.6.3 -> 3.6.3.1
+- softhsm: correct the SRC_URI
+- redis: fix CVE-2025-32023
+- postfix: fix rootfs file difference
+- apache2: Upgrade 2.4.62 -> 2.4.64
+- proftpd: Fix CVE-2023-51713
+- thrift: correct the SRC_URI
+- xfce4 update HOMEPAGEs
+- logcheck: correct the SRC_URI
+- libconfig: correct the SRC_URI
+- python3-h5py: backport fixes for incompatible-pointer-types issues
+- jq-1.7.1: Backport multiple CVE fixes
+- tcpreplay: fix CVE-2024-22654
+- wireshark: upgrade 4.2.9 -> 4.2.12
+- phpmyadmin: upgrade 5.2.1 -> 5.2.2
+- udisks2: Hardening measure of CVE-2025-6019
+- libblockdev: fix CVE-2025-6019
+- python3-pylint: correct the SRC_URI
+- libssh: fix CVE-2025-5318
+- python3-protobuf: upgrade from 4.25.3 to 4.25.8
+- protobuf: upgrade from 4.25.3 to 4.25.8
+- imagemagick: guard sed operations in do_install for optional files
+- postgresql: upgrade 16.8 -> 16.9
+- canutils: use https instead of git protocol
+- libsocketcan: use https instead of git protocol
+- redis: upgrade 7.2.7 -> 7.2.8
+- chrony: use inherit_defer for conditional inherit of useradd
+- lmsensors: Fix build without sensord
+
+### meta-freescale
+- Merge pull request #2378 from angolini/scartghgap_fix_gst_ver
+- imx-base: Fix some gstreamer plugins default version
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2376 from eghidoli/backport-2373-to-scarthgap
+- uuu: upgrade 1.5.165 -> 1.5.233
+- Merge pull request #2352 from eghidoli/scarthgap-fix-optee-rev
+- optee-imx: remove usage of UNPACKDIR variable
+- optee-os: Update SRCREV to NXP BSP LF6.6.52-2.2.1
+- Merge pull request #2348 from eghidoli/scarthgap-7.x.y_6.6.52-bump-optee-imx
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2349 from angolini/scargthgap_gst
+- imx-base: Update the gstreamer1.0 version for imx
+- gstreamer1.0-plugins-good: bump as part of 6.6.52_2.2.1
+- gstreamer1.0-plugins-base: bump as part of 6.6.52_2.2.1
+- imx-gst1.0-plugin: update to 6.6.52_2.2.0
+- gstreamer1.0-plugins-bad: Bump 1.24.0 -> 1.24.7 as part of 6.6.52_2.2.0
+- gstreamer1.0-plugins-good: bump 1.24.0 -> 1.24.7 as part of 6.6.52_2.2.0
+- gstreamer1.0: Bump 1.24.0 -> 1.24.7 as part of 6.6.52_2.2.0
+- gstreamer1.0-plugins-base: Bump 1.24.0->1.24.7 as part of 6.6.52_2.2.0
+- optee-imx: Updates for clang
+- optee-imx: Upgrade 4.2.0.imx -> 4.4.0.imx
+- u-boot-imx: Update to 6.6.52_2.2.1
+- Merge pull request #2340 from ernestvh/scarthgap-7.x.y_6.6.52-bump-imx-rules
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2339 from ernestvh/scarthgap-7.x.y_6.6.52-2.2.1-bump-mali-imx
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2341 from ernestvh/scarthgap-7.x.y_6.6.52-2.2.1-bump-imx-gpu-viv
+- imx-gpu-viv/imx-gpu-g2d: Bump 6.4.11.p2.10 -> 6.4.11.p2.12
+- udev-rules-imx: Enable use of neutron on imx95
+- mali-imx: Bump r50.2 -> r50.4
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2335 from ernestvh/scarthgap-7.x.y_6.6.52-2.2.1-imx-oei
+- imx95-19x19-verdin: set OEI_DDRCONFIG when IMX_SOC_REV is A0 or A1
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2336 from angolini/scarthgap_bump_gpu-viv
+- kernel-module-imx-gpu-viv: 6.4.11.p2.4 -> 6.4.11.p2.12
+- imx-base.inc: Update i.MX95 default Rev to B0
+- imx-oei: Add OEI_DDRCONFIG for imx95 A1 builds
+- imx-oei: Add compile option for imx95 B0
+- imx-oei: Update SRCREV and license to NXP BSP LF6.6.52-2.2.1
+- Merge pull request #2333 from MaxKrummenacher/scarthgap
+- imx95-19x19-verdin: follow update to nxp bsp 6.12.3_1.0.0
+- Merge pull request #2329 from angolini/bump-linux-imx
+- linux-imx: Upgrade to L6.6.52_2.2.1 release
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2327 from ernestvh/scarthgap-7.x.y_6.6.52_2.2.1-atf-mkimage-fw
+- Merge pull request #2328 from angolini/bump-linux-fslc-imx
+- linux-fslc-imx: 6.6.74 -> 6.6.101 + merge of lf-6.6.52_2.2.1
+- imx-atf: Update to lf_v2.10_6.6.52_2.2.x
+- imx-mkimage: Upgrade to NXP BSP 6.6.52_2.2.1
+- firmware-ele-imx: Update to 2.0.2.1 aligned with LF6.6.52-2.2.1
+- EULA: Update to v63 for NXP release 6.6.52-2.2.1
+- Merge pull request #2323 from Freescale/backport-2032-to-scarthgap
+- udev-rules-imx: Set group to video on i.MX93/95 devices
+- Merge pull request #2320 from angolini/fix_kernel-module-nxp-wlan-scarthgap
+- kernel-module-nxp-wlan: Fix build error
+- Merge pull request #2318 from Freescale/backport-2316-to-scarthgap
+- imx-system-manager: fix EXTRA_OEMAKE verbose parameter
+- Merge pull request #2236 from Freescale/backport-2231-to-scarthgap
+- Merge pull request #2234 from Freescale/backport-2230-to-scarthgap
+- Merge pull request #2232 from Freescale/backport-2195-to-scarthgap
+- kernel-module-nxp-wlan: add patch to lower PRINTM_MMSG() log level
+- imx-boot: Add BOOT_VARIANT variable at prefix to generated binaries
+- alsa-state: Add qoriq-*-bsp specific configuration
+- qoriq: Add qoriq-nxp-bsp / qoriq-mainline-bsp overrides
+- Merge pull request #2222 from Freescale/backport-2221-to-scarthgap
+- asound.conf: default sample rate to 48000
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2220 from tq-steina/scarthgap-imx-cst
+- Revert "imx-cst: Remove it now that it is in meta-oe"
+- Merge pull request #2215 from Freescale/backport-2209-to-scarthgap
+- imx-boot: add LPDDR_FW_VERSION to mkimage arguments for iMX95
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2212 from Freescale/backport-2211-to-scarthgap
+- imx-vpu-hantro: Update recipes
+- Merge pull request #2205 from Freescale/backport-2204-to-scarthgap
+- kernel-module-nxp-wlan: remove COMPATIBLE_MACHINE
+- Merge pull request #2202 from Freescale/backport-2201-to-scarthgap
+- fix(opencv): do not try to install sample files
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2198 from ernestvh/scarthgap-bump-firmware-imx-v8.27
+- firmware-imx: Upgrade to v8.27
+- fsl-eula-unpack.bbclass: Add NXP License v58
+- Merge pull request #2191 from Freescale/backport-2190-to-scarthgap
+- kernel-module-nxp-wlan: Add Upstream-Status
+- Merge pull request #2187 from Freescale/backport-2186-to-scarthgap
+- Revert "opencv: Specify right path for <numpy/ndarrayobject.h>"
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2181 from mdrodrigo/topic/scarthgap-update
+- Merge pull request #2183 from Freescale/backport-2182-to-scarthgap
+- opencv: Specify right path for <numpy/ndarrayobject.h>
+- imx-base.inc: Drop redundant i.MX 91 override
+- imx6sllevk.conf: Use IMX_DEFAULT_BOOTLOADER
+- imx-mkimage: Upgrade to NXP BSP 6.6.52_2.2.0
+- imx-uuc: Don't inherit autotools
+- imx8qm-mek,imx8qxp-mek: Fix SERIAL_CONSOLES
+- imx-mcore-demos: Fix 7D
+- imx-mcore-demos: Fix 7ULP install
+- mcore-demos: Upgrade to 6.6.52_2.2.0
+- optee-os: Remove upstreamed patches
+- u-boot: Add CVE_PRODUCT definition
+- imx-vpuwrap: fix build error
+- imx-vpuwrap: Update to L6.6.52_2.2.0 release
+- imx-parser: Update to L6.6.52_2.2.0 release Bump version 4.9.1 -> 4.9.2
+- imx-opencl-converter: Update to L6.6.52_2.2.0 release
+- imx-dsp: Update to L6.6.52_2.2.0 release
+- imx-alsa-plugins_git: Switch to L6.6.52-2.2.0 release branch
+- tinycompress: update to the version used in LF6.6.52_2.2.0
+- scripts: avoid pointless LICENSE churn
+- treewide: Remove all references to SRC_URI[md5sum] hashes
+- Auto-update LICENSE file with current recipe licenses
+- generate-license-file: Fix layer name
+- xserver-common: Delete bbappend
+- optee-os: work-around buildpaths QA error of staticdev
+- imx-cst: Remove it now that it is in meta-oe
+- tinycompress: use https-protocol to download sources
+- gstreamer1.0-plugins-ugly: remove unbuildable default packageconfigs
+- Auto-update LICENSE file with current recipe licenses
+- Merge pull request #2179 from Freescale/backport-2178-to-scarthgap
+- kernel-module-nxp-wlan: Apply wireless patch
+- Merge pull request #2170 from mdrodrigo/topic/scarthgap
+- update-license-file: Filter the workflow trigger by branch and path
+- Add workflow to automatically update LICENSE file with recipe licenses
+- Merge pull request #2166 from Livius90/scarthgap
+- u-boot-fslc: upgrade to v2025.01
+- Merge pull request #2164 from Freescale/backport-2163-to-scarthgap
+- linux-fslc: 6.12.13 -> 6.12.20
+
+### meta-updater
+- ostree-initrd: move /run mount point to sysroot/run
+- ostree-initrd: move /run mount point to sysroot/run
+- ostree: Remove patch to set request timeout
+- ostree: Fix usage of ostree-prepare-root for initramfs
+
+### meta-raspberrypi
+- rpi-base.inc: vc4-kms-dsi-ili9881-7inch.dtbo
+- linux-raspberrypi.inc: Change defconfig for RPi3 64 bits
+- yocto-builder/Dockerfile: Ubuntu 22.04
+- Moving bcm2712d0.dtbo into rpi-base.inc
+
+### openembedded-core
+- build-appliance-image: Update to scarthgap head revision
+- minicom: correct the SRC_URI
+- linux-yocto/6.6: update to v6.6.96
+- linux-yocto/6.6: update to v6.6.94
+- linux-yocto/6.6: update to v6.6.93
+- python3-urllib3: fix CVE-2025-50181
+- sudo: Fix CVE-2025-32462
+- libsoup: fix CVE-2025-4945
+- libsoup-2.4: fix CVE-2025-4945
+- libsoup-2.4: refresh CVE-2025-4969.patch
+- icu: fix CVE-2025-5222
+- curl: set conditional CVE_STATUS for CVE-2025-5025
+- libxml2: fix CVE-2025-6021
+- xwayland: fix CVE-2025-49180
+- xwayland: fix CVE-2025-49179
+- xwayland: fix CVE-2025-49178
+- xwayland: fix CVE-2025-49177
+- xwayland: fix CVE-2025-49176
+- xwayland: fix CVE-2025-49175
+- libarchive: fix CVE-2025-5918
+- libarchive: fix CVE-2025-5917
+- libarchive: fix CVE-2025-5916
+- libarchive: fix CVE-2025-5915
+- libarchive: fix CVE-2025-5914
+- tcf-agent: correct the SRC_URI
+- uboot: Allow for customizing installed/deployed file names
+- spdx: add option to include only compiled sources
+- package: export debugsources in PKGDESTWORK as json
+- ltp: backport patch to fix compilation error for x86_64
+- gnupg: update 2.4.5 -> 2.4.8
+- busybox: fix CVE-2022-48174
+- go: fix CVE-2025-4673
+- cmake: Correctly handle cost data of tests with arbitrary chars in name
+- glibc: stable 2.39 branch updates
+- coreutils: fix CVE-2025-5278
+- go: set status of CVE-2024-3566
+- systemd: Rename systemd_v255.21 to systemd_255.21
+- libpng: Add ptest
+- tune-cortexr52: Remove aarch64 for ARM Cortex-R52
+- gcc: Upgrade to GCC 13.4
+- scripts/install-buildtools: Update to 5.0.10
+- python3-requests: upgrade 2.32.3 -> 2.32.4
+- ffmpeg: fix CVE-2025-1373
+- net-tools: patch CVE-2025-46836
+- testimage: get real os-release file
+- gtk+: add missing libdrm dependency
+- python3: upgrade 3.12.9 -> 3.12.11
+- kea: upgrade 2.4.1 -> 2.4.2
+- libsoup: fix CVE-2025-2784
+- libsoup-2.4: fix CVE-2025-2784
+- libsoup-2.4: fix CVE-2025-4476
+- libsoup: fix CVE-2025-4948
+- libsoup-2.4: fix CVE-2025-4948
+- libsoup: fix CVE-2025-46421
+- libsoup-2.4: fix CVE-2025-46421
+- libsoup: fix CVE-2025-32050
+- libsoup-2.4: fix CVE-2025-32050
+- libsoup: fix CVE-2025-32051
+- libsoup: fix CVE-2025-32052
+- libsoup-2.4: fix CVE-2025-32052
+- systemd: upgrade 255.18 -> 255.21
+- screen: fix CVE-2025-46804
+- screen: fix CVE-2025-46802
+- binutils: Fix CVE-2025-5244
+- binutils: Fix CVE-2025-5245
+- python3-setuptools: Fix CVE-2025-47273
+- libsoup: fix CVE-2025-32053
+- libsoup-2.4: fix CVE-2025-32053
+- libsoup-2.4: fix do_compile failure
+- libsoup-2.4: fix CVE-2025-32907
+- libsoup: fix CVE-2025-32907
+- libsoup: fix CVE-2025-32908
+- sstatetests: Switch to new CDN
+- nfs-utils: don't use signals to shut down nfs server.
+- ghostscript: upgrade 10.05.0 -> 10.05.1
+- linux-yocto/6.6: update to v6.6.92
+- linux-yocto/6.6: update to v6.6.91
+- linux-yocto/6.6: update to v6.6.89
+- linux-yocto/6.6: update to v6.6.88
+- linux-yocto/6.6: update to v6.6.87
+- linux-yocto/6.6: update to v6.6.86
+- linux-yocto/6.6: fix beaglebone ethernet
+- linux-yocto/6.6: update to v6.6.85
+- screen: patch CVE-2025-46805
+- libsoup-2.4: Fix CVE-2025-4969
+- libsoup-3.4.4: Fix CVE-2025-4969
+- build-appliance-image: Update to scarthgap head revision
+- u-boot: ensure keys are generated before assembling U-Boot FIT image
+- util-linux: Add fix to isolate test fstab entries using CUSTOM_FSTAB
+- ffmpeg: upgrade 6.1.1 -> 6.1.2
+- binutils: set CVE_STATUS for CVE-2025-1180
+- libsoup: patch CVE-2025-4476
+- ruby: fix CVE-2025-27221
+- binutils: Fix CVE-2025-1179
+- libsoup-2.4: Fix CVE-2025-32914
+- libsoup-2.4: Fix CVE-2025-32912
+- libsoup-2.4: Fix CVE-2025-32911 & CVE-2025-32913
+- libsoup-2.4: Fix CVE-2025-32910
+- libatomic-ops: Update GITHUB_BASE_URI
+- systemd: Password agents shouldn't be optional
+- binutils: Fix CVE-2025-1153
+- libsoup-2.4: Fix CVE-2025-46420
+- glib-2.0: fix CVE-2025-4373
+- connman :fix CVE-2025-32366
+- openssh: Fix for CVE-2025-32728
+
+### meta-intel
+- intel-microcode: upgrade 20250512 -> 20250812
+
+### meta-yocto
+- poky.conf: bump version for 5.0.11
+- local.conf.sample: Switch to new CDN
+- poky.conf: bump version for 5.0.10
+
+### meta-virtualization
+- podman: remove ptest
+- buildah: fix CVE-2024-9341
+- podman: fix CVE-2024-9341
+- virt-manager: update RDEPENDS
+- containerd: upgrade from 2.0.0-beta to 2.0.5
+- podman: fix CVE-2025-6032
