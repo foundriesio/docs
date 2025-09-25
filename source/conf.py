@@ -283,6 +283,7 @@ html_theme_options = {
         'json_url': json_url,
         'version_match': version_match,
         },
+    'check_switcher': False,
     "header_links_before_dropdown": 4,
     "icon_links": [
         {
