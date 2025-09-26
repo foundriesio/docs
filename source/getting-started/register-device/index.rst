@@ -9,10 +9,10 @@ Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool
 
    .. code-block:: console
 
-       device:~$ sudo lmp-device-register -n <device-name> -f <factory>
+       device:~$ sudo lmp-device-register -n <device-name> -t main -f <factory>
 
    .. note::
-      The parameter ``-f <factory>`` is only needed for the first target.
+      The parameters ``-t main -f <factory>`` are only needed for the first target.
 
 2. You will be prompted by ``lmp-device-register`` to `complete a challenge <https://www.oauth.com/oauth2-servers/device-flow/>`_ with our API.
    Follow the instruction prompts:
