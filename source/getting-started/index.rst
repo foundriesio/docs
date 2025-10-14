@@ -8,3 +8,4 @@ Getting Started
    register-device/index
    install-fioctl/index
    building-deploying-app/index
+   arduino-uno-q/index
