@@ -3,7 +3,7 @@ Getting Started
 
 .. toctree::
 
-   signup/index
+   signup-lmp/index
    flash-device/index
    register-device/index
    install-fioctl/index
