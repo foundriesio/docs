@@ -1,19 +1,11 @@
 .. _ug-custom-ci-for-apps:
 
-Custom CI To Build Compose App Targets
-======================================
-
-The FoundriesFactory™ Platform includes all you need to build a containerized application and securely deploy it on devices.
-This includes: 
-
-* a git repository
-* a CI service that handles the steps to build and delivery apps leveraging the :term:`TUF` compliant OTA service.
-
-Learn more through this :ref:`tutorial <tutorial-compose-app>` on compose apps.
+Custom CI For Containers
+========================
 
 FoundriesFactory consists of well integrated but loosely coupled services.
 This allows for using the OTA framework without also using the FoundriesFactory git repos or CI service.
-This means you can host your source code anywhere or build your App through any framework, while still leveraging the rest of FoundriesFactory.
+You can host your source code anywhere or build your App through any framework, while still leveraging the rest of FoundriesFactory.
 
 This section guides you through the steps of creating a custom CI pipeline in GitHub that:
 
@@ -25,24 +17,24 @@ This section guides you through the steps of creating a custom CI pipeline in Gi
 Prerequisites
 -------------
 
-*  A successful platform build for the corresponding tag (``custom-ci-devel`` in the example), and the hardware ID (machine) of a device for following along
+*  A successful platform build for the corresponding tag (``main`` in the example), and the hardware ID (machine) of a device for following along
 
 *  GitHub repo with source code, Dockerfiles, and a Docker compose file.
 
 The prerequisites will look like:
 
-1. A Factory (``lmp-demo``) with a built Target. It has the tag ``custom-ci-devel`` and the hardware ID ``raspberrypi4-64``.
+1. A Factory (``lmp-demo``) with a built Target. It has the tag ``main`` and the hardware ID ``amd64-linux``.
 
     .. code-block:: console
 
         $fioctl targets show 1 -f lmp-demo
-            
+
         APP  HASH
         ---  ----
-        ## Target: raspberrypi4-64-lmp-1
+        ## Target: amd64-linux-1
         Created:       2022-11-30T00:20:31Z
-        Tags:          custom-ci-devel
-        OSTree Hash:   fe15cf8ad5e09136725ef996c93299d70fa0d20bfa2f10651437b8860b9edcdb
+        Tags:          main
+        OSTree Hash:   e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 2. `The GitHub repo`_ that contains a working App implementation.
 
@@ -112,18 +104,7 @@ Use the Fioctl® command ``fioctl targets add`` to do so.
 Check the Workflow Result
 -------------------------
 
-Use ``fioctl targets list`` and ``fioctl targets show`` to check whether the new Targets are registered in the FoundriesFactory OTA service, and whether their content is correct.
-
-.. note::
-
-    What if you may want to keep your App source code in a private repo, yet still use the FoundriesFactory CI service?
-    In this case, check out the following two approaches:
-
-    1. :ref:`Git Mirroring <ug-mirror-action>`
-    2. :ref:`Git Submodules <ug-submodule>`
-
-.. seealso::
-    :ref:`ug-custom-ci-for-rootfs`
+You can view your Factory Targets in the UI to check whether the new Targets were created, and if their content is correct.
 
 .. _FoundriesFactory Registry:
     https://hub.foundries.io
