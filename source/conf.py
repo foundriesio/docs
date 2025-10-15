@@ -159,6 +159,7 @@ extensions = [
     'sphinx_reredirects',
     'sphinx.ext.graphviz',
     'sphinx_new_tab_link',
+    'sphinxcontrib.mermaid',
 ]
 
 #-- copy button config ---------------------------------------------------------
