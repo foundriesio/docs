@@ -8,3 +8,8 @@ Getting Started with Container-only Factories
    signup-container-only/index
    ci-selection
    fioup-registration/index
+
+Additional Resources
+--------------------
+- :ref:`ref-container-only-arch` architecture
+- :ref:`ref-compose-apps`
