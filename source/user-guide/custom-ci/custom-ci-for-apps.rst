@@ -23,7 +23,7 @@ Prerequisites
 
 The prerequisites will look like:
 
-1. A Factory (``lmp-demo``) with a built Target. It has the tag ``main`` and the hardware ID ``amd64-linux``.
+1. A Factory (``lmp-demo``) with a built Target. It has the tag ``main`` and the hardware ID ``arm64-linux``.
 
     .. code-block:: console
 
@@ -31,7 +31,7 @@ The prerequisites will look like:
 
         APP  HASH
         ---  ----
-        ## Target: amd64-linux-1
+        ## Target: arm64-linux-1
         Created:       2022-11-30T00:20:31Z
         Tags:          main
         OSTree Hash:   e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
