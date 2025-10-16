@@ -15,6 +15,8 @@ To begin using the FoundriesFactory™ Platform, start with `creating an account
 
 .. _signup: https://app.foundries.io/signup
 
+Once the signup process is complete, you can proceed with creating a Factory.
+
 Creating Your Factory
 =====================
 
