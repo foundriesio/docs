@@ -346,34 +346,6 @@ OP-TEE config differences can be spotted by diffing the two releases:
 
 Bring relevant changes from the reference machine to your machine code.
 
-* **Mfgtool** (if applicable)
-
-.. note::
-    Not all machines require/support ``mfgtool`` build. Currently, i.MX boards are supported.
-
-Check if the ``mfgtool-files`` from your reference machine have changed between the two releases. Mirror the changes to your machine.
-
-For i.MX:
-
-    * Mfgtool scripts in v88: https://github.com/foundriesio/meta-lmp/tree/mp-88/meta-lmp-bsp/recipes-support/mfgtool-files/mfgtool-files/imx8mm-lpddr4-evk
-
-    * Mfgtool scripts in v91: https://github.com/foundriesio/meta-lmp/tree/mp-91/meta-lmp-bsp/recipes-support/mfgtool-files/mfgtool-files/imx8mm-lpddr4-evk
-
-.. code-block:: console
-
-    $ cd meta-lmp
-    $ git diff mp-88 mp-91 meta-lmp-bsp/recipes-support/mfgtool-files/mfgtool-files/imx8mm-lpddr4-evk/
-
-
-For the i.MX SoCs, the update process of ``mfgtool`` hardware support recipes like ``u-boot-fio-mfgtool``, ``linux-lmp-dev-mfgtool`` and ``optee-os-fio-mfgtool`` is the same for each component as described in the previous sections.
-
-.. tip::
-    For Factory sources synced locally, the command line to set the build environment to enable ``bitbake -e`` commands for ``lmp-mfgtool`` is:
-
-    .. code-block:: console
-
-        MACHINE=<machine> DISTRO=lmp-mfgtool source setup-environment
-
 Verifying Your Work
 ~~~~~~~~~~~~~~~~~~~
 
@@ -448,13 +420,10 @@ Here, the development branch is called ``devel``.
 Common Errors and Tips
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* A good practice when debugging migration issues is to compare the reference machine changes from one LmP version to the other. Likely, the changes from the reference machine should be mirrored to your custom machine.
+* A good practice when debugging migration issues is to compare the reference machine changes from one LmP version to the other.
+  Likely, the changes from the reference machine should be mirrored to your custom machine.
 
 * Working on the LmP update in a separate branch is highly recommended so it does not block your development branches.
-
-* For machines that support :ref:`lmp-mfgtool distro <ref-lmp-mfgtool>`, use that for a quick debug iteration: there is no need to flash the whole image to verify U-Boot, for example.
-
-* Also for machines that support :ref:`lmp-mfgtool distro <ref-lmp-mfgtool>`, the suggestion is to keep a single source of patches for hardware support (for ``u-boot-fio``/``u-boot-fio-mfgtool`` and ``linux-lmp-fslc-imx``/``linux-lmp-dev-mfgtool``). This avoids duplicated code in the Factory.
 
 For example:
 
@@ -469,10 +438,8 @@ For example:
     │       └── lmp.cfg
     ├── u-boot-fio-<vendor>.inc
     ├── u-boot-fio_%.bbappend
-    ├── u-boot-fio-mfgtool
     │   └── <machine>
     │       └── lmp.cfg
-    └── u-boot-fio-mfgtool_%.bbappend
 
     $ cat recipes-bsp/u-boot/u-boot-fio-<vendor>.inc
     # common vendor u-boot-fio code
@@ -486,9 +453,6 @@ For example:
     FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
     require u-boot-fio-<vendor>.inc
-
-    $ cat recipes-bsp/u-boot/u-boot-fio-mfgtool_%.bbappend
-    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/u-boot-fio:"
 
     require u-boot-fio-<vendor>.inc
 
@@ -531,7 +495,3 @@ The previous recipe ``linux-lmp-dev-mfgtool.bb`` is now called ``linux-lmp-dev-m
 To avoid a build error, the ``meta-subscriber-overrides`` `.bbappend` should now be ``linux-lmp-dev-mfgtool_%.bbappend``.
 
 * Getting through these steps is not an easy task! Do not hesitate to contact `Foundries.io support <https://support.foundries.io/>`_ during your LmP update cycle.
-
-.. seealso::
-
-    :ref:`ref-pg`

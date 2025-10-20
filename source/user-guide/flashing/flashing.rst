@@ -11,19 +11,4 @@ Select your board below to view flashing instructions.
    rb3gen2
    beagleboneblack
    raspberrypi
-   portenta-x8
-   imx8mn
-   imx8mm
-   se050_imx8mm
-   imx8mq
-   se050_imx8mq
-   imx8mp
-   se050_imx8mp
-   imx6ul
-   imx6ull
-   se050_imx6ull
-   apalis-imx6
-   apalis-imx8
-   imx8qm-mek
-   imx93evk
    x86

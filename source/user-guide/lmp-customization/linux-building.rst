@@ -144,10 +144,6 @@ If ``MACHINE`` is not provided, the script will list all machines from the enabl
 ``BUILDDIR`` is optional; if not specified, the script defaults to ``build-lmp``.
 Keep in mind that ``BUILDDIR`` must be within the ``lmp`` directory, otherwise your build will fail.
 
-.. important::
-   For iMX based devices, the Freescale EULA must be accepted.
-   Add ``ACCEPT_FSL_EULA = "1"`` to ``conf/local.conf``
-
 Build the Image
 ---------------
 

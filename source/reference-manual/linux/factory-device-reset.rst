@@ -48,7 +48,3 @@ Contents of ``/var/`` are partially removed.
 compose-apps to be preserved.
 ``/var/lib/`` is preserved as the Docker objects are stored there.
 
-RPMB
-~~~~
-
-Currently, :term:`RPMB` is not cleared in either reset procedures.

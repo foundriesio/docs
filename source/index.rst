@@ -25,9 +25,6 @@ Documentation Overview
 
 * Advanced use cases and technical details are in the :ref:`Reference Manual <ref-manual>`.
 
-* For adding support for a machine not already supported by the FoundriesFactory platform,
-  see the :ref:`ref-pg`.
-
 .. toctree::
    :maxdepth: 2
    :caption: Getting Started
@@ -56,13 +53,6 @@ Documentation Overview
    :name: sec-manual
 
    reference-manual/index
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Porting Guide
-   :name: sec-porting-guide
-   
-   porting-guide/pg.rst
 
 .. toctree::
    :caption: Appendix

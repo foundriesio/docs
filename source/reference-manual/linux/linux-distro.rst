@@ -14,7 +14,6 @@ The LmP supported distros are:
 
 * ``lmp``
 * ``lmp-base``
-* ``lmp-mfgtool``
 * ``lmp-wayland``
 * ``lmp-xwayland``
 
@@ -50,13 +49,6 @@ It overrides some configurations from ``lmp`` to generate a friendly system for 
 
 * The Linux Kernel binary, along with the required DTB files, are provided as separate files, instead of inside a boot image.
   This lets the binaries be replaced for testing purposes.
-
-.. _ref-lmp-mfgtool:
-
-lmp-mfgtool
------------
-
-The distro used to generate the ``mfgtool-files`` which provide the deploy and update tool for some machines.
 
 .. _ref-lmp-wayland-xwayland:
 

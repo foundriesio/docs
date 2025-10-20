@@ -99,9 +99,6 @@ Configure to only load a natively supported kernel module, such as ``i2c-dev``, 
 
     KERNEL_MODULE_AUTOLOAD:<machine> = "i2c-dev"
 
-.. note::
-    To autoload an out of tree kernel module, please refer to :ref:`ref-pg-new-driver`.
-
 .. _ref-troubleshooting_systemd-service:
 
 Adding a new Systemd Startup Service
