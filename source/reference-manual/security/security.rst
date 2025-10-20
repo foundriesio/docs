@@ -74,17 +74,7 @@ Secure Boot specifics of select hardware platforms are described below.
 .. toctree::
    :maxdepth: 1
 
-   secure-boot-imx-habv4
-   secure-boot-imx-ahab
    secure-boot-uefi
-
-More information around the Secure Boot aspects supported by LmP can be found in:
-
-.. toctree::
-   :maxdepth: 1
-
-   secure-machines
-   revoke-imx-keys
 
 See how to implement the `Secure Boot Firmware Updates`_ further below.
 
@@ -128,13 +118,6 @@ Secure Boot Firmware Updates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 FoundriesFactory uses OTA_ to deliver secure boot firmware updates to your devices.
-Secure Boot Firmware update specifics for select hardware platforms are described below.
-
-.. toctree::
-   :maxdepth: 1
-
-   boot-software-updates-imx
-   boot-software-updates-imx8qm
 
 Anti-rollback protection, which prevents downgrading of boot firmware,
 can be enabled by following the guide below.
@@ -157,6 +140,4 @@ Hardware Secure Module (Secure Element) specifics for select hardware platforms 
 .. toctree::
    :maxdepth: 1
 
-   secure-elements/secure-element.050
-   secure-elements/se050-enablement
    secure-elements/secure-element.tpm

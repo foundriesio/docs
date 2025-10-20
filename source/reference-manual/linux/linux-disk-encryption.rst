@@ -119,11 +119,11 @@ This is required for supporting boot firmware updates on devices with encrypted 
 
 For supporting ``/boot`` being in a separated partition at the final image the selected ``WKS_FILE`` needs to support split boot.
 UEFI based devices already have such setup by default, but on most ARM/ARM64 devices a custom WKS might be required.
-As an example, iMX8-based devices should use ``sdimage-imx8-spl-split-boot-sota.wks.in`` instead of the default ``sdimage-imx8-spl-sota.wks.ini`` file:
+As an example, ``sdimage-split-boot-sota.wks.in`` instead of the default ``sdimage-sota.wks.ini`` file:
 
 .. code-block:: none
 
-  WKS_FILE:sota:mx8mm-nxp-bsp = "sdimage-imx8-spl-split-boot-sota.wks.in"
+  WKS_FILE:sota = "sdimage-split-boot-sota.wks.in"
 
 .. note::
 

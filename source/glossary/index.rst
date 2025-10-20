@@ -48,7 +48,6 @@ Glossary
      * :ref:`Updating, LmP <ref-linux-update>`
      * :ref:`Test plan, LmP <ref-lmp-testplan>`
      * :ref:`Customizing, LmP <tutorial-customizing-the-platform>`
-     * :ref:`Porting, LmP <ref-pg>`
 
    Target
      A description of the software a device should run.
@@ -113,8 +112,6 @@ Glossary
      An approach in public-key cryptography based on elliptic curves over finite fields.
      This allows for smaller keys than otherwise, but with an equivalent security level.
 
-     * :ref:`Security, Secure Element <ref-secure-element>`
-
    ECIES
    Elliptic Curve Integrated Encryption Scheme
      Protocol to securely encrypt data using an EC public key that can only be decrypted by the private key owner.
@@ -155,7 +152,6 @@ Glossary
      Supported for Factory PKI and storage of device keys.
 
      * :ref:`Secure Element TPM Reference Manual, PKCS #11 Support <ref-secure-element.tpm>`
-     * :ref:`EdgeLock™ SE05x Reference Manual, Importing Secure Objects into PKCS #11 Tokens <ref-secure-element>`
      * :ref:`Linux Disk Encryption Reference Manual, PKCS #11 Tokens <howto-linux-disk-encryption>`
      * `TEE PKCS #11 Implementation (external) <https://github.com/OP-TEE/optee_os/tree/master/ta/pkcs11>`_
 
@@ -171,7 +167,6 @@ Glossary
      
      * :ref:`Device Gateway PKI User Guide, Device Gateway PKI <ref-device-gateway-pki-details>`
      * :ref:`Factory Account Roles User Guide, Factory PKI Management <ref-account-roles>`
-     * :ref:`iMX Secure Boot Reference Manual, PKI tree <ref-secure-boot-imx-habv4>`
      * :ref:`Factory Registration Reference Manual, Device Gateway PKI <ref-factory-registration-ref>`
 
    Secure Boot
@@ -179,7 +174,6 @@ Glossary
 
      * :ref:`Security, Secure Boot <ref-secure-boot>`
      * :ref:`Security, UEFI Secure Boot <ref-secure-boot-uefi>`
-     * :ref:`Security, Machines With Secure Boot <ref-secure-machines>` 
 
    Secure World
      Trusted Execution Environment (:term:`TEE`) on ARM.
@@ -189,8 +183,6 @@ Glossary
      Trusted Execution Environment.
      In general, a hardware based component where code can run.
      
-     * :ref:`Porting Guide, including OP-TEE <ref-pg-spl-optee>`
-     * :ref:`EdgeLock SE05x Reference Manual ,OP-TEE Use <ref-secure-element>`
      * :ref:`Factory Keys, OP-TEE Keys <ref-factory-keys>`
      
    TF-A
@@ -248,7 +240,6 @@ Glossary
 
      * :ref:`OTA Reference Manual, Fleet Wide Configuration <ref-configuring-devices>`
      * :ref:`OTA Production Devices Reference Manual, Fleet Production Targets <ref-production-targets>`
-     * :ref:`Revoke Secure Boot Keys on i.MX, Revoke a Key for Devices in a Fleet <ref-revoke-imx-keys>`
 
    Device Tag
      Instructs the Device Gateway to return the corresponding set of TUF metadata.
@@ -362,7 +353,6 @@ Glossary
       These generally follow the convention of ``meta-<board-name>``.
       You can read more about BSP layers in the Yocto Project's `BSP developer guide <https://docs.yoctoproject.org/bsp-guide/bsp.html>`_
 
-      * :ref:`FoundriesFactory Porting Guide <ref-pg>`
       * :ref:`Linux Layers Reference Manual, LmP BSP Layers <ref-linux-layers-meta-lmp-bsp-layers>`
 
    Distro
@@ -481,21 +471,6 @@ Glossary
       * :ref:`Building From Source Reference Manual, Setup Work Environment; MACHINE target <ref-linux-building-install>`
       * :ref:`Factory Definition Reference Manual, Machine Name <def-lmp>`
 
-   UUU
-   Universal Update Utility 
-      A manufacturing tool designed to flash i.MX boards with a given image.
-      :term:`mfgtools` uses configuration files with the ``.uuu`` extension. 
-
-      * `UUU GitHub Repository <https://github.com/nxp-imx/mfgtools>`_ 
-      * :ref:`i.MX HABv4 Secure Boot Security Reference Manual, Programming the A7 fuses with UUU <ref-secure-boot-imx-habv4>`
-      * :ref:`i.MX AHAB Secure Boot Security Reference Manual, Closing the board Using UUU <ref-secure-boot-imx-ahab>`
-      
-   SE050
-      The EdgeLock SE05x Secure Element.
-
-      * :ref:`ref-secure-element`
-      * :ref:`Security Reference Manual, SE05x Enablement <ref-security_se05x_enablement>`
-
    EVK
       Evaluation kit.
       A board/hardware used for evaluating and developing before production.
@@ -531,16 +506,4 @@ Glossary
       These get applied by the OpenEmbedded build system.
 
       * :ref:`LmP Linux Kernel Reference Manual, LmP Kernel Configuration Fragments <ref-linux-fragments>`
-
-   RPMB
-      Replay Protected Memory Block.
-      Used as secure storage.
-
-      * :ref:`Machines with Secure Aspects Enabled Reference Manual, Accessing RPMB Secure Storage <ref-secure-machines>`
-   
-   mfgtools 
-      Freescale/NXP® I.MX Chip tools.
-      Also see :term:`UUU`.
-      
-      * `mfgtools GitHub Repository <https://github.com/nxp-imx/mfgtools>`_
 

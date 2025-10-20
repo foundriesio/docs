@@ -130,16 +130,6 @@ with the goal of disabling the GPLv3 packages.
         params:
           DISABLE_GPLV3: "1"
 
-  mfg_tools:
-    - machine: <machine>
-      params:
-        DISTRO: lmp-mfgtool
-        EXTRA_ARTIFACTS: mfgtool-files.tar.gz
-        IMAGE: mfgtool-files
-        DISABLE_GPLV3: "0"
-
-.. tip:: it is possible to enable or disable `DISABLE_GPLV3` on `mfgtool` targets, as shown above.
-
 This is the only change needed, the meta-layers are handled in respect to the ``DISABLE_GPLV3`` variable.
 
 It is important to note that when using an image different than ``lmp-factory-image``, other packages might be used.

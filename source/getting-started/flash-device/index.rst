@@ -125,7 +125,6 @@ By default, your device hostname is set to a unique string that specify the plat
 
    | ``raspberrypi4-64.local``
    | ``intel-corei7-64.local``
-   | ``imx8mm-lpddr4-evk.local``
 
 .. note::
     For this to work, your PC needs to support zeroconf_. The hostname must be unclaimed.
