@@ -29,37 +29,6 @@ to configure the keys used by the Yocto Project.
     The device RoT key (the key used for secure boot, for example) is shown in the diagrams.
     However it is not an online key and is not used during the Factory build.
 
-i.MX Secure Boot Flow
-"""""""""""""""""""""
-
-The following diagram shows the Secure Boot flow for i.MX machines (TF-A is present only for arm64 devices):
-
-.. graphviz::
-
-   digraph {
-        graph [
-            label = "Secure Boot flow for i.MX machines"
-        ];
-        node [
-            shape=box
-        ];
-        edge [
-            arrowhead=none
-        ];
-        "Boot ROM"        -> "SPL"                               [label = "RoT key"];
-        "SPL"             -> "uboot.itb"                         [label = "UBOOT_SPL_SIGN_KEYNAME"];
-        "uboot.itb"       -> "bootscr"                           [label = "UBOOT_SPL_SIGN_KEYNAME"];
-        "uboot.itb"       -> "TF-A (BL31, EL3 Runtime Firmware)" [label = "UBOOT_SPL_SIGN_KEYNAME"];
-        "uboot.itb"       -> "OP-TEE"                            [label = "UBOOT_SPL_SIGN_KEYNAME"];
-        "OP-TEE"          -> "OP-TEE TAs"                        [label = "OPTEE_TA_SIGN_KEY"];
-        "uboot.itb"       -> "U-Boot proper"                     [label = "UBOOT_SPL_SIGN_KEYNAME"];
-        "U-Boot proper"   -> "kernel fitImage"                   [label = "UBOOT_SIGN_KEYNAME"];
-        "kernel fitImage" -> "DTB files"                         [label = "UBOOT_SIGN_KEYNAME"];
-        "kernel fitImage" -> "initrd"                            [label = "UBOOT_SIGN_KEYNAME"];
-        "kernel fitImage" -> "Linux kernel"                      [label = "UBOOT_SIGN_KEYNAME"];
-        "Linux kernel"    -> "Linux kernel modules"              [label = "MODSIGN_PRIVKEY"];
-   }
-
 UEFI Secure Boot Flow
 """""""""""""""""""""
 

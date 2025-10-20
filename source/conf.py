@@ -214,8 +214,7 @@ language = 'en'
 # directories to ignore when looking for source files.
 exclude_patterns = ['user-guide/flashing/*-flashing.rst',
                     'user-guide/flashing/*-prepare.rst',
-                    'user-guide/flashing/*note.rst',
-                    'reference-manual/security/imx-generic-custom-keys.rst']
+                    'user-guide/flashing/*note.rst']
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []

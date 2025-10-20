@@ -1,6 +1,5 @@
 .. _ref-lmp-testplan:
 
-
 Test Plan
 #########
 
@@ -183,7 +182,7 @@ There are 2 scenarios for boot testing:
    provisioning has to be done in some other way.
    This is strongly dependent on hardware limitations and boot source.
    For example, RaspberryPi can boot from an SD card, and works well with available SDMux devices.
-   Conversely, iMX8MM should boot from eMMC, and requires UUU for initial flashing.
+   Conversely, some boards may boot from eMMC and require SoC-specific tooling for initial flashing.
    Both of these provisioning methods are supported by LAVA.
    Therefore, it is proposed to use LAVA for initial provisioning, boot, and reboot testing in this scenario.
 

@@ -106,8 +106,6 @@ If a custom board is used, it is also expected that customers provide the board 
 
    :ref:`lmp-customization`
 
-   :ref:`ref-pg`
-
 Some tips for this stage of the development:
 
 * :ref:`Local builds <ref-linux-building>`

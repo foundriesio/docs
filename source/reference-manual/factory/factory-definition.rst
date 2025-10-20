@@ -86,7 +86,7 @@ Variables to be used with metadata and artifacts.
            params:
              EXAMPLE_VARIABLE_1: hello_world
            machines:
-             - imx8mm-lpddr4-evk
+             - qemuarm64
            image_type: lmp-factory-image
            ref_options:
             refs/heads/main:
@@ -100,12 +100,6 @@ Variables to be used with metadata and artifacts.
                - tag: postmerge
              refs/heads/feature1:
                - tag: feature1
-           mfg_tools:
-             - machine: imx8mm-lpddr4-evk
-               image_type: mfgtool-files
-               params:
-                 DISTRO: lmp-mfgtool
-                 EXTRA_ARTIFACTS: "mfgtool-files.tar.gz"
 
 lmp:
  preloaded_images:
@@ -165,11 +159,11 @@ ref_options:
                  params:
                   IMAGE: lmp-factory-image
                 machines:
-                  - imx8mn-ddr4-evk
+                  - qemuarm64
                 ref_options:
                   refs/heads/feature1:
                     machines:
-                      - imx8mn-ddr4-evk
+                      - qemuarm64
                     params:
                       IMAGE: lmp-mini-image
 
@@ -177,18 +171,6 @@ ref_options:
   refs/heads/``<branch>``:|br| ``-tag: <tag>``
       **Optional:** Control how OTA_LITE tags are handled. See
       :ref:`ref-advanced-tagging` for more details.
-
- mfg_tools:|br| ``- machine: <machine>``
-      **Optional:** Do an OE build to produce manufacturing tooling for a given ``MACHINE``.
-      This is used to facilitate the manufacturing process, and to ensure secure boot on devices.
-      Currently, only NXP® tools are supported.
-
-      **Default:** None
-
- image_type: ``<mfg_image_type>``
-      **Optional:** Sets the name of the recipe to use to build mfg_tools.
-
-      **Default:** ``mfgtool-files`` |br| (from `meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb <https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/recipes-support/mfgtool-files/mfgtool-files_0.1.bb>`_)
 
 Variables
 ^^^^^^^^^
