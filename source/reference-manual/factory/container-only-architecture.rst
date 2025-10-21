@@ -18,7 +18,8 @@ Components
 6. **Database**: A storage system used by the OTA Service to persist application metadata and device status information.
 7. **Device Gateway**: A communication endpoint that devices use to check for updates and report their status.
    It acts as an intermediary between devices and the OTA Service.
-8. **fioup**: The OTA update client running on the device. It checks for updates, downloads necessary container images from the Container Registry, and uses `composeapp` to manage the application lifecycle on the device.
+8. **fioup**: The OTA update client running on the device.
+   It checks for updates, downloads necessary container images from the Container Registry, and uses ``composeapp`` to manage the application lifecycle on the device.
 
 App Creation And Publishing Flow
 --------------------------------
