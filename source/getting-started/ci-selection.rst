@@ -14,7 +14,7 @@ To get started with the Foundries.io managed solution you will need to:
 - :ref:`Install Fioctl <gs-install-fioctl>` in order to work with ``source.foundries.io``.
 - :ref:`Build and deploy <gs-building-deploying-app>` your first application.
 
-Self-hosted
+Self-Hosted
 -----------
 
 The self-hosted option works well for people wanting more control of their workflows.
