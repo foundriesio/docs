@@ -13,7 +13,7 @@ There are few differences between the Container-only Factory and the LmP-based F
 - The Fioup_ update agent is used instead of :ref:`Aktualizr-Lite <ref-aktualizr-lite>`.
   They share the same configuration format and files, but Fioup is focused on container-only updates.
 - No TUF_ validation. The Factory includes TUF signed metadata,
-  However, its not verfied by Fioup in the Community Edition.
+  however, it is not verfied by Fioup in the Community Edition.
   This can be enabled for paid versions of the product as you get ready to move from evaluation to production.
 
 .. _archive: https://github.com/foundriesio/fioup/blob/main/docs/install.md
