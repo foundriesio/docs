@@ -3,7 +3,7 @@
 Container-Only Factories
 ========================
 
-Container-only Factories provide a way for people to manage fleets of Arm64 or x86 devices that don't run the LmP.
+Container-only Factories provide a way for you to manage fleets of Arm64 or x86 devices that do not run the LmP.
 
 Components
 ----------
