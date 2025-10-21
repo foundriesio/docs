@@ -47,7 +47,7 @@ Device Update Flow
       n2 <-- get list of available apps</br>persist device status --> n4["OTA Service"]
 
 1. The ``fioup`` client on the device checks for updates by communicating with the Device Gateway.
-2. If there are updates available, `fioup` can start updating app to the specified version.
+2. If there are updates available, ``fioup`` can start updating apps to the specified version.
 3. The app update involves fetching the necessary container images from the Container Registry, and then using `composeapp` to orchestrate the update process.
 4. Once the update is complete, ``fioup`` uploads the device status back to the Device Gateway, which in turn persists this information in the OTA Service.
 
