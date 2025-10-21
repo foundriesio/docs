@@ -9,7 +9,7 @@ Components
 ----------
 
 1. **App Developer**: An individual or team that creates and maintains containerized applications using Docker Compose.
-2. **containers.git**: The Foundries provided Git repository where application developers push their Docker Compose files and related resources.
+2. **containers.git**: The Foundries.io provided Git repository where application developers push their Docker Compose files and related resources.
 3. **CI Job**: The Foundries.io provided CI job that is triggered when changes are pushed to the ``containers.git`` repository.
    This job builds the container images, packages the application, and publishes it to the Container Registry and OTA Service.
 4. **Container Registry**: A storage service where built container images are stored and made available for devices to download.
