@@ -1,6 +1,6 @@
 .. _ug-custom-ci-for-apps:
 
-Custom CI For Containers
+Custom CI for Containers
 ========================
 
 FoundriesFactory consists of well integrated but loosely coupled services.

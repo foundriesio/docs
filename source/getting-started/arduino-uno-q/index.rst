@@ -27,7 +27,7 @@ Using the Arduino UNO Q with FoundriesFactory
     This section is specific to Arduino UNO Q users.
 
 The Arduino UNO Q ships with a Debian base image.
-It is supported by the "Container-only Factory" solution.
+It is supported by the Container-only Factory solution.
 Follow the :ref:`ref-gs-container-only` guide to get started.
 
 .. note::
