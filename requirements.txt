@@ -2,11 +2,12 @@ setuptools==78.1.1
 pydata-sphinx-theme
 sphinx-design
 sphinx==8.1.3
-sphinx_copybutton>=0.5.2 
+sphinx_copybutton>=0.5.2
 sphinx_toolbox
 sphinx-reredirects
 sphinx-autobuild
 meilisearch
 sphinx-new-tab-link
+sphinxcontrib-mermaid
 # uncomment when building PDF. May require additional system dependencies.
 #sphinx-simplepdf

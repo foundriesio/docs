@@ -26,8 +26,9 @@ The FoundriesFactory :ref:`sbom` (SBOM) feature can assist with for license comp
    ci-webhooks
    event-queues
    data-retention
+   container-only-architecture
 
 .. seealso::
    :ref:`account-management` covers managing a FoundriesFactory subscription and access control settings.
-   
+
    :ref:`lmp-customization` explores ways of customizing the LmP platform.
