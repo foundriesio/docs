@@ -13,7 +13,8 @@ Components
 3. **CI Job**: The Foundries.io provided CI job that is triggered when changes are pushed to the ``containers.git`` repository.
    This job builds the container images, packages the application, and publishes it to the Container Registry and OTA Service.
 4. **Container Registry**: A storage service where built container images are stored and made available for devices to download.
-5. **OTA Service**: The Over-The-Air service that manages application metadata, including available versions and update information. It interacts with devices to facilitate updates.
+5. **OTA Service**: The Over-The-Air service that manages application metadata, including available versions and update information.
+   It interacts with devices to facilitate updates.
 6. **Database**: A storage system used by the OTA Service to persist application metadata and device status information.
 7. **Device Gateway**: A communication endpoint that devices use to check for updates and report their status. It acts as an intermediary between devices and the OTA Service.
 8. **fioup**: The OTA update client running on the device. It checks for updates, downloads necessary container images from the Container Registry, and uses `composeapp` to manage the application lifecycle on the device.
