@@ -6,7 +6,7 @@ FoundriesFactories supports two different modes for building Targets.
 FoundriesFactory Managed
 ------------------------
 
-Every Factory includes a `containers.git` hosted at source.foundries.io.
+Every Factory includes a ``containers.git`` hosted at ``source.foundries.io``.
 This works out of the box and changes pushed here will be built automatically by our CI system and produce Targets that can be deployed to your device(s).
 
 To get started with the Foundriesio managed solution you'll need to:
