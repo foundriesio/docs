@@ -1,6 +1,6 @@
 .. _ref-container-only-arch:
 
-Container-only Factories
+Container-Only Factories
 ========================
 
 Container-only Factories provide a way for people to manage fleets of Arm64 or x86 devices that don't run the LmP.
