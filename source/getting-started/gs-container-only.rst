@@ -3,7 +3,7 @@
 Getting Started With Container-Only Factories
 =============================================
 
-Container-only Factories allow users to experience a FoundriesFactory without having to run the Linux microPlatform on their device.
+Container-only Factories lets you experience a Factory without having to run the Linux microPlatform on your device.
 Container-only Factories can be done on any Arm64 or x86 platform.
 A Debian package archive_ is included with statically linked binaries for Debian/Ubuntu users.
 There are few differences between the Container-only Factory and the LmP-based Factory:
