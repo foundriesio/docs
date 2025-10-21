@@ -33,7 +33,7 @@ Create one by clicking :guilabel:`New Factory`.
 
 .. _gs-select-platform-co:
 
-Selecting Your Container-only Platform
+Selecting Your Container-Only Platform
 ######################################
 
 Choose a hardware platform from the dropdown menu in the  **Create Factory** wizard and continue.
