@@ -1,6 +1,6 @@
 .. _ref-gs-container-only:
 
-Getting Started with Container-only Factories
+Getting Started With Container-Only Factories
 =============================================
 
 Container-only Factories allow users to experience a FoundriesFactory without having to run the Linux microPlatform on their device.
