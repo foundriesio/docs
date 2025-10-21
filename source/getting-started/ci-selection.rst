@@ -21,4 +21,4 @@ The self-hosted option works well for people wanting more control of their workf
 It works great with products like GitHub.
 There is a one-time setup that takes about 30 minutes.
 
-To get started with the self-hosted option, you'll need to follow the steps outlined in the :ref:`Custom CI <ug-custom-ci-for-apps>` guide.
+To get started with the self-hosted option, follow the steps outlined in the :ref:`Custom CI <ug-custom-ci-for-apps>` guide.
