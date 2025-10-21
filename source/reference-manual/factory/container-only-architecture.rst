@@ -32,7 +32,7 @@ App Creation And Publishing Flow
       n3 -- publish metadata about app --> n5["OTA Service"]
       n5 -- store app metadata --> n6[("Database")]
 
-1. An application developer pushes a new compose app to the `containers.git` repository.
+1. An application developer pushes a new compose app to the ``containers.git`` repository.
 2. This triggers the Foundries.io CI job that builds app's container images, packages the app, and publishes them to Container Registry.
 3. The CI job also generates and publishes metadata about the built and published app to the OTA Service.
 4. The OTA Service stores the app metadata in its database.
