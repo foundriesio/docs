@@ -34,7 +34,6 @@ For in depth details and specific use cases, see the :ref:`Reference Manual <ref
    ../reference-manual/linux/linux-disk-encryption
    ../reference-manual/linux/factory-device-reset
    ../reference-manual/linux/linux-update
-   ../reference-manual/security/secure-machines
    ../reference-manual/security/offline-keys
    ../reference-manual/security/factory-keys
    ../reference-manual/factory/sboms

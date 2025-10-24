@@ -22,27 +22,18 @@ The fragments repository works similarly to the upstream ``yocto-kernel-cache`` 
 As such, the same development workflow and documentation applies.
 See the `Yocto Project Linux Kernel Development Manual`_ on how to work with the kernel metadata and configuration fragments.
 
-The Porting Guide includes :ref:`ref-pg-how-to-configure-linux`.
-This details how to add a custom Linux Kernel configuration, which can be used to add:
-
-* the complete machine configuration.
-
-* fragments: a set of ``CONFIG_`` variables working to change
-  a default machine configuration.
-
 .. _Yocto Project Linux Kernel Development Manual: https://docs.yoctoproject.org/4.0.6/kernel-dev/advanced.html
 
 LmP With Real-Time Linux Kernel
 --------------------------------
 
-The recipes that can be used for real-time Linux are either:
+The recipe that can be used for real-time Linux is:
 
 * ``meta-lmp/meta-lmp-base/recipes-kernel/linux/linux-lmp-rt_git.bb``
-* ``meta-lmp/meta-lmp-base/recipes-kernel/linux/linux-lmp-fslc-imx-rt_git.bb``
 
-Theses are based on the ``linux-lmp`` recipe, extended to include the ``PREEMPT_RT`` patch-set (updated along with stable kernel updates).
+This is based on the ``linux-lmp`` recipe, extended to include the ``PREEMPT_RT`` patch-set (updated along with stable kernel updates).
 
-The instructions to change the default Linux kernel to real-time are described in the following sections.
+The instructions to change the default Linux kernel to real-time are described in the following section.
 After making the changes, build the LmP image as usual.
 
 Building LmP with linux-lmp-rt
@@ -55,17 +46,6 @@ set ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-rt`` :
 
     $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
     PREFERRED_PROVIDER_virtual/kernel:intel-corei7-64 = "linux-lmp-rt"
-
-Building LmP With linux-lmp-fslc-imx-rt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc``,
-set ``PREFERRED_PROVIDER_virtual/kernel`` to ``linux-lmp-fslc-imx-rt`` :
-
-.. code-block:: console
-
-    $ cat meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc
-    PREFERRED_PROVIDER_virtual/kernel:mx6ull-nxp-bsp = "linux-lmp-fslc-imx-rt"
 
 LmP With Linux Upstream
 ------------------------

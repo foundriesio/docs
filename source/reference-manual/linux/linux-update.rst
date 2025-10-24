@@ -448,13 +448,10 @@ Here, the development branch is called ``devel``.
 Common Errors and Tips
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* A good practice when debugging migration issues is to compare the reference machine changes from one LmP version to the other. Likely, the changes from the reference machine should be mirrored to your custom machine.
+* A good practice when debugging migration issues is to compare the reference machine changes from one LmP version to the other.
+  Likely, the changes from the reference machine should be mirrored to your custom machine.
 
 * Working on the LmP update in a separate branch is highly recommended so it does not block your development branches.
-
-* For machines that support :ref:`lmp-mfgtool distro <ref-lmp-mfgtool>`, use that for a quick debug iteration: there is no need to flash the whole image to verify U-Boot, for example.
-
-* Also for machines that support :ref:`lmp-mfgtool distro <ref-lmp-mfgtool>`, the suggestion is to keep a single source of patches for hardware support (for ``u-boot-fio``/``u-boot-fio-mfgtool`` and ``linux-lmp-fslc-imx``/``linux-lmp-dev-mfgtool``). This avoids duplicated code in the Factory.
 
 For example:
 
@@ -531,7 +528,3 @@ The previous recipe ``linux-lmp-dev-mfgtool.bb`` is now called ``linux-lmp-dev-m
 To avoid a build error, the ``meta-subscriber-overrides`` `.bbappend` should now be ``linux-lmp-dev-mfgtool_%.bbappend``.
 
 * Getting through these steps is not an easy task! Do not hesitate to contact `Foundries.io support <https://support.foundries.io/>`_ during your LmP update cycle.
-
-.. seealso::
-
-    :ref:`ref-pg`
