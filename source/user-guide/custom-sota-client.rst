@@ -162,6 +162,8 @@ The ``aktualizr-lite`` executable can be invoked to perform individual operation
          https://github.com/foundriesio/sotactl?tab=readme-ov-file#development-in-the-development-container.
 
 
+.. _ug-aktualizr-lite-cli:
+
 Available commands for Command Line Interface (CLI)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
