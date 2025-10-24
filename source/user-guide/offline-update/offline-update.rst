@@ -8,17 +8,13 @@ This section guides you through the steps of updating a device offline.
 .. tip::
    Make sure to check the :ref:`Offline Update Considerations`.
 
+.. note::
+    Since LmP v95, offline updates can be applied using the ``aktualizr-lite`` command-line interface, instead of the ``aklite-offline`` utility.
+
 Prerequisites
 -------------
 
-1. Enable Offline Update support, i.e. add ``aklite-offline`` to ``PACKAGECONFIG`` of ``aktualizr``. For example:
-
-    .. code-block:: console
-
-        $ cat meta-subscriber-overrides.git/recipes-sota/aktualizr/aktualizr_%.bbappend
-        PACKAGECONFIG:append = " aklite-offline"
-
-2. Enable Apps fetching if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
+1. Enable Apps fetching if you would like to update ``Compose Apps`` along with rootfs (aka ostree).
    To do so, add the following configuration snippet to the ``containers`` section of :ref:`your Factory definition <ref-factory-definition>`:
 
     .. code-block:: yaml
@@ -37,9 +33,9 @@ Prerequisites
                         FETCH_APPS_SHORTLIST: <comma separated list of apps> # overrides value set in `containers.offline.app_shortlist` for a given branch
 
 
-3. Ensure that :ref:`The Update Framework (TUF) keys are taken offline <ref-offline-keys>`.
+2. Ensure that :ref:`The Update Framework (TUF) keys are taken offline <ref-offline-keys>`.
 
-4. Build an LmP image and flash it onto a target device or update the device with the image via OTA.
+3. Build an LmP image and flash it onto a target device or update the device with the image via OTA.
 
 Obtaining Offline Update Content
 --------------------------------
@@ -85,111 +81,31 @@ which is printed as part of the overall output of any of the ``fioctl targets of
 Additionally, you can find out the signature threshold by running ``fioctl targets offline-update show <bundle-path>``,
 as well as by using ``fioctl keys tuf show-root --prod`` command (look for the targets role threshold).
 
-The "aklite-offline" utility verifies the bundle signature(s) before initiating the update process to ensure the authenticity of the bundle.
-If the signature check fails, the utility will not start the update process.
+``aktualizr-lite`` verifies the bundle signature(s) before initiating the update process to check the authenticity of the bundle.
+If the signature check fails, the update process will not be started.
 
 Performing the Offline Update
 -----------------------------
 
 Before doing the offline update, ensure the bundle is accessible on a device, e.g., attach and mount the USB drive.
 
-Use the ``aklite-offline`` CLI utility to perform an offline update.
+Use the ``aktualizr-lite`` CLI to perform an offline update.
 
-1. Run ``aklite-offline install [--config <config dir or file>] --src-dir <path to a bundle>``.
+1. Run ``aktualizr-lite update [--config <config dir or file>] --src-dir <path to a bundle>``.
 
-2. Run one of :ref:`the post installation actions <Post Install and Run Actions>` depending on the ``aklite-offline install`` result:
+2. Depending on the ``aktualizr-lite update`` result, additional actions may be required to complete the update:
 
-    a. code 100: reboot device and invoke ``aklite-offline run [--config <config dir or file>]`` to finalize an ostree installation and start Apps if both ostree/rootfs and Apps are updated;
-    b. code 10: invoke ``aklite-offline run [--config <config dir or file>]`` to start updated Apps.
-    c. code 90: reboot device to finalize the previous boot firmware update and go to the step #1 to start the update.
+    a. code 100: reboot device and invoke ``aktualizr-lite run [--config <config dir or file>]`` to finalize an ostree installation and start Apps if both ostree/rootfs and Apps are updated;
+    b. code 90: reboot device to finalize the previous boot firmware update and go to the step #1 to start the update.
 
-3. Reboot a device after running ``aklite-offline run [--config <config dir or file>]`` command if:
+3. Reboot a device after running ``aktualizr-lite run [--config <config dir or file>]`` command if:
 
-    a. code 100: Apps failed to start after update, you must reboot the device and re-execute ``aklite-offline run`` to complete the rollback;
+    a. code 120: Apps failed to start after update, you must reboot the device and re-execute ``aktualizr-lite run`` to complete the rollback;
     b. code 5: the update includes a boot firmware, you can optionally reboot a device to finalize the boot firmware upgrade.
 
-Usage Details
--------------
-The CLI utility supports two commands:
 
-1. ``aklite-offline install [--config <config file/dir>] --src-dir <update-content-dir>``
-2. ``aklite-offline run [--config <config file/dir>]``
-
-.. code-block:: text
-
-    ``--config`` -  Path to a directory that contains one of more ``*.toml`` configuration snippets or a path to a ``*.toml`` file. It may be omitted at all so the command collects config from the snippets found in the default directories/files, as ``aktualizr-lite`` does:
-
-    /usr/lib/sota/conf.d
-    /var/sota/sota.toml
-    /etc/sota/conf.d/
-
-    ``--src-dir`` - Path to a directory that contains the bundle downloaded by ``fioctl targets offline-update`` command.
-
-
-.. _Post Install and Run Actions:
-
-Post Install and Run Actions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The ``install`` and ``run`` commands sets exit codes (``echo $?``) to instruct which of the post install actions you should perform.
-
-The ``install`` command sets the following exit codes:
-
-- *0*: Installation was not performed.
-    - Device already runs the specified target, no update is needed.
-- *4*: Installation was not performed.
-    - Failed to update TUF metadata.
-- *6*: Installation was not performed.
-    - Failed to find Targets in the device TUF repo that matches a device tag and/or hardware ID.
-- *8*: Installation was not performed.
-    - Failed to find the ostree commit and/or all Apps of the Target to be installed in the provided source bundle.
-- *10*: Installation succeeded.
-    -  ``aklite-offline run`` must be invoked to start the updated Apps.
-- *11*: Installation was not performed.
-    - Provided TUF metadata is invalid.
-- *12*: Installation was not performed.
-    - Provided TUF metadata is expired.
-- *14*: Installation was not performed.
-    - TUF metadata not found in the provided path.
-- *15*: Installation was not performed.
-    - The bundle metadata is invalid. There are a few reasons why the metadata might be invalid:
-        1. One or more bundle signatures is/are invalid.
-        2. The bundle targets' type, whether CI or production, differs from the device's type.
-        3. The bundle targets' tag differs from the device's tag.
-- *30*: Installation was not performed.
-    - Could not start a new update because there is an ongoing installation that requires finalization.
-- *50*: Installation was not performed.
-    - Failed to pull Target content.
-- *70*: Installation was not performed.
-    - The pulled Target content is invalid, specifically App compose file is invalid.
-- *90*: Installation was not performed.
-    - Reboot is required to complete the previous boot firmware update. After reboot a client should repeat the update attempt from the beginning.
-- *100*: Installation succeeded.
-    - Reboot is required to complete installation. After reboot ``aklite-offline run`` must be invoked.
-- *102*: Downgrade attempt.
-    - The Target to be installed has a version lower than the one running. Use the ``--force`` option to force its installation.
-
-The ``run`` command sets the following exit codes:
-
-- *0*: Update succeeded.
-    - Device is booted on the updated rootfs and running the updated Apps.
-- *5*: Update succeeded.
-    - The boot firmware was updated too. Optionally, a reboot to confirm its update can be performed.
-- *40*: The ``run`` command was not executed
-    - Could not start the command because there is no pending installation. Make sure you ran the ``install`` command before.
-- *90*: Update succeeded.
-    - Device is booted on the updated rootfs and running the updated Apps.
-    - Bootloader is updated too, optionally, a reboot to confirm its update can be performed.
-- *99*: Update failed.
-    - Device failed to boot on the updated rootfs and rolled back to the previous version.
-- *100*: Update failed.
-    - Device successfully booted on the updated rootfs but failed to start the updated Apps after the reboot.
-    - Device is rolling back to the previous version, reboot followed by ``aklite-offline run`` is required to complete the rollback.
-- *110*: Update failed.
-    - Device failed to boot on the updated rootfs and rolled back to the previous version.
-    - Device failed to start the previous version's Apps since they are unknown.
-- *120*: Update and rollback failed.
-    - Device successfully booted on the updated rootfs but failed to start the updated Apps after the reboot.
-    - Device cannot perform rollback because the Target/version to rollback to is unknown.
+Detailed information about the aktualizr-lite CLI is provided in the :ref:`aktualizr-lite CLI documentation <ug-aktualizr-lite-cli>`,
+including all the possible return codes for each operation.
 
 Configuration Details
 ~~~~~~~~~~~~~~~~~~~~~
@@ -206,12 +122,12 @@ The command can digest the default device config consisting of:
 1. ``*toml`` files added into LmP during bitbaking (usually just ``/usr/lib/sota/conf.d/40-hardware-id.toml``);
 2. ``sota.toml`` generated by ``lmp-device-register``.
 
-If a device needs to support offline **and** online updating, then the configuration needs to be shared with ``aktualizr-lite``.
+If a device needs to support offline **and** online updating, then the configuration needs to be shared between both modes.
 
 Normally, each LmP image includes a configuration file ``/usr/lib/sota/conf.d/40-hardware-id.toml`` which defines a hardware ID.
-Therefore, by default, an LmP image includes the minimum required configuration, hence NO device registration is required for ``aklite-offline`` to work.
+Therefore, by default, an LmP image includes the minimum required configuration, hence NO device registration is required for offline updates to work.
 
-If you register a device and ``sota.toml`` is generated, then the offline update command can either work alone or alone with ``aktualizr-lite``.
+If you register a device and ``sota.toml`` is generated, then the offline update command can either work alone or alone with ``aktualizr-lite`` daemon.
 In the later case, you must stop the ``aktualizr-lite`` systemd service before running the offline update command.
 
 .. _Offline Update Considerations:
@@ -255,16 +171,10 @@ Offline Update Considerations
   There are a few points to take into account by the custom client application:
 
   * Offline or Online downgrade fails by default.
-    Therefore, if the latest target is installed on a device through an online update,
-    then an offline update for the outdated bundle fails, unless a user explicitly specifies the ``--force`` parameter.
-  * Offline Update fails if its input TUF metadata are outdated.
-    For example, it fails if an online update upgrades the device's TUF root/timestamp/snapshot/targets metadata
-    to version N while the bundle contains version N-1 of the metadata.
-  * Running offline and online update simultaneously leads to undefined behaviour.
-    It is impossible to run two or more update agents of the same or different types simultaneously,
-    for example ``aktualizr-lite daemon`` and ``aklite-offline``.
-    However, since the API supports both types of the update, a user may develop :ref:`a custom sota client <ug-custom-sota-client>` that does
-    these two types of update in parallel by mistake.
+    In order to force the downgrade, a user must explicitly specify version or Target name intended to be installed,
+    using the ``--update-name`` option.
+  * Offline Update will ignore the TUF metadata if it is outdated,
+    but will still allow an update to be performed if the bundle content matches the device's current metadata.
 
 Controlling the Expiration Time of the Offline Update Bundle
 ------------------------------------------------------------
