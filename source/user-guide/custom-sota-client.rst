@@ -420,6 +420,8 @@ This is indicated by the command exit code.
    - Unable to perform operation: there is an installation that needs completion
 - *50*: Failure
    - Target download data not found. Make sure to call pull operation first
+- *80*: Failure
+   - Unable to install target, missing application data. Make sure to pull target first
 - *110*: Failure
    - Installation failed, rollback done successfully
 - *120*: Failure
