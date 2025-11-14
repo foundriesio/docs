@@ -66,7 +66,7 @@ Add OSTree Target
 Once the ostree repo carrying rootfs is pushed to the cloud, you can add a new Target referencing it.
 
 The rootfs committed to the ostree repo is referenced by the commit hash.
-To obtain, run ``find ./deploy/images/intel-corei7-64/ostree_repo -name *.commit``
+To obtain, run ``cat ./deploy/images/intel-corei7-64/ostree_repo/refs/heads/<refs>``
 or ``ostree --repo ./deploy/images/intel-corei7-64/ostree_repo rev-parse <machine|hardware ID>``.
 
 Run ``fioctl targets add`` ato add the new Target referencing the given ostree-based rootfs, e.g.,
