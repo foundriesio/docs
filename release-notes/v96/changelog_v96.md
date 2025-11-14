@@ -1,0 +1,393 @@
+
+## bitbake
+- bitbake: Bump version to 2.8.1
+- Use a "fork" multiprocessing context
+- utils: Optimise signal/sigmask performance
+- bitbake: runqueue: Verify mcdepends are valid
+- test/fetch: Switch u-boot based test to use our own mirror
+
+## meta-lmp
+- base: rs: sotactl: Bump to f15dc43
+- base: non-clangable: linux-lmp-rpi: use objcopy and strip
+- base: rs: Bump aklite v96.0.0 (067a72f2)
+- base: rc: Bump composectl v96.0.0 (dc7fdc2)
+- base: rc: composectl: Turn off dynamic linkage
+- base: bump lmp.inc to 5.0.13
+- bsp: raspberry*: Fix u-boot build error on DISTRO=lmp-base
+- bsp: beaglebone-yocto: Add kernel image to IMAGE_BOOT_FILES
+- bsp: layer.conf: Remove dynamic-layers for meta-freescale
+- bsp: fixup imx drop
+- base/bsp: drop IMX bsp
+
+## meta-openembedded
+- cockpit: remove deprecated packages
+- cockpit: fix build error
+- unbound: fix SRC_URI
+- mbedtls: update SRC_URI branch
+- unicode-ucd: Rename the license.txt in DL_DIR to avoid conflicts
+- unicode-ucd: Updates due to license.txt updates
+- cmpi-bindings: fix SRC_URI branch
+- ncftp: fix SRC_URI
+- consolation: fix SRC_URI protocol
+- iksemel: fix SRC_URI branch
+- python3-behave: update SRC_URI branch
+- wifi-test-suite: correct SRC_URI
+- id3lib: update remote patch SRC_URI
+- smarty: fix SRC_URI branch
+- transmission: update SRC_URI branch
+- hiawatha: fix SRC_URI
+- breakpad: correct SRC_URI branch
+- yaffs2-utils: update SRC_URI
+- http-parser: fix SRC_URI branch
+- gnome-chess: fix SRC_URI branch
+- xmlsec1: fix SRC_URI
+- spriv-shader-generator: fix SRC_URI branch
+- netsniff-ng: fix SRC_URI branch
+- xf86-video-armsoc: fix SRC_URI
+- zabbix: upgrade 6.2.7 -> 6.2.9
+- zabbix: fix SRC_URI
+- fsverity-utils: fix SRC_URI
+- pcp: update SRC_URI
+- libvdpau: update SRC_URI
+- pyxdg: update SRC_URI
+- python3-django 5.0.11: Fix CVE-2025-26699
+- python3-django 5.0.11: ignore CVE-2025-27556
+- squid: upgrade 6.12 -> 6.14
+- squid: download from github
+- squid: upgrade 6.10 -> 6.12
+- squid: Upgrade to 6.10
+- freeradius: upgrade 3.2.5 -> 3.2.6
+- frr: upgrade 9.1 -> 9.1.3
+- arno-iptables-firewall: upgrade 2.1.1 -> 2.1.1a
+- iscsi-initiator-utils: upgrade 2.1.8 -> 2.1.9
+- proftpd: upgrade 1.3.7c -> 1.3.7f
+- pureftp: fix autoreconf
+- pure-ftpd: upgrade 1.0.51 -> 1.0.52
+- samba: Run populate-volatile.sh update in postinst
+- postfix: upgrade 3.8.9 -> 3.8.12
+- postfix: upgrade 3.8.6 -> 3.8.9
+- samba: upgrade 4.19.8 -> 4.19.9
+- libldb: upgrade 2.8.1 -> 2.8.2
+- hostapd: patch CVE-2022-37660
+- kronosnet: Fetch version tag with BB_GIT_SHALLOW_EXTRA_REFS
+- wireshark: Fix CVE-2025-9817
+- wireshark: Upgrade 4.2.12 -> 4.2.14
+- unbound: patch CVE-2024-33655 and CVE-2025-11411
+- mosquitto: bump to 2.0.22
+- mosquitto: bump to 2.0.21
+- mercurial: set CVE_PRODUCT to "mercurial-scm:mercurial"
+- neatvnc: upgrade 0.8.0 -> 0.8.1
+- libssh: Fix CVE-2025-8277
+- glm: add nativesdk to BBCLASSEXTEND
+- python3-django: upgrade 4.2.18 -> 4.2.20
+- squid: patch CVE-2025-59362
+- cjson: upgrade 1.7.18 -> 1.7.19
+- jq: fix CVE-2025-9403
+- hostapd: patch CVE-2025-24912
+- libjxl: fix CVE-2024-11403 & CVE-2024-11498
+- mbedtls: upgrade 3.6.4 -> 3.6.5
+- webkitgtk3: fix do_configure error on beaglebone-yocto
+- webkitgtk3: update 2.44.1 -> 2.44.3
+- libiec61850: patch CVE-2024-45971
+- libiec61850: patch CVE-2024-45970
+- libiec61850: patch CVE-2024-26529
+- libiec61850: upgrade 1.5.1 -> 1.5.3
+- emacs: patch CVE-2024-39331
+- emacs: patch CVE-2024-30205
+- emacs: patch CVE-2024-30204
+- emacs: patch CVE-2024-30203
+- emacs: patch CVE-2024-30202
+- ndpi: ignore CVE-2025-25066
+- poppler: fix CVE-2025-52885
+- yasm: fix CVE-2024-22653
+- monkey: ignore CVE-2013-1771
+- monkey: Update status for CVE-2013-2183
+- vorbis-tools: Fix CVE-2023-43361
+- fio: fix CVE-2025-10823
+- redis: upgrade 6.2.18 -> 6.2.20
+- redis: upgrade 6.2.16 -> 6.2.18
+- redis: upgrade 6.2.14 -> 6.2.16
+- memcached: patch CVE-2023-46853
+- memcached: patch CVE-2023-46852
+- memcached: ignore disputed CVE-2022-26635
+- influxdb: Update CVE status for CVE-2019-10329
+- influxdb: Do not remove non-existing files
+- gattlib: mark CVE-2019-6498 as fixed
+- exiv2: patch CVE-2025-55304
+- exiv2: patch CVE-2025-54080
+- exiv2: patch CVE-2025-26623
+- zlog: fix CVE-2024-22857
+- libraw: patch CVE-2025-43964
+- libraw: patch CVE-2025-43963
+- libraw: patch CVE-2025-43961 CVE-2025-43962
+- libcupsfilters: patch CVE-2024-47076
+- libppd: patch CVE-2024-47175
+- dash: set CVE_PRODUCT
+- hdf5: patch CVE-2025-6269, CVE-2025-6270, CVE-2025-6516
+- hdf5: patch CVE-2025-2925
+- hdf5: patch CVE-2025-2924
+- hdf5: patch CVE-2025-2923, CVE-2025-6816, CVE-2025-6856
+- hdf5: patch CVE-2025-2915
+- hdf5: patch CVE-2025-2914
+- hdf5: patch CVE-2025-2913
+- libconfuse: patch CVE-2022-40320
+- libavif: ignore CVE-2025-48175
+- frr: patch CVE-2024-44070
+- tinyproxy: patch CVE-2023-49606
+- corosync: patch CVE-2025-30472
+- corosync: upgrade 3.1.6 -> 3.1.9
+- corosync: fix upstream version check
+- corosync: reproducibility issue
+- redis: upgrade 7.2.8 -> 7.2.11
+- freerdp3: patch CVE-2024-32662
+- freerdp3: patch CVE-2024-32661
+- freerdp3: patch CVE-2024-32660
+- freerdp3: patch CVE-2025-32659
+- freerdp3: patch CVE-2024-32658
+- freerdp3: patch CVE-2024-32460
+- freerdp3: patch CVE-2024-32459
+- freerdp3: patch CVE-2024-32458
+- freerdp3: patch CVE-2024-32040
+- freerdp3: patch CVE-2024-32039 and CVE-2024-32041
+- freerdp3: set CVE_PRODUCT
+- freerdp: mark CVE-2024-32662 as fixed
+- freerdp: patch CVE-2024-32661
+- freerdp: Upgrade 2.11.2 -> 2.11.7
+- evince: Update status for CVE-2011-0433 and CVE-2011-5244
+- etcd: patch CVE-2023-32082
+- emlog: set CVE_PRODUCT
+- poppler: Fix CVE-2025-43718
+- xsp: CVE status update for CVE-2006-2658
+- jasper: patch CVE-2025-8837
+- jasper: patch CVE-2025-8836
+- jasper: patch CVE-2025-8835
+- iperf2: ignore irrelevant CVEs
+- open-vm-tools: fix CVE-2025-41244
+- tokyocabinet: fix license
+- tokyocabinet: switch to working SRC_URI
+- pm-qa: update git fetch protocol
+- uim: Stick to C17
+- audiofile: patch CVE-2017-6839
+- audiofile: patch CVE-2017-6831
+- audiofile: fix multiple CVEs
+- audiofile: patch CVE-2017-6829
+- audiofile: fix multiple CVEs
+- dovecot: patch CVE-2022-30550
+- civetweb: patch CVE-2025-55763
+- apache2: ignore irrelevant CVEs
+- ace: ignore CVE-2009-1147
+- mariadb: correct STACK_DIRECTION setting
+- thrift: fix build with gcc 15
+- srecord: fix build failure with gcc-15
+- udisks2: upgrade 2.10.1 -> 2.10.2
+- libusbgx: fix gadget-stop install
+- collectd: set working SRC_URI
+- indent: fix CVE-2024-0911
+- indent: fix CVE-2023-40305
+- psqlodbc: set valid SRC_URI
+- nodejs: ignore CVE-2024-3566
+- php: ignore CVE-2024-3566
+- mosh: set working SRC_URI
+- polkit: fix CVE-2025-7519
+- layer.conf: add bpftrace to NON_MULTILIB_RECIPES
+- procmail: Add -Wno-implicit-int to fix error of do_compile
+- procmail: Fix build with GCC-14
+- procmail: patch CVE-2017-16844.
+- procmail: patch CVE-2014-3618
+- procmail: fix build failure with gcc-14
+- ckermit: Fix build with GCC-15
+- ckermit: Define return type for main
+- enca: Fix cross builds
+- ssmping: Use debian mirror for SRC_URI
+- mod-dnssd: update SRC_URI
+- rp-pppoe: update SRC_URI
+- nng: Rename default branch of github.com:nanomsg/nng.git
+- geoip: fix do_fetch error
+- gtkwave: Add libtirpc to depends
+- libvncserver: fix generated LibVNCServerTargets.cmake
+- lcov: Add missing RDEPENDS for nativesdk
+- fcgi: patch CVE-2025-23016
+- fontforge: patch CVE-2024-25081 and CVE-2024-25082
+- openjpeg: fix for CVE-2025-54874
+- cjson 1.7.18: Fix CVE-2025-57052
+- apache2: upgrade 2.4.64 - 2.4.65
+- libssh 0.10.6: Fix CVE-2025-8114
+- meta-oe: image: optionally remove RAW image after sparse image creation
+- gutenprint: 5.3.5
+- gutenprint: fix a build race-condition
+- wxwidgets: fix CVE-2024-58249
+- wxwidgets: upgrade 3.2.1 -> 3.2.6
+- python3-posix-ipc: fix runtime error
+- iperf3: fix CVE-2025-54350
+- nodejs: fix build with gcc-15 on host
+- libssh: fix CVE-2025-5987
+- libssh: fix CVE-2025-4878
+- protobuf 4.25.8: Mark CVE-2024-7254 as patched
+- linuxptp: Add systemd instance specifier for ptp4l dependency
+- kernel-hardening-checker: backport recipe
+- poppler: fix typos in CVE-2025-52886-0001.patch
+- iperf3: fix CVE-2025-54349
+- gnuplot: fix CVE-2025-31181
+- gnuplot: fix CVE-2025-31180
+- gnuplot: fix CVE-2025-31179
+- gnuplot: fix CVE-2025-31178
+- gnuplot: fix CVE-2025-31177
+- gnuplot: fix CVE-2025-31176
+- gnuplot: fix CVE-2025-3359
+- libssh: fix CVE-2025-4877
+- nginx: patch CVE-2025-53859
+- hunspell-dictionaries: switch branch from master to main
+- abseil-cpp: fix build with gcc-15 on host
+- postgresql: upgrade 16.9 -> 16.10
+- poppler: fix CVE-2025-50420
+- python3-werkzeug: added python3-difflib as RDEPENDS
+- vulkan-cts: allow vulkan versions > 1.3
+- luajit: fix several CVEs
+- jq: add Upstream-Status and CVE tags into .patch files
+- php: upgrade 8.2.28 -> 8.2.29
+- v4l-utils: Fix QA and build errors related to _TIME_BITS on 32-bit
+
+## openembedded-core
+- build-appliance-image: Update to scarthgap head revision
+- oeqa/sdk/cases/buildcpio.py: use gnu mirror instead of main server
+- selftest/cases/meta_ide.py: use use gnu mirror instead of main server
+- conf/bitbake.conf: use gnu mirror instead of main server
+- openssl: upgrade 3.2.4 -> 3.2.6
+- scripts/install-buildtools: Update to 5.0.12
+- go: fix CVE-2025-47906
+- ffmpeg: ignore 8 CVEs fixed in 6.1.1 and 6.1.3 releases
+- tiff: ignore 5 CVEs
+- pulseaudio: ignore CVE-2024-11586
+- expat: follow-up for CVE-2024-8176
+- ghostscript: patch CVE-2025-59800
+- ghostscript: patch CVE-2025-59799
+- ghostscript: patch CVE-2025-59798
+- gstreamer1.0: ignore CVE-2025-2759
+- gstreamer1.0: ignore CVEs fixed in plugins
+- grub2: mark CVE-2024-2312 as not applicable
+- busybox: patch CVE-2025-46394
+- expect: fix native build with GCC 15
+- expect: Fix build with GCC 15
+- expect: cleanup do_install
+- expect: don't run aclocal in do_configure
+- expect: update code for Tcl channel implementation
+- expect: Revert "expect-native: fix do_compile failure with gcc-14"
+- gstreamer1.0-plugins-bad: Fix CVE-2025-3887
+- tiff: fix CVE-2025-9900
+- vim: upgrade 9.1.1652 -> 9.1.1683
+- util-linux: use ${B} instead of ${WORKDIR}/build, to fix building under devtool
+- examples: genl: fix wrong attribute size
+- p11-kit: backport fix for handle USE_NLS from master
+- shared-mime-info: Handle USE_NLS
+- systemd: backport fix for handle USE_NLS from master
+- lib/oe/utils: use multiprocessing from bb
+- sanity.conf: Update minimum bitbake version to 2.8.1
+- llvm: fix build with gcc-15
+- llvm: update from 18.1.6 to 18.1.8
+- curl: fix CVE-2025-9086
+- libxslt: apply patch for CVE-2025-7424
+- buildtools-tarball: fix unbound variable issues under 'set -u'
+- runqemu: fix special characters bug
+- license.py: avoid deprecated ast.Str
+- systemtap: Fix task_work_cancel build
+- cups: Fix for CVE-2025-58060 and CVE-2025-58364
+- cups: upgrade 2.4.10 -> 2.4.11
+- grub2: fix CVE-2024-56738
+- wpa-supplicant: fix CVE-2022-37660
+- pulseaudio: Add audio group explicitly
+- default-distrovars.inc: Fix CONNECTIVITY_CHECK_URIS redirect issue
+- rpm: keep leading `/' from sed operation
+- libpam: fix CVE-2024-10963
+- curl: update CVE_STATUS for CVE-2025-5025
+- sudo: remove devtool FIXME comment
+- ruby-ptest : some ptest fixes
+- cpio: Pin to use C17 std
+- yocto-uninative: Update to 4.9 for glibc 2.42
+- yocto-uninative: Update to 4.8 for GCC 15.1
+- dbus-glib: fix build with gcc-15
+- binutils: fix build with gcc-15
+- elfutils: fix build with gcc-15
+- libtirpc: Fix build with gcc-15/C23
+- rust-llvm: fix build with gcc-15
+- libgpg-error: fix build with gcc-15
+- pkgconfig: fix build with gcc-15
+- unifdef: Don't use C23 constexpr keyword
+- gdbm: Use C11 standard
+- gmp: Fix build with older gcc versions
+- gmp: Fix build with GCC15/C23
+- m4: Stick to C17 standard
+- unzip: Fix build with GCC-15
+- git: fix build with gcc-15 on host
+- cmake: fix build with gcc-15 on host
+- vim: upgrade 9.1.1198 -> 9.1.1652
+- libarchive: patch regression of patch for CVE-2025-5918
+- dpkg: patch CVE-2025-6297
+- glib-2.0: patch CVE-2025-6052
+- glib-2.0: patch CVE-2025-7039
+- go-binary-native: ignore CVE-2025-0913
+- qemu: set status of CVE-2024-7730 to fixed
+- ncurses: Pin to C17 standard
+- go: fix CVE-2025-47907
+- ffmpeg: fix CVE-2025-1594
+- ffmpeg: upgrade 6.1.2 -> 6.1.3
+- gstreamer1.0-plugins-base: fix CVE-2025-47807
+- go: fix CVE-2025-4674
+- build-appliance-image: Update to scarthgap head revision
+- bash: use -std=gnu17 also for native CFLAGS
+- bash: Stick to C17 std
+- cairo: fix build with gcc-15 on host
+- parted: Fix build with GCC 15
+- e2fsprogs: Fix build failure with gcc 15
+- libxml2: ignore CVE-2025-8732
+- glib-2.0: ignore CVE-2025-4056
+- xz: ignore CVE-2024-47611
+- dropbear: patch CVE-2025-47203
+- cve-check: Add missing call to exit_if_errors
+- go-helloworld: fix license
+- cmake: Add PACKAGECONFIG option for debugger support
+- libpam: re-add missing libgen include
+- gstreamer1.0-plugins-good: fix multiple CVEs
+- gstreamer1.0-plugins-base: fix CVE-2025-47806
+- gstreamer1.0-plugins-base: fix CVE-2025-47808
+- go: ignore CVE-2025-0913
+- python3: patch CVE-2025-8194
+- avahi: fix CVE-2024-52615
+- linux-libc-headers: Fix invalid conversion in cn_proc.h
+- scripts/install-buildtools: Update to 5.0.11
+- glibc: fix CVE-2025-8058
+- libxml2: patch CVE-2025-6170
+- ncurses: patch CVE-2025-6141
+- gnutls: patch CVE-2025-6395
+- gnutls: patch CVE-2025-32990
+- gnutls: patch CVE-2025-32988
+- gnutls: patch reject zero-length version in certificate request
+- gnutls: patch read buffer overrun in the "pre_shared_key" extension
+- gnutls: patch CVE-2025-32989
+- mtools: upgrade 4.0.48 -> 4.0.49
+- mtools: upgrade 4.0.47 -> 4.0.48
+- mtools: upgrade 4.0.46 -> 4.0.47
+- mtools: upgrade 4.0.45 -> 4.0.46
+- mtools: upgrade 4.0.44 -> 4.0.45
+- mtools: upgrade 4.0.43 -> 4.0.44
+- xserver-xorg: upgrade 21.1.6 -> 21.1.18
+- glibc: stable 2.39 branch updates
+- libpam: fix CVE-2025-6020
+- openssl: patch CVE-2025-27587
+- openssl: CVE-2024-41996
+- orc: set CVE_PRODUCT
+- sqlite3: fix CVE-2025-6965
+- binutils: Fix CVE-2025-7545
+- binutils: Fix CVE-2025-7546
+- libxml2: fix CVE-2025-49795
+- oe-debuginfod: add option for data storage
+- timedated: wait for jobs before SetNTP response
+- kea: set correct permissions for /var/run/kea
+- binutils: stable 2.42 branch updates
+- sudo: upgrade 1.9.15p5 -> 1.9.17p1
+- Revert "sudo: Fix CVE-2025-32462"
+- git: Upgrade 2.44.3 -> 2.44.4
+- gdk-pixbuf: fix CVE-2025-7345
+- iputils: patch CVE-2025-48964
+- busybox: apply patch for CVE-2023-39810
+- python3: update CVE product
+- libxml2: fix CVE-2025-49794 & CVE-2025-49796
