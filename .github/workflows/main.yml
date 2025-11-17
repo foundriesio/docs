@@ -1,8 +1,6 @@
 name: reviewdog
-on:
-  pull_request:
-    branches:
-    - main
+on: [pull_request]
+
 jobs:
   vale:
     name: runner / vale
@@ -11,9 +9,10 @@ jobs:
       - name: Install docutils
         run: sudo apt-get install -y docutils
       - uses: actions/checkout@v4
-      - uses: errata-ai/vale-action@reviewdog
+      - uses: errata-ai/vale-action@v2.1.1
         with:
-         reporter: github-pr-check
+         files: source/
+         reporter: github-pr-review
          fail_on_error: false
         env:
           # Required, set by GitHub actions automatically:
