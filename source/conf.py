@@ -169,7 +169,7 @@ copybutton_exclude = '.linenos, .gp, .go'
 #-- Linkcheck config -----------------------------------------------------------
 
 sphinx_tabs_valid_builders = ['linkcheck']
-linkcheck_retries = 3
+linkcheck_retries = 2
 linkcheck_anchors_ignore = ['L189-L192']
 linkcheck_allow_unauthorized = True
 # Links that shouldn't get checked for validity
@@ -184,10 +184,12 @@ linkcheck_ignore = [
     r'https://www.tcpdump.org/.*',           # ditto
     r'https://www.wireshark.org/.*',         # ddos protection
     r'https://github.com/foundriesio/*', # rate limits, other issues
+    r'https://api.foundries.io/*',
     r'https://www.nxp.com/*', # slow, frequently leads to time outs
     r'https://sourceforge.net/.*', # 403 error
     'https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-uefi-lockdown.pdf', # 403 error
     'https://media.defense.gov/2020/Sep/15/2002497594/-1/-1/0/CTR-UEFI-Secure-Boot-Customization-UOO168873-20.PDF', # 403 error but will work for end user
+    'https://codeburst.io/mutual-tls-authentication-mtls-de-mystified-11fa2a52e9cf',
 ]
 # Time in seconds to wait for a response. May result in false errors, but also keeps things from timing out
 linkcheck_timeout = 10
