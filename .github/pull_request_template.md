@@ -1,7 +1,7 @@
 # PR Template and Checklist
 
 Please complete as much as possible to speed up the reviewing process.
-
+You may delete items that are not relevant to your contribution.
 Readiness and adding reviewers as appropriate is required.
 
 All PRs should be reviewed by a technical writer/documentation team and a peer.
@@ -13,18 +13,13 @@ If effecting customers—which is a majority of content changes—a member of Cu
 * [ ] Merge after _date or event_
 * [ ] Draft
 
-## Overview
-
-_Why merge this PR? What does it solve?_
-
 ## Checklist
 
 * [ ] Run spelling and grammar check, preferably with linter.
-* [ ] Avoid changing any header associated with a link/reference.
 * [ ] Step through instructions (or ask someone to do so).
 * [ ] Review for [wordiness](https://languagetool.org/insights/post/wordiness/)
 * [ ] Match tone and style of page/section.
-* [ ] Run `make linkcheck`.
+* [ ] Run `make linkcheck`, and add redirects for any moved or deleted pages.
 * [ ] View HTML in a browser to check rendering.
 * [ ] Use [semantic newlines](https://bobheadxi.dev/semantic-line-breaks/).
 * [ ] follow best practices for commits.
