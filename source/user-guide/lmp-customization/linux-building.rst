@@ -68,7 +68,7 @@ If you are already working with a Factory, you can download the source code with
       The ``bitbake`` step can take a while.
 
 Your build artifacts will be under ``deploy/images/<machine-name>``.
-The artifact you use to flash your board is ``lmp-base-console-image-<machine-name>.wic.gz``.
+The artifact you use to flash your board is ``lmp-factory-image-<machine-name>.wic.gz``.
 
 .. important::
 
