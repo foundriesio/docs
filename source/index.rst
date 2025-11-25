@@ -70,9 +70,6 @@ Documentation Overview
    :caption: Release Notes
    :name: sec-release-notes
 
-   v95 release notes <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v95.md>
-   v94 release notes <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v94.md>
-   v93 release notes <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v93.md>
-   v92 release notes <https://github.com/foundriesio/docs/blob/main/release-notes/rn_v92.md>
+   Release Notes <https://github.com/foundriesio/docs/blob/main/release-notes/>
 
 .. _FoundriesFactory: https://cta-eu1.hubspot.com/web-interactives/public/v1/track/click?encryptedPayload=AVxigLLK0Z66%2FNiNKYD21fVW3XrygFqp0o1etaHiD9RRRp2Q67fr5UptBRX2EeK27YBKm2AP3Quj3YsTFf4zR04TkEyHZ9HoZzR1PlolICwWI0wh8tx3uq0OhDVQ5mrQQPJLnluzDkxhbbz%2Fhkmjf6JbAvCy0CGNeEVjHgcDLbFVswhaQQ%3D%3D&portalId=26493592
