@@ -55,9 +55,6 @@ making sure to set the appropriate values for ``app_type`` and ``oe_builtin`` (s
   All the  Target's apps are preloaded if not specified or empty.
   Here, it is set to preload the ``shellhttpd`` app.
 - ``app_type`` - Defines the type of Apps to preload.
-  If not defined, or set to an empty value, the ``app_type`` preload will depend on the LmP version.
-  If the LmP version is **v85** or newer, then `restorable` type is preloaded, otherwise `compose` type is used.
-  See :ref:`ug-restorable-apps`.
 - ``oe_builtin`` - *Optional*: Preload Apps during an OE build CI run. Should be left disabled/undefined for most machines.
 
 .. note::
@@ -108,7 +105,7 @@ Checking the Preloaded Image
 Restorable Type
 ~~~~~~~~~~~~~~~
 
-Restorable apps are enabled by default on LmP v85+.
+Restorable apps are enabled by default.
 
 On your device, switch to root and list the files in the folder ``/var/sota/reset-apps``.
 
@@ -141,7 +138,7 @@ Try to start the preloaded Restorable Apps manually using `aklite-apps`:
     # aklite-apps run [--apps <a comma separated list of Apps>]
 
 .. note::
-    ``app_type`` is set to ``restorable`` by default since LmP **v85**.
+    ``app_type`` is set to ``restorable`` by default.
     If ``compose`` app type is set, then the preloaded apps are located under ``/var/sota/compose-apps/<app>``.
     Here is an example using ``shellhttpd`` preloaded app:
 
