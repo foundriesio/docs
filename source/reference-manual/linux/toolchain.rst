@@ -5,7 +5,7 @@ Toolchain
 
 The default toolchain used in ``openembedded-core`` is ``gcc``, but this is configurable.
 The ``clang`` toolchain is provided by ``meta-clang``, and can be set globally or per recipe.
-Since version **v89**, the LmP uses ``clang`` as the default compiler, and ``llvm`` as the default runtime.
+The LmP uses ``clang`` as the default compiler, and ``llvm`` as the default runtime.
 
 .. code-block::
 

@@ -87,7 +87,7 @@ Important Files and Folders
 
 ``/var/sota/sota.toml``: Stores relevant OTA information, like Tag, Apps, custom configurations, certificates location and server address.
 
-``/var/sota/reset-apps``: Holds preloaded apps if :ref:`ug-restorable-apps` are used (default since LmP **v85**).
+``/var/sota/reset-apps``: Holds preloaded apps if :ref:`ug-restorable-apps` are used (default).
 
 ``/var/sota/compose-apps``: Apps are extracted to this location during app loading.
 It holds preloaded apps if Compose Apps are used.

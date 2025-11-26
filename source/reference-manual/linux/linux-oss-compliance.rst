@@ -48,17 +48,17 @@ When using secure boot, the hardware is configured only to execute a complete bo
 
 .. warning:: There are other examples of why a license should be avoided or chosen. Advice from a lawyer is recommended.
 
-.. note:: Another option to meet the GPLv3 requirement when using hardware configured with secure boot,
+.. note::
+   Another option to meet the GPLv3 requirement when using hardware configured with secure boot,
    is providing either a way of disabling secure boot or the keys when requested.
 
-When using LmP there are two variables that can be used for blocking licenses, ``INCOMPATIBLE_LICENSE`` and ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST`` [1]_.
+When using LmP there are two variables that can be used for blocking licenses, ``INCOMPATIBLE_LICENSE`` and ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST``
 Both of these variables list the licenses by SPDX identifier.
 
 INCOMPATIBLE_LICENSE
 """"""""""""""""""""
 
-Add to the ``build/conf/local.conf`` or to the distro the following line [2]_:
-
+Add to the ``build/conf/local.conf`` or to the distro the following line:
 .. code-block:: none
 
    INCOMPATIBLE_LICENSE = "GPL-3.0* LGPL-3.0* AGPL-3.0*"
@@ -90,8 +90,7 @@ Another important difference is that this class prevents the installation of the
 
 This class can be reviewed at `image-license-checker`_.
 
-Add to the LmP Factory customization file ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc`` the lines from `ci-scripts` [3]_.
-
+Add to the LmP Factory customization file ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc`` the lines from ``ci-scripts`` [1]_..
 Using this configuration to build ``lmp-factory-image`` results in the following error:
 
 .. code-block:: console
@@ -142,15 +141,7 @@ In this case, the error message guides on which package to target.
 
 .. _image-license-checker: https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/classes/image-license-checker.bbclass
 
-
 .. rubric:: Footnotes
 
-.. [1] Since **v87**,
-       the variable ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST``
-       replaces
-       ``IMAGE_LICENSE_CHECKER_ROOTFS_BLACKLIST``.
-.. [2] Since **v87**,
-     the contents of ``INCOMPATIBLE_LICENSE`` has changed,
-     as a consequence of the Kirkstone SPDX tags change.
-.. [3] The list of license strings follows the SPDX standard and may vary.
+.. [1] The list of license strings follows the SPDX standard and may vary.
        Consult the up-to-date code https://github.com/foundriesio/ci-scripts/blob/master/lmp/bb-config.sh#L189-L192.

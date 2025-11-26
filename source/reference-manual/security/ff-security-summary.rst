@@ -120,5 +120,3 @@ Additional information can be found in :ref:`ref-ota-security`.
 
 .. note::
    **(*)** Can be selected at Factory creation or changed later.
-
-   Factories created before **v89** use ``RSA 4096`` by default and can switch to use ``Ed25519``.
