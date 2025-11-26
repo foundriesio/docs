@@ -1,9 +1,14 @@
 [
   {
-    "name": "v95 (stable)",
-    "version": "95",
-    "url": "https://docs.foundries.io/latest/",
+    "name": "v96 (stable)",
+    "version": "96",
+    "url": "https://docs.foundries.io/latest",
     "preferred": true
+  },
+  {
+    "name": "v95",
+    "version": "95",
+    "url": "https://docs.foundries.io/95/"
   },
   {
     "name": "…older",
