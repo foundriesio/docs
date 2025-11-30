@@ -54,7 +54,7 @@ making sure to set the appropriate values for ``app_type`` and ``oe_builtin`` (s
 - ``shortlist``- Defines the list of apps to preload.
   All the  Target's apps are preloaded if not specified or empty.
   Here, it is set to preload the ``shellhttpd`` app.
-- ``app_type`` - Defines the type of Apps to preload.
+- ``app_type`` - Defines the type of Apps to preload: restorable (default) x compose
 - ``oe_builtin`` - *Optional*: Preload Apps during an OE build CI run. Should be left disabled/undefined for most machines.
 
 .. note::
