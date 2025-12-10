@@ -46,7 +46,15 @@ Documentation Overview
    :name: sec-user-guide
 
    user-guide/index
-   
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Partners
+   :name: partners
+
+   partners/index
+
 .. toctree::
    :maxdepth: 2
    :caption: Reference Manual

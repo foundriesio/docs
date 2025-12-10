@@ -337,6 +337,7 @@ html_sidebars = {
         # Removes left sidebar from homepage
         'index': [],
         'glossary/index':[],
+        'partners/index':[],
         }
 # If true, links to the reST sources are added to the pages.
 html_show_sourcelink = False
