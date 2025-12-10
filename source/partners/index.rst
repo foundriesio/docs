@@ -2,6 +2,9 @@ Partners
 ========
 
 
+Featured
+========
+
 .. grid::
 
     .. grid-item-card:: UnoQ
@@ -24,21 +27,50 @@ Partners
 
         :bdg-primary:`featured`
 
-
+NXP
+===
 
 .. grid::
 
-    .. grid-item-card:: Qualcomm
-        :link: https://kprosise.github.io/partner.github.io/
-
-        Find here the Qualcomm Partner Documentation site. For the machines:
-
-        * One1
-        * Two2
-        * Three3
-        * Four4
-
-    .. grid-item-card:: NXP
+    .. grid-item-card:: NXP imx8M Mini
         :link: https://kprosise.github.io/partner.github.io/
 
         This document provides instructions for using FoundriesFactory with NXP i.MX-based boards.
+
+    .. grid-item-card:: NXP imx8M Nano
+        :link: https://kprosise.github.io/partner.github.io/
+
+        This document provides instructions for using FoundriesFactory with NXP i.MX-based boards.
+
+
+    .. grid-item-card:: NXP imx8M Plus
+        :link: https://kprosise.github.io/partner.github.io/
+
+        This document provides instructions for using FoundriesFactory with NXP i.MX-based boards.
+
+Qualcomm
+========
+
+.. grid::
+
+    .. grid-item-card:: Qualcomm One1
+        :link: https://kprosise.github.io/partner.github.io/
+
+        Find here the Qualcomm Partner Documentation site. For One1 machine.
+
+    .. grid-item-card:: Qualcomm Two2
+        :link: https://kprosise.github.io/partner.github.io/
+
+        Find here the Qualcomm Partner Documentation site. For Two2 machine.
+
+
+    .. grid-item-card:: Qualcomm Three3
+        :link: https://kprosise.github.io/partner.github.io/
+
+        Find here the Qualcomm Partner Documentation site. For Three3 machine.
+
+
+    .. grid-item-card:: Qualcomm Four4
+        :link: https://kprosise.github.io/partner.github.io/
+
+        Find here the Qualcomm Partner Documentation site. For Four4 machine.
