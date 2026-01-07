@@ -155,3 +155,42 @@ Configuring Devices for GAR
 
 Google does not have a way to authenticate IoT core devices with the Artifact Registry.
 We recommend following the same approach as outlined for devices accessing the :ref:`Azure Container Registry <ref-acr-devices>`.
+
+Configuring CI for an Arbitrary Container Registry
+--------------------------------------------------
+
+The CI can be configured to authenticate against an arbitrary container registry, enabling the use of container images hosted in that registry within Compose apps.
+To do so, a user should add a secret containing a username and a token (or other credentials) by running the following command.
+Please note that `ghcr.io` is used as an example here.
+Any other registry can be used instead, as long as it is possible to obtain a username and an authentication token to access it.
+
+.. code-block:: console
+
+   $ fioctl secrets update ghcr_creds="<user-name>:<token>"
+
+The Factory :ref:`configuration <ref-factory-definition>` is then updated accordingly:
+
+.. code-block:: yaml
+
+   # factory-config.yml
+   container_registries:
+   - type: generic
+     url: ghcr.io
+     generic_secret_name: ghcr_creds
+
+Once the above-mentioned configuration is set, a user can use images hosted in a third-party registry in their apps, for example:
+
+.. code-block:: yaml
+
+    # docker-compose.yml
+    services:
+      busybox:
+        image: ghcr.io/foundriesio/busybox:1.36
+        command: sh -c "while true; do sleep 60; done"
+
+Configuring Devices for an Arbitrary Container Registry
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Configuring devices to pull images or apps from an arbitrary container registry depends on the registry’s specifics.
+In some cases, a user can set a registry-specific credential helper;
+in other cases, read-only credentials or tokens can be set and configured for use in Docker’s `config.json`.
