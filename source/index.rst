@@ -15,20 +15,41 @@ The FoundriesFactory Platform brings together key features and functions for dev
 
 Documentation Overview
 ----------------------
+.. grid::
 
-* Getting Started will guide you from :ref:`gs-signup` and creating your :term:`Factory`, to :ref:`gs-flash-device`,
-  installing the CLI tool :term:`Fioctl` for interacting with your Factory, and the basics of building and deploying an App.
+  .. grid-item-card:: Getting Started
+     :link: getting-started
+     :link-type: ref
+     :link-alt: getting started
+     
+     Create your Factory, learn how to interact with it, and deploy an App
 
-* :ref:`Tutorials <tutorials>` will familiarize you with the workflow you will need to get the most from your Factory.
+  .. grid-item-card:: Tutorials
+     :link: tutorials
+     :link-type: ref
+     :link-alt: tutorials
 
-* :ref:`User Guide <user-guide>` walks you through common tasks and settings for your Factory.
+     Familiarize yourself with the workflow to get the most from your Factory
 
-* Advanced use cases and technical details are in the :ref:`Reference Manual <ref-manual>`.
+  .. grid-item-card:: User Guide
+     :link: user-guide
+     :link-type: ref
+     :link-alt: user guide
+
+     Common tasks and settings for your Factory
+
+  .. grid-item-card:: Reference Manual
+     :link: ref-manual
+     :link-type: ref
+     :link-alt: reference manual
+
+     Advanced use cases and technical details
 
 .. toctree::
    :maxdepth: 2
    :caption: Getting Started
    :name: sec-learn
+   :hidden:
 
    getting-started/index
 
@@ -36,6 +57,7 @@ Documentation Overview
    :maxdepth: 2
    :caption: Tutorials
    :name: sec-tutorials
+   :hidden:
 
    tutorials/index
 
@@ -44,6 +66,7 @@ Documentation Overview
    :glob:
    :caption: User Guide
    :name: sec-user-guide
+   :hidden:
 
    user-guide/index
    
@@ -51,20 +74,24 @@ Documentation Overview
    :maxdepth: 2
    :caption: Reference Manual
    :name: sec-manual
+   :hidden:
 
    reference-manual/index
 
 .. toctree::
+   :maxdepth: 1
    :caption: Appendix
    :name: sec-appendix
+   :hidden:
 
-   appendix/index
+   Fioctl Reference <appendix/index>
 
 .. toctree::
    :caption: Glossary
    :name: sec-glossary
+   :hidden:
 
-   glossary/index
+   Terms <glossary/index>
 
 .. toctree::
    :caption: Release Notes
