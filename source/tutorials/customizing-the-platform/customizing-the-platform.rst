@@ -47,7 +47,7 @@ Learning Objectives
 Prerequisites
 -------------
 
-- Completed the Getting Started from :ref:`Signed up <gs-signup>` to :ref:`gs-register`.
+- Completed the Getting Started guide up through :ref:`gs-register`.
 - Read the :ref:`ref-linux` reference manual.
 
 

@@ -25,7 +25,7 @@ Learning Objectives
 Prerequisites
 -------------
 
-- :ref:`Signed up <gs-signup>` and created your Factory.
+- Created your Factory.
 - `Docker`_  installed on your host machine.
 - :ref:`Configured Git. <gs-git-config>`
 

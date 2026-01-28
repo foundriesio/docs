@@ -23,7 +23,7 @@ Glossary
      A Factory produces :term:`Target`\s.
      
      * :ref:`Account Management, Factory <account-management>`
-     * :ref:`Creating, Factory <gs-signup>`
+     * :ref:`Creating, Factory <gs-signup>` and `Creating, container-only Factory <gs-signup-co>`
      * :ref:`Git repositories, Factory <ref-factory-sources>`
    
    Fioctl
