@@ -22,6 +22,7 @@ For in depth details and specific use cases, see the :ref:`Reference Manual <ref
    custom-ci/custom-ci
    mirror-action/mirror-action
    submodule/submodule
+   remote-actions
    ../reference-manual/remote-access/remote-access
    foundriesio-rest-api/foundriesio-rest-api
    containers-and-docker/index
