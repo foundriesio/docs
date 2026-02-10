@@ -46,7 +46,6 @@ Glossary
      
      * :ref:`Reference Manual, LmP <ref-linux>`
      * :ref:`Updating, LmP <ref-linux-update>`
-     * :ref:`Test plan, LmP <ref-lmp-testplan>`
      * :ref:`Customizing, LmP <tutorial-customizing-the-platform>`
 
    Target
