@@ -32,7 +32,6 @@ Where:
 * ``<version>`` is the target version (and can be found in the first column of :guilabel:`Targets`).
 * ``<machine>`` is the machine name as in the ``factory-config.yml``.
 * ``<image>`` is the image name as in the ``factory-config.yml``.
- 
 .. _ref-remove-gplv3:
 
 How to Avoid Using Packages Depending on the License
