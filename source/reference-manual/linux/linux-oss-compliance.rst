@@ -1,8 +1,13 @@
 OSS Compliance With FoundriesFactory
 ====================================
 
-The Yocto Project provides a set of tools to help with Open Source Software (OSS) compliance and
-the FoundriesFactory™ Platform can be configured to use these tools to meet the requirements of various OSS licenses.
+The Yocto Project provides a set of tools to help with Open Source Software (OSS) compliance.
+The FoundriesFactory™ Platform is configured to use some of them by default.
+These provide a good starting point when working with license requirements.
+
+There are several OSS licenses.
+This document details technical aspects of handling the GPLv2 and GPLv3 license family.
+However, the content here can be extended to other licenses.
 
 .. warning:: This document focuses on some technical aspects and must not be considered legal advice.
    Always consult a lawyer.
@@ -32,13 +37,83 @@ Where:
 * ``<version>`` is the target version (and can be found in the first column of :guilabel:`Targets`).
 * ``<machine>`` is the machine name as in the ``factory-config.yml``.
 * ``<image>`` is the image name as in the ``factory-config.yml``.
-.. _ref-remove-gplv3:
 
 How to Avoid Using Packages Depending on the License
 ----------------------------------------------------
 
-FoundriesFactory uses the default Yocto Project configuration, controlled by the variable ``DISABLE_GPLV3``.
-When set to ``"1"``, it prevents the use of packages under GPL-3.0, LGPL-3.0, or AGPL-3.0 licenses in the final image.
+When using FoundriesFactory with hardware configured with secure boot, it may be necessary to avoid installing packages under certain licenses.
+
+For example, GPLv3 requires that hardware restrictions *not limit or disallow variations of the software from being executed on the hardware*.
+When using secure boot, the hardware is configured only to execute a complete boot and run unmodified software signed with a private key.
+
+.. warning:: There are other examples of why a license should be avoided or chosen. Advice from a lawyer is recommended.
+
+.. note::
+   Another option to meet the GPLv3 requirement when using hardware configured with secure boot,
+   is providing either a way of disabling secure boot or the keys when requested.
+
+When using LmP there are two variables that can be used for blocking licenses, ``INCOMPATIBLE_LICENSE`` and ``IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST``
+Both of these variables list the licenses by SPDX identifier.
+
+INCOMPATIBLE_LICENSE
+""""""""""""""""""""
+
+Add to the ``build/conf/local.conf`` or to the distro the following line:
+.. code-block:: none
+
+   INCOMPATIBLE_LICENSE = "GPL-3.0* LGPL-3.0* AGPL-3.0*"
+
+Using this configuration to build ``lmp-factory-image`` results in the following error:
+
+.. code-block:: console
+
+   ERROR: lmp-factory-image-1.0-r0 do_rootfs: Package bash cannot be installed into the image because it has incompatible license(s): GPL-3.0+
+
+In this example, the package `bash` cannot be installed because it is licensed under GPLv3.
+This is the default approach from the Yocto Project.
+An error is raised when a package under one of the listed licenses is used during build time.
+This is true even if the package is not to be installed in the final image.
+
+If a package is released under multi-license, this error is raised if any of the incompatible licenses are included.
+This strategy can be used when there is a need to verify build time dependencies between packages.
+
+IMAGE_LICENSE_CHECKER_ROOTFS_DENYLIST
+"""""""""""""""""""""""""""""""""""""
+
+This variable is introduced by the ``image-license-checker`` class.
+In the same way as with ``INCOMPATIBLE_LICENSE``, it lists the licenses to be avoided, by SPDX identifier.
+
+With this class, the package under the avoided license is built—when brought as a dependency.
+When creating the rootfs, the licenses are checked, and if a package is under multi-license, an error is raised if any of the incompatible licenses are included.
+
+Another important difference is that this class prevents the installation of the avoided license package, even for multi-licensed packages.
+
+This class can be reviewed at `image-license-checker`_.
+
+Add to the LmP Factory customization file ``meta-subscriber-overrides/conf/machine/include/lmp-factory-custom.inc`` the lines from ``ci-scripts`` [1]_..
+Using this configuration to build ``lmp-factory-image`` results in the following error:
+
+.. code-block:: console
+
+  ERROR: lmp-factory-image-1.0-r0 do_rootfs: Packages have denylisted licenses:
+  libunistring (LGPLv3+ | GPLv2), bash (GPLv3+), time (GPLv3), mc (GPLv3),
+  mc-helpers (GPLv3), grep (GPLv3), dosfstools (GPLv3), coreutils (GPLv3+),
+  mc-fish (GPLv3), libelf (GPLv2 | LGPLv3+), tar (GPLv3), less (GPLv3+ |
+  BSD-2-Clause), sed (GPLv3+), gmp (GPLv2+ | LGPLv3+), libidn2 ((GPLv2+ |
+  LGPLv3)), parted (GPLv3+), readline (GPLv3+), gawk (GPLv3), coreutils-stdbuf
+  (GPLv3+), findutils (GPLv3+), bc (GPLv3+), cpio (GPLv3), gzip (GPLv3+), ed
+  (GPLv3+), mc-helpers-perl (GPLv3)
+
+This error means, for image ``lmp-factory-image``, a long list of packages under GPLv3 are being installed, such as ``bash``.
+The goal here to clear the image from those dependencies.
+
+.. _ref-remove-gplv3:
+
+How to Remove Packages Under GPLv3 Family License
+-------------------------------------------------
+
+FoundriesFactory uses the `image-license-checker`_ approach.
+Only a single change is needed to avoid using packages under GPL-3.0, LGPL-3.0 or AGPL-3.0 license in final image.
 
 Change the file ``ci-scripts/factory-config.yml`` to include the variable ``DISABLE_GPLV3: "1"`` in the desired branches,
 with the goal of disabling the GPLv3 packages.
@@ -56,11 +131,17 @@ with the goal of disabling the GPLv3 packages.
 
 This is the only change needed, the meta-layers are handled in respect to the ``DISABLE_GPLV3`` variable.
 
-For more details on license compliance tooling and configuration, see:
-
-* `Maintaining Open Source License Compliance <https://docs.yoctoproject.org/singleindex.html#maintaining-open-source-license-compliance-during-your-product-s-lifecycle>`_
-* `INCOMPATIBLE_LICENSE variable <https://docs.yoctoproject.org/ref-manual/variables.html#term-INCOMPATIBLE_LICENSE>`_
+It is important to note that when using an image different than ``lmp-factory-image``, other packages might be used.
+In this case, the error message guides on which package to target.
 
 .. seealso::
 
    :ref:`sbom`
+
+
+.. _image-license-checker: https://github.com/foundriesio/meta-lmp/blob/main/meta-lmp-base/classes/image-license-checker.bbclass
+
+.. rubric:: Footnotes
+
+.. [1] The list of license strings follows the SPDX standard and may vary.
+       Consult the up-to-date code https://github.com/foundriesio/ci-scripts/blob/master/lmp/bb-config.sh#L189-L192.
