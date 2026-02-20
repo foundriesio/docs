@@ -13,3 +13,5 @@ Other users will be creating a Factory based on the Linux microPlatform and call
    arduino-uno-q/index
    gs-container-only
    gs-lmp
+   install-fioctl/index
+   building-deploying-app/index

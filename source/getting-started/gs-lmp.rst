@@ -12,5 +12,3 @@ A paid subscription allows you to customize the base image and perform other adv
    signup-lmp/index
    flash-device/index
    register-device/index
-   install-fioctl/index
-   building-deploying-app/index
