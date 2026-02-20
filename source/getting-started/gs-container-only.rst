@@ -24,7 +24,6 @@ There are few differences between the Container-only Factory and the LmP-based F
 .. toctree::
 
    signup-container-only/index
-   ci-selection
    fioup-registration/index
 
 Additional Resources
