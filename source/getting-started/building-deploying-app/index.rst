@@ -1,7 +1,7 @@
 .. _gs-building-deploying-app:
 
-Building and Deploying Application
-==================================
+Building and Deploying an Application
+=====================================
 
 Clone and enter your ``containers.git``:
 
