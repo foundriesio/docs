@@ -28,7 +28,7 @@ This is sourced by the CI shell script and can set build time options:
  * **EXTRA_TAGS_$ARCH**: This can work with ``SKIP_ARCHS``.
    If builds are skipped for arm64, an arm32 container could be *tagged* for it with ``EXTRA_TAGS_arm=arm64``.
 
- * **DOCKER_BUILD_CONTEXT**: Set an alternative directory for the Docker build context.
+ * **BUILD_CONTEXT**: Set an alternative directory for the Docker build context.
 
 Examples
 ~~~~~~~~
