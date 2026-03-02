@@ -180,7 +180,7 @@ For example, the OP-Tee package is only included in an image if the target machi
 
 .. _ref-ug-private-repo:
 
-Including Private Git+ssh Repositories
+Including Private Git+SSH Repositories
 --------------------------------------
 
 Custom recipes may need access to private Git repositories only available via SSH.
@@ -193,17 +193,47 @@ Secrets matching the pattern ``ssh-*.key`` are loaded into an ssh-agent, and ``s
 
 To generate ``ssh-known_hosts``:
 
-.. code-block:: console
+.. tab-set::
 
-   $ ssh-keyscan github.com > /tmp/ssh-known_hosts
+   .. tab-item:: GitHub
 
-An example for accessing a private GitHub repo:
+      .. code-block:: console
 
-.. code-block:: console
+         $ ssh-keyscan github.com > /tmp/ssh-known_hosts
 
-   $ fioctl secrets update ssh-github.key==/tmp/ssh-github.key
-   $ fioctl secrets update ssh-known_hosts==/tmp/ssh-known_hosts
+   .. tab-item:: Bitbucket
 
-At this point new CI jobs will be able to access recipes that have ``SRC_URI`` items like::
+      .. code-block:: console
 
-  SRC_URI = "git://git@github.com/<repo>;protocol=ssh;branch=main"
+         $ ssh-keyscan bitbucket.org > /tmp/ssh-known_hosts
+
+Examples for accessing a private repo:
+
+.. tab-set::
+
+   .. tab-item:: GitHub
+
+      .. code-block:: console
+
+         $ fioctl secrets update ssh-github.key==/tmp/ssh-github.key
+         $ fioctl secrets update ssh-known_hosts==/tmp/ssh-known_hosts
+
+      At this point new CI jobs will be able to access recipes that have ``SRC_URI`` items like:
+
+      .. code-block::
+
+         SRC_URI = "git://git@github.com/<repo>;protocol=ssh;branch=main"
+
+   .. tab-item:: Bitbucket
+
+      .. code-block:: console
+
+         $ fioctl secrets update ssh-bitbucket.key==/tmp/ssh-bitbucket.key
+         $ fioctl secrets update ssh-known_hosts==/tmp/ssh-known_hosts
+
+      At this point new CI jobs will be able to access recipes that have ``SRC_URI`` items like:
+
+      .. code-block::
+
+         SRC_URI = "git://git@bitbucket.org/<repo>;protocol=ssh;branch=main"
+
