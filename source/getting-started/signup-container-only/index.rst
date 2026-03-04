@@ -46,9 +46,9 @@ Click :guilabel:`Create Factory` once your details are entered.
 
 The dropdown menu includes a range of choices. You must choose one of these options to create a container-only Factory:
 
-- Community Edition Arm64
-- Community Edition x86
 - Arduino UNO Q
+- Other Arm64
+- Other x86
 
 The Initial Target
 ##################
