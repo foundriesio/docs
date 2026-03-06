@@ -1,13 +1,26 @@
-{%- if (show_prev_next == 'true') and (next or prev) %}
-  {#- Translators: This is an ARIA section label for the footer section of the page. -#}
-  <div class="rst-footer-buttons" role="navigation" aria-label="{{ _('Footer') }}">
-    {%- if prev %}
-      <a href="{{ prev.link|e }}" class="btn btn-neutral float-left" title="{{ prev.title|striptags|e }}" accesskey="p" rel="prev" data-analytics-event="cta" data-analytics-action="click" data-analytics-label="previous" data-analytics-detail="{{ prev.title|striptags|e }}" data-analytics-location="{{ prev.link|e }}"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> {{ _('Previous') }}</a>
-    {%- endif %}
-    {%- if next %}
-      <a href="{{ next.link|e }}" class="btn btn-neutral float-right" title="{{ next.title|striptags|e }}" accesskey="n" rel="next" data-analytics-event="cta" data-analytics-action="click" data-analytics-label="next" data-analytics-detail="{{ next.title|striptags|e }}" data-analytics-location="{{ next.link|e }}">{{ _('Next') }} <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    {%- endif %}
-  </div>
-{%- endif %}
-
-<hr/>
+{# Modified version of PyData's prev-next, checks page metadata for custom links first #}
+{# Displays links to the previous and next page in the TOCtree order. #}
+<div class="prev-next-area">
+  {%- if prev %}
+    <a class="left-prev"
+       href="{{ meta.prev_link or prev.link|e }}"
+       title="{{ _('previous page') }}">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">{{ _("previous") }}</p>
+        <p class="prev-next-title">{{ meta.prev_title or prev.title }}</p>
+      </div>
+    </a>
+  {%- endif %}
+  {%- if next %}
+    <a class="right-next"
+       href="{{ meta.next_link or next.link|e }}"
+       title="{{ _('next page') }}">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">{{ _("next") }}</p>
+        <p class="prev-next-title">{{ meta.next_title or next.title }}</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+  {%- endif %}
+</div>

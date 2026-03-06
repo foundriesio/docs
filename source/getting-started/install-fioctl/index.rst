@@ -1,3 +1,7 @@
+:prev_link: ../index.html
+
+:prev_title: Getting Started
+
 .. _gs-install-fioctl:
 
 Installing Fioctl

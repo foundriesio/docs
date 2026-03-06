@@ -99,6 +99,16 @@ vale <PATH/FILE>
 
 :exclamation: make sure you are using Vale 2.16.0 or greater
 
+#### Custom Prev/Next
+
+To configure a page to have a different prev or next link,
+add the appropriate metadata to the top of the file:
+
+`:prev_link: <path to page>.html`
+`:prev_title: < title of link, can be anything>`
+
+For "next" use `next_link` and `next_title`.
+
 #### Screenshots and Diagrams
 
 Visual assets can be found in `source/_static`.

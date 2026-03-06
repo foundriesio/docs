@@ -1,3 +1,7 @@
+:next_link: ../install-fioctl/index.html
+
+:next_title: Installing Fioctl
+
 Registering Your Device with Fioup
 ==================================
 
