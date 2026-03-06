@@ -6,9 +6,11 @@ The FoundriesFactory™ Platform CI will build and deploy this app as a **Target
 
 .. important::
 
-  If you followed this tutorial before flashing and registering your device, 
+  The following tutorials require a device to be registered to the Factory.
+
+  If you followed this tutorial before registering your device,
   return to the ``Getting Started`` section and complete the following:
 
-   - :ref:`gs-flash-device`.
-   - :ref:`gs-register`.
+  - :ref:`gs-register-fioup`, for **Arduino UNO Q** and **Container-Only** Factories, or
+  - :ref:`gs-flash-device` and :ref:`gs-register`, for **LmP** Factories.
 

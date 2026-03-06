@@ -2,6 +2,8 @@
 
 :next_title: Installing Fioctl
 
+.. _gs-register-fioup:
+
 Registering Your Device with Fioup
 ==================================
 

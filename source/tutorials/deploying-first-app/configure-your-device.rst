@@ -1,7 +1,15 @@
 Configure Your Device
 ^^^^^^^^^^^^^^^^^^^^^
 
-Your device should be registered to your Factory according to the :ref:`Getting Started guide <gs-register>`.
+Your device should be registered to your Factory.
+
+.. tip::
+
+   You can register your device following:
+
+   - :ref:`gs-register-fioup`, for **Arduino UNO Q** and **Container-Only** Factories, or
+   - :ref:`gs-register`, for **LmP** Factories
+
 Once registered, two services start to communicate with a Factory: ``aktualizr-lite`` and ``fioconfig``.
 
 **aktualizr-lite**:

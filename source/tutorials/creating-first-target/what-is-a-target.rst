@@ -25,7 +25,11 @@ Devices configured to watch a tag and Hardware ID (``MACHINE``) that match your 
 
 .. note::
 
-   At this point, your device should be registered, as covered in the :ref:`Getting Started guide <gs-register>`.
+   At this point, your device should be registered, as covered in:
+
+   - :ref:`gs-register-fioup` for **Arduino UNO Q** and **Container-Only** Factories, or
+   - :ref:`gs-register` for **LmP** Factories.
+
    If your device is online, it will automatically receive an update with your latest **Target**.
    The next tutorial will cover this in detail.
 
