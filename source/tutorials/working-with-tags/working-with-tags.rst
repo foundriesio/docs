@@ -41,8 +41,12 @@ Learning Objectives
 Prerequisites
 -------------
 
-- Completed the Getting Started guide up through :ref:`gs-register`.
+- Completed the ``Getting Started`` section.
 - Completed the :ref:`tutorial-creating-first-target` tutorial.
+- Registered a device using the appropriate method below:
+
+  - :ref:`gs-register-fioup`, for **Arduino UNO Q** and **Container-Only** Factories, or
+  - :ref:`gs-flash-device` and :ref:`gs-register`, for **LmP** Factories.
 
 Instructions
 ------------

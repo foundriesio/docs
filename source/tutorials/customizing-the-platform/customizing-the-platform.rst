@@ -3,6 +3,13 @@
 Customizing the Platform
 ========================
 
+.. important::
+
+   This covers **LmP** platform customization.
+   This is suitable for **LmP**-based Factories, which include the ``meta-subscriber-overrides.git`` and ``lmp-manifest.git`` repositories.
+
+   **Arduino UNO Q** and **Container-Only** users should skip this tutorial.
+
 Docker Compose Apps are the recommended way to create applications.
 However, you are also allowed to customize and change the platform when needed.
 
@@ -47,6 +54,7 @@ Learning Objectives
 Prerequisites
 -------------
 
+- Have an **LmP**-based Factory.
 - Completed the Getting Started guide up through :ref:`gs-register`.
 - Read the :ref:`ref-linux` reference manual.
 

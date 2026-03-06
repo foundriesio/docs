@@ -24,6 +24,13 @@ Prerequisites
 
 - Completed the :ref:`tutorial-gs-with-docker` tutorial.
 - Completed the :ref:`gs-install-fioctl` section.
+
+For **Arduino UNO Q** and **Container-Only** Factories:
+
+- Completed the :ref:`gs-register-fioup` section.
+
+For **LmP** Factories:
+
 - Completed the :ref:`gs-flash-device` section.
 - Completed the :ref:`gs-register` section.
 
