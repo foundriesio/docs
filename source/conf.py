@@ -276,6 +276,7 @@ html_theme_options = {
     'navbar_persistent': [],
     'navbar_end': ['version-switcher', 'theme-switcher', 'navbar-icon-links'],
     'secondary_sidebar_items': ['page-toc', 'book-demo'],
+    'show_prev_next': False, # turn off default theme
     'article_footer_items': ['prev-next'],
     'content_footer_items': [],
     'footer_start':['copyright'],
