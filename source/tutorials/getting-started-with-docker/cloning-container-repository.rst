@@ -1,16 +1,11 @@
 Cloning Container Repository
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-.. tip::
-
-   When your Factory is first created, a single branch (``main``) is created.
-   We suggest using a ``devel`` branch for development.
-   Once changes are tested and approved, migrate them to ``main``.
 
 Clone and enter your ``containers.git``:
 
 .. code-block:: console
 
-    $ git clone -b devel https://source.foundries.io/factories/<factory>/containers.git
+    $ git clone https://source.foundries.io/factories/<factory>/containers.git
     $ cd containers
 
 Your ``containers.git`` repository is initialized with a simple application example in ``shellhttpd.disabled``.
