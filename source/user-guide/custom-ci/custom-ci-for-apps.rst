@@ -105,6 +105,7 @@ Check the Workflow Result
 -------------------------
 
 You can view your Factory Targets in the UI to check whether the new Targets were created, and if their content is correct.
+This can also be verified by running ``fioctl targets list`` and ``fioctl targets show <target-version>``.
 
 .. _FoundriesFactory Registry:
     https://hub.foundries.io
