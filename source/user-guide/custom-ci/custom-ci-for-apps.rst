@@ -105,6 +105,36 @@ Check the Workflow Result
 -------------------------
 
 You can view your Factory Targets in the UI to check whether the new Targets were created, and if their content is correct.
+This can also be verified by running ``fioctl targets list`` and ``fioctl targets show <target-version>``.
+
+Using Third-Party Container Registries
+--------------------------------------
+
+It is possible to push the built container images and the Compose App to a third-party container registry instead of the default `FoundriesFactory Registry`_.
+
+To do so, use `the sample GitHub actions workflow`_ as a starting point and:
+
+1. Modify the workflow so it can authenticate and obtain **write access** to your container registry.
+2. Set the appropriate value for the ``IMAGE_BASE_URL`` environment variable and optionally ``IMAGE_NAMESPACE``.
+
+``IMAGE_BASE_URL`` should point to the base URL of the container registry where images will be pushed.
+
+Example: Using Amazon ECR
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is an `example GitHub Actions workflow`_ that builds container images and pushes them,
+along with the Compose App, to **Amazon Elastic Container Registry (ECR)**.
+
+The workflow extends the base workflow by:
+
+- adding steps that authenticate the workflow to AWS
+- granting the workflow permission to push images to ECR
+- setting ``IMAGE_BASE_URL`` to the ECR registry URL
+
+Authentication to AWS is performed using **OpenID Connect (OIDC)**.
+
+With OIDC, a GitHub workflow requests a short-lived identity token from GitHub and exchanges it with AWS for **temporary credentials**.
+These credentials allow the workflow to interact with AWS services such as ECR without storing long-lived AWS access keys in GitHub.
 
 .. _FoundriesFactory Registry:
     https://hub.foundries.io
@@ -126,6 +156,9 @@ You can view your Factory Targets in the UI to check whether the new Targets wer
 
 .. _The sample GitHub actions workflow:
     https://github.com/foundriesio/custom-ci-app/blob/custom-ci-devel/.github/workflows/fio-app-ci.yml
+
+.. _example GitHub Actions workflow:
+    https://github.com/foundriesio/custom-ci-app/blob/custom-ci-devel/.github/workflows/fio-app-ci-ecr.yml
 
 .. _composectl:
     https://github.com/foundriesio/composeapp
