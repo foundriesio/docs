@@ -155,7 +155,6 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx_design',
     'sphinx_copybutton',
-    'sphinx_toolbox.confval',
     'sphinx_reredirects',
     'sphinx.ext.graphviz',
     'sphinx_new_tab_link',
