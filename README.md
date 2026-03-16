@@ -13,7 +13,7 @@ We use the [Sphinx PyData Theme](https://pydata-sphinx-theme.readthedocs.io/en/s
 
 Before beginning any work, review the [contributing section](#contributing).
 
-To build the documentation, python3 (3.11 or greater) and `pip3` are required.
+To build the documentation, python3 (3.12 or greater) and `pip3` are required.
 All required python modules are listed in `requirements.txt`.
 Install them with `pip3 install -r requirements.txt`. _virtual environment recommended_
 
