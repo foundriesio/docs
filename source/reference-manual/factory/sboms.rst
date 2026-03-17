@@ -6,27 +6,27 @@ Software Bill of Materials
 A Software Bill of Materials(SBOM) declares *the list of software packages used to build a Target*.
 SBOMs are foundational to understanding:
 
- * Inventory management—the packages a Target uses.
- * License compliance—the software licenses of the packages.
- * Vulnerability management—the package versions.
+* Inventory management—the packages a Target uses.
+* License compliance—the software licenses of the packages.
+* Vulnerability management—the package versions.
 
 The FoundriesFactory™ Platform's SBOM feature extracts the SBOM data and analyzes it according to your needs.
 
 .. important::
    `Per our terms and conditions <https://foundries.io/company/terms/>`_:
-   FoundriesFactory build SBOMs (“the SBOM data”) are provided for your use and are generated from SPDX metadata in all project source code files.
-   Responsibility for open source license compliance rests with you.
-   In no event shall Foundries.io Limited be liable for any claim, damages or other liability,
-   whether in an action of contract, tort or other legal theory, arising from, out of, or in connection with the use of the SBOM data.
+      FoundriesFactory build SBOMs (“the SBOM data”) are provided for your use and are generated from SPDX metadata in all project source code files.
+      Responsibility for open source license compliance rests with you.
+      In no event shall Foundries.io Limited be liable for any claim, damages or other liability,
+      whether in an action of contract, tort or other legal theory, arising from, out of, or in connection with the use of the SBOM data.
 
 SBOMs and Builds
 ----------------
 
-The FoundriesFactory CI generates SBOM artifacts whenever there a change happens in a Factory build.
+Whenever a Factory build changes, The FoundriesFactory CI generates SBOM artifacts.
 This happens for two kinds of builds:
 
- * Yocto Project: `Software Package Data Exchange`_ (SPDX) artifacts using built-in tooling.
- * Container: produce SDPX artifacts using Syft_.
+* Yocto Project: `Software Package Data Exchange`_ (SPDX) artifacts using built-in tooling.
+* Container: produces SDPX artifacts using Syft_.
 
 You can download them from the web UI when viewing a Target.
 Both artifacts go into the ``sboms`` directory.
@@ -34,9 +34,8 @@ Both artifacts go into the ``sboms`` directory.
 Yocto Project Artifacts
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Yocto builds a comprehensive SPDX per image type.
-For example, ``lmp-factory-image-intel-corei7-64.spdx.tar.zst``.
-This includes an SPDX file for every package included in the build.
+The Yocto Project builds a comprehensive SPDX per image type.
+For example, ``lmp-factory-image-intel-corei7-64.spdx.tar.zst`` includes an SPDX file for every package included in the build.
 
 Syft Artifacts
 ^^^^^^^^^^^^^^
@@ -44,23 +43,21 @@ Syft Artifacts
 Container builds produce an SPDX file for each container/architecture.
 This will look like ``hub.foundries.io/<FACTORY>/shellhttpd/arm64.sdpx.json``.
 
-Customers may disable generating SBOMs for containers by setting the environment variable ``DISABLE_SBOM=1`` in their :ref:`ref-factory-definition`.
+You may disable generating SBOMs for containers by setting the environment variable ``DISABLE_SBOM=1`` in your :ref:`ref-factory-definition`.
 
 Working With SBOMs
 ------------------
 
 While you can access SBOM information in its raw form by browsing your CI build,
-APIs exist that allow Fioctl® to work with Factory SBOMs.
+APIs exist that allow the Fioctl® tool to work with Factory SBOMs.
 
 
 Like other Factory concepts, SBOMs revolve around :ref:`Targets <tutorial-what-is-a-target>`.
-You can find out available SBOMs for a Target by running:
+You can list the available SBOMs for a Target by running:
 
 .. code-block:: console
 
    $ fioctl targets show sboms <target name or version>
-
-For example
 
 .. code-block:: console
 
@@ -84,13 +81,13 @@ Notice how:
    * ``initramfs-...``; runtime packages
    * ``lmp-factory-image-...``; packages required for boot.
 
- * Several containers for two architectures were built.
-   In this case, the platform is Intel, so the aarch64 builds are experimental or for debug and not production.
+ * There is containers for two architectures.
+   In this case, the platform is Intel, so the aarch64 builds are experimental or for debugging—not production.
 
-   * The  nginx and Alpine containers come from a ``hub.docker.io``.
-   * The shellhttpd container comes from the Factory ``hub.foundries.io``.
+   * The nginx and Alpine containers come from ``hub.docker.io``.
+   * The shellhttpd container comes from the Factory's ``hub.foundries.io``.
 
-You can then query each SBOM for more details
+You can query each SBOM for more details:
 
 .. code-block:: console
 
@@ -111,10 +108,10 @@ These tend to work with two competing SBOM formats:
  * SPDX_
  * CycloneDX_
 
-You may want to just export their SBOM data into spreadsheets for quick, custom processing.
+You may want to export their SBOM data into spreadsheets for quick, custom processing.
 While the native storage format for Factory SBOMs is SPDX,
 the Foundries.io™ API provides a best-effort conversion to both CycloneDX and CSV.
-This allows users to export data from their Factory and into their tool of choice.
+This allows you to export data from your Factory and into your tool of choice.
 
 To view an SBOM in a given format:
 
