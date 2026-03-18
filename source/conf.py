@@ -186,6 +186,8 @@ linkcheck_ignore = [
     r'https://api.foundries.io/*',
     r'https://www.nxp.com/*', # slow, frequently leads to time outs
     r'https://sourceforge.net/.*', # 403 error
+    r'https://www.freedesktop.org/.*', # uses __goaway_challenge, which hinders automatic traffic
+    r'https://uefi.org/.*', # Also fails due to bot protection
     'https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-uefi-lockdown.pdf', # 403 error
     'https://media.defense.gov/2020/Sep/15/2002497594/-1/-1/0/CTR-UEFI-Secure-Boot-Customization-UOO168873-20.PDF', # 403 error but will work for end user
     'https://codeburst.io/mutual-tls-authentication-mtls-de-mystified-11fa2a52e9cf',
