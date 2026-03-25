@@ -350,7 +350,7 @@ html_show_copyright = True
 
 # Maps source: target, target path is relative to source.
 redirects = {
-     "reference-manual/boards": "../user-guide/flashing/flashing.html",
+     "reference-manual/boards/boards": "../../user-guide/flashing/flashing.html",
      "user-guide/cert-rotation": "rotating-cert.html",
      "reference-manual/docker/compose-apps": "../../user-guide/containers-and-docker/compose-apps.html",
      "reference-manual/docker/configure-docker-helper": "../../user-guide/containers-and-docker/configure-docker-helper.html",
