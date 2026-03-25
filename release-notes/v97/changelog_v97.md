@@ -1,0 +1,557 @@
+### meta-yocto
+
+- 9bb6e6e8 poky.conf: bump version for 5.0.15
+- bf6aea52 poky.conf: bump version for 5.0.14
+- 3ff7ca78 poky.conf: bump version for 5.0.13
+- 82602cda poky.conf: bump version for 5.0.12
+
+### bitbake
+
+- 8dcf08452 fetch2/wget: Keep query parameters in URL during checkstatus
+- c2a54acea bb/fetch2/__init__.py: remove a DeprecationWarning in uri_replace()
+
+### meta-openembedded
+
+- 2759d8870e php 8.2.29: CVE-2025-14177
+- 0feefa82c0 fluidsynth: patch CVE-2025-56225
+- 31777981d7 frr: patch multiple CVEs
+- a0d1cca3be openfortivpn: upgrade 1.22.0 -> 1.22.1
+- 526df3d715 lmdb: patch CVE-2026-22185
+- ee902be37f boinc-client: mark CVE-2013-2018 patched
+- c0b9d53a6b boinc-client: set CVE_PRODUCT
+- 082c261254 boinc-client: fix hostname reproducibility
+- b3da92e178 gpsd: patch CVE-2025-67269
+- 85f404194e gpsd: patch CVE-2025-67268
+- 600a42c435 tcpreplay 4.4.4: Fix CVE-2025-9384
+- e2d1c0f1da python3-virtualenv: upgrade 20.25.0 -> 20.25.3
+- 62c89f704e python3-werkzeug: ignore CVE-2025-66221 and CVE-2026-21860
+- 6da1cb2445 python3-tqdm: upgrade 4.66.2 -> 4.66.3
+- e2b431389f python3-tornado: patch CVE-2025-67726
+- cfa04fece1 python3-tornado: patch CVE-2025-67724
+- a0c05c9da8 python3-tornado: patch CVE-2025-47287
+- 2d2c395c22 python3-pymongo: upgrade 4.6.1 -> 4.6.3
+- bec5c3da91 python3-marshmallow: upgrade 3.21.1 -> 3.21.3
+- 2116f0aff1 python3-ldap: upgrade 3.4.4 -> 3.4.5
+- c4fd3d6816 python3-ldap: set CVE_PRODUCT
+- 4441e16eb5 python3-eventlet: patch CVE-2025-58068
+- 3fabe136d8 python3-configobj: patch CVE-2023-26112
+- 54ac795d1a python3-cob2: upgrade 5.6.3 -> 5.6.4
+- e061e04825 python3-aiohttp: patch CVE-2024-52304
+- 46d5b12103 python3-aiohttp: upgrade 3.9.4 -> 3.9.5
+- 7d35bbae28 gimp: patch CVE-2025-5473
+- f11e20ad6e gimp: ignore CVE-2025-48796
+- 69cb161b5d gimp: patch CVE-2025-14425
+- a7ef3041ba gimp: patch CVE-2025-14422
+- 7dfdfc0035 gimp: ignore CVE-2007-3741
+- 97c3c5ee0b gimp: upgrade 2.10.36 -> 2.10.38
+- 2df869df1c freerdp3: drop CVE-2025-68118 patch
+- 30dafc3958 unbound: Fix CVE-2025-5994
+- ed7365bfad libao: ignore CVE-2017-11548
+- 2ecd7e0156 id3lib: mark CVE-2007-4460 as fixed
+- 5a5de39bbd libvpx: upgrade 1.14.0 -> 1.14.1
+- 29be38f0b1 synergy: patch CVE-2020-15117
+- c1075f0312 usb-modeswitch-data: upgrade 20191128 -> 20251207
+- 5dffed1382 usb-modeswitch: upgrade 2.6.1 -> 2.6.2
+- b76d5a084b networkmanager: upgrade 1.46.0 -> 1.46.6
+- 0bca0e04c8 libsodium: patch CVE-2025-69277
+- e434c0b06a libwebsockets: ignore CVE-2025-1866
+- 6a3a40c102 libtar: patch CVEs
+- 5e650cf2e5 krb5: ignore CVE-2025-3576
+- a99dac1be4 influxdb: ignore CVE-2024-30896
+- 305fef50c7 freerdp3: ignore CVE-2025-68118
+- 3d4aef2b2d opusfile: patch CVE-2022-47021
+- 23edbe268c vlc: patch CVE-2024-46461
+- 774c7ed3fd sox: extend CVE_PRODUCT
+- 42b615f953 libde265: patch CVE-2023-47471
+- e83565b24a libde265: patch CVE-2023-43887
+- c49bff1273 wolfssl: patch CVE-2025-7394
+- df26bbaaba tinyproxy: patch CVE-2025-63938
+- e90c455347 znc: patch CVE-2024-39844
+- bfd8dda3ba proftpd: patch CVE-2024-48651
+- bad750ad27 open62541: patch CVE-2024-53429
+- c73fe4bd7e mtr: patch CVE-2025-49809
+- b45ac4e0ef libcoap: patch CVE-2025-34468
+- c0c54373e9 frr: ignore CVE-2024-44070
+- 7e4c89a25e dante: Add _GNU_SOURCE for musl builds
+- f0fa984d16 dante: upgrade 1.4.3 -> 1.4.4
+- 2aa20b7141 cifs-utils: patch CVE-2025-2312
+- 626bcb7f86 imagemagick: patch CVE-2025-65955
+- 24e4caa837 imagemagick: patch CVE-2025-62171
+- aeb80bb058 imagemagick: patch CVE-2025-57807
+- 9d92eeacdf imagemagick: patch CVE-2025-57803
+- 29fa171a9d imagemagick: patch CVE-2025-55212
+- 118df68d25 imagemagick: patch CVE-2025-55160
+- dd13a60248 imagemagick: patch CVE-2025-55154
+- df19121bc6 imagemagick: patch CVE-2025-55005
+- b32dcf53ce imagemagick: patch CVE-2025-55004
+- 2d4ca24273 imagemagick: patch CVE-2025-53101
+- 482f541705 imagemagick: patch CVE-2025-53019
+- 7c479d21cd imagemagick: patch CVE-2025-53015
+- e9916715c9 imagemagick: patch CVE-2025-53014
+- 80175b4a47 imagemagick: mark CVE-2023-5341 as patched
+- 90fdbcf82b imagemagick: upgrade 7.1.1-26 -> 7.1.1-47
+- 98f1eff432 net-snmp: patch CVE-2025-68615
+- 1477114ae4 nginx: Fix CVE-2025-23419 for 1.25.5
+- 63e2e60787 nginx: upgrade 1.25.4 -> 1.25.5
+- 3835a88f94 recipes-core/toybox: Switch SRC_URI to HTTPS for reliable fetch
+- 93d489967c python3-cbor2: Fix CVE-2025-64076
+- 2b26d30fc7 atop: patch CVE-2025-31160
+- 02dbaa8843 Add missing HOMEPAGEs to xfce recipes
+- cf81094887 zabbix: patch CVE-2025-49643
+- b7180060eb wolfssl: patch CVE-2025-7395
+- e7b55c84bb libcoap: patch CVE-2025-59391
+- ba18d52f43 libcoap: ignore CVE-2023-51847
+- 8a991e7e3c libcoap: ignore CVE-2025-50518
+- 6593af3931 libmemcached: ignore CVE-2023-27478
+- 3750ce0e75 libiec61850: patch CVE-2024-45969
+- 50906d9169 dovecot: upgrade 2.3.21 -> 2.3.21.1
+- 19d7eedf67 freerdp3: patch CVE-2025-68118
+- c8f7748616 cups-filters: patch CVE-2025-64524
+- 44bdb70034 krb5: fix for CVE-2024-3596
+- ff7b552534 sngrep: upgrade 1.8.1 -> 1.8.2
+- 3e322cb550 postgresql: upgrade 16.10 -> 16.11
+- 9dea9286a0 fio: ignore CVE-2025-10824
+- fe9360051e minio: ignore irrelevant CVEs
+- 3a59d89765 accountservice: ignore CVE-2023-3297
+- 6553182380 p7zip 16.02: Fix CVE-2022-47069
+- e76bf51a92 redis: Refine CVE-2022-0543 status description
+- 9a4ed6f20f openh264: patch CVE-2025-27091
+- 86abe3d5de openvpn: patch CVE-2025-13086
+- c42bfd596e tcpreplay: fix CVE-2025-9157
+- 788904cef1 unbound: patch CVE-2024-43168
+- 1876b4656d unbound: patch CVE-2024-43167
+- 0d9da11052 fetchmail: patch CVE-2025-61962
+- eb338ebb60 civetweb: patch CVE-2025-9648
+- 1c7b69ee0b editorconfig-core-c: patch CVE-2024-53849
+- d9148434ad flatpak: patch CVE-2024-42472
+- af50080591 libcupsfilters: patch CVE-2025-57812
+- a0292cd209 jasper: patch CVE-2024-31744
+- 1fea09e692 mbedtls: fix CVE-2025-47917
+- b4812b18ee proftpd: Fix CVE-2023-48795
+- 5775e1a643 wireshark: fix CVE-2025-13499
+- d9e1f6f274 gflags: switch Git branch from master to main
+- e0dbf0bcd3 hdf5 1.14.4-3: fix CVE-2025-2912
+- c223262bd7 apache2: upgrade 2.4.65 -> 2.4.66
+- 91ea5aa570 libavif: patch CVE-2025-48174
+- b7fd86557f smarty: update CVE_PRODUCT
+- 47b2afbc12 corosync: upgrade 3.1.9 -> 3.1.10
+- 873297afaa python3-django: upgrade 5.0.11 -> 5.0.14
+- 4d1817df45 nftables: remove python dependency from main package
+- 7ed4330bcf net-snmp: Update Upstream-status in the net-snmp-5.9.4-kernel-6.7.patch
+- bd2cabff81 net-snmp: Fix a crash and support for 6.7+ kernel
+- b09a12e166 hdf5 1.14.4-3: Fix CVE tag format in patches
+- a9fa1c5c2a xrdp: patch CVE-2023-42822
+- 259e4f9266 xrdp: patch CVE-2023-40184
+- f81041bb39 xrdp: patch CVE-2022-23493
+- 2578e5c17d xrdp: patch CVE-2022-23484
+- 8ffd8f29d5 xrdp: patch CVE-2022-23483
+- 31694c82e3 xrdp: patch CVE-2022-23482
+- 64ee8f84c4 xrdp: patch CVE-2022-23481
+- 71e9d02b12 xrdp: patch CVE-2022-23480
+- 19e076e66b xrdp: patch CVE-2022-23479
+- 63b5fff975 xrdp: patch CVE-2022-23478
+- a6efc5b285 xrdp: patch CVE-2022-23477
+- 1cb08277fe xrdp: patch CVE-2022-23468
+- 5a52615450 pidgin: fix reproducibility issues
+- 9e4f627941 trace-cmd: Update SRC_URI to use HTTPS protocol
+- 7e74032909 crash: add zlib-native to depends for crash-cross
+- 9100a5369d nbdkit: patch CVE-2025-47712
+- ffb8d52fae nbdkit: patch CVE-2025-47711
+- 8f602e1cfa redis: handle CVE-2025-27151
+- ac19cd99a8 redis: ignore CVE-2022-0543
+- ed345fca57 yasm: patch CVE-2021-33456
+- 782c49a05a yasm: patch CVE-2021-33464
+- 138ac945d9 yasm: patch CVE-2023-29579
+- 05fd7d83ff yasm: add alternative CVE_PRODUCT
+- 0ad67b4bd2 libtracefs: avoid run bison
+- 89a01c3d9a cockpit: set correct CVE_PRODUCT
+- 2e0e65ecaa fbida: Require opengl feature for pdf only
+- 9f031e8d0f links: set CVE_PRODUCT
+- 2e768a8261 uw-imap: patch CVE-2018-19518
+- 77536efcb0 zfs: fix host-related reproducibility
+- e6a44bc7eb ot-br-posix: Define config files explicitly
+- 5fab8bd31b libwebsockets: fix CVE-2025-11678
+- da04d7003e libwebsockets: fix CVE-2025-11677
+- e656a5b181 frr: fix CVE-2024-55553
+- b79cf94b4d grilo: fix buildpaths QA error
+- 4e69ebbcf9 libhtml-tree-perl: fix QA Issue: TMPDIR [buildpaths]
+- c031af8d73 fvwm: Fix buildpaths QA Errors
+- db2d62f261 klibc: fix debug pkgs reproducibility
+- 65d989d9e4 libwmf: Fix buildpaths QA Errors in libwmf-config
+- f6c6cdce9d iptraf-ng: patch CVE-2024-52949
+- fd052187ac hdf5: patch CVE-2025-2926
+- 3c45985620 freerdp3: patch CVE-2025-4478
+- e2bf6a8064 botan: patch CVE-2024-50382 and CVE-2024-50383
+- 2d31b3897f libwmf: patch CVE-2016-9011
+- 41d4d6c022 libwmf: patch CVE-2015-4696
+- ee90f2d75e libwmf: patch CVE-2015-4695
+- dbc98a00eb libwmf: patch CVE-2015-0848 and CVE-2015-4588
+- 786bad8097 libwmf: add missing CVE tag to patch
+- f5701506eb libwmf: add proper CVE tag to patch
+- 7435780bbe webmin: patch CVE-2022-0829
+- 0c7d961f95 webmin: patch CVE-2022-0824
+- 3601d99c9e webmin: patch CVE-2019-15642
+- e64c857b02 webmin: patch CVE-2017-17089
+- 9655a3d880 webmin: patch CVE-2017-15644, CVE-2017-15645 and CVE-2017-15646
+- e8eea380c9 apache2: ignore CVE-2025-3891
+- d55fea5d43 libforms: Remove buildpaths from fd2ps and fdesign scripts
+- edb76382f0 pcp: Fix contains reference to TMPDIR [buildpaths] warnings
+- 65b4b21110 rsyslog: set status for CVE-2015-3243
+- 55d4df5300 python3-passlib: add python3-misc as a depencency
+- 11d30147cb python3-transitions: add native support
+- ac810a91ee python3-passlib: add native support
+- 23c3bdefbe squid: patch CVE-2025-62168
+- 6b689aa132 minifi-cpp: fix python shebang in minifi-python
+- 9e96944f42 rtmpdump: mark CVE-2015-8270, CVE-2015-8271 and CVE-2015-8272 as fixed
+- 1a6b962e47 proftpd: set status of CVE-2001-0027
+- 03f418d36b linuxptp: ignore CVE-2024-42861
+- da046dd9e0 audiofile: mark CVE-2020-18781 as patched
+- ab86e1f967 audiofile: patch CVE-2018-13440 and CVE-2018-17059
+- 5613d8330c audiofile: patch CVE-2019-13147 and CVE-2022-24599
+- 5287390c05 remmina: add DEPENDS on curl
+- 8343ef75dd redis: Update status for CVE-2022-3734
+- 72cf12a3c7 botan: patch CVE-2024-34703
+- 5e2e28b4ab cryptsetup: upgrade 2.7.4 -> 2.7.5
+- df482b962c cryptsetup: upgrade 2.7.3 -> 2.7.4
+- fe68830763 cryptsetup: upgrade 2.7.2 -> 2.7.3
+- e7e1a613d1 redis: upgrade 6.2.20 -> 6.2.21
+- 855b23cf2c redis: upgrade 7.2.11 -> 7.2.12
+- 75cb5178de redis-plus-plus: upgrade 1.3.11 -> 1.3.12
+- 68747f1f7e feh: upgrade 3.10.2 -> 3.10.3
+- be9ed1a359 libspiro: upgrade 20221101 -> 20230902
+- a177472288 jasper: upgrade 4.1.1 -> 4.1.2
+- e6bfce8cf2 openjpeg: upgrade 2.5.3 -> 2.5.4
+- 2327d77ba7 libbpf: upgrade 1.4.6 -> 1.4.7
+- e7179ec91a libbpf: upgrade 1.4.5 -> 1.4.6
+- d8fbe2d5cd libbpf: upgrade 1.4.3 -> 1.4.5
+- b41189a637 libbpf: upgrade 1.4.2 -> 1.4.3
+- 0110b3c028 libbpf: upgrade 1.4.0 -> 1.4.2
+- ff87862031 audit: fix build when systemd is enabled.
+- 80adc2113c audit: Fix CVE_PRODUCT
+- 4fc68d0837 audit: upgrade 4.0.1 -> 4.0.2
+- 9a02785261 libbytesize: upgrade 2.10 -> 2.11
+- 2482a8b001 libgpiod: update v2.1.2 -> v2.1.3
+- a7575821c0 libgpiod: update to v1.6.5
+- 0c074158de libiodbc: upgrade 3.52.15 -> 3.52.16
+- 4f27f1e206 mcelog: upgrade 199 -> 200
+- 54904afbcb mcelog: upgrade 198 -> 199
+- fe50bb9e6c openldap: upgrade 2.6.9 -> 2.6.10
+- 10e228a49d openldap: make license match spdx identifier
+- 6d087e4b4b openldap: upgrade 2.6.8 -> 2.6.9
+- afcd2a0f45 openldap: upgrade 2.6.7 -> 2.6.8
+- 120ef275f1 tbb: upgrade 2021.11.0 -> 2021.12.0
+- 18713c0a4a usbids: upgrade 2025.04.01 -> 2025.09.15
+- b71ca88453 usbids: upgrade 2023.01.16 -> 2025.04.01
+- be9c5cd746 flatpak;xdg-desktop-portal: add missing runtime dependency on fuse3-utils
+- fa2fc95844 xdg-desktop-portal: update 1.18.1 -> 1.18.4
+- d3a2914ab9 xmlsec1: upgrade 1.3.4 -> 1.3.5
+- 1b1436d194 xrdp: upgrade 0.9.19 -> 0.9.20
+- bed9028cc4 evtest: upgrade 1.35 -> 1.36
+
+### meta-clang
+
+- 7314889 llvm,clang: update to 18.1.8
+- 057ee56 bpftool: Use gcc instead of clang compiler
+- 6691e4b perf: Use gcc as default compiler
+- f915bbf clang: fix native build with gcc-15
+- aef850f compiler-rt-sanitizers: disable builtins library
+- eea5ec2 bpftrace: fix buildpaths QA issues
+- 525625c bpftrace: move from dynamic-layers/openembedded-layer to dynamic-layers/meta-python
+
+### meta-intel
+
+- 6fc37057 linux-intel-rt/6.6 : update to tag lts-v6.6.78-rt41-preempt-rt-250304T022441Z
+- 2c87eb73 linux-intel/6.6 : update to tag lts-v6.6.78-linux-250303T061634Z
+
+### meta-virtualization
+
+- d75faad3 cloud-init: Fix CVE-2024-11584
+- 2d2d799e kubernetes: Fix for CVE-2024-10220
+- c32d5d75 containerd: upgrade 2.0.5 -> 2.0.7
+- af1db204 kubernetes: Fix for CVE-2025-5187
+- 3f6c931b podman: require catatonit
+- ac476b32 podman: remove skopeo rdepends
+- 4b30a4e1 podman: Use slirp4netns instead of pasta
+- 880c5ceb grpc-go 1.59.0+git: Ignore CVE-2024-7246
+- 8a9f976c runc-opencontainer: Fix typo in Makefile for static-pie option
+- b6f66722 cloud-init: fix for CVE-2024-6174
+- bacfdff9 doc: Fix typo in README
+
+### meta-raspberrypi
+
+- 5240b5c weston: add patch to adapt to 64-bit plane ids
+- 8767e2f rpi-base.inc: Add rpi-backlight.dtbo
+- 4d53165 rpi-base.inc: Add w1-gpio-pi5.dtbo
+- aaf976a linux-firmware-rpidistro: Update and stabilize
+- 8d786f6 linux-firmware-rpidistro: Fix WiFi on Raspberry Pi 5
+- 2597651 linux-firmware-rpidistro: Fix wireless error message on RPi
+- 3afc972 mesa, wayland-protocols: use separate recipe instead of bbappend
+- de443f6 linux: Enable CONFIG_I2C_BRCMSTB for proper HDMI I2C support
+- 5f942bc Revert "rpi-default-versions: Switch default kernel to 6.12"
+- fceeefa mesa: wayland-protocols: Fix signatures
+- 884b8b4 mesa_%.bbappend: DISTRO_FEATURES for wayland
+- c62176e mesa: Upgrade 25.1.3 -> 25.1.6
+- 41a6240 mesa: Upgrade 24.3.1 -> 25.1.3
+- 849919d wayland-protocols: Upgrade 1.38 -> 1.45
+- cdf5a8a mesa: update to 24.3.1
+- 1f20453 add raspi-utils recipe to scarthgap branch
+- 8e9ec26 docker-build: use --no-cache
+- 4845244 raspberrypi5.conf: Add CM5 dtb's
+- 9e89558 rpi-bootfiles: update to latest release
+- 8c916b6 rpi-default-versions: Switch default kernel to 6.12
+- 4597c80 linux-raspberrypi: update 6.12.2 -> 6.12.25
+- bae1bac linux-raspberrypi: add recipe for 6.12
+- 1091bde rpi-bootfiles: Update to latest release
+- acc1e1e rpi-eeprom: Update to latest release
+- bce7b3a u-boot_%.bbappend: Increase CONFIG_SYS_BOOTM_LEN
+
+### meta-lmp
+
+- 41ac060d base: Bump distro version to 5.0.15
+- 03f6d40d base: fioconfig: turn off dynamic linking
+- eea80ce9 base: fioconfig: pull in support for remote actions
+- bed9fb1c base: fioconfig: update to latest version in main
+- f4dfab3b base: Bump distro version to 5.0.14
+
+### meta-arm
+
+- a81c1991 CI: only run pending-updates on master
+- 0f1e7bf9 arm-systemready/ir-acs: Update URL
+
+### openembedded-core
+
+- 6988157ad9 build-appliance-image: Update to scarthgap head revision
+- 2d6d68e46a go: Fix CVE-2025-61729
+- 647e151485 go: Fix CVE-2025-61727
+- 2d6b089de3 go: Update CVE-2025-58187
+- 1ac9ad3faf libsoup: fix CVE-2025-12105
+- c28fa3e642 grub: fix CVE-2025-54770 CVE-2025-61661 CVE-2025-61662 CVE-2025-61663 CVE-2025-61664
+- dccb7a185f cross.bbclass: Propagate dependencies to outhash
+- 0e553b685c curl: Use host CA bundle by default for native(sdk) builds
+- a7dd1c221e cml1.bbclass: use consistent make flags for menuconfig
+- a172a0e8d5 oeqa/selftest: oe-selftest: Add SPDX tests for kernel config and PACKAGECONFIG
+- 5cfd0690f8 spdx30_tasks: Add support for exporting PACKAGECONFIG to SPDX
+- 1fff29a042 kernel.bbclass: Add task to export kernel configuration to SPDX
+- 4c85440cd9 scripts/install-buildtools: Update to 5.0.14
+- bad372ad8e ruby: Upgrade 3.3.5 -> 3.3.10
+- e70c70e035 libxslt: Fix CVE-2025-11731
+- d477a67f62 binutils: fix CVE-2025-11840
+- d60c144e08 binutils: fix CVE-2025-11839
+- e087881bec binutils: Fix CVE-2025-11494
+- 24f831be7d cmake-native: fix CVE-2025-9301
+- d9f52c5f86 python3-urllib3: fix CVE-2025-66418 CVE-2025-66471
+- c3108b279b qemu: fix CVE-2025-12464
+- 110933506d rsync: fix CVE-2025-10158
+- ca252aac4e cups 2.4.11: Fix CVE-2025-61915
+- 6a721aad5f cups 2.4.11: Fix CVE-2025-58436
+- 2b3d2b671a Revert "lib/oe/go: document map_arch, and raise an error on unknown architecture"
+- c348296ff0 libssh2: fix regression in KEX method validation (GH-1553)
+- 71316433eb libssh2: upgrade 1.11.0 -> 1.11.1
+- 9e3c0ae261 libmicrohttpd: disable experimental code by default
+- 315882f25a libxml2: Security fix for CVE-2025-7425
+- f5f0af82d8 libpng: patch CVE-2025-66293
+- 04cc49593a classes/create-spdx-2.2: Define SPDX_VERSION to 2.2
+- ef198b0c60 curl: Ensure 'CURL_CA_BUNDLE' from host env is indeed respected
+- 4e03bed20b libpng: patch CVE-2025-65018
+- e8fbb7521e libpng: patch CVE-2025-64720
+- f3bdbd782e libpng: patch CVE-2025-64506
+- 285a495b8b libpng: patch CVE-2025-64505
+- 5313fa5236 python3: fix CVE-2025-6075
+- 37dcb0f617 gnutls: patch CVE-2025-9820
+- 1fbd9eddbd libarchive: patch CVE-2025-60753
+- efe032eef7 libarchive: patch 3.8.3 security issue 2
+- 11f782c1ae libarchive: patch 3.8.3 security issue 1
+- 7493eeed6d vex: fix rootfs manifest
+- 23a4e02542 spdx: extend CVE_STATUS variables
+- ddd295c7d4 cve-check: extract extending CVE_STATUS to library function
+- 123a60bc19 vex.bbclass: add a new class
+- 9a204670b1 spdx30: provide all CVE_STATUS, not only Patched status
+- f3bfb98d1c Revert "spdx: Update for bitbake changes"
+- 7cfacaee1b oeqa/sdk/buildepoxy: skip test in eSDK
+- 4e10e7848c oeqa: drop unnecessary dependency from go runtime tests
+- 82a46b70bf oeqa: fix package detection in go sdk tests
+- 21f3a6c661 go: remove duplicate arch map in sdk test
+- bda3e3711f go: extend runtime test
+- 506f4e8c99 go: add sdk test
+- e8d475b9b6 goarch.bbclass: do not leak TUNE_FEATURES into crosssdk task signatures
+- e6de433ccb lib/oe/go: document map_arch, and raise an error on unknown architecture
+- 062a525bd3 oe/sdk: fix empty SDK manifests
+- a93e214194 testsdk: allow user to specify which tests to run
+- cd0039c22d glslang: fix compiling with gcc15
+- 4c3f321304 rust-target-config: fix nativesdk-libstd-rs build with baremetal
+- bbdd7d54b0 musl: patch CVE-2025-26519
+- 97326be553 xwayland: fix CVE-2025-62231
+- 5d98bca7ca xwayland: fix CVE-2025-62230
+- 3d606cc94e xwayland: fix CVE-2025-62229
+- f5a10c4950 xserver-xorg: fix CVE-2025-62229 CVE-2025-62230 CVE-2025-62231
+- f1b064e684 xserver-xorg: remove redundant patch
+- baaf28f6f2 sqlite3: patch CVE-2025-7709
+- 60724efdb3 spdx30: Provide software_packageUrl field in SPDX 3.0 SBOM
+- 8d14b2bb02 spdx30: fix cve status for patch files in VEX
+- 471adaa5f7 build-appliance-image: Update to scarthgap head revision
+- d9c30edf90 oe-build-perf-report: relax metadata matching rules
+- 5fa3fd112e build-appliance-image: Update to scarthgap head revision
+- 1f7326799c classes/create-spdx-2.2: Handle empty packages
+- 2c299c17ef oeqa: spdx: Add tar test for SPDX 2.2
+- 55fdeea44f spdx30_tasks: adapt CVE handling to new cve-check API
+- 551433c7a1 spdx 3.0: Rework how SPDX aliases are linked
+- 72ee311d4f lib: oeqa: spdx: Add tests for extra options
+- 45f3039a4f oeqa/selftest: Add SPDX 3.0 include source case for work-share
+- e182f76a86 selftest: spdx: Add SPDX 3.0 test cases
+- 8996d0899d classes/create-spdx-2.2: align DEPLOY_DIR_SPDX with SPDX_VERSION layout
+- d75bfbaf69 selftest/spdx: Fix for SPDX_VERSION addition
+- e15a9934be classes-recipe/baremetal-image: Add image file manifest
+- 5da5e2c528 classes-recipe/image: Add image file manifest
+- f8aa42faa3 lib: oe: license: Add missing import
+- 4f7a047c4a lib/license: Move package license skip to library
+- 572bf8fd0b classes-global/staging: Exclude do_create_spdx from automatic sysroot extension
+- 5e220e2083 classes-global/license: Move functions to library code
+- 17031d71cf spdx30_tasks: fix FetchData attribute in add_download_files
+- 9c9b954504 backport: SPDX 3.0 fixes and tasks from upstream version Walnascar
+- 64eff9fa26 xf86-video-intel: correct SRC_URI as freedesktop anongit is down
+- 1e0a64a189 oeqa/selftest/devtool: Update after upstream repo changes
+- 9a2bd3b6e2 ca-certificates: fix on-target postinstall script
+- dd05818a42 ca-certificates: upgrade 20241223 -> 20250419
+- a80185fd72 ca-certificates: submit sysroot patch upstream, drop default-sysroot.patch
+- 7e4ce7c927 ca-certificates: upgrade 20240203 -> 20241223
+- 44c113497c ca-certificates: get sources from debian tarballs
+- b1d86653f1 ca-certificates: Add comment for provenance of SRCREV
+- 63620f0340 ca-certificates: update 20211016 -> 20240203
+- e0bdf9b413 wireless-regdb: upgrade 2024.10.07 -> 2025.10.07
+- 59cd37dc19 webkitgtk: upgrade 2.44.3 -> 2.44.4
+- 512c36af3b go: fix CVE-2025-61724
+- 228e4aa707 go: fix CVE-2025-61723
+- c5fc59eb87 go: fix CVE-2025-47912
+- e734cf62f2 go: fix CVE-2025-58189
+- b532fa208d go: fix CVE-2025-58188
+- ce1626d1f1 go: fix CVE-2025-58187
+- f27acc863e go: fix CVE-2025-58185
+- 3de9b86c29 curl: ignore CVE-2025-10966
+- 06d4981313 perf: add arm64 source files for unistd_64.h
+- 3d8f88906f util-linux: fix pointer usage in hwclock param handling
+- 0539a7869c Remove empty file
+- b220cccdab binutils: patch CVE-2025-11413
+- fdbcbb0fe9 binutils: patch CVE-2025-11412
+- ddb6453a75 binutils: patch CVE-2025-11414
+- a157719ab3 wpa-supplicant: patch CVE-2025-24912
+- 4cb8343887 bind: upgrade 9.18.33 -> 9.18.41
+- 1ff4b39374 tiff: ignore CVE-2025-8961
+- 5c086db3f4 u-boot: fix CVE-2024-42040
+- 7feed67926 binutils: fix CVE-2025-8225
+- 6ed800208a binutils: fix CVE-2025-11081
+- 0a63e3e120 lz4: fix CVE-2025-62813
+- 0f98fecda8 curl: only set CA bundle in target build
+- a970b6c927 iptables: remove /etc/ethertypes
+- 1be0de000b gstreamer1.0-plugins-bad: fix buffer allocation fail for v4l2codecs
+- c13635db89 flex: fix build with gcc-15 on host
+- ae89d0c2ca elfutils: Fix CVE-2025-1377
+- 06e3cd0891 elfutils: Fix CVE-2025-1376
+- 684d3cdbc0 expat: patch CVE-2025-59375
+- 3f2a9ad033 libpam: mark CVE-2025-6018 as not applicable
+- 649147913e oeqa/runtime/ping: don't bother trying to ping localhost
+- 0860992436 icu: Backport patch to fix build issues with long paths (>512 chars)
+- f1234b8451 python3: upgrade 3.12.11 -> 3.12.12
+- 2a947cb13d linux-yocto/6.6: update to v6.6.111
+- 42854520a9 linux-yocto/6.6: update to v6.6.110
+- 5234d79541 linux-yocto/6.6: update to v6.6.109
+- 0b5c6e2116 linux-yocto/6.6: update to v6.6.108
+- 4964bdf8bf linux-yocto/6.6: update to v6.6.107
+- 212df17782 linux-yocto/6.6: update to v6.6.106
+- f9c140c485 linux-yocto/6.6: update to v6.6.103
+- 9c0af64f5b linux-yocto/6.6: update to v6.6.102
+- 40092b395a linux-yocto/6.6: update to v6.6.101
+- cf70911ca4 linux-yocto/6.6: update to v6.6.100
+- 5504778cd1 linux-yocto/6.6: update to v6.6.99
+- b9041a3e6d linux-yocto/6.6: update to v6.6.98
+- d60dd826d8 glibc: stable 2.39 branch updates
+- 8c44478c92 glib-networking: fix CVE-2025-60019
+- 5d8a6fb52c cmake: fix CVE-2025-9301
+- 717d4c7609 openssh: fix CVE-2025-61984
+- 52d925423b openssh: fix CVE-2025-61985
+- e5ef633741 glib-networking: fix CVE-2025-60018
+- 88fe1eaa4b gnupg: mark CVE-2025-30258 as patched
+- 155a93a0e0 binutils: patch CVE-2025-11083
+- fe40f3c025 binutils: patch CVE-2025-11082
+- 30624cce63 python3-xmltodict: fix CVE-2025-9375
+- 4bab523ed8 qemu: patch CVE-2024-8354
+
+## Components Changelog
+
+### fioconfig
+
+- 87efd8b Merge pull request #76 from doanac/remote-actions
+- 05418c5 Makefile: Fix rule for nopkcs11
+- e627342 Add init logic to configure remote actions
+- a9aa833 contrib: Add a action to run fio-diag.sh
+- a13b30f contrib: Add on-change handler for run-and-report
+- 0c6d0ac transport: Avoid exception when printing warning after http error
+- a6cdf87 fixup! api: Change `Extract` and `CheckIn` to include config-changed
+- 9a583cf fixup! api: Change `Extract` and `CheckIn` to include config-changed
+- 65c039a api: Change `Extract` and `CheckIn` to include config-changed
+- 152bd75 Merge pull request #73 from doanac/handler-improvments
+- 901521a Make handler output easier to identify
+- 8775840 Allow handlers directory to be set at compile time
+- e80fce0 Merge pull request #72 from doanac/logging-changes
+- 02aa690 Add logic to make CLI functions print more naturally
+- 0857112 lint: Fix formatting errors
+- 62d1c79 internal: Fix logging message in vpn logic
+- 6db5800 Change a log.Info to Debug
+- ae762fe Create an API for external golang apps
+- 2e66569 internal: Add new api for creating App with sotatoml already parsed
+- 9d569a1 sotatoml: Provide method for find config path search order
+- 7fe60e3 app: change secrets_dir to secretsDir
+- c5ea989 lint: Simplify construction of object
+- 11064d9 lint: Improve time comparsion
+- 370d5d6 Merge pull request #70 from doanac/logging-conversion
+- d01dded Introduce a `Fatal` function
+- fbc66cb Move from std log to slog
+- ab19148 Merge pull request #69 from doanac/initFunctionUpdates
+- e6296da Remove old init function logic
+- 3e5f7e7 vpn: Move to new callback mechanism
+- c325766 sotatoml: Add API for exporting combined configuration
+- 8024c88 http: Allow client to set user agent and content type
+- 4dd6f59 app_config: Add method to check if key exists
+- a137f55 vpn: Refactor functions to make next change easier to read
+- ecafc8d Define new type of init function callback
+- 557453f vpn: Move its dedicated function into its file
+- 73317eb main: update pattern allowed for command ids
+- 67e18d0 http_client: Return client creation error instead of exit
+- 2641536 app_config: Extend error message with file path
+- 1d02a98 Merge pull request #63 from doanac/test-nopkcs11
+- ba74e81 ci: Make sure we can build with nopkcs11 and GCO=0 set
+- 0c15225 Merge pull request #62 from foundriesio/detsch-nopkcs11
+- ee6362d pkcs11: Support fully disabling PKCS#11 and CGO
+- f667498 ecies: Allow pkcs11 to be disabled
+- 6f9db53 ecies: Stop using "private" ctx througout code
+- 1387451 Merge pull request #60 from doanac/run-and-report
+- dc55ed0 Expose new fiotest API via a `run-and-report` CLI
+- 74512dd fiotest: Add API for talking to server
+- 3aad74f fiotest: Add ability to collect artifacts to test result
+- 4a52601 fiotest: Introduce wrapper to produce a TestResult
+- e282b23 Merge pull request #59 from doanac/transport-cleanups
+- 72b293c transport: Modernize from interface{} -> any
+- 950474c transport: Let HttpDo optional pass marshalled data
+- ed1824e transport: Make httpDo a public function for other modules
+- 4a503e2 Merge pull request #58 from detsch/detsch-refactor
+- 56725a2 transport: Make type HttpRes public
+- fdf4c37 transport: Move http functions to transport package
+- 2f3112e transport: Add public CreateClient function
+- 4b43883 transport: Add disable_pkcs11 build pragma
+- b677e1d Move transport configuration logic into module
+- e0ba528 Move idToBytes to sotatoml module
+- 01a4696 refactor sota config logic into a module
+- 285bf31 Merge pull request #57 from foundriesio/gh-action
+- ab8bbff Remove jobserv testing
+- bc6c9c4 Add unit tests to github workflow
+- c35183b Add golang-lint-ci action
+- c3591cc contrib: Do not restart aklite service if it is not enabled
+- 9852fb7 Fix: typos in README.md
+- 8b3fa49 Fix: client rotation fails when there is no config
+- 0d99f39 Fix: a compiler typo in state.go
+- 4ac3839 contrib: Simplify aktualizr config handler
+- c7b5149 fix(systemd): check if service is enabled before restarting
+- e0b681c Refactor: extract the generic state machine into base types
+- fd57e2a Cleanup: make service restart configurable
+- cf81c8b Cleanup: make rotation steps configurable
+- 0de22a6 Refactor: Move common state parts to state.go
+
