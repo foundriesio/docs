@@ -91,7 +91,7 @@ Setup
 
       $ mkdir -p ~/lmp/sstate-cache ~/lmp/downloads ~/lmp/build
 
-#. Run |version| of the container as the ``builder`` user:
+#. Run the container as the ``builder`` user:
 
    .. parsed-literal::
 
@@ -117,7 +117,7 @@ The `Google Repo`_ tool fetches Git repos at known-good revisions, and keeps the
 
      $ cd build/lmp
 
-#. Fetch release |version| using :term:`Repo`:
+#. Fetch release using :term:`Repo`:
 
    .. parsed-literal::
 

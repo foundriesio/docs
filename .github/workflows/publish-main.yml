@@ -1,0 +1,69 @@
+name: publish-release
+on:
+  push:
+    tags:
+      - 'mp-**'
+
+  workflow_dispatch:
+
+jobs:
+  publish-stable:
+    name: publish docs/stable
+    runs-on: ubuntu-latest
+    env:
+      MEILISEARCH_INDEX_KEY: ${{ secrets.MEILISEARCH_INDEX_KEY }}
+      MEILISEARCH_SEARCH_KEY: ${{ secrets.MEILISEARCH_SEARCH_KEY }}
+      MEILISEARCH_HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+      ADOBE_ANALYTICS_URL: ${{ secrets.ADOBE_ANALYTICS_URL }}
+      BUCKET_CREDS: ${{ secrets.BUCKET_CREDS }}
+      TAG: ${{ github.ref_name }}
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: install dependencies
+        run: |
+          sudo apt update -y
+          sudo apt-get install -y graphviz fonts-freefont-ttf
+          pip3 install -U pip
+          pip3 install -U gsutil==5.27 'pyOpenSSL<24.3.0'
+          pip3 install --ignore-installed -r requirements.txt
+
+      - name: Add latest Fioctl docs
+        run: |
+          export fv=$(wget -q -O- https://api.github.com/repos/foundriesio/fioctl/releases/latest | grep tag_name | sed -E 's/.*"([^"]+)".*/\1/')
+          wget -O /tmp/fioctl https://github.com/foundriesio/fioctl/releases/download/${fv}/fioctl-linux-amd64
+          chmod +x /tmp/fioctl
+          /tmp/fioctl gen-rst source/appendix/fioctl-command-reference/
+
+      - name: set release name
+        run: |
+          echo "release tag: $TAG"
+#          if [[ $TAG == mp-* ]]; then
+          export RELEASE="$(echo $TAG | sed -r 's/^.{3}//')"
+#          else
+#          export RELEASE="$TAG"
+#          fi
+          echo "VERSION=$RELEASE" >> "$GITHUB_ENV"
+
+      - name: Build docs
+        run: |
+          echo "Building docs $VERSION"
+          mkdir out
+          make MP_UPDATE_VERSION="$VERSION" OUTDIR=out SPHINXBUILD=sphinx-build html
+
+      - name: prepare docs for upload and publish docs
+        run: |
+          mv out/html out/$VERSION
+          cd out
+          tar -czf offline-docs.tgz $VERSION/
+          mv offline-docs.tgz $VERSION/
+          echo $BUCKET_CREDS > secret
+          echo -e "secret\nY\nosf-prod\nN\n" | gsutil config -e
+          gsutil -m rsync -d -r dev gs://docs.foundries.io/$VERSION
+#          if [[ $TAG == mp-* ]]; then
+          gsutil -m rsync -d -r gs://docs.foundries.io/${VERSION} gs://docs.foundries.io/latest
+          fi
