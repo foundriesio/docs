@@ -1,5 +1,10 @@
 [
   {
+    "name": "dev (unstable)",
+    "version": "dev",
+    "url": "https://docs.foundries.io/dev"
+  },
+  {
     "name": "v96 (stable)",
     "version": "96",
     "url": "https://docs.foundries.io/latest",
