@@ -3,6 +3,10 @@
 Registering Your Device
 =======================
 
+.. important::
+   The following instructions for registering a device requires that it is running the :term:`LmP`. 
+   See :ref:`ug-flashing` for specifics on installing the LmP system image on your device.
+
 Your Linux® microPlatform (LmP) image includes the ``lmp-device-register`` tool that manages device registration for your device via the Foundries.io™ REST API.
 
 1. To register a device with your Factory, run the following **from the device console**:
