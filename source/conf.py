@@ -50,7 +50,7 @@ if pr is None:
 # Tags to append to the version, if any.
 # (This doesn't affect links to artifacts.)
 mp_tags = ''
-if mp_version.startswith('git-'):
+if mp_version.startswith('git-') or mp_version == 'dev':
     if pr == 'False':
         mp_tags = 'local-dev'
     else:
@@ -66,7 +66,7 @@ if not meilisearch_index_key or not meilisearch_host or not meilisearch_search_k
     search_version = 'default'
 
 else:
-    if mp_tags== 'dev' or mp_tags == 'local-dev':
+    if mp_tags == 'dev' or mp_tags == 'local-dev':
         search_version = 'dev'
 
     else:
@@ -92,7 +92,7 @@ else:
 
 #-- Get version used for link to offline docs page -----------------------------
 
-if mp_version.startswith('git-'):
+if mp_version.startswith('git-') or mp_version == 'dev':
     gh_release = 'releases'
 else:
     gh_release = 'releases/tag/mp-' + mp_version
@@ -114,19 +114,10 @@ html_context = {
 
 # Derive the subscriber tags to use for this build from the
 # corresponding version information.
-if mp_version.startswith('git-'):
+if mp_version.startswith('git-') or mp_version == 'dev':
     docker_tag = 'latest'
 else:
     docker_tag = mp_version
-
-# Provide Git tags for the same information. (This can produce
-# somewhat strange command lines for development builds, like cloning
-# a repository and checking out master, but it works for subscriber
-# updates.)
-if mp_version.startswith('git-'):
-    git_tag = 'main'
-else:
-    git_tag = 'mp-' + mp_version + mp_tags
 
 # And likewise for repo and west manifests (which have a different tag
 # namespace than the project tags, that happens to mostly match the
@@ -225,10 +216,9 @@ exclude_patterns = ['user-guide/flashing/*-flashing.rst',
 # Standard epilog to be included in all files.
 rst_epilog = '''
 .. |docker_tag| replace:: {}
-.. |git_tag| replace:: {}
 .. |manifest_tag| replace:: {}
 .. |fioctl_version| replace:: {}
-'''.format(docker_tag, git_tag, manifest_tag, fioctl_version)
+'''.format(docker_tag, manifest_tag, fioctl_version)
 
 # -- PDF Configuration --------------------------------------------------------
 
@@ -255,8 +245,7 @@ if "dev" in release:
     if mp_tags == 'local-dev':
         json_url = '_static/local-dev-switcher.json'
     if mp_tags == 'dev':
-        json_url = 'https://raw.githubusercontent.com/foundriesio/docs/refs/main/next/source/_static/switcher.json'
-
+        json_url = 'https://raw.githubusercontent.com/foundriesio/docs/refs/heads/next/source/_static/switcher.json'
 # Pydata Theme options
 html_theme_options = {
     'pygments_light_style': 'default',
