@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - 'next'
+      paths:
+      - 'source/**'
+      - '.github/workflows/publish-dev.yml'
 
   workflow_dispatch:
 
@@ -33,7 +36,7 @@ jobs:
       - name: Add latest Fioctl docs
         run: |
           export fv=$(wget -q -O- https://api.github.com/repos/foundriesio/fioctl/releases/latest | grep tag_name | sed -E 's/.*"([^"]+)".*/\1/')
-          get -O /tmp/fioctl https://github.com/foundriesio/fioctl/releases/download/${fv}/fioctl-linux-amd64
+          wget -O /tmp/fioctl https://github.com/foundriesio/fioctl/releases/download/${fv}/fioctl-linux-amd64
           chmod +x /tmp/fioctl
           /tmp/fioctl gen-rst docs/source/appendix/fioctl-command-reference/
 
