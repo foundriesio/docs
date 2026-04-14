@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - 'next'
-      paths:
+    paths:
       - 'source/**'
       - '.github/workflows/publish-dev.yml'
 
