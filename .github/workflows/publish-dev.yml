@@ -43,7 +43,7 @@ jobs:
       - name: Build docs
         run: |
           mkdir out
-          make -C docs MP_UPDATE_VERSION="dev" OUTDIR='pwd'/out SPHINXBUILD=sphinx-build html
+          make MP_UPDATE_VERSION="dev" OUTDIR='pwd'/out SPHINXBUILD=sphinx-build html
 
       - name: prepare docs for upload
         run: |
