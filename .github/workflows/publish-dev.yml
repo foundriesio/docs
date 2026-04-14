@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - 'next'
-    paths:
-      - 'source/**'
 
   workflow_dispatch:
 

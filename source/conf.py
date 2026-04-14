@@ -131,10 +131,6 @@ manifest_tag = ('refs/tags/' + docker_tag if docker_tag != 'latest'
 #parent_dir = dirname(dirname(abspath(__file__)))
 #sys.path.insert(0, join(parent_dir, 'extensions'))
 
-# The version info for the project you're documenting, acts as replacement for
-# |version| and |release|, also used in various other places throughout the
-# built documents.
-#
 # The short X.Y version.
 version = mp_version
 # The full version, including alpha/beta/rc tags.
