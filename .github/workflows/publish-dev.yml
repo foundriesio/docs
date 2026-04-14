@@ -18,6 +18,7 @@ jobs:
       MEILISEARCH_SEARCH_KEY: ${{ secrets.MEILISEARCH_SEARCH_KEY }}
       MEILISEARCH_HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
       ADOBE_ANALYTICS_URL: ${{ secrets.ADOBE_ANALYTICS_URL }}
+      BUCKET_CREDS: ${{ secrets.BUCKET_CREDS }}
 
     steps:
       - uses: actions/checkout@v6
@@ -51,5 +52,5 @@ jobs:
           cd out
           tar -czf offline-docs.tgz dev/
           mv offline-docs.tgz dev/
-          gsutil config -e ${{ secrets.BUCKET_CREDS }}
+          echo -e "$BUCKET_CREDS\nY\nosf-prod\nN\n" | gsutil config -e
           gsutil -m rsync -d -r dev gs://docs.foundries.io/dev
