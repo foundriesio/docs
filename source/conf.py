@@ -237,11 +237,8 @@ html_theme = 'pydata_sphinx_theme'
 json_url = 'https://docs.foundries.io/latest/_static/switcher.json'
 version_match = release
 if "dev" in release:
-    version_match = 'dev'
-    if mp_tags == 'local-dev':
-        json_url = '_static/local-dev-switcher.json'
-    if mp_tags == 'dev':
-        json_url = 'https://raw.githubusercontent.com/foundriesio/docs/refs/heads/next/source/_static/switcher.json'
+    version_match= 'dev'
+    json_url = 'https://raw.githubusercontent.com/foundriesio/docs/refs/heads/next/source/_static/switcher.json'
 # Pydata Theme options
 html_theme_options = {
     'pygments_light_style': 'default',
