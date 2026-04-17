@@ -43,6 +43,7 @@ jobs:
 
       - name: Build docs
         run: |
+          echo "Building dev docs"
           mkdir out
           make MP_UPDATE_VERSION="dev" OUTDIR=out SPHINXBUILD=sphinx-build html
 
