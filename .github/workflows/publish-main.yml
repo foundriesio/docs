@@ -1,13 +1,13 @@
-name: publish-dev
+name: publish-stable
 on:
   push:
     tags:
-      - '**'
+      - 'mp-**'
   workflow_dispatch:
 
 jobs:
-  publish-dev:
-    name: publish docs/dev
+  publish-stable:
+    name: publish docs/stable
     runs-on: ubuntu-latest
     env:
       MEILISEARCH_INDEX_KEY: ${{ secrets.MEILISEARCH_INDEX_KEY }}
@@ -15,6 +15,7 @@ jobs:
       MEILISEARCH_HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
       ADOBE_ANALYTICS_URL: ${{ secrets.ADOBE_ANALYTICS_URL }}
       BUCKET_CREDS: ${{ secrets.BUCKET_CREDS }}
+      RELEASE: ${{ github.ref_name }}
 
     steps:
       - uses: actions/checkout@v6
@@ -39,8 +40,14 @@ jobs:
 
       - name: Build docs
         run: |
+          echo "Building docs: $RELEASE"
+          if [[ $RELEASE == mp-* ]]; then
+          export release="$(echo $RELEASE | sed -r 's/^.{3}//')"
+          else
+          export release = $RELEASE
+          fi
           mkdir out
-          make MP_UPDATE_VERSION="dev" OUTDIR=out SPHINXBUILD=sphinx-build html
+          make MP_UPDATE_VERSION="$release" OUTDIR=out SPHINXBUILD=sphinx-build html
 
       - name: prepare docs for upload and publish docs
         run: |
