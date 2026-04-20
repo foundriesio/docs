@@ -1,12 +1,8 @@
 name: publish-release
 on:
   push:
-#    tags:
-#      - '**'
-    branches:
-      - 'next'
-    paths:
-      - '.github/workflows/publish-main.yml'
+    tags:
+      - '**'
 
   workflow_dispatch:
 
@@ -56,15 +52,15 @@ jobs:
       - name: Build docs
         run: |
           echo "Building docs $VERSION"
-#          mkdir out
-#          make MP_UPDATE_VERSION="$VERSION" OUTDIR=out SPHINXBUILD=sphinx-build html
+          mkdir out
+          make MP_UPDATE_VERSION="$VERSION" OUTDIR=out SPHINXBUILD=sphinx-build html
 
-#      - name: prepare docs for upload and publish docs
-#        run: |
-#          mv out/html out/$VERSION
-#          cd out
-#          tar -czf offline-docs.tgz $VERSION/
-#          mv offline-docs.tgz $VERSION/
-#          echo $BUCKET_CREDS > secret
-#          echo -e "secret\nY\nosf-prod\nN\n" | gsutil config -e
-#          gsutil -m rsync -d -r dev gs://docs.foundries.io/$VERSION
+      - name: prepare docs for upload and publish docs
+        run: |
+          mv out/html out/$VERSION
+          cd out
+          tar -czf offline-docs.tgz $VERSION/
+          mv offline-docs.tgz $VERSION/
+          echo $BUCKET_CREDS > secret
+          echo -e "secret\nY\nosf-prod\nN\n" | gsutil config -e
+          gsutil -m rsync -d -r dev gs://docs.foundries.io/$VERSION
