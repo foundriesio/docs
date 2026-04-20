@@ -1,8 +1,13 @@
 name: publish-release
 on:
   push:
-    tags:
-      - '**'
+#    tags:
+#      - '**'
+    branches:
+      - 'next'
+    paths:
+      - '.github/workflows/publish-main.yml'
+
   workflow_dispatch:
 
 jobs:
@@ -50,7 +55,7 @@ jobs:
 
       - name: Build docs
         run: |
-          echo "Building docs $VERSION
+          echo "Building docs $VERSION"
 #          mkdir out
 #          make MP_UPDATE_VERSION="$VERSION" OUTDIR=out SPHINXBUILD=sphinx-build html
 
