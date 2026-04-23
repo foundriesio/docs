@@ -63,7 +63,8 @@ jobs:
           mv offline-docs.tgz $VERSION/
           echo $BUCKET_CREDS > secret
           echo -e "secret\nY\nosf-prod\nN\n" | gsutil config -e
-          gsutil -m rsync -d -r dev gs://docs.foundries.io/$VERSION
-#          if [[ $TAG == mp-* ]]; then
+          gsutil -m rsync -d -r $VERSION gs://docs.foundries.io/$VERSION
+          export LATEST_TAG="$(git tag --sort=-committerdate | head -n 1)"
+          if [[ $TAG == $LATEST_TAG ]]; then
           gsutil -m rsync -d -r gs://docs.foundries.io/${VERSION} gs://docs.foundries.io/latest
           fi
