@@ -16,47 +16,21 @@ These include:
  * When an OTA update starts and completes.
 
 Event queues are implemented using Google PubSub_ to provide a well understood and tested framework.
-There are two types of event queues:
-
- * Push: Works as a webhook_ service.
-   Events are sent to a managed URL where they can be processed.
-
- * Pull: Works like a typical message queue system where one can write their own client to receive and process events.
-
-The PubSub documentation includes a very useful guide_ for deciding which approach will work best for you.
-They also include a wide range of `client libraries`_ for consuming the Pull API.
+FoundriesFactory leverages "push subscriptions" as the delivery mechanism for events.
 PubSub subscriptions are created with default retention, expiration, and acknowledgement values_.
 
 Implementation Details
 ----------------------
 
 Each FoundriesFactory is given a single PubSub Topic.
-Each Push and Pull queue created by a customer results in the creation of a PubSub subscription.
+Each Topic results in the creation of a PubSub "push" subscription.
 The FoundriesFactory API provides a thin, multi-tenant friendly wrapper to manage everything.
 
 .. note::
-   For performance reasons, new push queues can take up to five minutes before they start receiving events.
+   For performance reasons, new queues can take up to five minutes before they start receiving events.
 
-Creating a Pull Queue
----------------------
-
-A pull queue can be created using Fioctl:
-
-.. code-block:: console
-
-   $ fioctl event-queues mk-pull <name> <where to save creds-file>
-   $ fioctl event-queues mk-pull docs-example $HOME/.fio-pull-queue.creds
-
-Fioctl can also monitor this queue:
-
-.. code-block:: console
-
-   $ fioctl event-queues listen docs-example $HOME/.fio-pull-queue.creds
-
-This command also serves as a reference example_ on implementing a pull queue listener.
-
-Creating a Push Queue
----------------------
+Creating a Queue
+----------------
 
 A push queue requires a little up front work:
 
@@ -91,8 +65,8 @@ Once the server is running, you can create a push queue with:
 
 At this point events will start showing up in the example server.
 
-Push Queue Payloads
-~~~~~~~~~~~~~~~~~~~
+Event Queue Payloads
+~~~~~~~~~~~~~~~~~~~~
 
 Incoming HTTP requests will look similar to:
 
@@ -112,8 +86,8 @@ Incoming HTTP requests will look similar to:
    "subscription":"projects/osf-prod/subscriptions/xxxxxxxx"
   }
 
-Push Queue Security
-~~~~~~~~~~~~~~~~~~~
+Event Queue Security
+~~~~~~~~~~~~~~~~~~~~
 
 Incoming requests will include a header, ``Authorization: Bearer <jwt>``.
 This JWT is signed with one of Google's own private keys.
@@ -236,9 +210,6 @@ DEVICE_PUBKEY_CHANGE
 
 .. _PubSub:
    https://cloud.google.com/pubsub/docs/overview
-
-.. _webhook:
-   https://en.wikipedia.org/wiki/Webhook
 
 .. _guide:
    https://cloud.google.com/pubsub/docs/subscriber
