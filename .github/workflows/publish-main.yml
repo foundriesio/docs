@@ -1,8 +1,7 @@
 name: publish-release
 on:
-  push:
-    tags:
-      - 'mp-*'
+  release:
+    types: [published]
 
 jobs:
   publish-stable:
