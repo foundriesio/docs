@@ -47,17 +47,13 @@ We use `GitHub Releases`_ to distribute static golang binaries.
         .. attention:: Make sure you have ``curl`` installed.
 
         1. Download a Linux binary to a directory on your ``PATH``.
-           For example, to download version |fioctl_version| on Linux, define the version:
-
-           .. parsed-literal::
-
-              FIOCTL_VERSION="|fioctl_version|"
+           For example, to download the latest version on Linux:
 
            Download the binary with curl:
 
            .. code-block:: console
 
-              $ sudo curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-linux-amd64
+              $ sudo curl -o /usr/local/bin/fioctl -LO https://github.com/foundriesio/fioctl/releases/latest/download/fioctl-linux-amd64
 
         2. Make the :ref:`ref-fioctl` binary executable:
 
@@ -73,21 +69,17 @@ We use `GitHub Releases`_ to distribute static golang binaries.
 
         1. Download a Darwin binary from the `GitHub Releases`_ page to a directory on your ``PATH``.
 
-           For example, to download version |fioctl_version| on macOS, define the version:
-
-           .. parsed-literal::
-
-                FIOCTL_VERSION="|fioctl_version|"
+           For example, to download the latest version on macOS:
 
            Download the binary with curl:
 
            .. code-block:: console
 
-              $ sudo curl -o /usr/local/bin/fioctl -L https://github.com/foundriesio/fioctl/releases/download/$FIOCTL_VERSION/fioctl-darwin-amd64
+              $ sudo curl -o /usr/local/bin/fioctl -L https://github.com/foundriesio/fioctl/releases/latest/download/fioctl-darwin-amd64
 
            .. important::
 
-              For MacOS running on a Apple M1 processor, replace ``fioctl-darwin-amd64`` with ``fioctl-darwin-arm64``, and set ``FIOCTL_VERSION`` to v0.21 or newer.
+              For MacOS running on a Apple M1 processor, replace ``fioctl-darwin-amd64`` with ``fioctl-darwin-arm64``.
 
         2. Make the :ref:`ref-fioctl` binary executable:
 
