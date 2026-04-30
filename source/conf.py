@@ -19,7 +19,6 @@ from urllib.request import urlopen
 
 mp_version = os.environ.get('MP_UPDATE_VERSION')
 lmp_build = os.environ.get('LMP_BUILD')
-fioctl_version = os.environ.get('fv')
 if mp_version is None:
     try:
         git_version = subprocess.check_output(['git', 'describe', '--tags'])
@@ -213,8 +212,7 @@ exclude_patterns = ['user-guide/flashing/*-flashing.rst',
 rst_epilog = '''
 .. |docker_tag| replace:: {}
 .. |manifest_tag| replace:: {}
-.. |fioctl_version| replace:: {}
-'''.format(docker_tag, manifest_tag, fioctl_version)
+'''.format(docker_tag, manifest_tag)
 
 # -- PDF Configuration --------------------------------------------------------
 
