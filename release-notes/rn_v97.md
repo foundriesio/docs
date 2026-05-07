@@ -13,7 +13,7 @@
     - [fio-diag Updates](#fio-diag-updates)
     - [fioconfig Updates](#fioconfig-updates)
   - [Yocto Project Versions - Scarthgap 5.0.17](#yocto-project-versions---scarthgap-5017)
-    - [Security Updates](#security-updates)
+    - [Yocto ProjectSecurity Updates](#yocto-projectsecurity-updates)
   - [Deprecations](#deprecations)
   - [Plans for the Future](#plans-for-the-future)
   - [Known Issues](#known-issues)
@@ -101,7 +101,7 @@ This release is based on OpenEmbedded/Yocto Project 5.0.17 (**Scarthgap**) and i
 | rust           | 1.75.0  | openembedded-core   | [rust\_1.75.0.bb](https://github.com/lmp-mirrors/openembedded-core/blob/52380df998b3a8fe6a091f8547434a3231320a8e/meta/recipes-devtools/rust/rust_1.75.0.bb)                                              |
 | systemd        | 255.21  | openembedded-core   | [systemd\_255.21.bb](https://github.com/lmp-mirrors/openembedded-core/blob/52380df998b3a8fe6a091f8547434a3231320a8e/meta/recipes-core/systemd/systemd_255.21.bb)                                         |
 
-### Security Updates
+### Yocto ProjectSecurity Updates
 
 For detailed CVE fixes included in this release, refer to the Yocto Project release notes:
 - [Yocto Project 5.0.17](https://docs.yoctoproject.org/next/migration-guides/release-notes-5.0.17.html)
