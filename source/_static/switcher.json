@@ -5,15 +5,15 @@
     "url": "https://docs.foundries.io/dev"
   },
   {
-    "name": "v96 (stable)",
-    "version": "96",
+    "name": "v97 (stable)",
+    "version": "97",
     "url": "https://docs.foundries.io/latest",
     "preferred": true
   },
   {
-    "name": "v95",
-    "version": "95",
-    "url": "https://docs.foundries.io/95/"
+    "name": "v96",
+    "version": "96",
+    "url": "https://docs.foundries.io/96/"
   },
   {
     "name": "…older",
