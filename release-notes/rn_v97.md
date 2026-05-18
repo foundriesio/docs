@@ -1,7 +1,7 @@
 # LmP v97 Release Notes
 
 **Quick Links:**
-- [v97 Test Results](placeholder)
+- [v97 Test Results](97/testresults_v97.md)
 - [changelog_v97.md](v97/changelog_v97.md)
 
 **Table of Contents**
