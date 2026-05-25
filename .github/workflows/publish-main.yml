@@ -59,4 +59,19 @@ jobs:
           export LATEST_TAG="$(git tag --sort=-committerdate | head -n 1)"
           if [[ $TAG == $LATEST_TAG ]]; then
           gsutil -m rsync -d -r gs://docs.foundries.io/${VERSION} gs://docs.foundries.io/latest
+          cat >/tmp/index.html << EOF
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta http-equiv="refresh" content="0; URL=/${VERSION}/" />
+            <link rel="canonical" href="/${VERSION}/" />
+          </head>
+          <body>
+            <p>If you are not redirected, <a href="/${VERSION}/">click here</a>.</p>
+          </body>
+          </html>
+
+          EOF
+          gsutil cp /tmp/index.html gs://docs.foundries.io/index.html
+
           fi
