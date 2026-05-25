@@ -2,12 +2,12 @@
   {
     "name": "dev (unstable)",
     "version": "dev",
-    "url": "https://docs.foundries.io/dev"
+    "url": "https://docs.foundries.io/dev/"
   },
   {
     "name": "v97 (stable)",
     "version": "97",
-    "url": "https://docs.foundries.io/latest",
+    "url": "https://docs.foundries.io/latest/",
     "preferred": true
   },
   {
@@ -18,6 +18,6 @@
   {
     "name": "…older",
     "version": "",
-    "url": "https://docs.foundries.io/releases"
+    "url": "https://docs.foundries.io/releases/"
   }
 ]
