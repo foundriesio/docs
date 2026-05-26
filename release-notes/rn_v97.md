@@ -119,5 +119,4 @@ _To be announced in future releases._
 
 ## Known Issues
 
-> **Note:** This section will be updated with any issues discovered during
-> post-release testing and field deployment.
+> - **`DISABLE_GPLV3`**: A fix for `image-license-checker` was applied to `meta-lmp` after the release. If `DISABLE_GPLV3` is in use, ensure your factory is updated to include commit https://github.com/foundriesio/lmp-manifest/commit/8a5dc6126a3de6860b78c90ddf554154a183b8e0.
