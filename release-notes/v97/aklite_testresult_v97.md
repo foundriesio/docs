@@ -1,6 +1,6 @@
 # Test Results for Aktualizr-lite in LmP v97 Release
 
-The following tables summarize the results of the unit and end-to-end tests conducted for aktualizr-lite in https://github.com/foundriesio/aktualizr-lite/actions/runs/22438555187.
+The following tables summarize the results of the unit and end-to-end tests conducted for aktualizr-lite in https://github.com/user-attachments/files/27636568/logs_58655807117.zip.
 ## Unit Tests
 
 | Test # | Test Name                    | Result |
