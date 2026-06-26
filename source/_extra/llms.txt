@@ -1,0 +1,130 @@
+# FoundriesFactory Documentation
+
+> Foundries.io builds FoundriesFactory, a managed platform for securely building, deploying, updating, and managing Linux and Zephyr devices at scale. It gives embedded and IoT product teams a faster, more secure path to market — with built-in secure boot, over-the-air (OTA) updates, fleet management, and compliance support for the EU Cyber Resilience Act (CRA) and NIST. It is built on the open-source Linux microPlatform (Yocto, U-Boot, OP-TEE, Docker, WireGuard) and managed with the Fioctl CLI.
+
+This is the technical documentation for the current stable release (v97), published at https://docs.foundries.io/latest/. For the company and product overview, see https://foundries.io/llms.txt. Release notes are hosted on GitHub.
+
+## Getting Started
+
+- [Getting Started](https://docs.foundries.io/latest/getting-started/index.html): Entry point describing the two onboarding paths — container-only Factories and Linux microPlatform (LmP) Factories.
+- [Getting Started With Container-Only Factories](https://docs.foundries.io/latest/getting-started/gs-container-only.html): Onboarding for container-only Factories on any Arm64/x86 platform, using the Fioup update agent without OS image builds.
+- [Getting Started with the LmP](https://docs.foundries.io/latest/getting-started/gs-lmp.html): Onboarding for Yocto/OSTree-based LmP Factories that produce immutable OS images with OTA updates.
+- [Installing Fioctl](https://docs.foundries.io/latest/getting-started/install-fioctl/index.html): How to install Fioctl, the CLI tool for interacting with the Foundries.io REST API to manage tags, device config, OTA updates, and keys.
+- [Registering Your Device with Fioup](https://docs.foundries.io/latest/getting-started/fioup-registration/index.html): Steps to install, register, and update a container-only device using the Fioup OTA client (Arm64/x86).
+- [Registering Your Device](https://docs.foundries.io/latest/getting-started/register-device/index.html): Registering an LmP device with a Factory via the lmp-device-register tool and OAuth device-flow challenge.
+- [Flashing Your Device](https://docs.foundries.io/latest/getting-started/flash-device/index.html): Prerequisites and procedure for flashing an LmP image onto a supported board (eMMC or microSD).
+- [Building and Deploying an Application](https://docs.foundries.io/latest/getting-started/building-deploying-app/index.html): Cloning containers.git, enabling the shellhttpd example app, and pushing it to trigger Platform CI.
+
+## Tutorials
+
+- [Getting Started With Docker](https://docs.foundries.io/latest/tutorials/getting-started-with-docker/getting-started-with-docker.html): Introduces Docker and docker-compose apps with the basic commands and concepts for building your own apps.
+- [Creating Your First Target](https://docs.foundries.io/latest/tutorials/creating-first-target/creating-first-target.html): Explains what a Target is, how to generate one, and how a device consumes it.
+- [Deploying Your First Application](https://docs.foundries.io/latest/tutorials/deploying-first-app/deploying-first-app.html): How devices consume Targets and how to configure a device with desired applications.
+- [Configuring and Sharing Volumes](https://docs.foundries.io/latest/tutorials/configuring-and-sharing-volumes/configuring-and-sharing-volumes.html): Device configuration using fioctl config and the on-device fioconfig daemon, plus volume sharing.
+- [Working With Compose Apps](https://docs.foundries.io/latest/tutorials/compose-app/compose-app.html): In-depth examples for building Compose Apps (Flask, MQTT/Mosquitto, nginx, shellhttpd).
+- [Customizing the Platform](https://docs.foundries.io/latest/tutorials/customizing-the-platform/customizing-the-platform.html): LmP-only platform customization via meta-subscriber-overrides.git, adding packages and kernel changes.
+- [Working With Tags](https://docs.foundries.io/latest/tutorials/working-with-tags/working-with-tags.html): Using branch/Target tags to manage development workflow and have devices follow specific tags.
+
+## User Guide
+
+- [User Guide](https://docs.foundries.io/latest/user-guide/index.html): Section landing page indexing task walk-throughs for working with a FoundriesFactory.
+- [Fioctl](https://docs.foundries.io/latest/user-guide/fioctl/index.html): Examples of common tasks using Fioctl, the open-source CLI for managing a Factory via the REST API.
+- [Flashing Instructions](https://docs.foundries.io/latest/user-guide/flashing/flashing.html): Board-specific instructions for flashing the system image to supported hardware (RB3 Gen 2, BeagleBone Black, Raspberry Pi, x86).
+- [Developer Workflow and Guidelines](https://docs.foundries.io/latest/user-guide/developer-workflow/developer-workflow.html): Best practices and branching/tagging strategy for moving from development to production with a Factory.
+- [Factory & Account Management](https://docs.foundries.io/latest/user-guide/account-management/account-management.html): Web UI tasks for managing subscription, members, team-based access, and device offline settings.
+- [Containers and Docker](https://docs.foundries.io/latest/user-guide/containers-and-docker/index.html): Guides for managing Factory containers and Compose Apps, including preloading and multi-stage builds.
+- [Customizing the LmP](https://docs.foundries.io/latest/user-guide/lmp-customization/index.html): Common ways to customize the Linux microPlatform, build it from source, and extend images with packages and private repos.
+- [Customizing Over the Air Updates](https://docs.foundries.io/latest/user-guide/custom-sota-client.html): Controlling SOTA update behavior via callbacks, a custom update agent, or aktualizr-lite CLI manual mode.
+- [Offline Updates](https://docs.foundries.io/latest/user-guide/offline-update/offline-update.html): Steps for updating a device offline, including obtaining update content and offline TUF key handling.
+- [Waves and Production Targets](https://docs.foundries.io/latest/user-guide/waves/waves.html): Using the Waves mechanism (fioctl waves) to promote and roll out updates to production devices.
+- [Custom CI](https://docs.foundries.io/latest/user-guide/custom-ci/custom-ci.html): Building the OS rootfs and Apps outside FoundriesFactory CI while still using the OTA service.
+- [Intellectual Property Protection](https://docs.foundries.io/latest/user-guide/ip-protection/ip-protection.html): Steps to isolate and protect source code access, including private registries, submodules, and team permissions.
+- [Foundries.io REST API](https://docs.foundries.io/latest/user-guide/foundriesio-rest-api/foundriesio-rest-api.html): Using the Factory REST API with curl, including API token creation and example calls.
+- [Troubleshooting and FAQ](https://docs.foundries.io/latest/user-guide/troubleshooting/troubleshooting.html): Common errors and solutions, how-to tips, and frequently asked questions.
+
+## Reference Manual
+
+- [Reference Manual](https://docs.foundries.io/latest/reference-manual/index.html): Technical reference covering command options, API calls, and advanced use cases for the FoundriesFactory Platform.
+- [Docker](https://docs.foundries.io/latest/reference-manual/docker/docker.html): Reference and advanced use cases for Docker, Compose Apps, and container registries.
+- [Docker Architecture Overview](https://docs.foundries.io/latest/reference-manual/docker/docker-architecture.html): How aktualizr-lite runs Docker Compose projects defined in a device's active Target.
+- [Restorable Apps](https://docs.foundries.io/latest/reference-manual/docker/restorable-apps.html): Compose Apps that can be restored after Docker store damage without re-downloading from the registry.
+- [FoundriesFactory](https://docs.foundries.io/latest/reference-manual/factory/factory.html): Tools, services, and git repositories used to customize and operate a Factory across the device lifecycle.
+- [Factory Source Code](https://docs.foundries.io/latest/reference-manual/factory/factory-sources.html): The private git repositories provided to maintain and customize a Factory's platform.
+- [Factory Definition](https://docs.foundries.io/latest/reference-manual/factory/factory-definition.html): The factory-config.yml file in ci-scripts.git that controls how CI handles a Factory.
+- [Software Bill of Materials](https://docs.foundries.io/latest/reference-manual/factory/sboms.html): The SBOM feature declaring the software packages used to build a Target for compliance and inventory.
+- [API Access](https://docs.foundries.io/latest/reference-manual/factory/api-access.html): Accessing FoundriesFactory APIs via OAuth2 application credentials or API tokens.
+- [Container-Only Factories](https://docs.foundries.io/latest/reference-manual/factory/container-only-architecture.html): Managing fleets of Arm64 or x86 devices that run containers without the LmP.
+- [Linux microPlatform](https://docs.foundries.io/latest/reference-manual/linux/linux.html): The OpenEmbedded/Yocto-based LmP software and hardware platform that forms a Factory's baseline software stack.
+- [Board Machine Names](https://docs.foundries.io/latest/reference-manual/linux/linux-supported.html): The MACHINE values mapping supported development boards to the Factory Definition.
+- [Linux Kernel](https://docs.foundries.io/latest/reference-manual/linux/linux-kernel.html): The unified Linux kernel source tree used by the LmP and its recipe location.
+- [LmP File Structure](https://docs.foundries.io/latest/reference-manual/linux/linux-lmp-fs.html): The OSTree-based file system structure used for LmP platform updates.
+- [OpenEmbedded / Yocto Project Layers](https://docs.foundries.io/latest/reference-manual/linux/linux-layers.html): The OE/Yocto layers composing the LmP, including base, distro, image, and BSP layers.
+- [Disk Encryption Support](https://docs.foundries.io/latest/reference-manual/linux/linux-disk-encryption.html): Using LUKS disk encryption in LmP image creation.
+- [Updating the Linux microPlatform Core](https://docs.foundries.io/latest/reference-manual/linux/linux-update.html): Consuming core LmP platform updates via the Factory manifest.
+- [Over the Air Updates](https://docs.foundries.io/latest/reference-manual/ota/ota.html): In-depth reference on OTA update tooling, Targets, tagging, and clients.
+- [OTA Architecture Overview](https://docs.foundries.io/latest/reference-manual/ota/ota-architecture.html): The high-level OTA system entities — LmP devices, Device Gateway, and back-end services.
+- [Fioconfig](https://docs.foundries.io/latest/reference-manual/ota/fioconfig.html): The on-device configuration storage client and its encryption model.
+- [Aktualizr-Lite](https://docs.foundries.io/latest/reference-manual/ota/aktualizr-lite.html): The default LmP OTA client, a TUF-based build variant of Aktualizr.
+- [Device Tags](https://docs.foundries.io/latest/reference-manual/ota/device-tags.html): Subscribing devices to a tag to control which updates a fleet receives.
+- [Configuring Devices](https://docs.foundries.io/latest/reference-manual/ota/configuring.html): Fleet-wide, group, and per-device configuration management with Fioctl.
+- [Targets Overview](https://docs.foundries.io/latest/reference-manual/ota/targets.html): The Update Framework (TUF) Target concept for delivering immutable software updates.
+- [Production Targets](https://docs.foundries.io/latest/reference-manual/ota/production-targets.html): Defining test versus production devices and promoting Targets to production.
+- [Update Rollback](https://docs.foundries.io/latest/reference-manual/ota/update-rollback.html): How the OTA client and bootloader recover when a new Target installation fails.
+- [Remote Access](https://docs.foundries.io/latest/reference-manual/remote-access/remote-access.html): Setting up, using, and troubleshooting WireGuard VPN for devices.
+- [WireGuard VPN](https://docs.foundries.io/latest/reference-manual/remote-access/wireguard.html): Remotely accessing devices behind private firewalls using WireGuard integrated with Fioctl.
+- [Security](https://docs.foundries.io/latest/reference-manual/security/security.html): Security across device boot, cloud connectivity, secure updates, and on-device secret storage.
+- [Summary of Crypto Keys Used by FoundriesFactory](https://docs.foundries.io/latest/reference-manual/security/ff-security-summary.html): A concise summary of the cryptographic keys used across a Factory.
+- [Factory PKI](https://docs.foundries.io/latest/reference-manual/security/device-gateway.html): The Public Key Infrastructure establishing mutual TLS trust between devices and the Device Gateway.
+- [Device Certificate Rotation](https://docs.foundries.io/latest/reference-manual/security/cert-rotation.html): Rotating the x509 client certificate devices receive at registration.
+- [Crypto Keys Used by FoundriesFactory at Build Time](https://docs.foundries.io/latest/reference-manual/security/factory-keys.html): Online and offline keys used to sign boot components such as U-Boot and OP-TEE.
+- [Offline Factory TUF Keys](https://docs.foundries.io/latest/reference-manual/security/offline-keys.html): The TUF multi-level offline key management strategy for securing software updates.
+- [UEFI Secure Boot](https://docs.foundries.io/latest/reference-manual/security/secure-boot-uefi.html): Enabling UEFI Secure Boot in LmP to verify bootloader and kernel signatures.
+- [Manufacturing Process for Device Registration](https://docs.foundries.io/latest/reference-manual/security/factory-registration-ref.html): Provisioning and registering trusted production devices during manufacturing.
+- [Testing](https://docs.foundries.io/latest/reference-manual/testing/testing.html): Overview of the testing workflow and automated testing API for a Factory.
+- [Testing Architecture Overview](https://docs.foundries.io/latest/reference-manual/testing/testing-architecture.html): The Target-centric testing workflow and data model available to a Factory.
+- [Fiotest](https://docs.foundries.io/latest/reference-manual/testing/fiotest.html): The Device Gateway Testing API for registered devices to report test results.
+
+## Appendix & Glossary
+
+- [Fioctl Command Reference](https://docs.foundries.io/latest/appendix/fioctl-command-reference/index.html): Auto-generated reference for every fioctl CLI command and subcommand used to manage a Factory via the Foundries.io REST API.
+- [Glossary](https://docs.foundries.io/latest/glossary/index.html): Definitions of FoundriesFactory and embedded-Linux terminology, covering platform concepts (Factory, Target, Wave, OTA), security primitives (TUF, OP-TEE, PKI, HSM), and Yocto/OpenEmbedded build terms.
+
+## Release Notes
+
+- [Release Notes](https://github.com/foundriesio/docs/blob/main/release-notes/): Per-release (LmP v95/v96/v97) notes covering migration notes, updated platform components, Yocto versions, deprecations, known issues, and test results. Hosted on GitHub, not the docs site.
+
+## Optional
+
+- [Arduino UNO Q](https://docs.foundries.io/latest/getting-started/arduino-uno-q/index.html): Hardware overview of the Arduino UNO Q board and how to use it with a container-only Factory.
+- [QEMU](https://docs.foundries.io/latest/user-guide/qemu/qemu.html): Running Factory images under QEMU for arm, arm64, and x86_64.
+- [Configuring Automatic Git Mirroring](https://docs.foundries.io/latest/user-guide/mirror-action/mirror-action.html): Mirroring external Git repositories (GitHub, Bitbucket) into Factory repos via tokens and pipelines.
+- [Working With Git Submodules](https://docs.foundries.io/latest/user-guide/submodule/submodule.html): Adding an external Git repository as a submodule of a Factory repository.
+- [Remote Actions](https://docs.foundries.io/latest/user-guide/remote-actions.html): Executing pre-configured scripts (diag, reboot) on a device remotely via fioctl (LmP v97+).
+- [Auto Hostname](https://docs.foundries.io/latest/user-guide/lmp-auto-hostname/lmp-auto-hostname.html): Enabling lmp-auto-hostname to set a device hostname at runtime from serial number or MAC address.
+- [Auto Register](https://docs.foundries.io/latest/user-guide/lmp-device-auto-register/lmp-device-auto-register.html): Enabling lmp-device-auto-register to register a device on first boot using an API token (non-production).
+- [Details Of Device Gateway PKI Settings](https://docs.foundries.io/latest/user-guide/device-gateway-pki/device-gateway-pki.html): Internals of Factory PKI for Device Gateway and devices, with API and OpenSSL examples.
+- [Rotating Device Certificate](https://docs.foundries.io/latest/user-guide/rotating-cert.html): Configuring a Factory for device certificate rotation using a managed or self-hosted EST server.
+- [Using Secret Credentials When Building Containers](https://docs.foundries.io/latest/reference-manual/docker/container-secrets.html): Supplying sensitive build-time credentials when building containers in CI.
+- [Using Third-Party Private Container Registries](https://docs.foundries.io/latest/reference-manual/docker/private-registries.html): Configuring CI to pull from private registries such as AWS ECR.
+- [Caching](https://docs.foundries.io/latest/reference-manual/docker/caching.html): Container build-cache layers published to hub.foundries.io for incremental builds.
+- [CI Webhooks](https://docs.foundries.io/latest/reference-manual/factory/ci-webhooks.html): Receiving webhooks when CI builds complete to trigger external workflows.
+- [Event Queues](https://docs.foundries.io/latest/reference-manual/factory/event-queues.html): Consuming Factory events without polling, for managing large device fleets.
+- [Data Retention Policies](https://docs.foundries.io/latest/reference-manual/factory/data-retention.html): How customer and device data is retained within a Factory for compliance.
+- [Repo Source Control Tool](https://docs.foundries.io/latest/reference-manual/linux/linux-repo.html): How the LmP uses the Repo tool and manifest files to manage multiple git repositories.
+- [Understanding FIO Development Tags](https://docs.foundries.io/latest/reference-manual/linux/development-tags.html): The FIO git shortlog tags marking Foundries.io patches on upstream repositories.
+- [LmP Distros](https://docs.foundries.io/latest/reference-manual/linux/linux-distro.html): Reference distro definitions setting default tool configuration for images.
+- [WIC Image Installer](https://docs.foundries.io/latest/reference-manual/linux/linux-wic-installer.html): Generating a WIC-based image installer for EFI-compatible systems.
+- [Persistent Log Support](https://docs.foundries.io/latest/reference-manual/linux/linux-persistent-log.html): Enabling persistent system logs across reboots on the LmP.
+- [Network Debugging](https://docs.foundries.io/latest/reference-manual/linux/linux-net-debug.html): Debugging LmP network issues with tcpdump.
+- [LmP Root File-System Over NFS](https://docs.foundries.io/latest/reference-manual/linux/linux-nfs-boot.html): Configuring NFS booting for an LmP system.
+- [Development Mode](https://docs.foundries.io/latest/reference-manual/linux/linux-dev-mode.html): The DEV_MODE variable enabling a Factory-defined development mode.
+- [OSS Compliance With FoundriesFactory](https://docs.foundries.io/latest/reference-manual/linux/linux-oss-compliance.html): Yocto tooling configured for open source license compliance.
+- [Factory Reset](https://docs.foundries.io/latest/reference-manual/linux/factory-device-reset.html): The LmP feature restoring a device to its original state via a ramdisk script.
+- [Building The Yocto Project Standard SDK](https://docs.foundries.io/latest/reference-manual/linux/building-sdk.html): Building a Yocto Standard SDK with toolchain and debug tools.
+- [Toolchain](https://docs.foundries.io/latest/reference-manual/linux/toolchain.html): Configuring the build toolchain, including the default clang/llvm setup.
+- [Advanced Tagging](https://docs.foundries.io/latest/reference-manual/ota/advanced-tagging.html): Non-trivial tagging workflows handled in the Factory Definition.
+- [CI Targets](https://docs.foundries.io/latest/reference-manual/ota/ci-targets.html): Targets built automatically from a git push.
+- [OSTree Static Deltas](https://docs.foundries.io/latest/reference-manual/ota/static-deltas.html): OSTree content-addressable storage and static delta update optimization.
+- [Device Network Access](https://docs.foundries.io/latest/reference-manual/security/device-network-access.html): The external services and egress connections LmP devices require.
+- [Anti-Rollback Protection](https://docs.foundries.io/latest/reference-manual/security/anti-rollback-protection.html): Preventing downgrade to obsolete or deprecated boot firmware.
+- [Trusted Platform Module](https://docs.foundries.io/latest/reference-manual/security/secure-elements/secure-element.tpm.html): Using a TPM for hardware-based key storage and secure boot support.

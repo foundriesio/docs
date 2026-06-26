@@ -299,6 +299,9 @@ html_theme_options = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# Files copied verbatim to the site root (e.g. llms.txt at /llms.txt).
+html_extra_path = ['_extra']
+
 # Add custom CSS files.
 html_css_files = [
     'css/custom.css'
