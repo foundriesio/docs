@@ -61,7 +61,7 @@ The TPM2 PKCS#11 library is available at ``/usr/lib/pkcs11/libtpm2_pkcs11.so``.
     $ tpm2_clear -c p
     $ rm -f /var/tpm2_pkcs11/tpm2_pkcs11.sqlite3
 
-    PTOOL='pkcs11-tool --module /usr/lib/pkcs11/libtpm2_pkcs11.so'
+    $ alias PTOOL='pkcs11-tool --module /usr/lib/pkcs11/libtpm2_pkcs11.so'
 
     # Initialize the pkcs11 token
     $ PTOOL --init-token --label tpm2token --so-pin 12345678
@@ -72,7 +72,7 @@ The TPM2 PKCS#11 library is available at ``/usr/lib/pkcs11/libtpm2_pkcs11.so``.
     $ PTOOL --keypairgen --key-type EC:prime256v1 --token-label tpm2token --id 02 --label eckey2 --pin 87654321
 
     # Perform sign & verify
-    openssl dgst -binary -sha256 /usr/lib/pkcs11/libtpm2_pkcs11.so > file.sha
+    $ openssl dgst -binary -sha256 /usr/lib/pkcs11/libtpm2_pkcs11.so > file.sha
     $ PTOOL --sign --id 01 --label eckey --token-label tpm2token --pin 87654321 --mechanism ECDSA --input-file file.sha --output-file file.sha.sig
     $ PTOOL --verify --id 01 --label eckey --token-label tpm2token --pin 87654321 --mechanism ECDSA --input-file file.sha --signature-file file.sha.sig
 
